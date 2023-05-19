@@ -116,7 +116,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/starburst_KO-T.png"
-                   alt="Starburst Enterprise 415-e STS logo">
+                   alt="Starburst Enterprise 413-e.1 LTS logo">
           
         </a>
       </div>
@@ -128,7 +128,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <a href="/starburst-enterprise/index.html"
           class="md-header-nav__topic">
-          Documentation: Starburst Enterprise 415-e STS</a>
+          Documentation: Starburst Enterprise 413-e.1 LTS</a>
           <span class="md-header-nav__topic"> OAuth 2.0 authentication </span>
         </div>
       </div>
@@ -206,7 +206,7 @@
       
     </a>
     <a href="../index.html"
-       title="Starburst Enterprise">Starburst Enterprise 415-e STS</a>
+       title="Starburst Enterprise">Starburst Enterprise 413-e.1 LTS</a>
   </label>
   
 
@@ -561,7 +561,7 @@ instructs SEP to ignore <code class="docutils literal notranslate"><span class="
 <code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.oidc.discovery=false</span></code>.</p>
 </section>
 <section id="sep-server-configuration">
-<span id="trino-server-configuration-oauth2"></span><h2 id="sep-server-configuration">SEP server configuration<a class="headerlink" href="#sep-server-configuration" title="Permalink to this heading">#</a></h2>
+<h2 id="sep-server-configuration">SEP server configuration<a class="headerlink" href="#sep-server-configuration" title="Permalink to this heading">#</a></h2>
 <p>Using the OAuth2 authentication requires the SEP coordinator to be secured
 with TLS.</p>
 <p>The following is an example of the required properties that need to be added
@@ -576,8 +576,8 @@ to the coordinator’s <code class="docutils literal notranslate"><span class="p
 <span class="na">http-server.authentication.oauth2.client-secret</span><span class="o">=</span><span class="s">CLIENT_SECRET</span>
 </pre></div>
 </div>
-<p>To enable OAuth 2.0 authentication for the Web UI, the following
-property must be be added:</p>
+<p>In order to enable OAuth 2.0 authentication for the Web UI, the following
+properties need to be added:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">web-ui.authentication.type</span><span class="o">=</span><span class="s">oauth2</span>
 </pre></div>
 </div>
@@ -648,8 +648,7 @@ always a trusted audience.</p></td>
 <a class="reference external" href="https://tools.ietf.org/html/rfc6749#section-3.3">https://tools.ietf.org/html/rfc6749#section-3.3</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.challenge-timeout</span></code></p></td>
-<td><p>Maximum <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> of the authorization
-challenge. Default is <code class="docutils literal notranslate"><span class="pre">15m</span></code>.</p></td>
+<td><p>Maximum duration of the authorization challenge. Default is <code class="docutils literal notranslate"><span class="pre">15m</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.state-key</span></code></p></td>
 <td><p>A secret key used by the SHA-256
@@ -695,33 +694,8 @@ following configuration property to <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 <section id="refresh-tokens">
-<span id="trino-oauth2-refresh-tokens"></span><h3 id="refresh-tokens">Refresh tokens<a class="headerlink" href="#refresh-tokens" title="Permalink to this heading">#</a></h3>
-<p><em>Refresh tokens</em> allow you to securely control the length of user sessions
-within applications. The refresh token has a longer lifespan (TTL) and is used
-to refresh the <em>access token</em> that has a shorter lifespan. When refresh tokens
-are used in conjunction with access tokens, users can remain logged in for an
-extended duration without interruption by another login request.</p>
-<p>In a refresh token flow, there are three tokens with different expiration times:</p>
-<ul class="simple">
-<li><p>access token</p></li>
-<li><p>refresh token</p></li>
-<li><p>SEP-encrypted token that is a combination of the access and refresh tokens.
-The encrypted token manages the session lifetime with the timeout value that
-is set with the
-<code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.refresh-tokens.issued-token.timeout</span></code>
-property.</p></li>
-</ul>
-<p>In the following scenario, the lifespan of the tokens issued by an IdP are:</p>
-<ul class="simple">
-<li><p>access token 5m</p></li>
-<li><p>refresh token 24h</p></li>
-</ul>
-<p>Because the access token lifespan is only five minutes, SEP uses the longer
-lifespan refresh token to request another access token every five minutes on
-behalf of a user. In this case, the maximum
-<code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.refresh-tokens.issued-token.timeout</span></code> is
-twenty-four hours.</p>
-<p>To use refresh token flows, the following property must be
+<h3 id="refresh-tokens">Refresh tokens<a class="headerlink" href="#refresh-tokens" title="Permalink to this heading">#</a></h3>
+<p>In order to start using refresh tokens flows, the following property must be
 enabled in the coordinator configuration.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.oauth2.refresh-tokens</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
@@ -745,13 +719,9 @@ IdP configuration.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.refresh-tokens.issued-token.timeout</span></code></p></td>
-<td><p>Expiration time for an issued token, which is the Trino-encrypted token
-that contains an access token and a refresh token. The timeout value must
-be less than or equal to the <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> of the
-refresh token expiration issued by the IdP. Defaults to <code class="docutils literal notranslate"><span class="pre">1h</span></code>. The
-timeout value is the maximum session time for an OAuth2-authenticated
-client with refresh tokens enabled. For more details, see
-<a class="reference internal" href="#trino-oauth2-troubleshooting"><span class="std std-ref">Troubleshooting</span></a>.</p></td>
+<td><p>Expiration time for issued token. Value must be less than or equal to
+the duration of the refresh token expiration issued by the IdP.
+Defaults to <code class="docutils literal notranslate"><span class="pre">1h</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.refresh-tokens.issued-token.issuer</span></code></p></td>
 <td><p>Issuer representing the coordinator instance, that is referenced in the
@@ -772,29 +742,11 @@ By default it’s generated during startup.</p></td>
 </section>
 </section>
 <section id="troubleshooting">
-<span id="trino-oauth2-troubleshooting"></span><h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
-<p>To debug issues, change the <a class="reference internal" href="../installation/deployment.html#log-levels"><span class="std std-ref">log level</span></a> for the OAuth 2.0
-authenticator:</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<p>If you need to debug issues with SEP OAuth 2.0 configuration you can change
+the <a class="reference internal" href="../installation/deployment.html#log-levels"><span class="std std-ref">log level</span></a> for the OAuth 2.0 authenticator:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>io.trino.server.security.oauth2=DEBUG
 </pre></div>
-</div>
-<p>To debug issues with OAuth 2.0 authentication use with the web UI, set the
-following configuration property:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>io.trino.server.ui.OAuth2WebUiAuthenticationFilter=DEBUG
-</pre></div>
-</div>
-<p>This assumes the OAuth 2.0 authentication for the web UI is enabled as described
-in <a class="reference internal" href="#trino-server-configuration-oauth2"><span class="std std-ref">SEP server configuration</span></a>.</p>
-<p>The logged debug error for a lapsed refresh token is <code class="docutils literal notranslate"><span class="pre">Tokens</span> <span class="pre">refresh</span> <span class="pre">challenge</span>
-<span class="pre">has</span> <span class="pre">failed</span></code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If a refresh token lapses, the user session is interrupted and the user must
-reauthenticate by logging in again. Ensure you set the
-<code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.refresh-tokens.issued-token.timeout</span></code>
-value to less than or equal to the duration of the refresh token expiration
-issued by your IdP. Optimally, the timeout should be slightly less than the
-refresh token lifespan of your IdP to ensure that sessions end gracefully.</p>
 </div>
 </section>
 </section>
@@ -984,7 +936,7 @@ feedback();
         <a href="https://www.starburst.io/" target="_blank">
           
             <img src="../_static/starburst_KO-T.png" height="26"
-                  alt="Starburst Enterprise 415-e STS logo">
+                  alt="Starburst Enterprise 413-e.1 LTS logo">
         
         </a>
         <li class="footer-item" style="padding-right:10px;">

@@ -116,7 +116,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/starburst_KO-T.png"
-                   alt="Starburst Enterprise 415-e STS logo">
+                   alt="Starburst Enterprise 413-e.1 LTS logo">
           
         </a>
       </div>
@@ -128,7 +128,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <a href="/starburst-enterprise/index.html"
           class="md-header-nav__topic">
-          Documentation: Starburst Enterprise 415-e STS</a>
+          Documentation: Starburst Enterprise 413-e.1 LTS</a>
           <span class="md-header-nav__topic"> Delta Lake connector </span>
         </div>
       </div>
@@ -206,7 +206,7 @@
       
     </a>
     <a href="../index.html"
-       title="Starburst Enterprise">Starburst Enterprise 415-e STS</a>
+       title="Starburst Enterprise">Starburst Enterprise 413-e.1 LTS</a>
   </label>
   
 
@@ -489,7 +489,7 @@
         </li>
         <li class="md-nav__item"><a href="#general-configuration" class="md-nav__link">General configuration</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#delta-lake-general-configuration-properties" class="md-nav__link">Delta Lake general configuration properties</a>
+        <li class="md-nav__item"><a href="#delta-lake-general-configuration-properties" class="md-nav__link">Delta lake general configuration properties</a>
         </li>
         <li class="md-nav__item"><a href="#catalog-session-properties" class="md-nav__link">Catalog session properties</a>
         </li></ul>
@@ -541,6 +541,8 @@
         </li>
         <li class="md-nav__item"><a href="#metadata-tables" class="md-nav__link">Metadata tables</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#data-table" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">$data</span></code> table</a>
+        </li>
         <li class="md-nav__item"><a href="#history-table" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">$history</span></code> table</a>
         </li></ul>
             </nav>
@@ -555,7 +557,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#table-statistics" class="md-nav__link">Table statistics</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#fine-tuning" class="md-nav__link">Fine-tuning</a>
+        <li class="md-nav__item"><a href="#fine-tuning" class="md-nav__link">Fine tuning</a>
         </li>
         <li class="md-nav__item"><a href="#disable-and-drop-extended-statistics" class="md-nav__link">Disable and drop extended statistics</a>
         </li></ul>
@@ -586,15 +588,13 @@
             
   <section id="delta-lake-connector">
 <h1 id="connector-delta-lake--page-root">Delta Lake connector<a class="headerlink" href="#connector-delta-lake--page-root" title="Permalink to this heading">#</a></h1>
-<img class="connector-logo" src="../_static/img/delta-lake.png"/><p>The Delta Lake connector allows querying data stored in the <a class="reference external" href="https://delta.io">Delta Lake</a> format, including <a class="reference external" href="https://docs.databricks.com/delta/index.html">Databricks Delta Lake</a>. The connector can natively
-read the Delta Lake transaction log and thus detect when external systems change
-data.</p>
+<img class="connector-logo" src="../_static/img/delta-lake.png"/><p>The Delta Lake connector allows querying data stored in <a class="reference external" href="https://delta.io">Delta Lake</a> format, including <a class="reference external" href="https://docs.databricks.com/delta/index.html">Databricks Delta Lake</a>. It can natively read the Delta
+transaction log, and thus detect when external systems change data.</p>
 <section id="requirements">
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>To connect to Databricks Delta Lake, you need:</p>
 <ul class="simple">
-<li><p>Tables written by Databricks Runtime 7.3 LTS, 9.1 LTS, 10.4 LTS, 11.3 LTS, and
-12.2 LTS are supported.</p></li>
+<li><p>Tables written by Databricks Runtime 7.3 LTS, 9.1 LTS, 10.4 LTS and 11.3 LTS are supported.</p></li>
 <li><p>Deployments using AWS, HDFS, Azure Storage, and Google Cloud Storage (GCS) are
 fully supported.</p></li>
 <li><p>Network access from the coordinator and workers to the Delta Lake storage.</p></li>
@@ -608,7 +608,7 @@ default port for the Thrift protocol used by the HMS.</p></li>
 <p>The connector requires a Hive metastore for table metadata and supports the same
 metastore configuration properties as the <a class="reference internal" href="hive.html"><span class="doc">Hive connector</span></a>. At a minimum, <code class="docutils literal notranslate"><span class="pre">hive.metastore.uri</span></code> must be configured.</p>
 <p>The connector recognizes Delta tables created in the metastore by the Databricks
-runtime. If non-Delta tables are present in the metastore as well, they are not
+runtime. If non-Delta tables are present in the metastore, as well, they are not
 visible to the connector.</p>
 <p>To configure the Delta Lake connector, create a catalog properties file
 <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code> that references the <code class="docutils literal notranslate"><span class="pre">delta_lake</span></code>
@@ -628,14 +628,14 @@ Thrift service:</p>
 including the metastore <a class="reference internal" href="hive.html#hive-thrift-metastore"><span class="std std-ref">Thrift</span></a> and <a class="reference internal" href="hive.html#hive-glue-metastore"><span class="std std-ref">Glue</span></a> configuration, detailed in the <a class="reference internal" href="hive.html"><span class="doc">Hive connector
 documentation</span></a>.</p>
 <p>To configure access to S3 and S3-compatible storage, Azure storage, and others,
-consult the appropriate section of the Hive documentation:</p>
+consult the appropriate section of the Hive documentation.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="hive-s3.html"><span class="doc">Amazon S3</span></a></p></li>
 <li><p><a class="reference internal" href="hive-azure.html"><span class="doc">Azure storage documentation</span></a></p></li>
 <li><p><a class="reference internal" href="hive.html#hive-google-cloud-storage-configuration"><span class="std std-ref">GCS</span></a></p></li>
 </ul>
 <section id="delta-lake-general-configuration-properties">
-<h3 id="delta-lake-general-configuration-properties">Delta Lake general configuration properties<a class="headerlink" href="#delta-lake-general-configuration-properties" title="Permalink to this heading">#</a></h3>
+<h3 id="delta-lake-general-configuration-properties">Delta lake general configuration properties<a class="headerlink" href="#delta-lake-general-configuration-properties" title="Permalink to this heading">#</a></h3>
 <p>The following configuration properties are all using reasonable, tested default
 values. Typical usage does not require you to configure them.</p>
 <table id="id1">
@@ -653,13 +653,13 @@ values. Typical usage does not require you to configure them.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metadata.cache-ttl</span></code></p></td>
-<td><p>Frequency of checks for metadata updates equivalent to transactions to
+<td><p>Frequency of checks for metadata updates, equivalent to transactions, to
 update the metadata cache specified in <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">5m</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metadata.cache-size</span></code></p></td>
 <td><p>The maximum number of Delta table metadata entries to cache.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
+<td><p>1000</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metadata.live-files.cache-size</span></code></p></td>
 <td><p>Amount of memory allocated for caching information about files. Must
@@ -668,13 +668,13 @@ Default is calculated to 10% of the maximum memory allocated to the JVM.</p></td
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metadata.live-files.cache-ttl</span></code></p></td>
-<td><p>Caching duration for active files that correspond to the Delta Lake
+<td><p>Caching duration for active files which correspond to the Delta Lake
 tables.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30m</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.compression-codec</span></code></p></td>
 <td><p>The compression codec to be used when writing new data files.
-Possible values are:</p>
+Possible values are</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SNAPPY</span></code></p></li>
@@ -686,17 +686,17 @@ Possible values are:</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-partitions-per-writer</span></code></p></td>
 <td><p>Maximum number of partitions per writer.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p>100</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.hide-non-delta-lake-tables</span></code></p></td>
 <td><p>Hide information about tables that are not managed by Delta Lake. Hiding
-only applies to tables with the metadata managed in a Glue catalog, and
-does not apply to usage with a Hive metastore service.</p></td>
+only applies to tables with the metadata managed in a Glue catalog, does
+not apply to usage with a Hive metastore service.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.enable-non-concurrent-writes</span></code></p></td>
 <td><p>Enable <a class="reference internal" href="#delta-lake-data-management"><span class="std std-ref">write support</span></a> for all
-supported file systems. Specifically, take note of the warning about
+supported file systems, specifically take note of the warning about
 concurrency and checkpoints.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
@@ -705,7 +705,7 @@ concurrency and checkpoints.</p></td>
 the value is set to N, then checkpoints are written after every Nth
 statement performing table writes. The value can be overridden for a
 specific table with the <code class="docutils literal notranslate"><span class="pre">checkpoint_interval</span></code> table property.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+<td><p>10</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.hive-catalog-name</span></code></p></td>
 <td><p>Name of the catalog to which <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> queries are redirected when a
@@ -740,7 +740,7 @@ determine whether they contain external files.</p></td>
 <td><p>JVM default</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.target-max-file-size</span></code></p></td>
-<td><p>Target maximum size of written files; the actual size could be larger.</p></td>
+<td><p>Target maximum size of written files; the actual size may be larger.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1GB</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.unique-table-location</span></code></p></td>
@@ -748,7 +748,7 @@ determine whether they contain external files.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.register-table-procedure.enabled</span></code></p></td>
-<td><p>Enable to allow users to call the <code class="docutils literal notranslate"><span class="pre">register_table</span></code> procedure.</p></td>
+<td><p>Enable to allow users to call the <code class="docutils literal notranslate"><span class="pre">register_table</span></code> procedure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
 </tbody>
@@ -773,8 +773,8 @@ configure processing of Parquet files.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parquet_optimized_reader_enabled</span></code></p></td>
-<td><p>Specifies whether batched column readers are used when reading Parquet
-files for improved performance.</p></td>
+<td><p>Whether batched column readers are used when reading Parquet files
+for improved performance.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parquet_max_read_block_size</span></code></p></td>
@@ -790,7 +790,7 @@ files for improved performance.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1MB</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parquet_writer_batch_size</span></code></p></td>
-<td><p>Maximum number of rows processed by the Parquet writer in a batch.</p></td>
+<td><p>Maximum number of rows processed by the parquet writer in a batch.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">10000</span></code></p></td>
 </tr>
 </tbody>
@@ -801,7 +801,7 @@ files for improved performance.</p></td>
 <span id="delta-lake-type-mapping"></span><h2 id="type-mapping">Type mapping<a class="headerlink" href="#type-mapping" title="Permalink to this heading">#</a></h2>
 <p>Because Trino and Delta Lake each support types that the other does not, this
 connector <a class="reference internal" href="../language/types.html#type-mapping-overview"><span class="std std-ref">modifies some types</span></a> when reading or
-writing data. Data types might not map the same way in both directions between
+writing data. Data types may not map the same way in both directions between
 Trino and the data source. Refer to the following sections for type mapping in
 each direction.</p>
 <p>See the <a class="reference external" href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md#primitive-types">Delta Transaction Log specification</a>
@@ -941,13 +941,13 @@ this table:</p>
 <section id="security">
 <h2 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
 <p>The Delta Lake connector allows you to choose one of several means of providing
-authorization at the catalog level. You can select a different type of
+autorization at the catalog level. You can select a different type of
 authorization check in different Delta Lake catalog files.</p>
 <section id="authorization-checks">
 <span id="delta-lake-authorization"></span><h3 id="authorization-checks">Authorization checks<a class="headerlink" href="#authorization-checks" title="Permalink to this heading">#</a></h3>
-<p>Enable authorization checks for the connector by setting the <code class="docutils literal notranslate"><span class="pre">delta.security</span></code>
-property in the catalog properties file. This property must be one of the
-security values in the following table:</p>
+<p>You can enable authorization checks for the connector by setting
+the <code class="docutils literal notranslate"><span class="pre">delta.security</span></code> property in the catalog properties file. This
+property must be one of the following values:</p>
 <table id="id5">
 <caption><span class="caption-text">Delta Lake security values</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
@@ -1019,8 +1019,8 @@ removed if the table is dropped:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">SCHEMA</span> <span class="n">example</span><span class="p">.</span><span class="n">example_schema</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>When Delta Lake tables exist in storage but not in the metastore, Trino can be
-used to register the tables:</p>
+<p>When Delta tables exist in storage, but not in the metastore, Trino can be used
+to register them:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">example</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">example_table</span> <span class="p">(</span>
   <span class="n">dummy</span> <span class="nb">bigint</span>
 <span class="p">)</span>
@@ -1029,17 +1029,16 @@ used to register the tables:</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Columns listed in the DDL, such as <code class="docutils literal notranslate"><span class="pre">dummy</span></code> in the preceding example, are
-ignored. The table schema is read from the transaction log instead. If the
+<p>Columns listed in the DDL, such as <code class="docutils literal notranslate"><span class="pre">dummy</span></code> in the preceeding example, are
+ignored. The table schema is read from the transaction log, instead. If the
 schema is changed by an external system, Trino automatically uses the new
 schema.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> with an existing table content is deprecated, instead
-use the <code class="docutils literal notranslate"><span class="pre">system.register_table</span></code> procedure. The <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">...</span> <span class="pre">WITH</span>
-<span class="pre">(location=...)</span></code> syntax can be temporarily re-enabled using the
-<code class="docutils literal notranslate"><span class="pre">delta.legacy-create-table-with-existing-location.enabled</span></code> config property
-or <code class="docutils literal notranslate"><span class="pre">legacy_create_table_with_existing_location_enabled</span></code> session property.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> with an existing table content is deprecated, instead use the
+<code class="docutils literal notranslate"><span class="pre">system.register_table</span></code> procedure. The <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">...</span> <span class="pre">WITH</span> <span class="pre">(location=...)</span></code>
+syntax can be temporarily re-enabled using the <code class="docutils literal notranslate"><span class="pre">delta.legacy-create-table-with-existing-location.enabled</span></code>
+config property or <code class="docutils literal notranslate"><span class="pre">legacy_create_table_with_existing_location_enabled</span></code> session property.</p>
 </div>
 <p>If the specified location does not already contain a Delta table, the connector
 automatically writes the initial transaction log entries and registers the table
@@ -1061,17 +1060,14 @@ catalog. The following code snippet displays how to call the
 </div>
 <section id="register-table">
 <span id="delta-lake-register-table"></span><h4 id="register-table">Register table<a class="headerlink" href="#register-table" title="Permalink to this heading">#</a></h4>
-<p>The connector can register table into the metastore with existing transaction
-logs and data files.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">system.register_table</span></code> procedure allows the caller to register an
-existing Delta Lake table in the metastore, using its existing transaction logs
-and data files:</p>
+<p>The connector can register table into the metastore with existing transaction logs and data files.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">system.register_table</span></code> procedure allows the caller to register an existing delta lake
+table in the metastore, using its existing transaction logs and data files:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CALL</span> <span class="n">example</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">register_table</span><span class="p">(</span><span class="k">schema_name</span> <span class="o">=&gt;</span> <span class="s1">'testdb'</span><span class="p">,</span> <span class="k">table_name</span> <span class="o">=&gt;</span> <span class="s1">'customer_orders'</span><span class="p">,</span> <span class="n">table_location</span> <span class="o">=&gt;</span> <span class="s1">'s3://my-bucket/a/path'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To prevent unauthorized users from accessing data, this procedure is disabled by
-default. The procedure is enabled only when
-<code class="docutils literal notranslate"><span class="pre">delta.register-table-procedure.enabled</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>To prevent unauthorized users from accessing data, this procedure is disabled by default.
+The procedure is enabled only when <code class="docutils literal notranslate"><span class="pre">delta.register-table-procedure.enabled</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </section>
 <section id="unregister-table">
 <span id="delta-lake-unregister-table"></span><h4 id="unregister-table">Unregister table<a class="headerlink" href="#unregister-table" title="Permalink to this heading">#</a></h4>
@@ -1086,11 +1082,11 @@ existing Delta Lake table from the metastores without deleting the data:</p>
 <span id="delta-lake-flush-metadata-cache"></span><h4 id="flush-metadata-cache">Flush metadata cache<a class="headerlink" href="#flush-metadata-cache" title="Permalink to this heading">#</a></h4>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code></p>
-<p>Flushes all metadata caches.</p>
+<p>Flush all metadata caches.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache(schema_name</span> <span class="pre">=&gt;</span> <span class="pre">...,</span> <span class="pre">table_name</span> <span class="pre">=&gt;</span> <span class="pre">...)</span></code></p>
-<p>Flushes metadata cache entries of a specific table.
-Procedure requires passing named parameters.</p>
+<p>Flush metadata caches entries connected with selected table.
+Procedure requires named parameters to be passed</p>
 </li>
 </ul>
 </section>
@@ -1108,7 +1104,7 @@ when writing from multiple Trino clusters, or from other query engines.</p>
 <li><p>S3 and S3-compatible storage</p>
 <p>Writes to <a class="reference internal" href="hive-s3.html"><span class="doc">Amazon S3</span></a> and S3-compatible storage must be enabled
 with the <code class="docutils literal notranslate"><span class="pre">delta.enable-non-concurrent-writes</span></code> property. Writes to S3 can
-safely be made from multiple Trino clusters; however, write collisions are not
+safely be made from multiple Trino clusters, however write collisions are not
 detected when writing concurrently from other Delta Lake engines. You need to
 make sure that no concurrent data modifications are run to avoid data
 corruption.</p>
@@ -1126,14 +1122,14 @@ as follows:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>CALL example.system.vacuum<span class="o">(</span><span class="s1">'exampleschemaname'</span>, <span class="s1">'exampletablename'</span>, <span class="s1">'7d'</span><span class="o">)</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>All parameters are required and must be presented in the following order:</p>
+<p>All parameters are required, and must be presented in the following order:</p>
 <ul class="simple">
 <li><p>Schema name</p></li>
 <li><p>Table name</p></li>
 <li><p>Retention period</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">delta.vacuum.min-retention</span></code> configuration property provides a safety
-measure to ensure that files are retained as expected. The minimum value for
+<p>The <code class="docutils literal notranslate"><span class="pre">delta.vacuum.min-retention</span></code> config property provides a safety
+measure to ensure that files are retained as expected.  The minimum value for
 this property is <code class="docutils literal notranslate"><span class="pre">0s</span></code>. There is a minimum retention session property as well,
 <code class="docutils literal notranslate"><span class="pre">vacuum_min_retention</span></code>.</p>
 </section>
@@ -1152,7 +1148,7 @@ when writing from multiple Trino clusters, or from other query engines.</p>
 <li><p>S3 and S3-compatible storage</p>
 <p>Writes to <a class="reference internal" href="hive-s3.html"><span class="doc">Amazon S3</span></a> and S3-compatible storage must be enabled
 with the <code class="docutils literal notranslate"><span class="pre">delta.enable-non-concurrent-writes</span></code> property. Writes to S3 can
-safely be made from multiple Trino clusters; however, write collisions are not
+safely be made from multiple Trino clusters, however write collisions are not
 detected when writing concurrently from other Delta Lake engines. You must
 make sure that no concurrent data modifications are run to avoid data
 corruption.</p>
@@ -1178,12 +1174,14 @@ corruption.</p>
 <a class="reference internal" href="../sql/alter-table.html#alter-table-execute"><span class="std std-ref">ALTER TABLE EXECUTE</span></a>.</p>
 <section id="optimize">
 <h5 id="optimize">optimize<a class="headerlink" href="#optimize" title="Permalink to this heading">#</a></h5>
-<p>The <code class="docutils literal notranslate"><span class="pre">optimize</span></code> command is used for rewriting the content of the specified
-table so that it is merged into fewer but larger files. If the table is
-partitioned, the data compaction acts separately on each partition selected for
-optimization. This operation improves read performance.</p>
-<p>All files with a size below the optional <code class="docutils literal notranslate"><span class="pre">file_size_threshold</span></code> parameter
-(default value for the threshold is <code class="docutils literal notranslate"><span class="pre">100MB</span></code>) are merged:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">optimize</span></code> command is used for rewriting the content
+of the specified table so that it is merged into fewer but larger files.
+In case that the table is partitioned, the data compaction
+acts separately on each partition selected for optimization.
+This operation improves read performance.</p>
+<p>All files with a size below the optional <code class="docutils literal notranslate"><span class="pre">file_size_threshold</span></code>
+parameter (default value for the threshold is <code class="docutils literal notranslate"><span class="pre">100MB</span></code>) are
+merged:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">test_table</span> <span class="k">EXECUTE</span> <span class="n">optimize</span>
 </pre></div>
 </div>
@@ -1192,7 +1190,7 @@ under 10 megabytes in size:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">test_table</span> <span class="k">EXECUTE</span> <span class="n">optimize</span><span class="p">(</span><span class="n">file_size_threshold</span> <span class="o">=&gt;</span> <span class="s1">'10MB'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can use a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause with the columns used to partition the table
+<p>You can use a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause with the columns used to partition the table,
 to filter which partitions are optimized:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">test_partitioned_table</span> <span class="k">EXECUTE</span> <span class="n">optimize</span>
 <span class="k">WHERE</span> <span class="n">partition_key</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1202,7 +1200,7 @@ to filter which partitions are optimized:</p>
 </section>
 <section id="table-properties">
 <h4 id="table-properties">Table properties<a class="headerlink" href="#table-properties" title="Permalink to this heading">#</a></h4>
-<p>The following table properties are available for use:</p>
+<p>The following properties are available for use:</p>
 <table id="id6">
 <caption><span class="caption-text">Delta Lake table properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
@@ -1247,9 +1245,21 @@ to filter which partitions are optimized:</p>
 These metadata tables contain information about the internal structure
 of the Delta Lake table. You can query each metadata table by appending the
 metadata table name to the table name:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="ss">"test_table$history"</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="ss">"test_table$data"</span>
 </pre></div>
 </div>
+<section id="data-table">
+<h5 id="data-table"><code class="docutils literal notranslate"><span class="pre">$data</span></code> table<a class="headerlink" href="#data-table" title="Permalink to this heading">#</a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">$data</span></code> table is an alias for the Delta Lake table itself.</p>
+<p>The statement:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="ss">"test_table$data"</span>
+</pre></div>
+</div>
+<p>is equivalent to:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">test_table</span>
+</pre></div>
+</div>
+</section>
 <section id="history-table">
 <h5 id="history-table"><code class="docutils literal notranslate"><span class="pre">$history</span></code> table<a class="headerlink" href="#history-table" title="Permalink to this heading">#</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">$history</span></code> table provides a log of the metadata changes performed on
@@ -1266,7 +1276,7 @@ by using the following query:</p>
        0 | 2023-01-19 07:40:10.497 Europe/Vienna | trino   | trino     | CREATE TABLE | {queryId=20230119_064010_00005_4vq5t} | trino-406-trino-coordinator     |            0 | WriteSerializable | true
 </pre></div>
 </div>
-<p>The output of the query has the following history columns:</p>
+<p>The output of the query has the following columns:</p>
 <table id="id7">
 <caption><span class="caption-text">History columns</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
@@ -1353,17 +1363,17 @@ directly or used in conditional statements.</p>
 </section>
 <section id="performance">
 <h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permalink to this heading">#</a></h2>
-<p>The connector includes a number of performance improvements detailed in the
+<p>The connector includes a number of performance improvements, detailed in the
 following sections:</p>
 <ul class="simple">
 <li><p>Support for <a class="reference internal" href="../admin/properties-write-partitioning.html"><span class="doc">write partitioning</span></a>.</p></li>
 </ul>
 <section id="table-statistics">
 <span id="delta-lake-table-statistics"></span><h3 id="table-statistics">Table statistics<a class="headerlink" href="#table-statistics" title="Permalink to this heading">#</a></h3>
-<p>Use <a class="reference internal" href="../sql/analyze.html"><span class="doc">ANALYZE</span></a> statements in Trino to populate the table statistics in
-Delta Lake. Data size and number of distinct values (NDV) statistics are
-supported; whereas minimum value, maximum value, and null value count statistics
-are not supported. The <a class="reference internal" href="../optimizer/cost-based-optimizations.html"><span class="doc">cost-based optimizer</span></a> then uses these statistics to improve
+<p>You can use <a class="reference internal" href="../sql/analyze.html"><span class="doc">ANALYZE</span></a> statements in Trino to populate the table
+statistics in Delta Lake. Data size and number of distinct values (NDV)
+statistics are supported, while Minimum value, maximum value, and null value
+count statistics are not supported. The <a class="reference internal" href="../optimizer/cost-based-optimizations.html"><span class="doc">cost-based optimizer</span></a> then uses these statistics to improve
 query performance.</p>
 <p>Extended statistics enable a broader set of optimizations, including join
 reordering. The controlling catalog property <code class="docutils literal notranslate"><span class="pre">delta.table-statistics-enabled</span></code>
@@ -1380,7 +1390,7 @@ statistics.</p>
 <p>To gain the most benefit from cost-based optimizations, run periodic <code class="docutils literal notranslate"><span class="pre">ANALYZE</span></code>
 statements on every large table that is frequently queried.</p>
 <section id="fine-tuning">
-<h4 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this heading">#</a></h4>
+<h4 id="fine-tuning">Fine tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">files_modified_after</span></code> property is useful if you want to run the
 <code class="docutils literal notranslate"><span class="pre">ANALYZE</span></code> statement on a table that was previously analyzed. You can use it to
 limit the amount of data used to generate the table statistics:</p>
@@ -1405,8 +1415,8 @@ run on the same set or a subset of the original columns used.</p>
 <code class="docutils literal notranslate"><span class="pre">delta.extended-statistics.enabled</span></code> set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Alternatively, you can
 disable it for a session, with the <a class="reference internal" href="../sql/set-session.html"><span class="doc">catalog session property</span></a> <code class="docutils literal notranslate"><span class="pre">extended_statistics_enabled</span></code> set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <p>If a table is changed with many delete and update operation, calling <code class="docutils literal notranslate"><span class="pre">ANALYZE</span></code>
-does not result in accurate statistics. To correct the statistics, you have to
-drop the extended statistics and analyze the table again.</p>
+does not result in accurate statistics. To correct the statistics you have to
+drop the extended stats and analyze table again.</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">system.drop_extended_stats</span></code> procedure in the catalog to drop the
 extended statistics for a specified table in a specified schema:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CALL</span> <span class="n">example</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">drop_extended_stats</span><span class="p">(</span><span class="s1">'example_schema'</span><span class="p">,</span> <span class="s1">'example_table'</span><span class="p">)</span>
@@ -1420,11 +1430,11 @@ extended statistics for a specified table in a specified schema:</p>
 grows with the size of Delta Lake transaction logs of any accessed tables. It is
 important to take that into account when provisioning the coordinator.</p>
 <p>You must decrease memory usage by keeping the number of active data files in
-the table low by regularly running <code class="docutils literal notranslate"><span class="pre">OPTIMIZE</span></code> and <code class="docutils literal notranslate"><span class="pre">VACUUM</span></code> in Delta Lake.</p>
+table low by running <code class="docutils literal notranslate"><span class="pre">OPTIMIZE</span></code> and <code class="docutils literal notranslate"><span class="pre">VACUUM</span></code> in Delta Lake regularly.</p>
 <section id="memory-monitoring">
 <h4 id="memory-monitoring">Memory monitoring<a class="headerlink" href="#memory-monitoring" title="Permalink to this heading">#</a></h4>
-<p>When using the Delta Lake connector, you must monitor memory usage on the
-coordinator. Specifically, monitor JVM heap utilization using standard tools as
+<p>When using the Delta Lake connector you must monitor memory usage on the
+coordinator. Specifically monitor JVM heap utilization using standard tools as
 part of routine operation of the cluster.</p>
 <p>A good proxy for memory usage is the cache utilization of Delta Lake caches. It
 is exposed by the connector with the
@@ -1446,7 +1456,7 @@ node                                    | trino-master
 object_name                             | io.trino.plugin.deltalake.transactionlog:type=TransactionLogAccess,name=delta
 </pre></div>
 </div>
-<p>In a healthy system, both <code class="docutils literal notranslate"><span class="pre">datafilemetadatacachestats.hitrate</span></code> and
+<p>In a healthy system both <code class="docutils literal notranslate"><span class="pre">datafilemetadatacachestats.hitrate</span></code> and
 <code class="docutils literal notranslate"><span class="pre">metadatacachestats.hitrate</span></code> are close to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
 </section>
 </section>
@@ -1531,7 +1541,7 @@ connector.</p>
 <p class="admonition-title">Warning</p>
 <p>Performance tuning configuration properties are considered expert-level
 features. Altering these properties from their default values is likely to
-cause instability and performance degradation. It is strongly suggested that
+cause instability and performance degradation. We strongly suggest that
 you use them only to address non-trivial performance issues, and that you
 keep a backup of the original values if you change them.</p>
 </div>
@@ -1550,17 +1560,17 @@ keep a backup of the original values if you change them.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.domain-compaction-threshold</span></code></p></td>
-<td><p>Minimum size of query predicates above which Trino compacts the
-predicates. Pushing a large list of predicates down to the data source
-can compromise performance. For optimization in that situation, Trino
-can compact the large predicates. If necessary, adjust the threshold to
+<td><p>Minimum size of query predicates above which Trino compacts the predicates.
+Pushing a large list of predicates down to the data source can
+compromise performance. For optimization in that situation, Trino can
+compact the large predicates. If necessary, adjust the threshold to
 ensure a balance between performance and predicate pushdown.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p>100</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-outstanding-splits</span></code></p></td>
 <td><p>The target number of buffered splits for each table scan in a query,
 before the scheduler tries to pause.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
+<td><p>1000</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-splits-per-second</span></code></p></td>
 <td><p>Sets the maximum number of splits used per second to access underlying
@@ -1569,13 +1579,13 @@ on your filesystem limits. This is set to the absolute maximum value,
 which results in Trino maximizing the parallelization of data access
 by default. Attempting to set it higher results in Trino not being
 able to start.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Integer.MAX_VALUE</span></code></p></td>
+<td><p>Integer.MAX_VALUE</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-initial-splits</span></code></p></td>
 <td><p>For each query, the coordinator assigns file sections to read first
 at the <code class="docutils literal notranslate"><span class="pre">initial-split-size</span></code> until the <code class="docutils literal notranslate"><span class="pre">max-initial-splits</span></code> is
-reached. Then it starts issuing reads of the <code class="docutils literal notranslate"><span class="pre">max-split-size</span></code> size.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">200</span></code></p></td>
+reached. Then, it starts issuing reads of the <code class="docutils literal notranslate"><span class="pre">max-split-size</span></code> size.</p></td>
+<td><p>200</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-initial-split-size</span></code></p></td>
 <td><p>Sets the initial <a class="reference internal" href="../admin/properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for a single read section
@@ -1586,32 +1596,30 @@ You can also use the corresponding catalog session property
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.max-split-size</span></code></p></td>
 <td><p>Sets the largest <a class="reference internal" href="../admin/properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for a single read section
-assigned to a worker after <code class="docutils literal notranslate"><span class="pre">max-initial-splits</span></code> have been processed.
-You can also use the corresponding catalog session property
+assigned to a worker after max-initial-splits have been processed. You
+can also use the corresponding catalog session property
 <code class="docutils literal notranslate"><span class="pre">&lt;catalog-name&gt;.max_split_size</span></code>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">64MB</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.minimum-assigned-split-weight</span></code></p></td>
-<td><p>A decimal value in the range (0, 1] used as a minimum for weights
-assigned to each split. A low value might improve performance on tables
-with small files. A higher value might improve performance for queries
-with highly skewed aggregations or joins.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.05</span></code></p></td>
+<td><p>A decimal value in the range (0, 1] used as a minimum for weights assigned to each split. A low value may improve performance
+on tables with small files. A higher value may improve performance for queries with highly skewed aggregations or joins.</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parquet.max-read-block-row-count</span></code></p></td>
 <td><p>Sets the maximum number of rows read in a batch.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">8192</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parquet.optimized-reader.enabled</span></code></p></td>
-<td><p>Specifies whether batched column readers are used when reading Parquet
-files for improved performance. Set this property to <code class="docutils literal notranslate"><span class="pre">false</span></code> to
-disable the optimized parquet reader by default. The equivalent catalog
-session property is <code class="docutils literal notranslate"><span class="pre">parquet_optimized_reader_enabled</span></code>.</p></td>
+<td><p>Whether batched column readers are used when reading Parquet files
+for improved performance. Set this property to <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable the
+optimized parquet reader by default. The equivalent catalog session
+property is <code class="docutils literal notranslate"><span class="pre">parquet_optimized_reader_enabled</span></code>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parquet.optimized-nested-reader.enabled</span></code></p></td>
-<td><p>Specifies whether batched column readers are used when reading ARRAY,
-MAP, and ROW types from Parquet files for improved performance. Set this
+<td><p>Whether batched column readers are used when reading ARRAY, MAP
+and ROW types from Parquet files for improved performance. Set this
 property to <code class="docutils literal notranslate"><span class="pre">false</span></code> to disable the optimized parquet reader by default
 for structural data types. The equivalent catalog session property is
 <code class="docutils literal notranslate"><span class="pre">parquet_optimized_nested_reader_enabled</span></code>.</p></td>
@@ -1808,7 +1816,7 @@ feedback();
         <a href="https://www.starburst.io/" target="_blank">
           
             <img src="../_static/starburst_KO-T.png" height="26"
-                  alt="Starburst Enterprise 415-e STS logo">
+                  alt="Starburst Enterprise 413-e.1 LTS logo">
         
         </a>
         <li class="footer-item" style="padding-right:10px;">

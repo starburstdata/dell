@@ -116,7 +116,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/starburst_KO-T.png"
-                   alt="Starburst Enterprise 415-e STS logo">
+                   alt="Starburst Enterprise 413-e.1 LTS logo">
           
         </a>
       </div>
@@ -128,7 +128,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <a href="/starburst-enterprise/index.html"
           class="md-header-nav__topic">
-          Documentation: Starburst Enterprise 415-e STS</a>
+          Documentation: Starburst Enterprise 413-e.1 LTS</a>
           <span class="md-header-nav__topic"> MariaDB connector </span>
         </div>
       </div>
@@ -206,7 +206,7 @@
       
     </a>
     <a href="../index.html"
-       title="Starburst Enterprise">Starburst Enterprise 415-e STS</a>
+       title="Starburst Enterprise">Starburst Enterprise 413-e.1 LTS</a>
   </label>
   
 
@@ -852,32 +852,16 @@ to the following table:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TINYINT</span></code></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TINYINT</span> <span class="pre">UNSIGNED</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span> <span class="pre">UNSIGNED</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">INT</span> <span class="pre">UNSIGNED</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span> <span class="pre">UNSIGNED</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">DECIMAL(20,</span> <span class="pre">0)</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -1118,10 +1102,6 @@ requires syntax native to MariaDB, because the full query is pushed down and
 processed in MariaDB. This can be useful for accessing native features which are
 not available in Trino or for improving query performance in situations where
 running a query natively may be faster.</p>
-<p>The native query passed to the underlying data source is required to return a
-table as a result set. Only the data source performs validation or security
-checks for these queries using its own configuration. Trino does not perform
-these tasks. Only use passthrough queries to read data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Polymorphic table functions may not preserve the order of the query result.
@@ -1384,7 +1364,7 @@ feedback();
         <a href="https://www.starburst.io/" target="_blank">
           
             <img src="../_static/starburst_KO-T.png" height="26"
-                  alt="Starburst Enterprise 415-e STS logo">
+                  alt="Starburst Enterprise 413-e.1 LTS logo">
         
         </a>
         <li class="footer-item" style="padding-right:10px;">

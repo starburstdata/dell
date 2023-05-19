@@ -116,7 +116,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/starburst_KO-T.png"
-                   alt="Starburst Enterprise 415-e STS logo">
+                   alt="Starburst Enterprise 413-e.1 LTS logo">
           
         </a>
       </div>
@@ -128,7 +128,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <a href="/starburst-enterprise/index.html"
           class="md-header-nav__topic">
-          Documentation: Starburst Enterprise 415-e STS</a>
+          Documentation: Starburst Enterprise 413-e.1 LTS</a>
           <span class="md-header-nav__topic"> Table functions </span>
         </div>
       </div>
@@ -206,7 +206,7 @@
       
     </a>
     <a href="../index.html"
-       title="Starburst Enterprise">Starburst Enterprise 415-e STS</a>
+       title="Starburst Enterprise">Starburst Enterprise 413-e.1 LTS</a>
   </label>
   
 
@@ -773,29 +773,6 @@ documentation</span></a>.</p>
 <p>The argument <code class="docutils literal notranslate"><span class="pre">input</span></code> is a table or a query.
 The argument <code class="docutils literal notranslate"><span class="pre">columns</span></code> is a descriptor without types.</p>
 </dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span> <span class="pre">=&gt;</span> <span class="pre">bigint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span> <span class="pre">=&gt;</span> <span class="pre">bigint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span> <span class="pre">=&gt;</span> <span class="pre">bigint)</span> <span class="pre">-&gt;</span> <span class="pre">table(sequential_number</span> <span class="pre">bigint</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Returns a single column <code class="docutils literal notranslate"><span class="pre">sequential_number</span></code> containing a sequence of
-bigint:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="k">TABLE</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span>
-                <span class="k">start</span> <span class="o">=&gt;</span> <span class="mi">1000000</span><span class="p">,</span>
-                <span class="n">stop</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2000000</span><span class="p">,</span>
-                <span class="n">step</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">start</span></code> is the first element in te sequence. The default value is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">stop</span></code> is the end of the range, inclusive. The last element in the
-sequence is equal to <code class="docutils literal notranslate"><span class="pre">stop</span></code>, or it is the last value within range,
-reachable by steps.</p>
-<p><code class="docutils literal notranslate"><span class="pre">step</span></code> is the difference between subsequent values. The default value is
-<code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
-</dd></dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The result of the <code class="docutils literal notranslate"><span class="pre">sequence</span></code> table function might not be ordered.</p>
-</div>
 </section>
 <section id="table-function-invocation">
 <h2 id="table-function-invocation">Table function invocation<a class="headerlink" href="#table-function-invocation" title="Permalink to this heading">#</a></h2>
@@ -1087,7 +1064,7 @@ feedback();
         <a href="https://www.starburst.io/" target="_blank">
           
             <img src="../_static/starburst_KO-T.png" height="26"
-                  alt="Starburst Enterprise 415-e STS logo">
+                  alt="Starburst Enterprise 413-e.1 LTS logo">
         
         </a>
         <li class="footer-item" style="padding-right:10px;">
