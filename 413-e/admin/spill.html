@@ -146,23 +146,13 @@
       
       
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (407-e)" href="/407-e/">Latest LTS (407-e)</a>
-      
-          <a title="402-e LTS" href="/402-e/">402-e LTS</a>
-      
-          <a title="393-e LTS" href="/393-e/">393-e LTS</a>
-      
-          <a title="380-e LTS" href="/380-e/">380-e LTS</a>
-      
-          <a title="Latest STS (415-e)" href="/415-e/">Latest STS (415-e)</a>
-      
-          <a title="413-e STS" href="/413-e/">413-e STS</a>
-      
-    </div>
-  </div>
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -178,16 +168,6 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-            
-            <li class="md-tabs__item"><a href="/get-started/index.html" class="md-tabs__link">Get started</a></li>
-            
-            <li class="md-tabs__item"><a href="/starburst-galaxy/index.html" class="md-tabs__link">Starburst Galaxy</a></li>
-            
-            <li class="md-tabs__item"><a href="/starburst-enterprise/index.html" class="md-tabs__link">Starburst Enterprise</a></li>
-            
-            <li class="md-tabs__item"><a href="/ecosystems/index.html" class="md-tabs__link">Ecosystems</a></li>
-            
-            <li class="md-tabs__item"><a href="/resources.html" class="md-tabs__link">Resources</a></li>
           <li class="md-tabs__item"><a href="../admin.html" class="md-tabs__link">Performance, logging, and governance features</a></li>
       </ul>
     </div>
@@ -446,7 +426,7 @@
     <li class="md-nav__item">
     
     
-      <a href="../versions.html" class="md-nav__link">415-e STS and others</a>
+      <a href="../versions.html" class="md-nav__link">413-e LTS and others</a>
       
     
     </li>
@@ -799,46 +779,6 @@ feedback();
   <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
 <!-- custom footer should go here in time -->
 <div class="page-footer">
-  <div class="container md-grid">
-    <div class="row">
-      <div class="col-md-3">
-        <p style="font-weight:900">Resources</p>
-        <ul>
-          <li class="footer-item"><a href="https://docs.starburst.io/latest/index.html">Starburst Enterprise reference documentation</a></li>
-          <li class="footer-item"><a href="/videos/index.html">Video library</a></li>
-          <li class="footer-item"><a href="/glossary.html">Glossary</a></li>
-          <li class="footer-item"><a href="https://www.starburst.io/info/oreilly-trino-guide/" target="_blank">Free O'Reilly book - Trino: The Definitive Guide</a></li>
-          <li class="footer-item"><a href="https://trino.io/broadcast/" target="_blank">Trino Community Broadcast</a></li>
-          <li class="footer-item"><a href="https://blog.starburstdata.com/" target="_blank">Starburst blog</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <p style="font-weight:900">Contact and more</p>
-        <ul>
-          <li class="footer-item"><a href="https://www.starburst.io" target="_blank">Starburst</a></li>
-          <li class="footer-item"><a href="https://www.starburst.io/info/starburst-intro-and-demo/" target="_blank">Join our weekly demos</a></li>
-          <li class="footer-item"><a href="https://www.starburst.io/#!" target="_blank">Start a trial</a></li>
-          <li class="footer-item"><a href="/support.html" target="_blank">Get support</a></li>
-          <li class="footer-item"><a href="https://www.starburst.io/contact/" target="_blank">Contact us</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3" style="text-align:right;">
-
-        <a href="https://www.starburst.io/" target="_blank">
-          
-            <img src="../_static/starburst_KO-T.png" height="26"
-                  alt="Starburst Enterprise 413-e.1 LTS logo">
-        
-        </a>
-        <li class="footer-item" style="padding-right:10px;">
-          <a href="/disclaimers.html#copyright">Copyright © 2017-2023<br> Starburst Data</a>
-        </li>
-        <li class="footer-item" style="padding-right:10px;">
-          <a href="/disclaimers.html#trademarks">Trademark information</a>
-        </li>
-      </div>
-    </div>
-  </div>
 </div>
 <script src="../_static/algolia.js"></script>
 <script src="../_static/searchbox.js"></script>
