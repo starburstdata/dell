@@ -8,6 +8,8 @@ Starburst specific overrides
 */
 
 :root {
+  /* Dell colors */
+  --dell-blue: #0672CB;
   /* Starburst colors */
   --midnight-blue: #000a2c;
   --midnight-medium: #06184c;
@@ -23,7 +25,7 @@ Starburst specific overrides
   --purple: #8d29b8;
   --white: #fff;
   --gray: #f0f0f0;
-  --md-primary-bg-color: var(--midnight-blue);
+  /*--md-primary-bg-color: var(--midnight-blue);*/
 }
 body{
   font-family: 'Barlow', 'Roboto', sans-serif
@@ -81,11 +83,27 @@ h6 {
   padding-top: 61px;
 }
 
+.md-header-nav__title{
+  color: black;
+}
+
+.md-header-nav__topic{
+  color: black;
+  font-size: 0.7rem;
+  font-style:normal;
+  font-weight:600;
+  letter-spacing: 0.005rem;
+  line-height: 1.2rem;
+  margin-left: -3px;
+  margin-top: 19px;
+}
+
 .md-tabs{
+  color: black;
+  font-family: 'Barlow', 'Roboto', sans-serif;
+  background-color:  white;
   height: 34px;
   padding: 4px 16px;
-  background-color:  var(--midnight-dark);
-  font-family: 'Barlow', 'Roboto', sans-serif;
 }
 
 .md-tabs__item {
@@ -96,14 +114,8 @@ h6 {
 .md-tabs__link {
   font-weight: 600;
   letter-spacing: 0.005rem;
-  color: var(--white);
   opacity: 1;
   margin-top: 0;
-}
-/* Adds underline to third navbar item defined in conf.py */
-.md-tabs__item:nth-child(3) {
-  padding-bottom: 22px;
-  border-bottom: 5px solid #80D3D4;
 }
 
 .md-typeset .md-typeset__table {
@@ -114,16 +126,6 @@ h6 {
 
 .md-typeset table:not([class]) {
   font-size: unset;
-}
-
-.md-header-nav__topic{
-  font-size: 0.7rem;
-  font-style:normal;
-  font-weight:600;
-  letter-spacing: 0.005rem;
-  line-height: 1.2rem;
-  margin-left: -3px;
-  margin-top: 19px;
 }
 
 @media screen and (max-width: 1220px){
@@ -232,9 +234,7 @@ code, kbd, pre{
   color: rgba(255, 255, 255, 0.6);
   background-color: rgba(0, 0, 0, 0.2);
 }
-.page-footer a {
-  color: var(--white);
-}
+
 .page-footer ul {
   padding-inline-start: 0px;
 }
@@ -243,14 +243,9 @@ li.footer-item {
   line-height: 23px;
 }
 a.footer-icon {
-  color: var(--white);
   font-size: 20px;
   margin: 0px 1rem;
 }
-a.footer-icon:hover {
-  color: var(--teal);
-}
-
 
 .md-typeset span[id]:target:before {
   display: block;
