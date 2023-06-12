@@ -1,3 +1,8 @@
 User-agent: *
-Allow: /
-Disallow: /413-e/
+Allow : /
+
+# The actual search engine blocking is done via a <meta> tag in each page's
+# HTML head. This file must allow crawlers to view the page in order to see
+# those tags.
+
+# See https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#combining
