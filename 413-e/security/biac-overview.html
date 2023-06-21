@@ -293,13 +293,6 @@
     <li class="md-nav__item">
     
     
-      <a href="../aws.html" class="md-nav__link">Deploying with CFT on AWS</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
       <a href="../admin.html" class="md-nav__link">Performance, logging, and governance features</a>
       
     
@@ -543,7 +536,6 @@ valid <a class="reference internal" href="../installation/license-requirements.h
 and the privileges settable on each.</p></li>
 <li><p><a class="reference internal" href="biac-masks-filters.html"><span class="doc">Built-in access control masks and filters</span></a> details using masks and filters.</p></li>
 <li><p><a class="reference internal" href="biac-audit-log.html"><span class="doc">Built-in access control audit log</span></a> helps with setting up and using access and change logs.</p></li>
-<li><p><a class="reference internal" href="biac-vs-ranger.html"><span class="doc">Differences between built-in access control and Apache Ranger</span></a> compares the two systems.</p></li>
 </ul>
 <section id="built-in-access-control-configuration">
 <span id="biac-base-configuration"></span><h2 id="built-in-access-control-configuration">Built-in access control configuration<a class="headerlink" href="#built-in-access-control-configuration" title="Permalink to this heading">#</a></h2>
@@ -644,13 +636,6 @@ These are the names that are mapped to built-in access control <a class="referen
 <p>Setting the <code class="docutils literal notranslate"><span class="pre">starburst.access-control.enabled</span></code> property as shown in the
 previous section makes the built-in access control the default access control
 system in SEP.</p>
-<p>However, this can be overriden as described in
-<a class="reference internal" href="built-in-system-access-control.html"><span class="doc">System access control</span></a>. For example, to use Apache
-Ranger together with the built-in access control system, identify the
-configuration files for both systems as follows:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">access-control.config-files</span><span class="o">=</span><span class="s">etc/ranger.properties,etc/biac.properties</span>
-</pre></div>
-</div>
 <p>In a separate file arbitrarily named <code class="docutils literal notranslate"><span class="pre">biac.properties</span></code>, add the following
 required property:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">access-control.name</span><span class="o">=</span><span class="s">starburst</span>
@@ -692,13 +677,14 @@ system.</p></li>
 <span id="biac-migrating-to"></span><h2 id="migrating-to-built-in-access-control">Migrating to built-in access control<a class="headerlink" href="#migrating-to-built-in-access-control" title="Permalink to this heading">#</a></h2>
 <p>Built-in access control is meant to provide sufficient functionality to cover
 most of the features of dedicated authorization frameworks. It is not meant to
-replace them entirely, and a number of <a class="reference internal" href="biac-vs-ranger.html"><span class="doc">differences and limitations
-compared to popular alternatives apply</span></a>.</p>
+replace them entirely, and a number of differences and limitations compared to
+popular alternatives apply.</p>
 <p>Also consider mixing access control systems. The SEP built-in system provides
 a way to control access to <a class="reference internal" href="../data-products.html"><span class="doc">data products</span></a> and to elements
 of the Starburst Enterprise <a class="reference internal" href="biac-privileges.html#biac-entity-ui"><span class="std std-ref">web UI</span></a>. Deployments that use
-<a class="reference internal" href="../security.html#third-party-access-control-systems"><span class="std std-ref">another access control system</span></a> can
-add SEP built-in access control to manage these additional features.</p>
+<a class="reference internal" href="../security.html#third-party-access-control-systems"><span class="std std-ref">another access control system</span></a> such
+as Privacera or Immuta can add SEP built-in access control to manage these
+additional features.</p>
 </section>
 <section id="api">
 <h2 id="api">API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h2>

@@ -286,13 +286,6 @@
     <li class="md-nav__item">
     
     
-      <a href="aws.html" class="md-nav__link">Deploying with CFT on AWS</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
       <a href="admin.html" class="md-nav__link">Performance, logging, and governance features</a>
       
     
@@ -398,17 +391,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#list-of-versions" class="md-nav__link">List of versions</a>
         </li>
-        <li class="md-nav__item"><a href="#lts-and-sts-releases" class="md-nav__link">LTS and STS releases</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
-        </li>
-        <li class="md-nav__item"><a href="#sts-releases" class="md-nav__link">STS releases</a>
-        </li>
-        <li class="md-nav__item"><a href="#lts-releases" class="md-nav__link">LTS releases</a>
-        </li>
-        <li class="md-nav__item"><a href="#lts-and-sts-support" class="md-nav__link">LTS and STS support</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#release-information" class="md-nav__link">Release information</a>
         </li>
         <li class="md-nav__item"><a href="#feature-release-status" class="md-nav__link">Feature release status</a>
         </li>
@@ -429,36 +412,8 @@
     <li class="md-nav__item">
     
     
-      <a href="#lts-and-sts-releases" class="md-nav__link">LTS and STS releases</a>
-      <ul class="md-nav__list"> 
-    <li class="md-nav__item">
-    
-    
-      <a href="#general" class="md-nav__link">General</a>
+      <a href="#release-information" class="md-nav__link">Release information</a>
       
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="#sts-releases" class="md-nav__link">STS releases</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="#lts-releases" class="md-nav__link">LTS releases</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="#lts-and-sts-support" class="md-nav__link">LTS and STS support</a>
-      
-    
-    </li></ul>
     
     </li>
     <li class="md-nav__item">
@@ -521,17 +476,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#list-of-versions" class="md-nav__link">List of versions</a>
         </li>
-        <li class="md-nav__item"><a href="#lts-and-sts-releases" class="md-nav__link">LTS and STS releases</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
-        </li>
-        <li class="md-nav__item"><a href="#sts-releases" class="md-nav__link">STS releases</a>
-        </li>
-        <li class="md-nav__item"><a href="#lts-releases" class="md-nav__link">LTS releases</a>
-        </li>
-        <li class="md-nav__item"><a href="#lts-and-sts-support" class="md-nav__link">LTS and STS support</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#release-information" class="md-nav__link">Release information</a>
         </li>
         <li class="md-nav__item"><a href="#feature-release-status" class="md-nav__link">Feature release status</a>
         </li>
@@ -555,7 +500,7 @@ these releases.</p>
 <section id="list-of-versions">
 <h2 id="list-of-versions">List of versions<a class="headerlink" href="#list-of-versions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Starburst Enterprise platform (SEP) 413-e.2 LTS (<a class="reference internal" href="release/release-413-e.html"><span class="doc">release notes</span></a>)</p>
+<li><p>Starburst Enterprise platform (SEP) 413-e.2 (<a class="reference internal" href="release/release-413-e.html"><span class="doc">release notes</span></a>)</p>
 <ul>
 <li><p>Based on Trino 413 (<a class="reference internal" href="release/release-413.html"><span class="doc">release notes</span></a>).</p></li>
 <li><p>Including the <a class="reference internal" href="client/cli.html"><span class="doc">CLI</span></a>, the
@@ -563,57 +508,25 @@ these releases.</p>
 from Trino.</p></li>
 </ul>
 </li>
-<li><p>AWS CFT/AMI 413-e.2-ami-0.338 (<a class="reference internal" href="aws/release-notes.html"><span class="doc">release notes</span></a>,
-<a class="reference internal" href="aws.html"><span class="doc">documentation</span></a>)</p></li>
 <li><p>Helm charts 413.2.0 (<a class="reference internal" href="k8s/release-notes.html"><span class="doc">release notes</span></a>,
 <a class="reference internal" href="k8s.html"><span class="doc">documentation</span></a>)</p></li>
 </ul>
 </section>
-<section id="lts-and-sts-releases">
-<span id="lts-sts"></span><h2 id="lts-and-sts-releases">LTS and STS releases<a class="headerlink" href="#lts-and-sts-releases" title="Permalink to this heading">#</a></h2>
-<p>SEP is available and maintained in long-term support (LTS) and short-term
-support (STS) releases. The following processes around Trino open source
-releases and SEP releases, availability and support apply.</p>
-<section id="general">
-<h3 id="general">General<a class="headerlink" href="#general" title="Permalink to this heading">#</a></h3>
+<section id="release-information">
+<span id="lts-sts"></span><h2 id="release-information">Release information<a class="headerlink" href="#release-information" title="Permalink to this heading">#</a></h2>
+<p>SEP is available and maintained in long-term support (LTS) releases. The
+following processes around Trino open source releases and SEP releases,
+availability and support apply.</p>
 <ul class="simple">
-<li><p>All Trino <a class="reference internal" href="release.html#trino-releases"><span class="std std-ref">open source releases</span></a> use an integer
-number such as <code class="docutils literal notranslate"><span class="pre">338</span></code>.</p></li>
-<li><p>An SEP <a class="reference internal" href="release.html#sep-releases"><span class="std std-ref">release</span></a> is created for each Trino open source
-release. It uses the source of the open source release, and adds the
-<a class="reference internal" href="overview.html#starburst-enterprise-platform"><span class="std std-ref">extensions and plugins</span></a>.</p></li>
-<li><p>Every release of SEP is created as an STS release first.</p></li>
-<li><p>All STS releases use the Trino number with an appended <code class="docutils literal notranslate"><span class="pre">-e</span></code>, such
-as <code class="docutils literal notranslate"><span class="pre">338-e</span></code>.</p></li>
-<li><p>Some STS releases are promoted to LTS.</p></li>
-<li><p>All LTS releases append a patch number, such as <code class="docutils literal notranslate"><span class="pre">338-e.0</span></code>, <code class="docutils literal notranslate"><span class="pre">338-e.1</span></code>,
+<li><p>All Trino open source releases use an integer number such as <code class="docutils literal notranslate"><span class="pre">338</span></code>.</p></li>
+<li><p>An SEP release is created for a specific Trino open source release, and is
+named with the <code class="docutils literal notranslate"><span class="pre">-e</span></code> extension; for example, <code class="docutils literal notranslate"><span class="pre">338-e</span></code> . It uses the source
+of the open source release, and adds the <a class="reference internal" href="overview.html#starburst-enterprise-platform"><span class="std std-ref">extensions and plugins</span></a>.</p></li>
+<li><p>All releases append a patch number, such as <code class="docutils literal notranslate"><span class="pre">338-e.0</span></code>, <code class="docutils literal notranslate"><span class="pre">338-e.1</span></code>,
 <code class="docutils literal notranslate"><span class="pre">338-e.2</span></code>, and so forth.</p></li>
-<li><p>LTS and STS releases include all release artifacts such as a <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code>
-archive, an <code class="docutils literal notranslate"><span class="pre">rpm</span></code> archive, container images, and additional tooling such as
-Kubernetes and CFT-related resources.</p></li>
-<li><p>New features are never backported, but only become available in newer
-releases. As a result, LTS users, who want to stay with LTS versions only,
-need to wait until the next LTS release is available to gain access to new
-features. As an alternative, you can change to use an STS version with the new
-feature and keep updating with each STS release until an LTS version becomes
-available.</p></li>
-</ul>
-</section>
-<section id="sts-releases">
-<h3 id="sts-releases">STS releases<a class="headerlink" href="#sts-releases" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Supported for use in production until the next STS release becomes available</p></li>
-<li><p>Available shortly after each Trino open source release of the same version</p></li>
-<li><p>No issues in the release are fixed as patches to that release, any changes or
-fixes are incorporated in the next release. For example, a problem in 333-e is
-fixed and made available in 334-e, 335-e, or whenever a fix is available.</p></li>
-</ul>
-</section>
-<section id="lts-releases">
-<h3 id="lts-releases">LTS releases<a class="headerlink" href="#lts-releases" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
+<li><p>All releases include all release artifacts and additional Kubernetes
+tooling.</p></li>
 <li><p>Supported for use in production for 12 months</p></li>
-<li><p>Only available for selected Trino open source releases</p></li>
 <li><p>Limited, low number of release per year, at most one release per quarter</p></li>
 <li><p>Some issues are backported to the release and made available as
 patch releases. For example, a problem in 332-e.2 is fixed and released in
@@ -629,36 +542,6 @@ fixes is made by Starburst in collaboration with affected customers, if
 necessary.</p></li>
 </ul>
 </section>
-<section id="lts-and-sts-support">
-<h3 id="lts-and-sts-support">LTS and STS support<a class="headerlink" href="#lts-and-sts-support" title="Permalink to this heading">#</a></h3>
-<p>The following table shows the how long from the release date critical patches
-and support are provided:</p>
-<table id="id7">
-<caption><span class="caption-text">LTS and STS support</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 30%"/>
-<col style="width: 35%"/>
-<col style="width: 35%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Release type</p></th>
-<th class="head"><p>Supply patch releases for critical issues for</p></th>
-<th class="head"><p>Provide support for</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>LTS</p></td>
-<td><p>12 months</p></td>
-<td><p>12 months</p></td>
-</tr>
-<tr class="row-odd"><td><p>STS</p></td>
-<td><p>no patches, next STS provides fix</p></td>
-<td><p>latest STS release only</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
 <section id="feature-release-status">
 <span id="id1"></span><h2 id="feature-release-status">Feature release status<a class="headerlink" href="#feature-release-status" title="Permalink to this heading">#</a></h2>
 <p>By default, features in SEP are released in a “general availability” (GA)
@@ -667,8 +550,8 @@ features may be released in other status, and are documented as
 such in the reference documentation and product as needed.</p>
 <p>The following table describes SEP feature release status and product
 expectations:</p>
-<table id="id8">
-<caption><span class="caption-text">Feature release states</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Feature release states</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 50%"/>
@@ -707,10 +590,10 @@ SEP features are in the GA state unless documented otherwise.</p></td>
 </section>
 <section id="all-releases">
 <span id="id2"></span><h2 id="all-releases">All releases<a class="headerlink" href="#all-releases" title="Permalink to this heading">#</a></h2>
-<p>The following tables contains a list of all SEP versions, detailing LTS/STS
-qualifier, release date, and end of support date for LTS releases.</p>
-<table id="id9">
-<caption><span class="caption-text">Starburst Enterprise LTS versions</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<p>The following tables contains a list of all SEP versions, detailing release
+date and end of support date.</p>
+<table id="id4">
+<caption><span class="caption-text">Starburst Enterprise versions</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 35%"/>
@@ -726,359 +609,6 @@ qualifier, release date, and end of support date for LTS releases.</p>
 <tr class="row-even"><td><p><a class="reference external" href="/413-e/">413-e.x LTS</a></p></td>
 <td><p>May 2023</p></td>
 <td><p>May 31, 2024</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="/407-e/">407-e.x LTS</a></p></td>
-<td><p>February 2023</p></td>
-<td><p>February 29, 2024</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="/402-e/">402-e.x LTS</a></p></td>
-<td><p>November 2022</p></td>
-<td><p>November 30, 2023</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="/393-e/">393-e.x LTS</a></p></td>
-<td><p>August 2022</p></td>
-<td><p>August 31, 2023</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="/380-e/">380-e.x LTS</a></p></td>
-<td><p>May 2022</p></td>
-<td><p>May 31, 2023</p></td>
-</tr>
-<tr class="row-odd"><td><p>370-e.x LTS</p></td>
-<td><p>February 2022</p></td>
-<td><p>February 28, 2023</p></td>
-</tr>
-<tr class="row-even"><td><p>364-e.x LTS</p></td>
-<td><p>November 2021</p></td>
-<td><p>November 30, 2022</p></td>
-</tr>
-<tr class="row-odd"><td><p>360-e.x LTS</p></td>
-<td><p>August 2021</p></td>
-<td><p>August 31, 2022</p></td>
-</tr>
-<tr class="row-even"><td><p>356-e.x LTS</p></td>
-<td><p>May 2021</p></td>
-<td><p>May 31, 2022</p></td>
-</tr>
-<tr class="row-odd"><td><p>350-e.x LTS</p></td>
-<td><p>March 2021</p></td>
-<td><p>March 31, 2022</p></td>
-</tr>
-<tr class="row-even"><td><p>345-e.x LTS</p></td>
-<td><p>November 2020</p></td>
-<td><p>November 30, 2021</p></td>
-</tr>
-<tr class="row-odd"><td><p>338-e.x LTS</p></td>
-<td><p>July 2020</p></td>
-<td><p>July 31, 2021</p></td>
-</tr>
-<tr class="row-even"><td><p>332-e.x LTS</p></td>
-<td><p>April 2020</p></td>
-<td><p>April 30, 2021</p></td>
-</tr>
-<tr class="row-odd"><td><p>323-e.x LTS</p></td>
-<td><p>October 2019</p></td>
-<td><p>October 31, 2020</p></td>
-</tr>
-<tr class="row-even"><td><p>312-e.x LTS</p></td>
-<td><p>June 2019</p></td>
-<td><p>June 30, 2020</p></td>
-</tr>
-<tr class="row-odd"><td><p>302-e.x LTS</p></td>
-<td><p>March 2019</p></td>
-<td><p>March 31, 2020</p></td>
-</tr>
-</tbody>
-</table>
-<p>All older releases have reached their end of support date.</p>
-<table id="id10">
-<caption><span class="caption-text">Starburst Enterprise STS versions</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 30%"/>
-<col style="width: 35%"/>
-<col style="width: 35%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Version</p></th>
-<th class="head"><p>Release month</p></th>
-<th class="head"><p>End of support</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>413-e</p></td>
-<td><p>March 2023</p></td>
-<td><p>413-e.1 LTS</p></td>
-</tr>
-<tr class="row-odd"><td><p>412-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="/411-e/">411-e STS</a></p></td>
-<td><p>March 2023</p></td>
-<td><p>413-e STS</p></td>
-</tr>
-<tr class="row-odd"><td><p>410-e STS</p></td>
-<td><p>March 2023</p></td>
-<td><p>411-e STS</p></td>
-</tr>
-<tr class="row-even"><td><p>409-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>408-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>406-e STS</p></td>
-<td><p>February 2023</p></td>
-<td><p>407-e LTS</p></td>
-</tr>
-<tr class="row-odd"><td><p>405-e STS</p></td>
-<td><p>January 2023</p></td>
-<td><p>406-e STS</p></td>
-</tr>
-<tr class="row-even"><td><p>403-e STS</p></td>
-<td><p>December 2022</p></td>
-<td><p>405-e</p></td>
-</tr>
-<tr class="row-odd"><td><p>401-e STS</p></td>
-<td><p>November 2022</p></td>
-<td><p>402-e LTS release</p></td>
-</tr>
-<tr class="row-even"><td><p>400-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>399-e STS</p></td>
-<td><p>October 2022</p></td>
-<td><p>401-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>398-e STS</p></td>
-<td><p>October 2022</p></td>
-<td><p>399-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>397-e STS</p></td>
-<td><p>September 2022</p></td>
-<td><p>396-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>396-e STS</p></td>
-<td><p>September 2022</p></td>
-<td><p>397-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>395-e STS</p></td>
-<td><p>September 2022</p></td>
-<td><p>396-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>394-e STS</p></td>
-<td><p>September 2022</p></td>
-<td><p>395-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>392-e STS</p></td>
-<td><p>August 2022</p></td>
-<td><p>393-e LTS release</p></td>
-</tr>
-<tr class="row-even"><td><p>391-e STS</p></td>
-<td><p>August 2022</p></td>
-<td><p>392-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>390-e STS</p></td>
-<td><p>July 2022</p></td>
-<td><p>391-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>389-e STS</p></td>
-<td><p>July 2022</p></td>
-<td><p>390-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>388-e STS</p></td>
-<td><p>July 2022</p></td>
-<td><p>389-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>387-e STS</p></td>
-<td><p>June 2022</p></td>
-<td><p>388-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>386-e STS</p></td>
-<td><p>June 2022</p></td>
-<td><p>387-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>385-e STS</p></td>
-<td><p>June 2022</p></td>
-<td><p>386-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>384-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>383-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>382-e STS</p></td>
-<td><p>June 2022</p></td>
-<td><p>385-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>381-e STS</p></td>
-<td><p>May 2022</p></td>
-<td><p>382-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>379-e STS</p></td>
-<td><p>May 2022</p></td>
-<td><p>380-e LTS release</p></td>
-</tr>
-<tr class="row-even"><td><p>378-e STS</p></td>
-<td><p>May 2022</p></td>
-<td><p>379-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>377-e STS</p></td>
-<td><p>April 2022</p></td>
-<td><p>378-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>376-e STS</p></td>
-<td><p>April 2022</p></td>
-<td><p>377-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>375-e STS</p></td>
-<td><p>April 2022</p></td>
-<td><p>376-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>374-e STS</p></td>
-<td><p>March 2022</p></td>
-<td><p>375-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>373-e STS</p></td>
-<td><p>March 2022</p></td>
-<td><p>374-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>372-e STS</p></td>
-<td><p>March 2022</p></td>
-<td><p>373-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>371-e STS</p></td>
-<td><p>February 2022</p></td>
-<td><p>372-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>369-e STS</p></td>
-<td><p>February 2022</p></td>
-<td><p>370-e LTS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>368-e STS</p></td>
-<td><p>January 2022</p></td>
-<td><p>369-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>367-e STS</p></td>
-<td><p>December 2021</p></td>
-<td><p>368-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>366-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>365-e STS</p></td>
-<td><p>November 2021</p></td>
-<td><p>367-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>363-e STS</p></td>
-<td><p>October 2021</p></td>
-<td><p>364-e LTS release</p></td>
-</tr>
-<tr class="row-even"><td><p>362-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>361-e STS</p></td>
-<td><p>September 2021</p></td>
-<td><p>363-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>359-e STS</p></td>
-<td><p>June 2021</p></td>
-<td><p>360-e LTS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>358-e STS</p></td>
-<td><p>June 2021</p></td>
-<td><p>359-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>357-e STS</p></td>
-<td><p>May 2021</p></td>
-<td><p>358-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>355-e STS</p></td>
-<td><p>April 2021</p></td>
-<td><p>356-e LTS release</p></td>
-</tr>
-<tr class="row-even"><td><p>354-e STS</p></td>
-<td><p>March 2021</p></td>
-<td><p>356-e LTS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>353-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>352-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>351-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>349-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>348-e STS</p></td>
-<td><p>December 2020</p></td>
-<td><p>350-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>347-e STS</p></td>
-<td><p>December 2020</p></td>
-<td><p>348-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>346-e STS</p></td>
-<td><p>November 2020</p></td>
-<td><p>347-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>344-e STS</p></td>
-<td><p>September 2020</p></td>
-<td><p>345-e LTS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>343-e STS</p></td>
-<td><p>September 2020</p></td>
-<td><p>344-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>342-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>341-e STS</p></td>
-<td><p>September 2020</p></td>
-<td><p>343-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>340-e STS</p></td>
-<td><p>August 2020</p></td>
-<td><p>341-e STS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>339-e STS</p></td>
-<td><p>July 2020</p></td>
-<td><p>340-e STS release</p></td>
-</tr>
-<tr class="row-even"><td><p>338-e STS</p></td>
-<td><p>July 2020</p></td>
-<td><p>338-e LTS release</p></td>
-</tr>
-<tr class="row-odd"><td><p>337-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>336-e STS</p></td>
-<td><p>June 2020</p></td>
-<td><p>338-e release</p></td>
-</tr>
-<tr class="row-odd"><td><p>335-e STS (skipped)</p></td>
-<td><p>N/A</p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>334-e STS</p></td>
-<td><p>June 2020</p></td>
-<td><p>336-e release</p></td>
 </tr>
 </tbody>
 </table>

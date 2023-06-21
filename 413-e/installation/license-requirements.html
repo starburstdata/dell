@@ -78,7 +78,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RPM package" href="rpm.html" />
+    <link rel="next" title="Trino on Kubernetes with Helm" href="kubernetes.html" />
     <link rel="prev" title="Download" href="download.html" />
 
   
@@ -321,20 +321,6 @@
     <li class="md-nav__item">
     
     
-      <a href="rpm.html" class="md-nav__link">RPM package</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="docker.html" class="md-nav__link">SEP Docker container</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
       <a href="kubernetes.html" class="md-nav__link">Trino on Kubernetes with Helm</a>
       
     
@@ -368,13 +354,6 @@
     
     
       <a href="../k8s.html" class="md-nav__link">Deploying with Kubernetes</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="../aws.html" class="md-nav__link">Deploying with CFT on AWS</a>
       
     
     </li>
@@ -538,19 +517,13 @@
 <h1 id="installation-license-requirements--page-root">Starburst Enterprise license<a class="headerlink" href="#installation-license-requirements--page-root" title="Permalink to this heading">#</a></h1>
 <p>As mentioned in the <a class="reference internal" href="../overview.html"><span class="doc">overview</span></a>, a license for Starburst Enterprise platform (SEP)
 includes support and enables numerous features.</p>
-<p>To purchase a license or obtain a free trial, <a class="reference external" href="https://www.starburstdata.com/contact/">contact us</a> or email us at
-<a class="reference external" href="mailto:hello%40starburstdata.com">hello<span>@</span>starburstdata<span>.</span>com</a>.</p>
 <section id="license-usage">
 <span id="id1"></span><h2 id="license-usage">License usage<a class="headerlink" href="#license-usage" title="Permalink to this heading">#</a></h2>
-<p>After receiving a signed license file from Starburst Enterprise, it needs to be stored
+<p>After receiving a signed license file from Starburst Enterprise, it must be stored
 on all SEP nodes in your clusters.</p>
-<p>The license file needs to be named <code class="docutils literal notranslate"><span class="pre">starburstdata.license</span></code> and located within
+<p>The license file must be named <code class="docutils literal notranslate"><span class="pre">starburstdata.license</span></code> and located within
 the SEP installation directory as <code class="docutils literal notranslate"><span class="pre">etc/starburstdata.license</span></code>, or whatever
-directory is configured as the etc directory with the launcher script. In case
-of the <a class="reference internal" href="rpm.html"><span class="doc">rpm archive</span></a> this path is
-<code class="docutils literal notranslate"><span class="pre">/etc/starburst/starburstdata.license</span></code>.</p>
-<p>Users of the CFT for SEP can provide the <a class="reference internal" href="../aws/configuration.html#cft-sep-configuration"><span class="std std-ref">license information as part of
-the configuration</span></a>.</p>
+directory is configured as the etc directory with the launcher script.</p>
 <p>Kubernetes users need to follow the <a class="reference internal" href="../k8s/sep-config-examples.html#helm-sep-license"><span class="std std-ref">available instructions</span></a>, which are included in the <a class="reference internal" href="../k8s.html"><span class="doc">complete documentation for
 Kubernetes usage with Helm</span></a>.</p>
 </section>
@@ -588,12 +561,12 @@ in addition to the support and features included in the Starburst Enterprise lic
             </a>
           
           
-            <a href="rpm.html" title="RPM package"
+            <a href="kubernetes.html" title="Trino on Kubernetes with Helm"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> RPM package </span>
+                class="md-footer-nav__direction"> Next </span> Trino on Kubernetes with Helm </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

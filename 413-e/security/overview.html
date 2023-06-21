@@ -293,13 +293,6 @@
     <li class="md-nav__item">
     
     
-      <a href="../aws.html" class="md-nav__link">Deploying with CFT on AWS</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
       <a href="../admin.html" class="md-nav__link">Performance, logging, and governance features</a>
       
     
@@ -696,8 +689,6 @@ allows all operations for all authenticated users.</p>
 fine-grained user access restrictions at the catalog, schema, or table level.</p></li>
 <li><p>Determine whether the connectors you are using support
 <a class="reference internal" href="#connector-level-access-control"><span class="std std-ref">Connector-level access control</span></a>.</p></li>
-<li><p>For Hive and related data sources, consider using
-<a class="reference internal" href="#ranger-access-control"><span class="std std-ref">Role-based access control</span></a>.</p></li>
 </ul>
 <p>In addition, SEP <a class="reference internal" href="../develop/system-access-control.html"><span class="doc">provides an API</span></a> that
 allows you to create a custom access control method, or to extend an existing
@@ -714,9 +705,9 @@ global property <code class="docutils literal notranslate"><span class="pre">hid
 <p>All access control tools require access to several schemas in the <code class="docutils literal notranslate"><span class="pre">system</span></code>
 catalog in order for all users to retrieve the list of available catalogs. This
 is handled for you when the built-in access control system is enabled. Users of
-third-party access control systems such as Apache Ranger and Immuta, and
-connector-level access control methods, must create a policy that includes
-<code class="docutils literal notranslate"><span class="pre">system.metadata</span></code>, <code class="docutils literal notranslate"><span class="pre">system.jdbc</span></code>, and <code class="docutils literal notranslate"><span class="pre">system.runtime</span></code>.</p>
+third-party access control systems such as Immuta and connector-level access
+control methods, must create a policy that includes <code class="docutils literal notranslate"><span class="pre">system.metadata</span></code>,
+<code class="docutils literal notranslate"><span class="pre">system.jdbc</span></code>, and <code class="docutils literal notranslate"><span class="pre">system.runtime</span></code>.</p>
 <section id="connector-level-access-control">
 <span id="id1"></span><h4 id="connector-level-access-control">Connector-level access control<a class="headerlink" href="#connector-level-access-control" title="Permalink to this heading">#</a></h4>
 <p>SEP includes a number of additional authorization methods that provide a
@@ -739,10 +730,7 @@ Kerberos-defined user credentials are passed through to data sources.</p></li>
 <p>SEP supports fine-grained access control policies:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="biac-overview.html"><span class="doc">Built-in access control</span></a></p></li>
-<li><p><a class="reference internal" href="ranger-overview.html"><span class="doc">Apache Ranger and Privacera</span></a></p></li>
 <li><p><a class="reference internal" href="immuta-overview.html"><span class="doc">Immuta</span></a></p></li>
-<li><p><a class="reference internal" href="global-ranger.html"><span class="doc">Global access control with Apache Ranger</span></a></p></li>
-<li><p><a class="reference internal" href="hive-ranger.html"><span class="doc">Hive and Delta Lake access control with Apache Ranger</span></a></p></li>
 </ul>
 </section>
 </section>
