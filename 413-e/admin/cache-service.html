@@ -619,19 +619,7 @@ standalone and embedded deployments.</p>
 <p>A standalone deployment ensures that the service is not affected by coordinator
 performance, or the deployment of a new release on the SEP cluster.</p>
 <p>Deployment of the cache service in Kubernetes can be
-<a class="reference external" href="../../starburst-enterprise/k8s/deploy-cache-service.html">managed with the available Helm chart</a>.</p>
-<p>Manual deployment relies on using a tarball:</p>
-<ul class="simple">
-<li><p>To download the cache service binary file, contact Starburst Support</p></li>
-<li><p>Starburst Support provides access to a file named much like
-<code class="docutils literal notranslate"><span class="pre">starburst-cache-service-*.tar.gz</span></code></p></li>
-<li><p>Extract it, for example with <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">xfvz</span> <span class="pre">starburst-cache-service-*.tar.gz</span></code></p></li>
-</ul>
-<p>The resulting directory <code class="docutils literal notranslate"><span class="pre">starburst-cache-service-nnn</span></code>, with <em>nnn</em> replaced by
-the release number, is called the <em>installation</em> directory. It contains all
-necessary resources.</p>
-<p>Move the extracted directory into the desired location, such as <code class="docutils literal notranslate"><span class="pre">/opt/</span></code>, and
-you are ready to proceed with configuring the service.</p>
+<a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">managed with the available Helm chart</span></a>.</p>
 </section>
 <section id="embedded-deployment">
 <span id="cache-service-embedded"></span><h3 id="embedded-deployment">Embedded deployment<a class="headerlink" href="#embedded-deployment" title="Permalink to this heading">#</a></h3>

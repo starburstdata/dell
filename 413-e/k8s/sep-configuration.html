@@ -784,7 +784,7 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">starburst-enterprise</span></code> Helm chart configures the Starburst Enterprise platform (SEP) coordinator
 and worker nodes and the internal cluster communication with the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>
 file detailed in the following sections.</p>
-<p>We strongly suggest that you <a class="reference external" href="../../starburst-enterprise/k8s/index.html">follow best practices</a> when customizing your
+<p>We strongly suggest that you follow best practices when customizing your
 cluster, creating small, targeted files to override any defaults, and adding any
 configuration properties. There is an example file set in our install guide that
 illustrates the recommended way to manage your customizations.</p>
@@ -1396,7 +1396,7 @@ cluster.</p></td>
 <td><p>Configuration for the minimum and maximum number of workers. Ensure the
 additional <a class="reference internal" href="requirements.html#k8s-scaling-requirements"><span class="std std-ref">requirements for scaling</span></a> are
 fulfilled on your k8s cluster. Set <code class="docutils literal notranslate"><span class="pre">enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> to activate
-<a class="reference external" href="../../starburst-enterprise/k8s/k8s-operation.html#scaling">autoscaling</a>.
+autoscaling.
 The <code class="docutils literal notranslate"><span class="pre">targetCPUUtilizationPercentage</span></code> sets the threshold value that
 triggers scaling up by adding more workers until <code class="docutils literal notranslate"><span class="pre">maxReplicas</span></code> is
 reached.</p>
@@ -1408,8 +1408,6 @@ clusters (as of the latest release 4.6), due to a known limitation with
 OpenShift clusters. HPA <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1749468">does not
 work</a>
 with pods having init containers in OpenShift.</p>
-<p>Read more information in our <a class="reference external" href="../../starburst-enterprise/k8s/k8s-operation.html#scaling">scaling
-section</a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">worker.kedaScaler</span></code></p></td>
@@ -1474,11 +1472,6 @@ of workers .</p></td>
 <p>SEP has <a class="reference internal" href="../security.html"><span class="doc">extensive security options</span></a> that allow you specify
 how to authenticate users. Because user security configurations and credentials
 are unique, these are not configured <a class="reference internal" href="sep-config-examples.html#k8s-defaults-security-considerations"><span class="std std-ref">by default</span></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We <strong>strongly suggest</strong> that you watch our <a class="reference external" href="../../../starburst-enterprise/admin-topics/security.html">Securing Starburst Enterprise</a> training
-video before customizing your SEP security configuration.</p>
-</div>
 <section id="security-context">
 <span id="helm-sep-securitycontext"></span><h3 id="security-context">Security context<a class="headerlink" href="#security-context" title="Permalink to this heading">#</a></h3>
 <p>You can configure a <a class="reference external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">security context</a>
@@ -1578,12 +1571,6 @@ and ensure to disable the built-in user database
 <span id="k8s-performance-considerations"></span><h2 id="performance-considerations">Performance considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this heading">#</a></h2>
 <p>SEP has performance management configuration options that help you to
 optimize aspects of SEP’s performance.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We <strong>strongly suggest</strong> that you watch our <a class="reference external" href="../../../starburst-enterprise/admin-topics/performance-tuning.html">cluster tuning training
-video</a>
-before customizing your SEP security configuration.</p>
-</div>
 <section id="query-memory-usage-control">
 <span id="helm-sep-concurrent-queries"></span><h3 id="query-memory-usage-control">Query memory usage control<a class="headerlink" href="#query-memory-usage-control" title="Permalink to this heading">#</a></h3>
 <p>The top level <code class="docutils literal notranslate"><span class="pre">query:</span></code> node allows you to set the <code class="docutils literal notranslate"><span class="pre">maxConcurrentQueries</span></code>

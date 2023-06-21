@@ -585,7 +585,6 @@ are ready to proceed with the initial installation or upgrade of Starburst Enter
 <p>This topic assumes that you understand the following key concepts and
 components from other, related topics:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../../starburst-enterprise/k8s/index.html">Helm chart deployments best practices</a></p></li>
 <li><p><a class="reference internal" href="requirements.html#k8s-helm-repository"><span class="std std-ref">Helm chart repository</span></a></p></li>
 <li><p><a class="reference internal" href="requirements.html#k8s-docker-registry"><span class="std std-ref">Docker registry access</span></a></p></li>
 </ul>
@@ -640,9 +639,8 @@ topic</p></li>
 <li><p>a minimal YAML configuration file with the memory and CPU resource
 configurations for <code class="docutils literal notranslate"><span class="pre">coordinator:</span></code> and <code class="docutils literal notranslate"><span class="pre">worker:</span></code> that reflect your
 cluster’s resources, for example <code class="docutils literal notranslate"><span class="pre">sep-prod-setup.yaml</span></code></p></li>
-<li><p>a YAML file with one or more
-<a class="reference external" href="../../starburst-enterprise/admin-topics/catalogs.html">catalogs defined</a>,
-for example <code class="docutils literal notranslate"><span class="pre">sep-prod-catalogs.yaml</span></code></p></li>
+<li><p>a YAML file with one or more catalogs defined, for example
+<code class="docutils literal notranslate"><span class="pre">sep-prod-catalogs.yaml</span></code></p></li>
 </ul>
 <p>The following example command assumes the registry access file, the production
 cluster configuration file, and the catalog configuration file are located in
@@ -686,8 +684,7 @@ charts. Other configurations should be managed in separate files as per
 best practices.</p>
 <p>As an alternative to using a username and password directly, you can use a
 Kubernetes secret by creating a secret containing the access token for your
-registry and configuring your pod to
-<a class="reference external" href="../../starburst-enterprise/starburst-admin/operation-guides.html#using-secrets">use the secret</a>.</p>
+registry and configuring your pod to use the secret.</p>
 <section id="using-private-registries-and-repositories-instead-of-sb-harbor">
 <span id="k8s-private-registries"></span><h4 id="using-private-registries-and-repositories-instead-of-sb-harbor">Using private registries and repositories instead of Starburst Harbor<a class="headerlink" href="#using-private-registries-and-repositories-instead-of-sb-harbor" title="Permalink to this heading">#</a></h4>
 <p>Typically, you must use your username and password for accessing the Helm chart
@@ -738,8 +735,8 @@ using the <code class="docutils literal notranslate"><span class="pre">--values<
 <li><p>Determine the IP address or the DNS hostname of the coordinator by running
 the <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span></code> command.</p></li>
 <li><p>Use the IP address or hostname to verify the coordinator is running by
-<a class="reference external" href="../../starburst-enterprise/web-ui/index.html">accessing the Starburst Enterprise web UI</a>.
-You can use the same information to connect with the CLI or the JDBC driver.</p></li>
+accessing the Starburst Enterprise web UI. You can use the same information
+to connect with the CLI or the JDBC driver.</p></li>
 </ol>
 </section>
 </section>
@@ -773,16 +770,11 @@ configuration files, as in the following example:</p></li>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sep-configuration.html"><span class="doc">Customize SEP</span></a>.</p></li>
-<li><p><a class="reference external" href="../../starburst-enterprise/admin-topics/catalogs.html">Define and configure catalogs</a>.</p></li>
-<li><p>Learn about <a class="reference external" href="../../starburst-enterprise/k8s/k8s-operation.html">operating your
-cluster</a>.</p></li>
-<li><p>Install and configure
-<a class="reference external" href="../../platform-administrator/metastores.html">a metastore</a> if you use
-object storage, the Starburst caching service, or data products.</p></li>
-<li><p>[Optional] Install and configure
-<a class="reference external" href="../../starburst-enterprise/k8s/deploy-ranger.html">Ranger</a>.</p></li>
+<li><p>Define and configure catalogs.</p></li>
+<li><p>Install and configure a metastore if you use object storage, the Starburst caching
+service, or data products.</p></li>
 <li><p>[Optional] Install and configure the Starburst
-<a class="reference external" href="../../starburst-enterprise/k8s/deploy-cache-service.html">cache service</a>.</p></li>
+<a class="reference internal" href="../admin/cache-service.html"><span class="doc">cache service</span></a>.</p></li>
 </ul>
 </section>
 </section>
