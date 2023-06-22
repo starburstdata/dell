@@ -578,17 +578,12 @@ inactivity.</p></li>
 <section id="security">
 <h3 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Added support for DML operations in <a class="reference internal" href="../security/aws-lake-formation.html"><span class="doc">Lake Formation access control</span></a>.</p></li>
 <li><p>Fixed issue that allowed <a class="reference internal" href="../security/biac-privileges.html"><span class="doc">Built-in access control privileges</span></a> grants to have more
 than one entity category.</p></li>
 <li><p>Added <a class="reference internal" href="../security/oauth2-providers.html#oauth2-idp-pingid"><span class="std std-ref">PingIdentity</span></a> as a supported OAuth 2.0
 identity provider.</p></li>
 <li><p>Added support for <a class="reference internal" href="../overview/sep-ui.html#ui-client-token"><span class="std std-ref">client token authentication page</span></a> to
 be enabled when <a class="reference internal" href="../security/oauth2-passthrough.html"><span class="doc">OAuth 2.0 token pass-through</span></a> is in use.</p></li>
-<li><p>Added support for mixed-case AWS IAM roles with <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">ROLE</span></code> in <a class="reference internal" href="../security/aws-lake-formation.html"><span class="doc">Lake
-Formation access control</span></a>.</p></li>
-<li><p>Added support for DDL operations for schemas and tables in <a class="reference internal" href="../security/aws-lake-formation.html"><span class="doc">Lake
-Formation access control</span></a>.</p></li>
 <li><p>Changed <a class="reference internal" href="../security/biac-masks-filters.html"><span class="doc">Built-in access control masks and filters</span></a> expressions to be evaluated based
 on the security context of the current session.</p></li>
 <li><p>Fixed an issue that caused some row filter and column mask expressions to
