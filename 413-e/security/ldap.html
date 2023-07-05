@@ -553,12 +553,11 @@
             
   <section id="ldap-authentication">
 <h1 id="security-ldap--page-root">LDAP authentication<a class="headerlink" href="#security-ldap--page-root" title="Permalink to this heading">#</a></h1>
-<p>Trino can be configured to enable frontend LDAP authentication over
-HTTPS for clients, such as the <a class="reference internal" href="#cli-ldap"><span class="std std-ref">Trino CLI</span></a>, or the JDBC and ODBC
-drivers. At present, only simple LDAP authentication mechanism involving
-username and password is supported. The Trino client sends a username
-and password to the coordinator, and the coordinator validates these
-credentials using an external LDAP service.</p>
+<p>Trino can be configured to enable frontend LDAP authentication over HTTPS for
+clients, such as the <a class="reference internal" href="#cli-ldap"><span class="std std-ref">Trino CLI</span></a>, or the JDBC driver. At present, only
+simple LDAP authentication mechanism involving username and password is
+supported. The Trino client sends a username and password to the coordinator,
+and the coordinator validates these credentials using an external LDAP service.</p>
 <p>To enable LDAP authentication for Trino, LDAP-related configuration changes are
 made on the Trino coordinator.</p>
 <p>Using <a class="reference internal" href="tls.html"><span class="doc">TLS</span></a> and <a class="reference internal" href="internal-communication.html"><span class="doc">a configured shared secret</span></a> is required for LDAP authentication.</p>
