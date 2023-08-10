@@ -79,7 +79,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Use cases" href="overview/use-cases.html" />
-    <link rel="prev" title="Dell Starburst Enterprise 413-e.2 LTS reference documentation" href="index.html" />
+    <link rel="prev" title="Dell Starburst Enterprise 413-e.5 LTS reference documentation" href="index.html" />
 
   
    
@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.2 LTS logo">
+                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
           
         </a>
       </div>
@@ -194,7 +194,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.2 LTS</a>
+       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
   </label>
   
 
@@ -221,8 +221,6 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#starburst-enterprise" class="md-nav__link">Starburst Enterprise</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#cloud-providers" class="md-nav__link">Cloud providers</a>
-        </li>
         <li class="md-nav__item"><a href="#sep-and-oss-feature-comparisons" class="md-nav__link">SEP and Trino feature comparisons</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#management-and-administration" class="md-nav__link">Management and administration</a>
@@ -478,8 +476,6 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#starburst-enterprise" class="md-nav__link">Starburst Enterprise</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#cloud-providers" class="md-nav__link">Cloud providers</a>
-        </li>
         <li class="md-nav__item"><a href="#sep-and-oss-feature-comparisons" class="md-nav__link">SEP and Trino feature comparisons</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#management-and-administration" class="md-nav__link">Management and administration</a>
@@ -533,143 +529,14 @@ information about obtaining and installing a license, see
 similarities and differences between open source Trino, and SEP across several
 categories: platform, deployment scenarios, management, clients, security,
 support, and connectors.</p>
-<section id="cloud-providers">
-<h3 id="cloud-providers">Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this heading">#</a></h3>
-<p>SEP is available on all major cloud platforms through marketplace offerings as
-well as our Kubernetes offering.</p>
-<table id="id2">
-<caption><span class="caption-text">Comparison of Trino and SEP support for cloud provider features</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 50%"/>
-<col style="width: 25%"/>
-<col style="width: 25%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Cloud provider feature</p></th>
-<th class="head"><p>Trino</p></th>
-<th class="head"><p>Starburst Enterprise</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Amazon Web Services</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>S3 Support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>AWS Glue catalog support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Amazon Elastic Kubernetes service availability</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>CloudWatch SEP logs integration</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>CloudWatch dashboard integration</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>AWS Marketplace availability</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Microsoft Azure</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Azure data lake storage support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Azure Blob storage support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Azure Kubernetes service support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Azure Marketplace availability</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Google Cloud Platform</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Google Cloud storage support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Google Stackdriver integration</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Google Kubernetes Engine availability</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Google Cloud Marketplace availability</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Red Hat OpenShift</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>OpenShift Availability</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Red Hat Marketplace Availability</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Kubernetes support</strong></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Docker containers</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Support and resources for Kubernetes</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Out-of-box Kubernetes configuration</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Hive Metastore Service container</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>MinIO storage support</p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Certified for AWS EKS, Google Cloud GKE, Microsoft Azure AKS, Red Hat OpenShift</p></td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="sep-and-oss-feature-comparisons">
 <span id="starburst-enterprise-platform"></span><h3 id="sep-and-oss-feature-comparisons">SEP and Trino feature comparisons<a class="headerlink" href="#sep-and-oss-feature-comparisons" title="Permalink to this heading">#</a></h3>
 <p>SEP adds many exclusive features to the already-powerful Trino distributed
 query engine.</p>
 <section id="management-and-administration">
 <h4 id="management-and-administration">Management and administration<a class="headerlink" href="#management-and-administration" title="Permalink to this heading">#</a></h4>
-<table id="id3">
-<caption><span class="caption-text">Comparison of Trino and SEP support management features</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">Comparison of Trino and SEP support management features</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 25%"/>
@@ -743,8 +610,8 @@ feature comparison is available in the <a class="reference internal" href="conne
 tool to run SQL queries.</p>
 <p>For more information about connectors and related extensions, see
 <a class="reference internal" href="connector/starburst-connectors.html"><span class="doc">Starburst connectors feature matrix</span></a>.</p>
-<table id="id4">
-<caption><span class="caption-text">Comparison of Trino and SEP clients</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Comparison of Trino and SEP clients</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 25%"/>
@@ -777,8 +644,8 @@ tool to run SQL queries.</p>
 <h4 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h4>
 <p>All security features require a license. For a full list of security
 documentation, see <a class="reference internal" href="security.html"><span class="doc">Security</span></a>.</p>
-<table id="id5">
-<caption><span class="caption-text">Comparison of Trino and SEP security features</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">Comparison of Trino and SEP security features</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 25%"/>
@@ -835,18 +702,7 @@ documentation, see <a class="reference internal" href="security.html"><span clas
 <td></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>Privacera Platform support</p>
-<ul class="simple">
-<li><p>global access control, or Hive and Delta Lake access control</p></li>
-<li><p>access control for all catalogs, schemas, and tables</p></li>
-<li><p>column level access control and data masking</p></li>
-<li><p>row level filters</p></li>
-</ul>
-</td>
-<td></td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="security/okta-authentication.html"><span class="doc">Okta authentication</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="security/okta-authentication.html"><span class="doc">Okta authentication</span></a></p></td>
 <td></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
 </tr>
@@ -857,8 +713,8 @@ documentation, see <a class="reference internal" href="security.html"><span clas
 <h4 id="support">Support<a class="headerlink" href="#support" title="Permalink to this heading">#</a></h4>
 <p>Trino is supported by an active community. Starburst Enterprise adds extensive
 professional support.</p>
-<table id="id6">
-<caption><span class="caption-text">Comparison of Trino and SEP support availability</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Comparison of Trino and SEP support availability</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 25%"/>
@@ -944,7 +800,7 @@ from Starburst to learn much more about Trino!</p></td>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="index.html" title="Dell Starburst Enterprise 413-e.2 LTS reference documentation"
+            <a href="index.html" title="Dell Starburst Enterprise 413-e.5 LTS reference documentation"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -953,7 +809,7 @@ from Starburst to learn much more about Trino!</p></td>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Dell Starburst Enterprise 413-e.2 LTS reference documentation </span>
+                      class="md-footer-nav__direction"> Previous </span> Dell Starburst Enterprise 413-e.5 LTS reference documentation </span>
               </div>
             </a>
           

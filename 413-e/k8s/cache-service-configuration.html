@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.2 LTS logo">
+                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.2 LTS</a>
+       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
   </label>
   
 
@@ -672,7 +672,7 @@ service container in the Kubernetes cluster.</p></li>
 example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-caching-service starburstdata/starburst-cache-service <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">413</span>.2.0 <span class="se">\</span>
+    --version <span class="m">413</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./cache-service-prod.yaml
 </pre></div>
@@ -766,7 +766,7 @@ and other tools.</p></td>
 <code class="docutils literal notranslate"><span class="pre">image:</span></code> top level node in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span>
   <span class="nt">repository</span><span class="p">:</span> <span class="s">"starburstdata/starburst-cache-service"</span>
-  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.2"</span>
+  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.5"</span>
   <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
 </pre></div>
 </div>

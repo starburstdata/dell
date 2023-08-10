@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.2 LTS logo">
+                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.2 LTS</a>
+       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
   </label>
   
 
@@ -478,6 +478,12 @@
         <li class="md-nav__item"><a href="#e-1-changes-30-may-2023" class="md-nav__link">413-e.1 changes (30 May 2023)</a>
         </li>
         <li class="md-nav__item"><a href="#e-2-changes-12-jun-2023" class="md-nav__link">413-e.2 changes (12 Jun 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-3-changes-14-jul-2023" class="md-nav__link">413-e.3 changes (14 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-4-changes-26-jul-2023" class="md-nav__link">413-e.4 changes (26 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-5-changes-9-aug-2023" class="md-nav__link">413-e.5 changes (9 Aug 2023)</a>
         </li></ul>
             </nav>
         </li>
@@ -666,6 +672,31 @@ for more information.</p></li>
 <span id="release-413-e-2"></span><h2 id="e-2-changes-12-jun-2023">413-e.2 changes (12 Jun 2023)<a class="headerlink" href="#e-2-changes-12-jun-2023" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Multiple backend improvements.</p></li>
+</ul>
+</section>
+<section id="e-3-changes-14-jul-2023">
+<span id="release-413-e-3"></span><h2 id="e-3-changes-14-jul-2023">413-e.3 changes (14 Jul 2023)<a class="headerlink" href="#e-3-changes-14-jul-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed Iceberg statistics loading after snapshot expiration.</p></li>
+</ul>
+</section>
+<section id="e-4-changes-26-jul-2023">
+<span id="release-413-e-4"></span><h2 id="e-4-changes-26-jul-2023">413-e.4 changes (26 Jul 2023)<a class="headerlink" href="#e-4-changes-26-jul-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed Starburst Warp Speed loading issue in GKE and AKS deployments.</p></li>
+</ul>
+</section>
+<section id="e-5-changes-9-aug-2023">
+<span id="release-413-e-5"></span><h2 id="e-5-changes-9-aug-2023">413-e.5 changes (9 Aug 2023)<a class="headerlink" href="#e-5-changes-9-aug-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed issue where querying Redshift catalogs returned incorrect results when
+encountering unsupported types.</p></li>
+<li><p>Fixed Iceberg query failure when reading <code class="docutils literal notranslate"><span class="pre">ORC</span></code> files with nullable <code class="docutils literal notranslate"><span class="pre">time</span></code>
+columns.</p></li>
+<li><p>Fixed reading concatenated <code class="docutils literal notranslate"><span class="pre">GZIP</span></code> streams.</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">TEXTFILE</span></code> and <code class="docutils literal notranslate"><span class="pre">RCTEXT</span></code> handling of an escaped escape character.</p></li>
+<li><p>Fixed missing data when reading large text and sequence files with a single
+header row.</p></li>
 </ul>
 </section>
 </section>

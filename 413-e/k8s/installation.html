@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.2 LTS logo">
+                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.2 LTS</a>
+       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
   </label>
   
 
@@ -647,7 +647,7 @@ cluster configuration file, and the catalog configuration file are located in
 the current directory:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade  my-sep starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">413</span>.2.0 <span class="se">\</span>
+    --version <span class="m">413</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
     --values ./sep-prod-catalogs.yaml
@@ -726,7 +726,7 @@ using the <code class="docutils literal notranslate"><span class="pre">--values<
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade sep-prod-cluster starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">413</span>.2.0 <span class="se">\</span>
+    --version <span class="m">413</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -760,7 +760,7 @@ configuration files, as in the following example:</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-staging-cluster starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">413</span>.2.0 <span class="se">\</span>
+    --version <span class="m">413</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-stage-setup.yaml
 </pre></div>

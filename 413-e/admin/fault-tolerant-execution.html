@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.2 LTS logo">
+                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.2 LTS</a>
+       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
   </label>
   
 
@@ -896,8 +896,8 @@ or <a class="reference internal" href="#fte-exchange-hdfs"><span class="std std-
 <p>To configure an exchange manager, create a new
 <code class="docutils literal notranslate"><span class="pre">etc/exchange-manager.properties</span></code> configuration file on the coordinator and
 all worker nodes. In this file, set the <code class="docutils literal notranslate"><span class="pre">exchange-manager.name</span></code> configuration
-property to <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> or <code class="docutils literal notranslate"><span class="pre">hdfs</span></code>, and set additional configuration properties as needed
-for your storage solution.</p>
+property to <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> or <code class="docutils literal notranslate"><span class="pre">hdfs</span></code>, and set additional configuration
+properties as needed for your storage solution.</p>
 <p>The following table lists the available configuration properties for
 <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code>, their default values, and which filesystem(s)
 the property may be configured for:</p>
@@ -1033,8 +1033,9 @@ retry a request.</p></td>
 <td><p>HDFS</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hdfs.config.resources</span></code></p></td>
-<td><p>Comma-separated list of paths to HDFS configuration files, for example <code class="docutils literal notranslate"><span class="pre">/etc/hdfs-site.xml</span></code>.
-The files must exist on all nodes in the SEP cluster.</p></td>
+<td><p>Comma-separated list of paths to HDFS configuration files, for example
+<code class="docutils literal notranslate"><span class="pre">/etc/hdfs-site.xml</span></code>. The files must exist on all nodes in the SEP
+cluster.</p></td>
 <td></td>
 <td><p>HDFS</p></td>
 </tr>
@@ -1101,8 +1102,8 @@ GCS bucket as the spooling storage destination.</p>
 </section>
 <section id="hdfs">
 <span id="fte-exchange-hdfs"></span><h4 id="hdfs">HDFS<a class="headerlink" href="#hdfs" title="Permalink to this heading">#</a></h4>
-<p>The following <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code> configuration example specifies HDFS
-as the spooling storage destination.</p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code> configuration example specifies
+HDFS as the spooling storage destination.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">exchange-manager.name</span><span class="o">=</span><span class="s">hdfs</span>
 <span class="na">exchange.base-directories</span><span class="o">=</span><span class="s">hadoop-master:9000/exchange-spooling-directory</span>
 <span class="na">hdfs.config.resources</span><span class="o">=</span><span class="s">/usr/lib/hadoop/etc/hadoop/core-site.xml</span>
