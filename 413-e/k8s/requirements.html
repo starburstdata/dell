@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Starburst Enterprise with Kubernetes requirements &#8212; Dell Starburst Enterprise</title>
+    <title>Starburst Enterprise with Kubernetes requirements &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -114,11 +114,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="http://dell.starburst.io" title="Dell Starburst Enterprise"
+        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
+                   alt="Dell Data Analytics Engine 413-e.7 LTS logo">
           
         </a>
       </div>
@@ -195,13 +195,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="Dell Starburst Enterprise" class="md-nav__button md-logo">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
       
         <img src="../_static/dell.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 413-e.7 LTS</a>
   </label>
   
 
@@ -618,7 +618,7 @@
 The dynamic nature of these projects and the commercial extensions and
 modifications result in a lot of change as well as a myriad of features and
 options.</p>
-<p>Usage of Starburst Enterprise platform (SEP) on Kubernetes can not support all the variations and the
+<p>Usage of Dell Data Analytics Engine (powered by Starburst Enterprise platform/SEP) on Kubernetes can not support all the variations and the
 following sections detail the specific requirements for SEP deployments on
 k8s.</p>
 <section id="k8s-cluster-requirements">
@@ -745,9 +745,9 @@ starburstdata  https://harbor.starburstdata.net/chartrepo/starburstdata
 <p>If you search the repository, the available charts are listed:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm search repo
 NAME                                 CHART VERSION  APP VERSION  DESCRIPTION
-starburstdata/starburst-hive         <span class="m">413</span>.5.0                     Helm chart <span class="k">for</span> Apache Hive
-starburstdata/starburst-enterprise   <span class="m">413</span>.5.0        <span class="m">1</span>.0          A Helm chart <span class="k">for</span> Starburst Enterprise
-starburstdata/starburst-ranger       <span class="m">413</span>.5.0                     Apache Ranger
+starburstdata/starburst-hive         <span class="m">413</span>.7.0                     Helm chart <span class="k">for</span> Apache Hive
+starburstdata/starburst-enterprise   <span class="m">413</span>.7.0        <span class="m">1</span>.0          A Helm chart <span class="k">for</span> Starburst Enterprise
+starburstdata/starburst-ranger       <span class="m">413</span>.7.0                     Apache Ranger
 </pre></div>
 </div>
 <p>After new releases from Starburst, you have to update the repository:</p>

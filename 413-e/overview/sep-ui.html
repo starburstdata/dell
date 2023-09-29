@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Starburst Enterprise web UI &#8212; Dell Starburst Enterprise</title>
+    <title>Starburst Enterprise web UI &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -114,11 +114,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="http://dell.starburst.io" title="Dell Starburst Enterprise"
+        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
+                   alt="Dell Data Analytics Engine 413-e.7 LTS logo">
           
         </a>
       </div>
@@ -188,13 +188,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="Dell Starburst Enterprise" class="md-nav__button md-logo">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
       
         <img src="../_static/dell.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 413-e.7 LTS</a>
   </label>
   
 
@@ -282,8 +282,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#client-token-authentication" class="md-nav__link">Client token authentication</a>
-        </li>
-        <li class="md-nav__item"><a href="#legacy-login" class="md-nav__link">Legacy login</a>
         </li></ul>
             </nav>
         </li>
@@ -392,13 +390,6 @@
     
     
       <a href="#client-token-authentication" class="md-nav__link">Client token authentication</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="#legacy-login" class="md-nav__link">Legacy login</a>
       
     
     </li></ul>
@@ -655,8 +646,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#client-token-authentication" class="md-nav__link">Client token authentication</a>
-        </li>
-        <li class="md-nav__item"><a href="#legacy-login" class="md-nav__link">Legacy login</a>
         </li></ul>
             </nav>
         </li>
@@ -674,9 +663,6 @@
 <p>This topic provides an overview of the features available in the web UI. The
 Starburst Enterprise web UI is the default web interface when you access an SEP cluster that has
 a <a class="reference internal" href="../installation/license-requirements.html"><span class="doc">valid license</span></a> configured.</p>
-<p>A cluster with no license configured shows the <a class="reference internal" href="../admin/web-interface.html"><span class="doc">Trino web UI</span></a> by
-default. The Trino UI lacks the SEP features such as Insights, data
-products, the query editor, and domain management.</p>
 <section id="direct-url-access">
 <h2 id="direct-url-access">Direct URL access<a class="headerlink" href="#direct-url-access" title="Permalink to this heading">#</a></h2>
 <p>Access the Starburst Enterprise web UI directly with the URL of your coordinator.</p>
@@ -707,9 +693,11 @@ There is no separate security configuration for the Starburst Enterprise web UI.
 </section>
 <section id="timeout-properties">
 <span id="ui-session-timeout"></span><h2 id="timeout-properties">Timeout properties<a class="headerlink" href="#timeout-properties" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">web-ui.session-timeout</span></code> <a class="reference internal" href="../admin/properties-web-interface.html"><span class="doc">configuration property</span></a> controls the timeout interval in deployments
-not using an identity provider (IdP) <a class="reference internal" href="../security/authentication-types.html"><span class="doc">for authentication</span></a>. This property dictates how long a user
-authentication token is valid and can be considered the maximum amount of time a
+<p>The <code class="docutils literal notranslate"><span class="pre">web-ui.session-timeout</span></code> configuration property controls the timeout
+interval in deployments not using an identity provider (IdP) <a class="reference internal" href="../security/authentication-types.html"><span class="doc">for
+authentication</span></a>. This property dictates how
+long a user authentication token is valid and can be considered the maximum
+amount of time a
 user can stay logged in to the Starburst Enterprise web UI without reauthenticating.</p>
 <p>Deployments that use an IdP that substitutes for login credential forms, such as
 AzureAD and <a class="reference internal" href="../security/okta-authentication.html"><span class="doc">Okta</span></a>, are subject to the
@@ -804,7 +792,6 @@ can control users’ access to data on the <strong>Roles and privileges</strong>
 <h2 id="help-menu">Help menu<a class="headerlink" href="#help-menu" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Help (?)</strong> menu includes the following helpful links for convenience:</p>
 <ul class="simple">
-<li><p><strong>Web UI</strong>: Link to the <a class="reference internal" href="../admin/web-interface.html"><span class="doc">Trino web UI</span></a></p></li>
 <li><p><strong>Documentation</strong>: Link to the <a class="reference internal" href="../insights.html"><span class="doc">Insights documentation</span></a></p></li>
 <li><p><strong>Authorization app</strong>: If configured by an administrator, links to the
 authorization app used in the cluster.</p></li>
@@ -924,14 +911,6 @@ to <code class="docutils literal notranslate"><span class="pre">true</span></cod
 <p>Users can access this page in a web browser by logging into the Starburst Enterprise web UI and
 navigating to the <code class="docutils literal notranslate"><span class="pre">/ui/token</span></code> URL, such as
 <code class="docutils literal notranslate"><span class="pre">https://sep.example.com/ui/token</span></code>.</p>
-</section>
-<section id="legacy-login">
-<h2 id="legacy-login">Legacy login<a class="headerlink" href="#legacy-login" title="Permalink to this heading">#</a></h2>
-<p>You can disable the Starburst Enterprise web UI login and revert to the <a class="reference internal" href="../admin/web-interface.html"><span class="doc">legacy Trino UI</span></a> login by setting the following configuration in the
-<code class="docutils literal notranslate"><span class="pre">config.properties</span></code> file:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">sep-ui.security.disable-enterprise-login</span><span class="o">=</span><span class="s">true</span>
-</pre></div>
-</div>
 </section>
 </section>
 

@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Kubernetes configuration examples &#8212; Dell Starburst Enterprise</title>
+    <title>Kubernetes configuration examples &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -114,11 +114,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="http://dell.starburst.io" title="Dell Starburst Enterprise"
+        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Starburst Enterprise 413-e.5 LTS logo">
+                   alt="Dell Data Analytics Engine 413-e.7 LTS logo">
           
         </a>
       </div>
@@ -195,13 +195,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="Dell Starburst Enterprise" class="md-nav__button md-logo">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
       
         <img src="../_static/dell.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="Dell Starburst Enterprise">Dell Starburst Enterprise 413-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 413-e.7 LTS</a>
   </label>
   
 
@@ -917,12 +917,12 @@ documentation.</p>
 unchanged values in customization files.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span>
   <span class="nt">repository</span><span class="p">:</span> <span class="s">"harbor.starburstdata.net/starburstdata/starburst-enterprise"</span>
-  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.5"</span>
+  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.7"</span>
   <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
 
 <span class="nt">initImage</span><span class="p">:</span>
   <span class="nt">repository</span><span class="p">:</span> <span class="s">"harbor.starburstdata.net/starburstdata/starburst-enterprise-init"</span>
-  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413.5.0"</span>
+  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413.7.0"</span>
   <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
 
 <span class="nt">registryCredentials</span><span class="p">:</span>
@@ -982,7 +982,7 @@ details for your private Docker registry</span></a>.</p></li>
 <p>The following example overrides Docker registry to use your private registry:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span>
   <span class="nt">repository</span><span class="p">:</span> <span class="s">"docker.example.com/thirdparty"</span>
-  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.5"</span>
+  <span class="nt">tag</span><span class="p">:</span> <span class="s">"413-e.7"</span>
   <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
 </pre></div>
 </div>
