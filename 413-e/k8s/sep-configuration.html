@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Data Analytics Engine 413-e.7 LTS logo">
+                   alt="Dell Data Analytics Engine 413-e.9 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 413-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 413-e.9 LTS</a>
   </label>
   
 
@@ -781,7 +781,7 @@
             
   <section id="configuring-starburst-enterprise-in-kubernetes">
 <h1 id="k8s-sep-configuration--page-root">Configuring Starburst Enterprise in Kubernetes<a class="headerlink" href="#k8s-sep-configuration--page-root" title="Permalink to this heading">#</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">starburst-enterprise</span></code> Helm chart configures the Dell Data Analytics Engine (powered by Starburst Enterprise platform/SEP) coordinator
+<p>The <code class="docutils literal notranslate"><span class="pre">starburst-enterprise</span></code> Helm chart configures the Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) coordinator
 and worker nodes and the internal cluster communication with the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>
 file detailed in the following sections.</p>
 <p>We strongly suggest that you follow best practices when customizing your
@@ -808,7 +808,7 @@ command with the updated YAML files and the <code class="docutils literal notran
 example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-prod-cluster starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">413</span>.7.0 <span class="se">\</span>
+    --version <span class="m">413</span>.9.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
 </pre></div>
