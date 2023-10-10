@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', ' UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Release 413-e LTS (30 May 2023) &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release 423 (10 Aug 2023)" href="release-423.html" />
+    <link rel="prev" title="Release 423-e LTS (31 Aug 2023)" href="release-423-e.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/release/release-413-e.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#release/release-413-e" tabindex="1" class="md-skip"> Skip to content </a>
+  
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../_static/dell.png"
+                   alt="Dell Data Analytics Engine 423-e.3 LTS logo">
+          
+        </a>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">Release 413-e LTS (30 May 2023)</div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../release.html" class="md-tabs__link">Release notes</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 423-e.3 LTS</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Overview</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../overview.html" class="md-nav__link">Features, use cases, and support</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">For all users</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../overview/sep-ui.html" class="md-nav__link">Starburst Enterprise web UI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../client.html" class="md-nav__link">Clients</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../data-products.html" class="md-nav__link">Data products</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../insights.html" class="md-nav__link">Insights</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">For data engineers</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../optimizer.html" class="md-nav__link">Query optimizer</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../develop.html" class="md-nav__link">Developer guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">For platform administrators</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../installation.html" class="md-nav__link">Manual installation and license</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../k8s.html" class="md-nav__link">Deploying with Kubernetes</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../admin.html" class="md-nav__link">Performance, logging, and governance features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../security.html" class="md-nav__link">Security</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../starburst-rest-api.html" class="md-nav__link">Starburst Enterprise REST API</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data sources</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../connector.html" class="md-nav__link">Connector overview</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../object-storage.html" class="md-nav__link">Object storage connectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../non-object-storage.html" class="md-nav__link">Non-object storage connectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../utilities.html" class="md-nav__link">Utilities</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../connector/starburst-connectors.html" class="md-nav__link">Starburst connectors feature matrix</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">SQL reference</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../language.html" class="md-nav__link">SQL language</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../sql.html" class="md-nav__link">SQL statement syntax</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../functions.html" class="md-nav__link">Functions and operators</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Version information</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../versions.html" class="md-nav__link">423-e.3 LTS and others</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../release.html" class="md-nav__link">Release notes</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../release.html#starburst-enterprise-releases" class="md-nav__link">Starburst Enterprise releases</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../release.html#id1" class="md-nav__link">2023</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="release-423-e.html" class="md-nav__link">Release 423-e LTS (31 Aug 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Release 413-e LTS (30 May 2023) </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Release 413-e LTS (30 May 2023)</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#release-release-413-e--page-root" class="md-nav__link">Release 413-e LTS (30 May 2023)</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#highlights-since-407-e" class="md-nav__link">Highlights since 407-e</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-initial-changes" class="md-nav__link">413-e initial changes</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
+        </li>
+        <li class="md-nav__item"><a href="#security" class="md-nav__link">Security</a>
+        </li>
+        <li class="md-nav__item"><a href="#data-products" class="md-nav__link">Data products</a>
+        </li>
+        <li class="md-nav__item"><a href="#ibm-db2-connector" class="md-nav__link">IBM Db2 connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#mongodb-connector" class="md-nav__link">MongoDB connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#mysql-connector" class="md-nav__link">MySQL connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#redshift-connector" class="md-nav__link">Redshift connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#singlestore-connector" class="md-nav__link">SingleStore connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#snowflake-connector" class="md-nav__link">Snowflake connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#sql-server-connector" class="md-nav__link">SQL Server connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#starburst-stargate" class="md-nav__link">Starburst Stargate</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#e-1-changes-30-may-2023" class="md-nav__link">413-e.1 changes (30 May 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-2-changes-12-jun-2023" class="md-nav__link">413-e.2 changes (12 Jun 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-3-changes-14-jul-2023" class="md-nav__link">413-e.3 changes (14 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-4-changes-26-jul-2023" class="md-nav__link">413-e.4 changes (26 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-5-changes-9-aug-2023" class="md-nav__link">413-e.5 changes (9 Aug 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-6-changes-29-aug-2023" class="md-nav__link">413-e.6 changes (29 Aug 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-7-changes-19-sep-2023" class="md-nav__link">413-e.7 changes (19 Sep 2023)</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-423.html" class="md-nav__link">Release 423 (10 Aug 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-422.html" class="md-nav__link">Release 422 (13 Jul 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-421.html" class="md-nav__link">Release 421 (6 Jul 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-420.html" class="md-nav__link">Release 420 (22 Jun 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-419.html" class="md-nav__link">Release 419 (5 Jun 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-418.html" class="md-nav__link">Release 418 (17 May 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-417.html" class="md-nav__link">Release 417 (10 May 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-416.html" class="md-nav__link">Release 416 (3 May 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-415.html" class="md-nav__link">Release 415 (28 Apr 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-414.html" class="md-nav__link">Release 414 (19 Apr 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-413.html" class="md-nav__link">Release 413 (12 Apr 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-412.html" class="md-nav__link">Release 412 (5 Apr 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-411.html" class="md-nav__link">Release 411 (29 Mar 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-410.html" class="md-nav__link">Release 410 (8 Mar 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-409.html" class="md-nav__link">Release 409 (3 Mar 2023)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="release-408.html" class="md-nav__link">Release 408 (23 Feb 2023)</a>
+      
+    
+    </li></ul>
+    
+    </li></ul>
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Appendix</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../appendix.html" class="md-nav__link">Version-specific notices and information</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../404.html" class="md-nav__link">&nbsp;</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#release-release-413-e--page-root" class="md-nav__link">Release 413-e LTS (30 May 2023)</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#highlights-since-407-e" class="md-nav__link">Highlights since 407-e</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-initial-changes" class="md-nav__link">413-e initial changes</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
+        </li>
+        <li class="md-nav__item"><a href="#security" class="md-nav__link">Security</a>
+        </li>
+        <li class="md-nav__item"><a href="#data-products" class="md-nav__link">Data products</a>
+        </li>
+        <li class="md-nav__item"><a href="#ibm-db2-connector" class="md-nav__link">IBM Db2 connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#mongodb-connector" class="md-nav__link">MongoDB connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#mysql-connector" class="md-nav__link">MySQL connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#redshift-connector" class="md-nav__link">Redshift connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#singlestore-connector" class="md-nav__link">SingleStore connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#snowflake-connector" class="md-nav__link">Snowflake connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#sql-server-connector" class="md-nav__link">SQL Server connector</a>
+        </li>
+        <li class="md-nav__item"><a href="#starburst-stargate" class="md-nav__link">Starburst Stargate</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#e-1-changes-30-may-2023" class="md-nav__link">413-e.1 changes (30 May 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-2-changes-12-jun-2023" class="md-nav__link">413-e.2 changes (12 Jun 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-3-changes-14-jul-2023" class="md-nav__link">413-e.3 changes (14 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-4-changes-26-jul-2023" class="md-nav__link">413-e.4 changes (26 Jul 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-5-changes-9-aug-2023" class="md-nav__link">413-e.5 changes (9 Aug 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-6-changes-29-aug-2023" class="md-nav__link">413-e.6 changes (29 Aug 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-7-changes-19-sep-2023" class="md-nav__link">413-e.7 changes (19 Sep 2023)</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="release-413-e-lts-30-may-2023">
+<h1 id="release-release-413-e--page-root">Release 413-e LTS (30 May 2023)<a class="headerlink" href="#release-release-413-e--page-root" title="Permalink to this heading">#</a></h1>
+<p>The 413-e release includes all improvements from the following Trino
+project releases:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="release-408.html"><span class="doc">Trino 408</span></a></p></li>
+<li><p><a class="reference internal" href="release-409.html"><span class="doc">Trino 409</span></a></p></li>
+<li><p><a class="reference internal" href="release-410.html"><span class="doc">Trino 410</span></a></p></li>
+<li><p><a class="reference internal" href="release-411.html"><span class="doc">Trino 411</span></a></p></li>
+<li><p><a class="reference internal" href="release-412.html"><span class="doc">Trino 412</span></a></p></li>
+<li><p><a class="reference internal" href="release-413.html"><span class="doc">Trino 413</span></a></p></li>
+</ul>
+<section id="highlights-since-407-e">
+<span id="release-413-highlights"></span><h2 id="highlights-since-407-e">Highlights since 407-e<a class="headerlink" href="#highlights-since-407-e" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../security/oauth2-providers.html#oauth2-idp-pingid"><span class="std std-ref">PingIdentity</span></a> as an OAuth 2.0 identity provider.</p></li>
+<li><p>Added <a class="reference internal" href="../optimizer/managed-statistics.html"><span class="doc">Managed statistics</span></a> to the Redshift, Snowflake, MySQL,
+and SQL Server connectors as a public preview.</p></li>
+<li><p>Added support for <a class="reference internal" href="../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> of write operations
+in SingleStore and IBM Db2.</p></li>
+<li><p>Added <a class="reference internal" href="../client/query-editor.html#queryed-shared-queries"><span class="std std-ref">query sharing</span></a> to the Starburst Enterprise web UI query
+editor as a public preview.</p></li>
+</ul>
+</section>
+<section id="e-initial-changes">
+<span id="release-413-changes"></span><h2 id="e-initial-changes">413-e initial changes<a class="headerlink" href="#e-initial-changes" title="Permalink to this heading">#</a></h2>
+<p>The following changes from the 413-e STS are all part of the first public
+release.</p>
+<section id="general">
+<h3 id="general">General<a class="headerlink" href="#general" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for usage metrics to be <a class="reference internal" href="../insights/usage-metrics-overview.html#insights-usage-metrics-proxy"><span class="std std-ref">uploaded through a proxy server</span></a>.</p></li>
+<li><p>Updated the <a class="reference internal" href="../client/query-editor.html#queryed-saved-queries"><span class="std std-ref">Saved queries</span></a> tab to hide the
+<strong>Share</strong> button when built-in access control is not enabled.</p></li>
+<li><p>Added support for arranging worksheet tabs in the <a class="reference internal" href="../client/query-editor.html"><span class="doc">query editor</span></a>.</p></li>
+<li><p>Changed managed statistics to use the <a class="reference internal" href="../optimizer/managed-statistics.html#managed-statistics-storage"><span class="std std-ref">in-memory statistics
+cache</span></a> by default.</p></li>
+<li><p>Added support for <a class="reference internal" href="../client/query-editor.html#queryed-shared-queries"><span class="std std-ref">sharing query tabs</span></a> as a
+public preview.</p></li>
+<li><p>Added a new <a class="reference internal" href="../overview/sep-ui.html#ui-session-timeout"><span class="std std-ref">timeout configuration property</span></a> that
+automatically logs users out of the Starburst Enterprise web UI after a specified period of
+inactivity.</p></li>
+<li><p>Improved performance of queries run in the <a class="reference internal" href="../client/query-editor.html"><span class="doc">Query editor</span></a>.</p></li>
+<li><p>Updated the query editor to retain worksheet tabs when the
+<code class="docutils literal notranslate"><span class="pre">node.environment</span></code> configuration property is changed.</p></li>
+</ul>
+</section>
+<section id="security">
+<h3 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fixed issue that allowed <a class="reference internal" href="../security/biac-privileges.html"><span class="doc">Built-in access control privileges</span></a> grants to have more
+than one entity category.</p></li>
+<li><p>Added <a class="reference internal" href="../security/oauth2-providers.html#oauth2-idp-pingid"><span class="std std-ref">PingIdentity</span></a> as a supported OAuth 2.0
+identity provider.</p></li>
+<li><p>Added support for <a class="reference internal" href="../overview/sep-ui.html#ui-client-token"><span class="std std-ref">client token authentication page</span></a> to
+be enabled when <a class="reference internal" href="../security/oauth2-passthrough.html"><span class="doc">OAuth 2.0 token pass-through</span></a> is in use.</p></li>
+<li><p>Changed <a class="reference internal" href="../security/biac-masks-filters.html"><span class="doc">Built-in access control masks and filters</span></a> expressions to be evaluated based
+on the security context of the current session.</p></li>
+<li><p>Fixed an issue that caused some row filter and column mask expressions to
+result in an access denied error.</p></li>
+</ul>
+</section>
+<section id="data-products">
+<h3 id="data-products">Data products<a class="headerlink" href="#data-products" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Updated the data preview window to automatically resize based on the number of
+columns in the dataset.</p></li>
+</ul>
+</section>
+<section id="ibm-db2-connector">
+<h3 id="ibm-db2-connector">IBM Db2 connector<a class="headerlink" href="#ibm-db2-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for fault-tolerant execution of read operations with a <code class="docutils literal notranslate"><span class="pre">TASK</span></code>
+retry policy.</p></li>
+</ul>
+</section>
+<section id="mongodb-connector">
+<h3 id="mongodb-connector">MongoDB connector<a class="headerlink" href="#mongodb-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../security/kerberos.html"><span class="doc">Kerberos authentication</span></a> using a keytab.</p></li>
+</ul>
+</section>
+<section id="mysql-connector">
+<h3 id="mysql-connector">MySQL connector<a class="headerlink" href="#mysql-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../optimizer/managed-statistics.html"><span class="doc">Managed statistics</span></a> as a public preview.</p></li>
+</ul>
+</section>
+<section id="redshift-connector">
+<h3 id="redshift-connector">Redshift connector<a class="headerlink" href="#redshift-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../optimizer/managed-statistics.html"><span class="doc">Managed statistics</span></a> as a public preview.</p></li>
+</ul>
+</section>
+<section id="singlestore-connector">
+<h3 id="singlestore-connector">SingleStore connector<a class="headerlink" href="#singlestore-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> of write operations
+with the <code class="docutils literal notranslate"><span class="pre">TASK</span></code> retry policy.</p></li>
+</ul>
+</section>
+<section id="snowflake-connector">
+<h3 id="snowflake-connector">Snowflake connector<a class="headerlink" href="#snowflake-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../optimizer/managed-statistics.html"><span class="doc">Managed statistics</span></a> as a public
+preview.</p></li>
+</ul>
+</section>
+<section id="sql-server-connector">
+<h3 id="sql-server-connector">SQL Server connector<a class="headerlink" href="#sql-server-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../optimizer/managed-statistics.html"><span class="doc">Managed statistics</span></a> as a public preview.</p></li>
+</ul>
+</section>
+<section id="starburst-stargate">
+<h3 id="starburst-stargate">Starburst Stargate<a class="headerlink" href="#starburst-stargate" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/starburst-stargate.html#stargate-oauth2-passthrough"><span class="std std-ref">OAuth 2.0 token pass-through</span></a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="e-1-changes-30-may-2023">
+<span id="release-413-e-1"></span><h2 id="e-1-changes-30-may-2023">413-e.1 changes (30 May 2023)<a class="headerlink" href="#e-1-changes-30-may-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed Starburst Enterprise web UI Overview page error when internal TLS is enabled.</p></li>
+<li><p>Fixed a potential internal communication secret leak. See the
+<a class="reference external" href="https://docs.starburst.io/security/advisories.html#http-client-risk">security advisory</a>
+for more information.</p></li>
+<li><p>Remediated CVE-2023-1370.</p></li>
+<li><p>Fixed read permissions for columns required by table functions. See the
+<a class="reference external" href="https://docs.starburst.io/security/advisories.html#column-level-access-control-bypass">full security advisory</a>
+for more information.</p></li>
+</ul>
+</section>
+<section id="e-2-changes-12-jun-2023">
+<span id="release-413-e-2"></span><h2 id="e-2-changes-12-jun-2023">413-e.2 changes (12 Jun 2023)<a class="headerlink" href="#e-2-changes-12-jun-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Multiple backend improvements.</p></li>
+</ul>
+</section>
+<section id="e-3-changes-14-jul-2023">
+<span id="release-413-e-3"></span><h2 id="e-3-changes-14-jul-2023">413-e.3 changes (14 Jul 2023)<a class="headerlink" href="#e-3-changes-14-jul-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed Iceberg statistics loading after snapshot expiration.</p></li>
+</ul>
+</section>
+<section id="e-4-changes-26-jul-2023">
+<span id="release-413-e-4"></span><h2 id="e-4-changes-26-jul-2023">413-e.4 changes (26 Jul 2023)<a class="headerlink" href="#e-4-changes-26-jul-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed Starburst Warp Speed loading issue in GKE and AKS deployments.</p></li>
+</ul>
+</section>
+<section id="e-5-changes-9-aug-2023">
+<span id="release-413-e-5"></span><h2 id="e-5-changes-9-aug-2023">413-e.5 changes (9 Aug 2023)<a class="headerlink" href="#e-5-changes-9-aug-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed issue where querying Redshift catalogs returned incorrect results when
+encountering unsupported types.</p></li>
+<li><p>Fixed Iceberg query failure when reading <code class="docutils literal notranslate"><span class="pre">ORC</span></code> files with nullable <code class="docutils literal notranslate"><span class="pre">time</span></code>
+columns.</p></li>
+<li><p>Fixed reading concatenated <code class="docutils literal notranslate"><span class="pre">GZIP</span></code> streams.</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">TEXTFILE</span></code> and <code class="docutils literal notranslate"><span class="pre">RCTEXT</span></code> handling of an escaped escape character.</p></li>
+<li><p>Fixed missing data when reading large text and sequence files with a single
+header row.</p></li>
+</ul>
+</section>
+<section id="e-6-changes-29-aug-2023">
+<span id="release-413-e-6"></span><h2 id="e-6-changes-29-aug-2023">413-e.6 changes (29 Aug 2023)<a class="headerlink" href="#e-6-changes-29-aug-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed parallel read of tables with non-clustered index in SQL Server.</p></li>
+<li><p>Fixed write conflict detection for <code class="docutils literal notranslate"><span class="pre">UPDATE/DELETE/MERGE</span></code> operations. In rare
+situations, this issue may have resulted in duplicate rows when multiple of
+these operations were run at the same time, or at the same time as an
+<code class="docutils literal notranslate"><span class="pre">optimize</span></code> procedure.</p></li>
+<li><p>Fixed caching in LDAP group provider.</p></li>
+<li><p>Improved performance in BIAC for queries with large numbers of columns.</p></li>
+</ul>
+</section>
+<section id="e-7-changes-19-sep-2023">
+<span id="release-413-e-7"></span><h2 id="e-7-changes-19-sep-2023">413-e.7 changes (19 Sep 2023)<a class="headerlink" href="#e-7-changes-19-sep-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed issue with Query Editor not running queries to completion which may have
+prevented results from being visible.</p></li>
+<li><p>Fixed Kudu merge error between two CTAS tables.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="release-423-e.html" title="Release 423-e LTS (31 Aug 2023)"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Release 423-e LTS (31 Aug 2023) </span>
+              </div>
+            </a>
+          
+          
+            <a href="release-423.html" title="Release 423 (10 Aug 2023)"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Release 423 (10 Aug 2023) </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
