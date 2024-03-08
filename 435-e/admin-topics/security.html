@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', ' UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Securing Starburst Enterprise &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tuning your cluster performance" href="performance-tuning.html" />
+    <link rel="prev" title="Enable fault-tolerant execution for queries in SEP" href="fault-tolerant-execution.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/admin-topics/security.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#admin-topics/security" tabindex="1" class="md-skip"> Skip to content </a>
+  
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../_static/dell.png"
+                   alt="Dell Data Analytics Engine 435-e.1 LTS logo">
+          
+        </a>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">Securing Starburst Enterprise</div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../admin-topics.html" class="md-tabs__link">Administration topics</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 435-e.1 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Features, use cases, and support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Developer guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../admin-topics.html">Administration topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="autoscaling.html">Autoscaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web-ui-configuration.html">Configure the web UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fault-tolerant-execution.html">Enable fault-tolerant execution</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Secure your cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-to-server-encryption-with-tls">Client to server encryption with TLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-and-authorization-in-sep">Authentication and authorization in SEP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-up-and-running">Get up and running</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implement-ldap">Implement LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#learn-more">Learn more</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#securing-sep-s-internal-communications-and-management-endpoints">Securing SEP’s internal communications and management endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-security">Data security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance-tuning.html">Tune your cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Version information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">435-e.1 LTS and others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#admin-topics-security--page-root" class="md-nav__link">Securing Starburst Enterprise</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#introduction" class="md-nav__link">Introduction</a>
+        </li>
+        <li class="md-nav__item"><a href="#client-to-server-encryption-with-tls" class="md-nav__link">Client to server encryption with TLS</a>
+        </li>
+        <li class="md-nav__item"><a href="#authentication-and-authorization-in-sep" class="md-nav__link">Authentication and authorization in SEP</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#get-up-and-running" class="md-nav__link">Get up and running</a>
+        </li>
+        <li class="md-nav__item"><a href="#implement-ldap" class="md-nav__link">Implement LDAP</a>
+        </li>
+        <li class="md-nav__item"><a href="#learn-more" class="md-nav__link">Learn more</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#securing-sep-s-internal-communications-and-management-endpoints" class="md-nav__link">Securing SEP’s internal communications and management endpoints</a>
+        </li>
+        <li class="md-nav__item"><a href="#data-security" class="md-nav__link">Data security</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="securing-starburst-enterprise">
+<h1 id="admin-topics-security--page-root">Securing Starburst Enterprise<a class="headerlink" href="#admin-topics-security--page-root" title="Permalink to this heading">#</a></h1>
+<p>Learn how to safeguard your data with Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP)’s security
+toolkit in this training video presented by one of our founders, Dain Sundstrom.
+For your convenience, we’ve divided the video training course up into topic
+sections, and provided links to the relevant parts of our documentation below.</p>
+<section id="introduction">
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/KiMyRc3PSh0?si=1Auf8_0BMVR4Nst8&amp;start=306&amp;end=943" title="YouTube video player" width="560"></iframe><p>Running time: ~11 min.</p>
+<table>
+<colgroup>
+<col style="width: 100%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SEP security process.</p></td>
+</tr>
+<tr class="row-odd"><td><p>What to secure.</p></td>
+</tr>
+<tr class="row-even"><td><p>Preparing: Verifying HTTP.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="client-to-server-encryption-with-tls">
+<h2 id="client-to-server-encryption-with-tls">Client to server encryption with TLS<a class="headerlink" href="#client-to-server-encryption-with-tls" title="Permalink to this heading">#</a></h2>
+<p>Enabling TLS to the coordinator can be handled from the load balancer in two
+ways:</p>
+<ul class="simple">
+<li><p>Terminate TLS on the load balancer and use HTTP to the coordinator</p></li>
+<li><p>Pass TLS through the load balancer and use HTTPS to the coordinator</p></li>
+</ul>
+<p>We highly recommend terminating HTTPS on the load balancer. In this case, the
+only property required in the Helm chart <code class="docutils literal notranslate"><span class="pre">coordinator.etcFiles.properties</span></code>
+section under <code class="docutils literal notranslate"><span class="pre">config.properties:</span></code> is as follows:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">coordinator</span><span class="o">:</span>
+<span class="na">  etcFiles</span><span class="o">:</span>
+<span class="na">    properties</span><span class="o">:</span>
+<span class="na">      config.properties</span><span class="o">:</span> <span class="s">|</span>
+<span class="na">        http-server.process-forwarded</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<p>For non-Kubernetes installs, the same property must be defined instead in the
+<code class="docutils literal notranslate"><span class="pre">config.properties</span></code> file.</p>
+<p>To pass TLS through the load balancer, you must configure TLS on the
+coordinator. Place a certificate or private key in the coordinator pod with
+HTTPS enabled. To do so:</p>
+<ol class="arabic simple">
+<li><p>Create a secret from the signed certificate or private key. This file can be
+a PEM, JKS, or PK12 keystore.</p></li>
+<li><p>Follow the steps outlined in the reference documentation to <a class="reference internal" href="../security/tls.html#configure-https"><span class="std std-ref">configure the coordinator</span></a>.
+Refer to your SSL secret as follows in the following snippet, which uses a
+PEM file as an example:</p></li>
+</ol>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">coordinator</span><span class="o">:</span>
+<span class="na">  etcFiles</span><span class="o">:</span>
+<span class="na">    properties</span><span class="o">:</span>
+<span class="na">      config.properties</span><span class="o">:</span> <span class="s">|</span>
+<span class="na">        http-server.https.keystore.path</span><span class="o">=</span><span class="s">secretRef:ssl-cert:yoursslcert.pem</span>
+</pre></div>
+</div>
+<p>The following video provides an overview of client-to-server encryption in
+SEP:</p>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/KiMyRc3PSh0?si=6X7TuMrm61rlUzfy&amp;start=943" title="YouTube video player" width="560"></iframe><p>Running time: ~19 min.</p>
+<table>
+<colgroup>
+<col style="width: 100%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Approaches for HTTPS, including <a class="reference internal" href="../security/tls.html#https-load-balancer"><span class="std std-ref">proxies and load balancers</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../security/tls.html#https-secure-directly"><span class="std std-ref">Adding SSL/TLS certificates</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../security/inspect-pem.html"><span class="doc std std-doc">Handling PEM</span></a> and <a class="reference internal" href="../security/inspect-jks.html"><span class="doc std std-doc">JKS
+files</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifying HTTPS for SEP.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="authentication-and-authorization-in-sep">
+<h2 id="authentication-and-authorization-in-sep">Authentication and authorization in SEP<a class="headerlink" href="#authentication-and-authorization-in-sep" title="Permalink to this heading">#</a></h2>
+<section id="get-up-and-running">
+<h3 id="get-up-and-running">Get up and running<a class="headerlink" href="#get-up-and-running" title="Permalink to this heading">#</a></h3>
+<p>The SEP Helm chart has built-in support for file-based password
+authentication. In the following example, two users are created with very simple
+passwords:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">userDatabase</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">users</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+      <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">adM1nPassWord</span>
+    <span class="p p-Indicator">-</span> <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user1</span>
+      <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Us4r1PassW0rd</span>
+</pre></div>
+</div>
+<p>File-based authentication is recommended only for your initial build-out. Read
+more about <a class="reference internal" href="../security/password-file.html"><span class="doc std std-doc">password files</span></a>, for information on how to
+handle non-Kubernetes installations.</p>
+</section>
+<section id="implement-ldap">
+<h3 id="implement-ldap">Implement LDAP<a class="headerlink" href="#implement-ldap" title="Permalink to this heading">#</a></h3>
+<p>Authentication via LDAP or Active Directory is configured in the
+<code class="docutils literal notranslate"><span class="pre">coordinator.etcFiles.properties</span></code> section of the Helm chart under
+<code class="docutils literal notranslate"><span class="pre">password-authenticator.properties:</span></code>.
+The following example shows the required Helm chart configuration:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">coordinator</span><span class="p">:</span>
+  <span class="nt">etcFiles</span><span class="p">:</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">password-authenticator.properties</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">password-authenticator.name=ldap</span>
+        <span class="no">ldap.url=ldaps://ldap-server:636</span>
+        <span class="no">ldap.user-bind-pattern=uid=${USER},DC=example,DC=com</span>
+        <span class="no">ldap.ssl-trust-certificate=secretRef:ldap-ca:ca.crt</span>
+</pre></div>
+</div>
+<p>In non-Kubernetes installs, the same properties must be defined instead in the
+<code class="docutils literal notranslate"><span class="pre">etc/password-authenticator.properties</span></code> file.</p>
+<p>Read <a class="reference internal" href="../security/ldap.html"><span class="doc std std-doc">more about LDAP</span></a> for information on how to handle
+non-Kubernetes installs.</p>
+</section>
+<section id="learn-more">
+<h3 id="learn-more">Learn more<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h3>
+<p>The following video provides an overview of authentication and authorization in
+SEP:</p>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/KiMyRc3PSh0?si=fIyYsGhs1n9Bwxnh&amp;start=2097" title="YouTube video player" width="560"></iframe><p>Running time: ~34 min.</p>
+<table>
+<colgroup>
+<col style="width: 100%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../security/password-file.html"><span class="doc std std-doc">Password file
+authentication</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../security/ldap.html"><span class="doc std std-doc">LDAP authentication</span></a>. See also:
+<a class="reference internal" href="../security/ldap.html"><span class="doc std std-doc">group providers</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../security/kerberos.html"><span class="doc std std-doc">Kerberos authentication</span></a>.
+See also: <a class="reference internal" href="../security/kerberos-passthrough.html"><span class="doc">passthrough</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Client <a class="reference internal" href="../develop/certificate-authenticator.html"><span class="doc std std-doc">certificate</span></a> authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p>JSON Web Token authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Using multiple authenticators.</p></td>
+</tr>
+<tr class="row-even"><td><p>Authentication with <a class="reference internal" href="../security/user-mapping.html"><span class="doc std std-doc">user mapping</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../security/file-system-access-control.html"><span class="doc std std-doc">File-based system access
+control</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="securing-sep-s-internal-communications-and-management-endpoints">
+<h2 id="securing-sep-s-internal-communications-and-management-endpoints">Securing SEP’s internal communications and management endpoints<a class="headerlink" href="#securing-sep-s-internal-communications-and-management-endpoints" title="Permalink to this heading">#</a></h2>
+<p>Documentation for the material covered in this section is found
+<a class="reference internal" href="../security/internal-communication.html"><span class="doc std std-doc">here</span></a>.</p>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/KiMyRc3PSh0?si=PEGYS6GS_BVOQL11&amp;start=4695" title="YouTube video player" width="560"></iframe><p>Running time: ~16 min.</p>
+<table>
+<colgroup>
+<col style="width: 100%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Securing the Starburst cluster itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shared secret.</p></td>
+</tr>
+<tr class="row-even"><td><p>Internal HTTPS.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secrets management.</p></td>
+</tr>
+<tr class="row-even"><td><p>Management endpoints.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-security">
+<h2 id="data-security">Data security<a class="headerlink" href="#data-security" title="Permalink to this heading">#</a></h2>
+<p>We recommend the following additional reading, which covers enabling
+SEP’s powerful built-in role-based access control:</p>
+<ul class="simple">
+<li><p>SEP’s <a class="reference internal" href="../security/biac-overview.html"><span class="doc">built-in access control</span></a></p></li>
+</ul>
+<p>SEP provides <a class="reference internal" href="../security/built-in-system-access-control.html"><span class="doc">Built-in system access control</span></a> as a method for implementing
+global access control:</p>
+<p>While we strongly recommend implementing global access control, you can still
+secure Hive at the catalog level if your particular situation makes that
+necessary. Documentation covering the various options for securing Hive at the
+catalog level can be found as follows:</p>
+<ul class="simple">
+<li><p>SEP’s <a class="reference internal" href="../security/biac-overview.html"><span class="doc">built-in access control</span></a></p></li>
+<li><p><a class="reference internal" href="../connector/hive-security.html"><span class="doc">Configuring Hive security</span></a></p></li>
+</ul>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/KiMyRc3PSh0?si=3SpleeOSpZaxaVXV&amp;start=6650" title="YouTube video player" width="560"></iframe><p>Running time: ~18 min.</p>
+<table>
+<colgroup>
+<col style="width: 100%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Authorization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../connector/hive-security.html#hive-thrift-service-authentication"><span class="std std-ref">Metastore authentication</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../connector/hive-security.html#hdfs-authentication"><span class="std std-ref">HDFS authentication</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kerberos debugging.</p></td>
+</tr>
+<tr class="row-even"><td><p>S3 authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Google Cloud authentication</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="fault-tolerant-execution.html" title="Enable fault-tolerant execution for queries in SEP"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Enable fault-tolerant execution for queries in SEP </span>
+              </div>
+            </a>
+          
+          
+            <a href="performance-tuning.html" title="Tuning your cluster performance"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Tuning your cluster performance </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
