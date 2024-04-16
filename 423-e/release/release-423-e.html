@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Data Analytics Engine 423-e.3 LTS logo">
+                   alt="Dell Data Analytics Engine 423-e.12 LTS logo">
           
         </a>
       </div>
@@ -201,7 +201,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 423-e.3 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 423-e.12 LTS</a>
   </label>
   
 
@@ -385,7 +385,7 @@
     <li class="md-nav__item">
     
     
-      <a href="../versions.html" class="md-nav__link">423-e.3 LTS and others</a>
+      <a href="../versions.html" class="md-nav__link">423-e.12 LTS and others</a>
       
     
     </li>
@@ -439,6 +439,24 @@
         <li class="md-nav__item"><a href="#e-2-changes-19-sep-2023" class="md-nav__link">423-e.2 changes (19 Sep 2023)</a>
         </li>
         <li class="md-nav__item"><a href="#e-3-changes-2-oct-2023" class="md-nav__link">423-e.3 changes (2 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-4-changes-18-oct-2023" class="md-nav__link">423-e.4 changes (18 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-5-changes-31-oct-2023" class="md-nav__link">423-e.5 changes (31 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-6-changes-13-nov-2023" class="md-nav__link">423-e.6 changes (13 Nov 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-7-changes-27-nov-2023" class="md-nav__link">423-e.7 changes (27 Nov 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-8-changes-21-dec-2023" class="md-nav__link">423-e.8 changes (21 Dec 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-9-changes-18-jan-2024" class="md-nav__link">423-e.9 changes (18 Jan 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-10-changes-14-feb-2024" class="md-nav__link">423-e.10 changes (14 Feb 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-11-changes-11-mar-2024" class="md-nav__link">423-e.11 changes (11 Mar 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-12-changes-28-mar-2024" class="md-nav__link">423-e.12 changes (28 Mar 2024)</a>
         </li></ul>
             </nav>
         </li>
@@ -628,6 +646,24 @@
         <li class="md-nav__item"><a href="#e-2-changes-19-sep-2023" class="md-nav__link">423-e.2 changes (19 Sep 2023)</a>
         </li>
         <li class="md-nav__item"><a href="#e-3-changes-2-oct-2023" class="md-nav__link">423-e.3 changes (2 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-4-changes-18-oct-2023" class="md-nav__link">423-e.4 changes (18 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-5-changes-31-oct-2023" class="md-nav__link">423-e.5 changes (31 Oct 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-6-changes-13-nov-2023" class="md-nav__link">423-e.6 changes (13 Nov 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-7-changes-27-nov-2023" class="md-nav__link">423-e.7 changes (27 Nov 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-8-changes-21-dec-2023" class="md-nav__link">423-e.8 changes (21 Dec 2023)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-9-changes-18-jan-2024" class="md-nav__link">423-e.9 changes (18 Jan 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-10-changes-14-feb-2024" class="md-nav__link">423-e.10 changes (14 Feb 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-11-changes-11-mar-2024" class="md-nav__link">423-e.11 changes (11 Mar 2024)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-12-changes-28-mar-2024" class="md-nav__link">423-e.12 changes (28 Mar 2024)</a>
         </li></ul>
             </nav>
         </li>
@@ -770,7 +806,6 @@ snowflake-parallel connector.</p></li>
 prevented results from being visible.</p></li>
 <li><p>Fixed failure when performing an <code class="docutils literal notranslate"><span class="pre">OUTER</span> <span class="pre">JOIN</span></code> involving geospatial functions
 in the <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> clause.</p></li>
-<li><p>Fixed potential unnecessary autoscaling triggers when Warp Speed is enabled.</p></li>
 <li><p>Fixed download and troubleshoot options in the query editor when BIAC is
 enabled.</p></li>
 </ul>
@@ -785,6 +820,114 @@ sets.</p></li>
 <li><p>Fixed issue where the catalog name was included twice when creating an access
 policy for a catalog session property (BIAC).</p></li>
 <li><p>Added access control check to redirected tables when getting comments.</p></li>
+</ul>
+</section>
+<section id="e-4-changes-18-oct-2023">
+<span id="release-423-e-4"></span><h2 id="e-4-changes-18-oct-2023">423-e.4 changes (18 Oct 2023)<a class="headerlink" href="#e-4-changes-18-oct-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed issue for Avro native readers and writers in situations where the
+provided schema contained camelCase in fields.</p></li>
+<li><p>Fixed performance issue when reading with the native CSV reader on Hive.</p></li>
+<li><p>Fixed instant file name path retrieval in Hudi Active Timeline.</p></li>
+<li><p>Improved performance for filtering catalogs, schemas, tables, and columns in
+BIAC.</p></li>
+<li><p>Fixed MongoDB mixed case schemas with custom roles.</p></li>
+<li><p>Fixed performance issue with HMS calls by disabling batch fetch tables and
+views.</p></li>
+<li><p>Fixed inferring type of decimals with leading zeros in MongoDB.</p></li>
+<li><p>Remediated CVE-2018-20839.</p></li>
+</ul>
+</section>
+<section id="e-5-changes-31-oct-2023">
+<span id="release-423-e-5"></span><h2 id="e-5-changes-31-oct-2023">423-e.5 changes (31 Oct 2023)<a class="headerlink" href="#e-5-changes-31-oct-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed incorrect column statistics for Parquet file format in manifest files.</p></li>
+<li><p>Cast <code class="docutils literal notranslate"><span class="pre">char</span></code> fields, if necessary, to <code class="docutils literal notranslate"><span class="pre">varchar</span></code> type in Hive view
+translations.</p></li>
+<li><p>Fixed incorrect results for queries involving an aggregation in a correlated
+subquery.</p></li>
+</ul>
+</section>
+<section id="e-6-changes-13-nov-2023">
+<span id="release-423-e-6"></span><h2 id="e-6-changes-13-nov-2023">423-e.6 changes (13 Nov 2023)<a class="headerlink" href="#e-6-changes-13-nov-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed incorrect results for queries involving <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> and window
+functions with ordered frames.</p></li>
+<li><p>Masked additional sensitive values in log files.</p></li>
+<li><p>Fixed incorrect results in MongoDB when a query contains several <code class="docutils literal notranslate"><span class="pre">!=</span></code> or
+<code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">IN</span></code> predicates.</p></li>
+<li><p>Improved support for concurrent updates of table statistics in Glue.</p></li>
+<li><p>Support <code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">SCHEMA</span></code> and <code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">TABLE</span></code> when
+<code class="docutils literal notranslate"><span class="pre">snowflake.database-prefix-for-schema.enabled=true</span></code>.</p></li>
+<li><p>Remediated CVE-2023-39410.</p></li>
+</ul>
+</section>
+<section id="e-7-changes-27-nov-2023">
+<span id="release-423-e-7"></span><h2 id="e-7-changes-27-nov-2023">423-e.7 changes (27 Nov 2023)<a class="headerlink" href="#e-7-changes-27-nov-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed possible JVM crash when reading short decimal columns in parquet files
+created by Impala (Hive, Hudi, Delta, Iceberg).</p></li>
+<li><p>Remediated CVE-2023-41900.</p></li>
+<li><p>Granting execution rights on a non-qualified function no longer makes all
+catalogs visible.</p></li>
+</ul>
+</section>
+<section id="e-8-changes-21-dec-2023">
+<span id="release-423-e-8"></span><h2 id="e-8-changes-21-dec-2023">423-e.8 changes (21 Dec 2023)<a class="headerlink" href="#e-8-changes-21-dec-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Improved query planning time on Hive tables without statistics generated.</p></li>
+<li><p>Upgraded JDK to 17.0.8 to fix worker JVM crashes.</p></li>
+<li><p>Fixed long query planning times for queries with many local exchanges.</p></li>
+<li><p>Fixed query failure when reading parquet column index for timestamped columns
+in Hive, Delta, Iceberg, and Hudi tables.</p></li>
+<li><p>Fixed reading JSON columns with more than 128 keys.</p></li>
+<li><p>Fixed incorrect results for <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with some strings containing repeated
+substrings.</p></li>
+<li><p>Fixed deletes in Delta tables with partitions with special characters.</p></li>
+<li><p>Fixed coordinator memory leak.</p></li>
+</ul>
+</section>
+<section id="e-9-changes-18-jan-2024">
+<span id="release-423-e-9"></span><h2 id="e-9-changes-18-jan-2024">423-e.9 changes (18 Jan 2024)<a class="headerlink" href="#e-9-changes-18-jan-2024" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed incorrect results on parquet files containing page indexes when the
+query has filters on multiple columns in Hive, Delta, and Hudi tables.</p></li>
+</ul>
+</section>
+<section id="e-10-changes-14-feb-2024">
+<span id="release-423-e-10"></span><h2 id="e-10-changes-14-feb-2024">423-e.10 changes (14 Feb 2024)<a class="headerlink" href="#e-10-changes-14-feb-2024" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed query failure when reading array columns.</p></li>
+<li><p>Fixed a bug where an entire directory is skipped from schema discovery if at
+least one file matched the <code class="docutils literal notranslate"><span class="pre">excludePatterns</span></code> option.</p></li>
+<li><p>Fixed out-of-bound (OOB) telemetry null pointer exception in parallel
+Snowflake connector.</p></li>
+<li><p>Fixed complex expression pushdown in the Redshift connector.</p></li>
+<li><p>Fixed a bug where query history displayed queries of another user.</p></li>
+</ul>
+</section>
+<section id="e-11-changes-11-mar-2024">
+<span id="release-423-e-11"></span><h2 id="e-11-changes-11-mar-2024">423-e.11 changes (11 Mar 2024)<a class="headerlink" href="#e-11-changes-11-mar-2024" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated Kubernetes external secret operator.</p></li>
+<li><p>Fixed UI authentication for large authentication tokens.</p></li>
+<li><p>Fixed incorrect results for <code class="docutils literal notranslate"><span class="pre">DATETIMEOFFSET</span></code> values before the year 1400.</p></li>
+<li><p>Fixed query failure when using <code class="docutils literal notranslate"><span class="pre">char</span></code> types with the <a class="reference internal" href="../functions/string.html#reverse" title="reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a>
+function.</p></li>
+<li><p>Fixed schema, table, and function visibility in BIAC filtering.</p></li>
+<li><p>Fixed a bug where column statistics created in SEP would not be visible in
+Hive when using CDP 7.</p></li>
+</ul>
+</section>
+<section id="e-12-changes-28-mar-2024">
+<span id="release-423-e-12"></span><h2 id="e-12-changes-28-mar-2024">423-e.12 changes (28 Mar 2024)<a class="headerlink" href="#e-12-changes-28-mar-2024" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed an issue which caused the <code class="docutils literal notranslate"><span class="pre">sync_partition_metadata</span></code> operation to fail
+when partition paths had case changes.</p></li>
+<li><p>Restored support for <code class="docutils literal notranslate"><span class="pre">SymlinkTextInputFormat</span></code> for text formats.</p></li>
+<li><p>Fixed reading Delta Lake files with encoded characters on Azure.</p></li>
+<li><p>Fixed failure when reading certain Avro data with <code class="docutils literal notranslate"><span class="pre">UNION</span></code> data types.</p></li>
+<li><p>Fixed reading large SequenceFile, RCFile, or Avro files.</p></li>
 </ul>
 </section>
 </section>

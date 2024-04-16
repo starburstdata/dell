@@ -118,7 +118,7 @@
            class="md-header-nav__button md-logo">
           
               <img src="../_static/dell.png"
-                   alt="Dell Data Analytics Engine 423-e.3 LTS logo">
+                   alt="Dell Data Analytics Engine 423-e.12 LTS logo">
           
         </a>
       </div>
@@ -183,7 +183,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../non-object-storage.html" class="md-tabs__link">Non-object storage connectors</a></li>
+          <li class="md-tabs__item"><a href="../object-storage.html" class="md-tabs__link">Object storage connectors</a></li>
           <li class="md-tabs__item"><a href="hive.html" class="md-tabs__link">Hive connector</a></li>
       </ul>
     </div>
@@ -202,7 +202,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 423-e.3 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 423-e.12 LTS</a>
   </label>
   
 
@@ -328,91 +328,37 @@
     
     
       <a href="../object-storage.html" class="md-nav__link">Object storage connectors</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="../non-object-storage.html" class="md-nav__link">Non-object storage connectors</a>
       <ul class="md-nav__list"> 
     <li class="md-nav__item">
     
     
-      <a href="../non-object-storage.html#connector-types" class="md-nav__link">Connector types</a>
+      <a href="../object-storage.html#id1" class="md-nav__link">Object storage connectors</a>
       <ul class="md-nav__list"> 
     <li class="md-nav__item">
     
     
-      <a href="../non-object-storage.html#rdbms-connectors" class="md-nav__link">RDBMS connectors</a>
+      <a href="starburst-delta-lake.html" class="md-nav__link">Delta Lake connector (Starburst)</a>
       
     
     </li>
     <li class="md-nav__item">
     
     
-      <a href="../non-object-storage.html#key-value-store-connectors" class="md-nav__link">Key-value store connectors</a>
+      <a href="starburst-hive.html" class="md-nav__link">Hive connector (Starburst)</a>
       
     
     </li>
     <li class="md-nav__item">
     
     
-      <a href="../non-object-storage.html#stream-processing-system-connectors" class="md-nav__link">Stream processing system connectors</a>
+      <a href="hudi.html" class="md-nav__link">Hudi connector (Trino)</a>
       
     
     </li>
     <li class="md-nav__item">
     
     
-      <a href="../non-object-storage.html#document-oriented-databases" class="md-nav__link">Document-oriented databases</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="../non-object-storage.html#other-connectors" class="md-nav__link">Other connectors</a>
-      <ul class="md-nav__list"> 
-    <li class="md-nav__item">
-    
-    
-      <a href="druid.html" class="md-nav__link">Druid connector (Trino)</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="pinot.html" class="md-nav__link">Pinot connector (Trino)</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="starburst-salesforce.html" class="md-nav__link">Salesforce connector (Starburst)</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="starburst-splunk.html" class="md-nav__link">Splunk connector (Starburst)</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="prometheus.html" class="md-nav__link">Prometheus connector (Trino)</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="bigquery.html" class="md-nav__link">BigQuery connector</a>
+      <a href="starburst-iceberg.html" class="md-nav__link">Iceberg connector (Starburst)</a>
       
     
     </li>
@@ -426,15 +372,193 @@
     <li class="md-nav__item">
     
     
-      <a href="starburst-hbase.html" class="md-nav__link">Starburst HBase connector</a>
+      <a href="hive.html" class="md-nav__link">Hive connector</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Security </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Security</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#connector-hive-security--page-root" class="md-nav__link">Hive connector security configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#overview" class="md-nav__link">Overview</a>
+        </li>
+        <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#kerberos" class="md-nav__link">Kerberos</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#keytab-files" class="md-nav__link">Keytab files</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#impersonation-in-hadoop" class="md-nav__link">Impersonation in Hadoop</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#authentication" class="md-nav__link">Authentication</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#hive-metastore-thrift-service-authentication" class="md-nav__link">Hive metastore Thrift service authentication</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#configuration-examples" class="md-nav__link">Configuration examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#default-none-authentication-without-impersonation" class="md-nav__link">Default <code class="docutils literal notranslate"><span class="pre">NONE</span></code> authentication without impersonation</a>
+        </li>
+        <li class="md-nav__item"><a href="#kerberos-authentication-with-impersonation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">KERBEROS</span></code> authentication with impersonation</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#hdfs-authentication" class="md-nav__link">HDFS authentication</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Configuration examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#hive-security-simple" class="md-nav__link">Default <code class="docutils literal notranslate"><span class="pre">NONE</span></code> authentication without impersonation</a>
+        </li>
+        <li class="md-nav__item"><a href="#none-authentication-with-impersonation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NONE</span></code> authentication with impersonation</a>
+        </li>
+        <li class="md-nav__item"><a href="#kerberos-authentication-without-impersonation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">KERBEROS</span></code> authentication without impersonation</a>
+        </li>
+        <li class="md-nav__item"><a href="#hive-security-kerberos-impersonation" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">KERBEROS</span></code> authentication with impersonation</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#authorization" class="md-nav__link">Authorization</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#sql-standard-based-authorization" class="md-nav__link">SQL standard based authorization</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
       
     
     </li>
     <li class="md-nav__item">
     
     
-      <a href="hive.html" class="md-nav__link">Hive connector</a>
+      <a href="hive-s3.html" class="md-nav__link">Amazon S3</a>
       
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive-azure.html" class="md-nav__link">Azure Storage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive-gcs-tutorial.html" class="md-nav__link">Google Cloud Storage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive-cos.html" class="md-nav__link">IBM Cloud Object Storage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive-caching.html" class="md-nav__link">Storage Caching</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive-alluxio.html" class="md-nav__link">Alluxio</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#requirements" class="md-nav__link">Requirements</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#general-configuration" class="md-nav__link">General configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#metastores" class="md-nav__link">Metastores</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#storage" class="md-nav__link">Storage</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#security" class="md-nav__link">Security</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#sql-support" class="md-nav__link">SQL support</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#fault-tolerant-execution-support" class="md-nav__link">Fault-tolerant execution support</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#performance" class="md-nav__link">Performance</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#file-formats" class="md-nav__link">File formats</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="hive.html#hive-3-related-limitations" class="md-nav__link">Hive 3-related limitations</a>
+      
+    
+    </li></ul>
     
     </li>
     <li class="md-nav__item">
@@ -443,60 +567,23 @@
       <a href="iceberg.html" class="md-nav__link">Iceberg connector</a>
       
     
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="kafka.html" class="md-nav__link">Kafka connector</a>
-      
+    </li></ul>
     
     </li>
     <li class="md-nav__item">
     
     
-      <a href="mysql.html" class="md-nav__link">MySQL connector</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="oracle.html" class="md-nav__link">Oracle connector</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="postgresql.html" class="md-nav__link">PostgreSQL connector</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="singlestore.html" class="md-nav__link">SingleStore connector</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="sqlserver.html" class="md-nav__link">SQL Server connector</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="mongodb.html" class="md-nav__link">MongoDB connector</a>
+      <a href="../object-storage.html#object-storage-extensions" class="md-nav__link">Object storage extensions</a>
       
     
     </li></ul>
     
-    </li></ul>
+    </li>
+    <li class="md-nav__item">
     
-    </li></ul>
+    
+      <a href="../non-object-storage.html" class="md-nav__link">Non-object storage connectors</a>
+      
     
     </li>
     <li class="md-nav__item">
@@ -547,7 +634,7 @@
     <li class="md-nav__item">
     
     
-      <a href="../versions.html" class="md-nav__link">423-e.3 LTS and others</a>
+      <a href="../versions.html" class="md-nav__link">423-e.12 LTS and others</a>
       
     
     </li>
