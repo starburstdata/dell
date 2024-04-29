@@ -109,28 +109,43 @@
   <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
   <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
   <a href="#installation/kubernetes" tabindex="1" class="md-skip"> Skip to content </a>
-  
-<header class="md-header" data-md-component="header">
+  <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="http://dell.starburst.io" title="Dell Data Analytics Engine"
-           class="md-header-nav__button md-logo">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
           
-              <img src="../_static/dell.png"
-                   alt="Dell Data Analytics Engine 435-e.3 LTS logo">
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 435-e.4 LTS logo"
+          />
           
-        </a>
+        </span>
       </div>
       <span class="header-divider"></span>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">Trino on Kubernetes with Helm</div>
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Trino on Kubernetes with Helm
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
         
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -158,8 +173,7 @@
 </div>
 
       </div>
-      
-      
+       
   
   <script src="../_static/javascripts/version_dropdown.js"></script>
   <script>
@@ -201,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 435-e.3 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 435-e.4 LTS</a>
   </label>
   
   
@@ -276,7 +290,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Version information</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../versions.html">435-e.3 LTS and others</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">435-e.4 LTS and others</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -535,7 +549,7 @@ configured in Trino before updating the values.</p>
 The remaining properties use their default values. Add an <code class="docutils literal notranslate"><span class="pre">example.yaml</span></code> with
 the following configuration:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span>
-  <span class="nt">tag</span><span class="p">:</span> <span class="s">"435-e.3"</span>
+  <span class="nt">tag</span><span class="p">:</span> <span class="s">"435-e.4"</span>
 <span class="nt">server</span><span class="p">:</span>
   <span class="nt">workers</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="nt">coordinator</span><span class="p">:</span>
@@ -551,7 +565,7 @@ and run more demanding queries. If the values are too high, Kubernetes might
 not be able to schedule some Trino pods, depending on other applications
 deployed in this cluster and the size of the cluster nodes.</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">.image.tag</span></code> is set to the current version, 435-e.3. Set
+<li><p><code class="docutils literal notranslate"><span class="pre">.image.tag</span></code> is set to the current version, 435-e.4. Set
 this value if you need to use a specific version of Trino. The default is
 <code class="docutils literal notranslate"><span class="pre">latest</span></code>, which is not recommended. Using <code class="docutils literal notranslate"><span class="pre">latest</span></code> will publish a new
 version of Trino with each release and a following Kubernetes deployment.</p></li>
