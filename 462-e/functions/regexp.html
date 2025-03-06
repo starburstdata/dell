@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -276,7 +276,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -293,6 +293,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -337,7 +338,7 @@
             
   <section id="regular-expression-functions">
 <h1 id="functions-regexp--page-root">Regular expression functions<a class="headerlink" href="#functions-regexp--page-root" title="Permalink to this heading">#</a></h1>
-<p>All of the regular expression functions use the <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html">Java pattern</a> syntax,
+<p>All of the regular expression functions use the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html">Java pattern</a> syntax,
 with a few notable exceptions:</p>
 <ul class="simple">
 <li><p>When using multi-line mode (enabled via the <code class="docutils literal notranslate"><span class="pre">(?m)</span></code> flag),
@@ -393,7 +394,7 @@ in <code class="docutils literal notranslate"><span class="pre">string</span></c
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">regexp_extract_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Finds all occurrences of the regular expression <code class="docutils literal notranslate"><span class="pre">pattern</span></code> in <code class="docutils literal notranslate"><span class="pre">string</span></code>
-and returns the <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html#gnumber">capturing group number</a> <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
+and returns the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html#gnumber">capturing group number</a> <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">regexp_extract_all</span><span class="p">(</span><span class="s1">'1a 2b 14m'</span><span class="p">,</span> <span class="s1">'(\d+)([a-z]+)'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">-- ['a', 'b', 'm']</span>
 </pre></div>
 </div>
@@ -411,7 +412,7 @@ in <code class="docutils literal notranslate"><span class="pre">string</span></c
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">regexp_extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span></dt>
 <dd><p>Finds the first occurrence of the regular expression <code class="docutils literal notranslate"><span class="pre">pattern</span></code> in
-<code class="docutils literal notranslate"><span class="pre">string</span></code> and returns the <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html#gnumber">capturing group number</a> <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">string</span></code> and returns the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html#gnumber">capturing group number</a> <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">regexp_extract</span><span class="p">(</span><span class="s1">'1a 2b 14m'</span><span class="p">,</span> <span class="s1">'(\d+)([a-z]+)'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">-- 'a'</span>
 </pre></div>
 </div>
@@ -472,7 +473,7 @@ starting from <code class="docutils literal notranslate"><span class="pre">start
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">regexp_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span></dt>
 <dd><p>Replaces every instance of the substring matched by the regular expression
-<code class="docutils literal notranslate"><span class="pre">pattern</span></code> in <code class="docutils literal notranslate"><span class="pre">string</span></code> with <code class="docutils literal notranslate"><span class="pre">replacement</span></code>. <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html#cg">Capturing groups</a> can be
+<code class="docutils literal notranslate"><span class="pre">pattern</span></code> in <code class="docutils literal notranslate"><span class="pre">string</span></code> with <code class="docutils literal notranslate"><span class="pre">replacement</span></code>. <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html#cg">Capturing groups</a> can be
 referenced in <code class="docutils literal notranslate"><span class="pre">replacement</span></code> using <code class="docutils literal notranslate"><span class="pre">$g</span></code> for a numbered group or
 <code class="docutils literal notranslate"><span class="pre">${name}</span></code> for a named group. A dollar sign (<code class="docutils literal notranslate"><span class="pre">$</span></code>) may be included in the
 replacement by escaping it with a backslash (<code class="docutils literal notranslate"><span class="pre">\$</span></code>):</p>
@@ -485,7 +486,7 @@ replacement by escaping it with a backslash (<code class="docutils literal notra
 <span class="sig-name descname"><span class="pre">regexp_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span></dt>
 <dd><p>Replaces every instance of the substring matched by the regular expression
 <code class="docutils literal notranslate"><span class="pre">pattern</span></code> in <code class="docutils literal notranslate"><span class="pre">string</span></code> using <code class="docutils literal notranslate"><span class="pre">function</span></code>. The <a class="reference internal" href="lambda.html"><span class="doc">lambda expression</span></a>
-<code class="docutils literal notranslate"><span class="pre">function</span></code> is invoked for each match with the <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html#cg">capturing groups</a> passed as an
+<code class="docutils literal notranslate"><span class="pre">function</span></code> is invoked for each match with the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html#cg">capturing groups</a> passed as an
 array. Capturing group numbers start at one; there is no group for the entire match
 (if you need this, surround the entire expression with parenthesis).</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">regexp_replace</span><span class="p">(</span><span class="s1">'new york'</span><span class="p">,</span> <span class="s1">'(\w)(\w*)'</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="k">upper</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="k">lower</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span> <span class="c1">--'New York'</span>

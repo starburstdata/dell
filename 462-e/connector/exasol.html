@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -255,8 +255,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="accumulo.html">Accumulo connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="druid.html">Druid connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Exasol connector</a><ul>
@@ -289,6 +287,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="faker.html">Faker connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="googlesheets.html">Google Sheets connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ignite.html">Ignite connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kinesis.html">Kinesis connector</a></li>
@@ -302,6 +301,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -632,9 +632,9 @@ configured above is forwarded to <code class="docutils literal notranslate"><spa
 <code class="docutils literal notranslate"><span class="pre">case_insensitive_1.table_2</span></code> is forwarded to <code class="docutils literal notranslate"><span class="pre">CaseSensitiveName.TABLEX</span></code>.</p>
 <p>By default, when a change is made to the mapping configuration file, Trino must
 be restarted to load the changes. Optionally, you can set the
-<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-mapping.refresh-period</span></code> to have Trino refresh the
-properties without requiring a restart:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-mapping.refresh-period</span><span class="o">=</span><span class="s">30s</span>
+<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file.refresh-period</span></code> to have Trino
+refresh the properties without requiring a restart:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-matching.config-file.refresh-period</span><span class="o">=</span><span class="s">30s</span>
 </pre></div>
 </div>
 </section>

@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -336,7 +337,7 @@
 <li><p>Add support for processing the <code class="docutils literal notranslate"><span class="pre">X-Forwarded-Prefix</span></code> header when the
 <code class="docutils literal notranslate"><span class="pre">http-server.process-forwarded</span></code> property is enabled. (<a class="reference external" href="https://github.com/trinodb/trino/issues/22227">#22227</a>)</p></li>
 <li><p>Add support for the <a class="reference internal" href="../functions/array.html#euclidean_distance" title="euclidean_distance"><code class="xref py py-func docutils literal notranslate"><span class="pre">euclidean_distance()</span></code></a>, <a class="reference internal" href="../functions/array.html#dot_product" title="dot_product"><code class="xref py py-func docutils literal notranslate"><span class="pre">dot_product()</span></code></a>, and
-<a class="reference internal" href="../functions/array.html#cosine_distance" title="cosine_distance"><code class="xref py py-func docutils literal notranslate"><span class="pre">cosine_distance()</span></code></a> functions. (<a class="reference external" href="https://github.com/trinodb/trino/issues/22397">#22397</a>)</p></li>
+<a class="reference internal" href="../functions/math.html#cosine_distance" title="cosine_distance"><code class="xref py py-func docutils literal notranslate"><span class="pre">cosine_distance()</span></code></a> functions. (<a class="reference external" href="https://github.com/trinodb/trino/issues/22397">#22397</a>)</p></li>
 <li><p>Improve performance of queries with selective joins by performing fine-grained
 filtering of rows using dynamic filters. This behavior is enabled by default
 and can be disabled using the <code class="docutils literal notranslate"><span class="pre">enable-dynamic-row-filtering</span></code> configuration

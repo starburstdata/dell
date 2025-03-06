@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -208,7 +208,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -238,9 +238,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#roles-and-privileges">Roles and privileges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-logging">Cluster logging</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#dark-and-light-mode">Dark and light mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#help-menu">Help menu</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#authorization-app">Authorization app</a></li>
 </ul>
@@ -266,7 +266,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -283,6 +283,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -346,10 +347,10 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#roles-and-privileges" class="md-nav__link">Roles and privileges</a>
+        </li>
+        <li class="md-nav__item"><a href="#cluster-logging" class="md-nav__link">Cluster logging</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#dark-and-light-mode" class="md-nav__link">Dark and light mode</a>
         </li>
         <li class="md-nav__item"><a href="#help-menu" class="md-nav__link">Help menu</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -504,18 +505,43 @@ that is integrated with the Starburst Enterprise web UI. If enabled, an authoriz
 can control users’ access to data on the <strong>Roles and privileges</strong> tab.</p>
 <p>See <a class="reference internal" href="../security/biac-overview.html"><span class="doc">Built-in access control overview</span></a> for more information.</p>
 </section>
+<section id="cluster-logging">
+<span id="id1"></span><h3 id="cluster-logging">Cluster logging<a class="headerlink" href="#cluster-logging" title="Permalink to this heading">#</a></h3>
+<p>The <strong>Cluster logging</strong> tab allows you to modify log levels across your cluster.
+This feature provides the same logging capabilities as manually editing your
+<code class="docutils literal notranslate"><span class="pre">log.properties</span></code> file, but it does not require a cluster restart for changes to
+apply. You must have access to the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role to use this feature.</p>
+<p>For more information about loggers and log levels, see <a class="reference internal" href="../installation/deployment.html#log-levels"><span class="std std-ref">Log levels</span></a>.</p>
+<p>Click <strong>Modify logger</strong> to modify a logger. Only the loggers you modify through
+this interface appear in the <strong>Loggers</strong> list. The list contains the following
+columns:</p>
+<ul class="simple">
+<li><p><strong>Loggers:</strong> The name of the logger.</p></li>
+<li><p><strong>Log level:</strong> The severity of the log messages. Choose from the following log
+levels:</p>
+<ul>
+<li><p><strong>Error</strong></p></li>
+<li><p><strong>Warn</strong></p></li>
+<li><p><strong>Info</strong></p></li>
+<li><p><strong>Debug</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Reset to default log level:</strong> Resets the logger to its default
+configuration.</p></li>
+</ul>
+<p>Log levels are hierarchical. Each log level includes the log messages from the
+levels above it. For example, <strong>Debug</strong> includes messages from <strong>Info</strong>,
+<strong>Warn</strong>, and <strong>Error</strong>.</p>
+<p>The changes you make in the <strong>Cluster logging</strong> tab apply to all nodes in the
+cluster. The changes persist between cluster restarts, but they do not take
+effect until all nodes start.</p>
 </section>
-<section id="dark-and-light-mode">
-<span id="ui-light-dark-mode-toggle"></span><h2 id="dark-and-light-mode">Dark and light mode<a class="headerlink" href="#dark-and-light-mode" title="Permalink to this heading">#</a></h2>
-<p>Click the toggle to switch between light and dark modes of the Starburst Enterprise web UI:</p>
-<figure class="align-default">
-<img alt="Toggle switch between light and dark mode for UI" class="imgborder" src="../_images/light-mode-toggle.png"/>
-</figure>
 </section>
 <section id="help-menu">
 <h2 id="help-menu">Help menu<a class="headerlink" href="#help-menu" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Help (?)</strong> menu includes the following helpful links for convenience:</p>
 <ul class="simple">
+<li><p><strong>Web UI:</strong> Link to the <a class="reference internal" href="../admin/web-interface.html"><span class="doc">Trino web UI</span></a></p></li>
 <li><p><strong>Documentation:</strong> Link to the <a class="reference internal" href="../insights.html"><span class="doc">Insights documentation</span></a></p></li>
 <li><p><strong>Authorization app:</strong> If configured by an administrator, links to the
 authorization app used in the cluster.</p></li>
@@ -527,13 +553,13 @@ that opens the UI of the cluster’s associated authorization app, if any.</p>
 <p>The <strong>Help</strong> menu only contains the <strong>Authorization UI</strong> link if an
 administrator configures the coordinator’s <code class="docutils literal notranslate"><span class="pre">config.properties</span></code> with the
 <code class="docutils literal notranslate"><span class="pre">insights.authorization-application.url</span></code> property, using a value pointing to a
-valid URL for an authorization app.</p>
+valid URL for an authorization app such as the Privacera Platform.</p>
 <p>You can replace the default “<strong>Authorization UI</strong>” text of this submenu by using
 the <code class="docutils literal notranslate"><span class="pre">insights.authorization-application.label</span></code> property.</p>
 <p>The following table shows the configuration properties for the authorization
 app:</p>
-<table id="id1">
-<caption><span class="caption-text">Authorization app configuration properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">Authorization app configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 65%"/>

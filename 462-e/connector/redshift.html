@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -253,6 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -260,7 +261,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elasticsearch.html">Elasticsearch connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-generic-jdbc.html">Generic JDBC connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-greenplum.html">Greenplum connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-kafka.html">Kafka connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kudu.html">Kudu connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-maxcompute.html">MaxCompute connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB connector</a></li>
@@ -276,6 +277,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#data-source-authentication">Data source authentication</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#multiple-redshift-databases-or-clusters">Multiple Redshift databases or clusters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appending-query-metadata">Appending query metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#domain-compaction-threshold">Domain compaction threshold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#case-insensitive-matching">Case insensitive matching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#non-transactional-insert">Non-transactional INSERT</a></li>
@@ -290,6 +292,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update">UPDATE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alter-table-execute">ALTER TABLE EXECUTE</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#collect-statistics">collect_statistics</a></li>
@@ -345,12 +348,13 @@
 <li class="toctree-l2"><a class="reference internal" href="sqlserver.html">SQL Server connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-synapse.html">Synapse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-teradata.html">Teradata connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-vertica.html">Vertica connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vertica.html">Vertica connector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -399,6 +403,8 @@
         </li>
         <li class="md-nav__item"><a href="#general-configuration-properties" class="md-nav__link">General configuration properties</a>
         </li>
+        <li class="md-nav__item"><a href="#appending-query-metadata" class="md-nav__link">Appending query metadata</a>
+        </li>
         <li class="md-nav__item"><a href="#domain-compaction-threshold" class="md-nav__link">Domain compaction threshold</a>
         </li>
         <li class="md-nav__item"><a href="#case-insensitive-matching" class="md-nav__link">Case insensitive matching</a>
@@ -423,6 +429,8 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#update" class="md-nav__link">UPDATE</a>
+        </li>
         <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
         </li>
         <li class="md-nav__item"><a href="#alter-table-execute" class="md-nav__link">ALTER TABLE EXECUTE</a><nav class="md-nav">
@@ -531,8 +539,8 @@ the Redshift connector by setting the <code class="docutils literal notranslate"
 appropriate for your setup:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">redshift</span>
 <span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:redshift://example.net:5439/database</span>
-<span class="na">connection-user</span><span class="o">=</span><span class="s">redshift_username</span>
-<span class="na">connection-password</span><span class="o">=</span><span class="s">redshift_password</span>
+<span class="na">connection-user</span><span class="o">=</span><span class="s">root</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">secret</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">connection-user</span></code> and <code class="docutils literal notranslate"><span class="pre">connection-password</span></code> are typically required and
@@ -740,6 +748,48 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">20s</sp
 </tbody>
 </table>
 </section>
+<section id="appending-query-metadata">
+<h3 id="appending-query-metadata">Appending query metadata<a class="headerlink" href="#appending-query-metadata" title="Permalink to this heading">#</a></h3>
+<p>The optional parameter <code class="docutils literal notranslate"><span class="pre">query.comment-format</span></code> allows you to configure a SQL
+comment that is sent to the datasource with each query. The format of this
+comment can contain any characters and the following metadata:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$QUERY_ID</span></code>: The identifier of the query.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$USER</span></code>: The name of the user who submits the query to Trino.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$SOURCE</span></code>: The identifier of the client tool used to submit the query, for
+example <code class="docutils literal notranslate"><span class="pre">trino-cli</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$TRACE_TOKEN</span></code>: The trace token configured with the client tool.</p></li>
+</ul>
+<p>The comment can provide more context about the query. This additional
+information is available in the logs of the datasource. To include environment
+variables from the Trino cluster with the comment , use the
+<code class="docutils literal notranslate"><span class="pre">${ENV:VARIABLE-NAME}</span></code> syntax.</p>
+<p>The following example sets a simple comment that identifies each query sent by
+Trino:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>query.comment-format=Query sent by Trino.
+</pre></div>
+</div>
+<p>With this configuration, a query such as <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">example_table;</span></code> is
+sent to the datasource with the comment appended:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SELECT * FROM example_table; /*Query sent by Trino.*/
+</pre></div>
+</div>
+<p>The following example improves on the preceding example by using metadata:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>query.comment-format=Query $QUERY_ID sent by user $USER from Trino.
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">Jane</span></code> sent the query with the query identifier
+<code class="docutils literal notranslate"><span class="pre">20230622_180528_00000_bkizg</span></code>, the following comment string is sent to the
+datasource:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SELECT * FROM example_table; /*Query 20230622_180528_00000_bkizg sent by user Jane from Trino.*/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Certain JDBC driver settings and logging configurations might cause the
+comment to be removed.</p>
+</div>
+</section>
 <section id="domain-compaction-threshold">
 <h3 id="domain-compaction-threshold">Domain compaction threshold<a class="headerlink" href="#domain-compaction-threshold" title="Permalink to this heading">#</a></h3>
 <p>Pushing down a large list of predicates to the data source can compromise
@@ -751,7 +801,7 @@ predicates. Increasing this threshold may improve pushdown of large
 <a class="reference internal" href="../admin/dynamic-filtering.html"><span class="doc">dynamic filters</span></a>.
 The <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> catalog configuration property or the
 <code class="docutils literal notranslate"><span class="pre">domain_compaction_threshold</span></code> <a class="reference internal" href="../sql/set-session.html#session-properties-definition"><span class="std std-ref">catalog session property</span></a> can be used to adjust the default value of
-<code class="docutils literal notranslate"><span class="pre">32</span></code> for this threshold.</p>
+<code class="docutils literal notranslate"><span class="pre">256</span></code> for this threshold.</p>
 </section>
 <section id="case-insensitive-matching">
 <h3 id="case-insensitive-matching">Case insensitive matching<a class="headerlink" href="#case-insensitive-matching" title="Permalink to this heading">#</a></h3>
@@ -797,9 +847,9 @@ configured above is forwarded to <code class="docutils literal notranslate"><spa
 <code class="docutils literal notranslate"><span class="pre">case_insensitive_1.table_2</span></code> is forwarded to <code class="docutils literal notranslate"><span class="pre">CaseSensitiveName.TABLEX</span></code>.</p>
 <p>By default, when a change is made to the mapping configuration file, Trino must
 be restarted to load the changes. Optionally, you can set the
-<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-mapping.refresh-period</span></code> to have Trino refresh the
-properties without requiring a restart:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-mapping.refresh-period</span><span class="o">=</span><span class="s">30s</span>
+<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file.refresh-period</span></code> to have Trino
+refresh the properties without requiring a restart:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-matching.config-file.refresh-period</span><span class="o">=</span><span class="s">30s</span>
 </pre></div>
 </div>
 </section>
@@ -1037,6 +1087,27 @@ statements, the connector supports the following features:</p>
 property is enabled, the connector only supports <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a> SQL
 statements.</p>
 </div>
+<section id="update">
+<h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permalink to this heading">#</a></h3>
+<p>Only <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statements with constant assignments and predicates are
+supported. For example, the following statement is supported because the values
+assigned are constants:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">table</span> <span class="k">SET</span> <span class="n">col1</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">WHERE</span> <span class="n">col3</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Arithmetic expressions, function calls, and other non-constant <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>
+statements are not supported. For example, the following statement is not
+supported because arithmetic expressions cannot be used with the <code class="docutils literal notranslate"><span class="pre">SET</span></code>
+command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">table</span> <span class="k">SET</span> <span class="n">col1</span> <span class="o">=</span> <span class="n">col2</span> <span class="o">+</span> <span class="mi">2</span> <span class="k">WHERE</span> <span class="n">col3</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>All column values of a table row cannot be updated simultaneously. For a three
+column table, the following statement is not supported:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">table</span> <span class="k">SET</span> <span class="n">col1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">col3</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
 <section id="sql-delete">
 <h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
@@ -1132,6 +1203,10 @@ requires syntax native to Redshift because the full query is pushed down and
 processed in Redshift. This can be useful for accessing native features which
 are not implemented in SEP, or for improving query performance in situations
 where running a query natively may be faster.</p>
+<p>The native query passed to the underlying data source is required to return a
+table as a result set. Only the data source performs validation or security
+checks for these queries using its own configuration. Trino does not perform
+these tasks. Only use passthrough queries to read data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The query engine does not preserve the order of the results of this
@@ -1224,7 +1299,7 @@ session property:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SET SESSION domain_compaction_threshold = 10;
 </pre></div>
 </div>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">32</span></code>.
+<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">256</span></code>.
 When the dynamic predicate for a column exceeds this threshold, it is compacted
 into a single range predicate.</p>
 <p>For example, if the dynamic filter collected for a date column <code class="docutils literal notranslate"><span class="pre">dt</span></code> on the

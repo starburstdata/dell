@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -319,7 +319,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -336,6 +336,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -690,7 +691,7 @@ for the fraction of seconds. A precision of up to 12 (picoseconds) is supported.
 <p>Example: <code class="docutils literal notranslate"><span class="pre">TIME</span> <span class="pre">'01:02:03.456'</span></code></p>
 </section>
 <section id="time-with-time-zone">
-<h3 id="time-with-time-zone"><code class="docutils literal notranslate"><span class="pre">TIME</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code><a class="headerlink" href="#time-with-time-zone" title="Permalink to this heading">#</a></h3>
+<span id="time-with-time-zone-data-type"></span><h3 id="time-with-time-zone"><code class="docutils literal notranslate"><span class="pre">TIME</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code><a class="headerlink" href="#time-with-time-zone" title="Permalink to this heading">#</a></h3>
 <p>Time of day (hour, minute, second, millisecond) with a time zone.
 Values of this type are rendered using the time zone from the value.
 Time zones are expressed as the numeric UTC offset value:</p>
@@ -783,11 +784,14 @@ UTC.</p></li>
 <span id="array-type"></span><h3 id="array"><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code><a class="headerlink" href="#array" title="Permalink to this heading">#</a></h3>
 <p>An array of the given component type.</p>
 <p>Example: <code class="docutils literal notranslate"><span class="pre">ARRAY[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p>
+<p>More information in <a class="reference internal" href="../functions/array.html"><span class="doc std std-doc">Array functions and operators</span></a>.</p>
 </section>
 <section id="map">
 <span id="map-type"></span><h3 id="map"><code class="docutils literal notranslate"><span class="pre">MAP</span></code><a class="headerlink" href="#map" title="Permalink to this heading">#</a></h3>
-<p>A map between the given component types.</p>
+<p>A map between the given component types. A map is a collection of key-value
+pairs, where each key is associated with a single value.</p>
 <p>Example: <code class="docutils literal notranslate"><span class="pre">MAP(ARRAY['foo',</span> <span class="pre">'bar'],</span> <span class="pre">ARRAY[1,</span> <span class="pre">2])</span></code></p>
+<p>More information in <a class="reference internal" href="../functions/map.html"><span class="doc std std-doc">Map functions and operators</span></a>.</p>
 </section>
 <section id="row">
 <span id="row-type"></span><h3 id="row"><code class="docutils literal notranslate"><span class="pre">ROW</span></code><a class="headerlink" href="#row" title="Permalink to this heading">#</a></h3>

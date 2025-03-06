@@ -79,7 +79,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Resource management properties" href="properties-resource-management.html" />
-    <link rel="prev" title="General properties" href="properties-general.html" />
+    <link rel="prev" title="Client protocol properties" href="properties-client-protocol.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -216,7 +216,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -257,81 +257,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../admin.html#feature-topic-areas">Feature topic areas</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../admin.html#properties-reference">Properties reference</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="properties.html">Properties reference</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="properties-general.html">General</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">HTTP server</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#general">General</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-process-forwarded"><code class="docutils literal notranslate"><span class="pre">http-server.process-forwarded</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="#http-and-https">HTTP and HTTPS</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-http-port"><code class="docutils literal notranslate"><span class="pre">http-server.http.port</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-enabled"><code class="docutils literal notranslate"><span class="pre">http-server.https.enabled</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-port"><code class="docutils literal notranslate"><span class="pre">http-server.https.port</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-included-cipher-and-http-server-https-excluded-cipher"><code class="docutils literal notranslate"><span class="pre">http-server.https.included-cipher</span></code> and <code class="docutils literal notranslate"><span class="pre">http-server.https.excluded-cipher</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-keystore-path"><code class="docutils literal notranslate"><span class="pre">http-server.https.keystore.path</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-keystore-key"><code class="docutils literal notranslate"><span class="pre">http-server.https.keystore.key</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-truststore-path"><code class="docutils literal notranslate"><span class="pre">http-server.https.truststore.path</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-truststore-key"><code class="docutils literal notranslate"><span class="pre">http-server.https.truststore.key</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-keymanager-password"><code class="docutils literal notranslate"><span class="pre">http-server.https.keymanager.password</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-secure-random-algorithm"><code class="docutils literal notranslate"><span class="pre">http-server.https.secure-random-algorithm</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-ssl-session-timeout"><code class="docutils literal notranslate"><span class="pre">http-server.https.ssl-session-timeout</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-ssl-session-cache-size"><code class="docutils literal notranslate"><span class="pre">http-server.https.ssl-session-cache-size</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-https-ssl-context-refresh-time"><code class="docutils literal notranslate"><span class="pre">http-server.https.ssl-context.refresh-time</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="#authentication">Authentication</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-type"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.type</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-allow-insecure-over-http"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.allow-insecure-over-http</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-certificate"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.certificate.*</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-jwt"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.jwt.*</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-krb5"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.krb5.*</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-oauth2"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.oauth2.*</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-authentication-password"><code class="docutils literal notranslate"><span class="pre">http-server.authentication.password.*</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="#logging">Logging</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#http-server-log"><code class="docutils literal notranslate"><span class="pre">http-server.log.*</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="properties-resource-management.html">Resource management</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-query-management.html">Query management</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-sql-environment.html">SQL environment</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-spilling.html">Spilling</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-exchange.html">Exchange</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-task.html">Task</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-write-partitioning.html">Write partitioning</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-writer-scaling.html">Writer scaling</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-node-scheduler.html">Node scheduler</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-optimizer.html">Optimizer</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-logging.html">Logging</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-web-interface.html">Web UI</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-regexp-function.html">Regular expression function</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-http-client.html">HTTP client</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties.html#property-value-types">Property value types</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#performance-related-properties-and-features">Performance-related properties and features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#data-governance">Data governance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#platform-features">Platform features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#other-resources">Other resources</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
@@ -421,6 +353,16 @@
         <li class="md-nav__item"><a href="#http-server-log" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-server.log.*</span></code></a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#internal-communication" class="md-nav__link">Internal communication</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#internal-communication-shared-secret" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">internal-communication.shared-secret</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#internal-communication-http2-enabled" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">internal-communication.http2.enabled</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#internal-communication-https-required" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">internal-communication.https.required</span></code></a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -439,7 +381,8 @@
 handles <a class="reference internal" href="../security.html"><span class="doc std std-doc">Security</span></a> including <a class="reference internal" href="../security/internal-communication.html"><span class="doc std std-doc">Secure internal communication</span></a>,  and
 serves the <a class="reference internal" href="web-interface.html"><span class="doc std std-doc">Trino web UI</span></a> and the <a class="reference internal" href="../develop/client-protocol.html"><span class="doc std std-doc">client
 API</span></a>.</p>
-<p>All properties described in this page are defined as follows:</p>
+<p>All properties described in this page are defined as follows, depending on the
+deployment type:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
 <code class="docutils literal notranslate"><span class="pre">properties.config.properties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> node
@@ -615,6 +558,40 @@ automatically set to <code class="docutils literal notranslate"><span class="pre
 <section id="http-server-log">
 <h3 id="http-server-log"><code class="docutils literal notranslate"><span class="pre">http-server.log.*</span></code><a class="headerlink" href="#http-server-log" title="Permalink to this heading">#</a></h3>
 <p>Configuration properties for <a class="reference internal" href="properties-logging.html"><span class="doc std std-doc">Logging properties</span></a>.</p>
+<p>(props-internal-communication)</p>
+</section>
+</section>
+<section id="internal-communication">
+<h2 id="internal-communication">Internal communication<a class="headerlink" href="#internal-communication" title="Permalink to this heading">#</a></h2>
+<p>The following properties are used for configuring the <a class="reference internal" href="../security/internal-communication.html"><span class="doc std std-doc">internal
+communication</span></a> between all
+<a class="reference internal" href="../overview/concepts.html#trino-concept-node"><span class="std std-ref">nodes</span></a> of a Trino cluster.</p>
+<section id="internal-communication-shared-secret">
+<h3 id="internal-communication-shared-secret"><code class="docutils literal notranslate"><span class="pre">internal-communication.shared-secret</span></code><a class="headerlink" href="#internal-communication-shared-secret" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
+</ul>
+<p>The string to use as secret that only the coordinators and workers in a specific
+cluster share and use to authenticate within the cluster. See
+<a class="reference internal" href="../security/internal-communication.html#internal-secret"><span class="std std-ref">Configure shared secret</span></a> for details.</p>
+</section>
+<section id="internal-communication-http2-enabled">
+<h3 id="internal-communication-http2-enabled"><code class="docutils literal notranslate"><span class="pre">internal-communication.http2.enabled</span></code><a class="headerlink" href="#internal-communication-http2-enabled" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-boolean"><span class="std std-ref">boolean</span></a></p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+<p>Enable use of the HTTP/2 protocol for internal communication for enhanced
+scalability compared to HTTP/1.1. Only turn this feature off if you encounter
+issues with HTTP/2 usage within the cluster in your deployment.</p>
+</section>
+<section id="internal-communication-https-required">
+<h3 id="internal-communication-https-required"><code class="docutils literal notranslate"><span class="pre">internal-communication.https.required</span></code><a class="headerlink" href="#internal-communication-https-required" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-boolean"><span class="std std-ref">boolean</span></a></p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+</ul>
+<p>Enable the use of <a class="reference internal" href="../security/internal-communication.html#internal-tls"><span class="std std-ref">SSL/TLS for all internal communication</span></a>.</p>
 </section>
 </section>
 </section>
@@ -630,7 +607,7 @@ automatically set to <code class="docutils literal notranslate"><span class="pre
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="properties-general.html" title="General properties"
+            <a href="properties-client-protocol.html" title="Client protocol properties"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -639,7 +616,7 @@ automatically set to <code class="docutils literal notranslate"><span class="pre
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> General properties </span>
+                      class="md-footer-nav__direction"> Previous </span> Client protocol properties </span>
               </div>
             </a>
           

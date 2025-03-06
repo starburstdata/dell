@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul class="current">
@@ -277,6 +277,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -401,7 +402,7 @@ system.</p>
 <a class="reference internal" href="../sql/explain.html"><span class="doc">EXPLAIN plan</span></a> of the query. If an aggregate function is successfully
 pushed down to the connector, the explain plan does <strong>not</strong> show that <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> operator.
 The explain plan only shows the operations that are performed by Trino.</p>
-<p>As an example, we loaded the TPCH data set into a PostgreSQL database and then
+<p>As an example, we loaded the TPC-H data set into a PostgreSQL database and then
 queried it using the PostgreSQL connector:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">regionkey</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
 <span class="k">FROM</span> <span class="n">nation</span>
@@ -521,7 +522,7 @@ connector:</p>
 <span class="k">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="k">JOIN</span> <span class="n">customer</span> <span class="k">c</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">custkey</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">custkey</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The following plan results from the PostgreSQL connector querying TPCH
+<p>The following plan results from the PostgreSQL connector querying TPC-H
 data in a PostgreSQL database. It does not show any <code class="docutils literal notranslate"><span class="pre">Join</span></code> operator as a
 result of the successful join push down.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Fragment 0 [SINGLE]

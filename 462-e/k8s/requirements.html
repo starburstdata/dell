@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -270,8 +271,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../k8s.html#kubernetes-cluster-design-for-starburst-enterprise">Kubernetes cluster design for Starburst Enterprise</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Plan your Kubernetes deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Plan your Kubernetes deployment</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Plan your Kubernetes deployment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#k8s-cluster-requirements">K8s cluster requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k8s-platform-services">K8s platform services</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#scaling-requirements">Scaling requirements</a></li>
@@ -280,7 +280,11 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#service-database-requirement">Service database requirement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installation-tool-requirements">Installation tool requirements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#helm-chart-repository">Helm chart repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#helm-chart-repository">Helm chart repository</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#windows-powershell">Windows PowerShell</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#linux-and-mac">Linux and Mac</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#docker-registry">Docker registry</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#license">License</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rbac-enabled-clusters">RBAC-enabled clusters</a></li>
@@ -318,9 +322,7 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#k8s-requirements--page-root" class="md-nav__link">Plan your Kubernetes deployment</a>
-        </li>
-        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Plan your Kubernetes deployment</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#k8s-requirements--page-root" class="md-nav__link">Plan your Kubernetes deployment</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#k8s-cluster-requirements" class="md-nav__link">K8s cluster requirements</a>
         </li>
@@ -336,7 +338,13 @@
         </li>
         <li class="md-nav__item"><a href="#installation-tool-requirements" class="md-nav__link">Installation tool requirements</a>
         </li>
-        <li class="md-nav__item"><a href="#helm-chart-repository" class="md-nav__link">Helm chart repository</a>
+        <li class="md-nav__item"><a href="#helm-chart-repository" class="md-nav__link">Helm chart repository</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#windows-powershell" class="md-nav__link">Windows PowerShell</a>
+        </li>
+        <li class="md-nav__item"><a href="#linux-and-mac" class="md-nav__link">Linux and Mac</a>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#docker-registry" class="md-nav__link">Docker registry</a>
         </li>
@@ -357,15 +365,12 @@
             
   <section id="plan-your-kubernetes-deployment">
 <h1 id="k8s-requirements--page-root">Plan your Kubernetes deployment<a class="headerlink" href="#k8s-requirements--page-root" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="id1">
-<h1 id="id1">Plan your Kubernetes deployment<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>Kubernetes (k8s) support for Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) allows you to run your SEP clusters
 with your additional components such as the Hive Metastore Service (HMS).</p>
 <p>The following sections detail the specific requirements and considerations when
 planning for SEP deployments using k8s.</p>
 <section id="k8s-cluster-requirements">
-<span id="id2"></span><h2 id="k8s-cluster-requirements">K8s cluster requirements<a class="headerlink" href="#k8s-cluster-requirements" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2 id="k8s-cluster-requirements">K8s cluster requirements<a class="headerlink" href="#k8s-cluster-requirements" title="Permalink to this heading">#</a></h2>
 <p>The following k8s versions are supported:</p>
 <ul class="simple">
 <li><p>1.30</p></li>
@@ -470,19 +475,60 @@ cluster workload visualization and management. The <a class="reference external"
 available in the Starburst Harbor instance at <a class="reference external" href="https://harbor.starburstdata.net/">https://harbor.starburstdata.net</a>.</p>
 <p>To obtain a customer-specific Harbor account, contact Starburst Support.</p>
 <p>To access the Starburst Helm charts data, use the <a class="reference internal" href="#oci"><span class="std std-ref">OCI API</span></a>.</p>
-<p id="oci">To authenticate to the Starburst Harbor registry storage using the OCI API, use the
-following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$REGISTRY_PASSWORD</span> <span class="p">|</span> helm registry login <span class="nv">$REGISTRY_URL</span> --username <span class="nv">$REGISTRY_USERNAME</span> --password-stdin
+<p id="oci">To download a Starburst Helm chart to your cluster, use the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm pull oci://harbor.starburstdata.net/starburstdata/charts/&lt;chart-name&gt; --version <span class="m">468</span>.0.0
 </pre></div>
 </div>
+<p>To authenticate to the Starburst Harbor registry storage using the OCI API, use the
+appropriate commands for your operating system.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#oci-powershell"><span class="std std-ref">Windows PowerShell</span></a></p></li>
+<li><p><a class="reference internal" href="#oci-linux-mac"><span class="std std-ref">Linux and Mac</span></a></p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You must log in before upgrading to a new version of a chart.</p>
 </div>
-<p>To download a Starburst Helm chart to your cluster, use the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm pull oci://harbor.starburstdata.net/starburstdata/charts/&lt;chart-name&gt; --version <span class="m">462</span>.5.0
+<section id="windows-powershell">
+<span id="oci-powershell"></span><h3 id="windows-powershell">Windows PowerShell<a class="headerlink" href="#windows-powershell" title="Permalink to this heading">#</a></h3>
+<p>To authenticate with the Harbor registry storage on Windows PowerShell, use the
+following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$env</span>:REGISTRY_PASSWORD <span class="p">|</span> helm registry login https://harbor.starburstdata.net --username <span class="nv">$env</span>:REGISTRY_USERNAME --password-stdin
 </pre></div>
 </div>
+<p>Running the login command successfully returns a <strong>Login Succeeded</strong> message in
+your CLI.</p>
+<p>To set your registry credentials as environment variables, use the following
+commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env</span>:REGISTRY_USERNAME <span class="o">=</span> <span class="s2">"your-username"</span>
+<span class="nv">$env</span>:REGISTRY_PASSWORD <span class="o">=</span> <span class="s2">"your-password"</span>
+</pre></div>
+</div>
+<p>To log out, run the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm registry <span class="nb">logout</span> https://harbor.starburstdata.net
+</pre></div>
+</div>
+</section>
+<section id="linux-and-mac">
+<span id="oci-linux-mac"></span><h3 id="linux-and-mac">Linux and Mac<a class="headerlink" href="#linux-and-mac" title="Permalink to this heading">#</a></h3>
+<p>To authenticate with the Harbor registry storage on Linux and Mac, use the
+following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$REGISTRY_PASSWORD</span> <span class="p">|</span> helm registry login https://harbor.starburstdata.net --username <span class="nv">$REGISTRY_USERNAME</span> --password-stdin
+</pre></div>
+</div>
+<p>Running the login command successfully returns a <strong>Login Succeeded</strong> message in
+your CLI.</p>
+<p>To set your registry credentials as environment variables, use the following
+commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">REGISTRY_USERNAME</span><span class="o">=</span><span class="s1">'your-username'</span>
+<span class="nb">export</span> <span class="nv">REGISTRY_PASSWORD</span><span class="o">=</span><span class="s1">'your-password'</span>
+</pre></div>
+</div>
+<p>To log out, run the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm registry <span class="nb">logout</span> https://harbor.starburstdata.net
+</pre></div>
+</div>
+</section>
 </section>
 <section id="docker-registry">
 <span id="k8s-docker-registry"></span><h2 id="docker-registry">Docker registry<a class="headerlink" href="#docker-registry" title="Permalink to this heading">#</a></h2>

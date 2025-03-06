@@ -78,8 +78,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Starburst Stargate" href="connector/starburst-stargate.html" />
-    <link rel="prev" title="Kafka connector tutorial" href="connector/kafka-tutorial.html" />
+    <link rel="next" title="Starburst Stargate connectors" href="connector/starburst-stargate.html" />
+    <link rel="prev" title="Starburst HBase connector" href="connector/starburst-hbase.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -208,7 +208,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -232,7 +232,7 @@
 <li class="toctree-l1"><a class="reference internal" href="language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -248,7 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#starburst-tools">Starburst tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="connector/starburst-stargate.html">Starburst Stargate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="connector/starburst-stargate.html">Starburst Stargate connectors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#system-information">System information</a><ul>
@@ -263,6 +263,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#other-utility-connectors">Other utility connectors</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="connector/blackhole.html">Blackhole connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="connector/faker.html">Faker connector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="connector/memory.html">Memory connector</a></li>
 </ul>
 </li>
@@ -270,6 +271,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -334,10 +336,10 @@ additional tools that are exclusive to SEP:</p>
 <p>Starburst provides the following exclusive tool for use with SEP:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="connector/starburst-stargate.html">Starburst Stargate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connector/starburst-stargate.html">Starburst Stargate connectors</a></li>
 </ul>
 </div>
-<p><a class="reference internal" href="connector/starburst-stargate.html"><span class="doc">Starburst Stargate</span></a> links a catalog on your local Starburst Enterprise
+<p><a class="reference internal" href="connector/starburst-stargate.html"><span class="doc">Starburst Stargate connectors</span></a> links a catalog on your local Starburst Enterprise
 cluster to a catalog on a remote Starburst Enterprise cluster with the same version.</p>
 </section>
 <section id="system-information">
@@ -367,6 +369,7 @@ following Starburst-supported Trino connectors connectors:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="connector/blackhole.html">Blackhole connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connector/faker.html">Faker connector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="connector/memory.html">Memory connector</a></li>
 </ul>
 </div>
@@ -384,7 +387,7 @@ following Starburst-supported Trino connectors connectors:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="connector/kafka-tutorial.html" title="Kafka connector tutorial"
+            <a href="connector/starburst-hbase.html" title="Starburst HBase connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -393,17 +396,17 @@ following Starburst-supported Trino connectors connectors:</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Kafka connector tutorial </span>
+                      class="md-footer-nav__direction"> Previous </span> Starburst HBase connector </span>
               </div>
             </a>
           
           
-            <a href="connector/starburst-stargate.html" title="Starburst Stargate"
+            <a href="connector/starburst-stargate.html" title="Starburst Stargate connectors"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Starburst Stargate </span>
+                class="md-footer-nav__direction"> Next </span> Starburst Stargate connectors </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

@@ -78,7 +78,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SQL environment properties" href="properties-sql-environment.html" />
+    <link rel="next" title="Catalog management properties" href="properties-catalog.html" />
     <link rel="prev" title="Resource management properties" href="properties-resource-management.html" />
 
   
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -216,7 +216,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -257,73 +257,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../admin.html#feature-topic-areas">Feature topic areas</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../admin.html#properties-reference">Properties reference</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="properties.html">Properties reference</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="properties-general.html">General</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-http-server.html">HTTP server</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-resource-management.html">Resource management</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">Query management</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#query-client-timeout"><code class="docutils literal notranslate"><span class="pre">query.client.timeout</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-execution-policy"><code class="docutils literal notranslate"><span class="pre">query.execution-policy</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-determine-partition-count-for-write-enabled"><code class="docutils literal notranslate"><span class="pre">query.determine-partition-count-for-write-enabled</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-hash-partition-count"><code class="docutils literal notranslate"><span class="pre">query.max-hash-partition-count</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-min-hash-partition-count"><code class="docutils literal notranslate"><span class="pre">query.min-hash-partition-count</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-min-hash-partition-count-for-write"><code class="docutils literal notranslate"><span class="pre">query.min-hash-partition-count-for-write</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-writer-task-count"><code class="docutils literal notranslate"><span class="pre">query.max-writer-task-count</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-low-memory-killer-policy"><code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.policy</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#task-low-memory-killer-policy"><code class="docutils literal notranslate"><span class="pre">task.low-memory-killer.policy</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-low-memory-killer-delay"><code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.delay</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-execution-time"><code class="docutils literal notranslate"><span class="pre">query.max-execution-time</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-length"><code class="docutils literal notranslate"><span class="pre">query.max-length</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-planning-time"><code class="docutils literal notranslate"><span class="pre">query.max-planning-time</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-run-time"><code class="docutils literal notranslate"><span class="pre">query.max-run-time</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-scan-physical-bytes"><code class="docutils literal notranslate"><span class="pre">query.max-scan-physical-bytes</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-stage-count"><code class="docutils literal notranslate"><span class="pre">query.max-stage-count</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-max-history"><code class="docutils literal notranslate"><span class="pre">query.max-history</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-min-expire-age"><code class="docutils literal notranslate"><span class="pre">query.min-expire-age</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-remote-task-enable-adaptive-request-size"><code class="docutils literal notranslate"><span class="pre">query.remote-task.enable-adaptive-request-size</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-remote-task-guaranteed-splits-per-task"><code class="docutils literal notranslate"><span class="pre">query.remote-task.guaranteed-splits-per-task</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-remote-task-max-error-duration"><code class="docutils literal notranslate"><span class="pre">query.remote-task.max-error-duration</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-remote-task-max-request-size"><code class="docutils literal notranslate"><span class="pre">query.remote-task.max-request-size</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-remote-task-request-size-headroom"><code class="docutils literal notranslate"><span class="pre">query.remote-task.request-size-headroom</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#query-info-url-template"><code class="docutils literal notranslate"><span class="pre">query.info-url-template</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#retry-policy"><code class="docutils literal notranslate"><span class="pre">retry-policy</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="#columnar-filter-evaluation-enabled"><code class="docutils literal notranslate"><span class="pre">columnar-filter-evaluation.enabled</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="properties-sql-environment.html">SQL environment</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-spilling.html">Spilling</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-exchange.html">Exchange</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-task.html">Task</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-write-partitioning.html">Write partitioning</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-writer-scaling.html">Writer scaling</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-node-scheduler.html">Node scheduler</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-optimizer.html">Optimizer</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-logging.html">Logging</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-web-interface.html">Web UI</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-regexp-function.html">Regular expression function</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties-http-client.html">HTTP client</a></li>
-<li class="toctree-l5"><a class="reference internal" href="properties.html#property-value-types">Property value types</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#performance-related-properties-and-features">Performance-related properties and features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#data-governance">Data governance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#platform-features">Platform features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../admin.html#other-resources">Other resources</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
@@ -352,7 +292,9 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#admin-properties-query-management--page-root" class="md-nav__link">Query management properties</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#admin-properties-query-management--page-root" class="md-nav__link">Query management properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Query management properties</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#query-client-timeout" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">query.client.timeout</span></code></a>
         </li>
@@ -371,8 +313,6 @@
         <li class="md-nav__item"><a href="#query-low-memory-killer-policy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.policy</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#task-low-memory-killer-policy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">task.low-memory-killer.policy</span></code></a>
-        </li>
-        <li class="md-nav__item"><a href="#query-low-memory-killer-delay" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.delay</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#query-max-execution-time" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">query.max-execution-time</span></code></a>
         </li>
@@ -419,12 +359,15 @@
             
   <section id="query-management-properties">
 <h1 id="admin-properties-query-management--page-root">Query management properties<a class="headerlink" href="#admin-properties-query-management--page-root" title="Permalink to this heading">#</a></h1>
+</section>
+<section id="id1">
+<h1 id="id1">Query management properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>All properties described in this page are defined as follows, depending on the
 deployment type:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
+<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and <code class="docutils literal notranslate"><span class="pre">worker</span></code>
+nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
 </ul>
 <section id="query-client-timeout">
 <h2 id="query-client-timeout"><code class="docutils literal notranslate"><span class="pre">query.client.timeout</span></code><a class="headerlink" href="#query-client-timeout" title="Permalink to this heading">#</a></h2>
@@ -547,17 +490,6 @@ executing for a long time, so significant amount of work is not wasted.</p></li>
 <p>Only applies for queries with task level retries enabled (<code class="docutils literal notranslate"><span class="pre">retry-policy=TASK</span></code>)</p>
 </div>
 </section>
-<section id="query-low-memory-killer-delay">
-<h2 id="query-low-memory-killer-delay"><code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.delay</span></code><a class="headerlink" href="#query-low-memory-killer-delay" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-duration"><span class="std std-ref">duration</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">5m</span></code></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">30s</span></code></p></li>
-</ul>
-<p>The amount of time a query is allowed to recover between running out of memory
-and being killed, if <code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.policy</span></code> or
-<code class="docutils literal notranslate"><span class="pre">task.low-memory-killer.policy</span></code> is set to value different than <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p>
-</section>
 <section id="query-max-execution-time">
 <h2 id="query-max-execution-time"><code class="docutils literal notranslate"><span class="pre">query.max-execution-time</span></code><a class="headerlink" href="#query-max-execution-time" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -637,9 +569,10 @@ to get killed with <code class="docutils literal notranslate"><span class="pre">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-integer"><span class="std std-ref">integer</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">100</span></code></p></li>
 </ul>
-<p>The maximum number of queries to keep in the query history to provide
-statistics and other information. If this amount is reached, queries are
-removed based on age.</p>
+<p>The maximum number of queries to keep in the query history to provide statistics
+and other information, and make the data available in the
+<a class="reference internal" href="web-interface.html"><span class="doc std std-doc">Trino web UI</span></a>. If this amount is reached, queries are removed based
+on age.</p>
 </section>
 <section id="query-min-expire-age">
 <h2 id="query-min-expire-age"><code class="docutils literal notranslate"><span class="pre">query.min-expire-age</span></code><a class="headerlink" href="#query-min-expire-age" title="Permalink to this heading">#</a></h2>
@@ -647,9 +580,9 @@ removed based on age.</p>
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-duration"><span class="std std-ref">duration</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">15m</span></code></p></li>
 </ul>
-<p>The minimal age of a query in the history before it is expired. An expired
-query is removed from the query history buffer and no longer available in
-the <a class="reference internal" href="web-interface.html"><span class="doc">Trino web UI</span></a>.</p>
+<p>The minimal age of a query in the history before it is expired. An expired query
+is removed from the query history buffer and no longer available in the
+<a class="reference internal" href="web-interface.html"><span class="doc std std-doc">Trino web UI</span></a>.</p>
 </section>
 <section id="query-remote-task-enable-adaptive-request-size">
 <h2 id="query-remote-task-enable-adaptive-request-size"><code class="docutils literal notranslate"><span class="pre">query.remote-task.enable-adaptive-request-size</span></code><a class="headerlink" href="#query-remote-task-enable-adaptive-request-size" title="Permalink to this heading">#</a></h2>
@@ -766,12 +699,12 @@ Requires configuration of an <a class="reference internal" href="fault-tolerant-
             </a>
           
           
-            <a href="properties-sql-environment.html" title="SQL environment properties"
+            <a href="properties-catalog.html" title="Catalog management properties"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> SQL environment properties </span>
+                class="md-footer-nav__direction"> Next </span> Catalog management properties </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

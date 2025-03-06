@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -264,6 +264,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#mathematical-functions">Mathematical functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#random-functions">Random functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#trigonometric-functions">Trigonometric functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometric-functions">Geometric functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#floating-point-functions">Floating point functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#base-conversion-functions">Base conversion functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#statistical-functions">Statistical functions</a></li>
@@ -286,7 +287,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -303,6 +304,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -346,6 +348,8 @@
         <li class="md-nav__item"><a href="#random-functions" class="md-nav__link">Random functions</a>
         </li>
         <li class="md-nav__item"><a href="#trigonometric-functions" class="md-nav__link">Trigonometric functions</a>
+        </li>
+        <li class="md-nav__item"><a href="#geometric-functions" class="md-nav__link">Geometric functions</a>
         </li>
         <li class="md-nav__item"><a href="#floating-point-functions" class="md-nav__link">Floating point functions</a>
         </li>
@@ -611,6 +615,36 @@ See unit conversion functions <a class="reference internal" href="#degrees" titl
 <dd><p>Returns the hyperbolic tangent of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 </dd></dl>
 </section>
+<section id="geometric-functions">
+<h2 id="geometric-functions">Geometric functions<a class="headerlink" href="#geometric-functions" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cosine_distance">
+<span class="sig-name descname"><span class="pre">cosine_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array(double)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array(double)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double</span></span></span><a class="headerlink" href="#cosine_distance" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the cosine distance between two dense vectors:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">cosine_distance</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">]);</span>
+<span class="c1">-- 0.01613008990009257</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="cosine_similarity">
+<span class="sig-name descname"><span class="pre">cosine_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array(double)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array(double)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double</span></span></span><a class="headerlink" href="#cosine_similarity" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the cosine similarity of two dense vectors:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">]);</span>
+<span class="c1">-- 0.9838699100999074</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cosine_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double</span></span></span></dt>
+<dd><p>Calculates the cosine similarity of two sparse vectors:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="k">MAP</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">]),</span> <span class="k">MAP</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">]));</span>
+<span class="c1">-- 1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
 <section id="floating-point-functions">
 <h2 id="floating-point-functions">Floating point functions<a class="headerlink" href="#floating-point-functions" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
@@ -654,14 +688,6 @@ See unit conversion functions <a class="reference internal" href="#degrees" titl
 </section>
 <section id="statistical-functions">
 <h2 id="statistical-functions">Statistical functions<a class="headerlink" href="#statistical-functions" title="Permalink to this heading">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="cosine_similarity">
-<span class="sig-name descname"><span class="pre">cosine_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double</span></span></span><a class="headerlink" href="#cosine_similarity" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the cosine similarity between the sparse vectors <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="k">MAP</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">]),</span> <span class="k">MAP</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">]));</span> <span class="c1">-- 1.0</span>
-</pre></div>
-</div>
-</dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="t_pdf">
 <span class="sig-name descname"><span class="pre">t_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double</span></span></span><a class="headerlink" href="#t_pdf" title="Permalink to this definition">#</a></dt>

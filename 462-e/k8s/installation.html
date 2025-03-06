@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -271,7 +272,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../k8s.html#kubernetes-cluster-design-for-starburst-enterprise">Kubernetes cluster design for Starburst Enterprise</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="requirements.html">Plan your Kubernetes deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requirements.html#id1">Plan your Kubernetes deployment</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Starburst Enterprise in a Kubernetes cluster</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-sep">Installing SEP</a><ul>
@@ -436,7 +436,7 @@ cluster configuration file, and the catalog configuration file are located in
 the current directory:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade  my-sep starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">462</span>.5.0 <span class="se">\</span>
+    --version <span class="m">468</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
     --values ./sep-prod-catalogs.yaml
@@ -512,7 +512,7 @@ using the <code class="docutils literal notranslate"><span class="pre">--values<
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade sep-prod-cluster starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">462</span>.5.0 <span class="se">\</span>
+    --version <span class="m">468</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -546,7 +546,7 @@ configuration files, as in the following example:</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-staging-cluster starburstdata/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">462</span>.5.0 <span class="se">\</span>
+    --version <span class="m">468</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-stage-setup.yaml
 </pre></div>

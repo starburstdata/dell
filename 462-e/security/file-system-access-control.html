@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -710,12 +711,12 @@ catalog.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">FUNCTION</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">all</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ownership</span></code></p></td>
-<td><p>Not all connectors support <a class="reference internal" href="../routines/introduction.html#routine-catalog"><span class="std std-ref">catalog routines</span></a>.</p></td>
+<td><p>Not all connectors support <a class="reference internal" href="../udf/introduction.html#udf-catalog"><span class="std std-ref">Catalog user-defined functions</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">FUNCTION</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">all</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ownership</span></code></p></td>
-<td><p>Not all connectors support <a class="reference internal" href="../routines/introduction.html#routine-catalog"><span class="std std-ref">catalog routines</span></a>.</p></td>
+<td><p>Not all connectors support <a class="reference internal" href="../udf/introduction.html#udf-catalog"><span class="std std-ref">Catalog user-defined functions</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1367,11 +1368,11 @@ property.</p>
 <span id="system-file-auth-authorization"></span><h3 id="authorization-rules">Authorization rules<a class="headerlink" href="#authorization-rules" title="Permalink to this heading">#</a></h3>
 <p>These rules control the ability of how owner of schema, table or view can
 be altered. These rules are applicable to commands like:</p>
-<blockquote>
-<div><p>ALTER SCHEMA name SET AUTHORIZATION ( user | USER user | ROLE role )
-ALTER TABLE name SET AUTHORIZATION ( user | USER user | ROLE role )
-ALTER VIEW name SET AUTHORIZATION ( user | USER user | ROLE role )</p>
-</div></blockquote>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">SCHEMA</span> <span class="n">name</span> <span class="k">SET</span> <span class="k">AUTHORIZATION</span> <span class="p">(</span> <span class="k">user</span> <span class="o">|</span> <span class="k">USER</span> <span class="k">user</span> <span class="o">|</span> <span class="k">ROLE</span> <span class="k">role</span> <span class="p">)</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">name</span> <span class="k">SET</span> <span class="k">AUTHORIZATION</span> <span class="p">(</span> <span class="k">user</span> <span class="o">|</span> <span class="k">USER</span> <span class="k">user</span> <span class="o">|</span> <span class="k">ROLE</span> <span class="k">role</span> <span class="p">)</span>
+<span class="k">ALTER</span> <span class="k">VIEW</span> <span class="n">name</span> <span class="k">SET</span> <span class="k">AUTHORIZATION</span> <span class="p">(</span> <span class="k">user</span> <span class="o">|</span> <span class="k">USER</span> <span class="k">user</span> <span class="o">|</span> <span class="k">ROLE</span> <span class="k">role</span> <span class="p">)</span>
+</pre></div>
+</div>
 <p>When these rules are present, the authorization is based on the first matching
 rule, processed from top to bottom. If no rules match, the authorization is
 denied.</p>

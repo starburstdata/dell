@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -253,6 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -260,7 +261,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elasticsearch.html">Elasticsearch connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-generic-jdbc.html">Generic JDBC connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-greenplum.html">Greenplum connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-kafka.html">Kafka connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kudu.html">Kudu connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-maxcompute.html">MaxCompute connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB connector</a></li>
@@ -280,6 +281,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#domain-compaction-threshold">Domain compaction threshold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#case-insensitive-matching">Case insensitive matching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#non-transactional-insert">Non-transactional INSERT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-transactional-merge">Non-transactional MERGE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 </ul>
 </li>
@@ -338,6 +340,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#password-credential-pass-through">Password credential pass-through</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamic-connection-passthrough">Dynamic connection passthrough</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aws-iam-authentication">AWS IAM authentication</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#id1">Configuration</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#authentication">Authentication</a></li>
@@ -356,12 +359,13 @@
 <li class="toctree-l2"><a class="reference internal" href="sqlserver.html">SQL Server connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-synapse.html">Synapse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-teradata.html">Teradata connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-vertica.html">Vertica connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vertica.html">Vertica connector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -419,6 +423,8 @@
         <li class="md-nav__item"><a href="#case-insensitive-matching" class="md-nav__link">Case insensitive matching</a>
         </li>
         <li class="md-nav__item"><a href="#non-transactional-insert" class="md-nav__link">Non-transactional INSERT</a>
+        </li>
+        <li class="md-nav__item"><a href="#non-transactional-merge" class="md-nav__link">Non-transactional MERGE</a>
         </li>
         <li class="md-nav__item"><a href="#fault-tolerant-execution-support" class="md-nav__link">Fault-tolerant execution support</a>
         </li></ul>
@@ -515,6 +521,8 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#password-credential-pass-through" class="md-nav__link">Password credential pass-through</a>
+        </li>
+        <li class="md-nav__item"><a href="#dynamic-connection-passthrough" class="md-nav__link">Dynamic connection passthrough</a>
         </li>
         <li class="md-nav__item"><a href="#aws-iam-authentication" class="md-nav__link">AWS IAM authentication</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -864,9 +872,9 @@ configured above is forwarded to <code class="docutils literal notranslate"><spa
 <code class="docutils literal notranslate"><span class="pre">case_insensitive_1.table_2</span></code> is forwarded to <code class="docutils literal notranslate"><span class="pre">CaseSensitiveName.TABLEX</span></code>.</p>
 <p>By default, when a change is made to the mapping configuration file, Trino must
 be restarted to load the changes. Optionally, you can set the
-<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-mapping.refresh-period</span></code> to have Trino refresh the
-properties without requiring a restart:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-mapping.refresh-period</span><span class="o">=</span><span class="s">30s</span>
+<code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file.refresh-period</span></code> to have Trino
+refresh the properties without requiring a restart:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-matching.config-file.refresh-period</span><span class="o">=</span><span class="s">30s</span>
 </pre></div>
 </div>
 </section>
@@ -880,6 +888,17 @@ or the corresponding <code class="docutils literal notranslate"><span class="pre
 <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <p>Note that with this property enabled, data can be corrupted in rare cases where
 exceptions occur during the insert operation. With transactions disabled, no
+rollback can be performed.</p>
+</section>
+<section id="non-transactional-merge">
+<h3 id="non-transactional-merge">Non-transactional MERGE<a class="headerlink" href="#non-transactional-merge" title="Permalink to this heading">#</a></h3>
+<p>The connector supports adding rows using <a class="reference internal" href="../sql/merge.html"><span class="doc">MERGE statements</span></a>.
+However, the connector only support merge modifying directly to the target table
+at current, to use merge you need to set the
+<code class="docutils literal notranslate"><span class="pre">merge.non-transactional-merge.enabled</span></code> catalog property or the corresponding
+<code class="docutils literal notranslate"><span class="pre">non_transactional_merge_enabled</span></code> catalog session property to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Note that with this property enabled, data can be corrupted in rare cases where
+exceptions occur during the merge operation. With transactions disabled, no
 rollback can be performed.</p>
 </section>
 <section id="fault-tolerant-execution-support">
@@ -1006,6 +1025,10 @@ this table:</p>
 <td><p>Disabled, <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code>, or <code class="docutils literal notranslate"><span class="pre">JSON</span></code></p></td>
 <td><p>See <a class="reference internal" href="#postgresql-array-type-handling"><span class="std std-ref">Array type handling</span></a> for more information.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code>, <code class="docutils literal notranslate"><span class="pre">GEOMETRY(GEOMETRY</span> <span class="pre">TYPE,</span> <span class="pre">SRID)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>No other types are supported.</p>
@@ -1096,6 +1119,10 @@ this table:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code></p></td>
 <td><p>See <a class="reference internal" href="#postgresql-array-type-handling"><span class="std std-ref">Array type handling</span></a> for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1521,7 +1548,7 @@ session property:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SET SESSION domain_compaction_threshold = 10;
 </pre></div>
 </div>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">32</span></code>.
+<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">256</span></code>.
 When the dynamic predicate for a column exceeds this threshold, it is compacted
 into a single range predicate.</p>
 <p>For example, if the dynamic filter collected for a date column <code class="docutils literal notranslate"><span class="pre">dt</span></code> on the
@@ -1725,6 +1752,32 @@ file to include the authentication type:</p>
 </div>
 <p>For more information about configurations and limitations, see
 <a class="reference internal" href="../security/password-passthrough.html"><span class="doc">Password credential pass-through</span></a>.</p>
+</section>
+<section id="dynamic-connection-passthrough">
+<span id="postgresql-dynamic-passthrough"></span><h3 id="dynamic-connection-passthrough">Dynamic connection passthrough<a class="headerlink" href="#dynamic-connection-passthrough" title="Permalink to this heading">#</a></h3>
+<p>The PostgreSQL connector supports passthrough of a JDBC URL and credentials in
+the client connection. This passthrough allows users to execute queries in a
+specific JDBC URL using bundled credentials specified as extra credentials.</p>
+<p>Connection pooling is not supported with dynamic connection passthrough.</p>
+<p>To enable dynamic connection passthrough:</p>
+<ol class="arabic simple">
+<li><p>Set the following catalog configuration properties:</p></li>
+</ol>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:postgres://postgres-dynamic-passthrough</span>
+<span class="na">postgresql.authentication.type</span><span class="o">=</span><span class="s">DYNAMIC_CONNECTION</span>
+<span class="na">postgresql.impersonation.enabled</span><span class="o">=</span><span class="s">false</span>
+<span class="na">connection-pool.enabled</span><span class="o">=</span><span class="s">false</span>
+<span class="na">postgresql-jdbc-url-credential-name</span><span class="o">=</span><span class="s">postgres_jdbc_url</span>
+<span class="na">user-credential-name</span><span class="o">=</span><span class="s">user</span>
+<span class="na">password-credential-name</span><span class="o">=</span><span class="s">password</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Set up all client connections that use this catalog to append user and
+password credentials using the <code class="docutils literal notranslate"><span class="pre">extraCredentials</span></code> attribute. The JDBC URL
+must be specified with <code class="docutils literal notranslate"><span class="pre">postgres_jdbc_url</span></code> as an extra credential in the
+following format: <code class="docutils literal notranslate"><span class="pre">jdbc://postgres_server_name:server_port/</span></code>.</p></li>
+</ol>
 </section>
 <section id="aws-iam-authentication">
 <h3 id="aws-iam-authentication">AWS IAM authentication<a class="headerlink" href="#aws-iam-authentication" title="Permalink to this heading">#</a></h3>

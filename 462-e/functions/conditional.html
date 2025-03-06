@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -286,7 +286,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -303,6 +303,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -408,7 +409,7 @@ returned if it exists, otherwise null is returned. Example:</p>
        <span class="k">END</span>
 </pre></div>
 </div>
-<p>SQL routines can use <a class="reference internal" href="../routines/case.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">CASE</span></code> statements</span></a> that use a slightly
+<p>SQL UDFs can use <a class="reference internal" href="../udf/sql/case.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">CASE</span></code> statements</span></a> that use a slightly
 different syntax from the CASE expressions. Specifically note the requirements
 for terminating each clause with a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code> and the usage of <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">CASE</span></code>.</p>
 </section>
@@ -447,9 +448,9 @@ otherwise evaluates and returns <code class="docutils literal notranslate"><span
 <span class="k">FROM</span> <span class="n">tpch</span><span class="p">.</span><span class="n">sf1</span><span class="p">.</span><span class="n">orders</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>SQL routines can use <a class="reference internal" href="../routines/if.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">IF</span></code> statements</span></a> that use a slightly
-different syntax from <code class="docutils literal notranslate"><span class="pre">IF</span></code> expressions. Specifically note the requirement
-for terminating each clause with a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code> and the usage of <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">IF</span></code>.</p>
+<p>SQL UDFs can use <a class="reference internal" href="../udf/sql/if.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">IF</span></code> statements</span></a> that use a slightly different
+syntax from <code class="docutils literal notranslate"><span class="pre">IF</span></code> expressions. Specifically note the requirement for terminating
+each clause with a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code> and the usage of <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">IF</span></code>.</p>
 </section>
 <section id="coalesce">
 <span id="coalesce-function"></span><h2 id="coalesce">COALESCE<a class="headerlink" href="#coalesce" title="Permalink to this heading">#</a></h2>

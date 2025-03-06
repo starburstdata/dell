@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>TPCDS connector &#8212; Dell Data Analytics Engine</title>
+    <title>TPC-DS connector &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -78,7 +78,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TPCH connector" href="tpch.html" />
+    <link rel="next" title="TPC-H connector" href="tpch.html" />
     <link rel="prev" title="System connector" href="system.html" />
 
   
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -138,7 +138,7 @@
           class="md-flex__ellipsis md-header-nav__title"
           data-md-component="title"
         >
-          TPCDS connector
+          TPC-DS connector
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -259,7 +259,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../utilities.html#benchmarking">Benchmarking</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">TPCDS connector</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tpcds-schemas">TPCDS schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tpc-ds-schemas">TPC-DS schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#type-mapping">Type mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sql-support">SQL support</a></li>
 </ul>
@@ -272,6 +272,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -306,11 +307,11 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#connector-tpcds--page-root" class="md-nav__link">TPCDS connector</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#connector-tpcds--page-root" class="md-nav__link">TPC-DS connector</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#configuration" class="md-nav__link">Configuration</a>
         </li>
-        <li class="md-nav__item"><a href="#tpcds-schemas" class="md-nav__link">TPCDS schemas</a>
+        <li class="md-nav__item"><a href="#tpc-ds-schemas" class="md-nav__link">TPC-DS schemas</a>
         </li>
         <li class="md-nav__item"><a href="#type-mapping" class="md-nav__link">Type mapping</a>
         </li>
@@ -327,26 +328,27 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="tpcds-connector">
-<h1 id="connector-tpcds--page-root">TPCDS connector<a class="headerlink" href="#connector-tpcds--page-root" title="Permalink to this heading">#</a></h1>
-<p>The TPCDS connector provides a set of schemas to support the
+  <section id="tpc-ds-connector">
+<h1 id="connector-tpcds--page-root">TPC-DS connector<a class="headerlink" href="#connector-tpcds--page-root" title="Permalink to this heading">#</a></h1>
+<p>The TPC-DS connector provides a set of schemas to support the
 <a class="reference external" href="http://www.tpc.org/tpcds/">TPC Benchmark™ DS (TPC-DS)</a>. TPC-DS is a database
 benchmark used to measure the performance of complex decision support databases.</p>
 <p>This connector can be used to test the capabilities and query
 syntax of Trino without configuring access to an external data
-source. When you query a TPCDS schema, the connector generates the
+source. When you query a TPC-DS schema, the connector generates the
 data on the fly using a deterministic algorithm.</p>
+<p>Use the <a class="reference internal" href="faker.html"><span class="doc std std-doc">Faker connector</span></a> to create and query arbitrary data.</p>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
-<p>To configure the TPCDS connector, create a catalog properties file
+<p>To configure the TPC-DS connector, create a catalog properties file
 <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code> with the following contents:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>connector.name=tpcds
 </pre></div>
 </div>
 </section>
-<section id="tpcds-schemas">
-<h2 id="tpcds-schemas">TPCDS schemas<a class="headerlink" href="#tpcds-schemas" title="Permalink to this heading">#</a></h2>
-<p>The TPCDS connector supplies several schemas:</p>
+<section id="tpc-ds-schemas">
+<h2 id="tpc-ds-schemas">TPC-DS schemas<a class="headerlink" href="#tpc-ds-schemas" title="Permalink to this heading">#</a></h2>
+<p>The TPC-DS connector supplies several schemas:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span> <span class="n">SCHEMAS</span> <span class="k">FROM</span> <span class="n">example</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -367,8 +369,8 @@ data on the fly using a deterministic algorithm.</p>
 </pre></div>
 </div>
 <p>Ignore the standard schema <code class="docutils literal notranslate"><span class="pre">information_schema</span></code>, which exists in every
-catalog, and is not directly provided by the TPCDS connector.</p>
-<p>Every TPCDS schema provides the same set of tables. Some tables are
+catalog, and is not directly provided by the TPC-DS connector.</p>
+<p>Every TPC-DS schema provides the same set of tables. Some tables are
 identical in all schemas. The <em>scale factor</em> of the tables in a particular
 schema is determined from the schema name. For example, the schema
 <code class="docutils literal notranslate"><span class="pre">sf1</span></code> corresponds to scale factor <code class="docutils literal notranslate"><span class="pre">1</span></code> and the schema <code class="docutils literal notranslate"><span class="pre">sf300</span></code>
@@ -380,7 +382,7 @@ testing.</p>
 </section>
 <section id="type-mapping">
 <span id="tpcds-type-mapping"></span><h2 id="type-mapping">Type mapping<a class="headerlink" href="#type-mapping" title="Permalink to this heading">#</a></h2>
-<p>Trino supports all data types used within the TPCDS schemas so no mapping is
+<p>Trino supports all data types used within the TPC-DS schemas so no mapping is
 required.</p>
 </section>
 <section id="sql-support">
@@ -416,12 +418,12 @@ metadata in the TPC-DS dataset.</p>
             </a>
           
           
-            <a href="tpch.html" title="TPCH connector"
+            <a href="tpch.html" title="TPC-H connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> TPCH connector </span>
+                class="md-footer-nav__direction"> Next </span> TPC-H connector </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

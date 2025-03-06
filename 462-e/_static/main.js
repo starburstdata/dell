@@ -18,7 +18,7 @@ const menuData = [
   "SQL language",
   "SQL statement syntax",
   "Functions and operators",
-  "SQL routines",
+  "SQL UDFs",
   "Query optimizer",
   "Object storage connectors",
   "Object storage extensions",

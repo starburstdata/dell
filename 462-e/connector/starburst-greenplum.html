@@ -78,7 +78,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Starburst Kafka connector" href="starburst-kafka.html" />
+    <link rel="next" title="Kafka connector" href="kafka.html" />
     <link rel="prev" title="Starburst Generic JDBC connector" href="starburst-generic-jdbc.html" />
 
   
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -253,6 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -309,7 +310,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-kafka.html">Kafka connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kudu.html">Kudu connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-maxcompute.html">MaxCompute connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB connector</a></li>
@@ -327,12 +328,13 @@
 <li class="toctree-l2"><a class="reference internal" href="sqlserver.html">SQL Server connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-synapse.html">Synapse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-teradata.html">Teradata connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-vertica.html">Vertica connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vertica.html">Vertica connector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -817,7 +819,7 @@ runtime. This behavior is controlled with the <code class="docutils literal notr
 configuration property or the <code class="docutils literal notranslate"><span class="pre">decimal_rounding_mode</span></code> session property, which
 can be set to <code class="docutils literal notranslate"><span class="pre">UNNECESSARY</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">UP</span></code>, <code class="docutils literal notranslate"><span class="pre">DOWN</span></code>, <code class="docutils literal notranslate"><span class="pre">CEILING</span></code>,
 <code class="docutils literal notranslate"><span class="pre">FLOOR</span></code>, <code class="docutils literal notranslate"><span class="pre">HALF_UP</span></code>, <code class="docutils literal notranslate"><span class="pre">HALF_DOWN</span></code>, or <code class="docutils literal notranslate"><span class="pre">HALF_EVEN</span></code>. (See
-<a class="reference external" href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/RoundingMode.html#enum.constant.summary">RoundingMode</a>.)</p>
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/math/RoundingMode.html#enum.constant.summary">RoundingMode</a>.)</p>
 </section>
 <section id="array-type-handling">
 <h3 id="array-type-handling">Array type handling<a class="headerlink" href="#array-type-handling" title="Permalink to this heading">#</a></h3>
@@ -1067,7 +1069,7 @@ session property:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SET SESSION domain_compaction_threshold = 10;
 </pre></div>
 </div>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">32</span></code>.
+<p>By default, <code class="docutils literal notranslate"><span class="pre">domain-compaction-threshold</span></code> is set to <code class="docutils literal notranslate"><span class="pre">256</span></code>.
 When the dynamic predicate for a column exceeds this threshold, it is compacted
 into a single range predicate.</p>
 <p>For example, if the dynamic filter collected for a date column <code class="docutils literal notranslate"><span class="pre">dt</span></code> on the
@@ -1231,12 +1233,12 @@ file to include the authentication type:</p>
             </a>
           
           
-            <a href="starburst-kafka.html" title="Starburst Kafka connector"
+            <a href="kafka.html" title="Kafka connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Starburst Kafka connector </span>
+                class="md-footer-nav__direction"> Next </span> Kafka connector </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

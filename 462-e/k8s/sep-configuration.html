@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -271,7 +272,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../k8s.html#kubernetes-cluster-design-for-starburst-enterprise">Kubernetes cluster design for Starburst Enterprise</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="requirements.html">Plan your Kubernetes deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requirements.html#id1">Plan your Kubernetes deployment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation.html">Installing Starburst Enterprise in a Kubernetes cluster</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Configuring Starburst Enterprise in Kubernetes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#configuring-sep-with-helm-charts">Configuring SEP with Helm charts</a><ul>
@@ -584,7 +584,7 @@ command.</p>
 <p>When you are ready to install, specify the new file using the <code class="docutils literal notranslate"><span class="pre">--values</span></code>
 argument as in the following example. Replace 4XX.0.0 with the Helm chart
 version of the desired SEP release as documented on the <a class="reference internal" href="../versions.html"><span class="doc">versions page</span></a>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm upgrade my-sep-test-cluster starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm upgrade my-sep-test-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
   --install <span class="se">\</span>
   --version 4XX.0.0 <span class="se">\</span>
   --values ./registry-access.yaml <span class="se">\</span>
@@ -598,14 +598,14 @@ individual files. For example, it can be useful to create a separate file that
 contains all catalog definitions.</p>
 <p>To view the built-in configuration of the Helm chart for a specific version of
 SEP, run the following command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm template starburstdata/starburst-enterprise --version 4XX.0.0
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm template oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise --version 4XX.0.0
 </pre></div>
 </div>
 <p>Use this command with different version values to compare the configuration of
 different SEP releases as part of your upgrade process.</p>
 <p>To generate the specific configuration files for your deployment, use the
 template command with your additional values files:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm template starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm template oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
   --version 4XX.0.0 <span class="se">\</span>
   --values ./registry-access.yaml <span class="se">\</span>
   --values ./sep-test-setup.yaml
@@ -640,9 +640,9 @@ the sections that follow.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">registry-access.yaml</span></code></p></td>
 <td><p>Docker registry access credentials file, typically to access the Docker
 registry on the Starburst Harbor instance. Include the
-<code class="docutils literal notranslate"><span class="pre">registryCredentials:</span></code> or <code class="docutils literal notranslate"><span class="pre">imagePullSecrets:</span></code> top level node in this file to
-configure access to the Docker registry. This file can be used for all
-SEP and HMS configuration for all clusters you operate.</p></td>
+<code class="docutils literal notranslate"><span class="pre">registryCredentials:</span></code> or <code class="docutils literal notranslate"><span class="pre">imagePullSecrets:</span></code> top level node in this
+file to configure access to the Docker registry. This file can be used for
+all SEP and HMS configuration for all clusters you operate.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sep-prod-catalogs.yaml</span></code></p></td>
 <td><p>Catalog configuration for all catalogs configured for SEP on the
@@ -745,9 +745,9 @@ SEP for monitoring and troubleshooting.</p></li>
 <p>To update SEP with any configuration changes, run the <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span></code>
 command with the updated YAML files and the <code class="docutils literal notranslate"><span class="pre">--install</span></code> switch, as in this
 example:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-prod-cluster starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-prod-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">462</span>.5.0 <span class="se">\</span>
+    --version <span class="m">468</span>.0.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -1880,6 +1880,12 @@ is enabled, and configured with all necessary rules.</p></li>
 </section>
 <section id="configuration">
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before modifying the default KEDA configurations, review the <a class="reference external" href="https://keda.sh/docs/latest/concepts/scaling-deployments/#idlereplicacount">KEDA scaling
+deployment
+documentation</a>.</p>
+</div>
 <p>The following nodes and node sections configure the KEDA scaler:</p>
 <table id="id15">
 <caption><span class="caption-text">KEDA configuration nodes and sections for SEP</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
