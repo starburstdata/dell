@@ -78,8 +78,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Session property managers" href="session-property-managers.html" />
-    <link rel="prev" title="Workload management" href="workload-management.html" />
+    <link rel="next" title="Workload management" href="workload-management.html" />
+    <link rel="prev" title="Graceful shutdown" href="graceful-shutdown.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -271,7 +270,6 @@
 <li class="toctree-l4"><a class="reference internal" href="dynamic-filtering.html">Dynamic filtering</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fault-tolerant-execution.html">Fault-tolerant execution</a></li>
 <li class="toctree-l4"><a class="reference internal" href="graceful-shutdown.html">Graceful shutdown</a></li>
-<li class="toctree-l4"><a class="reference internal" href="workload-management.html">Workload management</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Resource groups</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#file-resource-group-manager">File resource group manager</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#database-resource-group-manager">Database resource group manager</a></li>
@@ -289,8 +287,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="workload-management.html">Workload management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="session-property-managers.html">Session property managers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="spill.html">Spill to disk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="event-listeners-kafka.html">Kafka event listener</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
@@ -532,7 +532,7 @@ evenly and each receive 50% of the queries in a given timeframe.</p>
 <span id="rg-selector-rules"></span><h2 id="selector-rules">Selector rules<a class="headerlink" href="#selector-rules" title="Permalink to this heading">#</a></h2>
 <p>The selector rules for pattern matching use Java’s regular expression
 capabilities. Java implements regular expressions through the <code class="docutils literal notranslate"><span class="pre">java.util.regex</span></code>
-package. For more information, see the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html">Java
+package. For more information, see the <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/regex/Pattern.html">Java
 documentation</a>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">user</span></code> (optional): Java regex to match against user name.</p></li>
@@ -885,7 +885,7 @@ results in fairness when under contention.</p></li>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="workload-management.html" title="Workload management"
+            <a href="graceful-shutdown.html" title="Graceful shutdown"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -894,17 +894,17 @@ results in fairness when under contention.</p></li>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Workload management </span>
+                      class="md-footer-nav__direction"> Previous </span> Graceful shutdown </span>
               </div>
             </a>
           
           
-            <a href="session-property-managers.html" title="Session property managers"
+            <a href="workload-management.html" title="Workload management"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Session property managers </span>
+                class="md-footer-nav__direction"> Next </span> Workload management </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

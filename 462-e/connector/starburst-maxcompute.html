@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -253,7 +253,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -261,7 +260,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elasticsearch.html">Elasticsearch connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-generic-jdbc.html">Generic JDBC connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-greenplum.html">Greenplum connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="starburst-kafka.html">Kafka connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kudu.html">Kudu connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MaxCompute connector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -285,7 +284,6 @@
 <li class="toctree-l5"><a class="reference internal" href="#projection-pushdown">Projection pushdown</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#starburst-cached-views">Starburst Cached Views</a></li>
 </ul>
 </li>
 </ul>
@@ -305,13 +303,12 @@
 <li class="toctree-l2"><a class="reference internal" href="sqlserver.html">SQL Server connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-synapse.html">Synapse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-teradata.html">Teradata connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vertica.html">Vertica connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="starburst-vertica.html">Vertica connector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -381,8 +378,6 @@
         <li class="md-nav__item"><a href="#projection-pushdown" class="md-nav__link">Projection pushdown</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#starburst-cached-views" class="md-nav__link">Starburst Cached Views</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -460,35 +455,6 @@ SEP schemas.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxcompute.input.split.size</span></code></p></td>
 <td><p>Maximum size for each split of the input data.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">maxcompute.average.record.size</span></code></p></td>
-<td><p>Average size of a record in bytes. Adjust this value for tables with small
-record sizes to prevent excessive splits. Defaults to <code class="docutils literal notranslate"><span class="pre">256</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxcompute.instance-hints</span></code></p></td>
-<td><p>Semicolon-separated list of hints to configure MaxCompute instance behavior
-for non-managed tables. Use the format <code class="docutils literal notranslate"><span class="pre">hint1:value1;hint2:value2</span></code>. See the
-following list of hints:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.session.worker.count</span> </code>: The number of workers. Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.session.memory.limit</span> </code>: The memory limit for each session.
-Defaults to <code class="docutils literal notranslate"><span class="pre">512MB</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.mapper.split.size</span></code>: The input split size for mappers in MB.
-Defaults to <code class="docutils literal notranslate"><span class="pre">128</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.reducer.num</span></code>: The number of reducers. Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.optimize.join.optimize</span></code>: Boolean that enables or disables join
-optimization.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.groupby.skewindata</span></code>: Boolean that enables or disables the
-anti-skew feature for the <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> clause. For more information, see the
-<a class="reference external" href="https://www.alibabacloud.com/help/maxcompute/use-cases/data-skew-tuning">MaxCompute
-documentation</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.mapjoin.optimize</span></code>: Boolean that enables or disables <code class="docutils literal notranslate"><span class="pre">MAPJOIN</span></code>
-for certain joins. For more information, see the <a class="reference external" href="https://www.alibabacloud.com/help/maxcompute/user-guide/mapjoin-hints">MaxCompute
-documentation</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">odps.sql.direct.write</span></code>. Boolean that enables or disables direct writing
-to partitions.</p></li>
-</ul>
-</td>
 </tr>
 </tbody>
 </table>
@@ -637,38 +603,12 @@ by records and partitions, and use parallelization with multiple <code class="do
 <p>The connector includes a number of performance improvements, detailed in the
 following sections.</p>
 <section id="pushdown">
-<span id="maxcompute-pushdown"></span><h3 id="pushdown">Pushdown<a class="headerlink" href="#pushdown" title="Permalink to this heading">#</a></h3>
-<p>The MaxCompute connector supports the following pushdown capabilities:</p>
-<ul class="simple">
-<li><p>Partition</p></li>
-<li><p><a class="reference internal" href="#maxcompute-projection-pushdown"><span class="std std-ref">Projection pushdown</span></a></p></li>
-<li><p><a class="reference internal" href="../optimizer/pushdown.html#limit-pushdown"><span class="std std-ref">Limit pushdown</span></a> for both managed and non-managed
-tables.</p></li>
-<li><p><a class="reference internal" href="../optimizer/pushdown.html#predicate-pushdown"><span class="std std-ref">Predicate pushdown</span></a> for non-managed tables. The
-connector supports the following data types for predicate pushdown:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TINYINT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">REAL</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DECIMAL</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code></p></li>
-</ul>
-</li>
-</ul>
+<h3 id="pushdown">Pushdown<a class="headerlink" href="#pushdown" title="Permalink to this heading">#</a></h3>
+<p>The connector supports partition and <a class="reference internal" href="#maxcompute-projection-pushdown"><span class="std std-ref">projection</span></a> pushdown.</p>
 <section id="projection-pushdown">
 <span id="maxcompute-projection-pushdown"></span><h4 id="projection-pushdown">Projection pushdown<a class="headerlink" href="#projection-pushdown" title="Permalink to this heading">#</a></h4>
 <p>The connector supports <a class="reference internal" href="../optimizer/pushdown.html#projection-pushdown"><span class="std std-ref">Projection pushdown</span></a> for <code class="docutils literal notranslate"><span class="pre">VIEWS</span></code>, <code class="docutils literal notranslate"><span class="pre">MATERIALIZED</span> <span class="pre">VIEWS</span></code>, and external tables.</p>
 </section>
-</section>
-<section id="starburst-cached-views">
-<h3 id="starburst-cached-views">Starburst Cached Views<a class="headerlink" href="#starburst-cached-views" title="Permalink to this heading">#</a></h3>
-<p>The connectors supports <a class="reference internal" href="../admin/table-scan-redirection.html"><span class="doc std std-doc">table scan redirection</span></a>
-to improve performance and reduce load on the data source.</p>
 </section>
 </section>
 </section>

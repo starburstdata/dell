@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -216,7 +216,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -257,13 +257,80 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../admin.html#feature-topic-areas">Feature topic areas</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../admin.html#properties-reference">Properties reference</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="properties.html">Properties reference</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="properties-general.html">General</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-http-server.html">HTTP server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-resource-management.html">Resource management</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-query-management.html">Query management</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-sql-environment.html">SQL environment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-spilling.html">Spilling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-exchange.html">Exchange</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-task.html">Task</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-write-partitioning.html">Write partitioning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-writer-scaling.html">Writer scaling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-node-scheduler.html">Node scheduler</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-optimizer.html">Optimizer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-logging.html">Logging</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-web-interface.html">Web UI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-regexp-function.html">Regular expression function</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">HTTP client</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#general-properties">General properties</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-connect-timeout"><code class="docutils literal notranslate"><span class="pre">http-client.connect-timeout</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#max-content-length"><code class="docutils literal notranslate"><span class="pre">max-content-length</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-request-timeout"><code class="docutils literal notranslate"><span class="pre">http-client.request-timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#tls-and-security-properties">TLS and security properties</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-https-excluded-cipher"><code class="docutils literal notranslate"><span class="pre">http-client.https.excluded-cipher</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-https-included-cipher"><code class="docutils literal notranslate"><span class="pre">http-client.https.included-cipher</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-https-hostname-verification"><code class="docutils literal notranslate"><span class="pre">http-client.https.hostname-verification</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-key-store-password"><code class="docutils literal notranslate"><span class="pre">http-client.key-store-password</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-key-store-path"><code class="docutils literal notranslate"><span class="pre">http-client.key-store-path</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-secure-random-algorithm"><code class="docutils literal notranslate"><span class="pre">http-client.secure-random-algorithm</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-trust-store-password"><code class="docutils literal notranslate"><span class="pre">http-client.trust-store-password</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-trust-store-path"><code class="docutils literal notranslate"><span class="pre">http-client.trust-store-path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#proxy-properties">Proxy properties</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-http-proxy"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-http-proxy-secure"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.secure</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-socks-proxy"><code class="docutils literal notranslate"><span class="pre">http-client.socks-proxy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#request-logging">Request logging</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-compression-enabled"><code class="docutils literal notranslate"><span class="pre">http-client.log.compression-enabled</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-enabled"><code class="docutils literal notranslate"><span class="pre">http-client.log.enabled</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-flush-interval"><code class="docutils literal notranslate"><span class="pre">http-client.log.flush-interval</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-max-history"><code class="docutils literal notranslate"><span class="pre">http-client.log.max-history</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-max-size"><code class="docutils literal notranslate"><span class="pre">http-client.log.max-size</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-path"><code class="docutils literal notranslate"><span class="pre">http-client.log.path</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#http-client-log-queue-size"><code class="docutils literal notranslate"><span class="pre">http-client.log.queue-size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="properties.html#property-value-types">Property value types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#performance-related-properties-and-features">Performance-related properties and features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#data-governance">Data governance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#platform-features">Platform features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
@@ -328,10 +395,6 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#http-client-http-proxy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy</span></code></a>
         </li>
-        <li class="md-nav__item"><a href="#http-client-http-proxy-user" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.user</span></code></a>
-        </li>
-        <li class="md-nav__item"><a href="#http-client-http-proxy-password" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.password</span></code></a>
-        </li>
         <li class="md-nav__item"><a href="#http-client-http-proxy-secure" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.secure</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#http-client-socks-proxy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">http-client.socks-proxy</span></code></a>
@@ -391,9 +454,7 @@ deployment type:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">oauth2-jwk</span></code> for <a class="reference internal" href="../security/oauth2.html"><span class="doc">OAuth 2.0 authentication</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">jwk</span></code> for <a class="reference internal" href="../security/jwt.html"><span class="doc">JWT authentication</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exchange</span></code> to configure data transfer between Trino nodes in addition to
-<a class="reference internal" href="properties-exchange.html"><span class="doc std std-doc">Exchange properties</span></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">materialized.views</span></code> for a TLS-secured coordinator embedded <a class="reference internal" href="../connector/starburst-hive.html#sb-hive-mv-catalog-config"><span class="std std-ref">Cache Service in
-a Hive catalog</span></a>.</p></li>
+<a class="reference internal" href="properties-exchange.html"><span class="doc std std-doc">Exchange properties</span></a></p></li>
 </ul>
 <section id="general-properties">
 <h2 id="general-properties">General properties<a class="headerlink" href="#general-properties" title="Permalink to this heading">#</a></h2>
@@ -497,20 +558,6 @@ documentation.</p>
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
 </ul>
 <p>Host and port for an HTTP proxy with the format <code class="docutils literal notranslate"><span class="pre">example.net:8080</span></code>.</p>
-</section>
-<section id="http-client-http-proxy-user">
-<h3 id="http-client-http-proxy-user"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.user</span></code><a class="headerlink" href="#http-client-http-proxy-user" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
-</ul>
-<p>Username for basic authentication with the HTTP proxy.</p>
-</section>
-<section id="http-client-http-proxy-password">
-<h3 id="http-client-http-proxy-password"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.password</span></code><a class="headerlink" href="#http-client-http-proxy-password" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
-</ul>
-<p>Password for basic authentication with the HTTP proxy.</p>
 </section>
 <section id="http-client-http-proxy-secure">
 <h3 id="http-client-http-proxy-secure"><code class="docutils literal notranslate"><span class="pre">http-client.http-proxy.secure</span></code><a class="headerlink" href="#http-client-http-proxy-secure" title="Permalink to this heading">#</a></h3>

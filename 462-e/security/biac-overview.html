@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -268,8 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../security.html#security-topic-areas">Security topic areas</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../security.html#id1">Security topic areas</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../security.html#built-in-access-control">Built-in access control</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Built-in access control overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Built-in access control overview</a><ul>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Built-in access control overview</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#built-in-access-control-configuration">Built-in access control configuration</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#access-control-users-and-groups">Access control users and groups</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#enable-access-change-audits">Enable access change audits</a></li>
@@ -329,9 +327,7 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#security-biac-overview--page-root" class="md-nav__link">Built-in access control overview</a>
-        </li>
-        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Built-in access control overview</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#security-biac-overview--page-root" class="md-nav__link">Built-in access control overview</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#built-in-access-control-configuration" class="md-nav__link">Built-in access control configuration</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -374,9 +370,6 @@
             
   <section id="built-in-access-control-overview">
 <h1 id="security-biac-overview--page-root">Built-in access control overview<a class="headerlink" href="#security-biac-overview--page-root" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="id1">
-<h1 id="id1">Built-in access control overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) provides a built-in role-based access control (RBAC) system that is
 integrated with the Starburst Enterprise web UI. The RBAC system  makes it easy to configure any
 user’s correct access rights to catalogs, individual schemas, and tables. If
@@ -415,7 +408,7 @@ control on worker nodes.</p>
 <p>Enabling this property enables the <strong>Roles and privileges</strong> pane in the
 Starburst Enterprise web UI.</p>
 <p>Additional configuration is required for <a class="reference internal" href="../connector/starburst-iceberg.html#sb-iceberg-biac"><span class="std std-ref">Iceberg</span></a>,
-<a class="reference internal" href="../connector/delta-lake.html#delta-lake-biac"><span class="std std-ref">Delta Lake</span></a>, and <a class="reference internal" href="../connector/starburst-hive.html#sb-hive-biac"><span class="std std-ref">Hive</span></a> object
+<a class="reference internal" href="../connector/starburst-delta-lake.html#sb-delta-lake-biac"><span class="std std-ref">Delta Lake</span></a>, and <a class="reference internal" href="../connector/starburst-hive.html#sb-hive-biac"><span class="std std-ref">Hive</span></a> object
 storage catalogs.</p>
 <section id="access-control-users-and-groups">
 <span id="biac-user-group-access-config"></span><h3 id="access-control-users-and-groups">Access control users and groups<a class="headerlink" href="#access-control-users-and-groups" title="Permalink to this heading">#</a></h3>
@@ -458,8 +451,7 @@ features.</p>
 </pre></div>
 </div>
 <p>You can also append roles for each catalog using a semicolon as a delimiter. For
-example, <code class="docutils literal notranslate"><span class="pre">catalog1:rolename1;catalog2:rolename2</span></code> sets <code class="docutils literal notranslate"><span class="pre">rolename1</span></code> for <code class="docutils literal notranslate"><span class="pre">catalog1</span> </code>and
-<code class="docutils literal notranslate"><span class="pre">rolename2</span></code> for <code class="docutils literal notranslate"><span class="pre">catalog2</span></code>.</p>
+example, <code class="docutils literal notranslate"><span class="pre">catalog1:rolename1;catalog2:rolename2</span></code> sets <code class="docutils literal notranslate"><span class="pre">rolename1</span></code> for <code class="docutils literal notranslate"><span class="pre">catalog1</span> </code>and <code class="docutils literal notranslate"><span class="pre">rolename2</span></code> for <code class="docutils literal notranslate"><span class="pre">catalog2</span></code>.</p>
 </section>
 <section id="cli-access-control">
 <span id="biac-cli-access"></span><h3 id="cli-access-control">CLI access control<a class="headerlink" href="#cli-access-control" title="Permalink to this heading">#</a></h3>
@@ -614,6 +606,7 @@ programmatically with the <a class="reference internal" href="../starburst-rest-
 <li><p>Roles</p></li>
 <li><p>Users</p></li>
 <li><p>Queries</p></li>
+<li><p>User interface</p></li>
 <li><p>Functions</p></li>
 <li><p>procedures</p></li>
 <li><p>System session properties</p></li>
@@ -643,7 +636,7 @@ not the built-in access control system.</p>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code> SQL command to create roles that interoperate
 with the built-in system. However, the <code class="docutils literal notranslate"><span class="pre">WITH</span> <span class="pre">ADMIN</span></code> clause is not supported.</p>
 <p>Ownership of objects, and therefore granting roles based on grants by an owning
-user, is not supported. This rules out using a SQL command in the form <code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">rolename</span> <span class="pre">TO</span> <span class="pre">another</span> <span class="pre">Rolename</span> <span class="pre">GRANTED</span> <span class="pre">BY</span> <span class="pre">user</span></code>.</p>
+user, is not supported. This rules out using a SQL command in the form <code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">rolename</span> <span class="pre">TO</span> <span class="pre">anotherRolename</span> <span class="pre">GRANTED</span> <span class="pre">BY</span> <span class="pre">user</span></code>.</p>
 <p>The built-in system supports only granting privileges to roles, whereas SQL
 statements can grant privileges directly to users and groups. The SQL feature is
 not recognized by the built-in system and results in an error.</p>

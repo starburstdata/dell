@@ -78,7 +78,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Client protocol" href="client/client-protocol.html" />
+    <link rel="next" title="Command line interface" href="client/cli.html" />
     <link rel="prev" title="Starburst Enterprise web UI" href="overview/sep-ui.html" />
 
   
@@ -121,7 +121,7 @@
           
           <img
             src="_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -208,7 +208,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -224,12 +224,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview/sep-ui.html">Starburst Enterprise web UI</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Clients</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="client/client-protocol.html">Client protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client/cli.html">Command line interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client/jdbc.html">JDBC driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client/query-editor.html">Query editor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client/python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn/thoughtspot.html">Thoughtspot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client/thoughtspot.html">Thoughtspot</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data-products.html">Data products</a></li>
@@ -240,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -257,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -302,29 +300,26 @@
             
   <section id="clients">
 <h1 id="client--page-root">Clients<a class="headerlink" href="#client--page-root" title="Permalink to this heading">#</a></h1>
-<p>A <a class="reference internal" href="overview/concepts.html#trino-concept-client"><span class="std std-ref">client</span></a> is used to send SQL queries to Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP)
-and therefore any <a class="reference internal" href="overview/concepts.html#trino-concept-data-source"><span class="std std-ref">connected data sources</span></a>, and
-receive results.</p>
-<p>All client drivers and client applications communicate with the SEP
-coordinator using the <a class="reference internal" href="client/client-protocol.html"><span class="doc std std-doc">client protocol</span></a>.
-Configure support for the <a class="reference internal" href="client/client-protocol.html#protocol-spooling"><span class="std std-ref">spooling protocol</span></a> on the cluster
-to improve throughput for client interactions with higher data transfer demands.</p>
+<p>A <a class="reference internal" href="overview/concepts.html#trino-concept-client"><span class="std std-ref">client</span></a> is used to send queries to Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) and
+receive results, or otherwise interact with SEP and the connected data
+sources.</p>
+<p>Some clients, such as the <a class="reference internal" href="client/cli.html"><span class="doc std std-doc">command line interface</span></a>, can provide a
+user interface directly. Clients like the <a class="reference internal" href="client/jdbc.html"><span class="doc std std-doc">JDBC driver</span></a>, provide a
+mechanism for other applications, including your own custom applications, to
+connect to SEP.</p>
 <p>The following basic clients are available as part of every SEP release:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="client/client-protocol.html">Client protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="client/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="client/jdbc.html">JDBC driver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="client/query-editor.html">Query editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="client/python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="learn/thoughtspot.html">Thoughtspot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client/thoughtspot.html">Thoughtspot</a></li>
 </ul>
 </div>
 <p>A good start to explore is the <a class="reference internal" href="client/query-editor.html"><span class="doc std std-doc">Query editor</span></a>, which is
 built-in to the Starburst Enterprise web UI.</p>
-<p>SEP also includes support and documentation for the <a class="external reference" href="../clients/odbc.html">Starburst ODBC
-driver</a></p>
-<p>Many more clients are supported, as described in the <a class="external reference" href="../clients/index.html">detail pages of the
+<p>Many more clients are supported, as described in the <a class="external reference" href="docs.starburst.io/clients/index.html">detail pages of the
 Clients section</a>.</p>
 <table>
 <colgroup>
@@ -332,7 +327,7 @@ Clients section</a>.</p>
 <col style="width: 30%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>You can learn more about <a class="external reference" href="../clients/index.html">client support</a>,
+<tr class="row-odd"><td><p>You can learn more about <a class="external reference" href="docs.starburst.io/clients/index.html">client support</a>,
 including connecting clients to SEP for:</p>
 <ul class="simple">
 <li><p>Writing queries</p></li>
@@ -373,12 +368,12 @@ user guides</p></a></td>
             </a>
           
           
-            <a href="client/client-protocol.html" title="Client protocol"
+            <a href="client/cli.html" title="Command line interface"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Client protocol </span>
+                class="md-footer-nav__direction"> Next </span> Command line interface </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

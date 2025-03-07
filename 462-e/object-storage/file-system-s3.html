@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -362,89 +361,79 @@ by a different AWS user, the canned ACL may be set to one of the following:
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.sse.type</span></code></p></td>
 <td><p>Set the type of S3 server-side encryption (SSE) to use. Defaults to <code class="docutils literal notranslate"><span class="pre">NONE</span></code>
 for no encryption. Other valid values are <code class="docutils literal notranslate"><span class="pre">S3</span></code> for encryption by S3 managed
-keys, <code class="docutils literal notranslate"><span class="pre">KMS</span></code> for encryption with a key from the AWS Key Management
-Service (KMS), and <code class="docutils literal notranslate"><span class="pre">CUSTOMER</span></code> for encryption with a customer-provided key
-from <code class="docutils literal notranslate"><span class="pre">s3.sse.customer-key</span></code>. Note that S3 automatically uses SSE so <code class="docutils literal notranslate"><span class="pre">NONE</span></code>
-and <code class="docutils literal notranslate"><span class="pre">S3</span></code> are equivalent. S3-compatible systems might behave differently.</p></td>
+keys, and <code class="docutils literal notranslate"><span class="pre">KMS</span></code> for encryption with a key from the AWS Key Management
+Service (KMS). Note that S3 automatically uses SSE so <code class="docutils literal notranslate"><span class="pre">NONE</span></code> and <code class="docutils literal notranslate"><span class="pre">S3</span></code> are
+equivalent. S3-compatible systems might behave differently.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.sse.kms-key-id</span></code></p></td>
 <td><p>The identifier of a key in KMS to use for SSE.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.sse.customer-key</span></code></p></td>
-<td><p>The 256-bit, base64-encoded AES-256 encryption key to encrypt or decrypt
-data from S3 when using the SSE-C mode for SSE with <code class="docutils literal notranslate"><span class="pre">s3.sse.type</span></code> set to
-<code class="docutils literal notranslate"><span class="pre">CUSTOMER</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.streaming.part-size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.streaming.part-size</span></code></p></td>
 <td><p>Part size for S3 streaming upload. Values between <code class="docutils literal notranslate"><span class="pre">5MB</span></code> and <code class="docutils literal notranslate"><span class="pre">256MB</span></code> are
 valid. Defaults to <code class="docutils literal notranslate"><span class="pre">16MB</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.requester-pays</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.requester-pays</span></code></p></td>
 <td><p>Switch to activate billing transfer cost to the requester. Defaults to
 <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.max-connections</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.max-connections</span></code></p></td>
 <td><p>Maximum number of connections to S3.  Defaults to <code class="docutils literal notranslate"><span class="pre">500</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.connection-ttl</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.connection-ttl</span></code></p></td>
 <td><p>Maximum time <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> allowed to reuse connections in
 the connection pool before being replaced.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.connection-max-idle-time</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.connection-max-idle-time</span></code></p></td>
 <td><p>Maximum time <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> allowed for connections to
 remain idle in the connection pool before being closed.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.socket-connect-timeout</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.socket-connect-timeout</span></code></p></td>
 <td><p>Maximum time <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> allowed for socket connection
 requests to complete before timing out.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.socket-read-timeout</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.socket-read-timeout</span></code></p></td>
 <td><p>Maximum time <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> for socket read operations
 before timing out.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.tcp-keep-alive</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.tcp-keep-alive</span></code></p></td>
 <td><p>Enable TCP keep alive on created connections. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy</span></code></p></td>
 <td><p>URL of a HTTP proxy server to use for connecting to S3.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.secure</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.secure</span></code></p></td>
 <td><p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to enable HTTPS for the proxy server.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.username</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.username</span></code></p></td>
 <td><p>Proxy username to use if connecting through a proxy server.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.password</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.password</span></code></p></td>
 <td><p>Proxy password to use if connecting through a proxy server.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.non-proxy-hosts</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.non-proxy-hosts</span></code></p></td>
 <td><p>Hosts list to access without going through the proxy server.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.preemptive-basic-auth</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.http-proxy.preemptive-basic-auth</span></code></p></td>
 <td><p>Whether to attempt to authenticate preemptively against proxy server
 when using base authorization, defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.retry-mode</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.retry-mode</span></code></p></td>
 <td><p>Specifies how the AWS SDK attempts retries. Default value is <code class="docutils literal notranslate"><span class="pre">LEGACY</span></code>.
 Other allowed values are <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code> and <code class="docutils literal notranslate"><span class="pre">ADAPTIVE</span></code>. The <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code> mode
 includes a standard set of errors that are retried. <code class="docutils literal notranslate"><span class="pre">ADAPTIVE</span></code> mode
 includes the functionality of <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code> mode with automatic client-side
 throttling.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.max-error-retries</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.max-error-retries</span></code></p></td>
 <td><p>Specifies maximum number of retries the client will make on errors.
 Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s3.use-web-identity-token-credentials-provider</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.use-web-identity-token-credentials-provider</span></code></p></td>
 <td><p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to only use the web identity token credentials provider,
 instead of the default providers chain. This can be useful when running
 Trino on Amazon EKS and using <a class="reference external" href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html">IAM roles for service accounts
 (IRSA)</a>
 Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s3.application-id</span></code></p></td>
-<td><p>Specify the application identifier appended to the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header
-for all requests sent to S3. Defaults to <code class="docutils literal notranslate"><span class="pre">Trino</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

@@ -79,7 +79,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CREATE MATERIALIZED VIEW" href="create-materialized-view.html" />
-    <link rel="prev" title="CREATE CATALOG" href="create-catalog.html" />
+    <link rel="prev" title="COMMIT" href="commit.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -238,88 +238,55 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../sql.html">SQL statement syntax</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="alter-catalog.html">ALTER CATALOG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-materialized-view.html">ALTER MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-schema.html">ALTER SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-table.html">ALTER TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-view.html">ALTER VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analyze.html">ANALYZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call.html">CALL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comment.html">COMMENT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commit.html">COMMIT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-catalog.html">CREATE CATALOG</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CREATE FUNCTION</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sql.html#statement-listing">Statement listing</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sql.html#statements-a-f">Statements A-F</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="alter-materialized-view.html">ALTER MATERIALIZED VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="alter-schema.html">ALTER SCHEMA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="alter-table.html">ALTER TABLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="alter-view.html">ALTER VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="analyze.html">ANALYZE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="call.html">CALL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="comment.html">COMMENT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="commit.html">COMMIT</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">CREATE FUNCTION</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="create-materialized-view.html">CREATE MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-role.html">CREATE ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-schema.html">CREATE SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-table.html">CREATE TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-table-as.html">CREATE TABLE AS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-view.html">CREATE VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deallocate-prepare.html">DEALLOCATE PREPARE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="delete.html">DELETE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deny.html">DENY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe.html">DESCRIBE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe-input.html">DESCRIBE INPUT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe-output.html">DESCRIBE OUTPUT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-catalog.html">DROP CATALOG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-function.html">DROP FUNCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-materialized-view.html">DROP MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-role.html">DROP ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-schema.html">DROP SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-table.html">DROP TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-view.html">DROP VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="execute.html">EXECUTE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="execute-immediate.html">EXECUTE IMMEDIATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="explain.html">EXPLAIN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="explain-analyze.html">EXPLAIN ANALYZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grant.html">GRANT privilege</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grant-roles.html">GRANT role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="insert.html">INSERT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="match-recognize.html">MATCH_RECOGNIZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="merge.html">MERGE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare.html">PREPARE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refresh-materialized-view.html">REFRESH MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset-session.html">RESET SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset-session-authorization.html">RESET SESSION AUTHORIZATION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revoke.html">REVOKE privilege</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revoke-roles.html">REVOKE role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rollback.html">ROLLBACK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="select.html">SELECT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-path.html">SET PATH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-role.html">SET ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-session.html">SET SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-session-authorization.html">SET SESSION AUTHORIZATION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-time-zone.html">SET TIME ZONE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-catalogs.html">SHOW CATALOGS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-columns.html">SHOW COLUMNS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-function.html">SHOW CREATE FUNCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-materialized-view.html">SHOW CREATE MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-schema.html">SHOW CREATE SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-table.html">SHOW CREATE TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-view.html">SHOW CREATE VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-functions.html">SHOW FUNCTIONS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-grants.html">SHOW GRANTS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-role-grants.html">SHOW ROLE GRANTS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-roles.html">SHOW ROLES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-schemas.html">SHOW SCHEMAS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-session.html">SHOW SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-stats.html">SHOW STATS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-tables.html">SHOW TABLES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="start-transaction.html">START TRANSACTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="truncate.html">TRUNCATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="update.html">UPDATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use.html">USE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="values.html">VALUES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-materialized-view.html">CREATE MATERIALIZED VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-role.html">CREATE ROLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-schema.html">CREATE SCHEMA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-table.html">CREATE TABLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-table-as.html">CREATE TABLE AS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="create-view.html">CREATE VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deallocate-prepare.html">DEALLOCATE PREPARE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delete.html">DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deny.html">DENY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="describe.html">DESCRIBE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="describe-input.html">DESCRIBE INPUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="describe-output.html">DESCRIBE OUTPUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-function.html">DROP FUNCTION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-materialized-view.html">DROP MATERIALIZED VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-role.html">DROP ROLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-schema.html">DROP SCHEMA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-table.html">DROP TABLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="drop-view.html">DROP VIEW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execute.html">EXECUTE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="execute-immediate.html">EXECUTE IMMEDIATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="explain.html">EXPLAIN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="explain-analyze.html">EXPLAIN ANALYZE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sql.html#statements-g-r">Statements G-R</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sql.html#statements-s-z">Statements S-Z</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -336,7 +303,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -397,23 +363,24 @@
 <section id="synopsis">
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">#</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CREATE [OR REPLACE] FUNCTION
-  udf_definition
+  routine_definition
 </pre></div>
 </div>
 </section>
 <section id="description">
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
-<p>Create or replace a <a class="reference internal" href="../udf/introduction.html#udf-catalog"><span class="std std-ref">Catalog user-defined functions</span></a>. The <code class="docutils literal notranslate"><span class="pre">udf_definition</span></code> is composed of the
-usage of <a class="reference internal" href="../udf/function.html"><span class="doc std std-doc">FUNCTION</span></a> and nested statements. The name of the UDF must be
-fully qualified with catalog and schema location, unless the <a class="reference internal" href="../admin/properties-sql-environment.html"><span class="doc std std-doc">default UDF
-storage catalog and schema</span></a> are configured.
-The connector used in the catalog must support UDF storage.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">REPLACE</span></code> clause causes the UDF to be replaced if it already
+<p>Create or replace a <a class="reference internal" href="../routines/introduction.html#routine-catalog"><span class="std std-ref">Catalog routines</span></a>. The <code class="docutils literal notranslate"><span class="pre">routine_definition</span></code> is composed of
+the usage of <a class="reference internal" href="../routines/function.html"><span class="doc std std-doc">FUNCTION</span></a> and nested statements. The name of the
+routine must be fully qualified with catalog and schema location, unless the
+<a class="reference internal" href="../admin/properties-sql-environment.html"><span class="doc std std-doc">default SQL routine storage catalog and
+schema</span></a> are configured. The connector used in
+the catalog must support routine storage.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">REPLACE</span></code> clause causes the routine to be replaced if it already
 exists rather than raising an error.</p>
 </section>
 <section id="examples">
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<p>The following example creates the <code class="docutils literal notranslate"><span class="pre">meaning_of_life</span></code> UDF in the <code class="docutils literal notranslate"><span class="pre">default</span></code>
+<p>The following example creates the <code class="docutils literal notranslate"><span class="pre">meaning_of_life</span></code> routine in the <code class="docutils literal notranslate"><span class="pre">default</span></code>
 schema of the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="n">example</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">meaning_of_life</span><span class="p">()</span>
   <span class="k">RETURNS</span> <span class="nb">bigint</span>
@@ -422,15 +389,15 @@ schema of the <code class="docutils literal notranslate"><span class="pre">examp
   <span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>If the <a class="reference internal" href="../admin/properties-sql-environment.html"><span class="doc std std-doc">default catalog and schema for UDF
+<p>If the <a class="reference internal" href="../admin/properties-sql-environment.html"><span class="doc std std-doc">default catalog and schema for routine
 storage</span></a> is configured, you can use the
 following more compact syntax:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="n">meaning_of_life</span><span class="p">()</span> <span class="k">RETURNS</span> <span class="nb">bigint</span> <span class="k">RETURN</span> <span class="mi">42</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Further examples of varying complexity that cover usage of the <code class="docutils literal notranslate"><span class="pre">FUNCTION</span></code>
-statement in combination with other statements are available in the <a class="reference internal" href="../udf/sql/examples.html"><span class="doc std std-doc">SQL
-UDF examples documentation</span></a>.</p>
+statement in combination with other statements are available in the <a class="reference internal" href="../routines/examples.html"><span class="doc std std-doc">SQL
+routines examples documentation</span></a>.</p>
 </section>
 <section id="see-also">
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permalink to this heading">#</a></h2>
@@ -438,7 +405,7 @@ UDF examples documentation</span></a>.</p>
 <li><p><a class="reference internal" href="drop-function.html"><span class="doc std std-doc">DROP FUNCTION</span></a></p></li>
 <li><p><a class="reference internal" href="show-create-function.html"><span class="doc std std-doc">SHOW CREATE FUNCTION</span></a></p></li>
 <li><p><a class="reference internal" href="show-functions.html"><span class="doc std std-doc">SHOW FUNCTIONS</span></a></p></li>
-<li><p><a class="reference internal" href="../udf.html"><span class="doc std std-doc">User-defined functions</span></a></p></li>
+<li><p><a class="reference internal" href="../routines/introduction.html"><span class="doc std std-doc">Introduction to SQL routines</span></a></p></li>
 <li><p><a class="reference internal" href="../admin/properties-sql-environment.html"><span class="doc std std-doc">SQL environment properties</span></a></p></li>
 </ul>
 </section>
@@ -455,7 +422,7 @@ UDF examples documentation</span></a>.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="create-catalog.html" title="CREATE CATALOG"
+            <a href="commit.html" title="COMMIT"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -464,7 +431,7 @@ UDF examples documentation</span></a>.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> CREATE CATALOG </span>
+                      class="md-footer-nav__direction"> Previous </span> COMMIT </span>
               </div>
             </a>
           

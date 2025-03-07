@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -269,7 +268,6 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../security.html#id1">Security topic areas</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../security.html#built-in-access-control">Built-in access control</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="biac-overview.html">Built-in access control overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="biac-overview.html#id1">Built-in access control overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="biac-roles.html">Built-in access control roles</a></li>
 <li class="toctree-l4"><a class="reference internal" href="biac-privileges.html">Built-in access control privileges</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Built-in access control masks and filters</a><ul>
@@ -397,7 +395,7 @@ values you are comparing.</p>
 <section id="create-masks-and-filters">
 <h2 id="create-masks-and-filters">Create masks and filters<a class="headerlink" href="#create-masks-and-filters" title="Permalink to this heading">#</a></h2>
 <p>To create a column mask or row filter, navigate to the <strong>Masks and filters</strong>
-page in the Starburst Enterprise web UI and select either the <strong>Mask</strong> or <strong>Row filters</strong> tab.</p>
+page in the Starburst Enterprise web UI and select either the <strong>Masks</strong> or <strong>Row filters</strong> tab.</p>
 <section id="column-masks">
 <h3 id="column-masks">Column masks<a class="headerlink" href="#column-masks" title="Permalink to this heading">#</a></h3>
 <p>A column mask consists of an expression that describes how a column’s value
@@ -431,7 +429,7 @@ produce a <code class="docutils literal notranslate"><span class="pre">TEXT</spa
 </li>
 <li><p><strong>Description:</strong> An optional description for the column mask.</p></li>
 </ul>
-<p>Click <strong>Create</strong> to save your custom column mask.</p>
+<p>Click <strong>Save changes</strong> to save your custom column mask.</p>
 </section>
 <section id="row-filters">
 <h3 id="row-filters">Row filters<a class="headerlink" href="#row-filters" title="Permalink to this heading">#</a></h3>
@@ -456,7 +454,7 @@ except those that match the expression.</p>
 </li>
 <li><p><strong>Description:</strong> An optional description for the row filter.</p></li>
 </ul>
-<p>Click <strong>Create</strong> to save your row filter.</p>
+<p>Click <strong>Save changes</strong> to save your row filter.</p>
 </section>
 </section>
 <section id="apply-masks-and-filters-to-user-queries">
@@ -464,9 +462,9 @@ except those that match the expression.</p>
 <p>Column masks and row filters are applied to user queries based on the privileges
 granted to them. Masks and filters are an optional privilege that can be added
 to <a class="reference internal" href="biac-privileges.html#biac-entity-tables"><span class="std std-ref">table entities</span></a> that grant access to the
-<strong>Select</strong> action on one or more columns. To review what roles have been
-assigned any given mask or filter, select the <strong>Options</strong> menu for that mask
-or filter and then <strong>Show assigned roles</strong>.</p>
+<strong>Select</strong> action on one or more columns. You can review what roles have been
+assigned any given mask or filter by selecting the <strong>Edit</strong> button for that mask
+or filter and reviewing the <strong>Applies to roles</strong> section.</p>
 <p>Built-in access control applies filters and masks at different steps in the
 query processing sequence. Once SEP determines what privileges apply to the
 user executing the query, filters and masks are applied as follows:</p>

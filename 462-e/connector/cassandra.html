@@ -78,8 +78,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Starburst Cosmos DB connector" href="starburst-cosmosdb.html" />
-    <link rel="prev" title="Non-object storage connectors" href="../non-object-storage-connectors.html" />
+    <link rel="next" title="ClickHouse connector" href="clickhouse.html" />
+    <link rel="prev" title="Accumulo connector" href="accumulo.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -197,7 +197,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../non-object-storage-connectors.html" class="md-tabs__link">Non-object storage connectors</a></li>
+          <li class="md-tabs__item"><a href="../community-connectors.html" class="md-tabs__link">Community-supported connectors</a></li>
       </ul>
     </div>
   </nav>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -252,7 +252,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accumulo.html">Accumulo connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Cassandra connector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
@@ -281,44 +284,24 @@
 <li class="toctree-l4"><a class="reference internal" href="#sql-delete-limitation">SQL delete limitation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#security">Security</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#kerberos-authentication">Kerberos authentication</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="druid.html">Druid connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exasol.html">Exasol connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="googlesheets.html">Google Sheets connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ignite.html">Ignite connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kinesis.html">Kinesis connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mariadb.html">MariaDB connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opensearch.html">OpenSearch connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phoenix.html">Phoenix connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinot.html">Pinot connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prometheus.html">Prometheus connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Redis connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thrift.html">Thrift connector</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-db2.html">IBM Db2 connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html">Elasticsearch connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-generic-jdbc.html">Generic JDBC connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-greenplum.html">Greenplum connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kudu.html">Kudu connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-maxcompute.html">MaxCompute connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mysql.html">MySQL connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-neo4j.html">Neo4j connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-netezza.html">Netezza connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="oracle.html">Oracle connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="postgresql.html">PostgreSQL connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="redshift.html">Redshift connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-salesforce.html">Salesforce connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-sap-hana.html">SAP HANA connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="singlestore.html">SingleStore connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snowflake.html">Snowflake connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-splunk.html">Splunk connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sqlserver.html">SQL Server connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-synapse.html">Synapse connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starburst-teradata.html">Teradata connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vertica.html">Vertica connector</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -398,12 +381,6 @@
         <li class="md-nav__item"><a href="#sql-delete-limitation" class="md-nav__link">SQL delete limitation</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#security" class="md-nav__link">Security</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#kerberos-authentication" class="md-nav__link">Kerberos authentication</a>
-        </li></ul>
-            </nav>
         </li></ul>
             </nav>
         </li>
@@ -420,9 +397,6 @@
 <h1 id="connector-cassandra--page-root">Cassandra connector<a class="headerlink" href="#connector-cassandra--page-root" title="Permalink to this heading">#</a></h1>
 <img class="connector-logo" src="../_static/img/cassandra.png"/><p>The Cassandra connector allows querying data stored in
 <a class="reference external" href="https://cassandra.apache.org/">Apache Cassandra</a>.</p>
-<p>SEP includes additional enterprise features that are built on top of the
-existing Trino connector functionality. For more information on key feature
-differences between Trino and SEP, see the <a class="reference internal" href="starburst-connectors.html#sb-connectors-key-value"><span class="std std-ref">connectors feature matrix</span></a>.</p>
 <section id="requirements">
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>To connect to Cassandra, you need:</p>
@@ -912,26 +886,6 @@ configuration property to <code class="docutils literal notranslate"><span class
 <p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> is only supported if the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause matches entire partitions.</p>
 </section>
 </section>
-<section id="security">
-<h2 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
-<p>The connector includes a security-related feature, detailed in the
-following section.</p>
-<section id="kerberos-authentication">
-<h3 id="kerberos-authentication">Kerberos authentication<a class="headerlink" href="#kerberos-authentication" title="Permalink to this heading">#</a></h3>
-<p>The connector supports <a class="reference internal" href="../security/kerberos.html"><span class="doc">Kerberos authentication</span></a> using a credential cache.</p>
-<p>To configure Kerberos authentication with a credential cache, add the following
-catalog configuration properties to the catalog properties file:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>kerberos.service.name=exampleServiceName
-kerberos.client.principal=example@example.com
-kerberos.client.credential-cache.location=etc/kerberos/example.cache
-kerberos.config=etc/kerberos/krb5.conf
-</pre></div>
-</div>
-<p>In this configuration, the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code> as defined in the
-principal property connects to the database. The related Kerberos service ticket
-cache credentials are located in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.cache</span></code> file.</p>
-</section>
-</section>
 </section>
 
 
@@ -945,7 +899,7 @@ cache credentials are located in the <code class="docutils literal notranslate">
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../non-object-storage-connectors.html" title="Non-object storage connectors"
+            <a href="accumulo.html" title="Accumulo connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -954,17 +908,17 @@ cache credentials are located in the <code class="docutils literal notranslate">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Non-object storage connectors </span>
+                      class="md-footer-nav__direction"> Previous </span> Accumulo connector </span>
               </div>
             </a>
           
           
-            <a href="starburst-cosmosdb.html" title="Starburst Cosmos DB connector"
+            <a href="clickhouse.html" title="ClickHouse connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Starburst Cosmos DB connector </span>
+                class="md-footer-nav__direction"> Next </span> ClickHouse connector </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

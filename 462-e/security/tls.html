@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -386,7 +385,7 @@ using TLS 1.2 and TLS 1.3 certificates. The server rejects TLS 1.1, TLS 1.0, and
 all SSL format certificates.</p>
 <p>The Trino server does not specify a set of supported ciphers, instead deferring
 to the defaults set by the JVM version in use. The documentation for Java 22
-lists its <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/security/oracle-providers.html#GUID-7093246A-31A3-4304-AC5F-5FB6400405E2__SUNJSSE_CIPHER_SUITES">supported cipher suites</a>.</p>
+lists its <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/security/oracle-providers.html#GUID-7093246A-31A3-4304-AC5F-5FB6400405E2__SUNJSSE_CIPHER_SUITES">supported cipher suites</a>.</p>
 <p>Run the following two-line code on the same JVM from the same vendor as
 configured on the coordinator to determine that JVM’s default cipher list.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">"java.util.Arrays.asList(((javax.net.ssl.SSLServerSocketFactory) \</span>
@@ -408,7 +407,7 @@ http-server.https.excluded-cipher=
 considered in conjunction with your organization’s security managers. Using a
 different suite may require downloading and installing a different SunJCE
 implementation package. Some locales may have export restrictions on cipher
-suites. See the discussion in Java documentation that begins with <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-316FB978-7588-442E-B829-B4973DB3B584">Customizing
+suites. See the discussion in Java documentation that begins with <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-316FB978-7588-442E-B829-B4973DB3B584">Customizing
 the Encryption Algorithm Providers</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

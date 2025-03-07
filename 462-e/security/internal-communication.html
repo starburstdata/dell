@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -354,14 +353,14 @@
 authentication of the nodes in the cluster, and to optionally use added security
 with <a class="reference internal" href="../glossary.html#glosstls"><span class="std std-ref">TLS</span></a>.</p>
 <section id="configure-shared-secret">
-<span id="internal-secret"></span><h2 id="configure-shared-secret">Configure shared secret<a class="headerlink" href="#configure-shared-secret" title="Permalink to this heading">#</a></h2>
-<p>You must configure a shared secret to authenticate all communication between
-nodes of the cluster in the following scenarios:</p>
+<h2 id="configure-shared-secret">Configure shared secret<a class="headerlink" href="#configure-shared-secret" title="Permalink to this heading">#</a></h2>
+<p>Configure a shared secret to authenticate all communication between nodes of the
+cluster. Use this configuration under the following conditions:</p>
 <ul class="simple">
-<li><p>When using <a class="reference internal" href="authentication-types.html"><span class="doc std std-doc">any authentication</span></a> between clients and the
-coordinator.</p></li>
-<li><p>When using <a class="reference internal" href="#internal-tls"><span class="std std-ref">internal TLS encryption</span></a> between all nodes of the
-cluster.</p></li>
+<li><p>When opting to configure <a class="reference internal" href="#internal-tls"><span class="std std-ref">internal TLS encryption</span></a>
+between nodes of the cluster</p></li>
+<li><p>When using any <a class="reference internal" href="authentication-types.html"><span class="doc">external authentication</span></a> method
+between clients and the coordinator</p></li>
 </ul>
 <p>Set the shared secret to the same value in <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">config.properties</span></a> on all nodes of the cluster:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>internal-communication.shared-secret=&lt;secret&gt;
@@ -432,6 +431,17 @@ supports IP addresses.</p>
 </ol>
 <p>Certificates are automatically created and used to ensure all communication
 inside the cluster is secured with TLS.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Older versions of Trino required you to manually manage all the certificates
+on the nodes. If you upgrade from this setup, you must remove the following
+configuration properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">internal-communication.https.keystore.path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">internal-communication.https.truststore.path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node.internal-address-source</span></code></p></li>
+</ul>
+</div>
 <section id="performance-with-ssl-tls-enabled">
 <h3 id="performance-with-ssl-tls-enabled">Performance with SSL/TLS enabled<a class="headerlink" href="#performance-with-ssl-tls-enabled" title="Permalink to this heading">#</a></h3>
 <p>Enabling encryption impacts performance. The performance degradation can vary
@@ -443,12 +453,6 @@ to be transferred between the nodes (for example, distributed joins, aggregation
 window functions, which require repartitioning), the performance impact can be
 considerable. The slowdown may vary from 10% to even 100%+, depending on the network
 traffic and the CPU utilization.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>By default, internal communication with SSL/TLS enabled uses HTTP/2 for
-increased scalability. You can turn off this feature with
-<code class="docutils literal notranslate"><span class="pre">internal-communication.http2.enabled=false</span></code>.</p>
-</div>
 </section>
 <section id="advanced-performance-tuning">
 <span id="internal-performance"></span><h3 id="advanced-performance-tuning">Advanced performance tuning<a class="headerlink" href="#advanced-performance-tuning" title="Permalink to this heading">#</a></h3>

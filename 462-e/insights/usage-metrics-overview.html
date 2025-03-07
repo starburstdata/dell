@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -258,7 +258,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -275,7 +275,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -498,15 +497,14 @@ add the truststore used by the client with the following configuration:</p>
 </div>
 <section id="manual-upload">
 <h3 id="manual-upload">Manual upload<a class="headerlink" href="#manual-upload" title="Permalink to this heading">#</a></h3>
-<p>If the network upstream of your SEP cluster blocks the automatic usage
-metric upload and you are unable to configure a proxy, or disable the automatic
-upload by setting <code class="docutils literal notranslate"><span class="pre">insights.data-upload-automatic.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. You can
-then manually upload usage metrics data by following these steps:</p>
+<p>If the network upstream of your SEP cluster blocks the automatic usage metric
+upload and you are unable to configure a proxy, or disable the automatic upload
+by setting <code class="docutils literal notranslate"><span class="pre">insights.data-upload-automatic.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>. You can then
+manually upload usage metrics data by following these steps:</p>
 <ol class="arabic simple">
-<li><p>Download the usage metrics file from the <strong>Usage metrics</strong> in the
-Insights section of the Starburst Enterprise web UI.</p></li>
-<li><p>On a device with internet access, <a class="reference external" href="https://telemetry.dogfood.eng.starburstdata.net/">upload the metrics file to
-Starburst</a>.</p></li>
+<li><p>Download the usage metrics file from the <strong>Usage metrics</strong> in the Insights
+section of the Starburst Enterprise web UI.</p></li>
+<li><p>On a device with internet access, <a class="reference external" href="https://telemetry.eng.starburstdata.net">upload the metrics file to Starburst</a>.</p></li>
 </ol>
 </section>
 </section>

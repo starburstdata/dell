@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -227,7 +227,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#architecture">Architecture</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cluster">Cluster</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#node">Node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#coordinator">Coordinator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#worker">Worker</a></li>
 </ul>
@@ -273,7 +272,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -290,7 +289,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -332,8 +330,6 @@
         <li class="md-nav__item"><a href="#architecture" class="md-nav__link">Architecture</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#cluster" class="md-nav__link">Cluster</a>
-        </li>
-        <li class="md-nav__item"><a href="#node" class="md-nav__link">Node</a>
         </li>
         <li class="md-nav__item"><a href="#coordinator" class="md-nav__link">Coordinator</a>
         </li>
@@ -417,25 +413,16 @@ multiple servers. There are two types of Trino servers,
 servers and other components of Trino’s architecture.</p>
 <section id="cluster">
 <span id="trino-concept-cluster"></span><h3 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permalink to this heading">#</a></h3>
-<p>A Trino cluster consists of several Trino <a class="reference internal" href="#trino-concept-node"><span class="std std-ref">nodes</span></a> - one
-<a class="reference internal" href="#trino-concept-coordinator"><span class="std std-ref">coordinator</span></a> and zero or more
-<a class="reference internal" href="#trino-concept-worker"><span class="std std-ref">workers</span></a>. Users connect to the coordinator with their
-<a class="reference internal" href="../glossary.html#glosssql"><span class="std std-ref">SQL</span></a> query tool. The coordinator collaborates with the workers. The
-coordinator and the workers access the connected <a class="reference internal" href="#trino-concept-data-source"><span class="std std-ref">data
-sources</span></a>. This access is configured in
+<p>A Trino cluster consists of a <a class="reference internal" href="#trino-concept-coordinator"><span class="std std-ref">coordinator</span></a> and
+many <a class="reference internal" href="#trino-concept-worker"><span class="std std-ref">workers</span></a>. Users connect to the coordinator
+with their <a class="reference internal" href="../glossary.html#glosssql"><span class="std std-ref">SQL</span></a> query tool. The coordinator collaborates with the
+workers. The coordinator and the workers access the connected
+<a class="reference internal" href="#trino-concept-data-source"><span class="std std-ref">data sources</span></a>. This access is configured in
 <a class="reference internal" href="#trino-concept-catalog"><span class="std std-ref">catalogs</span></a>.</p>
 <p>Processing each query is a stateful operation. The workload is orchestrated by
 the coordinator and spread parallel across all workers in the cluster. Each node
 runs Trino in one JVM instance, and processing is parallelized further using
 threads.</p>
-</section>
-<section id="node">
-<span id="trino-concept-node"></span><h3 id="node">Node<a class="headerlink" href="#node" title="Permalink to this heading">#</a></h3>
-<p>Any Trino server in a specific Trino cluster is considered a <strong>node</strong> of the
-<a class="reference internal" href="#trino-concept-cluster"><span class="std std-ref">cluster</span></a>. Technically this refers to the Java process
-running the Trino program, but node is often used to refer to the computer
-running the process due to the recommendation to run only one Trino process per
-computer.</p>
 </section>
 <section id="coordinator">
 <span id="trino-concept-coordinator"></span><h3 id="coordinator">Coordinator<a class="headerlink" href="#coordinator" title="Permalink to this heading">#</a></h3>
@@ -471,18 +458,21 @@ using a REST API.</p>
 <span id="trino-concept-client"></span><h2 id="client">Client<a class="headerlink" href="#client" title="Permalink to this heading">#</a></h2>
 <p>Clients allow you to connect to Trino, submit SQL queries, and receive the
 results. Clients can access all configured data sources using
-<a class="reference internal" href="#trino-concept-catalog"><span class="std std-ref">catalogs</span></a>. Clients are full-featured client applications
-or client drivers and libraries that allow you to connect with any application
-supporting that driver, or even your own custom application or script.</p>
-<p>Clients applications include command line tools, desktop applications, web-based
+<a class="reference internal" href="#trino-concept-catalog"><span class="std std-ref">catalogs</span></a>. Clients are full-featured applications or
+libraries and drivers that allow you to connect to any application supporting
+that driver, or even your own custom application or script.</p>
+<p>Clients include command line tools, desktop applications, web-based
 applications, and software-as-a-service solutions with features such as
 interactive SQL query authoring with editors, or rich user interfaces for
 graphical query creation, query running and result rendering, visualizations
 with charts and graphs, reporting, and dashboard creation.</p>
-<p>Client application that support other query languages or user interface
-components to build a query, must translate each request to <a class="reference internal" href="../language.html"><span class="doc std std-doc">SQL as supported by
-Trino</span></a>.</p>
-<p>More details are available in the <a class="reference internal" href="../client.html"><span class="doc std std-doc">Trino client documentation</span></a>.</p>
+<p><a class="reference external" href="https://trino.io/ecosystem/client">A comprehensive list with more details for each client is available on the
+Trino website</a>.</p>
+<p>Clients can process the returned data from Trino and be used for data pipelines
+across catalogs and from other data sources to Trino catalogs.</p>
+<p>From a technical perspective, clients only interact with the
+<a class="reference internal" href="#trino-concept-coordinator"><span class="std std-ref">coordinator</span></a> of the Trino cluster and use the
+<a class="reference internal" href="../develop/client-protocol.html"><span class="doc std std-doc">Trino client REST API</span></a>.</p>
 </section>
 <section id="data-source">
 <span id="trino-concept-data-source"></span><h2 id="data-source">Data source<a class="headerlink" href="#data-source" title="Permalink to this heading">#</a></h2>
@@ -524,7 +514,7 @@ connectors.</p></li>
 <a class="reference internal" href="../connector/prometheus.html"><span class="doc std std-doc">Prometheus</span></a>, <a class="reference internal" href="../connector/singlestore.html"><span class="doc std std-doc">SingleStore</span></a>,
 and <a class="reference internal" href="../connector/snowflake.html"><span class="doc std std-doc">Snowflake</span></a> connectors.</p></li>
 <li><p>A number of other utility connectors such as the <a class="reference internal" href="../connector/jmx.html"><span class="doc std std-doc">JMX</span></a>,
-<a class="reference internal" href="../connector/system.html"><span class="doc std std-doc">System</span></a>, and <a class="reference internal" href="../connector/tpch.html"><span class="doc std std-doc">TPC-H</span></a> connectors.</p></li>
+<a class="reference internal" href="../connector/system.html"><span class="doc std std-doc">System</span></a>, and <a class="reference internal" href="../connector/tpch.html"><span class="doc std std-doc">TPCH</span></a> connectors.</p></li>
 </ul>
 <p>Every catalog uses a specific connector. If you examine a catalog configuration
 file, you see that each contains a mandatory property <code class="docutils literal notranslate"><span class="pre">connector.name</span></code> with the

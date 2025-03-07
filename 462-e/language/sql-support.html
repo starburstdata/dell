@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -238,17 +238,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../language.html">SQL language</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SQL statement support</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#globally-available-statements">Globally available statements</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#catalog-management">Catalog management</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#globally-available-statements">Globally available statements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#read-operations">Read operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#write-operations">Write operations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#data-management">Data management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#schema-and-table-management">Schema and table management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#view-management">View management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#materialized-view-management">Materialized view management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user-defined-function-management">User-defined function management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#routine-management">Routine management</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#security-operations">Security operations</a></li>
@@ -262,7 +259,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -279,7 +276,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -316,11 +312,7 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#language-sql-support--page-root" class="md-nav__link">SQL statement support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#globally-available-statements" class="md-nav__link">Globally available statements</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#catalog-management" class="md-nav__link">Catalog management</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#globally-available-statements" class="md-nav__link">Globally available statements</a>
         </li>
         <li class="md-nav__item"><a href="#read-operations" class="md-nav__link">Read operations</a>
         </li>
@@ -334,7 +326,7 @@
         </li>
         <li class="md-nav__item"><a href="#materialized-view-management" class="md-nav__link">Materialized view management</a>
         </li>
-        <li class="md-nav__item"><a href="#user-defined-function-management" class="md-nav__link">User-defined function management</a>
+        <li class="md-nav__item"><a href="#routine-management" class="md-nav__link">Routine management</a>
         </li></ul>
             </nav>
         </li>
@@ -392,16 +384,6 @@ any connector:</p>
 <li><p><a class="reference internal" href="../sql/use.html"><span class="doc">USE</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/values.html"><span class="doc">VALUES</span></a></p></li>
 </ul>
-<section id="catalog-management">
-<span id="sql-catalog-management"></span><h3 id="catalog-management">Catalog management<a class="headerlink" href="#catalog-management" title="Permalink to this heading">#</a></h3>
-<p>The following statements are used to <a class="reference internal" href="../admin/properties-catalog.html"><span class="doc std std-doc">manage dynamic
-catalogs</span></a>:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../sql/create-catalog.html"><span class="doc">CREATE CATALOG</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/alter-catalog.html"><span class="doc">ALTER CATALOG</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/drop-catalog.html"><span class="doc">DROP CATALOG</span></a></p></li>
-</ul>
-</section>
 </section>
 <section id="read-operations">
 <span id="sql-read-operations"></span><h2 id="read-operations">Read operations<a class="headerlink" href="#read-operations" title="Permalink to this heading">#</a></h2>
@@ -468,9 +450,9 @@ connector to connector:</p>
 <li><p><a class="reference internal" href="../sql/refresh-materialized-view.html"><span class="doc">REFRESH MATERIALIZED VIEW</span></a></p></li>
 </ul>
 </section>
-<section id="user-defined-function-management">
-<span id="udf-management"></span><h3 id="user-defined-function-management">User-defined function management<a class="headerlink" href="#user-defined-function-management" title="Permalink to this heading">#</a></h3>
-<p>The following statements are used to manage <a class="reference internal" href="../udf/introduction.html#udf-catalog"><span class="std std-ref">Catalog user-defined functions</span></a>:</p>
+<section id="routine-management">
+<span id="sql-routine-management"></span><h3 id="routine-management">Routine management<a class="headerlink" href="#routine-management" title="Permalink to this heading">#</a></h3>
+<p>The following statements are used to manage <a class="reference internal" href="../routines/introduction.html#routine-catalog"><span class="std std-ref">catalog routines</span></a>:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../sql/create-function.html"><span class="doc std std-doc">CREATE FUNCTION</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/drop-function.html"><span class="doc std std-doc">DROP FUNCTION</span></a></p></li>

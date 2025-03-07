@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -231,7 +231,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../client.html">Clients</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="client-protocol.html">Client protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Command line interface</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">JDBC driver</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -240,12 +239,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#connecting">Connecting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-parameters">Connection parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parameter-reference">Parameter reference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#spooling-protocol">Spooling protocol</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="query-editor.html">Query editor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../learn/thoughtspot.html">Thoughtspot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoughtspot.html">Thoughtspot</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
@@ -256,7 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -273,7 +271,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -321,8 +318,6 @@
         <li class="md-nav__item"><a href="#connection-parameters" class="md-nav__link">Connection parameters</a>
         </li>
         <li class="md-nav__item"><a href="#parameter-reference" class="md-nav__link">Parameter reference</a>
-        </li>
-        <li class="md-nav__item"><a href="#spooling-protocol" class="md-nav__link">Spooling protocol</a>
         </li></ul>
             </nav>
         </li>
@@ -341,19 +336,13 @@
 users to access Trino using Java-based applications, and other non-Java
 applications running in a JVM. Both desktop and server-side applications, such
 as those used for reporting and database development, use the JDBC driver.</p>
-<p>The JDBC driver uses the <a class="reference internal" href="client-protocol.html"><span class="doc std std-doc">Client protocol</span></a> over HTTP/HTTPS to
-communicate with the coordinator on the cluster.</p>
 <section id="requirements">
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>The Trino JDBC driver has the following requirements:</p>
 <ul class="simple">
-<li><p>Java version 8 or higher. Java 22 or higher is recommended for improved
-decompression performance.</p></li>
+<li><p>Java version 8 or higher.</p></li>
 <li><p>All users that connect to Trino with the JDBC driver must be granted access to
 query tables in the <code class="docutils literal notranslate"><span class="pre">system.jdbc</span></code> schema.</p></li>
-<li><p>Network access over HTTP/HTTPS to the coordinator of the Trino cluster.</p></li>
-<li><p>Network access to the configured object storage, if the
-<a class="reference internal" href="#jdbc-spooling-protocol"><span class="std std-ref">Spooling protocol</span></a> is enabled.</p></li>
 </ul>
 <p>The JDBC driver version should be identical to the version of the Trino cluster,
 or newer. Older versions typically work, but only a subset is regularly tested.
@@ -361,12 +350,12 @@ Versions before 350 are not supported.</p>
 </section>
 <section id="installation">
 <span id="jdbc-installation"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/468-e.1/trino-jdbc-468-e.1.jar">trino-jdbc-468-e.1.jar</a> and add it to the classpath of your Java application.</p>
+<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/462-e.6/trino-jdbc-462-e.6.jar">trino-jdbc-462-e.6.jar</a> and add it to the classpath of your Java application.</p>
 <p>The driver is also available from Maven Central:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>io.trino<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>trino-jdbc<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>468-e.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>462-e.6<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 </div>
@@ -380,6 +369,9 @@ of users on systems where they will access Trino.</p>
 classpath, you’ll typically need to restart your application in order to
 recognize the new driver. Then, depending on your application, you
 may need to manually register and configure the driver.</p>
+<p>The CLI uses the HTTP protocol and the <a class="reference external" href="https://trino.io/docs/current/develop/client-protocol.html">Trino client REST
+API</a> to communicate
+with Trino.</p>
 </section>
 <section id="registering-and-configuring-the-driver">
 <h2 id="registering-and-configuring-the-driver">Registering and configuring the driver<a class="headerlink" href="#registering-and-configuring-the-driver" title="Permalink to this heading">#</a></h2>
@@ -473,7 +465,7 @@ may not be specified using both methods.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
 <td><p>Set the default <a class="reference internal" href="../sql/set-path.html"><span class="doc std std-doc">SQL path</span></a> for the session. Useful for
-setting a catalog and schema location for <a class="reference internal" href="../udf/introduction.html#udf-catalog"><span class="std std-ref">Catalog user-defined functions</span></a>.</p></td>
+setting a catalog and schema location for <a class="reference internal" href="../routines/introduction.html#routine-catalog"><span class="std std-ref">catalog routines</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">traceToken</span></code></p></td>
 <td><p>Trace token for correlating requests across systems.</p></td>
@@ -617,7 +609,7 @@ that do not escape schema or table names when passing them to
 <code class="docutils literal notranslate"><span class="pre">DatabaseMetaData</span></code> methods as schema or table name patterns.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
-<td><p>Sets the time zone for the session using the <a class="reference external" href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/time/ZoneId.html#of(java.lang.String)">time zone
+<td><p>Sets the time zone for the session using the <a class="reference external" href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/ZoneId.html#of(java.lang.String)">time zone
 passed</a>.
 Defaults to the timezone of the JVM running the JDBC driver.</p></td>
 </tr>
@@ -628,24 +620,8 @@ calling a single <code class="docutils literal notranslate"><span class="pre">EX
 network overhead and uses smaller HTTP headers and requires Trino 431 or
 greater.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">encoding</span></code></p></td>
-<td><p>Set the encoding when using the <a class="reference internal" href="#jdbc-spooling-protocol"><span class="std std-ref">spooling protocol</span></a>.
-Valid values are JSON with Zstandard compression, <code class="docutils literal notranslate"><span class="pre">json+zstd</span></code> (recommended),
-JSON with LZ4 compression <code class="docutils literal notranslate"><span class="pre">json+lz4</span></code>, and uncompressed JSON <code class="docutils literal notranslate"><span class="pre">json</span></code>. By
-default, the default encoding configured on the cluster is used.</p></td>
-</tr>
 </tbody>
 </table>
-</section>
-<section id="spooling-protocol">
-<span id="jdbc-spooling-protocol"></span><h2 id="spooling-protocol">Spooling protocol<a class="headerlink" href="#spooling-protocol" title="Permalink to this heading">#</a></h2>
-<p>The Trino JDBC driver automatically uses the spooling protocol to improve
-throughput for client interactions with higher data transfer demands, if the
-<a class="reference internal" href="client-protocol.html#protocol-spooling"><span class="std std-ref">Spooling protocol</span></a> is configured on the cluster.</p>
-<p>Optionally use the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> parameter to configure a different desired
-encoding, compared to the default on the cluster.</p>
-<p>The JVM process using the JDBC driver must have network access to the spooling
-object storage.</p>
 </section>
 </section>
 

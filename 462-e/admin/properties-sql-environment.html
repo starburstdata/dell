@@ -79,7 +79,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Spilling properties" href="properties-spilling.html" />
-    <link rel="prev" title="Catalog management properties" href="properties-catalog.html" />
+    <link rel="prev" title="Query management properties" href="properties-query-management.html" />
 
   
    
@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -216,7 +216,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -257,13 +257,53 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../admin.html#feature-topic-areas">Feature topic areas</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../admin.html#properties-reference">Properties reference</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="properties.html">Properties reference</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="properties-general.html">General</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-http-server.html">HTTP server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-resource-management.html">Resource management</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-query-management.html">Query management</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">SQL environment</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#sql-forced-session-time-zone"><code class="docutils literal notranslate"><span class="pre">sql.forced-session-time-zone</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sql-default-catalog"><code class="docutils literal notranslate"><span class="pre">sql.default-catalog</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sql-default-schema"><code class="docutils literal notranslate"><span class="pre">sql.default-schema</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sql-default-function-catalog"><code class="docutils literal notranslate"><span class="pre">sql.default-function-catalog</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sql-default-function-schema"><code class="docutils literal notranslate"><span class="pre">sql.default-function-schema</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sql-path"><code class="docutils literal notranslate"><span class="pre">sql.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="properties-spilling.html">Spilling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-exchange.html">Exchange</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-task.html">Task</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-write-partitioning.html">Write partitioning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-writer-scaling.html">Writer scaling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-node-scheduler.html">Node scheduler</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-optimizer.html">Optimizer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-logging.html">Logging</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-web-interface.html">Web UI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-regexp-function.html">Regular expression function</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties-http-client.html">HTTP client</a></li>
+<li class="toctree-l5"><a class="reference internal" href="properties.html#property-value-types">Property value types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#performance-related-properties-and-features">Performance-related properties and features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#data-governance">Data governance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#platform-features">Platform features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../admin.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
@@ -360,13 +400,14 @@ client overrides this default.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
 </ul>
-<p>Set the default catalog for <a class="reference internal" href="../udf.html"><span class="doc std std-doc">User-defined functions</span></a> storage for all clients. The connector used
-in the catalog must support <a class="reference internal" href="../language/sql-support.html#udf-management"><span class="std std-ref">User-defined function management</span></a>. Any usage of a fully qualified
-name for a UDF overrides this default.</p>
-<p>The default catalog and schema for UDF storage must be configured together, and
-the resulting entry must be set as part of the path. For example, the following
-section for <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">Config properties</span></a> uses the <code class="docutils literal notranslate"><span class="pre">functions</span></code> schema in the <code class="docutils literal notranslate"><span class="pre">brain</span></code>
-catalog for UDF storage, and adds it as the only entry on the path:</p>
+<p>Set the default catalog for <a class="reference internal" href="../routines.html"><span class="doc std std-doc">SQL routine</span></a> storage for all clients.
+The connector used in the catalog must support <a class="reference internal" href="../language/sql-support.html#sql-routine-management"><span class="std std-ref">Routine management</span></a>. Any
+usage of a fully qualified name for a routine overrides this default.</p>
+<p>The default catalog and schema for SQL routine storage must be configured
+together, and the resulting entry must be set as part of the path. For example,
+the following example section for <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">Config properties</span></a> uses the <code class="docutils literal notranslate"><span class="pre">functions</span></code>
+schema in the <code class="docutils literal notranslate"><span class="pre">brain</span></code> catalog for routine storage, and adds it as the only entry
+on the path:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">sql.default-function-catalog</span><span class="o">=</span><span class="s">brain</span>
 <span class="na">sql.default-function-schema</span><span class="o">=</span><span class="s">default</span>
 <span class="na">sql.path</span><span class="o">=</span><span class="s">brain.default</span>
@@ -378,9 +419,9 @@ catalog for UDF storage, and adds it as the only entry on the path:</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
 </ul>
-<p>Set the default schema for UDF storage for all clients. Must be set to a schema
-name that is valid for the default function catalog. Any usage of a fully
-qualified name for a UDF overrides this default.</p>
+<p>Set the default schema for SQL routine storage for all clients. Must be set to a
+schema name that is valid for the default function catalog. Any usage of a fully
+qualified name for a routine overrides this default.</p>
 </section>
 <section id="sql-path">
 <h2 id="sql-path"><code class="docutils literal notranslate"><span class="pre">sql.path</span></code><a class="headerlink" href="#sql-path" title="Permalink to this heading">#</a></h2>
@@ -405,7 +446,7 @@ more details about the path in <a class="reference internal" href="../sql/set-pa
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="properties-catalog.html" title="Catalog management properties"
+            <a href="properties-query-management.html" title="Query management properties"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -414,7 +455,7 @@ more details about the path in <a class="reference internal" href="../sql/set-pa
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Catalog management properties </span>
+                      class="md-footer-nav__direction"> Previous </span> Query management properties </span>
               </div>
             </a>
           

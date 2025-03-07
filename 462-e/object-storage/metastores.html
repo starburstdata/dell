@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.6 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.6 LTS</a>
   </label>
   
   
@@ -239,7 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">SQL routines</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
@@ -256,7 +256,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -426,13 +425,11 @@ with the default Glue V2 REST interface, and can only be set when
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore-cache-ttl</span></code></p></td>
-<td><p>Duration](prop-type-duration) of how long cached metastore data is
-considered valid.</p></td>
+<td><p>Duration of how long cached metastore data is considered valid.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">20m</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore-stats-cache-ttl</span></code></p></td>
-<td><p>Duration](prop-type-duration) of how long cached metastore statistics are
-considered valid.</p></td>
+<td><p>Duration of how long cached metastore statistics are considered valid.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">5m</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore-cache-maximum-size</span></code></p></td>
@@ -448,16 +445,6 @@ data.</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore-refresh-max-threads</span></code></p></td>
 <td><p>Maximum threads used to refresh cached metastore data.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.user-metastore-cache-ttl</span></code></p></td>
-<td><p><a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">Duration</span></a> of how long cached metastore statistics, which are user specific
-in user impersonation scenarios, are considered valid.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">10s</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.user-metastore-cache-maximum-size</span></code></p></td>
-<td><p>Maximum number of metastore data objects in the Hive metastore cache,
-which are user specific in user impersonation scenarios.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.hide-delta-lake-tables</span></code></p></td>
 <td><p>Controls whether to hide Delta Lake tables in table listings. Currently
@@ -857,13 +844,6 @@ Catalog.</p></td>
 <td><p>Number of segments for partitioned Glue tables.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.skip-archive</span></code></p></td>
-<td><p>AWS Glue has the ability to archive older table versions and a user can
-roll back the table to any historical version if needed. By default, the
-Hive Connector backed by Glue will not skip the archival of older table
-versions.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-</tr>
 </tbody>
 </table>
 <section id="iceberg-specific-glue-catalog-configuration-properties">
@@ -885,10 +865,10 @@ described with the following additional property:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.glue.cache-table-metadata</span></code></p></td>
-<td><p>While updating the table in AWS Glue, store the table metadata with the
-purpose of accelerating <code class="docutils literal notranslate"><span class="pre">information_schema.columns</span></code> and
-<code class="docutils literal notranslate"><span class="pre">system.metadata.table_comments</span></code> queries.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.glue.skip-archive</span></code></p></td>
+<td><p>Skip archiving an old table version when creating a new version in a commit.
+See <a class="reference external" href="https://iceberg.apache.org/docs/latest/aws/#skip-archive">AWS Glue Skip
+Archive</a>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
 </tbody>
@@ -934,44 +914,30 @@ Example: <code class="docutils literal notranslate"><span class="pre">dev</span>
 <td><p>Warehouse identifier/location for the catalog (optional). Example:
 <code class="docutils literal notranslate"><span class="pre">s3://my_bucket/warehouse_location</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.security</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.parent-namespace</span></code></p></td>
+<td><p>The namespace to use with the REST catalog server. Example:
+<code class="docutils literal notranslate"><span class="pre">main</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.security</span></code></p></td>
 <td><p>The type of security to use (default: <code class="docutils literal notranslate"><span class="pre">NONE</span></code>).  <code class="docutils literal notranslate"><span class="pre">OAUTH2</span></code> requires either a
 <code class="docutils literal notranslate"><span class="pre">token</span></code> or <code class="docutils literal notranslate"><span class="pre">credential</span></code>. Example: <code class="docutils literal notranslate"><span class="pre">OAUTH2</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.session</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.session</span></code></p></td>
 <td><p>Session information included when communicating with the REST Catalog.
 Options are <code class="docutils literal notranslate"><span class="pre">NONE</span></code> or <code class="docutils literal notranslate"><span class="pre">USER</span></code> (default: <code class="docutils literal notranslate"><span class="pre">NONE</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.token</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.token</span></code></p></td>
 <td><p>The bearer token used for interactions with the server. A <code class="docutils literal notranslate"><span class="pre">token</span></code> or
 <code class="docutils literal notranslate"><span class="pre">credential</span></code> is required for <code class="docutils literal notranslate"><span class="pre">OAUTH2</span></code> security. Example: <code class="docutils literal notranslate"><span class="pre">AbCdEf123456</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.credential</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.credential</span></code></p></td>
 <td><p>The credential to exchange for a token in the OAuth2 client credentials flow
 with the server. A <code class="docutils literal notranslate"><span class="pre">token</span></code> or <code class="docutils literal notranslate"><span class="pre">credential</span></code> is required for <code class="docutils literal notranslate"><span class="pre">OAUTH2</span></code>
 security. Example: <code class="docutils literal notranslate"><span class="pre">AbCdEf123456</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.scope</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.scope</span></code></p></td>
 <td><p>Scope to be used when communicating with the REST Catalog. Applicable only
 when using <code class="docutils literal notranslate"><span class="pre">credential</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.oauth2.server-uri</span></code></p></td>
-<td><p>The endpoint to retrieve access token from OAuth2 Server.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.vended-credentials-enabled</span></code></p></td>
-<td><p>Use credentials provided by the REST backend for file system access.
-Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.nested-namespace-enabled</span></code></p></td>
-<td><p>Support querying objects under nested namespace.
-Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.case-insensitive-name-matching</span></code></p></td>
-<td><p>Match namespace, table, and view names case insensitively. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.rest-catalog.case-insensitive-name-matching.cache-ttl</span></code></p></td>
-<td><p><a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">Duration</span></a> for which case-insensitive namespace, table,
-and view names are cached. Defaults to <code class="docutils literal notranslate"><span class="pre">1m</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -990,6 +956,7 @@ using an Iceberg REST catalog:</p>
 <span class="na">iceberg.security</span><span class="o">=</span><span class="s">read_only</span>
 <span class="na">iceberg.rest-catalog.security</span><span class="o">=</span><span class="s">OAUTH2</span>
 <span class="na">iceberg.rest-catalog.oauth2.token</span><span class="o">=</span><span class="s">***</span>
+<span class="na">iceberg.rest-catalog.parent-namespace</span><span class="o">=</span><span class="s">test_namespace</span>
 </pre></div>
 </div>
 <p>The REST catalog supports <a class="reference internal" href="../language/sql-support.html#sql-view-management"><span class="std std-ref">view management</span></a>
@@ -1005,51 +972,6 @@ management</span></a>.</p>
 <code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.catalog-name</span></code> must be configured. When using any
 database besides PostgreSQL, a JDBC driver jar file must be placed in the plugin
 directory.</p>
-<table id="id8">
-<caption><span class="caption-text">JDBC catalog configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 40%"/>
-<col style="width: 60%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Property name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.driver-class</span></code></p></td>
-<td><p>JDBC driver class name.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.connection-url</span></code></p></td>
-<td><p>The URI to connect to the JDBC server.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.connection-user</span></code></p></td>
-<td><p>User name for JDBC client.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.connection-password</span></code></p></td>
-<td><p>Password for JDBC client.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.catalog-name</span></code></p></td>
-<td><p>Iceberg JDBC metastore catalog name.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.default-warehouse-dir</span></code></p></td>
-<td><p>The default warehouse directory to use for JDBC.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.schema-version</span></code></p></td>
-<td><p>JDBC catalog schema version.
-Valid values are <code class="docutils literal notranslate"><span class="pre">V0</span></code> or <code class="docutils literal notranslate"><span class="pre">V1</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">V1</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.retryable-status-codes</span></code></p></td>
-<td><p>On connection error to JDBC metastore, retry if
-it is one of these JDBC status codes.
-Valid value is a comma-separated list of status codes.
-Note: JDBC catalog always retries the following status
-codes: <code class="docutils literal notranslate"><span class="pre">08000,08003,08006,08007,40001</span></code>. Specify only
-additional codes (such as <code class="docutils literal notranslate"><span class="pre">57000,57P03,57P04</span></code> if using
-PostgreSQL driver) here.</p></td>
-</tr>
-</tbody>
-</table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The JDBC catalog may have compatibility issues if Iceberg introduces breaking
@@ -1077,8 +999,8 @@ iceberg.jdbc-catalog.default-warehouse-dir=s3://bucket
 <p>In order to use a Nessie catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=nessie</span></code> and provide further details with the following
 properties:</p>
-<table id="id9">
-<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1140,8 +1062,8 @@ iceberg.nessie-catalog.default-warehouse-dir=/tmp
 <p>In order to use a Snowflake catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=snowflake</span></code> and provide further details with the following
 properties:</p>
-<table id="id10">
-<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
