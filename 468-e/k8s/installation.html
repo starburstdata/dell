@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -438,9 +438,9 @@ cluster’s resources, for example, <code class="docutils literal notranslate"><
 <p>The following example command assumes the registry access file, the production
 cluster configuration file, and the catalog configuration file are located in
 the current directory:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade  my-sep starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade  my-sep oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">468</span>.7.0 <span class="se">\</span>
+    --version <span class="m">474</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
     --values ./sep-prod-catalogs.yaml
@@ -471,10 +471,9 @@ Starburst’s Harbor registry:</p>
 </div>
 <p>The contents of this file override the default, empty values and ensure that the
 Helm charts can download the required Docker containers.</p>
-<p>If you have multiple clusters, this same file is used for all of them.</p>
-<p>As an alternative to using a username and password directly, you can use a
-Kubernetes secret by creating a secret containing the access token for your
-registry and configuring your pod to use the secret.</p>
+<p>If you have multiple clusters, this same file is used for all of them. You can
+also use the same file for the optional Hive Metastore Service charts. Other
+configurations should be managed in separate files as per best practices.</p>
 <section id="using-private-registries-and-repositories-instead-of-starburst-harbor">
 <span id="k8s-private-registries"></span><h4 id="using-private-registries-and-repositories-instead-of-starburst-harbor">Using private registries and repositories instead of Starburst Harbor<a class="headerlink" href="#using-private-registries-and-repositories-instead-of-starburst-harbor" title="Permalink to this heading">#</a></h4>
 <p>Typically, you must use your username and password for accessing the Helm chart
@@ -514,9 +513,9 @@ attempt to run SEP with the defaults, SEP may not start.</p>
 <li><p>Run Helm to install the default chart, as well as any override YAML files
 using the <code class="docutils literal notranslate"><span class="pre">--values</span></code> argument, as shown in the following example:</p></li>
 </ol>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade sep-prod-cluster starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade sep-prod-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">468</span>.7.0 <span class="se">\</span>
+    --version <span class="m">474</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -548,9 +547,9 @@ Consult the documentation for the particular database that you use.</p></li>
 <li><p>Run Helm with the updated Helm chart version and with the updated YAML
 configuration files, as in the following example:</p></li>
 </ol>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-staging-cluster starburstdata/starburst-enterprise <span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-staging-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">468</span>.7.0 <span class="se">\</span>
+    --version <span class="m">474</span>.1.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-stage-setup.yaml
 </pre></div>

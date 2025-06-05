@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -253,6 +253,12 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-10-changes-5-feb-2025">453-e.10 changes (5 Feb 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-11-changes-19-feb-2025">453-e.11 changes (19 Feb 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-12-changes-28-feb-2025">453-e.12 changes (28 Feb 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-13-changes-18-mar-2025">453-e.13 changes (18 Mar 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-14-changes-3-apr-2025">453-e.14 changes (3 Apr 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-16-changes-15-apr-2025">453-e.16 changes (15 Apr 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-17-changes-30-apr-2025">453-e.17 changes (30 Apr 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-18-changes-19-may-2025">453-e.18 changes (19 May 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-19-changes-2-jun-2025">453-e.19 changes (2 Jun 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-443-e.html">Release 443-e LTS (31 May 2024)</a></li>
@@ -284,13 +290,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -301,7 +308,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -387,6 +393,18 @@
         <li class="md-nav__item"><a href="#e-11-changes-19-feb-2025" class="md-nav__link">453-e.11 changes (19 Feb 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-12-changes-28-feb-2025" class="md-nav__link">453-e.12 changes (28 Feb 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-13-changes-18-mar-2025" class="md-nav__link">453-e.13 changes (18 Mar 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-14-changes-3-apr-2025" class="md-nav__link">453-e.14 changes (3 Apr 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-16-changes-15-apr-2025" class="md-nav__link">453-e.16 changes (15 Apr 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-17-changes-30-apr-2025" class="md-nav__link">453-e.17 changes (30 Apr 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-18-changes-19-may-2025" class="md-nav__link">453-e.18 changes (19 May 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-19-changes-2-jun-2025" class="md-nav__link">453-e.19 changes (2 Jun 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -493,7 +511,7 @@ includes support for <a class="reference internal" href="../data-engineering/cos
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="../object-storage.html#file-system-native"><span class="std std-ref">native filesystem support</span></a> for cloud storage
 systems. See the migration guide for more information on switching to native
-<a class="reference internal" href="../object-storage/legacy-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/legacy-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/legacy-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
+<a class="reference internal" href="../object-storage/file-system-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
 </ul>
 </section>
 <section id="hive-connector">
@@ -501,7 +519,7 @@ systems. See the migration guide for more information on switching to native
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="../object-storage.html#file-system-native"><span class="std std-ref">native filesystem support</span></a> for cloud storage
 systems. See the migration guide for more information on switching to native
-<a class="reference internal" href="../object-storage/legacy-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/legacy-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/legacy-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
+<a class="reference internal" href="../object-storage/file-system-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
 <li><p>Added support for excluding tables from caching with the
 <code class="docutils literal notranslate"><span class="pre">hive.file-status-cache-tables.excluded</span></code> catalog configuration property.</p></li>
 </ul>
@@ -511,7 +529,7 @@ systems. See the migration guide for more information on switching to native
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="../object-storage.html#file-system-native"><span class="std std-ref">native filesystem support</span></a> for cloud storage
 systems. See the migration guide for more information on switching to native
-<a class="reference internal" href="../object-storage/legacy-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/legacy-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/legacy-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
+<a class="reference internal" href="../object-storage/file-system-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
 </ul>
 </section>
 <section id="iceberg-connector">
@@ -519,7 +537,7 @@ systems. See the migration guide for more information on switching to native
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="../object-storage.html#file-system-native"><span class="std std-ref">native filesystem support</span></a> for cloud storage
 systems. See the migration guide for more information on switching to native
-<a class="reference internal" href="../object-storage/legacy-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/legacy-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/legacy-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
+<a class="reference internal" href="../object-storage/file-system-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3 storage</span></a> support.</p></li>
 </ul>
 </section>
 <section id="netezza-connector">
@@ -698,6 +716,62 @@ functions.</p></li>
 null values.</p></li>
 <li><p>Fixed potential table corruption when using the vacuum procedure in Delta
 Lake.</p></li>
+</ul>
+</section>
+<section id="e-13-changes-18-mar-2025">
+<span id="release-453-e-13"></span><h2 id="e-13-changes-18-mar-2025">453-e.13 changes (18 Mar 2025)<a class="headerlink" href="#e-13-changes-18-mar-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed column masks not applying to columns in views with non-lowercase names.</p></li>
+<li><p>Fixed failures caused by tables with case-sensitive name conflicts.</p></li>
+<li><p>Prevented failures when fault-tolerant execution is configured with an
+exchange manager that uses Azure storage with workload identity.</p></li>
+</ul>
+</section>
+<section id="e-14-changes-3-apr-2025">
+<span id="release-453-e-14"></span><h2 id="e-14-changes-3-apr-2025">453-e.14 changes (3 Apr 2025)<a class="headerlink" href="#e-14-changes-3-apr-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added support for limiting the max parallelism with the
+<code class="docutils literal notranslate"><span class="pre">bigquery.max-parallelism</span></code> configuration property in the BigQuery connector.</p></li>
+<li><p>Fixed an issue which prevented temporal types in <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> predicates being
+pushed down in the Netezza connector.</p></li>
+<li><p>Fixed an issue in SCIM when updating group membership with Azure AD.</p></li>
+</ul>
+<p><strong>453-e.15 was skipped.</strong></p>
+</section>
+<section id="e-16-changes-15-apr-2025">
+<span id="release-453-e-16"></span><h2 id="e-16-changes-15-apr-2025">453-e.16 changes (15 Apr 2025)<a class="headerlink" href="#e-16-changes-15-apr-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated Parquet libraries to address CVE-2025-30065, though Starburst was not
+impacted because SEP uses a custom Parquet reader.</p></li>
+<li><p>Fixed an issue that caused queries to hang when reading large tables.</p></li>
+<li><p>Fixed failure when setting comments on columns with upper case letters.</p></li>
+</ul>
+</section>
+<section id="e-17-changes-30-apr-2025">
+<span id="release-453-e-17"></span><h2 id="e-17-changes-30-apr-2025">453-e.17 changes (30 Apr 2025)<a class="headerlink" href="#e-17-changes-30-apr-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Removed the Phoenix connector due to incompatibility with Java 24.</p></li>
+<li><p>Fixed Glue endpoint URL override.</p></li>
+</ul>
+</section>
+<section id="e-18-changes-19-may-2025">
+<span id="release-453-e-18"></span><h2 id="e-18-changes-19-may-2025">453-e.18 changes (19 May 2025)<a class="headerlink" href="#e-18-changes-19-may-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated <code class="docutils literal notranslate"><span class="pre">ignite-core</span></code> dependency to 2.17.0 to mitigate CVE-2024-52577.</p></li>
+<li><p>Updated Go to 1.23.8 to mitigate the multiple CVEs.</p></li>
+<li><p>Fixed query failures with <code class="docutils literal notranslate"><span class="pre">EXCEEDED_LOCAL_MEMORY_LIMIT</span></code> errors due to
+incorrect memory accounting.</p></li>
+<li><p>Fixed potential failures or incorrect results when querying partitioned tables
+using the OpenX JSON SerDe.</p></li>
+<li><p>Fixed potential performance regression when reading ORC data.</p></li>
+</ul>
+</section>
+<section id="e-19-changes-2-jun-2025">
+<span id="release-453-e-19"></span><h2 id="e-19-changes-2-jun-2025">453-e.19 changes (2 Jun 2025)<a class="headerlink" href="#e-19-changes-2-jun-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated to include support for Java 24.</p></li>
+<li><p>Fixed an issue which caused incremental refresh of materialized views to fail
+when using session credentials.</p></li>
 </ul>
 </section>
 </section>

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -213,7 +213,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -244,13 +244,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,7 +262,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -296,7 +296,9 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#admin-properties-client-protocol--page-root" class="md-nav__link">Client protocol properties</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#admin-properties-client-protocol--page-root" class="md-nav__link">Client protocol properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Client protocol properties</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#spooling-protocol-properties" class="md-nav__link">Spooling protocol properties</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -316,7 +318,7 @@
         </li>
         <li class="md-nav__item"><a href="#protocol-spooling-initial-segment-size" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.initial-segment-size</span></code></a>
         </li>
-        <li class="md-nav__item"><a href="#protocol-spooling-maximum-segment-size" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.maximum-segment-size</span></code></a>
+        <li class="md-nav__item"><a href="#protocol-spooling-max-segment-size" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.max-segment-size</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#protocol-spooling-inlining-enabled" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.inlining.enabled</span></code></a>
         </li>
@@ -373,6 +375,9 @@
             
   <section id="client-protocol-properties">
 <h1 id="admin-properties-client-protocol--page-root">Client protocol properties<a class="headerlink" href="#admin-properties-client-protocol--page-root" title="Permalink to this heading">#</a></h1>
+</section>
+<section id="id1">
+<h1 id="id1">Client protocol properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>The following sections provide a reference for all properties related to the
 <a class="reference internal" href="../client/client-protocol.html"><span class="doc std std-doc">client protocol</span></a>.</p>
 <p>All properties described in this page are defined as follows, depending on the
@@ -390,6 +395,7 @@ deployment type:</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-boolean"><span class="std std-ref">boolean</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_enabled</span></code></p></li>
 </ul>
 <p>Enable the support for the client <a class="reference internal" href="../client/client-protocol.html#protocol-spooling"><span class="std std-ref">Spooling protocol</span></a>. The protocol is used if
 client drivers and applications request usage, otherwise the direct protocol is
@@ -401,7 +407,10 @@ used automatically.</p>
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
 </ul>
 <p>A required 256 bit, base64-encoded secret key used to secure spooled metadata
-exchanged with the client.</p>
+exchanged with the client. Create a suitable value with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>openssl rand -base64 <span class="m">32</span>
+</pre></div>
+</div>
 </section>
 <section id="protocol-spooling-retrieval-mode">
 <h3 id="protocol-spooling-retrieval-mode"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.retrieval-mode</span></code><a class="headerlink" href="#protocol-spooling-retrieval-mode" title="Permalink to this heading">#</a></h3>
@@ -465,15 +474,21 @@ segments.</p>
 <h3 id="protocol-spooling-initial-segment-size"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.initial-segment-size</span></code><a class="headerlink" href="#protocol-spooling-initial-segment-size" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
-<li><p><strong>Default value:</strong> 8MB</p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">8MB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">128MB</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_initial_segment_size</span></code></p></li>
 </ul>
 <p>Initial size of the spooled segments.</p>
 </section>
-<section id="protocol-spooling-maximum-segment-size">
-<h3 id="protocol-spooling-maximum-segment-size"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.maximum-segment-size</span></code><a class="headerlink" href="#protocol-spooling-maximum-segment-size" title="Permalink to this heading">#</a></h3>
+<section id="protocol-spooling-max-segment-size">
+<h3 id="protocol-spooling-max-segment-size"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.max-segment-size</span></code><a class="headerlink" href="#protocol-spooling-max-segment-size" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
-<li><p><strong>Default value:</strong> 16MB</p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">16MB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">128MB</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_max_segment_size</span></code></p></li>
 </ul>
 <p>Maximum size for each spooled segment.</p>
 </section>
@@ -482,6 +497,7 @@ segments.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-boolean"><span class="std std-ref">boolean</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_inlining_enabled</span></code></p></li>
 </ul>
 <p>Allow spooled protocol to inline initial rows to decrease time to return the
 first row.</p>
@@ -490,7 +506,10 @@ first row.</p>
 <h3 id="protocol-spooling-inlining-max-rows"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.inlining.max-rows</span></code><a class="headerlink" href="#protocol-spooling-inlining-max-rows" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-integer"><span class="std std-ref">integer</span></a></p></li>
-<li><p><strong>Default value:</strong> 1000</p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">1000</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">1000000</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_inlining_max_rows</span></code></p></li>
 </ul>
 <p>Maximum number of rows to inline per worker.</p>
 </section>
@@ -498,7 +517,10 @@ first row.</p>
 <h3 id="protocol-spooling-inlining-max-size"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.inlining.max-size</span></code><a class="headerlink" href="#protocol-spooling-inlining-max-size" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
-<li><p><strong>Default value:</strong> 128kB</p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">128kB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">1MB</span></code></p></li>
+<li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_inlining_max_size</span></code></p></li>
 </ul>
 <p>Maximum size of rows to inline per worker.</p>
 </section>
@@ -547,11 +569,14 @@ type, and typically follow a pattern of <code class="docutils literal notranslat
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>When using the same object storage for spooling from multiple Trino clusters,
-you must use separate locations for each cluster. For example:</p>
+<p>The specified object storage location must not be used for spooling for another
+Trino cluster or any object storage catalog. When using the same object storage
+for multiple services, you must use separate locations for each one. For
+example:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">s3://my-spooling-bucket/my-segments/cluster1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">s3://my-spooling-bucket/my-segments/cluster2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s3://my-spooling-bucket/my-segments/cluster1-spooling</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s3://my-spooling-bucket/my-segments/cluster2-spooling</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s3://my-spooling-bucket/my-segments/iceberg-catalog</span></code></p></li>
 </ul>
 </div>
 </section>

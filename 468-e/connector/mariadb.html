@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="OpenSearch connector" href="opensearch.html" />
-    <link rel="prev" title="Kinesis connector" href="kinesis.html" />
+    <link rel="prev" title="Loki connector" href="loki.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,13 +260,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="druid.html">Druid connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="duckdb.html">DuckDB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exasol.html">Exasol connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faker.html">Faker connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="googlesheets.html">Google Sheets connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ignite.html">Ignite connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kinesis.html">Kinesis connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loki.html">Loki connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MariaDB connector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
@@ -273,7 +274,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#domain-compaction-threshold">Domain compaction threshold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#case-insensitive-matching">Case insensitive matching</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#non-transactional-insert">Non-transactional INSERT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 </ul>
 </li>
@@ -285,8 +285,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#update">UPDATE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-transactional-insert">Non-transactional INSERT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-limitation">UPDATE limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-limitation">DELETE limitation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#procedures">Procedures</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#system-execute-query"><code class="docutils literal notranslate"><span class="pre">system.execute('query')</span></code></a></li>
@@ -316,7 +317,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -365,8 +365,6 @@
         </li>
         <li class="md-nav__item"><a href="#case-insensitive-matching" class="md-nav__link">Case insensitive matching</a>
         </li>
-        <li class="md-nav__item"><a href="#non-transactional-insert" class="md-nav__link">Non-transactional INSERT</a>
-        </li>
         <li class="md-nav__item"><a href="#fault-tolerant-execution-support" class="md-nav__link">Fault-tolerant execution support</a>
         </li></ul>
             </nav>
@@ -385,9 +383,11 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#update" class="md-nav__link">UPDATE</a>
+        <li class="md-nav__item"><a href="#non-transactional-insert" class="md-nav__link">Non-transactional INSERT</a>
         </li>
-        <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
+        <li class="md-nav__item"><a href="#update-limitation" class="md-nav__link">UPDATE limitation</a>
+        </li>
+        <li class="md-nav__item"><a href="#delete-limitation" class="md-nav__link">DELETE limitation</a>
         </li>
         <li class="md-nav__item"><a href="#procedures" class="md-nav__link">Procedures</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -624,7 +624,9 @@ schemas and/or tables have names that differ only in case (such as “customers�
 and “Customers”) then Trino fails to query them due to ambiguity.</p>
 <p>In these cases, use the <code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file</span></code> catalog
 configuration property to specify a configuration file that maps these remote
-schemas/tables to their respective Trino schemas/tables:</p>
+schemas and tables to their respective Trino schemas and tables. Additionally,
+the JSON file must include both the <code class="docutils literal notranslate"><span class="pre">schemas</span></code> and <code class="docutils literal notranslate"><span class="pre">tables</span></code> properties, even if
+only as empty arrays.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">"schemas"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -664,18 +666,6 @@ refresh the properties without requiring a restart:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">case-insensitive-name-matching.config-file.refresh-period</span><span class="o">=</span><span class="s">30s</span>
 </pre></div>
 </div>
-</section>
-<section id="non-transactional-insert">
-<h3 id="non-transactional-insert">Non-transactional INSERT<a class="headerlink" href="#non-transactional-insert" title="Permalink to this heading">#</a></h3>
-<p>The connector supports adding rows using <a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT statements</span></a>.
-By default, data insertion is performed by writing data to a temporary table.
-You can skip this step to improve performance and write directly to the target
-table. Set the <code class="docutils literal notranslate"><span class="pre">insert.non-transactional-insert.enabled</span></code> catalog property
-or the corresponding <code class="docutils literal notranslate"><span class="pre">non_transactional_insert</span></code> catalog session property to
-<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<p>Note that with this property enabled, data can be corrupted in rare cases where
-exceptions occur during the insert operation. With transactions disabled, no
-rollback can be performed.</p>
 </section>
 <section id="fault-tolerant-execution-support">
 <span id="mariadb-fte-support"></span><h3 id="fault-tolerant-execution-support">Fault-tolerant execution support<a class="headerlink" href="#fault-tolerant-execution-support" title="Permalink to this heading">#</a></h3>
@@ -980,23 +970,38 @@ unbounded <code class="docutils literal notranslate"><span class="pre">VARCHAR</
 </section>
 <section id="sql-support">
 <span id="mariadb-sql-support"></span><h2 id="sql-support">SQL support<a class="headerlink" href="#sql-support" title="Permalink to this heading">#</a></h2>
-<p>The connector provides read access and write access to data and metadata in
-a MariaDB database.  In addition to the <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a>
+<p>The connector provides read access and write access to data and metadata in a
+MariaDB database. In addition to the <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally
+available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a>
 statements, the connector supports the following features:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/update.html"><span class="doc">UPDATE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc">DELETE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc">TRUNCATE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/create-table.html"><span class="doc">CREATE TABLE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/create-table-as.html"><span class="doc">CREATE TABLE AS</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/drop-table.html"><span class="doc">DROP TABLE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/alter-table.html"><span class="doc">ALTER TABLE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/create-schema.html"><span class="doc">CREATE SCHEMA</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/drop-schema.html"><span class="doc">DROP SCHEMA</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc std std-doc">INSERT</span></a>, see also <a class="reference internal" href="#mariadb-insert"><span class="std std-ref">Non-transactional INSERT</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/update.html"><span class="doc std std-doc">UPDATE</span></a>, see also <a class="reference internal" href="#mariadb-update"><span class="std std-ref">UPDATE limitation</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc std std-doc">DELETE</span></a>, see also <a class="reference internal" href="#mariadb-delete"><span class="std std-ref">DELETE limitation</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc std std-doc">TRUNCATE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/create-table.html"><span class="doc std std-doc">CREATE TABLE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">CREATE TABLE AS</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/drop-table.html"><span class="doc std std-doc">DROP TABLE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/alter-table.html"><span class="doc std std-doc">ALTER TABLE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/create-schema.html"><span class="doc std std-doc">CREATE SCHEMA</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/drop-schema.html"><span class="doc std std-doc">DROP SCHEMA</span></a></p></li>
+<li><p><a class="reference internal" href="#mariadb-procedures"><span class="std std-ref">Procedures</span></a></p></li>
+<li><p><a class="reference internal" href="#mariadb-table-functions"><span class="std std-ref">Table functions</span></a></p></li>
 </ul>
-<section id="update">
-<h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permalink to this heading">#</a></h3>
+<section id="non-transactional-insert">
+<span id="mariadb-insert"></span><h3 id="non-transactional-insert">Non-transactional INSERT<a class="headerlink" href="#non-transactional-insert" title="Permalink to this heading">#</a></h3>
+<p>The connector supports adding rows using <a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT statements</span></a>.
+By default, data insertion is performed by writing data to a temporary table.
+You can skip this step to improve performance and write directly to the target
+table. Set the <code class="docutils literal notranslate"><span class="pre">insert.non-transactional-insert.enabled</span></code> catalog property
+or the corresponding <code class="docutils literal notranslate"><span class="pre">non_transactional_insert</span></code> catalog session property to
+<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Note that with this property enabled, data can be corrupted in rare cases where
+exceptions occur during the insert operation. With transactions disabled, no
+rollback can be performed.</p>
+</section>
+<section id="update-limitation">
+<span id="mariadb-update"></span><h3 id="update-limitation">UPDATE limitation<a class="headerlink" href="#update-limitation" title="Permalink to this heading">#</a></h3>
 <p>Only <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statements with constant assignments and predicates are
 supported. For example, the following statement is supported because the values
 assigned are constants:</p>
@@ -1016,13 +1021,13 @@ column table, the following statement is not supported:</p>
 </pre></div>
 </div>
 </section>
-<section id="sql-delete">
-<h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
+<section id="delete-limitation">
+<span id="mariadb-delete"></span><h3 id="delete-limitation">DELETE limitation<a class="headerlink" href="#delete-limitation" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
 predicate in the clause can be fully pushed down to the data source.</p>
 </section>
 <section id="procedures">
-<h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
+<span id="mariadb-procedures"></span><h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
 <section id="system-flush-metadata-cache">
 <h4 id="system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code><a class="headerlink" href="#system-flush-metadata-cache" title="Permalink to this heading">#</a></h4>
 <p>Flush JDBC metadata caches. For example, the following system call
@@ -1059,7 +1064,7 @@ version.</p>
 </section>
 </section>
 <section id="table-functions">
-<h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
+<span id="mariadb-table-functions"></span><h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
 <p>The connector provides specific <a class="reference internal" href="../functions/table.html"><span class="doc">table functions</span></a> to
 access MariaDB.</p>
 <section id="query-varchar-table">
@@ -1177,7 +1182,7 @@ since <code class="docutils literal notranslate"><span class="pre">name</span></
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="kinesis.html" title="Kinesis connector"
+            <a href="loki.html" title="Loki connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1186,7 +1191,7 @@ since <code class="docutils literal notranslate"><span class="pre">name</span></
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Kinesis connector </span>
+                      class="md-footer-nav__direction"> Previous </span> Loki connector </span>
               </div>
             </a>
           

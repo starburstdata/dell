@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -309,6 +309,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#external-secret-reference">External secret reference</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#defining-external-secrets">Defining external secrets</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#file-based-authentication">File-based authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#network-policies">Network policies</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#performance-considerations">Performance considerations</a><ul>
@@ -427,6 +428,8 @@
         <li class="md-nav__item"><a href="#defining-external-secrets" class="md-nav__link">Defining external secrets</a>
         </li>
         <li class="md-nav__item"><a href="#file-based-authentication" class="md-nav__link">File-based authentication</a>
+        </li>
+        <li class="md-nav__item"><a href="#network-policies" class="md-nav__link">Network policies</a>
         </li></ul>
             </nav>
         </li>
@@ -751,7 +754,7 @@ command with the updated YAML files and the <code class="docutils literal notran
 example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-prod-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">468</span>.7.0 <span class="se">\</span>
+    --version <span class="m">468</span>.6.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -1530,6 +1533,19 @@ statically deliver user credentials to the file
 file to SEP. Set the <code class="docutils literal notranslate"><span class="pre">file.password-file</span></code> property to the user database file,
 and ensure to disable the built-in user database
 (<a class="reference internal" href="sep-config-examples.html#k8s-ex-sep-user-db"><span class="std std-ref">example</span></a>).</p>
+</section>
+<section id="network-policies">
+<span id="k8s-network-policies"></span><h3 id="network-policies">Network policies<a class="headerlink" href="#network-policies" title="Permalink to this heading">#</a></h3>
+<p>Kubernetes network policies let you control traffic flow between pods within a
+cluster. Enabling the <code class="docutils literal notranslate"><span class="pre">networkPolicy</span></code> option in the SEP Helm chart adds a
+default policy that restricts traffic so that only SEP pods can communicate
+with each other. You can extend the default policy by specifying custom ingress
+and egress rules to control communication with specific services or other
+namespaces.</p>
+<p>Kubernetes network policies cannot block traffic coming from the node the pod is
+running on. Because of this, they are not compatible with services of type
+<code class="docutils literal notranslate"><span class="pre">NodePort</span></code>. If you are exporting JMX metrics, you may need to define additional
+ingress rules to allow Prometheus or other monitoring tools to scrape metrics.</p>
 </section>
 </section>
 <section id="performance-considerations">

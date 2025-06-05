@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,13 +260,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="druid.html">Druid connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="duckdb.html">DuckDB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exasol.html">Exasol connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faker.html">Faker connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="googlesheets.html">Google Sheets connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ignite.html">Ignite connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kinesis.html">Kinesis connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loki.html">Loki connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mariadb.html">MariaDB connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OpenSearch connector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -283,6 +284,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#special-columns">Special columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wildcard-table">Wildcard table</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#table-functions">Table functions</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#raw-query-varchar-table"><code class="docutils literal notranslate"><span class="pre">raw_query(varchar)</span> <span class="pre">-&gt;</span> <span class="pre">table</span></code></a></li>
 </ul>
@@ -303,7 +305,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -366,6 +367,8 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#wildcard-table" class="md-nav__link">Wildcard table</a>
+        </li>
         <li class="md-nav__item"><a href="#table-functions" class="md-nav__link">Table functions</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#raw-query-varchar-table" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">raw_query(varchar)</span> <span class="pre">-&gt;</span> <span class="pre">table</span></code></a>
@@ -533,14 +536,14 @@ the configured IAM user must be able to assume this role.</p></td>
 <td><p>Optional external ID to pass while assuming an AWS IAM role.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opensearch.aws.deployment-type</span></code></p></td>
-<td><p>AWS OpenSearch deployment type. Possible values are <code class="docutils literal notranslate"><span class="pre">PROVISIONED</span></code> &amp;
-<code class="docutils literal notranslate"><span class="pre">SERVERLESS</span></code>. This option is required.</p></td>
+<td><p>AWS OpenSearch deployment type. The required value is <code class="docutils literal notranslate"><span class="pre">PROVISIONED</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Connecting to a serverless AWS opensearch deployment is unsupported.</p>
+<p>Connecting to a serverless AWS opensearch deployment is not supported in
+Starburst Enterprise.</p>
 </div>
 <p>To enable password authentication, the <code class="docutils literal notranslate"><span class="pre">opensearch.security</span></code> option must be set
 to <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code>. Additionally the following options must be configured:</p>
@@ -848,6 +851,16 @@ same column.</p>
 <p>The connector provides <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read
 operation</span></a> statements to access data and metadata in the
 OpenSearch catalog.</p>
+<section id="wildcard-table">
+<h3 id="wildcard-table">Wildcard table<a class="headerlink" href="#wildcard-table" title="Permalink to this heading">#</a></h3>
+<p>The connector provides support to query multiple tables using a concise
+<a class="reference external" href="https://opensearch.org/docs/latest/api-reference/multi-search/#metadata-only-options">wildcard table</a>
+notation.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">example</span><span class="p">.</span><span class="n">web</span><span class="p">.</span><span class="ss">"page_views_*"</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
 <section id="table-functions">
 <h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
 <p>The connector provides specific <a class="reference internal" href="../functions/table.html"><span class="doc std std-doc">table functions</span></a> to access

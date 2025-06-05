@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -437,14 +437,15 @@ trino hard nproc 128000
 </section>
 <section id="java-runtime-environment">
 <span id="requirements-java"></span><h3 id="java-runtime-environment">Java runtime environment<a class="headerlink" href="#java-runtime-environment" title="Permalink to this heading">#</a></h3>
-<p>SEP requires a 64-bit version of Java 22, with a minimum required version of
-22.0.1 and a recommendation to use the latest patch version. Earlier major
-versions such as Java 8, Java 11, Java 17 or Java 21 do not work. Newer versions
-such as Java 23 are not supported – they may work, but are not tested.</p>
-<p>We recommend using the Eclipse Temurin OpenJDK distribution from
-<a class="reference external" href="https://adoptium.net/">Adoptium</a> as the JDK for Trino, as Trino is tested
-against that distribution. Eclipse Temurin is also the JDK used by the <a class="reference external" href="https://hub.docker.com/r/trinodb/trino">Trino
-Docker image</a>.</p>
+<p>SEP requires a 64-bit version of Java 23, with a minimum required version of
+23.0.0 and a recommendation to use the latest patch version. Earlier major
+versions such as Java 8, Java 11, Java 17, Java 21, or Java 22 do not work.
+Newer versions such as Java 24 are not supported – they may work, but are not
+tested.</p>
+<p>JDK 23 is bundled with all SEP installations with the Eclipse Temurin
+OpenJDK distribution from <a class="reference external" href="https://adoptium.net/">Adoptium</a>. It is recommended
+to use the bundled Java distribution which is a supported JDK version, but you
+can override the bundled Java using the <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> environment variable.</p>
 </section>
 <section id="processor-architectures">
 <h3 id="processor-architectures">Processor architectures<a class="headerlink" href="#processor-architectures" title="Permalink to this heading">#</a></h3>
@@ -464,19 +465,20 @@ and running before many other features can be configured.</p>
 </section>
 </section>
 <section id="deploy-sep">
-<h2 id="deploy-sep">Deploy SEP<a class="headerlink" href="#deploy-sep" title="Permalink to this heading">#</a></h2>
+<span id="id2"></span><h2 id="deploy-sep">Deploy SEP<a class="headerlink" href="#deploy-sep" title="Permalink to this heading">#</a></h2>
 <p>To deploy SEP, you must use the Starburst Kubernetes <a class="reference internal" href="../k8s/requirements.html"><span class="doc">Helm charts</span></a>.</p>
 </section>
 <section id="configure-sep">
 <h2 id="configure-sep">Configure SEP<a class="headerlink" href="#configure-sep" title="Permalink to this heading">#</a></h2>
-<p>Starburst provides the following deployment option for SEP:</p>
+<p>Starburst provides two deployment options for SEP:</p>
 <ul class="simple">
 <li><p><strong>Kubernetes-based deployments</strong> - All properties are defined <a class="reference internal" href="../k8s/sep-config-examples.html"><span class="doc">in YAML files</span></a> which are used to create the
 configuration files that SEP expects.</p></li>
 </ul>
 <p>There are four main categories of configuration properties that SEP requires
 in specifically named locations. These categories describe the
-top-level YAML nodes for Helm-based deployments.</p>
+top-level YAML nodes for Helm-based deployments, or the Jinja2 files
+for Starburst Admin-based deployments:</p>
 <ul class="simple">
 <li><p><strong>Node properties</strong> - Environmental configuration specific to each node.</p></li>
 <li><p><strong>JVM config</strong> - Command line options for the Java Virtual Machine</p></li>
@@ -487,10 +489,12 @@ The available catalog configuration properties for a connector are described
 in the respective connector documentation.</p></li>
 </ul>
 <p>The node properties, JVM config, and config properties must be specified for
-both the coordinator and workers in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file for Kubernetes-based
-deployments, and in the Jinja2 files located in the <code class="docutils literal notranslate"><span class="pre">files/coordinator</span></code>.
-Catalogs are defined in the top-level <code class="docutils literal notranslate"><span class="pre">catalogs</span></code> node of the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file
-for Kubernetes.</p>
+both the coordinator and workers in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file for
+Kubernetes-based deployments, and in the Jinja2 files located in the
+<code class="docutils literal notranslate"><span class="pre">files/coordinator</span></code> and <code class="docutils literal notranslate"><span class="pre">files/worker</span></code> directories for Starburst Admin
+deployments. Catalogs are defined in the top-level <code class="docutils literal notranslate"><span class="pre">catalogs</span></code> node of the
+<code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file for Kubernetes, or in the <code class="docutils literal notranslate"><span class="pre">file/catalog</span></code> directory of
+Starburst Admin.</p>
 <p>In addition to the above categories, other features such as access control and
 cluster security require additional customization in specific sections of the
 <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file for Kubernetes deployments.</p>
@@ -513,7 +517,7 @@ the values in <code class="docutils literal notranslate"><span class="pre">vars.
 files.</p>
 </section>
 <section id="node-properties">
-<span id="id2"></span><h3 id="node-properties">Node properties<a class="headerlink" href="#node-properties" title="Permalink to this heading">#</a></h3>
+<span id="id3"></span><h3 id="node-properties">Node properties<a class="headerlink" href="#node-properties" title="Permalink to this heading">#</a></h3>
 <p>All properties described in this section are defined as follows, depending on
 the deployment type:</p>
 <ul class="simple">
@@ -550,7 +554,7 @@ logs and other data here.</p></li>
 </ul>
 </section>
 <section id="jvm-config">
-<span id="id3"></span><h3 id="jvm-config">JVM config<a class="headerlink" href="#jvm-config" title="Permalink to this heading">#</a></h3>
+<span id="id4"></span><h3 id="jvm-config">JVM config<a class="headerlink" href="#jvm-config" title="Permalink to this heading">#</a></h3>
 <p>All properties described in this section are defined as follows, depending on
 the deployment type:</p>
 <ul class="simple">
@@ -579,9 +583,6 @@ configuration:</p>
 -Djdk.attach.allowAttachSelf=true
 -Djdk.nio.maxCachedBufferSize=2000000
 -Dfile.encoding=UTF-8
-# Reduce starvation of threads by GClocker, recommend to set about the number of cpu cores (JDK-8192647)
--XX:+UnlockDiagnosticVMOptions
--XX:GCLockerRetryAllocationCount=32
 # Allow loading dynamic agent used by JOL
 -XX:+EnableDynamicAgentLoading
 </pre></div>
@@ -610,17 +611,18 @@ inconsistent state, we write a heap dump, for debugging, and forcibly
 terminate the process when this occurs.</p>
 <section id="temporary-directory">
 <span id="tmp-directory"></span><h4 id="temporary-directory">Temporary directory<a class="headerlink" href="#temporary-directory" title="Permalink to this heading">#</a></h4>
-<p>The temporary directory used by the JVM must allow execution of code.
-Specifically, the mount must not have the <code class="docutils literal notranslate"><span class="pre">noexec</span></code> flag set. The default
-<code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory is mounted with this flag in some installations, which
-prevents SEP from starting. You can workaround this by overriding the
-temporary directory by adding <code class="docutils literal notranslate"><span class="pre">-Djava.io.tmpdir=/path/to/other/tmpdir</span></code> to the
-list of JVM options.</p>
-<p>We set GCLocker retry allocation count (<code class="docutils literal notranslate"><span class="pre">-XX:GCLockerRetryAllocationCount=32</span></code>) to avoid OOM too early (see <a class="reference external" href="https://bugs.openjdk.org/browse/JDK-8192647">JDK-8192647</a>)</p>
+<p>The temporary directory used by the JVM must allow execution of code, because
+Trino accesses and uses shared library binaries for purposes such as
+<a class="reference internal" href="../admin/properties-general.html#file-compression"><span class="std std-ref">File compression and decompression</span></a>.</p>
+<p>Specifically, the partition mount and directory must not have the <code class="docutils literal notranslate"><span class="pre">noexec</span></code> flag
+set. The default <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory is mounted with this flag in some operating
+system installations, which prevents Trino from starting. You can work around
+this by overriding the temporary directory by adding
+<code class="docutils literal notranslate"><span class="pre">-Djava.io.tmpdir=/path/to/other/tmpdir</span></code> to the list of JVM options.</p>
 </section>
 </section>
 <section id="config-properties">
-<span id="id4"></span><h3 id="config-properties">Config properties<a class="headerlink" href="#config-properties" title="Permalink to this heading">#</a></h3>
+<span id="id5"></span><h3 id="config-properties">Config properties<a class="headerlink" href="#config-properties" title="Permalink to this heading">#</a></h3>
 <p>SEP provides general configuration properties for many aspects of the cluster.
 The <a class="reference internal" href="../admin/properties.html"><span class="doc">adminstration section</span></a> of this documentation
 provides a comprehensive list of the supported properties for topics such as
@@ -628,6 +630,9 @@ provides a comprehensive list of the supported properties for topics such as
 <a class="reference internal" href="../admin/properties-query-management.html"><span class="doc">Query management properties</span></a>,
 <a class="reference internal" href="../admin/properties-web-interface.html"><span class="doc">Web UI properties</span></a>, and others. The examples in the section
 show how a small number of the available configuration properties are used.</p>
+<p>Further configuration can include <a class="reference internal" href="../admin/logging.html"><span class="doc std std-doc">Logging</span></a>, <a class="reference internal" href="../admin/opentelemetry.html"><span class="doc std std-doc">Observability with OpenTelemetry</span></a>,
+<a class="reference internal" href="../admin/jmx.html"><span class="doc std std-doc">Monitoring with JMX</span></a>, <a class="reference internal" href="../admin/openmetrics.html"><span class="doc std std-doc">Trino metrics with OpenMetrics</span></a>, and other functionality described in the
+<a class="reference internal" href="../admin.html"><span class="doc std std-doc">Performance, logging, and governance features</span></a> section.</p>
 <p>General configuration properties are defined as follows, depending on the
 deployment type:</p>
 <ul class="simple">
@@ -688,7 +693,7 @@ All additional configuration is optional and varies widely based on the specific
 cluster and supported use cases.</p>
 </section>
 <section id="log-levels">
-<span id="id5"></span><h3 id="log-levels">Log levels<a class="headerlink" href="#log-levels" title="Permalink to this heading">#</a></h3>
+<span id="id6"></span><h3 id="log-levels">Log levels<a class="headerlink" href="#log-levels" title="Permalink to this heading">#</a></h3>
 <p>All properties described in this section are optional, and allow setting the
 minimum log level for named logger hierarchies. Every logger has a name, which
 is typically the fully qualified name of the class that uses the logger. Loggers
@@ -710,13 +715,15 @@ thus the above example does not actually change anything.
 There are four levels: <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARN</span></code> and <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p>
 </section>
 <section id="catalog-properties">
-<span id="id6"></span><h3 id="catalog-properties">Catalog properties<a class="headerlink" href="#catalog-properties" title="Permalink to this heading">#</a></h3>
-<p>SEP accesses data via <em>connectors</em>, which are mounted in catalogs. The
-connector provides all of the schemas and tables inside of the catalog. For
-example, the Hive connector maps each Hive database to a schema. If the Hive
-connector is mounted as the <code class="docutils literal notranslate"><span class="pre">hivewebevents</span></code> catalog, and the data source
-contains a table <code class="docutils literal notranslate"><span class="pre">clicks</span></code> in database <code class="docutils literal notranslate"><span class="pre">web</span></code>, that table can be accessed in
-SEP as <code class="docutils literal notranslate"><span class="pre">hivewebevents.web.clicks</span></code>.</p>
+<span id="id7"></span><h3 id="catalog-properties">Catalog properties<a class="headerlink" href="#catalog-properties" title="Permalink to this heading">#</a></h3>
+<p>SEP accesses data in a <a class="reference internal" href="../overview/concepts.html#trino-concept-data-source"><span class="std std-ref">data source</span></a> with a
+<a class="reference internal" href="../overview/concepts.html#trino-concept-connector"><span class="std std-ref">connector</span></a>, which is configured in a
+<a class="reference internal" href="../overview/concepts.html#trino-concept-catalog"><span class="std std-ref">catalog</span></a>. The connector provides all of the schemas and
+tables inside of the catalog.</p>
+<p>For example, the Hive connector maps each Hive database to a schema. If the Hive
+connector is configured in the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog, and Hive contains a table
+<code class="docutils literal notranslate"><span class="pre">clicks</span></code> in the database <code class="docutils literal notranslate"><span class="pre">web</span></code>, that table can be accessed in SEP as
+<code class="docutils literal notranslate"><span class="pre">example.web.clicks</span></code>.</p>
 <p>Catalogs are defined as follows, depending on the deployment type. Each catalog
 has a separate named entry:</p>
 <ul class="simple">
@@ -729,7 +736,6 @@ add the following map to the top-level <code class="docutils literal notranslate
   connector.name=hive
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../connector.html"><span class="doc">Connector overview</span></a> for more information about configuring connectors.</p>
 </section>
 </section>
 <section id="run-sep">
@@ -742,8 +748,8 @@ type:</p>
 <code class="docutils literal notranslate"><span class="pre">initFile</span></code> node in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
 </ul>
 <p>The default script accepts the following commands:</p>
-<table id="id7">
-<caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">launcher</span></code> commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">launcher</span></code> commands</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 15%"/>
 <col style="width: 85%"/>

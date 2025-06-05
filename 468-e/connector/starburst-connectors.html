@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -205,7 +205,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -236,13 +236,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -252,8 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id1">Starburst connectors feature matrix</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Starburst connectors feature matrix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#connector-functionality">Connector functionality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#distributed-object-storage-connectors">Distributed object storage connectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rdbms-connectors">RDBMS connectors</a></li>
@@ -297,9 +297,7 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#connector-starburst-connectors--page-root" class="md-nav__link">Starburst connectors feature matrix</a>
-        </li>
-        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Starburst connectors feature matrix</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#connector-starburst-connectors--page-root" class="md-nav__link">Starburst connectors feature matrix</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#connector-functionality" class="md-nav__link">Connector functionality</a>
         </li>
@@ -328,9 +326,6 @@
             
   <section id="starburst-connectors-feature-matrix">
 <h1 id="connector-starburst-connectors--page-root">Starburst connectors feature matrix<a class="headerlink" href="#connector-starburst-connectors--page-root" title="Permalink to this heading">#</a></h1>
-</section>
-<section id="id1">
-<h1 id="id1">Starburst connectors feature matrix<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>The Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) includes numerous connectors. They can be
 separated into three categories:</p>
 <p><strong>Exclusive connectors</strong> enable access to more data sources, and are only
@@ -341,6 +336,7 @@ available with SEP:</p>
 <li><p><a class="reference internal" href="starburst-dynamodb.html"><span class="doc">Starburst DynamoDB connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-generic-jdbc.html"><span class="doc">Starburst Generic JDBC connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-greenplum.html"><span class="doc">Starburst Greenplum connector</span></a></p></li>
+<li><p><a class="reference internal" href="kudu.html"><span class="doc">Starburst Kudu connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-maxcompute.html"><span class="doc">Starburst MaxCompute connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-neo4j.html"><span class="doc">Starburst Neo4j connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-netezza.html"><span class="doc">Starburst Netezza connector</span></a></p></li>
@@ -357,6 +353,7 @@ improvements, security features and other addons:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="bigquery.html"><span class="doc">BigQuery connector</span></a></p></li>
 <li><p><a class="reference internal" href="cassandra.html"><span class="doc">Cassandra connector</span></a></p></li>
+<li><p><a class="reference internal" href="clickhouse.html"><span class="doc">ClickHouse connector</span></a></p></li>
 <li><p><a class="reference internal" href="delta-lake.html"><span class="doc">Delta Lake connector</span></a></p></li>
 <li><p><a class="reference internal" href="elasticsearch.html"><span class="doc">Elasticsearch connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-hive.html"><span class="doc">Starburst Hive connector</span></a>, optionally using <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p>
@@ -368,9 +365,8 @@ improvements, security features and other addons:</p>
 </li>
 <li><p><a class="reference internal" href="starburst-hive-cdp.html"><span class="doc">Cloudera Data Platform support</span></a></p></li>
 <li><p><a class="reference internal" href="hudi.html"><span class="doc">Hudi connector</span></a></p></li>
-<li><p><a class="reference internal" href="starburst-iceberg.html"><span class="doc">Starburst Iceberg connector</span></a>, optionally using <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p></li>
+<li><p><a class="reference internal" href="iceberg.html"><span class="doc">Iceberg connector</span></a>, optionally using <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p></li>
 <li><p><a class="reference internal" href="kafka.html"><span class="doc">Kafka connector</span></a></p></li>
-<li><p><a class="reference internal" href="kudu.html"><span class="doc">Kudu connector</span></a></p></li>
 <li><p><a class="reference internal" href="mysql.html"><span class="doc">MySQL connector</span></a></p></li>
 <li><p><a class="reference internal" href="mongodb.html"><span class="doc">MongoDB connector</span></a></p></li>
 <li><p><a class="reference internal" href="oracle.html"><span class="doc">Oracle connector</span></a></p></li>
@@ -386,14 +382,14 @@ System, TPCDS and TPCDH utility connectors. Support is available through the
 Trino community for all others.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="blackhole.html"><span class="doc">Black Hole connector</span></a></p></li>
-<li><p><a class="reference internal" href="clickhouse.html"><span class="doc">ClickHouse connector</span></a></p></li>
 <li><p><a class="reference internal" href="druid.html"><span class="doc">Druid connector</span></a></p></li>
+<li><p><a class="reference internal" href="duckdb.html"><span class="doc">DuckDB connector</span></a></p></li>
 <li><p><a class="reference internal" href="exasol.html"><span class="doc">Exasol connector</span></a></p></li>
 <li><p><a class="reference internal" href="faker.html"><span class="doc">Faker connector</span></a></p></li>
 <li><p><a class="reference internal" href="googlesheets.html"><span class="doc">Google Sheets connector</span></a></p></li>
 <li><p><a class="reference internal" href="ignite.html"><span class="doc">Ignite connector</span></a></p></li>
 <li><p><a class="reference internal" href="jmx.html"><span class="doc">JMX connector</span></a></p></li>
-<li><p><a class="reference internal" href="kinesis.html"><span class="doc">Kinesis connector</span></a></p></li>
+<li><p><a class="reference internal" href="loki.html"><span class="doc">Loki connector</span></a></p></li>
 <li><p><a class="reference internal" href="mariadb.html"><span class="doc">MariaDB connector</span></a></p></li>
 <li><p><a class="reference internal" href="memory.html"><span class="doc">Memory connector</span></a></p></li>
 <li><p><a class="reference internal" href="opensearch.html"><span class="doc">OpenSearch connector</span></a></p></li>
@@ -411,8 +407,8 @@ key features.</p>
 <span id="table-info"></span><h2 id="connector-functionality">Connector functionality<a class="headerlink" href="#connector-functionality" title="Permalink to this heading">#</a></h2>
 <p>The connector functionality tables below shows the different features available
 for Trino and SEP connectors.</p>
-<table id="id2">
-<caption><span class="caption-text">Legend of the feature labels used in the connector overview tables</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<table id="id1">
+<caption><span class="caption-text">Legend of the feature labels used in the connector overview tables</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 80%"/>
@@ -509,8 +505,8 @@ Delta Lake, as well as many object storage or cloud data storage systems, such
 as S3 and compatible systems. These are often using the Hive connector.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id3">
-<caption><span class="caption-text">Features of connectors for distributed object storage systems</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">Features of connectors for distributed object storage systems</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -535,6 +531,7 @@ table content.</p>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>license required</p></li>
+<li></li>
 <li><p>Support for <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p></li>
 <li><p>dynamic row filtering</p></li>
 <li><p>OAuth 2.0 token pass-through (for the Unity Catalog)</p></li>
@@ -557,13 +554,14 @@ table content.</p>
 <li><p>licensed add-ons</p></li>
 <li><p>Support for <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-hive.html#sb-hive-caching"><span class="std std-ref">Kerberos support for caching</span></a></p></li>
+<li></li>
 <li><p><a class="reference internal" href="starburst-hive.html#sb-hive-materialized-views"><span class="std std-ref">Materialized views</span></a></p></li>
 <li><p>dynamic row filtering</p></li>
 <li><p>OAuth 2.0 token pass-through, only with Entra ID (formerly Azure AD)</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="starburst-iceberg.html"><span class="doc">Starburst Iceberg connector</span></a></p>
+<tr class="row-even"><td><p><a class="reference internal" href="iceberg.html"><span class="doc">Iceberg connector</span></a></p>
 <img alt="../_images/iceberg.png" src="../_images/iceberg.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
@@ -601,8 +599,8 @@ service. These systems expose data in the typical tabular format supported by
 SQL.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id4">
-<caption><span class="caption-text">Features of connectors for RDBMS</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Features of connectors for RDBMS</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -636,7 +634,7 @@ table content.</p>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
-<li><p>identical</p></li>
+<li><p>password credential passthrough</p></li>
 </ul>
 </td>
 </tr>
@@ -681,16 +679,13 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="kudu.html"><span class="doc">Kudu connector</span></a></p>
+<tr class="row-odd"><td><p><a class="reference internal" href="kudu.html"><span class="doc">Starburst Kudu connector</span></a></p>
 <img alt="../_images/kudu.png" src="../_images/kudu.png"/>
 </td>
+<td><p><span class="md-icon" style="font-size: 1.5rem;" title="notavailable">not_interested</span></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
-<li><p>parallelism</p></li>
-</ul>
-</td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
-<ul class="simple">
+<li><p>license required</p></li>
 <li><p>managed statistics</p></li>
 </ul>
 </td>
@@ -961,8 +956,8 @@ table content.</p>
 and provide access via SQL or custom APIs.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id5">
-<caption><span class="caption-text">Features of connectors for key-value stores</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">Features of connectors for key-value stores</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1032,8 +1027,8 @@ table content.</p>
 these systems.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id6">
-<caption><span class="caption-text">Features of connectors for stream-processing systems</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Features of connectors for stream-processing systems</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1069,20 +1064,6 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="kinesis.html"><span class="doc">Kinesis connector</span></a></p>
-<img alt="../_images/kinesis.png" src="../_images/kinesis.png"/>
-</td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
-<ul class="simple">
-<li><p>parallelism</p></li>
-</ul>
-</td>
-<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
-<ul class="simple">
-<li><p>identical</p></li>
-</ul>
-</td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -1092,8 +1073,8 @@ table content.</p>
 less structure documents in various formats including JSON.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id7">
-<caption><span class="caption-text">Features of connectors for document-oriented database systems</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Features of connectors for document-oriented database systems</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1173,8 +1154,8 @@ table content.</p>
 sections are are listed in the following table.</p>
 <p>Use the <a class="reference internal" href="#table-info"><span class="std std-ref">label list and and other information</span></a> to read the
 table content.</p>
-<table id="id8">
-<caption><span class="caption-text">Features of other connectors</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Features of other connectors</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>

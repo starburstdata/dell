@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -304,6 +304,8 @@
         <li class="md-nav__item"><a href="#oauth-2-0-authentication" class="md-nav__link">OAuth 2.0 authentication</a>
         </li>
         <li class="md-nav__item"><a href="#access-multiple-storage-accounts" class="md-nav__link">Access multiple storage accounts</a>
+        </li>
+        <li class="md-nav__item"><a href="#migration-from-legacy-azure-storage-file-system" class="md-nav__link">Migration from legacy Azure Storage file system</a>
         </li></ul>
             </nav>
         </li>
@@ -318,11 +320,12 @@
             
   <section id="azure-storage-file-system-support">
 <h1 id="object-storage-file-system-azure--page-root">Azure Storage file system support<a class="headerlink" href="#object-storage-file-system-azure--page-root" title="Permalink to this heading">#</a></h1>
-<p>Trino includes a native implementation to access <a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/">Azure
-Storage</a> with a catalog using
-the Delta Lake, Hive, Hudi, or Iceberg connectors.</p>
+<p>Trino includes a native implementation to access <a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview#about-azure-data-lake-storage-gen2">Azure Data Lake Storage
+Gen2</a>
+with a catalog using the Delta Lake, Hive, Hudi, or Iceberg connectors.</p>
 <p>Enable the native implementation with <code class="docutils literal notranslate"><span class="pre">fs.native-azure.enabled=true</span></code> in your
-catalog properties file.</p>
+catalog properties file. Additionally, the Azure storage account must have
+hierarchical namespace enabled.</p>
 <section id="general-configuration">
 <h2 id="general-configuration">General configuration<a class="headerlink" href="#general-configuration" title="Permalink to this heading">#</a></h2>
 <p>Use the following properties to configure general aspects of Azure Storage file
@@ -461,6 +464,68 @@ assignment.</p></li>
 use the <strong>Client ID</strong>, <strong>Secret</strong> and <strong>Tenant ID</strong> values from the
 application registration, to configure the catalog using properties from
 <a class="reference internal" href="#azure-oauth-authentication"><span class="std std-ref">OAuth 2.0 authentication</span></a>.</p>
+</section>
+<section id="migration-from-legacy-azure-storage-file-system">
+<span id="fs-legacy-azure-migration"></span><h2 id="migration-from-legacy-azure-storage-file-system">Migration from legacy Azure Storage file system<a class="headerlink" href="#migration-from-legacy-azure-storage-file-system" title="Permalink to this heading">#</a></h2>
+<p>Trino includes legacy Azure Storage support to use with a catalog using the
+Delta Lake, Hive, Hudi, or Iceberg connectors. Upgrading existing deployments to
+the current native implementation is recommended. Legacy support is deprecated
+and will be removed.</p>
+<p>To migrate a catalog to use the native file system implementation for Azure,
+make the following edits to your catalog configuration:</p>
+<ol class="arabic simple">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">fs.native-azure.enabled=true</span></code> catalog configuration property.</p></li>
+<li><p>Configure the <code class="docutils literal notranslate"><span class="pre">azure.auth-type</span></code> catalog configuration property.</p></li>
+<li><p>Refer to the following table to rename your existing legacy catalog
+configuration properties to the corresponding native configuration
+properties. Supported configuration values are identical unless otherwise
+noted.</p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 26%"/>
+<col style="width: 26%"/>
+<col style="width: 48%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Legacy property</p></th>
+<th class="head"><p>Native property</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs-access-key</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">azure.access-key</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs.oauth.endpoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">azure.oauth.endpoint</span></code></p></td>
+<td><p>Also see <code class="docutils literal notranslate"><span class="pre">azure.oauth.tenant-id</span></code> in <a class="reference internal" href="#azure-oauth-authentication"><span class="std std-ref">OAuth 2.0 authentication</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs.oauth.client-id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">azure.oauth.client-id</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs.oauth.secret</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">azure.oauth.secret</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs.oauth2.passthrough</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">azure.use-oauth-passthrough-token</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>Remove the following legacy configuration properties if they exist in your
+catalog configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hive.azure.abfs-storage-account</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hive.azure.wasb-access-key</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hive.azure.wasb-storage-account</span></code></p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
