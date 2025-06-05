@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,7 +258,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -377,6 +375,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -581,7 +580,7 @@ matrix</span></a>.</p>
 <span id="kafka-requirements"></span><h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>To connect to Kafka, you need:</p>
 <ul class="simple">
-<li><p>Kafka broker version 3.3 or higher (with KRaft enabled).</p></li>
+<li><p>Kafka broker version 0.10.0 or higher.</p></li>
 <li><p>Network access from the SEP coordinator and workers to the Kafka nodes.
 Port 9092 is the default port.</p></li>
 <li><p>A valid <a class="reference internal" href="../license-requirements.html"><span class="doc std std-doc">Starburst Enterprise license</span></a>.</p></li>
@@ -592,7 +591,7 @@ must be taken:</p>
 <ul class="simple">
 <li><p>Copy the <code class="docutils literal notranslate"><span class="pre">kafka-protobuf-provider</span></code> and <code class="docutils literal notranslate"><span class="pre">kafka-protobuf-types</span></code> JAR files from
 <a class="reference external" href="https://packages.confluent.io/maven/io/confluent/">Confluent</a> for Confluent
-version 7.9.0 to the Kafka connector plugin directory (<code class="docutils literal notranslate"><span class="pre">&lt;install</span> <span class="pre">directory&gt;/plugin/kafka</span></code>) on all nodes in the cluster. The plugin directory
+version 7.3.1 to the Kafka connector plugin directory (<code class="docutils literal notranslate"><span class="pre">&lt;install</span> <span class="pre">directory&gt;/plugin/kafka</span></code>) on all nodes in the cluster. The plugin directory
 depends on the <a class="reference internal" href="../installation.html"><span class="doc std std-doc">Manual installation and license</span></a> method.</p></li>
 <li><p>By copying those JARs and using them, you agree to the terms of the <a class="reference external" href="https://github.com/confluentinc/schema-registry/blob/master/LICENSE-ConfluentCommunity">Confluent
 Community License
@@ -601,11 +600,6 @@ under which Confluent makes them available.</p></li>
 </ul>
 <p>These steps are not required if you are not using Protobuf and Confluent table
 description supplier.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The only natively supported output record format is AVRO. Protobuf is supported
-with additional configurations detailed in the following sections.</p>
-</div>
 </section>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
@@ -635,7 +629,7 @@ named <code class="docutils literal notranslate"><span class="pre">sales</span><
 <section id="log-levels">
 <h3 id="log-levels">Log levels<a class="headerlink" href="#log-levels" title="Permalink to this heading">#</a></h3>
 <p>Kafka consumer logging can be verbose and pollute SEP logs. To lower the
-<a class="reference internal" href="../admin/logging.html#logging-configuration"><span class="std std-ref">log level</span></a>, add the following to <code class="docutils literal notranslate"><span class="pre">etc/log.properties</span></code>:</p>
+<a class="reference internal" href="../installation/deployment.html#log-levels"><span class="std std-ref">log level</span></a>, add the following to <code class="docutils literal notranslate"><span class="pre">etc/log.properties</span></code>:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">org.apache.kafka</span><span class="o">=</span><span class="s">WARN</span>
 </pre></div>
 </div>
@@ -1083,6 +1077,10 @@ additional steps are necessary. For details, refer to <a class="reference intern
 <p>To use the schema registry, set the <code class="docutils literal notranslate"><span class="pre">kafka.table-description-supplier</span></code> property
 to <code class="docutils literal notranslate"><span class="pre">CONFLUENT</span></code> . You must also configure the additional properties in the
 following table:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Inserts are not supported. The only data format supported is AVRO.</p>
+</div>
 <table id="id9">
 <caption><span class="caption-text">Confluent table description supplier properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>

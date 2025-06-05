@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -307,8 +307,6 @@
 <li class="toctree-l4"><a class="reference internal" href="resource-groups.html">Resource groups</a></li>
 <li class="toctree-l4"><a class="reference internal" href="session-property-managers.html">Session property managers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="spill.html">Spill to disk</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logging.html">Logging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="openmetrics.html">OpenMetrics</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../admin.html#starburst-cached-views">Starburst Cached Views</a></li>
@@ -406,24 +404,37 @@
             
   <section id="fault-tolerant-execution">
 <h1 id="admin-fault-tolerant-execution--page-root">Fault-tolerant execution<a class="headerlink" href="#admin-fault-tolerant-execution--page-root" title="Permalink to this heading">#</a></h1>
-<p>By default, if a Trino node lacks the resources to execute a task or
-otherwise fails during query execution, the query fails and must be run again
-manually. The longer the runtime of a query, the more likely it is to be
-susceptible to such failures.</p>
-<p>Fault-tolerant execution is a mechanism in Trino that enables a cluster to
-mitigate query failures by retrying queries or their component tasks in
-the event of failure. With fault-tolerant execution enabled, intermediate
-exchange data is spooled and can be re-used by another worker in the event of a
-worker outage or other fault during query execution.</p>
+<p>Before you begin:</p>
+<blockquote>
+<div><p>See the <a href="../admin-topics/fault-tolerant-execution.html">
+fault-tolerant execution configuration guide</a> to get started with a
+complete guide on supporting batch queries in Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP).</p>
+</div></blockquote>
+<p>By default, if a node lacks the resources to execute a task or otherwise fails
+during query execution, the query fails and must be run again manually. The
+longer the runtime of a query, the more likely it is to be susceptible to such
+failures.</p>
+<p>Fault-tolerant execution is a mechanism in SEP that enables a cluster to
+mitigate query failures by retrying queries or their component tasks in the
+event of failure. With fault-tolerant execution enabled, intermediate exchange
+data is spooled and can be re-used by another worker in the event of a worker
+outage or other fault during query execution.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Fault tolerance does not apply to broken queries or other user error. For
-example, Trino does not spend resources retrying a query that fails because
+example, SEP does not spend resources retrying a query that fails because
 its SQL cannot be parsed.</p>
 </div>
+<p>All properties described in this page are defined as follows, depending on the
+deployment type:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
+<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
+<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
+</ul>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
-<p>Fault-tolerant execution is turned off by default. To enable the feature, set the
+<p>Fault-tolerant execution is disabled by default. To enable the feature, set the
 <code class="docutils literal notranslate"><span class="pre">retry-policy</span></code> configuration property to either <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> or <code class="docutils literal notranslate"><span class="pre">TASK</span></code>
 depending on the desired <a class="reference internal" href="#fte-retry-policy"><span class="std std-ref">retry policy</span></a>.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">retry-policy</span><span class="o">=</span><span class="s">QUERY</span>
@@ -432,29 +443,164 @@ depending on the desired <a class="reference internal" href="#fte-retry-policy">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">retry-policy</span></code> may cause queries to fail with connectors that do not
-explicitly support fault-tolerant execution, resulting in a “This connector
-does not support query retries” error message.</p>
-<p>Support for fault-tolerant execution of SQL statements varies on a
-per-connector basis, with more details in the documentation for each
-connector. The following connectors support fault-tolerant execution:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../connector/bigquery.html#bigquery-fte-support"><span class="std std-ref">BigQuery connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/delta-lake.html#delta-lake-fte-support"><span class="std std-ref">Delta Lake connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/hive.html#hive-fte-support"><span class="std std-ref">Hive connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/iceberg.html#iceberg-fte-support"><span class="std std-ref">Iceberg connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/mariadb.html#mariadb-fte-support"><span class="std std-ref">MariaDB connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/mongodb.html#mongodb-fte-support"><span class="std std-ref">MongoDB connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/mysql.html#mysql-fte-support"><span class="std std-ref">MySQL connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/oracle.html#oracle-fte-support"><span class="std std-ref">Oracle connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/postgresql.html#postgresql-fte-support"><span class="std std-ref">PostgreSQL connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/redshift.html#sb-redshift-fte-support"><span class="std std-ref">Redshift connector</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/sqlserver.html#sqlserver-fte-support"><span class="std std-ref">SQL Server connector</span></a></p></li>
-</ul>
+explicitly support fault-tolerant execution, resulting in a “This connector does
+not support query retries” error message.</p>
+<p><a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a>
+is not supported on a cluster running in fault-tolerant execution mode.</p>
 </div>
-<p>The following configuration properties control the behavior of fault-tolerant
-execution on a Trino cluster:</p>
+<p id="fte-support-chart">Support for fault-tolerant execution of SQL statements varies on a per-connector
+basis, with more details in the documentation for each connector. The following
+table shows per-connector support for fault-tolerant execution:</p>
 <table id="id2">
-<caption><span class="caption-text">Fault-tolerant execution configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Fault-tolerant execution support</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Connector</p></th>
+<th class="head"><p>Query Retry (READ)</p></th>
+<th class="head"><p>Query Retry (WRITE)</p></th>
+<th class="head"><p>Task Retry (READ)</p></th>
+<th class="head"><p>Task Retry (WRITE)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Starburst IBM Db2</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Starburst Kafka</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Starburst Oracle Parallel</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Starburst SingleStore</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Starburst SingleStore Parallel</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Starburst Snowflake JDBC</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Starburst Snowflake Parallel</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Starburst SQLServer Parallel</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Starburst Teradata Direct</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Starburst Teradata JDBC</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>BigQuery</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>DeltaLake</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Hive</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Iceberg</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>MariaDB</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>MongoDB</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>MySQL</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oracle</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Postgres</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Redshift</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr class="row-even"><td><p>SQLServer</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following configuration properties control the behavior of fault-tolerant
+execution on a SEP cluster:</p>
+<table id="id3">
+<caption><span class="caption-text">Fault-tolerant execution configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -468,26 +614,23 @@ execution on a Trino cluster:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">retry-policy</span></code></p></td>
-<td><p>Configures what is retried in the event of failure, either <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> to retry
-the whole query, or <code class="docutils literal notranslate"><span class="pre">TASK</span></code> to retry tasks individually if they fail. See
-<a class="reference internal" href="#fte-retry-policy"><span class="std std-ref">retry policy</span></a> for more information. Use the equivalent
-session property <code class="docutils literal notranslate"><span class="pre">retry_policy</span></code> only on clusters configured for
-fault-tolerant execution and typically only to deactivate with <code class="docutils literal notranslate"><span class="pre">NONE</span></code>, since
-switching between modes on a cluster is not tested.</p></td>
+<td><p>Configures what is retried in the event of failure, either
+<code class="docutils literal notranslate"><span class="pre">QUERY</span></code> to retry the whole query, or <code class="docutils literal notranslate"><span class="pre">TASK</span></code> to retry tasks
+individually if they fail. See <a class="reference internal" href="#fte-retry-policy"><span class="std std-ref">retry policy</span></a> for
+more information.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.deduplication-buffer-size</span></code></p></td>
-<td><p><a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">Data size</span></a> of the coordinator’s in-memory buffer used
-by fault-tolerant execution to store output of query
-<a class="reference internal" href="../overview/concepts.html#trino-concept-stage"><span class="std std-ref">stages</span></a>. If this buffer is filled during query
-execution, the query fails with a “Exchange manager must be configured for
-the failure recovery capabilities to be fully functional” error message unless an
+<td><p><a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">Data size</span></a> of the coordinator’s in-memory buffer
+used by fault-tolerant execution to store output of query <a class="reference internal" href="../overview/concepts.html#trino-concept-stage"><span class="std std-ref">stages</span></a>. If this buffer is filled during query execution, the
+query fails with a “Exchange manager must be configured for the failure
+recovery capabilities to be fully functional” error message unless an
 <a class="reference internal" href="#fte-exchange-manager"><span class="std std-ref">exchange manager</span></a> is configured.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">32MB</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fault-tolerant-execution.exchange-encryption-enabled</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fault-tolerant-execution-exchange-encryption-enabled</span></code></p></td>
 <td><p>Enable encryption of spooling data, see <a class="reference internal" href="#fte-encryption"><span class="std std-ref">Encryption</span></a> for details.
-Setting this property to false is not recommended if Trino processes sensitive data.</p></td>
+Setting this property to false is not recommended if SEP processes sensitive data.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
 </tbody>
@@ -497,16 +640,15 @@ Setting this property to false is not recommended if Trino processes sensitive d
 </section>
 <section id="retry-policy">
 <span id="fte-retry-policy"></span><h2 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">retry-policy</span></code> configuration property, or the <code class="docutils literal notranslate"><span class="pre">retry_policy</span></code> session
-property, designates whether Trino retries entire queries or a query’s
-individual tasks in the event of failure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">retry-policy</span></code> configuration property designates whether SEP retries
+entire queries or a query’s individual tasks in the event of failure.</p>
 <section id="query">
 <h3 id="query">QUERY<a class="headerlink" href="#query" title="Permalink to this heading">#</a></h3>
-<p>A <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> retry policy instructs Trino to automatically retry a query in the
-event of an error occurring on a worker node. A <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> retry policy is
-recommended when the majority of the Trino cluster’s workload consists of many
+<p>A <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> retry policy instructs SEP to automatically retry a query in the
+event of an error occuring on a worker node. A <code class="docutils literal notranslate"><span class="pre">QUERY</span></code> retry policy is
+recommended when the majority of the SEP cluster’s workload consists of many
 small queries.</p>
-<p>By default Trino does not implement fault tolerance for queries whose result set
+<p>By default SEP does not implement fault tolerance for queries whose result set
 exceeds 32MB in size, such as <a class="reference internal" href="../sql/select.html"><span class="doc">SELECT</span></a> statements that return a very
 large data set to the user. This limit can be increased by modifying the
 <code class="docutils literal notranslate"><span class="pre">exchange.deduplication-buffer-size</span></code> configuration property to be greater than
@@ -518,7 +660,7 @@ therefore allows for storage of spilled data beyond the in-memory buffer size.</
 </section>
 <section id="task">
 <h3 id="task">TASK<a class="headerlink" href="#task" title="Permalink to this heading">#</a></h3>
-<p>A <code class="docutils literal notranslate"><span class="pre">TASK</span></code> retry policy instructs Trino to retry individual query <a class="reference internal" href="../overview/concepts.html#trino-concept-task"><span class="std std-ref">tasks</span></a> in the event of failure. You must configure an
+<p>A <code class="docutils literal notranslate"><span class="pre">TASK</span></code> retry policy instructs SEP to retry individual query <a class="reference internal" href="../overview/concepts.html#trino-concept-task"><span class="std std-ref">tasks</span></a> in the event of failure. You must configure an
 <a class="reference internal" href="#fte-exchange-manager"><span class="std std-ref">exchange manager</span></a> to use the task retry policy.
 This policy is recommended when executing large batch queries, as the cluster
 can more efficiently retry smaller tasks within the query rather than retry the
@@ -545,8 +687,8 @@ cluster that handles short queries.</p>
 </section>
 <section id="encryption">
 <span id="fte-encryption"></span><h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permalink to this heading">#</a></h2>
-<p>Trino encrypts data before spooling it to storage. This prevents access to query
-data by anyone besides the Trino cluster that wrote it, including administrators
+<p>SEP encrypts data before spooling it to storage. This prevents access to query
+data by anyone besides the SEP cluster that wrote it, including administrators
 of the storage system. A new encryption key is randomly generated for every
 query, and the key is discarded once a query is completed.</p>
 </section>
@@ -560,8 +702,8 @@ troubleshooting purposes.</p>
 <h3 id="retry-limits">Retry limits<a class="headerlink" href="#retry-limits" title="Permalink to this heading">#</a></h3>
 <p>The following configuration properties control the thresholds at which
 queries/tasks are no longer retried in the event of repeated failures:</p>
-<table id="id3">
-<caption><span class="caption-text">Fault tolerance retry limit configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">Fault tolerance retry limit configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 23%"/>
 <col style="width: 38%"/>
@@ -577,13 +719,13 @@ queries/tasks are no longer retried in the event of repeated failures:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">query-retry-attempts</span></code></p></td>
-<td><p>Maximum number of times Trino may attempt to retry a query before declaring
+<td><p>Maximum number of times SEP may attempt to retry a query before declaring
 the query as failed.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
 <td><p>Only <code class="docutils literal notranslate"><span class="pre">QUERY</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">task-retry-attempts-per-task</span></code></p></td>
-<td><p>Maximum number of times Trino may attempt to retry a single task before
+<td><p>Maximum number of times SEP may attempt to retry a single task before
 declaring the query as failed.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
 <td><p>Only <code class="docutils literal notranslate"><span class="pre">TASK</span></code></p></td>
@@ -621,12 +763,12 @@ coordination can take more processing time and resources than executing the task
 itself. If tasks are too large, then a single task may require more resources
 than are available on any one node and therefore prevent the query from
 completing.</p>
-<p>Trino supports limited automatic task sizing. If issues are occurring
+<p>SEP supports limited automatic task sizing. If issues are occurring
 during fault-tolerant task execution, you can configure the following
 configuration properties to manually control task sizing. These configuration
 properties only apply to a <code class="docutils literal notranslate"><span class="pre">TASK</span></code> retry policy.</p>
-<table id="id4">
-<caption><span class="caption-text">Task sizing configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Task sizing configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -732,8 +874,8 @@ full node for its execution.</p>
 <p>The initial task memory-requirements estimation is static and configured with
 the <code class="docutils literal notranslate"><span class="pre">fault-tolerant-execution-task-memory</span></code> configuration property. This property only
 applies to a <code class="docutils literal notranslate"><span class="pre">TASK</span></code> retry policy.</p>
-<table id="id5">
-<caption><span class="caption-text">Node allocation configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Node allocation configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -761,8 +903,8 @@ for the current session with the
 <h3 id="other-tuning">Other tuning<a class="headerlink" href="#other-tuning" title="Permalink to this heading">#</a></h3>
 <p>The following additional configuration property can be used to manage
 fault-tolerant execution:</p>
-<table id="id6">
-<caption><span class="caption-text">Other fault-tolerant execution configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Other fault-tolerant execution configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 23%"/>
 <col style="width: 38%"/>
@@ -788,9 +930,9 @@ memory is needed to be able to reschedule tasks in case of a failure.</p></td>
 <td><p>Maximum number of partitions to use for distributed joins and aggregations,
 similar in function to the <code class="docutils literal notranslate"><span class="pre">query.max-hash-partition-count</span></code> <a class="reference internal" href="properties-query-management.html"><span class="doc std std-doc">query
 management property</span></a>. It is not
-recommended to increase this property value higher than the default of <code class="docutils literal notranslate"><span class="pre">50</span></code>,
-which may result in instability and poor performance. May be overridden for
-the current session with the <code class="docutils literal notranslate"><span class="pre">fault_tolerant_execution_max_partition_count</span></code>
+recommended to increase this property value above the default of <code class="docutils literal notranslate"><span class="pre">50</span></code>, which
+may result in instability and poor performance. May be overridden for the
+current session with the <code class="docutils literal notranslate"><span class="pre">fault_tolerant_execution_max_partition_count</span></code>
 <a class="reference internal" href="../sql/set-session.html#session-properties-definition"><span class="std std-ref">session property</span></a>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">50</span></code></p></td>
 <td><p>Only <code class="docutils literal notranslate"><span class="pre">TASK</span></code></p></td>
@@ -840,10 +982,10 @@ all worker nodes. In this file, set the <code class="docutils literal notranslat
 property to <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> or <code class="docutils literal notranslate"><span class="pre">hdfs</span></code>, and set additional configuration properties as needed
 for your storage solution.</p>
 <p>The following table lists the available configuration properties for
-<code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code>, their default values, and which file systems
+<code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code>, their default values, and which filesystem(s)
 the property may be configured for:</p>
-<table id="id7">
-<caption><span class="caption-text">Exchange manager configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Exchange manager configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 23%"/>
 <col style="width: 38%"/>
@@ -921,7 +1063,7 @@ is not AWS. If using AWS S3, this can be ignored unless HTTPS is required
 by an AWS bucket policy. If TLS is required, then this property can be
 set to an https endpoint such as <code class="docutils literal notranslate"><span class="pre">https://s3.us-east-1.amazonaws.com</span></code>.
 Note that TLS is redundant due to <a class="reference internal" href="#fte-encryption"><span class="std std-ref">automatic encryption</span></a>.
-If using GCS, set it to <code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com</span></code>.</p></td>
+If using GCS, set it</p></td>
 <td></td>
 <td><p>Any S3-compatible storage</p></td>
 </tr>
@@ -982,14 +1124,9 @@ retry a request.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4MB</span></code></p></td>
 <td><p>HDFS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.hdfs.skip-directory-scheme-validation</span></code></p></td>
-<td><p>Skip directory scheme validation to support Hadoop-compatible file system.</p></td>
-<td><p>false</p></td>
-<td><p>HDFS</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hdfs.config.resources</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hdfs.config.resources</span></code></p></td>
 <td><p>Comma-separated list of paths to HDFS configuration files, for example
-<code class="docutils literal notranslate"><span class="pre">/etc/hdfs-site.xml</span></code>. The files must exist on all nodes in the Trino
+<code class="docutils literal notranslate"><span class="pre">/etc/hdfs-site.xml</span></code>. The files must exist on all nodes in the SEP
 cluster.</p></td>
 <td></td>
 <td><p>HDFS</p></td>
@@ -1042,9 +1179,9 @@ storage option in Azure.</p>
 </section>
 <section id="google-cloud-storage">
 <span id="fte-exchange-gcs"></span><h4 id="google-cloud-storage">Google Cloud Storage<a class="headerlink" href="#google-cloud-storage" title="Permalink to this heading">#</a></h4>
-<p>To enable exchange spooling on GCS in Trino, change the request endpoint to the
+<p>To enable exchange spooling on GCS in SEP, change the request endpoint to the
 <code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com</span></code> Google storage URI, and configure your AWS
-access/secret keys to use the GCS HMAC keys. If you deploy Trino on GCP, you
+access/secret keys to use the GCS HMAC keys. If you deploy SEP on GCP, you
 must either create a service account with access to your spooling bucket or
 configure the key path to your GCS credential file.</p>
 <p>For more information on GCS’s S3 compatibility, refer to the <a class="reference external" href="https://cloud.google.com/storage/docs/aws-simple-migration">Google Cloud
@@ -1070,15 +1207,6 @@ as the spooling storage destination.</p>
 <span class="na">hdfs.config.resources</span><span class="o">=</span><span class="s">/usr/lib/hadoop/etc/hadoop/core-site.xml</span>
 </pre></div>
 </div>
-<p>When you want use Hadoop-compatible file system as the spooling storage location,
-you should enable <code class="docutils literal notranslate"><span class="pre">exchange.hdfs.skip-directory-scheme-validation</span></code> in <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code>
-when configure <code class="docutils literal notranslate"><span class="pre">exchange.base-directories</span></code> with a specific scheme instead of <code class="docutils literal notranslate"><span class="pre">hdfs</span></code> and the following steps
-may be necessary.</p>
-<ol class="arabic simple">
-<li><p>Configure the <code class="docutils literal notranslate"><span class="pre">AbstractFileSystem</span></code> implementation in <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code>.</p></li>
-<li><p>Add the relevant client JAR files into the directory <code class="docutils literal notranslate"><span class="pre">${Trino_HOME}/plugin/exchange-hdfs</span></code>
-on all Trino cluster nodes.</p></li>
-</ol>
 </section>
 <section id="local-filesystem-storage">
 <span id="fte-exchange-local-filesystem"></span><h4 id="local-filesystem-storage">Local filesystem storage<a class="headerlink" href="#local-filesystem-storage" title="Permalink to this heading">#</a></h4>
@@ -1090,7 +1218,7 @@ destination.</p>
 <p>It is only recommended to use a local filesystem for exchange in standalone,
 non-production clusters. A local directory can only be used for exchange in
 a distributed cluster if the exchange directory is shared and accessible
-from all nodes.</p>
+from all worker nodes.</p>
 </div>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">exchange-manager.name</span><span class="o">=</span><span class="s">filesystem</span>
 <span class="na">exchange.base-directories</span><span class="o">=</span><span class="s">/tmp/trino-exchange-manager</span>

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -290,7 +290,6 @@
 <li class="toctree-l7"><a class="reference internal" href="#filter-and-mask-environment">Filter and mask environment</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#function-rules">Function rules</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#procedure-rules">Procedure rules</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#table-procedure-rules">Table procedure rules</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#verify-configuration">Verify configuration</a></li>
 </ul>
 </li>
@@ -381,8 +380,6 @@
         <li class="md-nav__item"><a href="#function-rules" class="md-nav__link">Function rules</a>
         </li>
         <li class="md-nav__item"><a href="#procedure-rules" class="md-nav__link">Procedure rules</a>
-        </li>
-        <li class="md-nav__item"><a href="#table-procedure-rules" class="md-nav__link">Table procedure rules</a>
         </li>
         <li class="md-nav__item"><a href="#verify-configuration" class="md-nav__link">Verify configuration</a>
         </li></ul>
@@ -998,8 +995,7 @@ any catalog, and allows all users to create, drop, and execute functions (includ
 </section>
 <section id="procedure-rules">
 <span id="system-file-procedure-rules"></span><h4 id="procedure-rules">Procedure rules<a class="headerlink" href="#procedure-rules" title="Permalink to this heading">#</a></h4>
-<p>These rules control the ability of a user to execute procedures using the
-<a class="reference internal" href="../sql/call.html"><span class="doc std std-doc">CALL</span></a> statement.</p>
+<p>These rules control the ability of a user to execute procedures.</p>
 <p>Procedures are used for administrative operations on a specific catalog, such as
 registering external tables or flushing the connector’s cache. Available
 procedures are detailed in the connector documentation pages.</p>
@@ -1052,13 +1048,6 @@ connector</span></a>. It allows all users to execute the
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="table-procedure-rules">
-<span id="system-file-table-procedure-rules"></span><h4 id="table-procedure-rules">Table procedure rules<a class="headerlink" href="#table-procedure-rules" title="Permalink to this heading">#</a></h4>
-<p>Table procedures are executed using the
-<a class="reference internal" href="../sql/alter-table.html#alter-table-execute"><span class="std std-ref">ALTER TABLE … EXECUTE</span></a> syntax.</p>
-<p>File-based access control does not support privileges for table procedures and
-therefore all are effectively allowed.</p>
 </section>
 <section id="verify-configuration">
 <span id="verify-rules"></span><h4 id="verify-configuration">Verify configuration<a class="headerlink" href="#verify-configuration" title="Permalink to this heading">#</a></h4>

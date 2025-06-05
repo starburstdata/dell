@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -276,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -330,12 +330,12 @@
   <section id="dell-object-storage-support">
 <h1 id="connector-starburst-dell-object-storage--page-root">Dell object storage support<a class="headerlink" href="#connector-starburst-dell-object-storage--page-root" title="Permalink to this heading">#</a></h1>
 <img class="connector-logo" src="../_static/img/dell-os.png"/><p>Dell ECS and ObjectScale are high performance object storage systems that are
-compatible with <a class="reference internal" href="../object-storage/file-system-s3.html"><span class="doc std std-doc">Amazon S3</span></a> and any catalog
-using one of the following connectors:</p>
+compatible with <a class="reference internal" href="../object-storage/legacy-s3.html"><span class="doc">Amazon S3</span></a> and any catalog using one of the
+following connectors:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="delta-lake.html"><span class="doc">Delta Lake connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-hive.html"><span class="doc">Starburst Hive connector</span></a></p></li>
-<li><p><a class="reference internal" href="iceberg.html"><span class="doc">Iceberg connector</span></a></p></li>
+<li><p><a class="reference internal" href="starburst-iceberg.html"><span class="doc">Starburst Iceberg connector</span></a></p></li>
 </ul>
 <section id="requirements">
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
@@ -346,9 +346,8 @@ network access between the cluster and the storage.</p>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <p>Dell ECS and ObjectScale are fully compatible with Amazon S3 and as a result
-<a class="reference internal" href="../object-storage/file-system-s3.html"><span class="doc std std-doc">all related configuration information</span></a> applies.
-In addition, you must ensure that path style access is enabled in your catalog
-properties file:</p>
+<a class="reference internal" href="../object-storage/legacy-s3.html"><span class="doc">all related configuration information</span></a> applies. In addition, you
+must ensure that path style access is enabled in your catalog properties file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.s3.path-style-access</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>

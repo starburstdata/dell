@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,7 +258,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -298,15 +296,14 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#redshift-insert">Non-transactional INSERT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#update-limitation">UPDATE limitation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#delete-limitation">DELETE limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update">UPDATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alter-table-execute">ALTER TABLE EXECUTE</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#collect-statistics">collect_statistics</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#alter-schema-limitation">ALTER SCHEMA limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to">ALTER TABLE RENAME TO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alter-schema">ALTER SCHEMA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#procedures">Procedures</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#system-execute-query"><code class="docutils literal notranslate"><span class="pre">system.execute('query')</span></code></a></li>
@@ -333,14 +330,13 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#starburst-cached-views">Starburst Cached Views</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#parallel-read-via-s3">Parallel read via S3</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#user-impersonation">User impersonation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#password-credential-pass-through">Password credential pass-through</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aws-iam-authentication">AWS IAM authentication</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id1">Configuration</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#authentication">Authentication</a></li>
 </ul>
 </li>
@@ -362,6 +358,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -436,11 +433,9 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#redshift-insert" class="md-nav__link">Non-transactional INSERT</a>
+        <li class="md-nav__item"><a href="#update" class="md-nav__link">UPDATE</a>
         </li>
-        <li class="md-nav__item"><a href="#update-limitation" class="md-nav__link">UPDATE limitation</a>
-        </li>
-        <li class="md-nav__item"><a href="#delete-limitation" class="md-nav__link">DELETE limitation</a>
+        <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
         </li>
         <li class="md-nav__item"><a href="#alter-table-execute" class="md-nav__link">ALTER TABLE EXECUTE</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -448,9 +443,9 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#alter-table-rename-to-limitation" class="md-nav__link">ALTER TABLE RENAME TO limitation</a>
+        <li class="md-nav__item"><a href="#alter-table-rename-to" class="md-nav__link">ALTER TABLE RENAME TO</a>
         </li>
-        <li class="md-nav__item"><a href="#alter-schema-limitation" class="md-nav__link">ALTER SCHEMA limitation</a>
+        <li class="md-nav__item"><a href="#alter-schema" class="md-nav__link">ALTER SCHEMA</a>
         </li>
         <li class="md-nav__item"><a href="#procedures" class="md-nav__link">Procedures</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -493,8 +488,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#starburst-cached-views" class="md-nav__link">Starburst Cached Views</a>
-        </li>
-        <li class="md-nav__item"><a href="#parallel-read-via-s3" class="md-nav__link">Parallel read via S3</a>
         </li></ul>
             </nav>
         </li>
@@ -506,7 +499,7 @@
         </li>
         <li class="md-nav__item"><a href="#aws-iam-authentication" class="md-nav__link">AWS IAM authentication</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">Configuration</a>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Configuration</a>
         </li>
         <li class="md-nav__item"><a href="#authentication" class="md-nav__link">Authentication</a>
         </li></ul>
@@ -652,8 +645,8 @@ a Redshift cluster. Enable the
 <code class="docutils literal notranslate"><span class="pre">redshift.database-prefix-for-schema.enabled</span></code> catalog configuration property
 to access multiple databases on a Redshift cluster as described in the
 following table:</p>
-<table id="id3">
-<caption><span class="caption-text">Starburst Redshift connector configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">Starburst Redshift connector configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -823,9 +816,7 @@ schemas and/or tables have names that differ only in case (such as “customers�
 and “Customers”) then Trino fails to query them due to ambiguity.</p>
 <p>In these cases, use the <code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file</span></code> catalog
 configuration property to specify a configuration file that maps these remote
-schemas and tables to their respective Trino schemas and tables. Additionally,
-the JSON file must include both the <code class="docutils literal notranslate"><span class="pre">schemas</span></code> and <code class="docutils literal notranslate"><span class="pre">tables</span></code> properties, even if
-only as empty arrays.</p>
+schemas/tables to their respective Trino schemas/tables:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">"schemas"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -919,8 +910,8 @@ connector modifies some types when reading or writing data.</p>
 <p>This connector supports reading the following Redshift types and performs
 conversion to SEP types with the detailed mappings as shown in the following
 table.</p>
-<table id="id4">
-<caption><span class="caption-text">Redshift to SEP type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Redshift to SEP type mapping</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 20%"/>
@@ -990,8 +981,8 @@ table.</p>
 <p>This connector supports writing the following SEP types and performs
 conversion to Redshift types with the detailed mappings as shown in the
 following table.</p>
-<table id="id5">
-<caption><span class="caption-text">SEP to Redshift type mapping</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">SEP to Redshift type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 20%"/>
@@ -1089,18 +1080,10 @@ the time is rounded to the nearest microsecond before being inserted.</p>
 Redshift. In addition to the <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a>
 statements, the connector supports the following features:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc std std-doc">INSERT</span></a>, see also <a class="reference internal" href="#redshift-insert"><span class="std std-ref">Non-transactional INSERT</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/update.html"><span class="doc std std-doc">UPDATE</span></a>, see also <a class="reference internal" href="#redshift-update"><span class="std std-ref">UPDATE limitation</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc std std-doc">DELETE</span></a>, see also <a class="reference internal" href="#redshift-delete"><span class="std std-ref">DELETE limitation</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc std std-doc">TRUNCATE</span></a></p></li>
-<li><p><a class="reference internal" href="../language/sql-support.html#sql-schema-table-management"><span class="std std-ref">Schema and table management</span></a>, see also:</p>
-<ul>
-<li><p><a class="reference internal" href="#redshift-alter-table"><span class="std std-ref">ALTER TABLE RENAME TO limitation</span></a></p></li>
-<li><p><a class="reference internal" href="#redshift-alter-schema"><span class="std std-ref">ALTER SCHEMA limitation</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#redshift-procedures"><span class="std std-ref">Procedures</span></a></p></li>
-<li><p><a class="reference internal" href="#redshift-table-functions"><span class="std std-ref">Table functions</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc">DELETE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc">TRUNCATE</span></a></p></li>
+<li><p><a class="reference internal" href="../language/sql-support.html#sql-schema-table-management"><span class="std std-ref">Schema and table management</span></a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1108,20 +1091,8 @@ statements, the connector supports the following features:</p>
 property is enabled, the connector only supports <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a> SQL
 statements.</p>
 </div>
-<section id="redshift-insert">
-<span id="id1"></span><h3 id="redshift-insert">Non-transactional INSERT<a class="headerlink" href="#redshift-insert" title="Permalink to this heading">#</a></h3>
-<p>The connector supports adding rows using <a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT statements</span></a>.
-By default, data insertion is performed by writing data to a temporary table.
-You can skip this step to improve performance and write directly to the target
-table. Set the <code class="docutils literal notranslate"><span class="pre">insert.non-transactional-insert.enabled</span></code> catalog property
-or the corresponding <code class="docutils literal notranslate"><span class="pre">non_transactional_insert</span></code> catalog session property to
-<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<p>Note that with this property enabled, data can be corrupted in rare cases where
-exceptions occur during the insert operation. With transactions disabled, no
-rollback can be performed.</p>
-</section>
-<section id="update-limitation">
-<span id="redshift-update"></span><h3 id="update-limitation">UPDATE limitation<a class="headerlink" href="#update-limitation" title="Permalink to this heading">#</a></h3>
+<section id="update">
+<h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permalink to this heading">#</a></h3>
 <p>Only <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statements with constant assignments and predicates are
 supported. For example, the following statement is supported because the values
 assigned are constants:</p>
@@ -1141,8 +1112,8 @@ column table, the following statement is not supported:</p>
 </pre></div>
 </div>
 </section>
-<section id="delete-limitation">
-<span id="redshift-delete"></span><h3 id="delete-limitation">DELETE limitation<a class="headerlink" href="#delete-limitation" title="Permalink to this heading">#</a></h3>
+<section id="sql-delete">
+<h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
 predicate in the clause can be fully pushed down to the data source.</p>
 </section>
@@ -1170,8 +1141,8 @@ array of column names. For example:</p>
 </div>
 </section>
 </section>
-<section id="alter-table-rename-to-limitation">
-<span id="redshift-alter-table"></span><h3 id="alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation<a class="headerlink" href="#alter-table-rename-to-limitation" title="Permalink to this heading">#</a></h3>
+<section id="alter-table-rename-to">
+<h3 id="alter-table-rename-to">ALTER TABLE RENAME TO<a class="headerlink" href="#alter-table-rename-to" title="Permalink to this heading">#</a></h3>
 <p>The connector does not support renaming tables across multiple schemas. For
 example, the following statement is supported:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_one</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_two</span>
@@ -1183,13 +1154,13 @@ is not supported:</p>
 </pre></div>
 </div>
 </section>
-<section id="alter-schema-limitation">
-<span id="redshift-alter-schema"></span><h3 id="alter-schema-limitation">ALTER SCHEMA limitation<a class="headerlink" href="#alter-schema-limitation" title="Permalink to this heading">#</a></h3>
+<section id="alter-schema">
+<h3 id="alter-schema">ALTER SCHEMA<a class="headerlink" href="#alter-schema" title="Permalink to this heading">#</a></h3>
 <p>The connector supports renaming a schema with the <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">SCHEMA</span> <span class="pre">RENAME</span></code>
 statement. <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">SCHEMA</span> <span class="pre">SET</span> <span class="pre">AUTHORIZATION</span></code> is not supported.</p>
 </section>
 <section id="procedures">
-<span id="redshift-procedures"></span><h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
+<h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
 <section id="system-flush-metadata-cache">
 <h4 id="system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code><a class="headerlink" href="#system-flush-metadata-cache" title="Permalink to this heading">#</a></h4>
 <p>Flush JDBC metadata caches. For example, the following system call
@@ -1226,7 +1197,7 @@ version.</p>
 </section>
 </section>
 <section id="table-functions">
-<span id="redshift-table-functions"></span><h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
+<h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
 <p>The connector provides specific <a class="reference internal" href="../functions/table.html"><span class="doc">table functions</span></a> to
 access Redshift.</p>
 <section id="query-varchar-table">
@@ -1276,9 +1247,8 @@ for <a class="reference internal" href="../optimizer/cost-based-optimizations.ht
 improve query processing performance based on the actual data in the data
 source.</p>
 <p>The statistics are collected by Redshift and retrieved by the connector.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ANALYZE</span></code> may be run automatically depending on your Redshift configuration. To
-manually collect statistics for a table, run the following statement in
-Redshift:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ANALYZE</span></code> may be run automatically depending on your Redshift configuration.
+To manually  collect statistics for a table, run the following statement:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ANALYZE</span> <span class="n">table_schema</span><span class="p">.</span><span class="k">table_name</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -1446,48 +1416,6 @@ The other queries are pushed down.</p>
 <p>The connector supports <a class="reference internal" href="../admin/table-scan-redirection.html"><span class="doc">table scan redirection</span></a> to improve performance and reduce load on the
 data source.</p>
 </section>
-<section id="parallel-read-via-s3">
-<h3 id="parallel-read-via-s3">Parallel read via S3<a class="headerlink" href="#parallel-read-via-s3" title="Permalink to this heading">#</a></h3>
-<p>The connector supports the Redshift <code class="docutils literal notranslate"><span class="pre">UNLOAD</span></code> command to transfer data to Parquet
-files on S3. This enables parallel read of the data in Trino instead of the
-default, single-threaded JDBC-based connection to Redshift, used by the
-connector.</p>
-<p>Configure the required S3 location with <code class="docutils literal notranslate"><span class="pre">redshift.unload-location</span></code> to enable the
-parallel read. Parquet files are automatically removed with query completion.
-The Redshift cluster and the configured S3 bucket must use the same AWS region.</p>
-<table id="id6">
-<caption><span class="caption-text">Parallel read configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%"/>
-<col style="width: 67%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Property value</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">redshift.unload-location</span></code></p></td>
-<td><p>A writeable location in Amazon S3 in the same AWS region as the Redshift
-cluster. Used for temporary storage during query processing using the
-<code class="docutils literal notranslate"><span class="pre">UNLOAD</span></code> command from Redshift. To ensure cleanup even for failed automated
-removal, configure a life cycle policy to auto clean up the bucket
-regularly.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">redshift.unload-iam-role</span></code></p></td>
-<td><p>Optional. Fully specified ARN of the IAM Role attached to the Redshift
-cluster to use for the <code class="docutils literal notranslate"><span class="pre">UNLOAD</span></code> command. The role must have read access to
-the Redshift cluster and write access to the S3 bucket. Defaults to use the
-default IAM role attached to the Redshift cluster.</p></td>
-</tr>
-</tbody>
-</table>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">unload_enabled</span></code> <a class="reference internal" href="../sql/set-session.html"><span class="doc std std-doc">catalog session property</span></a> to
-deactivate the parallel read during a client session for a specific query, and
-potentially re-activate it again afterwards.</p>
-<p>Additionally, define further required <a class="reference internal" href="../object-storage/file-system-s3.html"><span class="doc std std-doc">S3 configuration such as IAM key, role,
-or region</span></a>, except <code class="docutils literal notranslate"><span class="pre">fs.native-s3.enabled</span></code>,</p>
-</section>
 </section>
 <section id="security">
 <h2 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
@@ -1524,8 +1452,8 @@ file to include the following authentication type:</p>
 <p>The connector supports IAM user authentication with an access key ID and secret
 access key. This feature lets you manage access control from SEP with IAM
 policies.</p>
-<section id="id2">
-<h4 id="id2">Configuration<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<section id="id1">
+<h4 id="id1">Configuration<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>To enable IAM authentication, add the following configuration properties to the
 catalog configuration file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">redshift.authentication.type</span><span class="o">=</span><span class="s">AWS</span>
@@ -1534,8 +1462,8 @@ catalog configuration file:</p>
 </div>
 <p>This table describes the configuration properties for IAM
 authentication:</p>
-<table id="id7">
-<caption><span class="caption-text">IAM configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">IAM configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 70%"/>
@@ -1580,8 +1508,8 @@ or <code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY</
 <li><p><strong>Credential profiles file</strong>: a profiles file at the default location
 (<code class="docutils literal notranslate"><span class="pre">~/.aws/credentials</span></code>) shared by all AWS SDKs and the AWS CLI.</p></li>
 <li><p><strong>EC2 service credentials</strong>: credentials delivered through the Amazon EC2
-container service, assuming access to the value of the
-<code class="docutils literal notranslate"><span class="pre">AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</span></code> environment variable.</p></li>
+container service, assuming the security manager has permission to access the
+value of the <code class="docutils literal notranslate"><span class="pre">AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</span></code> environment variable.</p></li>
 <li><p><strong>Instance profile credentials</strong>: credentials delivered through the Amazon
 EC2 metadata service.</p></li>
 </ol>
