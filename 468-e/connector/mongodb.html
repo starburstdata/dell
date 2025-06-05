@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -258,6 +259,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -326,7 +328,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -1026,8 +1027,9 @@ configuration file. The equivalent session property is
 <p>The connector includes security-related features detailed in the
 following section.</p>
 <section id="kerberos-authentication">
-<h3 id="kerberos-authentication">Kerberos authentication<a class="headerlink" href="#kerberos-authentication" title="Permalink to this heading">#</a></h3>
-<p>The connector supports <a class="reference internal" href="../security/kerberos.html"><span class="doc">Kerberos authentication</span></a> using a keytab.</p>
+<span id="sb-mongodb-kerberos-support"></span><h3 id="kerberos-authentication">Kerberos authentication<a class="headerlink" href="#kerberos-authentication" title="Permalink to this heading">#</a></h3>
+<p>The connector supports <a class="reference internal" href="../security/kerberos.html"><span class="doc std std-doc">Kerberos authentication</span></a> using either a keytab or
+credential cache.</p>
 <p>To configure Kerberos authentication with a keytab, add the following catalog
 configuration properties to the catalog properties file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">mongo.authentication.type</span><span class="o">=</span><span class="s">KERBEROS</span>
@@ -1039,6 +1041,18 @@ configuration properties to the catalog properties file:</p>
 <p>With this configuration the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code>, defined in the
 principal property, is used to connect to the database, and the related Kerberos
 service ticket is located in the <code class="docutils literal notranslate"><span class="pre">example.keytab</span></code> file.</p>
+<p>To configure Kerberos authentication with a credential cache, add the following
+catalog configuration properties to the catalog properties file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mongodb.authentication.type=KERBEROS
+kerberos.client.principal=example@example.com
+kerberos.client.credential-cache.location=etc/kerberos/example.cache
+kerberos.config=etc/kerberos/krb5.conf
+</pre></div>
+</div>
+<p>In these configurations the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code>, as defined in the
+principal property, connects to the database. The related Kerberos service
+ticket is located in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.keytab</span></code> file, or cache
+credentials in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.cache</span></code> file.</p>
 </section>
 <section id="kerberos-credential-pass-through">
 <span id="sb-mongodb-kerberos-passthrough"></span><h3 id="kerberos-credential-pass-through">Kerberos credential pass-through<a class="headerlink" href="#kerberos-credential-pass-through" title="Permalink to this heading">#</a></h3>

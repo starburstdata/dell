@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -230,6 +230,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugin">Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-source">Data source</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#connector">Connector</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#catalog">Catalog</a></li>
@@ -277,13 +278,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -294,7 +296,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -346,6 +347,8 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#client" class="md-nav__link">Client</a>
+        </li>
+        <li class="md-nav__item"><a href="#plugin" class="md-nav__link">Plugin</a>
         </li>
         <li class="md-nav__item"><a href="#data-source" class="md-nav__link">Data source</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -487,6 +490,11 @@ with charts and graphs, reporting, and dashboard creation.</p>
 components to build a query, must translate each request to <a class="reference internal" href="../language.html"><span class="doc std std-doc">SQL as supported by
 Trino</span></a>.</p>
 <p>More details are available in the <a class="reference internal" href="../client.html"><span class="doc std std-doc">Trino client documentation</span></a>.</p>
+</section>
+<section id="plugin">
+<span id="trino-concept-plugin"></span><h2 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permalink to this heading">#</a></h2>
+<p>Trino uses a plugin architecture to extend its capabilities and integrate with
+various data sources and other systems.</p>
 </section>
 <section id="data-source">
 <span id="trino-concept-data-source"></span><h2 id="data-source">Data source<a class="headerlink" href="#data-source" title="Permalink to this heading">#</a></h2>

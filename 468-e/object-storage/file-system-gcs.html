@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -300,6 +300,8 @@
         <li class="md-nav__item"><a href="#general-configuration" class="md-nav__link">General configuration</a>
         </li>
         <li class="md-nav__item"><a href="#authentication" class="md-nav__link">Authentication</a>
+        </li>
+        <li class="md-nav__item"><a href="#migration-from-legacy-google-cloud-storage-file-system" class="md-nav__link">Migration from legacy Google Cloud Storage file system</a>
         </li></ul>
             </nav>
         </li>
@@ -342,40 +344,45 @@ all other properties.</p></td>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.project-id</span></code></p></td>
 <td><p>Identifier for the project on Google Cloud Storage.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-retries</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.endpoint</span></code></p></td>
+<td><p>Optional URL for the Google Cloud Storage endpoint. Configure this property
+if your storage is accessed using a custom URL, for example
+<code class="docutils literal notranslate"><span class="pre">http://storage.example.com:8000</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-retries</span></code></p></td>
 <td><p>Maximum number of RPC attempts. Defaults to 20.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.backoff-scale-factor</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.backoff-scale-factor</span></code></p></td>
 <td><p>Scale factor for RPC retry delays. Defaults to 3.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-retry-time</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-retry-time</span></code></p></td>
 <td><p>Total time <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> limit for RPC call retries.
 Defaults to <code class="docutils literal notranslate"><span class="pre">25s</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.min-backoff-delay</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.min-backoff-delay</span></code></p></td>
 <td><p>Minimum delay <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> between RPC retries. Defaults
 to <code class="docutils literal notranslate"><span class="pre">10ms</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-backoff-delay</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.client.max-backoff-delay</span></code></p></td>
 <td><p>Maximum delay <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> between RPC retries. Defaults
 to <code class="docutils literal notranslate"><span class="pre">2s</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.read-block-size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.read-block-size</span></code></p></td>
 <td><p>Minimum <a class="reference internal" href="../admin/properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for blocks read per RPC. Defaults
 to <code class="docutils literal notranslate"><span class="pre">2MiB</span></code>. See <code class="docutils literal notranslate"><span class="pre">com.google.cloud.BaseStorageReadChannel</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.write-block-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.write-block-size</span></code></p></td>
 <td><p>Minimum <a class="reference internal" href="../admin/properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for blocks written per RPC. The
 Defaults to <code class="docutils literal notranslate"><span class="pre">16MiB</span></code>. See <code class="docutils literal notranslate"><span class="pre">com.google.cloud.BaseStorageWriteChannel</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.page-size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.page-size</span></code></p></td>
 <td><p>Maximum number of blobs to return per page. Defaults to 100.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.batch-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.batch-size</span></code></p></td>
 <td><p>Number of blobs to delete per batch. Defaults to 100. <a class="reference external" href="https://cloud.google.com/storage/docs/batch">Recommended batch
 size</a> is 100.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.application-id</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.application-id</span></code></p></td>
 <td><p>Specify the application identifier appended to the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header
 for all requests sent to Google Cloud Storage. Defaults to <code class="docutils literal notranslate"><span class="pre">Trino</span></code>.</p></td>
 </tr>
@@ -408,6 +415,45 @@ with <code class="docutils literal notranslate"><span class="pre">gcs.json-key-f
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code></p></td>
 <td><p>Path to the JSON file on each node that contains your Google Cloud Platform
 service account key. Not to be set together with <code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="migration-from-legacy-google-cloud-storage-file-system">
+<span id="fs-legacy-gcs-migration"></span><h2 id="migration-from-legacy-google-cloud-storage-file-system">Migration from legacy Google Cloud Storage file system<a class="headerlink" href="#migration-from-legacy-google-cloud-storage-file-system" title="Permalink to this heading">#</a></h2>
+<p>Trino includes legacy Google Cloud Storage support to use with a catalog using
+the Delta Lake, Hive, Hudi, or Iceberg connectors. Upgrading existing
+deployments to the current native implementation is recommended. Legacy support
+is deprecated and will be removed.</p>
+<p>To migrate a catalog to use the native file system implementation for Google
+Cloud Storage, make the following edits to your catalog configuration:</p>
+<ol class="arabic simple">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">fs.native-gcs.enabled=true</span></code> catalog configuration property.</p></li>
+<li><p>Refer to the following table to rename your existing legacy catalog
+configuration properties to the corresponding native configuration
+properties. Supported configuration values are identical unless otherwise
+noted.</p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 26%"/>
+<col style="width: 26%"/>
+<col style="width: 48%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Legacy property</p></th>
+<th class="head"><p>Native property</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.gcs.use-access-token</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcs.use-access-token</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.gcs.json-key-file-path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code></p></td>
+<td><p>Also see <code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code> in preceding sections</p></td>
 </tr>
 </tbody>
 </table>

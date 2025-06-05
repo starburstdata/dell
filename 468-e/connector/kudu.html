@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Kudu connector &#8212; Dell Data Analytics Engine</title>
+    <title>Starburst Kudu connector &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -135,7 +135,7 @@
           class="md-flex__ellipsis md-header-nav__title"
           data-md-component="title"
         >
-          Kudu connector
+          Starburst Kudu connector
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -258,6 +259,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -284,7 +286,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#insert">INSERT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-limitation">DELETE limitation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-schema">CREATE SCHEMA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#drop-schema">DROP SCHEMA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-table">CREATE TABLE</a></li>
@@ -337,7 +339,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -372,7 +373,7 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">Contents</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#connector-kudu--page-root" class="md-nav__link">Kudu connector</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#connector-kudu--page-root" class="md-nav__link">Starburst Kudu connector</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a>
         </li>
@@ -402,7 +403,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#insert" class="md-nav__link">INSERT</a>
         </li>
-        <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
+        <li class="md-nav__item"><a href="#delete-limitation" class="md-nav__link">DELETE limitation</a>
         </li>
         <li class="md-nav__item"><a href="#create-schema" class="md-nav__link">CREATE SCHEMA</a>
         </li>
@@ -459,8 +460,8 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="kudu-connector">
-<h1 id="connector-kudu--page-root">Kudu connector<a class="headerlink" href="#connector-kudu--page-root" title="Permalink to this heading">#</a></h1>
+  <section id="starburst-kudu-connector">
+<h1 id="connector-kudu--page-root">Starburst Kudu connector<a class="headerlink" href="#connector-kudu--page-root" title="Permalink to this heading">#</a></h1>
 <img class="connector-logo" src="../_static/img/kudu.png"/><p>The Kudu connector lets you query, insert, and delete data in <a class="reference external" href="https://kudu.apache.org/">Apache
 Kudu</a>.</p>
 <p>SEP includes additional enterprise features that are built on top of the
@@ -843,8 +844,8 @@ Kudu</span></a></p></li>
 <p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">...</span> <span class="pre">values</span></code> and <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">...</span> <span class="pre">select</span></code> behave like
 <code class="docutils literal notranslate"><span class="pre">UPSERT</span></code>.</p>
 </section>
-<section id="sql-delete">
-<h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
+<section id="delete-limitation">
+<h3 id="delete-limitation">DELETE limitation<a class="headerlink" href="#delete-limitation" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
 predicate in the clause can be fully pushed down to the data source.</p>
 </section>

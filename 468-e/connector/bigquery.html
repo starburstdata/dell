@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -258,11 +259,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BigQuery connector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#multiple-gcp-projects">Multiple GCP projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#billing-and-data-projects">Billing and data projects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reading-from-views">Reading from views</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arrow-serialization-support">Arrow serialization support</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configuration-properties">Configuration properties</a></li>
@@ -277,11 +280,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#system-tables">System tables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#special-columns">Special columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-limitation">DELETE limitation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alter-table-execute">ALTER TABLE EXECUTE</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#collect-statistics">collect_statistics</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#wildcard-table">Wildcard table</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#procedures">Procedures</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#system-execute-query"><code class="docutils literal notranslate"><span class="pre">system.execute('query')</span></code></a></li>
 </ul>
@@ -296,6 +300,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#table-statistics">Table statistics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#managed-statistics">Managed statistics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bigquery-storage-api">BigQuery Storage API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pushdown">Pushdown</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security</a><ul>
@@ -333,7 +338,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -376,6 +380,8 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#multiple-gcp-projects" class="md-nav__link">Multiple GCP projects</a>
         </li>
+        <li class="md-nav__item"><a href="#billing-and-data-projects" class="md-nav__link">Billing and data projects</a>
+        </li>
         <li class="md-nav__item"><a href="#reading-from-views" class="md-nav__link">Reading from views</a>
         </li>
         <li class="md-nav__item"><a href="#arrow-serialization-support" class="md-nav__link">Arrow serialization support</a>
@@ -400,13 +406,15 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
+        <li class="md-nav__item"><a href="#delete-limitation" class="md-nav__link">DELETE limitation</a>
         </li>
         <li class="md-nav__item"><a href="#alter-table-execute" class="md-nav__link">ALTER TABLE EXECUTE</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#collect-statistics" class="md-nav__link">collect_statistics</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#wildcard-table" class="md-nav__link">Wildcard table</a>
         </li>
         <li class="md-nav__item"><a href="#procedures" class="md-nav__link">Procedures</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -429,6 +437,8 @@
         <li class="md-nav__item"><a href="#managed-statistics" class="md-nav__link">Managed statistics</a>
         </li>
         <li class="md-nav__item"><a href="#bigquery-storage-api" class="md-nav__link">BigQuery Storage API</a>
+        </li>
+        <li class="md-nav__item"><a href="#pushdown" class="md-nav__link">Pushdown</a>
         </li></ul>
             </nav>
         </li>
@@ -531,12 +541,54 @@ The default is <code class="docutils literal notranslate"><span class="pre">30m<
 <section id="multiple-gcp-projects">
 <h3 id="multiple-gcp-projects">Multiple GCP projects<a class="headerlink" href="#multiple-gcp-projects" title="Permalink to this heading">#</a></h3>
 <p>The BigQuery connector can only access a single GCP project. If you have data in
-multiple GCP projects, you need to create several catalogs that each point to a
+multiple GCP projects, you must create several catalogs that each point to a
 different GCP project.</p>
 <p>For example, if you have two GCP projects, one called <code class="docutils literal notranslate"><span class="pre">sales</span></code> and one called
 <code class="docutils literal notranslate"><span class="pre">analytics</span></code>, create two properties files in <code class="docutils literal notranslate"><span class="pre">etc/catalog</span></code> named
 <code class="docutils literal notranslate"><span class="pre">sales.properties</span></code> and <code class="docutils literal notranslate"><span class="pre">analytics.properties</span></code>. They both need to include the
 <code class="docutils literal notranslate"><span class="pre">connector.name=bigquery</span></code>property but with different <code class="docutils literal notranslate"><span class="pre">project-id</span></code>.</p>
+</section>
+<section id="billing-and-data-projects">
+<span id="bigquery-project-id-resolution"></span><h3 id="billing-and-data-projects">Billing and data projects<a class="headerlink" href="#billing-and-data-projects" title="Permalink to this heading">#</a></h3>
+<p>The BigQuery connector determines the <a class="reference external" href="https://cloud.google.com/resource-manager/docs/creating-managing-projects">project
+ID</a>
+to use based on the configuration settings. This behavior provides users with
+flexibility in selecting both the project to query and the project to bill for
+BigQuery operations. The following table explains how project IDs are resolved
+in different scenarios:</p>
+<table id="id3">
+<caption><span class="caption-text">Billing and data project ID resolution</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 31%"/>
+<col style="width: 34%"/>
+<col style="width: 34%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configured properties</p></th>
+<th class="head"><p>Billing project</p></th>
+<th class="head"><p>Data project</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Only <code class="docutils literal notranslate"><span class="pre">bigquery.credentials-key</span></code></p></td>
+<td><p>The project ID from the credentials key is used for billing.</p></td>
+<td><p>The project ID from the credentials key is used for querying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.credentials-key</span></code> and <code class="docutils literal notranslate"><span class="pre">bigquery.project-id</span></code></p></td>
+<td><p>The project ID from the credentials key is used for billing.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bigquery.project-id</span></code> is used for querying data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.credentials-key</span></code> and <code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code> is used for billing.</p></td>
+<td><p>The project ID from the credentials key is used for querying data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.credentials-key</span></code> and <code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code>
+and <code class="docutils literal notranslate"><span class="pre">bigquery.project-id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code> is used for billing.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bigquery.project-id</span></code> is used for querying data.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="reading-from-views">
 <span id="bigquery-reading-from-views"></span><h3 id="reading-from-views">Reading from views<a class="headerlink" href="#reading-from-views" title="Permalink to this heading">#</a></h3>
@@ -556,17 +608,17 @@ permission to the project and dataset in order to materialize the view.</p>
 </section>
 <section id="arrow-serialization-support">
 <span id="bigquery-arrow-serialization-support"></span><h3 id="arrow-serialization-support">Arrow serialization support<a class="headerlink" href="#arrow-serialization-support" title="Permalink to this heading">#</a></h3>
-<p>This connector supports using Apache Arrow as the serialization format when
-reading from BigQuery. Using Apache Arrow serialization is enabled by default.
-You need to add the following property to the SEP <a class="reference internal" href="../installation/deployment.html#jvm-config"><span class="std std-ref">JVM config</span></a>.</p>
+<p>This is a feature which introduces support for using Apache Arrow as the
+serialization format when reading from BigQuery. Add the following required,
+additional JVM argument to the <a class="reference internal" href="../installation/deployment.html#jvm-config"><span class="std std-ref">JVM config</span></a>:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">--add-opens</span><span class="o">=</span><span class="s">java.base/java.nio=ALL-UNNAMED</span>
 </pre></div>
 </div>
 </section>
 <section id="configuration-properties">
 <h3 id="configuration-properties">Configuration properties<a class="headerlink" href="#configuration-properties" title="Permalink to this heading">#</a></h3>
-<table id="id3">
-<caption><span class="caption-text">BigQuery configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">BigQuery configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 55%"/>
@@ -580,15 +632,17 @@ You need to add the following property to the SEP <a class="reference internal" 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.project-id</span></code></p></td>
-<td><p>The Google Cloud Project ID where the data resides.</p></td>
-<td><p>Taken from the service account</p></td>
+<td><p>The project ID of the Google Cloud account used to store the data,
+see also <a class="reference internal" href="#bigquery-project-id-resolution"><span class="std std-ref">Billing and data projects</span></a></p></td>
+<td><p>Taken from the service account or from <code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code>, if set</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code></p></td>
-<td><p>The project ID Google Cloud Project to bill for the export.</p></td>
-<td><p>Taken from the service account</p></td>
+<td><p>The project ID of the Google Cloud account used to store the data,
+see also <a class="reference internal" href="#bigquery-project-id-resolution"><span class="std std-ref">Billing and data projects</span></a></p></td>
+<td><p>Taken from the service account or from <code class="docutils literal notranslate"><span class="pre">bigquery.parent-project-id</span></code>, if set</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.views-enabled</span></code></p></td>
-<td><p>Enables the connector to read from views and not only tables. Please read
+<td><p>Enables the connector to read from views and not only tables. Read
 <a class="reference internal" href="#bigquery-reading-from-views"><span class="std std-ref">this section</span></a> before enabling this feature.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
@@ -653,41 +707,99 @@ cache</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.arrow-serialization.enabled</span></code></p></td>
 <td><p>Enable using Apache Arrow serialization when reading data from BigQuery.
-Please read this <a class="reference internal" href="#bigquery-arrow-serialization-support"><span class="std std-ref">section</span></a> before
-using this feature.</p></td>
+Read this <a class="reference internal" href="#bigquery-arrow-serialization-support"><span class="std std-ref">section</span></a> before using this
+feature.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.enabled</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.channel-pool.initial-size</span></code></p></td>
+<td><p>The initial size of the connection pool, also known as a channel pool,
+used for gRPC communication.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.channel-pool.min-size</span></code></p></td>
+<td><p>The minimum number of connections in the connection pool, also known as a
+channel pool, used for gRPC communication.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.channel-pool.max-size</span></code></p></td>
+<td><p>The maximum number of connections in the connection pool, also known as a
+channel pool, used for gRPC communication.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.channel-pool.min-rpc-per-channel</span></code></p></td>
+<td><p>Threshold to start scaling down the channel pool.
+When the average of outstanding RPCs in a single minute drop below this
+threshold, channels are removed from the pool.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.channel-pool.max-rpc-per-channel</span></code></p></td>
+<td><p>Threshold to start scaling up the channel pool.
+When the average of outstanding RPCs in a single minute surpass this
+threshold, channels are added to the pool.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2147483647</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code></p></td>
+<td><p>The maximum number of retry attempts to perform for the RPC calls. If this
+value is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>, the value from <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-timeout</span></code> is used. Retry is
+deactivated when both <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code> and <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-timeout</span></code> are
+<code class="docutils literal notranslate"><span class="pre">0</span></code>. If this value is positive, and the number of attempts exceeds
+<code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code> limit, retries stop even if the total retry time is
+still lower than <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-timeout</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-timeout</span></code></p></td>
+<td><p>Timeout <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> on when the retries for the RPC call
+should be given up completely. The higher the timeout, the more retries can
+be attempted. If this value is <code class="docutils literal notranslate"><span class="pre">0s</span></code>, then <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code> is used to
+determine retries. Retry is deactivated when <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code> and
+<code class="docutils literal notranslate"><span class="pre">bigquery.rpc-timeout</span></code> are both <code class="docutils literal notranslate"><span class="pre">0</span></code>. If this value is positive, and the
+retry duration has reached the timeout value, retries stop even if the
+number of attempts is lower than the <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retries</span></code> value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0s</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retry-delay</span></code></p></td>
+<td><p>The delay <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> before the first retry attempt
+for RPC calls.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0s</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retry-delay-multiplier</span></code></p></td>
+<td><p>Controls the change in delay before the next retry.
+The retry delay of the previous call is multiplied by the
+<code class="docutils literal notranslate"><span class="pre">bigquery.rpc-retry-delay-multiplier</span></code> to calculate the retry delay
+for the next RPC call.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.enabled</span></code></p></td>
 <td><p>Use a proxy for communication with BigQuery.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.uri</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.uri</span></code></p></td>
 <td><p>Proxy URI to use, if connecting through a proxy.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.username</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.username</span></code></p></td>
 <td><p>Proxy user name to use, if connecting through a proxy.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.password</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.password</span></code></p></td>
 <td><p>Proxy password to use, if connecting through a proxy.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.keystore-path</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.keystore-path</span></code></p></td>
 <td><p>Keystore containing client certificates to present to proxy, if connecting
 through a proxy. Only required if proxy uses mutual TLS.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.keystore-password</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.keystore-password</span></code></p></td>
 <td><p>Password of the keystore specified by <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.keystore-path</span></code>.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.truststore-path</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.truststore-path</span></code></p></td>
 <td><p>Truststore containing certificates of the proxy server, if connecting
 through a proxy.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.truststore-password</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.truststore-password</span></code></p></td>
 <td><p>Password of the truststore specified by
 <code class="docutils literal notranslate"><span class="pre">bigquery.rpc-proxy.truststore-path</span></code>.</p></td>
 <td></td>
@@ -712,8 +824,8 @@ each direction.</p>
 <h3 id="bigquery-type-to-trino-type-mapping">BigQuery type to Trino type mapping<a class="headerlink" href="#bigquery-type-to-trino-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps BigQuery types to the corresponding Trino types following
 this table:</p>
-<table id="id4">
-<caption><span class="caption-text">BigQuery type to Trino type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">BigQuery type to Trino type mapping</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 27%"/>
 <col style="width: 27%"/>
@@ -798,8 +910,8 @@ format.</p></td>
 <h3 id="trino-type-to-bigquery-type-mapping">Trino type to BigQuery type mapping<a class="headerlink" href="#trino-type-to-bigquery-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Trino types to the corresponding BigQuery types following
 this table:</p>
-<table id="id5">
-<caption><span class="caption-text">Trino type to BigQuery type mapping</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Trino type to BigQuery type mapping</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 27%"/>
 <col style="width: 27%"/>
@@ -904,8 +1016,8 @@ supports the following features:</p>
 <li><p><a class="reference internal" href="../sql/drop-schema.html"><span class="doc">DROP SCHEMA</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/comment.html"><span class="doc">COMMENT</span></a></p></li>
 </ul>
-<section id="sql-delete">
-<h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
+<section id="delete-limitation">
+<h3 id="delete-limitation">DELETE limitation<a class="headerlink" href="#delete-limitation" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
 predicate in the clause can be fully pushed down to the data source.</p>
 </section>
@@ -932,6 +1044,16 @@ array of column names. For example:</p>
 </pre></div>
 </div>
 </section>
+</section>
+<section id="wildcard-table">
+<h3 id="wildcard-table">Wildcard table<a class="headerlink" href="#wildcard-table" title="Permalink to this heading">#</a></h3>
+<p>The connector provides support to query multiple tables using a concise
+<a class="reference external" href="https://cloud.google.com/bigquery/docs/querying-wildcard-tables">wildcard table</a>
+notation.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">example</span><span class="p">.</span><span class="n">web</span><span class="p">.</span><span class="ss">"page_views_*"</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 <section id="procedures">
 <h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
@@ -1043,6 +1165,16 @@ Dataflow</a>.</p>
 </dl>
 <p>For information about BigQuery pricing, see the <a class="reference external" href="https://cloud.google.com/bigquery/pricing#storage-api">BigQuery pricing
 documentation</a>.</p>
+</section>
+<section id="pushdown">
+<span id="bigquery-pushdown"></span><h3 id="pushdown">Pushdown<a class="headerlink" href="#pushdown" title="Permalink to this heading">#</a></h3>
+<p>The connector supports pushdown for a number of operations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../optimizer/pushdown.html#limit-pushdown"><span class="std std-ref">Limit pushdown</span></a> for access to tables and other objects when using the REST
+API to reduce CPU consumption in BigQuery and performance overall. Pushdown is
+not supported by the Storage API, used for the more common Trino-managed
+tables, and therefore not used for access with it.</p></li>
+</ul>
 </section>
 </section>
 <section id="security">

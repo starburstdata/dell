@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,8 +275,10 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#type-mapping">Type mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sql-support">SQL support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#using-existing-data-statistics">Using existing data statistics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="memory.html">Memory connector</a></li>
@@ -285,7 +288,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -340,9 +342,11 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a>
         </li>
-        <li class="md-nav__item"><a href="#usage" class="md-nav__link">Usage</a>
-        </li>
-        <li class="md-nav__item"><a href="#limitations" class="md-nav__link">Limitations</a>
+        <li class="md-nav__item"><a href="#usage" class="md-nav__link">Usage</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#using-existing-data-statistics" class="md-nav__link">Using existing data statistics</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -381,9 +385,9 @@ in the catalog only exist as definition and do not hold actual data. Any query
 reading from tables returns random, but deterministic data. As a result,
 repeated invocation of a query returns identical data. See <a class="reference internal" href="#faker-usage"><span class="std std-ref">Usage</span></a> for
 more examples.</p>
-<p>Schemas and tables in a catalog are not persisted, and are stored in the memory
-of the coordinator only. They need to be recreated every time after restarting
-the coordinator.</p>
+<p>Schemas, tables, and views in a catalog are not persisted, and are stored in the
+memory of the coordinator only. They need to be recreated every time after
+restarting the coordinator.</p>
 <p>The following table details all general configuration properties:</p>
 <table id="id1">
 <caption><span class="caption-text">Faker configuration properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
@@ -408,6 +412,17 @@ that allows them. Defaults to <code class="docutils literal notranslate"><span c
 <td><p>Default locale for generating character-based data, specified as a IETF BCP
 47 language tag string. Defaults to <code class="docutils literal notranslate"><span class="pre">en</span></code>.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">faker.sequence-detection-enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with the number
+of distinct values close to the number of rows are treated as sequences.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">faker.dictionary-detection-enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with a low
+number of distinct values are treated as dictionaries, and get
+the <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code> column property populated with random values.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 <p>The following table details all supported schema properties. If they’re not
@@ -431,6 +446,17 @@ them, in any table of this schema.</p></td>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">default_limit</span></code></p></td>
 <td><p>Default number of rows in a table.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sequence_detection_enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with the number
+of distinct values close to the number of rows are treated as sequences.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dictionary_detection_enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with a low
+number of distinct values are treated as dictionaries, and get
+the <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code> column property populated with random values.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 <p>The following table details all supported table properties. If they’re not set,
@@ -453,6 +479,17 @@ values from corresponding schema properties are used.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">default_limit</span></code></p></td>
 <td><p>Default number of rows in the table.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sequence_detection_enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with the number
+of distinct values close to the number of rows are treated as sequences.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dictionary_detection_enabled</span></code></p></td>
+<td><p>If true, when creating a table using existing data, columns with a low
+number of distinct values are treated as dictionaries, and get
+the <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code> column property populated with random values.
+Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -480,6 +517,22 @@ Only valid for columns of a character-based type. Defaults to a 3 to 40 word
 sentence from the
 <a class="reference external" href="https://javadoc.io/doc/net.datafaker/datafaker/latest/net/datafaker/providers/base/Lorem.html">Lorem</a>
 provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p>Minimum generated value (inclusive). Cannot be set for character-based type
+columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p>Maximum generated value (inclusive). Cannot be set for character-based type
+columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">allowed_values</span></code></p></td>
+<td><p>List of allowed values. Cannot be set together with the <code class="docutils literal notranslate"><span class="pre">min</span></code>, or <code class="docutils literal notranslate"><span class="pre">max</span></code>
+properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">step</span></code></p></td>
+<td><p>If set, generate sequential values with this step. For date and time columns
+set this to a duration. Cannot be set for character-based type columns.</p></td>
 </tr>
 </tbody>
 </table>
@@ -538,18 +591,19 @@ catalog to test a generator expression:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code> and <code class="docutils literal notranslate"><span class="pre">TIMESTAMP(P)</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TIME</span></code> and <code class="docutils literal notranslate"><span class="pre">TIME(P)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TIME</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code> and <code class="docutils literal notranslate"><span class="pre">TIME(P)</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROW</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IPADDRESS</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">UUID</span></code></p></li>
 </ul>
 <p>You can not use generator expressions for non-character-based columns. To limit
-their data range, specify constraints in the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause - see
+their data range, set the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> column properties - see
 <a class="reference internal" href="#faker-usage"><span class="std std-ref">Usage</span></a>.</p>
 </section>
 <section id="unsupported-types">
 <h3 id="unsupported-types">Unsupported types<a class="headerlink" href="#unsupported-types" title="Permalink to this heading">#</a></h3>
 <p>Faker does not support the following data types:</p>
 <ul class="simple">
-<li><p>Structural types <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code>, <code class="docutils literal notranslate"><span class="pre">MAP</span></code>, and <code class="docutils literal notranslate"><span class="pre">ROW</span></code></p></li>
+<li><p>Structural types <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> and <code class="docutils literal notranslate"><span class="pre">MAP</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">JSON</span></code></p></li>
 <li><p>Geometry</p></li>
 <li><p>HyperLogLog and all digest types</p></li>
@@ -558,12 +612,11 @@ their data range, specify constraints in the <code class="docutils literal notra
 can be combined, like in the following example:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">faker</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">prices</span> <span class="p">(</span>
   <span class="n">currency</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s1">'#{Currency.code}'</span><span class="p">),</span>
-  <span class="n">price</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
+  <span class="n">price</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">min</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">)</span>
 <span class="p">);</span>
 
 <span class="k">SELECT</span> <span class="n">JSON_OBJECT</span><span class="p">(</span><span class="k">KEY</span> <span class="n">currency</span> <span class="n">VALUE</span> <span class="n">price</span><span class="p">)</span> <span class="k">AS</span> <span class="n">complex</span>
 <span class="k">FROM</span> <span class="n">faker</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">prices</span>
-<span class="k">WHERE</span> <span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span>
 <span class="k">LIMIT</span> <span class="mi">3</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -605,10 +658,11 @@ operation</span></a> statements to generate data.</p>
 <p>To define the schema for generating data, it supports the following features:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../sql/create-table.html"><span class="doc std std-doc">CREATE TABLE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">CREATE TABLE AS</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">CREATE TABLE AS</span></a>, see also <a class="reference internal" href="#faker-statistics"><span class="std std-ref">Using existing data statistics</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/drop-table.html"><span class="doc std std-doc">DROP TABLE</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/create-schema.html"><span class="doc std std-doc">CREATE SCHEMA</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/drop-schema.html"><span class="doc std std-doc">DROP SCHEMA</span></a></p></li>
+<li><p><a class="reference internal" href="../language/sql-support.html#sql-view-management"><span class="std std-ref">View management</span></a></p></li>
 </ul>
 </section>
 <section id="usage">
@@ -627,20 +681,11 @@ same table properties as other connectors.</p>
 </div>
 <p>Insert random data into the original table, by selecting it from the
 <code class="docutils literal notranslate"><span class="pre">generator</span></code> catalog. Data generated by the Faker connector for columns of
-non-character types cover the whole range of that data type. Add constraints to
-adjust the data as desired. The following example ensures that date of birth
-and age in years are related and realistic values.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">production</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">customers</span>
-<span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customers</span>
-<span class="k">WHERE</span>
-  <span class="n">born_at</span> <span class="k">BETWEEN</span> <span class="k">CURRENT_DATE</span> <span class="o">-</span> <span class="nb">INTERVAL</span> <span class="s1">'150'</span> <span class="k">YEAR</span> <span class="k">AND</span> <span class="k">CURRENT_DATE</span>
-  <span class="k">AND</span> <span class="n">age_years</span> <span class="k">BETWEEN</span> <span class="mi">0</span> <span class="k">AND</span> <span class="mi">150</span>
-<span class="k">LIMIT</span> <span class="mi">100</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>To generate even more realistic data, choose specific generators by setting the
-<code class="docutils literal notranslate"><span class="pre">generator</span></code> property on columns. Start with getting the complete definition of
+non-character types cover the whole range of that data type. Set the <code class="docutils literal notranslate"><span class="pre">min</span></code> and
+<code class="docutils literal notranslate"><span class="pre">max</span></code> column properties, to adjust the generated data as desired. The following
+example ensures that date of birth and age in years are related and realistic
+values.</p>
+<p>Start with getting the complete definition of
 a table:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">production</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">customers</span><span class="p">;</span>
 </pre></div>
@@ -648,19 +693,92 @@ a table:</p>
 <p>Modify the output of the previous query and add some column properties.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customer</span> <span class="p">(</span>
   <span class="n">id</span> <span class="n">UUID</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="n">name</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s1">'#{Name.first_name} #{Name.last_name}'</span><span class="p">),</span>
-  <span class="n">address</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s1">'#{Address.fullAddress}'</span><span class="p">),</span>
-  <span class="n">born_at</span> <span class="nb">DATE</span><span class="p">,</span>
-  <span class="n">age_years</span> <span class="nb">INTEGER</span>
+  <span class="n">name</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">address</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">born_at</span> <span class="nb">DATE</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">min</span> <span class="o">=</span> <span class="s1">'1900-01-01'</span><span class="p">,</span> <span class="k">max</span> <span class="o">=</span> <span class="s1">'2025-01-01'</span><span class="p">),</span>
+  <span class="n">age_years</span> <span class="nb">INTEGER</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">min</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> <span class="k">max</span> <span class="o">=</span> <span class="s1">'150'</span><span class="p">),</span>
+  <span class="n">group_id</span> <span class="nb">INTEGER</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">allowed_values</span> <span class="o">=</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'10'</span><span class="p">,</span> <span class="s1">'32'</span><span class="p">,</span> <span class="s1">'81'</span><span class="p">])</span>
 <span class="p">);</span>
 </pre></div>
 </div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">production</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">customers</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customers</span>
+<span class="k">LIMIT</span> <span class="mi">100</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To generate even more realistic data, choose specific generators by setting the
+<code class="docutils literal notranslate"><span class="pre">generator</span></code> property on columns.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customer</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="n">UUID</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">name</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s1">'#{Name.first_name} #{Name.last_name}'</span><span class="p">),</span>
+  <span class="n">address</span> <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s1">'#{Address.fullAddress}'</span><span class="p">),</span>
+  <span class="n">born_at</span> <span class="nb">DATE</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">min</span> <span class="o">=</span> <span class="s1">'1900-01-01'</span><span class="p">,</span> <span class="k">max</span> <span class="o">=</span> <span class="s1">'2025-01-01'</span><span class="p">),</span>
+  <span class="n">age_years</span> <span class="nb">INTEGER</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">min</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> <span class="k">max</span> <span class="o">=</span> <span class="s1">'150'</span><span class="p">),</span>
+  <span class="n">group_id</span> <span class="nb">INTEGER</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">allowed_values</span> <span class="o">=</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'10'</span><span class="p">,</span> <span class="s1">'32'</span><span class="p">,</span> <span class="s1">'81'</span><span class="p">])</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<section id="using-existing-data-statistics">
+<span id="faker-statistics"></span><h3 id="using-existing-data-statistics">Using existing data statistics<a class="headerlink" href="#using-existing-data-statistics" title="Permalink to this heading">#</a></h3>
+<p>The Faker connector automatically sets the <code class="docutils literal notranslate"><span class="pre">default_limit</span></code> table property, and
+the <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">null_probability</span></code> column properties, based on statistics
+collected by scanning existing data read by Trino from the data source. The
+connector uses these statistics to be able to generate data that is more similar
+to the original data set, without using any of that data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customer</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">production</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">customer</span>
+<span class="k">WHERE</span> <span class="n">created_at</span> <span class="o">&gt;</span> <span class="k">CURRENT_DATE</span> <span class="o">-</span> <span class="nb">INTERVAL</span> <span class="s1">'1'</span> <span class="k">YEAR</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Instead of using range, or other predicates, tables can be sampled,
+see <a class="reference internal" href="../sql/select.html#tablesample"><span class="std std-ref">TABLESAMPLE</span></a>.</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement doesn’t contain a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause, a shorter notation
+can be used:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">customer</span> <span class="k">AS</span> <span class="k">TABLE</span> <span class="n">production</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">customer</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The Faker connector detects sequence columns, which are integer column with the
+number of distinct values almost equal to the number of rows in the table. For
+such columns, Faker sets the <code class="docutils literal notranslate"><span class="pre">step</span></code> column property to 1.</p>
+<p>Sequence detection can be turned off using the <code class="docutils literal notranslate"><span class="pre">sequence_detection_enabled</span></code>
+table, or schema property or in the connector configuration file, using the
+<code class="docutils literal notranslate"><span class="pre">faker.sequence-detection-enabled</span></code> property.</p>
+<p>The Faker connector detects dictionary columns, which are columns of
+non-character types with the number of distinct values lower or equal to 1000.
+For such columns, Faker generates a list of random values to choose from, and
+saves it in the <code class="docutils literal notranslate"><span class="pre">allowed_values</span></code> column property.</p>
+<p>Dictionary detection can be turned off using the <code class="docutils literal notranslate"><span class="pre">dictionary_detection_enabled</span></code>
+table, or schema property or in the connector configuration file, using
+the <code class="docutils literal notranslate"><span class="pre">faker.dictionary-detection-enabled</span></code> property.</p>
+<p>For example, copy the <code class="docutils literal notranslate"><span class="pre">orders</span></code> table from the TPC-H connector with
+statistics, using the following query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">orders</span> <span class="k">AS</span> <span class="k">TABLE</span> <span class="n">tpch</span><span class="p">.</span><span class="n">tiny</span><span class="p">.</span><span class="n">orders</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Inspect the schema of the table created by the Faker connector:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">orders</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The table schema should contain additional column and table properties.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">generator</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">orders</span> <span class="p">(</span>
+   <span class="n">orderkey</span> <span class="nb">bigint</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">max</span> <span class="o">=</span> <span class="s1">'60000'</span><span class="p">,</span> <span class="k">min</span> <span class="o">=</span> <span class="s1">'1'</span><span class="p">,</span> <span class="n">null_probability</span> <span class="o">=</span> <span class="mi">0</span><span class="n">E0</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="s1">'1'</span><span class="p">),</span>
+   <span class="n">custkey</span> <span class="nb">bigint</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">allowed_values</span> <span class="o">=</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'153'</span><span class="p">,</span><span class="s1">'662'</span><span class="p">,</span><span class="s1">'1453'</span><span class="p">,</span><span class="s1">'63'</span><span class="p">,</span><span class="s1">'784'</span><span class="p">,</span> <span class="p">...,</span> <span class="s1">'1493'</span><span class="p">,</span><span class="s1">'657'</span><span class="p">],</span> <span class="n">null_probability</span> <span class="o">=</span> <span class="mi">0</span><span class="n">E0</span><span class="p">),</span>
+   <span class="n">orderstatus</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+   <span class="n">totalprice</span> <span class="n">double</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">max</span> <span class="o">=</span> <span class="s1">'466001.28'</span><span class="p">,</span> <span class="k">min</span> <span class="o">=</span> <span class="s1">'874.89'</span><span class="p">,</span> <span class="n">null_probability</span> <span class="o">=</span> <span class="mi">0</span><span class="n">E0</span><span class="p">),</span>
+   <span class="n">orderdate</span> <span class="nb">date</span> <span class="k">WITH</span> <span class="p">(</span><span class="k">max</span> <span class="o">=</span> <span class="s1">'1998-08-02'</span><span class="p">,</span> <span class="k">min</span> <span class="o">=</span> <span class="s1">'1992-01-01'</span><span class="p">,</span> <span class="n">null_probability</span> <span class="o">=</span> <span class="mi">0</span><span class="n">E0</span><span class="p">),</span>
+   <span class="n">orderpriority</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+   <span class="n">clerk</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+   <span class="n">shippriority</span> <span class="nb">integer</span> <span class="k">WITH</span> <span class="p">(</span><span class="n">allowed_values</span> <span class="o">=</span> <span class="nb">ARRAY</span><span class="p">[</span><span class="s1">'0'</span><span class="p">],</span> <span class="n">null_probability</span> <span class="o">=</span> <span class="mi">0</span><span class="n">E0</span><span class="p">),</span>
+   <span class="k">comment</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">79</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">WITH</span> <span class="p">(</span>
+   <span class="n">default_limit</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </section>
-<section id="limitations">
-<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>It is not possible to choose the locale used by the Datafaker’s generators.</p></li>
-</ul>
 </section>
 </section>
 

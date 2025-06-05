@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -213,7 +213,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -244,13 +244,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,7 +262,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -301,12 +301,6 @@
         <li class="md-nav__item"><a href="#join-distribution-type" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">join-distribution-type</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#redistribute-writes" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">redistribute-writes</span></code></a>
-        </li>
-        <li class="md-nav__item"><a href="#protocol-v1-alternate-header-name" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.v1.alternate-header-name</span></code></a>
-        </li>
-        <li class="md-nav__item"><a href="#protocol-v1-prepared-statement-compression-length-threshold" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.v1.prepared-statement-compression.length-threshold</span></code></a>
-        </li>
-        <li class="md-nav__item"><a href="#protocol-v1-prepared-statement-compression-min-gain" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">protocol.v1.prepared-statement-compression.min-gain</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#file-compression-and-decompression" class="md-nav__link">File compression and decompression</a>
         </li>
@@ -366,40 +360,6 @@ eliminate the performance impact of data skew when writing by hashing it
 across nodes in the cluster. It can be disabled, when it is known that the
 output data set is not skewed, in order to avoid the overhead of hashing and
 redistributing all the data across the network.</p>
-</section>
-<section id="protocol-v1-alternate-header-name">
-<h2 id="protocol-v1-alternate-header-name"><code class="docutils literal notranslate"><span class="pre">protocol.v1.alternate-header-name</span></code><a class="headerlink" href="#protocol-v1-alternate-header-name" title="Permalink to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>The 351 release of Trino changes the HTTP client protocol headers to start with
-<code class="docutils literal notranslate"><span class="pre">X-Trino-</span></code>. Clients for versions 350 and lower expect the HTTP headers to
-start with <code class="docutils literal notranslate"><span class="pre">X-Presto-</span></code>, while newer clients expect <code class="docutils literal notranslate"><span class="pre">X-Trino-</span></code>. You can support these
-older clients by setting this property to <code class="docutils literal notranslate"><span class="pre">Presto</span></code>.</p>
-<p>The preferred approach to migrating from versions earlier than 351 is to update
-all clients together with the release, or immediately afterwards, and then
-remove usage of this property.</p>
-<p>Ensure to use this only as a temporary measure to assist in your migration
-efforts.</p>
-</section>
-<section id="protocol-v1-prepared-statement-compression-length-threshold">
-<h2 id="protocol-v1-prepared-statement-compression-length-threshold"><code class="docutils literal notranslate"><span class="pre">protocol.v1.prepared-statement-compression.length-threshold</span></code><a class="headerlink" href="#protocol-v1-prepared-statement-compression-length-threshold" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-integer"><span class="std std-ref">integer</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">2048</span></code></p></li>
-</ul>
-<p>Prepared statements that are submitted to SEP for processing, and are longer
-than the value of this property, are compressed for transport via the HTTP
-header to improve handling, and to avoid failures due to hitting HTTP header
-size limits.</p>
-</section>
-<section id="protocol-v1-prepared-statement-compression-min-gain">
-<h2 id="protocol-v1-prepared-statement-compression-min-gain"><code class="docutils literal notranslate"><span class="pre">protocol.v1.prepared-statement-compression.min-gain</span></code><a class="headerlink" href="#protocol-v1-prepared-statement-compression-min-gain" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-integer"><span class="std std-ref">integer</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">512</span></code></p></li>
-</ul>
-<p>Prepared statement compression is not applied if the size gain is less than the
-configured value. Smaller statements do not benefit from compression, and are
-left uncompressed.</p>
 </section>
 <section id="file-compression-and-decompression">
 <span id="file-compression"></span><h2 id="file-compression-and-decompression">File compression and decompression<a class="headerlink" href="#file-compression-and-decompression" title="Permalink to this heading">#</a></h2>

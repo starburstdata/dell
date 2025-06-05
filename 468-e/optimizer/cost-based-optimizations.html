@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../optimizer.html">Query optimizer</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="statistics.html">Table statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managed-statistics.html">Managed statistics</a></li>
@@ -278,7 +279,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -358,13 +358,11 @@ automatically picks the join order with the lowest computed costs.</p>
 <code class="docutils literal notranslate"><span class="pre">optimizer.join-reordering-strategy</span></code> configuration property providing the
 default value.</p>
 <p>The possible values are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AUTOMATIC</span></code> (default) - enable full automatic join enumeration</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ELIMINATE_CROSS_JOINS</span></code> - eliminate unnecessary cross joins</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code> - purely syntactic join order</p></li>
 </ul>
-</div></blockquote>
 <p>If you are using <code class="docutils literal notranslate"><span class="pre">AUTOMATIC</span></code> join enumeration and statistics are not
 available or a cost can not be computed for any other reason, the
 <code class="docutils literal notranslate"><span class="pre">ELIMINATE_CROSS_JOINS</span></code> strategy is used instead.</p>
@@ -376,14 +374,12 @@ must be created from one join input, referred to as the build side. The other
 input, called the probe side, is then iterated on. For each row, the hash table
 is queried to find matching rows.</p>
 <p>There are two types of join distributions:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>Partitioned: each node participating in the query builds a hash table from
 only a fraction of the data</p></li>
 <li><p>Broadcast: each node participating in the query builds a hash table from all
 of the data. The data is replicated to each node.</p></li>
 </ul>
-</div></blockquote>
 <p>Each type has advantages and disadvantages. Partitioned joins require
 redistributing both tables using a hash of the join key. These joins can be much
 slower than broadcast joins, but they allow much larger joins overall. Broadcast
@@ -398,14 +394,12 @@ automatically chooses which sides are probe and build.</p>
 session property, with the <code class="docutils literal notranslate"><span class="pre">join-distribution-type</span></code> configuration property
 providing the default value.</p>
 <p>The valid values are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AUTOMATIC</span></code> (default) - join distribution type is determined automatically
 for each join</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BROADCAST</span></code> - broadcast join distribution is used for all joins</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PARTITIONED</span></code> - partitioned join distribution is used for all join</p></li>
 </ul>
-</div></blockquote>
 <section id="capping-replicated-table-size">
 <h3 id="capping-replicated-table-size">Capping replicated table size<a class="headerlink" href="#capping-replicated-table-size" title="Permalink to this heading">#</a></h3>
 <p>The join distribution type is automatically chosen when the join reordering

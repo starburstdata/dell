@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -291,6 +291,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SELECT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-session-clause">WITH SESSION clause</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#with-function-clause">WITH FUNCTION clause</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#with-clause">WITH clause</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#with-recursive-clause">WITH RECURSIVE clause</a></li>
@@ -320,6 +321,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#limit-or-fetch-first-clause">LIMIT or FETCH FIRST clause</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tablesample">TABLESAMPLE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unnest">UNNEST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json-table">JSON_TABLE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#joins">Joins</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cross-join">CROSS JOIN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lateral">LATERAL</a></li>
@@ -362,13 +364,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -379,7 +382,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -419,6 +421,8 @@
         <li class="md-nav__item"><a href="#synopsis" class="md-nav__link">Synopsis</a>
         </li>
         <li class="md-nav__item"><a href="#description" class="md-nav__link">Description</a>
+        </li>
+        <li class="md-nav__item"><a href="#with-session-clause" class="md-nav__link">WITH SESSION clause</a>
         </li>
         <li class="md-nav__item"><a href="#with-function-clause" class="md-nav__link">WITH FUNCTION clause</a>
         </li>
@@ -472,6 +476,8 @@
         </li>
         <li class="md-nav__item"><a href="#unnest" class="md-nav__link">UNNEST</a>
         </li>
+        <li class="md-nav__item"><a href="#json-table" class="md-nav__link">JSON_TABLE</a>
+        </li>
         <li class="md-nav__item"><a href="#joins" class="md-nav__link">Joins</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#cross-join" class="md-nav__link">CROSS JOIN</a>
@@ -507,7 +513,8 @@
 <h1 id="sql-select--page-root">SELECT<a class="headerlink" href="#sql-select--page-root" title="Permalink to this heading">#</a></h1>
 <section id="synopsis">
 <h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">#</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ WITH FUNCTION udf ]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ WITH SESSION [ name = expression [, ...] ]
+[ WITH [ FUNCTION udf ] [, ...] ]
 [ WITH [ RECURSIVE ] with_query [, ...] ]
 SELECT [ ALL | DISTINCT ] select_expression [, ...]
 [ FROM from_item [, ...] ]
@@ -560,6 +567,28 @@ ROLLUP ( column [, ...] )
 <section id="description">
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>Retrieve rows from zero or more tables.</p>
+</section>
+<section id="with-session-clause">
+<span id="select-with-session"></span><h2 id="with-session-clause">WITH SESSION clause<a class="headerlink" href="#with-session-clause" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">WITH</span> <span class="pre">SESSION</span></code> clause allows you to <a class="reference internal" href="set-session.html"><span class="doc std std-doc">set session and catalog session
+property values</span></a> applicable for the processing of the current
+SELECT statement only. The defined values override any other configuration and
+session property settings. Multiple properties are separated by commas.</p>
+<p>The following example overrides the global configuration property
+<code class="docutils literal notranslate"><span class="pre">query.max-execution-time</span></code> with the session property <code class="docutils literal notranslate"><span class="pre">query_max_execution_time</span></code>
+to reduce the time to <code class="docutils literal notranslate"><span class="pre">2h</span></code>. It also overrides the catalog property
+<code class="docutils literal notranslate"><span class="pre">iceberg.query-partition-filter-required</span></code> from the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog using
+<a class="reference internal" href="../connector/iceberg.html"><span class="doc std std-doc">Iceberg connector</span></a> setting the catalog session property
+<code class="docutils literal notranslate"><span class="pre">query_partition_filter_required</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">WITH</span>
+  <span class="k">SESSION</span>
+    <span class="n">query_max_execution_time</span><span class="o">=</span><span class="s1">'2h'</span><span class="p">,</span>
+    <span class="n">example</span><span class="p">.</span><span class="n">query_partition_filter_required</span><span class="o">=</span><span class="k">true</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">example</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">thetable</span>
+<span class="k">LIMIT</span> <span class="mi">100</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 <section id="with-function-clause">
 <h2 id="with-function-clause">WITH FUNCTION clause<a class="headerlink" href="#with-function-clause" title="Permalink to this heading">#</a></h2>
@@ -1392,7 +1421,7 @@ as established by the ordering in the <code class="docutils literal notranslate"
 </div>
 </section>
 <section id="tablesample">
-<h2 id="tablesample">TABLESAMPLE<a class="headerlink" href="#tablesample" title="Permalink to this heading">#</a></h2>
+<span id="id5"></span><h2 id="tablesample">TABLESAMPLE<a class="headerlink" href="#tablesample" title="Permalink to this heading">#</a></h2>
 <p>There are multiple sample methods:</p>
 <dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">BERNOULLI</span></code></dt><dd><p>Each row is selected to be in the table sample with a probability of
@@ -1437,7 +1466,7 @@ independent sampling probabilities.</p>
 </div>
 </section>
 <section id="unnest">
-<span id="id5"></span><h2 id="unnest">UNNEST<a class="headerlink" href="#unnest" title="Permalink to this heading">#</a></h2>
+<span id="id6"></span><h2 id="unnest">UNNEST<a class="headerlink" href="#unnest" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNNEST</span></code> can be used to expand an <a class="reference internal" href="../language/types.html#array-type"><span class="std std-ref">ARRAY</span></a> or <a class="reference internal" href="../language/types.html#map-type"><span class="std std-ref">MAP</span></a> into a relation.
 Arrays are expanded into a single column:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">UNNEST</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="k">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">number</span><span class="p">);</span>
@@ -1593,6 +1622,12 @@ when referenced columns from relations on the left side of the join can be empty
 </pre></div>
 </div>
 <p>Note that in case of using <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> the only condition supported by the current implementation is <code class="docutils literal notranslate"><span class="pre">ON</span> <span class="pre">TRUE</span></code>.</p>
+</section>
+<section id="json-table">
+<span id="select-json-table"></span><h2 id="json-table">JSON_TABLE<a class="headerlink" href="#json-table" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">JSON_TABLE</span></code> transforms JSON data into a relational table format. Like <code class="docutils literal notranslate"><span class="pre">UNNEST</span></code>
+and <code class="docutils literal notranslate"><span class="pre">LATERAL</span></code>, use <code class="docutils literal notranslate"><span class="pre">JSON_TABLE</span></code> in the <code class="docutils literal notranslate"><span class="pre">FROM</span></code> clause of a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement.
+For more information, see <a class="reference internal" href="../functions/json.html#json-table"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">JSON_TABLE</span></code></span></a>.</p>
 </section>
 <section id="joins">
 <h2 id="joins">Joins<a class="headerlink" href="#joins" title="Permalink to this heading">#</a></h2>

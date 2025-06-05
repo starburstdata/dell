@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -260,7 +261,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -407,7 +407,6 @@ scans.</p>
 <li><p><a class="reference internal" href="../connector/starburst-generic-jdbc.html"><span class="doc">Starburst Generic JDBC connector</span></a></p></li>
 <li><p><a class="reference internal" href="../connector/starburst-hive.html"><span class="doc">Starburst Hive connector</span></a></p></li>
 <li><p><a class="reference internal" href="../connector/starburst-hive-cdp.html"><span class="doc">Cloudera Data Platform support</span></a></p></li>
-<li><p><a class="reference internal" href="../connector/starburst-iceberg.html"><span class="doc">Starburst Iceberg connector</span></a></p></li>
 <li><p><a class="reference internal" href="../connector/kafka.html"><span class="doc">Kafka connector</span></a></p></li>
 <li><p><a class="reference internal" href="../connector/starburst-maxcompute.html"><span class="doc">Starburst MaxCompute connector</span></a></p></li>
 <li><p><a class="reference internal" href="../connector/mysql.html"><span class="doc">MySQL connector</span></a></p></li>
@@ -782,32 +781,39 @@ refresh schedule. Cannot be used with <code class="docutils literal notranslate"
 that any active queries using it may complete. Overrides the global
 <code class="docutils literal notranslate"><span class="pre">defaultGracePeriod</span></code> if set.</p></td>
 </tr>
-<tr class="row-even"><td><p>maxImportDuration</p></td>
+<tr class="row-even"><td><p>failedRefreshLimit</p></td>
+<td><p>Specifies the maximum number of consecutive refresh failures allowed before
+refresh operations are temporarily disabled. By default, there is no set
+limit for consecutive refresh failures. The counter resets after a
+successful refresh, a change to the refresh limit value, or when the refresh
+is re-enabled at the next scheduled refresh time.</p></td>
+</tr>
+<tr class="row-odd"><td><p>maxImportDuration</p></td>
 <td><p>Overrides the global <code class="docutils literal notranslate"><span class="pre">defaultMaxImportDuration</span></code> if set. Must be smaller
 than the refresh interval, and greater than or equal to <code class="docutils literal notranslate"><span class="pre">1m</span></code>. Note that
 this field is required when using <code class="docutils literal notranslate"><span class="pre">cronExpression</span></code> to define a refresh
 schedule.</p></td>
 </tr>
-<tr class="row-odd"><td><p>columns</p></td>
+<tr class="row-even"><td><p>columns</p></td>
 <td><p>Comma-separated list of columns to be imported. If not specified, all
 available columns are imported. Note that redirections can only be used
 when all columns required by a given table scan are present.</p></td>
 </tr>
-<tr class="row-even"><td><p>partitionColumns</p></td>
+<tr class="row-odd"><td><p>partitionColumns</p></td>
 <td><p>Comma-separated list of columns to use for partitioning.</p></td>
 </tr>
-<tr class="row-odd"><td><p>bucketColumns</p></td>
+<tr class="row-even"><td><p>bucketColumns</p></td>
 <td><p>Comma-separated list specifying the columns to be bucketed. Requires the
 use of <code class="docutils literal notranslate"><span class="pre">bucketCount</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>bucketCount</p></td>
+<tr class="row-odd"><td><p>bucketCount</p></td>
 <td><p>Defines the number of buckets for data in the specified columns.</p></td>
 </tr>
-<tr class="row-odd"><td><p>sortColumns</p></td>
+<tr class="row-even"><td><p>sortColumns</p></td>
 <td><p>Comma separated list specifying the columns to sort on. Requires the use
 of <code class="docutils literal notranslate"><span class="pre">bucketColumns</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>incrementalColumn</p></td>
+<tr class="row-odd"><td><p>incrementalColumn</p></td>
 <td><p>Required for incremental refresh; if not specified, a full refresh is
 performed. This column is used by the service to apply a
 <code class="docutils literal notranslate"><span class="pre">incrementalColumn</span> <span class="pre">&gt;</span> <span class="pre">(SELECT</span> <span class="pre">max(incrementalColumn)</span> <span class="pre">FROM</span> <span class="pre">cachedTable)</span></code>
@@ -815,11 +821,11 @@ filter when loading data incrementally from the source table. This
 facilitates loading only newer data from the source table instead of the
 entire table in each refresh iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p>predicate</p></td>
+<tr class="row-even"><td><p>predicate</p></td>
 <td><p>SQL expression used in conjunction with <code class="docutils literal notranslate"><span class="pre">incrementalColumn</span></code> to delay
 loading data until all presumed updates are complete.</p></td>
 </tr>
-<tr class="row-even"><td><p>deletePredicate</p></td>
+<tr class="row-odd"><td><p>deletePredicate</p></td>
 <td><p>Optionally specifies a predicate clause to clean up old data from the
 cached table. It is used by the cache service to run a
 <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">cachedTable</span> <span class="pre">WHERE</span> <span class="pre">&lt;deletePredicate&gt;</span></code> query at every

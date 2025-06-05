@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.6 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.6 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
   </label>
   
   
@@ -243,13 +243,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -266,10 +267,13 @@
 <li class="toctree-l5"><a class="reference internal" href="#dell-ecs-and-objectscale-support">Dell ECS and ObjectScale support</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#cloudera-support">Cloudera support</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#minio-support">MinIO support</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#openx-json-format-support">OpenX JSON format support</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#json-format-support">JSON format support</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#unity-catalog">Unity catalog</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#sql-support">SQL support</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#procedures">Procedures</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#flush-filesystem-cache">Flush filesystem cache</a></li>
@@ -309,7 +313,7 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#security">Security</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#built-in-access-control">Built-in access control</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#azure-ad-credential-pass-through">Azure AD credential pass-through</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#microsoft-entra-id-formerly-azure-active-directory-credential-pass-through">Microsoft Entra ID (formerly Azure Active Directory) credential pass-through</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#authorization-options">Authorization options</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#hdfs-permissions">HDFS permissions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#ldap-user-translation">LDAP user translation</a></li>
@@ -322,7 +326,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hudi.html">Hudi connector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="starburst-iceberg.html">Iceberg connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iceberg.html">Iceberg connector</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../object-storage-connectors.html#object-storage-extensions">Object storage extensions</a></li>
@@ -332,7 +336,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -383,11 +386,15 @@
         </li>
         <li class="md-nav__item"><a href="#minio-support" class="md-nav__link">MinIO support</a>
         </li>
-        <li class="md-nav__item"><a href="#openx-json-format-support" class="md-nav__link">OpenX JSON format support</a>
+        <li class="md-nav__item"><a href="#json-format-support" class="md-nav__link">JSON format support</a>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#configuration" class="md-nav__link">Configuration</a>
+        <li class="md-nav__item"><a href="#configuration" class="md-nav__link">Configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#unity-catalog" class="md-nav__link">Unity catalog</a>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -451,7 +458,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#built-in-access-control" class="md-nav__link">Built-in access control</a>
         </li>
-        <li class="md-nav__item"><a href="#azure-ad-credential-pass-through" class="md-nav__link">Azure AD credential pass-through</a>
+        <li class="md-nav__item"><a href="#microsoft-entra-id-formerly-azure-active-directory-credential-pass-through" class="md-nav__link">Microsoft Entra ID (formerly Azure Active Directory) credential pass-through</a>
         </li>
         <li class="md-nav__item"><a href="#authorization-options" class="md-nav__link">Authorization options</a>
         </li>
@@ -515,12 +522,17 @@ includes following additional extensions:</p>
 <p>The connector supports querying data on
 <a class="reference internal" href="starburst-minio.html"><span class="doc">MinIO storage</span></a>.</p>
 </section>
-<section id="openx-json-format-support">
-<span id="sb-hive-openx-json-serde"></span><h3 id="openx-json-format-support">OpenX JSON format support<a class="headerlink" href="#openx-json-format-support" title="Permalink to this heading">#</a></h3>
-<p>The connector supports reading and writing data to tables as JSON files, and
-supports the OpenX JSON serialization and deserialization (serde) from the Java
-class <code class="docutils literal notranslate"><span class="pre">org.openx.data.jsonserde.JsonSerDe</span></code>.</p>
-<p>Existing tables using that serde and all the associated serde properties are
+<section id="json-format-support">
+<span id="sb-hive-openx-json-serde"></span><h3 id="json-format-support">JSON format support<a class="headerlink" href="#json-format-support" title="Permalink to this heading">#</a></h3>
+<p>The connector supports reading and writing data to tables as JSON files. It
+supports two JSON serialization and deserialization (serde) libraries:</p>
+<ul class="simple">
+<li><p>The OpenX JSON serde from the Java class <code class="docutils literal notranslate"><span class="pre">org.openx.data.jsonserde.JsonSerDe</span></code></p></li>
+<li><p>The Hive JSON serde from the Java class
+<code class="docutils literal notranslate"><span class="pre">org.apache.hive.hcatalog.data.JsonSerDe</span></code></p></li>
+</ul>
+<p>Starburst recommends using the OpenX JSON serde.</p>
+<p>Existing tables using these serdes and all the associated serde properties are
 handled automatically.</p>
 </section>
 </section>
@@ -573,6 +585,59 @@ in schemas <code class="docutils literal notranslate"><span class="pre">fruit</s
 </tr>
 </tbody>
 </table>
+<section id="unity-catalog">
+<span id="sb-hive-unity-catalog-support"></span><h3 id="unity-catalog">Unity catalog<a class="headerlink" href="#unity-catalog" title="Permalink to this heading">#</a></h3>
+<p>The connector supports the <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> write operation and reading from <a class="reference external" href="https://docs.databricks.com/aws/tables/tables#external-tables">external
+tables</a> when
+using the Databricks Unity Catalog as a metastore on AWS, Azure, or GCP.</p>
+<p>Databricks’ table formats <a class="reference external" href="https://docs.databricks.com/aws/tables/external#file-formats-for-external-tables">CSV, JSON, AVRO, PARQUET, ORC,
+TEXT</a>
+are mapped to Hive table format in Starburst.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Databricks Unity Catalog metastore is available for Hive as a <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">public
+preview</span></a>. Contact your Starburst account team with
+questions or feedback.</p>
+</div>
+<p>To use Unity Catalog metastore, add the following configuration properties to
+your catalog configuration file:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.metastore</span><span class="o">=</span><span class="s">unity</span>
+<span class="na">hive.security</span><span class="o">=</span><span class="s">read_only</span>
+<span class="na">hive.metastore.unity.host</span><span class="o">=</span><span class="s">host</span>
+<span class="na">hive.metastore.unity.token</span><span class="o">=</span><span class="s">token</span>
+<span class="na">hive.metastore.unity.catalog-name</span><span class="o">=</span><span class="s">main</span>
+</pre></div>
+</div>
+<p>The following table shows the configuration properties used to connect SEP
+to Unity Catalog as a metastore.</p>
+<table id="id5">
+<caption><span class="caption-text">Unity configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.unity.host</span></code></p></td>
+<td><p>Name of the host without http(s) prefix. For example:
+<code class="docutils literal notranslate"><span class="pre">dbc-a1b2345c-d6e7.cloud.databricks.com</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.unity.token</span></code></p></td>
+<td><p>The personal access token used to authenticate a connection to the Unity
+Catalog metastore. For more information about generating access tokens, see
+the <a class="reference external" href="https://docs.databricks.com/aws/en/dev-tools/auth/pat">Databricks
+documentation</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.unity.catalog-name</span></code></p></td>
+<td><p>Name of the catalog in Databricks.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="sql-support">
 <span id="sb-hive-sql-support"></span><h2 id="sql-support">SQL support<a class="headerlink" href="#sql-support" title="Permalink to this heading">#</a></h2>
@@ -622,8 +687,6 @@ catalog configuration properties to <code class="docutils literal notranslate"><
 cases of syntax differences between Athena and Trino that cause view execution
 to fail. Contact Starburst Support with questions or feedback.</p>
 </div>
-<p>The connector supports querying views created in Amazon Athena. Athena views are
-executed with <code class="docutils literal notranslate"><span class="pre">INVOKER</span></code> security mode.</p>
 </section>
 <section id="materialized-views">
 <span id="sb-hive-materialized-views"></span><h3 id="materialized-views">Materialized views<a class="headerlink" href="#materialized-views" title="Permalink to this heading">#</a></h3>
@@ -705,8 +768,8 @@ default port:</p>
 <p>The following table lists all available catalog configuration properties related
 to materialized views. Instructions for creating the required storage schema
 follow this table.</p>
-<table id="id5">
-<caption><span class="caption-text">Catalog configuration properties for materialized views</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Catalog configuration properties for materialized views</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 55%"/>
@@ -868,8 +931,8 @@ tables. The processing time depends on the complexity of the query, the cluster
 performance, and the performance of the storage.</p>
 <p>Configuration properties are specified in the <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clause when creating a
 materialized view:</p>
-<table id="id6">
-<caption><span class="caption-text">Properties for materialized view refresh automation</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Properties for materialized view refresh automation</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 60%"/>
@@ -1032,7 +1095,7 @@ storage corresponds to what the <code class="docutils literal notranslate"><span
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">location</span></code>, and <code class="docutils literal notranslate"><span class="pre">format</span></code> parameters are required. The
-<code class="docutils literal notranslate"><span class="pre">compression</span></code>, and <code class="docutils literal notranslate"><span class="pre">separator</span></code> parameters are optional.</p>
+<code class="docutils literal notranslate"><span class="pre">existing_directory</span></code>, <code class="docutils literal notranslate"><span class="pre">compression</span></code>, and <code class="docutils literal notranslate"><span class="pre">separator</span></code> parameters are optional.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">input</span></code> parameter can accept either a table name or a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query. The
 <code class="docutils literal notranslate"><span class="pre">separator</span></code> parameter is applicable only when the <code class="docutils literal notranslate"><span class="pre">format</span></code> argument is set to
@@ -1166,8 +1229,8 @@ when the values do not appear in any clustered order naturally.</p>
 network is further reduced. You get access to higher query performance and a
 reduced cost.</p>
 <p>You can use the following properties to configure dynamic row filtering:</p>
-<table id="id7">
-<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 45%"/>
 <col style="width: 55%"/>
@@ -1200,15 +1263,14 @@ it becomes available. Catalog session property name is
 </section>
 <section id="storage-caching">
 <span id="sb-hive-caching"></span><h3 id="storage-caching">Storage caching<a class="headerlink" href="#storage-caching" title="Permalink to this heading">#</a></h3>
-<p>The connector supports the default <a class="reference internal" href="../object-storage/file-system-cache.html"><span class="doc">storage caching</span></a>. In addition, if HDFS Kerberos
-authentication is enabled in your catalog properties file with the following
-setting, caching takes the relevant permissions into account and operates
-accordingly:</p>
+<p>The connector supports the default <a class="reference internal" href="../object-storage/file-system-cache.html"><span class="doc">storage caching</span></a>. In addition, if HDFS Kerberos authentication
+is enabled in your catalog properties file with the following setting, caching
+takes the relevant permissions into account and operates accordingly:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.hdfs.authentication.type</span><span class="o">=</span><span class="s">KERBEROS</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../object-storage/file-system-hdfs.html"><span class="doc">Additional configuration for Kerberos</span></a>
-is required.</p>
+<p><a class="reference internal" href="../object-storage/file-system-hdfs.html"><span class="doc">Additional configuration for Kerberos</span></a> is
+required.</p>
 <p>If HDFS Kerberos authentication is enabled, you can also enable user
 impersonation using:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.hdfs.impersonation.enabled</span><span class="o">=</span><span class="s">true</span>
@@ -1246,18 +1308,16 @@ SEP, you must add the following configuration to all Hive catalogs:</p>
 </pre></div>
 </div>
 </section>
-<section id="azure-ad-credential-pass-through">
-<span id="sb-hive-azure-ad-passthro"></span><h3 id="azure-ad-credential-pass-through">Azure AD credential pass-through<a class="headerlink" href="#azure-ad-credential-pass-through" title="Permalink to this heading">#</a></h3>
-<p>Credential pass-through is available for read operations and <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code>
-statements with Azure AD. To use <a class="reference internal" href="../security/oauth2-providers.html#microsoft-entra-id"><span class="std std-ref">Microsoft Entra ID</span></a>
-with <a class="reference internal" href="../security/oauth2-passthrough.html"><span class="doc">credential pass-through</span></a>, you must
-include the following configuration in <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">the config.properties file</span></a>:</p>
+<section id="microsoft-entra-id-formerly-azure-active-directory-credential-pass-through">
+<span id="sb-hive-azure-ad-passthro"></span><h3 id="microsoft-entra-id-formerly-azure-active-directory-credential-pass-through">Microsoft Entra ID (formerly Azure Active Directory) credential pass-through<a class="headerlink" href="#microsoft-entra-id-formerly-azure-active-directory-credential-pass-through" title="Permalink to this heading">#</a></h3>
+<p>To use <a class="reference internal" href="../security/oauth2-providers.html#microsoft-entra-id"><span class="std std-ref">Microsoft Entra ID</span></a> with <a class="reference internal" href="../security/oauth2-passthrough.html"><span class="doc">credential pass-through</span></a>, you must include the following
+configuration in <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">the config.properties file</span></a>:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.oauth2.scopes</span><span class="o">=</span><span class="s">https://storage.azure.com/user_impersonation,openid</span>
 <span class="na">http-server.authentication.oauth2.additional-audiences</span><span class="o">=</span><span class="s">https://storage.azure.com</span>
 </pre></div>
 </div>
-<p>If you use the Azure AD as the identity provider when you integrate with Azure
-Storage, you can reuse the AD token to access Azure Storage blobs.</p>
+<p>If you use Microsoft Entra ID as the identity provider when you integrate with
+Azure Storage, you can reuse the Entra ID token to access Azure Storage blobs.</p>
 <p>To reuse the Entra ID token, set the following access property in the catalog
 properties file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># If using the native Azure filesystem support, instead set</span>
@@ -1331,7 +1391,8 @@ must be set to <code class="docutils literal notranslate"><span class="pre">true
 <ul class="simple">
 <li><p>Reading ORC ACID tables created with Hive Streaming ingest is not supported.</p></li>
 <li><p>Redirections are supported for Hive tables but not Hive views.</p></li>
-<li><p>Materialized views and HMS/HDFS impersonation cannot be enabled for the same catalog.</p></li>
+<li><p>Materialized views and HMS/HDFS impersonation cannot be enabled for the
+same catalog.</p></li>
 </ul>
 <section id="hive-3-related-limitations">
 <h3 id="hive-3-related-limitations">Hive 3 related limitations<a class="headerlink" href="#hive-3-related-limitations" title="Permalink to this heading">#</a></h3>
