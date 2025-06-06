@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 453-e.18 LTS logo"
+            alt="Dell Data Analytics Engine 453-e.19 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 453-e.18 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 453-e.19 LTS</a>
   </label>
   
   
@@ -258,6 +258,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-16-changes-15-apr-2025">453-e.16 changes (15 Apr 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-17-changes-30-apr-2025">453-e.17 changes (30 Apr 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-18-changes-19-may-2025">453-e.18 changes (19 May 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-19-changes-2-jun-2025">453-e.19 changes (2 Jun 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-443-e.html">Release 443-e LTS (31 May 2024)</a></li>
@@ -392,6 +393,8 @@
         <li class="md-nav__item"><a href="#e-17-changes-30-apr-2025" class="md-nav__link">453-e.17 changes (30 Apr 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-18-changes-19-may-2025" class="md-nav__link">453-e.18 changes (19 May 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-19-changes-2-jun-2025" class="md-nav__link">453-e.19 changes (2 Jun 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -454,8 +457,8 @@ requires a JVM configuration. You must either add
 <code class="docutils literal notranslate"><span class="pre">--add-opens=java.base/java.nio=ALL-UNNAMED</span></code> to your <code class="docutils literal notranslate"><span class="pre">jvm.config</span></code> or set the
 <code class="docutils literal notranslate"><span class="pre">bigquery.arrow-serialization.enabled</span></code> catalog configuration property to
 <code class="docutils literal notranslate"><span class="pre">false</span></code> in your BigQuery catalog configurations.</p></li>
-<li><p>Phoenix versions 5.1.x and earlier are no longer supported by the
-<a class="reference internal" href="../connector/phoenix.html"><span class="doc">Phoenix connector</span></a>.</p></li>
+<li><p>Phoenix versions 5.1.x and earlier are no longer supported by the Phoenix
+connector.</p></li>
 <li><p>Warp Speed <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html#warp-speed-persistency"><span class="std std-ref">custom warmup rules</span></a> are no longer
 stored in an external RDBMS. Warmup rules are now saved in object storage in a
 location specified in <code class="docutils literal notranslate"><span class="pre">warp-speed.objectstore.store.path</span></code>. In order to allow
@@ -471,6 +474,9 @@ scan parallelism is now enabled by default on the BigQuery connector.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">hive.experimental.schema-discovery.enabled</span></code> catalog configuration
 property has been removed as schema discovery is enabled by default. You must
 remove this property from the cluster configuration or SEP fails to start.</p></li>
+<li><p>The Custom Resource Definitions (CRDs) for the External Secrets Operator
+included in the SEP Helm Chart have been updated from <code class="docutils literal notranslate"><span class="pre">v1beta1</span></code> to <code class="docutils literal notranslate"><span class="pre">v1</span></code>.
+Upgrade your External Secrets Operator to <code class="docutils literal notranslate"><span class="pre">v0.17</span></code>, which fully supports <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p></li>
 </ul>
 </section>
 <section id="e-initial-changes">
@@ -738,6 +744,14 @@ incorrect memory accounting.</p></li>
 <li><p>Fixed potential failures or incorrect results when querying partitioned tables
 using the OpenX JSON SerDe.</p></li>
 <li><p>Fixed potential performance regression when reading ORC data.</p></li>
+</ul>
+</section>
+<section id="e-19-changes-2-jun-2025">
+<span id="release-453-e-19"></span><h2 id="e-19-changes-2-jun-2025">453-e.19 changes (2 Jun 2025)<a class="headerlink" href="#e-19-changes-2-jun-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated to include support for Java 24.</p></li>
+<li><p>Fixed an issue which caused incremental refresh of materialized views to fail
+when using session credentials.</p></li>
 </ul>
 </section>
 </section>
