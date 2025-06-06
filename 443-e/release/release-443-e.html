@@ -121,7 +121,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 443-e.27 LTS logo"
+            alt="Dell Data Analytics Engine 443-e.28 LTS logo"
           />
           
         </span>
@@ -215,7 +215,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 443-e.27 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 443-e.28 LTS</a>
   </label>
   
   
@@ -260,6 +260,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-25-changes-15-apr-2025">443-e.25 changes (15 Apr 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-26-changes-30-apr-2025">443-e.26 changes (30 Apr 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-27-changes-19-may-2025">443-e.27 changes (19 May 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-28-changes-2-jun-2025">443-e.28 changes (2 Jun 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-429-e.html">Release 429-e LTS (29 Nov 2023)</a></li>
@@ -396,6 +397,8 @@
         <li class="md-nav__item"><a href="#e-26-changes-30-apr-2025" class="md-nav__link">443-e.26 changes (30 Apr 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-27-changes-19-may-2025" class="md-nav__link">443-e.27 changes (19 May 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-28-changes-2-jun-2025" class="md-nav__link">443-e.28 changes (2 Jun 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -499,6 +502,9 @@ fails to start.</p></li>
 <li><p>This release removes the <code class="docutils literal notranslate"><span class="pre">snowflake_distributed</span></code> connector. You must
 <a class="reference internal" href="../connector/starburst-snowflake.html#snowflake-parallel-migration"><span class="std std-ref">remove or migrate existing Snowflake catalogs that use the distributed connector to the parallel connector</span></a> or the
 cluster fails to start.</p></li>
+<li><p>The Custom Resource Definitions (CRDs) for the External Secrets Operator
+included in the SEP Helm Chart have been updated from <code class="docutils literal notranslate"><span class="pre">v1beta1</span></code> to <code class="docutils literal notranslate"><span class="pre">v1</span></code>.
+Upgrade your External Secrets Operator to <code class="docutils literal notranslate"><span class="pre">v0.17</span></code>, which fully supports <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p></li>
 </ul>
 </section>
 <section id="e-initial-changes">
@@ -785,6 +791,13 @@ incorrect memory accounting.</p></li>
 <li><p>Fixed potential failures or incorrect results when querying partitioned tables
 using the OpenX JSON SerDe.</p></li>
 <li><p>Fixed potential performance regression when reading ORC data.</p></li>
+</ul>
+</section>
+<section id="e-28-changes-2-jun-2025">
+<span id="release-443-e-28"></span><h2 id="e-28-changes-2-jun-2025">443-e.28 changes (2 Jun 2025)<a class="headerlink" href="#e-28-changes-2-jun-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed incorrect access control denial when using Lake Formation access control
+and selecting from Athena views containing non-lowercase column names.</p></li>
 </ul>
 </section>
 </section>
