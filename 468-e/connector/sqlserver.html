@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,7 +258,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -295,9 +293,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#specific-configuration-properties">Specific configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#case-insensitive-matching">Case insensitive matching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#non-transactional-insert">Non-transactional INSERT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#querying-sql-server">Querying SQL Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#type-mapping">Type mapping</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#sql-server-type-to-trino-type-mapping">SQL Server type to Trino type mapping</a></li>
@@ -308,14 +306,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sqlserver-insert">Non-transactional INSERT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#update-limitation">UPDATE limitation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#delete-limitation">DELETE limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update">UPDATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sql-delete">SQL DELETE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alter-table-execute">ALTER TABLE EXECUTE</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#collect-statistics">collect_statistics</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to">ALTER TABLE RENAME TO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#insert">INSERT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#procedures">Procedures</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code></a></li>
@@ -352,10 +349,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#security">Security</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#user-impersonation">User impersonation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kerberos-authentication">Kerberos authentication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kerberos-credential-pass-through">Kerberos credential pass-through</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#constrained-delegation">Constrained delegation</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="#kerberos-credential-pass-through">Kerberos credential pass-through</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#password-credential-pass-through">Password credential pass-through</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ntlm-authentication">NTLM authentication</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#tls-https-settings">TLS/HTTPS settings</a></li>
@@ -374,6 +368,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -433,10 +428,10 @@
         <li class="md-nav__item"><a href="#case-insensitive-matching" class="md-nav__link">Case insensitive matching</a>
         </li>
         <li class="md-nav__item"><a href="#non-transactional-insert" class="md-nav__link">Non-transactional INSERT</a>
-        </li>
-        <li class="md-nav__item"><a href="#fault-tolerant-execution-support" class="md-nav__link">Fault-tolerant execution support</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#fault-tolerant-execution-support" class="md-nav__link">Fault-tolerant execution support</a>
         </li>
         <li class="md-nav__item"><a href="#querying-sql-server" class="md-nav__link">Querying SQL Server</a>
         </li>
@@ -456,11 +451,9 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#sqlserver-insert" class="md-nav__link">Non-transactional INSERT</a>
+        <li class="md-nav__item"><a href="#update" class="md-nav__link">UPDATE</a>
         </li>
-        <li class="md-nav__item"><a href="#update-limitation" class="md-nav__link">UPDATE limitation</a>
-        </li>
-        <li class="md-nav__item"><a href="#delete-limitation" class="md-nav__link">DELETE limitation</a>
+        <li class="md-nav__item"><a href="#sql-delete" class="md-nav__link">SQL DELETE</a>
         </li>
         <li class="md-nav__item"><a href="#alter-table-execute" class="md-nav__link">ALTER TABLE EXECUTE</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -468,7 +461,7 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#alter-table-rename-to-limitation" class="md-nav__link">ALTER TABLE RENAME TO limitation</a>
+        <li class="md-nav__item"><a href="#alter-table-rename-to" class="md-nav__link">ALTER TABLE RENAME TO</a>
         </li>
         <li class="md-nav__item"><a href="#insert" class="md-nav__link">INSERT</a>
         </li>
@@ -530,11 +523,7 @@
         </li>
         <li class="md-nav__item"><a href="#kerberos-authentication" class="md-nav__link">Kerberos authentication</a>
         </li>
-        <li class="md-nav__item"><a href="#kerberos-credential-pass-through" class="md-nav__link">Kerberos credential pass-through</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#constrained-delegation" class="md-nav__link">Constrained delegation</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#kerberos-credential-pass-through" class="md-nav__link">Kerberos credential pass-through</a>
         </li>
         <li class="md-nav__item"><a href="#password-credential-pass-through" class="md-nav__link">Password credential pass-through</a>
         </li>
@@ -699,8 +688,8 @@ named <code class="docutils literal notranslate"><span class="pre">sales</span><
 <p>Another option to access multiple databases on a SQL Server cluster is to enable
 the <code class="docutils literal notranslate"><span class="pre">sqlserver.database-prefix-for-schema.enabled</span></code> catalog configuration
 property, as described in the following table:</p>
-<table id="id2">
-<caption><span class="caption-text">Starburst SQL Server connector configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<table id="id1">
+<caption><span class="caption-text">Starburst SQL Server connector configuration properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -760,10 +749,10 @@ the current user session:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The access rights to the databases, schemas, tables, and actual rows
-are determined by the configured user for the connection. This also applies to
-other security setups like impersonation. Make sure these access rights are as
-restrictive as required.</p>
+<p>The access rights to the databases, schemas, tables, and actual rows are
+determined by the configured user for the connection. This also applies to other
+security setups like impersonation. Make sure these
+access rights are as restrictive as required.</p>
 </div>
 </section>
 <section id="general-configuration-properties">
@@ -926,9 +915,7 @@ schemas and/or tables have names that differ only in case (such as “customers�
 and “Customers”) then Trino fails to query them due to ambiguity.</p>
 <p>In these cases, use the <code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file</span></code> catalog
 configuration property to specify a configuration file that maps these remote
-schemas and tables to their respective Trino schemas and tables. Additionally,
-the JSON file must include both the <code class="docutils literal notranslate"><span class="pre">schemas</span></code> and <code class="docutils literal notranslate"><span class="pre">tables</span></code> properties, even if
-only as empty arrays.</p>
+schemas/tables to their respective Trino schemas/tables:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">"schemas"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -981,11 +968,11 @@ or the corresponding <code class="docutils literal notranslate"><span class="pre
 exceptions occur during the insert operation. With transactions disabled, no
 rollback can be performed.</p>
 </section>
+</section>
 <section id="fault-tolerant-execution-support">
-<span id="sqlserver-fte-support"></span><h3 id="fault-tolerant-execution-support">Fault-tolerant execution support<a class="headerlink" href="#fault-tolerant-execution-support" title="Permalink to this heading">#</a></h3>
+<span id="sqlserver-fte-support"></span><h2 id="fault-tolerant-execution-support">Fault-tolerant execution support<a class="headerlink" href="#fault-tolerant-execution-support" title="Permalink to this heading">#</a></h2>
 <p>The connector supports <a class="reference internal" href="../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> of query
 processing. Read and write operations are both supported with any retry policy.</p>
-</section>
 </section>
 <section id="querying-sql-server">
 <h2 id="querying-sql-server">Querying SQL Server<a class="headerlink" href="#querying-sql-server" title="Permalink to this heading">#</a></h2>
@@ -1026,8 +1013,8 @@ each direction.</p>
 <h3 id="sql-server-type-to-trino-type-mapping">SQL Server type to Trino type mapping<a class="headerlink" href="#sql-server-type-to-trino-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps SQL Server types to the corresponding Trino types following
 this table:</p>
-<table id="id3">
-<caption><span class="caption-text">SQL Server type to Trino type mapping</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">SQL Server type to Trino type mapping</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1127,8 +1114,8 @@ this table:</p>
 <h3 id="trino-type-to-sql-server-type-mapping">Trino type to SQL Server type mapping<a class="headerlink" href="#trino-type-to-sql-server-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Trino types to the corresponding SQL Server types following
 this table:</p>
-<table id="id4">
-<caption><span class="caption-text">Trino type to SQL Server type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Trino type to SQL Server type mapping</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1264,36 +1251,18 @@ unbounded <code class="docutils literal notranslate"><span class="pre">VARCHAR</
 <section id="sql-support">
 <span id="sqlserver-sql-support"></span><h2 id="sql-support">SQL support<a class="headerlink" href="#sql-support" title="Permalink to this heading">#</a></h2>
 <p>The connector provides read access and write access to data and metadata in SQL
-Server. In addition to the <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a> and
-<a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a> statements, the connector supports the
-following features:</p>
+Server. In addition to the <a class="reference internal" href="../language/sql-support.html#sql-globally-available"><span class="std std-ref">globally available</span></a>
+and <a class="reference internal" href="../language/sql-support.html#sql-read-operations"><span class="std std-ref">read operation</span></a> statements, the connector
+supports the following statements:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc std std-doc">INSERT</span></a>, see also <a class="reference internal" href="#sqlserver-insert"><span class="std std-ref">Non-transactional INSERT</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/update.html"><span class="doc std std-doc">UPDATE</span></a>, see also <a class="reference internal" href="#sqlserver-update"><span class="std std-ref">UPDATE limitation</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc std std-doc">DELETE</span></a>, see also <a class="reference internal" href="#sqlserver-delete"><span class="std std-ref">DELETE limitation</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc std std-doc">TRUNCATE</span></a></p></li>
-<li><p><a class="reference internal" href="../language/sql-support.html#sql-schema-table-management"><span class="std std-ref">Schema and table management</span></a>, see also:</p>
-<ul>
-<li><p><a class="reference internal" href="#sqlserver-alter-table"><span class="std std-ref">ALTER TABLE RENAME TO limitation</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/update.html"><span class="doc">UPDATE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/delete.html"><span class="doc">DELETE</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/truncate.html"><span class="doc">TRUNCATE</span></a></p></li>
+<li><p><a class="reference internal" href="../language/sql-support.html#sql-schema-table-management"><span class="std std-ref">Schema and table management</span></a></p></li>
 </ul>
-</li>
-<li><p><a class="reference internal" href="#sqlserver-procedures"><span class="std std-ref">Procedures</span></a></p></li>
-<li><p><a class="reference internal" href="#sqlserver-table-functions"><span class="std std-ref">Table functions</span></a></p></li>
-</ul>
-<section id="sqlserver-insert">
-<span id="id1"></span><h3 id="sqlserver-insert">Non-transactional INSERT<a class="headerlink" href="#sqlserver-insert" title="Permalink to this heading">#</a></h3>
-<p>The connector supports adding rows using <a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT statements</span></a>.
-By default, data insertion is performed by writing data to a temporary table.
-You can skip this step to improve performance and write directly to the target
-table. Set the <code class="docutils literal notranslate"><span class="pre">insert.non-transactional-insert.enabled</span></code> catalog property
-or the corresponding <code class="docutils literal notranslate"><span class="pre">non_transactional_insert</span></code> catalog session property to
-<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<p>Note that with this property enabled, data can be corrupted in rare cases where
-exceptions occur during the insert operation. With transactions disabled, no
-rollback can be performed.</p>
-</section>
-<section id="update-limitation">
-<span id="sqlserver-update"></span><h3 id="update-limitation">UPDATE limitation<a class="headerlink" href="#update-limitation" title="Permalink to this heading">#</a></h3>
+<section id="update">
+<h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permalink to this heading">#</a></h3>
 <p>Only <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statements with constant assignments and predicates are
 supported. For example, the following statement is supported because the values
 assigned are constants:</p>
@@ -1313,8 +1282,8 @@ column table, the following statement is not supported:</p>
 </pre></div>
 </div>
 </section>
-<section id="delete-limitation">
-<span id="sqlserver-delete"></span><h3 id="delete-limitation">DELETE limitation<a class="headerlink" href="#delete-limitation" title="Permalink to this heading">#</a></h3>
+<section id="sql-delete">
+<h3 id="sql-delete">SQL DELETE<a class="headerlink" href="#sql-delete" title="Permalink to this heading">#</a></h3>
 <p>If a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause is specified, the <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation only works if the
 predicate in the clause can be fully pushed down to the data source.</p>
 </section>
@@ -1342,8 +1311,8 @@ array of column names. For example:</p>
 </div>
 </section>
 </section>
-<section id="alter-table-rename-to-limitation">
-<span id="sqlserver-alter-table"></span><h3 id="alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation<a class="headerlink" href="#alter-table-rename-to-limitation" title="Permalink to this heading">#</a></h3>
+<section id="alter-table-rename-to">
+<h3 id="alter-table-rename-to">ALTER TABLE RENAME TO<a class="headerlink" href="#alter-table-rename-to" title="Permalink to this heading">#</a></h3>
 <p>The connector does not support renaming tables across multiple schemas. For
 example, the following statement is supported:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_one</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_two</span>
@@ -1356,7 +1325,7 @@ is not supported:</p>
 </div>
 </section>
 <section id="insert">
-<span id="sqlserver-insert-additional"></span><h3 id="insert">INSERT<a class="headerlink" href="#insert" title="Permalink to this heading">#</a></h3>
+<span id="sqlserver-insert"></span><h3 id="insert">INSERT<a class="headerlink" href="#insert" title="Permalink to this heading">#</a></h3>
 <p>The connector supports adding rows using <a class="reference internal" href="../sql/insert.html"><span class="doc">INSERT statements</span></a>.
 By default, data insertion is performed by writing data to a temporary table.
 You can skip this step to improve performance and write directly to the target
@@ -1368,7 +1337,7 @@ the target table can be corrupted. Since transactions have been disabled, no
 rollback can be performed.</p>
 </section>
 <section id="procedures">
-<span id="sqlserver-procedures"></span><h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
+<h3 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h3>
 <section id="system-flush-metadata-cache">
 <h4 id="system-flush-metadata-cache"><code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code><a class="headerlink" href="#system-flush-metadata-cache" title="Permalink to this heading">#</a></h4>
 <p>Flush JDBC metadata caches. For example, the following system call
@@ -1405,7 +1374,7 @@ version.</p>
 </section>
 </section>
 <section id="table-functions">
-<span id="sqlserver-table-functions"></span><h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
+<h3 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h3>
 <p>The connector provides specific <a class="reference internal" href="../functions/table.html"><span class="doc">table functions</span></a> to
 access SQL Server.</p>
 <section id="query-varchar-table">
@@ -1443,7 +1412,7 @@ nations by population:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">procedure</span></code> function lets you run stored procedures on the underlying
 database directly. It requires syntax native to SQL Server, because the full
 query is pushed down and processed in SQL Server. In order to use this table
-function set <code class="docutils literal notranslate"><span class="pre">sqlserver.stored-procedure-table-function-enabled</span></code> to
+function set <code class="docutils literal notranslate"><span class="pre">sqlserver.experimental.stored-procedure-table-function-enabled</span></code> to
 <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1497,8 +1466,8 @@ following sections.</p>
 <p>The connector is able to read data from SQL Server using multiple parallel
 connections for tables partitioned as described in the <a class="reference external" href="https://learn.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-ver16">SQL Server partitioning
 documentation</a>.</p>
-<table id="id5">
-<caption><span class="caption-text">SQL Server parallelism configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">SQL Server parallelism configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 50%"/>
@@ -1511,7 +1480,7 @@ documentation</a>.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sqlserver.parallel.connections-count</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sqlserver.parallel.connections_count</span></code></p></td>
 <td><p>Defines the maximum number of parallel splits during query execution. Use
 this property to limit the number of splits for tables with a large number
 of partitions to avoid opening a large number of connections. The default
@@ -1595,7 +1564,7 @@ manually create statistics for a certain column, run the following statement:</p
 </div>
 <p>SQL Server Database routinely updates the statistics. In some cases, you may
 want to manually update statistics. To manually update statistics, run the
-following statement in SQL Server.</p>
+following statement in SQL Server Database.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">STATISTICS</span> <span class="n">table_schema</span><span class="p">.</span><span class="k">table_name</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -1709,8 +1678,8 @@ to drastically speed up write operations.</p>
 logging requirements</a>.</p>
 <p>The following table shows the relevant catalog configuration properties and
 their default values:</p>
-<table id="id6">
-<caption><span class="caption-text">Bulk load properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Bulk load properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 60%"/>
@@ -1822,27 +1791,6 @@ value is set to <code class="docutils literal notranslate"><span class="pre">HTT
 </div>
 <p>Now any SQL server database accessed using SEP is subject to the
 Kerberos-defined data access restrictions and permissions.</p>
-<section id="constrained-delegation">
-<span id="sqlserver-kerberos-constrained-delegation"></span><h4 id="constrained-delegation">Constrained delegation<a class="headerlink" href="#constrained-delegation" title="Permalink to this heading">#</a></h4>
-<p>The connector supports constrained delegation, where the user ticket is not
-attached as part of a service ticket and instead uses the Service for User to
-Proxy (S4U2proxy) extension to access the underlying data source based on the
-service ticket generated by the user.</p>
-<p>To enable constrained delegation, the following configuration properties must
-be set both in the catalog configuration and the <code class="docutils literal notranslate"><span class="pre">config.properties</span></code> for the
-coordinator and all workers:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.krb5.constrained-delegation.enabled</span><span class="o">=</span><span class="s">true</span>
-<span class="na">http-server.authentication.krb5.delegation.service-name</span><span class="o">=</span><span class="s">${delegated_service_name}</span>
-</pre></div>
-</div>
-<p>Constrained delegation requires the server to have a ticket-granting ticket
-(TGT). To specify a name type, use the
-<code class="docutils literal notranslate"><span class="pre">http-server.authentication.krb5.delegation.name-type</span></code> configuration property.</p>
-<p>All services involved must have permission to delegate to each other, including
-the SEP coordinator and worker nodes’
-<code class="docutils literal notranslate"><span class="pre">http-server.authentication.krb5.service-name</span></code> having permission to delegate to
-itself, all workers, and the underlying data source.</p>
-</section>
 </section>
 <section id="password-credential-pass-through">
 <h3 id="password-credential-pass-through">Password credential pass-through<a class="headerlink" href="#password-credential-pass-through" title="Permalink to this heading">#</a></h3>
@@ -1881,8 +1829,8 @@ source, enable TLS by appending the <code class="docutils literal notranslate"><
 use certificates trusted by a custom truststore.</p>
 <p>The following catalog configuration properties manage custom truststore
 configuration for the SQL Server connector:</p>
-<table id="id7">
-<caption><span class="caption-text">TLS truststore configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">TLS truststore configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 67%"/>

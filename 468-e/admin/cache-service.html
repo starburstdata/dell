@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -545,8 +545,8 @@ the release number, is called the <em>installation</em> directory. It contains a
 necessary resources.</p>
 <p>Move the extracted directory into the desired location, such as <code class="docutils literal notranslate"><span class="pre">/opt/</span></code>, and
 you are ready to proceed with configuring the service.</p>
-<p>When configuring a <a class="reference internal" href="../security/secrets.html"><span class="doc std std-doc">secrets provider</span></a> , use the
-<code class="docutils literal notranslate"><span class="pre">secrets-plugins-dir</span></code> property in your <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> file to point to the
+<p>When configuring a <a class="reference internal" href="../security/secrets.html#internal-secrets-management"><span class="std std-ref">secrets provider</span></a>, use
+the <code class="docutils literal notranslate"><span class="pre">secrets-plugins-dir</span></code> property in your <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> file to point to the
 directory with the tarball.</p>
 </section>
 </section>
@@ -777,21 +777,11 @@ skipped. Defaults to <code class="docutils literal notranslate"><span class="pre
 <td><p>Initial delay for startup of the refresh.
 Defaults to <code class="docutils literal notranslate"><span class="pre">0s</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">failed-refresh-limit</span></code></p></td>
-<td><p>Specifies the maximum number of consecutive refresh failures allowed before
-refresh operations are temporarily disabled. By default, there is no set
-limit for consecutive refresh failures. The counter resets after a
-successful refresh, a change to the refresh limit value, or when the refresh
-is re-enabled at the next scheduled refresh time. This property has a lower
-priority than the equivalent properties for <a class="reference internal" href="../data-engineering/materialized-views.html#mv-auto-refresh"><span class="std std-ref">materialized
-views</span></a> and <a class="reference internal" href="table-scan-redirection.html#table-scan-redirection-rule-specific-properties"><span class="std std-ref">table scan
-redirection</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-interval</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-interval</span></code></p></td>
 <td><p>Frequency at which cache service triggers cleanup of expired tables in the
 cache. Defaults to <code class="docutils literal notranslate"><span class="pre">5m</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-initial-delay</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-initial-delay</span></code></p></td>
 <td><p>Initial delay for startup of the cleanup. Defaults to <code class="docutils literal notranslate"><span class="pre">0s</span></code>.</p></td>
 </tr>
 </tbody>

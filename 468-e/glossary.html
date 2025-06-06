@@ -118,7 +118,7 @@
           
           <img
             src="_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -336,8 +336,6 @@ source, and is used in <a class="reference internal" href="#glosscatalog"><span 
 define what data source the catalog connects to. A connector is one of many
 types of <a class="reference internal" href="#glossplugin"><span class="std std-ref">plugins</span></a></p>
 </dd>
-</dl>
-<dl class="simple myst" id="glosscontainer">
 <dt>Container</dt><dd><p>A lightweight virtual package of software that contains libraries, binaries,
 code, configuration files, and other dependencies needed to deploy an
 application. A running container does not include an operating system,
@@ -426,8 +424,9 @@ alternative to <a class="reference internal" href="#glosspem"><span class="std s
 </dd>
 </dl>
 <dl class="simple myst" id="glossplugin">
-<dt>Plugin</dt><dd><p>A bundle of code implementing the Trino <a class="reference internal" href="develop/spi-overview.html"><span class="doc std std-doc">Service Provider Interface
-(SPI)</span></a>. that is used to add new functionality.</p>
+<dt>Plugin</dt><dd><p>A bundle of code implementing the Trino <a class="reference internal" href="develop/spi-overview.html"><span class="doc">Service Provider Interface (SPI)</span></a> that is used to add new <a class="reference internal" href="#glossconnector"><span class="std std-ref">connectors</span></a>, <a class="reference internal" href="develop/types.html"><span class="doc">data types</span></a>, <a class="reference internal" href="functions.html"><span class="doc">Functions and operators</span></a>,
+<a class="reference internal" href="develop/system-access-control.html"><span class="doc">access control implementations</span></a>, and
+other features of Trino.</p>
 </dd>
 <dt>Presto and PrestoSQL</dt><dd><p>The old name for Trino. To learn more about the name change to Trino, read
 <a class="reference external" href="https://wikipedia.org/wiki/Trino_(SQL_query_engine)#History">the history</a>.</p>
@@ -447,8 +446,6 @@ for what TLS does.</p>
 <dt>Structured Query Language (SQL)</dt><dd><p>The standard language used with relational databases. For more information,
 see <a class="reference internal" href="language.html"><span class="doc">SQL</span></a>.</p>
 </dd>
-</dl>
-<dl class="simple myst" id="glosstarball">
 <dt>Tarball</dt><dd><p>A common abbreviation for <a class="reference external" href="https://wikipedia.org/wiki/Tar_(computing)">TAR file</a>, which is a common software
 distribution mechanism. This file format is a collection of multiple files
 distributed as a single file, commonly compressed using <a class="reference internal" href="#glossgzip"><span class="std std-ref">gzip</span></a> compression.</p>

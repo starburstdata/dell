@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -259,7 +258,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra connector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clickhouse.html">Clickhouse connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-cosmosdb.html">Cosmos DB connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bigquery.html">BigQuery connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="starburst-dynamodb.html">DynamoDB connector</a></li>
@@ -301,7 +299,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sql-support">SQL support</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alter-table-rename-to">ALTER TABLE RENAME TO</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#table-functions">Table functions</a><ul>
@@ -336,6 +334,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -398,7 +397,7 @@
         </li>
         <li class="md-nav__item"><a href="#sql-support" class="md-nav__link">SQL support</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#alter-table-rename-to-limitation" class="md-nav__link">ALTER TABLE RENAME TO limitation</a>
+        <li class="md-nav__item"><a href="#alter-table-rename-to" class="md-nav__link">ALTER TABLE RENAME TO</a>
         </li></ul>
             </nav>
         </li>
@@ -466,7 +465,7 @@ matrix</span></a>.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>To connect to Vertica, you need:</p>
 <ul class="simple">
-<li><p>Vertica 11.x or higher.</p></li>
+<li><p>Vertica 9.1.x or higher.</p></li>
 <li><p>Network access from the coordinator and workers to the Vertica server.
 Port 5433 is the default port.</p></li>
 <li><p>A valid <a class="reference internal" href="../license-requirements.html"><span class="doc std std-doc">Starburst Enterprise license</span></a>.</p></li>
@@ -627,9 +626,7 @@ schemas and/or tables have names that differ only in case (such as “customers�
 and “Customers”) then Trino fails to query them due to ambiguity.</p>
 <p>In these cases, use the <code class="docutils literal notranslate"><span class="pre">case-insensitive-name-matching.config-file</span></code> catalog
 configuration property to specify a configuration file that maps these remote
-schemas and tables to their respective Trino schemas and tables. Additionally,
-the JSON file must include both the <code class="docutils literal notranslate"><span class="pre">schemas</span></code> and <code class="docutils literal notranslate"><span class="pre">tables</span></code> properties, even if
-only as empty arrays.</p>
+schemas/tables to their respective Trino schemas/tables:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">"schemas"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -727,10 +724,6 @@ same 64-bit BIGINT data type</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span> <span class="pre">(n)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span> <span class="pre">(n)</span></code></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -847,13 +840,12 @@ features:</p>
 <li><p><a class="reference internal" href="../sql/create-table.html"><span class="doc std std-doc">CREATE TABLE</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">CREATE TABLE AS</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/drop-table.html"><span class="doc std std-doc">DROP TABLE</span></a></p></li>
-<li><p><a class="reference internal" href="../sql/alter-table.html"><span class="doc std std-doc">ALTER TABLE</span></a> excluding <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">COLUMN</span></code>, see also <a class="reference internal" href="#vertica-alter-table"><span class="std std-ref">ALTER TABLE RENAME TO limitation</span></a></p></li>
+<li><p><a class="reference internal" href="../sql/alter-table.html"><span class="doc std std-doc">ALTER TABLE</span></a> excluding <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">COLUMN</span></code></p></li>
 <li><p><a class="reference internal" href="../sql/create-schema.html"><span class="doc std std-doc">CREATE SCHEMA</span></a></p></li>
 <li><p><a class="reference internal" href="../sql/drop-schema.html"><span class="doc std std-doc">DROP SCHEMA</span></a></p></li>
-<li><p><a class="reference internal" href="#vertica-table-functions"><span class="std std-ref">Table functions</span></a></p></li>
 </ul>
-<section id="alter-table-rename-to-limitation">
-<span id="vertica-alter-table"></span><h3 id="alter-table-rename-to-limitation">ALTER TABLE RENAME TO limitation<a class="headerlink" href="#alter-table-rename-to-limitation" title="Permalink to this heading">#</a></h3>
+<section id="alter-table-rename-to">
+<h3 id="alter-table-rename-to">ALTER TABLE RENAME TO<a class="headerlink" href="#alter-table-rename-to" title="Permalink to this heading">#</a></h3>
 <p>The connector does not support renaming tables across multiple schemas. For
 example, the following statement is supported:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_one</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">example</span><span class="p">.</span><span class="n">schema_one</span><span class="p">.</span><span class="n">table_two</span>
@@ -867,7 +859,7 @@ is not supported:</p>
 </section>
 </section>
 <section id="table-functions">
-<span id="vertica-table-functions"></span><h2 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h2>
+<h2 id="table-functions">Table functions<a class="headerlink" href="#table-functions" title="Permalink to this heading">#</a></h2>
 <p>The connector provides specific <a class="reference internal" href="../functions/table.html"><span class="doc std std-doc">table functions</span></a> to access
 Vertica.</p>
 <section id="query-varchar-table">

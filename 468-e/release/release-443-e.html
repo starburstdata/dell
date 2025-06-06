@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -255,11 +255,6 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-18-changes-15-jan-2025">443-e.18 changes (15 Jan 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-20-changes-19-feb-2025">443-e.20 changes (19 Feb 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-21-changes-28-feb-2025">443-e.21 changes (28 Feb 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-23-changes-18-mar-2025">443-e.23 changes (18 Mar 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-24-changes-3-apr-2025">443-e.24 changes (3 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-25-changes-15-apr-2025">443-e.25 changes (15 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-26-changes-30-apr-2025">443-e.26 changes (30 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-27-changes-19-may-2025">443-e.27 changes (19 May 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-429-e.html">Release 429-e LTS (29 Nov 2023)</a></li>
@@ -290,14 +285,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -308,6 +302,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -395,16 +390,6 @@
         <li class="md-nav__item"><a href="#e-20-changes-19-feb-2025" class="md-nav__link">443-e.20 changes (19 Feb 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-21-changes-28-feb-2025" class="md-nav__link">443-e.21 changes (28 Feb 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-23-changes-18-mar-2025" class="md-nav__link">443-e.23 changes (18 Mar 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-24-changes-3-apr-2025" class="md-nav__link">443-e.24 changes (3 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-25-changes-15-apr-2025" class="md-nav__link">443-e.25 changes (15 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-26-changes-30-apr-2025" class="md-nav__link">443-e.26 changes (30 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-27-changes-19-may-2025" class="md-nav__link">443-e.27 changes (19 May 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -439,6 +424,8 @@ Trino releases:</p>
 information in the Starburst Enterprise web UI.</p></li>
 <li><p>Added <a class="reference internal" href="../security/biac-privileges.html#biac-entity-location"><span class="std std-ref">location privilege</span></a> support for built-in
 access control.</p></li>
+<li><p>Added support for Vault by Hashicorp and AWS Secrets Manager as external
+<a class="reference internal" href="../security/secrets.html#internal-secrets-management"><span class="std std-ref">configuration providers</span></a>.</p></li>
 </ul>
 </section>
 <section id="breaking-changes">
@@ -515,6 +502,8 @@ cluster fails to start.</p></li>
 <ul class="simple">
 <li><p>Added public preview support for <a class="reference internal" href="../connector/starburst-maxcompute.html"><span class="doc">MaxCompute connector</span></a>.</p></li>
 <li><p>Enabled <a class="reference internal" href="../client/python.html"><span class="doc">PyStarburst</span></a> dataframe API by default.</p></li>
+<li><p>Added support for Vault by Hashicorp and AWS Secrets Manager as external
+<a class="reference internal" href="../security/secrets.html#internal-secrets-management"><span class="std std-ref">configuration providers</span></a>.</p></li>
 <li><p>Added support for updating and creating specific views or materialized views
 with data products in the <a class="reference internal" href="../starburst-rest-api.html"><span class="doc">SEP REST API</span></a>.</p></li>
 <li><p>Added support for automatic internal transport layer security (TLS) for
@@ -742,49 +731,6 @@ of fault-tolerant execution.</p></li>
 null values.</p></li>
 <li><p>Fixed potential table corruption when using the vacuum procedure in Delta
 Lake.</p></li>
-</ul>
-<p><strong>443-e.22 was skipped</strong></p>
-</section>
-<section id="e-23-changes-18-mar-2025">
-<span id="release-443-e-23"></span><h2 id="e-23-changes-18-mar-2025">443-e.23 changes (18 Mar 2025)<a class="headerlink" href="#e-23-changes-18-mar-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Fixed column masks not applying to columns in views with non-lowercase names.</p></li>
-<li><p>Fixed failures caused by tables with case-sensitive name conflicts.</p></li>
-<li><p>Prevented failures when fault-tolerant execution is configured with an
-exchange manager that uses Azure storage with workload identity.</p></li>
-</ul>
-</section>
-<section id="e-24-changes-3-apr-2025">
-<span id="release-443-e-24"></span><h2 id="e-24-changes-3-apr-2025">443-e.24 changes (3 Apr 2025)<a class="headerlink" href="#e-24-changes-3-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Fixed an issue which prevented temporal types in <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> predicates being
-pushed down in the Netezza connector.</p></li>
-<li><p>Fixed an issue in SCIM when updating group membership with Azure AD.</p></li>
-</ul>
-</section>
-<section id="e-25-changes-15-apr-2025">
-<span id="release-443-e-25"></span><h2 id="e-25-changes-15-apr-2025">443-e.25 changes (15 Apr 2025)<a class="headerlink" href="#e-25-changes-15-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Updated Parquet libraries to address CVE-2025-30065, though Starburst was not
-impacted because SEP uses a custom Parquet reader.</p></li>
-</ul>
-</section>
-<section id="e-26-changes-30-apr-2025">
-<span id="release-443-e-26"></span><h2 id="e-26-changes-30-apr-2025">443-e.26 changes (30 Apr 2025)<a class="headerlink" href="#e-26-changes-30-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Removed the Phoenix connector due to incompatibility with Java 24.</p></li>
-</ul>
-</section>
-<section id="e-27-changes-19-may-2025">
-<span id="release-443-e-27"></span><h2 id="e-27-changes-19-may-2025">443-e.27 changes (19 May 2025)<a class="headerlink" href="#e-27-changes-19-may-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Updated <code class="docutils literal notranslate"><span class="pre">ignite-core</span></code> dependency to 2.17.0 to mitigate CVE-2024-52577.</p></li>
-<li><p>Updated Go to 1.23.8 to mitigate the multiple CVEs.</p></li>
-<li><p>Fixed query failures with <code class="docutils literal notranslate"><span class="pre">EXCEEDED_LOCAL_MEMORY_LIMIT</span></code> errors due to
-incorrect memory accounting.</p></li>
-<li><p>Fixed potential failures or incorrect results when querying partitioned tables
-using the OpenX JSON SerDe.</p></li>
-<li><p>Fixed potential performance regression when reading ORC data.</p></li>
 </ul>
 </section>
 </section>

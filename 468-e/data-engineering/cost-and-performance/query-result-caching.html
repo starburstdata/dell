@@ -118,7 +118,7 @@
           
           <img
             src="../../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Monitor and manage cost and performance</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="execution-mode-options.html">Execution mode options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="set-mode-fte.html">Configure fault tolerance for your cluster</a></li>
@@ -448,15 +448,6 @@ process. Query result caching stores the result of the query on S3-compatible
 storage. For subsequent runs of the same query, SEP fetches the cached
 result of the original query. The query results you serve from the cache are
 preserved in query history.</p>
-<p>Query result caching removes any custom formatting, such as comments or
-spaces, within the query. Any capitalization of the query text is also removed,
-with the exception of the table name.</p>
-<p>For example, the following two queries activate query result caching the same
-way:</p>
-<p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">EXAMPLE;</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">EXAMPLE;</span></code></p>
-<p>If you later run the query below, the results are not retrieved from the cache:</p>
-<p><code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">example;</span></code></p>
 <p>Cache entries are not shared between users. Any changes to the parameters of the
 query which might influence the results such as the query string, session or
 catalog session properties, or additional credentials change the cache key and
@@ -467,20 +458,14 @@ bypass cached results:</p>
 <span class="na">skip_results_cache</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
-<p>To clear the query results cache, use a <a class="reference internal" href="../../sql/call.html"><span class="doc std std-doc">CALL</span></a> statement to run the
-<code class="docutils literal notranslate"><span class="pre">flush_results_cache()</span></code> procedure:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CALL</span> <span class="k">system</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">flush_results_cache</span><span class="p">();</span>
-</pre></div>
-</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">flush_results_cache()</span></code> procedure is used to clear the query results cache.</p>
 </section>
 <section id="expiration">
 <h2 id="expiration">Expiration<a class="headerlink" href="#expiration" title="Permalink to this heading">#</a></h2>
-<p>SEP deletes cache files that it creates in S3 when
-<code class="docutils literal notranslate"><span class="pre">results-cache.purge-enabled=true</span></code> and you have configured
-<code class="docutils literal notranslate"><span class="pre">results-cache.purge-interval</span></code>. Optionally, you can also set a
+<p>SEP does not delete cache files it creates in S3.Starburst recommends setting a
 <a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html">lifecycle
 policy</a>
-for the bucket used to store cached results.</p>
+for the bucket used to store cached results in order to delete expired elements.</p>
 <p>For example, the following lifecycle policy would expire cache entries after one
 day:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">LifecycleConfiguration</span><span class="o">&gt;</span>

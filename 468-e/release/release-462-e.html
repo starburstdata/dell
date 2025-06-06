@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -241,12 +241,6 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-4-changes-5-feb-2025">462-e.4 changes (5 Feb 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-5-changes-19-feb-2025">462-e.5 changes (19 Feb 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-6-changes-28-feb-2025">462-e.6 changes (28 Feb 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-7-changes-18-mar-2025">462-e.7 changes (18 Mar 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-8-changes-3-apr-2025">462-e.8 changes (3 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-9-changes-15-apr-2025">462-e.9 changes (15 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-10-changes-30-apr-2025">462-e.10 changes (30 Apr 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-11-changes-19-may-2025">462-e.11 changes (19 May 2025)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#e-12-changes-2-jun-2025">462-e.12 changes (2 Jun 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-453-e.html">Release 453-e LTS (30 Aug 2024)</a></li>
@@ -279,14 +273,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -297,6 +290,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -360,18 +354,6 @@
         <li class="md-nav__item"><a href="#e-5-changes-19-feb-2025" class="md-nav__link">462-e.5 changes (19 Feb 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-6-changes-28-feb-2025" class="md-nav__link">462-e.6 changes (28 Feb 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-7-changes-18-mar-2025" class="md-nav__link">462-e.7 changes (18 Mar 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-8-changes-3-apr-2025" class="md-nav__link">462-e.8 changes (3 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-9-changes-15-apr-2025" class="md-nav__link">462-e.9 changes (15 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-10-changes-30-apr-2025" class="md-nav__link">462-e.10 changes (30 Apr 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-11-changes-19-may-2025" class="md-nav__link">462-e.11 changes (19 May 2025)</a>
-        </li>
-        <li class="md-nav__item"><a href="#e-12-changes-2-jun-2025" class="md-nav__link">462-e.12 changes (2 Jun 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -406,8 +388,8 @@
 <ul class="simple">
 <li><p>Added support for <a class="reference internal" href="../admin/workload-management.html"><span class="doc std std-doc">Workload management</span></a> as a
 public preview.</p></li>
-<li><p>Added support for Azure Key Vault and Google Cloud Secret Manager as secrets
-configuration providers.</p></li>
+<li><p>Added support for Azure Key Vault and Google Cloud Secret Manager as
+<a class="reference internal" href="../security/secrets.html#internal-secrets-management"><span class="std std-ref">secrets configuration providers</span></a>.</p></li>
 <li><p>Released <a class="reference internal" href="../data-engineering/cost-and-performance/query-result-caching.html"><span class="doc">Query result caching</span></a> in
 general availability.</p></li>
 </ul>
@@ -419,15 +401,16 @@ general availability.</p></li>
 disabled by default. You must activate the desired <a class="reference internal" href="../object-storage.html#file-system-configuration"><span class="std std-ref">file system
 support</span></a> with
 <code class="docutils literal notranslate"><span class="pre">fs.native-azure.enabled</span></code>,<code class="docutils literal notranslate"><span class="pre">fs.native-gcs.enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">fs.native-s3.enabled</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">fs.hadoop.enabled</span></code> in each catalog. Use the migration guides for <a class="reference internal" href="../object-storage/file-system-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure
-Storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud
-Storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3</span></a> to assist
+<code class="docutils literal notranslate"><span class="pre">fs.hadoop.enabled</span></code> in each catalog. Use the migration guides for <a class="reference internal" href="../object-storage/legacy-azure.html#fs-legacy-azure-migration"><span class="std std-ref">Azure
+Storage</span></a>, <a class="reference internal" href="../object-storage/legacy-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud
+Storage</span></a>, and <a class="reference internal" href="../object-storage/legacy-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3</span></a> to assist
 if you have not switched from legacy support.</p></li>
 <li><p>Starburst Helm charts are no longer accessible through the ChartMuseum API.
 Instead, use the <a class="reference internal" href="../k8s/requirements.html#oci"><span class="std std-ref">OCI API</span></a>.</p></li>
-<li><p>Secrets configuration provider setup has been updated to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code>
-files. The <code class="docutils literal notranslate"><span class="pre">configuration-provider.config-files</span></code> property is no longer
-supported. You must update your configuration to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> files.</p></li>
+<li><p><a class="reference internal" href="../security/secrets.html#internal-secrets-management"><span class="std std-ref">Secrets configuration provider setup</span></a> has
+been updated to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> files. The
+<code class="docutils literal notranslate"><span class="pre">configuration-provider.config-files</span></code> property is no longer supported. You
+must update your configuration to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> files.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">query.low-memory-killer.delay</span></code> configuration property has been removed.
 You must remove this property or the cluster fails to start.</p></li>
 <li><p>The CFT property <code class="docutils literal notranslate"><span class="pre">S3PinToCurrentRegion</span></code> is no longer supported.</p></li>
@@ -579,70 +562,6 @@ null values.</p></li>
 <li><p>Fixed potential table corruption when using the vacuum procedure in Delta
 Lake.</p></li>
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> when listing tables on Glue.</p></li>
-</ul>
-</section>
-<section id="e-7-changes-18-mar-2025">
-<span id="release-462-e-7"></span><h2 id="e-7-changes-18-mar-2025">462-e.7 changes (18 Mar 2025)<a class="headerlink" href="#e-7-changes-18-mar-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Fixed column masks not applying to columns in views with non-lowercase names.</p></li>
-<li><p>Fixed failures caused by tables with case-sensitive name conflicts.</p></li>
-<li><p>Prevented failures when fault-tolerant execution is configured with an
-exchange manager that uses Azure storage with workload identity.</p></li>
-</ul>
-</section>
-<section id="e-8-changes-3-apr-2025">
-<span id="release-462-e-8"></span><h2 id="e-8-changes-3-apr-2025">462-e.8 changes (3 Apr 2025)<a class="headerlink" href="#e-8-changes-3-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for limiting the max parallelism with the
-<code class="docutils literal notranslate"><span class="pre">bigquery.max-parallelism</span></code> configuration property in the BigQuery connector.</p></li>
-<li><p>Fixed an issue which prevented temporal types in <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> predicates being
-pushed down in the Netezza connector.</p></li>
-<li><p>Fixed an issue in SCIM when updating group membership with Azure AD.</p></li>
-<li><p>Fixed an issue with query preparation when result set caching is enabled.</p></li>
-<li><p>Fixed failure for queries with large numbers of expressions in the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
-clause.</p></li>
-</ul>
-</section>
-<section id="e-9-changes-15-apr-2025">
-<span id="release-462-e-9"></span><h2 id="e-9-changes-15-apr-2025">462-e.9 changes (15 Apr 2025)<a class="headerlink" href="#e-9-changes-15-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Updated Parquet libraries to address CVE-2025-30065, though Starburst was not
-impacted because SEP uses a custom Parquet reader.</p></li>
-<li><p>Fixed an issue that caused query failure when attempting to create a
-materialized view that referenced a catalog with impersonation enabled.</p></li>
-<li><p>Fixed an issue that caused queries to hang when reading large tables.</p></li>
-<li><p>Fixed failure when setting comments on columns with upper case letters.</p></li>
-</ul>
-</section>
-<section id="e-10-changes-30-apr-2025">
-<span id="release-462-e-10"></span><h2 id="e-10-changes-30-apr-2025">462-e.10 changes (30 Apr 2025)<a class="headerlink" href="#e-10-changes-30-apr-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Removed the Phoenix connector due to incompatibility with Java 24.</p></li>
-<li><p>Improved performance for queries with large amounts of intermediate data.</p></li>
-<li><p>Fixed Glue endpoint URL override.</p></li>
-</ul>
-</section>
-<section id="e-11-changes-19-may-2025">
-<span id="release-462-e-11"></span><h2 id="e-11-changes-19-may-2025">462-e.11 changes (19 May 2025)<a class="headerlink" href="#e-11-changes-19-may-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Updated <code class="docutils literal notranslate"><span class="pre">ignite-core</span></code> dependency to 2.17.0 to mitigate CVE-2024-52577.</p></li>
-<li><p>Updated Go to 1.23.8 to mitigate the multiple CVEs.</p></li>
-<li><p>Fixed query failures with <code class="docutils literal notranslate"><span class="pre">EXCEEDED_LOCAL_MEMORY_LIMIT</span></code> errors due to
-incorrect memory accounting.</p></li>
-<li><p>Fixed potential failures or incorrect results when querying partitioned tables
-using the OpenX JSON SerDe.</p></li>
-<li><p>Fixed incorrect results when reading timestamp values with leading or trailing
-spaces using the Regex and OpenX JSON table deserializers.</p></li>
-<li><p>Fixed potential performance regression when reading ORC data.</p></li>
-<li><p>Fixed incorrect memory usage accounting for truncated tables.</p></li>
-</ul>
-</section>
-<section id="e-12-changes-2-jun-2025">
-<span id="release-462-e-12"></span><h2 id="e-12-changes-2-jun-2025">462-e.12 changes (2 Jun 2025)<a class="headerlink" href="#e-12-changes-2-jun-2025" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Updated to include support for Java 24.</p></li>
-<li><p>Fixed an issue which caused incremental refresh of materialized views to fail
-when using session credentials.</p></li>
 </ul>
 </section>
 </section>

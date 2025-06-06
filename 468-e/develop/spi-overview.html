@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -243,14 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -261,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -284,7 +284,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#plugin-metadata">Plugin metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plugin">Plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-plugins-via-maven">Building plugins via Maven</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-a-custom-plugin">Deploying a custom plugin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tests.html">Test writing guidelines</a></li>
@@ -331,7 +331,7 @@
         </li>
         <li class="md-nav__item"><a href="#building-plugins-via-maven" class="md-nav__link">Building plugins via Maven</a>
         </li>
-        <li class="md-nav__item"><a href="#compatibility" class="md-nav__link">Compatibility</a>
+        <li class="md-nav__item"><a href="#deploying-a-custom-plugin" class="md-nav__link">Deploying a custom plugin</a>
         </li></ul>
             </nav>
         </li>
@@ -346,12 +346,26 @@
             
   <section id="spi-overview">
 <h1 id="develop-spi-overview--page-root">SPI overview<a class="headerlink" href="#develop-spi-overview--page-root" title="Permalink to this heading">#</a></h1>
-<p>Trino uses a plugin architecture to extend its capabilities and integrate with
-various data sources and other systems. Plugins must implement the interfaces
-and override methods defined by the Service Provider Interface (SPI).</p>
-<p>This section details plugin development including specific pages for
-capabilities of different plugins. A custom plugin enables you to add further
-features to Trino, such as a connector for another data source.</p>
+<p>When you implement a new Trino plugin, you implement interfaces and
+override methods defined by the Service Provider Interface (SPI).</p>
+<p>Plugins can provide additional:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="connectors.html"><span class="doc">Connectors</span></a>,</p></li>
+<li><p>block encodings,</p></li>
+<li><p><a class="reference internal" href="types.html"><span class="doc">Types</span></a>,</p></li>
+<li><p><a class="reference internal" href="functions.html"><span class="doc">Functions</span></a>,</p></li>
+<li><p><a class="reference internal" href="system-access-control.html"><span class="doc">System access control</span></a>,</p></li>
+<li><p><a class="reference internal" href="group-provider.html"><span class="doc">Group provider</span></a>,</p></li>
+<li><p><a class="reference internal" href="password-authenticator.html"><span class="doc">Password authenticator</span></a>,</p></li>
+<li><p><a class="reference internal" href="header-authenticator.html"><span class="doc">Header authenticator</span></a>,</p></li>
+<li><p><a class="reference internal" href="certificate-authenticator.html"><span class="doc">Certificate authenticator</span></a>,</p></li>
+<li><p><a class="reference internal" href="event-listener.html"><span class="doc">Event listener</span></a>,</p></li>
+<li><p>resource group configuration managers,</p></li>
+<li><p>session property configuration managers,</p></li>
+<li><p>and exchange managers.</p></li>
+</ul>
+<p>In particular, connectors are the source of all data for queries in
+Trino: they back each catalog available to Trino.</p>
 <section id="code">
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
 <p>The SPI source can be found in the <code class="docutils literal notranslate"><span class="pre">core/trino-spi</span></code> directory in the Trino
@@ -409,43 +423,27 @@ of a library that Trino uses internally.</p>
 <p>For an example <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code> file, see the example HTTP connector in the
 <code class="docutils literal notranslate"><span class="pre">plugin/trino-example-http</span></code> directory in the Trino source tree.</p>
 </section>
-<section id="compatibility">
-<span id="spi-compatibility"></span><h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this heading">#</a></h2>
-<p>Successful download, installation, and use of a plugin depends on compatibility
-of the plugin with the target Trino cluster. Full compatibility is only
-guaranteed when using the same Trino version used for the plugin build and the
-deployment, and therefore using the same version is recommended.</p>
-<p>For example, a Trino plugin compiled for Trino 470 may not work with older or
-newer versions of Trino such as Trino 430 or Trino 490. This is specifically
-important when installing plugins from other projects, vendors, or your custom
-development.</p>
-<p>Trino plugins implement the SPI, which may change with every Trino release.
-There are no runtime checks for SPI compatibility by default, and it is up to
-the plugin author to verify compatibility using runtime testing.</p>
-<p>If the source code of a plugin is available, you can confirm the Trino version
-by inspecting the <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code>. A plugin must declare a dependency to the SPI, and
-therefore compatibility with the Trino release specified in the <code class="docutils literal notranslate"><span class="pre">version</span></code> tag:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>io.trino<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>trino-spi<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>470<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<section id="deploying-a-custom-plugin">
+<h2 id="deploying-a-custom-plugin">Deploying a custom plugin<a class="headerlink" href="#deploying-a-custom-plugin" title="Permalink to this heading">#</a></h2>
+<p>Because Trino plugins use the <code class="docutils literal notranslate"><span class="pre">trino-plugin</span></code> packaging type, building
+a plugin will create a ZIP file in the <code class="docutils literal notranslate"><span class="pre">target</span></code> directory. This file
+contains the plugin JAR and all its dependencies JAR files.</p>
+<p>In order to add a custom plugin to a Trino installation, extract the plugin
+ZIP file and move the extracted directory into the Trino plugin directory.
+For example, for a plugin called <code class="docutils literal notranslate"><span class="pre">my-functions</span></code>, with a version of 1.0,
+you would extract <code class="docutils literal notranslate"><span class="pre">my-functions-1.0.zip</span></code> and then move <code class="docutils literal notranslate"><span class="pre">my-functions-1.0</span></code>
+to <code class="docutils literal notranslate"><span class="pre">my-functions</span></code> in the Trino plugin directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every Trino plugin should be in a separate directory. Do not put JAR files
+directly into the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> directory. Plugins should only contain JAR files,
+so any subdirectories will not be traversed and will be ignored.</p>
 </div>
-<p>A good practice for plugins is to use a property for the version value, which is
-then declared elsewhere in the <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>...
-<span class="nt">&lt;dep.trino.version&gt;</span>470<span class="nt">&lt;/dep.trino.version&gt;</span>
-...
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>io.trino<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>trino-spi<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>${dep.trino.version}<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-</div>
+<p>By default, the plugin directory is the <code class="docutils literal notranslate"><span class="pre">plugin</span></code> directory relative to the
+directory in which Trino is installed, but it is configurable using the
+configuration variable <code class="docutils literal notranslate"><span class="pre">plugin.dir</span></code>. In order for Trino to pick up
+the new plugin, you must restart Trino.</p>
+<p>Plugins must be installed on all nodes in the Trino cluster (coordinator and workers).</p>
 </section>
 </section>
 

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -260,14 +260,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -278,6 +277,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -365,12 +365,12 @@ Versions before 350 are not supported.</p>
 </section>
 <section id="installation">
 <span id="jdbc-installation"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/474-e.1/trino-jdbc-474-e.1.jar">trino-jdbc-474-e.1.jar</a> and add it to the classpath of your Java application.</p>
+<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/468-e.7/trino-jdbc-468-e.7.jar">trino-jdbc-468-e.7.jar</a> and add it to the classpath of your Java application.</p>
 <p>The driver is also available from Maven Central:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>io.trino<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>trino-jdbc<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>474-e.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>468-e.7<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 </div>
@@ -637,11 +637,6 @@ greater.</p></td>
 Valid values are JSON with Zstandard compression, <code class="docutils literal notranslate"><span class="pre">json+zstd</span></code> (recommended),
 JSON with LZ4 compression <code class="docutils literal notranslate"><span class="pre">json+lz4</span></code>, and uncompressed JSON <code class="docutils literal notranslate"><span class="pre">json</span></code>. By
 default, the default encoding configured on the cluster is used.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">validateConnection</span></code></p></td>
-<td><p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, connectivity and credentials are
-validated when the connection is created, and when
-<code class="docutils literal notranslate"><span class="pre">java.sql.Connection.isValid(int)</span></code> is called.</p></td>
 </tr>
 </tbody>
 </table>

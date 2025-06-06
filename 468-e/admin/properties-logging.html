@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.7 LTS logo"
           />
           
         </span>
@@ -213,7 +213,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.7 LTS</a>
   </label>
   
   
@@ -244,14 +244,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">UDFs</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -262,6 +261,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
@@ -302,8 +302,6 @@
         </li>
         <li class="md-nav__item"><a href="#log-format" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log.format</span></code></a>
         </li>
-        <li class="md-nav__item"><a href="#log-console-format" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log.console-format</span></code></a>
-        </li>
         <li class="md-nav__item"><a href="#log-path" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log.path</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#log-max-size" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log.max-size</span></code></a>
@@ -335,6 +333,7 @@
             
   <section id="logging-properties">
 <h1 id="admin-properties-logging--page-root">Logging properties<a class="headerlink" href="#admin-properties-logging--page-root" title="Permalink to this heading">#</a></h1>
+<p>All properties described in this page are defined as follows:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
 <code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
@@ -345,11 +344,10 @@
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
 </ul>
-<p>An optional properties file that contains annotations to include with each log
-message for TCP output or file output in JSON format, defined with <code class="docutils literal notranslate"><span class="pre">log.path</span></code>
-and <code class="docutils literal notranslate"><span class="pre">log.format</span></code>. This can be used to include machine-specific or
-environment-specific information into logs which are centrally aggregated. The
-annotation values can contain references to environment variables.</p>
+<p>An optional properties file that contains annotations to be included with
+each log message. This can be used to include machine-specific or
+environment-specific information into logs which are centrally aggregated.
+The annotation values can contain references to environment variables.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">environment</span><span class="o">=</span><span class="s">production</span>
 <span class="na">host</span><span class="o">=</span><span class="s">${ENV:HOSTNAME}</span>
 </pre></div>
@@ -366,19 +364,6 @@ set to <code class="docutils literal notranslate"><span class="pre">JSON</span><
 line. Any newlines in the field values, such as exception stack traces, are
 escaped as normal in the JSON object. This allows for capturing and indexing
 exceptions as singular fields in a logging search system.</p>
-</section>
-<section id="log-console-format">
-<h2 id="log-console-format"><code class="docutils literal notranslate"><span class="pre">log.console-format</span></code><a class="headerlink" href="#log-console-format" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-string"><span class="std std-ref">string</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></li>
-</ul>
-<p>The format for log records written to the console output, set to either <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>
-or <code class="docutils literal notranslate"><span class="pre">JSON</span></code>. When set to <code class="docutils literal notranslate"><span class="pre">JSON</span></code>, the log record is formatted as a JSON object, one
-record per line. Any newlines in the field values, such as exception stack
-traces, are escaped as normal in the JSON object. This allows for capturing and
-indexing exceptions as singular fields in a logging search system when using
-console output and capturing it, as commonly configured in containers.</p>
 </section>
 <section id="log-path">
 <h2 id="log-path"><code class="docutils literal notranslate"><span class="pre">log.path</span></code><a class="headerlink" href="#log-path" title="Permalink to this heading">#</a></h2>
