@@ -140,12 +140,13 @@ h6 {
 }
 
 .dropdownbutton {
-  border: 1px solid white;
+  border: 1px solid #0672CB;
   border-radius: 3px;
   font-family: 'Barlow', 'Roboto', sans-serif;
   font-size: 0.7rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
+  color: #0672CB;
   height: 36px;
   letter-spacing: 0.007rem;
   margin-right: 16px;
