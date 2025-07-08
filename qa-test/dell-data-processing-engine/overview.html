@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', ' UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Overview &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command line interface" href="cli.html" />
+    <link rel="prev" title="Schema discovery" href="../insights/schema-discovery.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/overview.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#dell-data-processing-engine/overview" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
+          
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+          />
+          
+        </span>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Overview
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+       
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/starburst-enterprise.html">What is Starburst Enterprise?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learn/index.html">Learn Starburst Enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about-dell-data-processing-engine">About Dell Data Processing Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-personas">User personas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-notes">Release notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#included-libraries">Included libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Trino developer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#dell-data-processing-engine-overview--page-root" class="md-nav__link">Overview</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#about-dell-data-processing-engine" class="md-nav__link">About Dell Data Processing Engine</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#user-personas" class="md-nav__link">User personas</a>
+        </li>
+        <li class="md-nav__item"><a href="#command-line-interface" class="md-nav__link">Command line interface</a>
+        </li>
+        <li class="md-nav__item"><a href="#release-notes" class="md-nav__link">Release notes</a>
+        </li>
+        <li class="md-nav__item"><a href="#included-libraries" class="md-nav__link">Included libraries</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="overview">
+<h1 id="dell-data-processing-engine-overview--page-root">Overview<a class="headerlink" href="#dell-data-processing-engine-overview--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) includes support for Dell Data Processing Engine, built for <a class="reference external" href="https://spark.apache.org">Apache
+Spark</a>, the open-source distributed processing engine
+designed for large-scale data analytics.</p>
+<section id="about-dell-data-processing-engine">
+<h2 id="about-dell-data-processing-engine">About Dell Data Processing Engine<a class="headerlink" href="#about-dell-data-processing-engine" title="Permalink to this heading">#</a></h2>
+<section id="user-personas">
+<h3 id="user-personas">User personas<a class="headerlink" href="#user-personas" title="Permalink to this heading">#</a></h3>
+<p>Dell Data Processing Engine is used primarily by platform administrators who
+are responsible for configuring and managing the Dell Data Processing Engine
+environment, and data engineers who are responsible for developing and deploying
+data pipelines using Spark clusters. View the following documentation for each
+persona to learn more:</p>
+<p>For platform administrators:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-install"><span class="std std-ref">Install the command line interface</span></a></p></li>
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-resource-pools"><span class="std std-ref">Configure resource pools</span></a></p></li>
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-assign-roles"><span class="std std-ref">Assign and unassign roles from users</span></a></p></li>
+</ul>
+<p>For data engineers:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-batch"><span class="std std-ref">Submit a batch job</span></a></p></li>
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-cron"><span class="std std-ref">Submit a batch job to run on a CRON schedule</span></a></p></li>
+<li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-connect"><span class="std std-ref">Start an interactive job using a Spark Connect server</span></a></p></li>
+</ul>
+</section>
+<section id="command-line-interface">
+<h3 id="command-line-interface">Command line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">#</a></h3>
+<p>Dell Data Processing Engine includes a command line interface that can be used
+to interface with the <a class="reference internal" href="api.html"><span class="doc std std-doc">Dell Data Processing Engine API</span></a>. View the <a class="reference internal" href="cli.html"><span class="doc std std-doc">command
+line interface documentation</span></a>.</p>
+</section>
+<section id="release-notes">
+<h3 id="release-notes">Release notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference internal" href="release-notes.html"><span class="doc std std-doc">release notes page</span></a> lists new features, upgraded
+functionality, bug fixes, and breaking changes.</p>
+</section>
+<section id="included-libraries">
+<h3 id="included-libraries">Included libraries<a class="headerlink" href="#included-libraries" title="Permalink to this heading">#</a></h3>
+<p>The following libraries are included:</p>
+<p>Python:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>absl-py==2.1.0
+aiobotocore==2.17.0
+aiohappyeyeballs==2.4.4
+aiohttp==3.11.11
+aioitertools==0.12.0
+aiosignal==1.3.2
+astunparse==1.6.3
+async-timeout==5.0.1
+attrs==24.3.0
+blis==1.2.0
+boto3==1.35.93
+botocore==1.35.93
+certifi==2024.12.14
+charset-normalizer==3.4.1
+cramjam==2.9.1
+et_xmlfile==2.0.0
+fastparquet==2024.11.0
+flatbuffers==24.12.23
+frozenlist==1.5.0
+fsspec==2024.12.0
+gast==0.6.0
+google-pasta==0.2.0
+greenlet==3.1.1
+grpcio==1.69.0
+h5py==3.12.1
+idna==3.10
+jmespath==1.0.1
+joblib==1.4.2
+keras==3.8.0
+libclang==18.1.1
+Markdown==3.7
+markdown-it-py==3.0.0
+MarkupSafe==3.0.2
+mdurl==0.1.2
+ml-dtypes==0.4.1
+multidict==6.1.0
+namex==0.0.8
+numpy==2.0.2
+openpyxl==3.1.5
+opt_einsum==3.4.0
+optree==0.13.1
+packaging==24.2
+pandas==2.2.3
+patsy==1.0.1
+pip==24.3.1
+propcache==0.2.1
+protobuf==5.29.3
+pyarrow==18.1.0
+Pygments==2.19.1
+python-dateutil==2.9.0.post0
+pytz==2024.2
+PyYAML==6.0.2
+requests==2.32.3
+rich==13.9.4
+s3fs==2024.12.0
+s3transfer==0.10.4
+scipy==1.15.1
+setuptools==59.6.0
+six==1.17.0
+SQLAlchemy==2.0.37
+statsmodels==0.14.4
+spacy==v3.8.3
+tensorboard==2.18.0
+tensorboard-data-server==0.7.2
+tensorflow==2.18.0
+tensorflow-io-gcs-filesystem==0.37.1
+termcolor==2.5.0
+typing_extensions==4.12.2
+tzdata==2024.2
+urllib3==2.3.0
+Werkzeug==3.1.3
+wheel==0.37.1
+wrapt==1.17.2
+xlrd==2.0.1
+yarl==1.18.3
+</pre></div>
+</div>
+<p>Java:</p>
+<ul class="simple">
+<li><p>Hudi: <code class="docutils literal notranslate"><span class="pre">org.apache.hudi:hudi-spark3.3.x_2_12:1.0.0</span></code></p></li>
+<li><p>Iceberg: <code class="docutils literal notranslate"><span class="pre">org.apache.iceberg:iceberg-spark-runtime:0.13.2</span></code></p></li>
+<li><p>Nessie <code class="docutils literal notranslate"><span class="pre">org.projectnessie:nessie-spark-extensions:0.45.0</span></code></p></li>
+<li><p>Delta: <code class="docutils literal notranslate"><span class="pre">io.delta:delta-spark_2_12:3.3.0</span></code></p></li>
+</ul>
+<p>The Java libraries are stored in the <code class="docutils literal notranslate"><span class="pre">/opt/spark/lib</span></code> directory and must be added to
+your jobs as needed.</p>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../insights/schema-discovery.html" title="Schema discovery"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Schema discovery </span>
+              </div>
+            </a>
+          
+          
+            <a href="cli.html" title="Command line interface"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Command line interface </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
