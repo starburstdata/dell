@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', ' UA-114610397-1', 'auto');
+      ga('create', 'UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Dell Data Processing Engine API" href="api.html" />
-    <link rel="prev" title="Overview" href="overview.html" />
+    <link rel="prev" title="Object storage governance" href="object-storage-governance.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
           />
           
         </span>
@@ -172,13 +172,21 @@
       </div>
        
   
-  <script src="../_static/javascripts/version_dropdown.js"></script>
-  <script>
-    var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
   
 
     </div>
@@ -205,7 +213,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
   </label>
   
   
@@ -226,7 +234,12 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command line interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
@@ -253,7 +266,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -379,7 +391,7 @@ Processing Engine queries.</p>
 </section>
 <section id="installation">
 <span id="ddpe-cli-install"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Download and extract the <a class="reference external" href="http://software.starburstdata.net/#dell-data-processing-engine/0.1.170-1/">.tar.gz
+<p>Download and extract the <a class="reference external" href="http://software.starburstdata.net/#dell-data-processing-engine/237.1-474-e.2/">.tar.gz
 file</a>.
 In the terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and execute the
 <code class="docutils literal notranslate"><span class="pre">dell-data-processing-engine.sh</span></code> script with the <code class="docutils literal notranslate"><span class="pre">version</span></code> command to see the
@@ -451,7 +463,7 @@ use. If no profile is specified, then the default profile is used.</p></td>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logLevel=&lt;messagingMode&gt;</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--log-level=&lt;messagingMode&gt;</span></code></p></td>
 <td><p>Changes the output/logging level: <code class="docutils literal notranslate"><span class="pre">standard</span></code> or <code class="docutils literal notranslate"><span class="pre">debug</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">standard</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--keystore</span></code></p></td>
@@ -482,10 +494,23 @@ use. If no profile is specified, then the default profile is used.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">login</span></code></p></td>
 <td><p>Login, start a new session, and set or change the default profile.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Request that your IdP always presents a login screen
-even if you are already logged in.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Request that your IdP always presents a login screen
+even if you are already logged in.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-browser</span></code>. Disables automatically opening the verification URL in the default browser.</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">login-with-credentials</span></code></p></td>
+<td><p>Login, start a new session, and set or change the default profile using your
+username and password</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code>, <code class="docutils literal notranslate"><span class="pre">--username</span></code>. Username to use for login. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>, <code class="docutils literal notranslate"><span class="pre">--password</span></code>. Password to use for login. <strong>Required</strong>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
 <td><p>Emulation of Spark’s <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>
 script. Not all options and combinations are supported.</p></td>
 <td><ul>
@@ -523,12 +548,12 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 <li><p><code class="docutils literal notranslate"><span class="pre">--spark-connect</span></code>. Start a Spark Connect instance instead of a batch job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>. CRON timezone. Defaults to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron</span></code>. Set a CRON schedule.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--class</span></code>. Your Java or Scala application’s main class.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
 <td><p>List URIs for a batch or connect job. Spark Connect URIs contain your current access and refresh tokens.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -537,7 +562,7 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 </td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p>Show the current version.</p></td>
 <td></td>
 </tr>
@@ -545,7 +570,7 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 </table>
 </section>
 <section id="admin">
-<h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permalink to this heading">#</a></h3>
+<span id="ddpe-cli-admin"></span><h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Admin commands are available for admin users only.</p>
@@ -566,7 +591,7 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">api-logs</span></code></p></td>
 <td><p>List API server logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-all-instances</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-instances</span></code></p></td>
 <td><p>List all instances.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-file-upload</span></code></p></td>
@@ -580,6 +605,9 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
 <td><p>List system events.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
+<td><p>List the Spark History Server logs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -701,7 +729,9 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 <td></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
-<td><p>Set configuration.</p></td>
+<td><p>Set configuration. Any values set for <code class="docutils literal notranslate"><span class="pre">--cert</span></code> and <code class="docutils literal notranslate"><span class="pre">--keystore</span></code> are saved in
+your configuration file. Any previously stored certificates or keystores are
+cleared by this command.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-a</span></code>, <code class="docutils literal notranslate"><span class="pre">--api-endpoint</span></code>. The URI of your API server. <strong>Required</strong>.</p></td>
 </tr>
 </tbody>
@@ -737,22 +767,26 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 current access and refresh tokens.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>List instances available to you.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
 <td><p>Delete a batch job or Spark Connect instance.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for deletion confirmation.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
 <td><p>Get logs of a batch or Spark Connect job.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--index</span></code>. For logs that use 0 as the index.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--zipfile</span></code>. Download logs for the driver and executors as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. <strong>Optional</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--zip-file</span></code>. Download logs for the driver and executors as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. <strong>Optional</strong>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>List the status of a batch or Spark Connect job.</p></td>
 <td></td>
 </tr>
@@ -803,7 +837,7 @@ current access and refresh tokens.</p></td>
 </table>
 </section>
 <section id="uploads">
-<h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
+<span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for tasks related to file uploads and
 secrets:</p>
 <table id="id9">
@@ -1072,7 +1106,7 @@ configuration:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="overview.html" title="Overview"
+            <a href="object-storage-governance.html" title="Object storage governance"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1081,7 +1115,7 @@ configuration:</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Overview </span>
+                      class="md-footer-nav__direction"> Previous </span> Object storage governance </span>
               </div>
             </a>
           

@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', ' UA-114610397-1', 'auto');
+      ga('create', 'UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -117,7 +117,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
           />
           
         </span>
@@ -171,13 +171,21 @@
       </div>
        
   
-  <script src="../_static/javascripts/version_dropdown.js"></script>
-  <script>
-    var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
   
 
     </div>
@@ -211,7 +219,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
   </label>
   
   
@@ -232,10 +240,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -355,14 +367,16 @@ configured provider. Starburst Enterprise supports a number of
 <a class="reference internal" href="#sb-ai-functions-embedding"><span class="std std-ref">embedding</span></a> specific functions. To use the following
 functions, ensure you have <a class="reference internal" href="configuration-ai.html#sb-ai-configuration"><span class="std std-ref">configured an AI model and
 provider</span></a>.</p>
+<p>AI functions require SEP’s <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access
+control</span></a> authorization.</p>
 <section id="embedding-functions">
 <span id="sb-ai-functions-embedding"></span><h2 id="embedding-functions">Embedding functions<a class="headerlink" href="#embedding-functions" title="Permalink to this heading">#</a></h2>
 <p>The following function generates embeddings for input text using the given
 embedding model. Embeddings are numerical vector representations of text that
 can be used for semantic similarity and clustering tasks.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="ai.generate_embeddings">
-<span class="sig-prename descclassname"><span class="pre">ai.</span></span><span class="sig-name descname"><span class="pre">generate_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ai.generate_embeddings" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ai.generate_embedding">
+<span class="sig-prename descclassname"><span class="pre">ai.</span></span><span class="sig-name descname"><span class="pre">generate_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ai.generate_embedding" title="Permalink to this definition">#</a></dt>
 <dd><p>Generate the embedding for the given text.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">ai</span><span class="p">.</span><span class="n">generate_embedding</span><span class="p">(</span><span class="s1">'Which chapter should I read to understand how to balance the weight of a Boeing 747?'</span><span class="p">,</span> <span class="s1">'bedrock_titan'</span><span class="p">);</span>
 <span class="c1">-- [ 0.0061195422895252705, 0.013783863745629787, ...]</span>
@@ -513,7 +527,7 @@ functions can assist in determining how closely related two pieces of data are.<
 <span id="sb-ai-prompt-overrides"></span><h2 id="prompt-overrides">Prompt overrides<a class="headerlink" href="#prompt-overrides" title="Permalink to this heading">#</a></h2>
 <p>Prompt overrides let you modify the system or function prompt for task-based
 functions, giving you control over how the language model behaves and responds.
-Instead of adjusting user messages, {sb} recommends you define the desired
+Instead of adjusting user messages, Starburst recommends you define the desired
 behavior in a system prompt, also known as a developer prompt than in the user
 message.</p>
 <section id="example">

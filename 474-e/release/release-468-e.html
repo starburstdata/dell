@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', ' UA-114610397-1', 'auto');
+      ga('create', 'UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
           />
           
         </span>
@@ -172,13 +172,21 @@
       </div>
        
   
-  <script src="../_static/javascripts/version_dropdown.js"></script>
-  <script>
-    var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
   
 
     </div>
@@ -212,7 +220,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
   </label>
   
   
@@ -243,6 +251,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-5-changes-30-apr-2025">468-e.5 changes (30 Apr 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-6-changes-19-may-2025">468-e.6 changes (19 May 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-7-changes-2-jun-2025">468-e.7 changes (2 Jun 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-8-changes-18-jun-2025">468-e.8 changes (18 Jun 2025)</a></li>
 </ul>
 </li>
 </ul>
@@ -263,10 +272,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -358,6 +371,8 @@
         <li class="md-nav__item"><a href="#e-6-changes-19-may-2025" class="md-nav__link">468-e.6 changes (19 May 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-7-changes-2-jun-2025" class="md-nav__link">468-e.7 changes (2 Jun 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-8-changes-18-jun-2025" class="md-nav__link">468-e.8 changes (18 Jun 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -387,8 +402,7 @@
 <section id="highlights-since-462-e">
 <span id="release-468-highlights"></span><h2 id="highlights-since-462-e">Highlights since 462-e<a class="headerlink" href="#highlights-since-462-e" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Refreshed the Starburst Enterprise web UI with a new look and feel.</p></li>
-<li><p>Added support for <a class="reference internal" href="../admin/properties-catalog.html"><span class="doc std std-doc">dynamic catalog management</span></a>
+<li><p>Refreshed the Starburst Enterprise web UI with a new look and feel.
 as a <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">public preview</span></a>.</p></li>
 <li><p>SQL routines have been renamed to <a class="reference internal" href="../udf.html"><span class="doc std std-doc">User-defined functions</span></a> in Trino, and are now available
 as a GA feature. <a class="reference internal" href="../udf/python.html"><span class="doc std std-doc">Python UDFs</span></a> are available as a public preview.</p></li>
@@ -457,8 +471,6 @@ the cluster fails to start.</p></li>
 <h3 id="general">General<a class="headerlink" href="#general" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Refreshed the Starburst Enterprise web UI with a new look and feel.</p></li>
-<li><p>Added support for <a class="reference internal" href="../admin/properties-catalog.html"><span class="doc std std-doc">dynamic catalog management</span></a>
-as a <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">public preview</span></a>.</p></li>
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">CREATE</span> <span class="pre">CATALOG</span></code> to view statements used to create
 catalogs with <a class="reference internal" href="../sql/create-catalog.html"><span class="doc std std-doc">CREATE CATALOG</span></a>.</p></li>
 <li><p>Added support for <a class="reference internal" href="../sql/alter-catalog.html"><span class="doc std std-doc">ALTER CATALOG</span></a>.</p></li>
@@ -610,6 +622,18 @@ spaces using the Regex and OpenX JSON table deserializers.</p></li>
 <li><p>Updated to include support for Java 24.</p></li>
 <li><p>Fixed an issue which caused incremental refresh of materialized views to fail
 when using session credentials.</p></li>
+</ul>
+</section>
+<section id="e-8-changes-18-jun-2025">
+<span id="release-468-e-8"></span><h2 id="e-8-changes-18-jun-2025">468-e.8 changes (18 Jun 2025)<a class="headerlink" href="#e-8-changes-18-jun-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed correctness issue when writing deletion vectors in Delta Lake.</p></li>
+<li><p>Fixed failure when querying views without StorageDescriptor on Glue.</p></li>
+<li><p>Fixed an issue where statistics computation was skipped for all columns if
+some column types did not support statistics.</p></li>
+<li><p>Fixed query failures with <code class="docutils literal notranslate"><span class="pre">HIVE_CANNOT_OPEN_SPLIT</span></code> error when reading ORC
+files with large row counts.</p></li>
+<li><p>Fixed failures when deleting rows from a table.</p></li>
 </ul>
 </section>
 </section>

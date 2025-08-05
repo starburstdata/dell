@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', ' UA-114610397-1', 'auto');
+      ga('create', 'UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
           />
           
         </span>
@@ -172,13 +172,21 @@
       </div>
        
   
-  <script src="../_static/javascripts/version_dropdown.js"></script>
-  <script>
-    var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
   
 
     </div>
@@ -212,7 +220,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
   </label>
   
   
@@ -233,10 +241,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -1168,12 +1180,31 @@ documentation</a>.</p>
 </section>
 <section id="pushdown">
 <span id="bigquery-pushdown"></span><h3 id="pushdown">Pushdown<a class="headerlink" href="#pushdown" title="Permalink to this heading">#</a></h3>
-<p>The connector supports pushdown for a number of operations:</p>
-<ul class="simple">
+<p>The connector supports <a class="reference internal" href="../optimizer/pushdown.html"><span class="doc std std-doc">pushdown</span></a> for a number of
+operations:</p>
+<ul>
+<li><p><a class="reference internal" href="../optimizer/pushdown.html#dereference-pushdown"><span class="std std-ref">Dereference pushdown</span></a></p></li>
 <li><p><a class="reference internal" href="../optimizer/pushdown.html#limit-pushdown"><span class="std std-ref">Limit pushdown</span></a> for access to tables and other objects when using the REST
 API to reduce CPU consumption in BigQuery and performance overall. Pushdown is
 not supported by the Storage API, used for the more common Trino-managed
 tables, and therefore not used for access with it.</p></li>
+<li><p><a class="reference internal" href="../optimizer/pushdown.html#predicate-pushdown"><span class="std std-ref">Predicate pushdown</span></a> on columns of the following SEP types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DECIMAL(P,S)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BINARY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TIME(6)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP(6)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP(6)</span> <span class="pre">WITH</span> <span class="pre">TIME</span> <span class="pre">ZONE</span></code></p></li>
+</ul>
+<p>Read the <a class="reference internal" href="#bigquery-type-mapping"><span class="std std-ref">Type mapping</span></a> section to see the complete type
+conversion.</p>
+</li>
+<li><p><a class="reference internal" href="../optimizer/pushdown.html#projection-pushdown"><span class="std std-ref">Projection pushdown</span></a></p></li>
 </ul>
 </section>
 </section>

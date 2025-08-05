@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', ' UA-114610397-1', 'auto');
+      ga('create', 'UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SQL language" href="../language.html" />
-    <link rel="prev" title="Dell Data Processing Engine API" href="api.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Schema discovery" href="../insights/schema-discovery.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
           />
           
         </span>
@@ -172,13 +172,21 @@
       </div>
        
   
-  <script src="../_static/javascripts/version_dropdown.js"></script>
-  <script>
-    var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
   
 
     </div>
@@ -205,7 +213,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
   </label>
   
   
@@ -226,13 +234,21 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#feb-2025">1.4 (28 Feb 2025)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e-31-may-2025">1.5 (474-e) (31 May 2025)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#e-3-2-jul-2025">474-e.3 (2 Jul 2025)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#e-28-feb-2025">1.4 (468-e) (28 Feb 2025)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -293,7 +309,13 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#dell-data-processing-engine-release-notes--page-root" class="md-nav__link">Release notes</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#feb-2025" class="md-nav__link">1.4 (28 Feb 2025)</a>
+        <li class="md-nav__item"><a href="#e-31-may-2025" class="md-nav__link">1.5 (474-e) (31 May 2025)</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#e-3-2-jul-2025" class="md-nav__link">474-e.3 (2 Jul 2025)</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#e-28-feb-2025" class="md-nav__link">1.4 (468-e) (28 Feb 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -310,8 +332,37 @@
 <h1 id="dell-data-processing-engine-release-notes--page-root">Release notes<a class="headerlink" href="#dell-data-processing-engine-release-notes--page-root" title="Permalink to this heading">#</a></h1>
 <p>New releases of the Dell Data Processing Engine are created whenever significant
 new features or bug fixes are available.</p>
-<section id="feb-2025">
-<h2 id="feb-2025">1.4 (28 Feb 2025)<a class="headerlink" href="#feb-2025" title="Permalink to this heading">#</a></h2>
+<section id="e-31-may-2025">
+<h2 id="e-31-may-2025">1.5 (474-e) (31 May 2025)<a class="headerlink" href="#e-31-may-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added full <a class="reference internal" href="access-control.html"><span class="doc std std-doc">built-in access control integration</span></a>.</p></li>
+<li><p>Added support for <a class="reference internal" href="object-storage-governance.html"><span class="doc std std-doc">object storage governance</span></a>.</p></li>
+<li><p>Added UI support for <a class="reference internal" href="job-submission.html"><span class="doc std std-doc">job submissions</span></a>.</p></li>
+<li><p>Added UI support for <a class="reference internal" href="resource-pools.html"><span class="doc std std-doc">resource pools</span></a>.</p></li>
+<li><p>Updated the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a> with the following changes:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--logLevel</span></code>, <code class="docutils literal notranslate"><span class="pre">list-all-instances</span></code>, and <code class="docutils literal notranslate"><span class="pre">--zipFile</span></code> CLI commands have
+been deprecated. Use <code class="docutils literal notranslate"><span class="pre">--log-level</span></code>, <code class="docutils literal notranslate"><span class="pre">list-instances</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">--zip-file</span></code> instead.</p></li>
+<li><p>The default value for the <code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code> command has changed
+from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code> command.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">no-browser</span></code> login command option.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">login-with-credentials</span></code> command.</p></li>
+<li><p>Updated <code class="docutils literal notranslate"><span class="pre">set</span></code> config command description.</p></li>
+</ul>
+</li>
+</ul>
+<section id="e-3-2-jul-2025">
+<h3 id="e-3-2-jul-2025">474-e.3 (2 Jul 2025)<a class="headerlink" href="#e-3-2-jul-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fixed an access control issue affecting Spark Iceberg write operations when
+using <a class="reference internal" href="object-storage-governance.html"><span class="doc std std-doc">object storage governance</span></a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="e-28-feb-2025">
+<h2 id="e-28-feb-2025">1.4 (468-e) (28 Feb 2025)<a class="headerlink" href="#e-28-feb-2025" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="api.html"><span class="doc std std-doc">Dell Data Processing Engine API</span></a> is now available.</p></li>
 </ul>
@@ -329,7 +380,7 @@ new features or bug fixes are available.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="api.html" title="Dell Data Processing Engine API"
+            <a href="../insights/schema-discovery.html" title="Schema discovery"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -338,17 +389,17 @@ new features or bug fixes are available.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Dell Data Processing Engine API </span>
+                      class="md-footer-nav__direction"> Previous </span> Schema discovery </span>
               </div>
             </a>
           
           
-            <a href="../language.html" title="SQL language"
+            <a href="overview.html" title="Overview"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> SQL language </span>
+                class="md-footer-nav__direction"> Next </span> Overview </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

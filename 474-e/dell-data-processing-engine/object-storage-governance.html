@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', 'UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Object storage governance &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command line interface" href="cli.html" />
+    <link rel="prev" title="Access control" href="access-control.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/object-storage-governance.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#dell-data-processing-engine/object-storage-governance" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
+          
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 474-e.4 LTS logo"
+          />
+          
+        </span>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Object storage governance
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+       
+  
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+          <a title="453-e LTS" href="/453-e/">453-e LTS</a>
+      
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
+    </div>
+  </div>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.4 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/starburst-enterprise.html">What is Starburst Enterprise?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learn/index.html">Learn Starburst Enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Object storage governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catalog-metadata-synchronization">Catalog metadata synchronization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config-object-storage-gov">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#registered-object-stores">Registered object stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-stores-ui">Object stores UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credentials-ui">Credentials UI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-workflow">Example workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Trino developer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#dell-data-processing-engine-object-storage-governance--page-root" class="md-nav__link">Object storage governance</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#configuration" class="md-nav__link">Configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#catalog-metadata-synchronization" class="md-nav__link">Catalog metadata synchronization</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#config-object-storage-gov" class="md-nav__link">Configuration</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#registered-object-stores" class="md-nav__link">Registered object stores</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#object-stores-ui" class="md-nav__link">Object stores UI</a>
+        </li>
+        <li class="md-nav__item"><a href="#credentials-ui" class="md-nav__link">Credentials UI</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#example-workflow" class="md-nav__link">Example workflow</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="object-storage-governance">
+<h1 id="dell-data-processing-engine-object-storage-governance--page-root">Object storage governance<a class="headerlink" href="#dell-data-processing-engine-object-storage-governance--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) includes support for governance on object storage data sources.
+SEP provides an endpoint that allows users and clients to connect to object
+storage catalogs as an alternative method to remote or on-premise object storage
+endpoints.</p>
+<p>Governance on object stores include the following main features:</p>
+<ul class="simple">
+<li><p>Applying <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access control</span></a> security for
+incoming object storage requests, including table access control where the
+requested object storage path is mapped to a table known to SEP.</p></li>
+<li><p>Support for dynamic object storage request routing to different remote object
+storage endpoints, based on the request path or user credentials.</p></li>
+<li><p>Support for <a class="reference internal" href="../security/audit.html"><span class="doc std std-doc">built-in access control access log</span></a>. Access
+decisions for object storage requests are logged and persisted.</p></li>
+</ul>
+<section id="configuration">
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<p>Object store governance requires <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access
+control</span></a> and <a class="reference internal" href="../security/biac-privileges.html#biac-entity-location"><span class="std std-ref">location access
+control</span></a> to be enabled. Set the following properties in
+your catalog configuration file to <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">starburst.access-control.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">starburst.access-control.location.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+<section id="catalog-metadata-synchronization">
+<h2 id="catalog-metadata-synchronization">Catalog metadata synchronization<a class="headerlink" href="#catalog-metadata-synchronization" title="Permalink to this heading">#</a></h2>
+<p>Catalog metadata synchronization enables synchronization of metadata from the
+catalog’s metastore to the SEP-embedded metastore.</p>
+<p>Synchronizing metadata is required for object storage governance functionality
+in Dell Data Processing Engine. SEP uses the metadata to associate object
+storage requests with the corresponding SQL tables, enforcing BIAC permissions
+when verifying access to object storage paths.</p>
+<p>After the metastore sync, SEP checks table privileges instead of storage
+location privileges.  For <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, or <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operations
+on object storage tables, only table privileges are used. Location privileges
+are not checked. If you do not have the right table privileges, you get an error
+when attempting to access the data. Make sure to set the correct <a class="reference internal" href="../security/biac-privileges.html#biac-entity-tables"><span class="std std-ref">table
+privileges</span></a> for Spark jobs that need to access tables after
+a metastore sync.</p>
+<p>Metadata synchronization is supported in the Hive, Delta Lake, and Iceberg
+connectors.</p>
+<section id="config-object-storage-gov">
+<span id="id1"></span><h3 id="config-object-storage-gov">Configuration<a class="headerlink" href="#config-object-storage-gov" title="Permalink to this heading">#</a></h3>
+<p>To enable catalog metadata synchronization, set the
+<code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.enabled</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.enabled</span></code> property to <code class="docutils literal notranslate"><span class="pre">true</span></code> for the appropriate connector
+in your setup.</p>
+<p>Additionally, the following configuration properties are available:</p>
+<table id="id4">
+<caption><span class="caption-text">Hive metadata synchronization properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore data to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. <strong>Required.</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name of the cluster in the centralized metastore for metadata
+originating from this catalog. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user who is impersonated in the Hive metastore connection for
+metastore synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.frequency</span></code></p></td>
+<td><p>Specifies how often the metastore synchronization job runs. Accepts values
+from <code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<table id="id5">
+<caption><span class="caption-text">Delta Lake metadata synchronization properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore data to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. <strong>Required.</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name of the cluster in the centralized metastore for metadata
+originating from this catalog. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user who is impersonated in the Delta Lake metastore connection for
+metastore synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.frequency</span></code></p></td>
+<td><p>Specifies how often the metastore synchronization job runs. Accepts values
+from <code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<table id="id6">
+<caption><span class="caption-text">Iceberg metadata synchronization properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore data to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. <strong>Required.</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name of the cluster in the centralized metastore for metadata
+originating from this catalog. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user who is impersonated in the Iceberg metastore connection for
+metastore synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.frequency</span></code></p></td>
+<td><p>Specifies how often the metastore synchronization job runs. Accepts values
+from <code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="registered-object-stores">
+<span id="registered-object-store"></span><h2 id="registered-object-stores">Registered object stores<a class="headerlink" href="#registered-object-stores" title="Permalink to this heading">#</a></h2>
+<p>A registered object store is used as the remote object storage destination when
+the credentials in the request are linked to an object store. When credentials
+are linked to an object store, that object store is always used when using those
+credentials.</p>
+<p>Additionally, if an object store is marked as default, it handles all requests
+not explicitly associated with another object store.</p>
+<p>By registering object stores, administrators can dynamically specify multiple
+physical storage locations for SEP to forward object storage requests. To
+register an object store, you must provide credentials to authorize requests.</p>
+<p>When object storage governance is <a class="reference internal" href="#config-object-storage-gov"><span class="std std-ref">enabled</span></a>, the
+<strong>Object stores</strong> pane becomes available in the Starburst Enterprise web UI for roles with the
+<code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">stores</span></code> UI privilege.</p>
+<section id="object-stores-ui">
+<span id="id2"></span><h3 id="object-stores-ui">Object stores UI<a class="headerlink" href="#object-stores-ui" title="Permalink to this heading">#</a></h3>
+<p>To view object stores from the Starburst Enterprise web UI, select the <strong>Object stores</strong> pane in
+the <strong>Dell Data Processing Engine</strong>  section of the navigation menu. The
+<strong>Object stores</strong> pane is available for roles with the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">stores</span></code> UI
+privilege.</p>
+<p>The following information about your registered object stores are displayed:</p>
+<figure class="align-default">
+<img alt="Object stores" class="imgborder" src="../_images/spark-object-storage.png"/>
+</figure>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name given to the object store.</p></li>
+<li><p><strong>Provider</strong>: The provider for the object store, either AWS or the endpoint
+value provided at registration.</p></li>
+<li><p><strong>Access key</strong>: The access key for the object store.</p></li>
+<li><p><strong># of credentials</strong>: The total number of credentials registered with the object store.</p></li>
+</ul>
+<p>Click the options menu for an object store and select <strong>Set as default</strong> to set
+a default object store.</p>
+<p>To register an object store:</p>
+<figure class="align-default">
+<img alt="Object stores register" class="imgborder" src="../_images/spark-object-storage-register.png"/>
+</figure>
+<p>Enter a name, URL, access key, and secret for the object store. If you are
+registering an AWS object storage location, choose the <strong>Yes</strong> radio button.
+Click <strong>Register</strong> to complete the registration.</p>
+</section>
+<section id="credentials-ui">
+<span id="id3"></span><h3 id="credentials-ui">Credentials UI<a class="headerlink" href="#credentials-ui" title="Permalink to this heading">#</a></h3>
+<p>To view object store credentials from the Starburst Enterprise web UI, select the <strong>Credentials</strong>
+pane in the <strong>Dell Data Processing Engine</strong>  section of the navigation menu. The
+<strong>Credentials</strong> pane is available for roles with the <code class="docutils literal notranslate"><span class="pre">Emulated</span> <span class="pre">credentials</span></code> UI
+privilege.</p>
+<figure class="align-default">
+<img alt="Object stores credentials view" class="imgborder" src="../_images/spark-credentials-view.png"/>
+</figure>
+<p>Credentials are listed with the following information:</p>
+<ul class="simple">
+<li><p><strong>User</strong>: The name of the user who the credentials are created for.</p></li>
+<li><p><strong>Role</strong>: The role that the user is assuming when using the credentials.</p></li>
+<li><p><strong>Access key</strong>: The access key for the object store.</p></li>
+<li><p><strong>Object store</strong>: The registered object storage location.</p></li>
+</ul>
+<p>Click <strong>Revoke</strong> to revoke credentials from the user.</p>
+<p>To create new credentials for an object store, click <strong>Create credentials</strong>:</p>
+<figure class="align-default">
+<img alt="Object stores credentials create" class="imgborder" src="../_images/spark-object-store-credentials-create.png"/>
+</figure>
+<ol class="arabic simple">
+<li><p>Enter the user’s name, their role, and select the object store to create
+credentials for and click <strong>Create</strong>.</p></li>
+<li><p>On the next pane, copy the secret key value and store it for later
+use. This is the only time you can see this key. The access key and the secret
+key values are automatically generated.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Credentials are the only supported authentication method for AWS.</p>
+</div>
+<figure class="align-default">
+<img alt="Object stores credentials create 2" class="imgborder" src="../_images/spark-object-store-credentials-create-2.png"/>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>Confirm that you saved the secret key, then click <strong>Close</strong>.</p></li>
+</ol>
+<p>Dell Data Processing Engine keeps track of the number of credentials a given
+object store has in the <strong>Object stores</strong> UI pane.</p>
+</section>
+</section>
+<section id="example-workflow">
+<h2 id="example-workflow">Example workflow<a class="headerlink" href="#example-workflow" title="Permalink to this heading">#</a></h2>
+<p>The following details an example workflow for accessing object storage with Dell Data
+Processing Engine:</p>
+<ol class="arabic simple">
+<li><p>Register an object store with the following example attributes:</p>
+<ul class="simple">
+<li><p>Name: <code class="docutils literal notranslate"><span class="pre">Engineering</span></code></p></li>
+<li><p>Provider: <code class="docutils literal notranslate"><span class="pre">Custom</span></code></p></li>
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">https://storage.domain.com</span></code></p></li>
+<li><p>Access key: <code class="docutils literal notranslate"><span class="pre">ASXHXAPAH7YVXD16Z98V</span></code></p></li>
+<li><p>Secret: <code class="docutils literal notranslate"><span class="pre">&lt;hidden&gt;</span></code></p></li>
+</ul>
+</li>
+<li><p>Create credentials for the registered object store with the following example
+attributes:</p>
+<ul class="simple">
+<li><p>User: <code class="docutils literal notranslate"><span class="pre">test_user</span></code></p></li>
+<li><p>Role: <code class="docutils literal notranslate"><span class="pre">demo_spark_user</span></code></p></li>
+<li><p>Object store: <code class="docutils literal notranslate"><span class="pre">Engineering</span></code></p></li>
+</ul>
+</li>
+<li><p>Ensure the querying role has the necessary <a class="reference internal" href="access-control.html"><span class="doc std std-doc">privilege grants</span></a>
+to access the object store location.</p></li>
+<li><p>Submit a job from the <a class="reference internal" href="job-submission.html"><span class="doc std std-doc">job submission pane</span></a> with the
+following example attributes:</p>
+<ul class="simple">
+<li><p>Job name: <code class="docutils literal notranslate"><span class="pre">test-job</span></code></p></li>
+<li><p>Job details: <code class="docutils literal notranslate"><span class="pre">org.apache.spark.examples.SparkPi</span></code></p></li>
+<li><p>Resource pool: <code class="docutils literal notranslate"><span class="pre">default</span></code></p></li>
+<li><p>Application: <code class="docutils literal notranslate"><span class="pre">s3://dell-spark-demo/examples/jars/spark-examples_2.12-3.5.3.jar</span></code></p></li>
+</ul>
+</li>
+<li><p>View the logs from the job’s options menu.</p></li>
+</ol>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="access-control.html" title="Access control"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Access control </span>
+              </div>
+            </a>
+          
+          
+            <a href="cli.html" title="Command line interface"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Command line interface </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
