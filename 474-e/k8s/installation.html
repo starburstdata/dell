@@ -183,6 +183,8 @@
       
           <a title="453-e LTS" href="/453-e/">453-e LTS</a>
       
+          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
+      
     </div>
   </div>
   
@@ -450,7 +452,7 @@ cluster configuration file, and the catalog configuration file are located in
 the current directory:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade  my-sep oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">474</span>.4.0 <span class="se">\</span>
+    --version <span class="m">474</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml
     --values ./sep-prod-setup.yaml
     --values ./sep-prod-catalogs.yaml
@@ -525,7 +527,7 @@ using the <code class="docutils literal notranslate"><span class="pre">--values<
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade sep-prod-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">474</span>.4.0 <span class="se">\</span>
+    --version <span class="m">474</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-prod-setup.yaml
 </pre></div>
@@ -559,7 +561,7 @@ configuration files, as in the following example:</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm upgrade my-sep-staging-cluster oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise <span class="se">\</span>
     --install <span class="se">\</span>
-    --version <span class="m">474</span>.4.0 <span class="se">\</span>
+    --version <span class="m">474</span>.5.0 <span class="se">\</span>
     --values ./registry-access.yaml <span class="se">\</span>
     --values ./sep-stage-setup.yaml
 </pre></div>
