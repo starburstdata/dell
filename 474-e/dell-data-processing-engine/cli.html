@@ -183,8 +183,6 @@
       
           <a title="453-e LTS" href="/453-e/">453-e LTS</a>
       
-          <a title="474-e LTS (dev)" href="/474-e/">474-e LTS (dev)</a>
-      
     </div>
   </div>
   
@@ -246,7 +244,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#running-the-cli">Running the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#global-arguments">Global arguments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connecting-to-hms-with-kerberos-authentication">Connecting to HMS with Kerberos authentication</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#admin">Admin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
@@ -336,7 +337,11 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#global-arguments" class="md-nav__link">Global arguments</a>
         </li>
-        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
+        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#connecting-to-hms-with-kerberos-authentication" class="md-nav__link">Connecting to HMS with Kerberos authentication</a>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#admin" class="md-nav__link">Admin</a>
         </li>
@@ -568,6 +573,74 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 </tr>
 </tbody>
 </table>
+<section id="connecting-to-hms-with-kerberos-authentication">
+<h4 id="connecting-to-hms-with-kerberos-authentication">Connecting to HMS with Kerberos authentication<a class="headerlink" href="#connecting-to-hms-with-kerberos-authentication" title="Permalink to this heading">#</a></h4>
+<p>When submitting a Spark job while using <a class="reference internal" href="../security/kerberos.html"><span class="doc std std-doc">Kerberos
+authentication</span></a> with Hive Metastore, there are some
+additional configuration steps required:</p>
+<ol class="arabic simple">
+<li><p>Upload a keytab and Kerberos config file using the CLI, such as:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos config"</span> /path/to/krb5.conf
+  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos keytab"</span> /path/to/hive.keytab
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Run the following Python script to authenticate a PySpark application using Kerberos credentials from a keytab file:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="k">def</span> <span class="nf">loginUserFromKeytab</span><span class="p">():</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
+    <span class="n">hadoop_conf</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span>
+
+    <span class="n">keytab</span> <span class="o">=</span> <span class="n">hadoop_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"spark.yarn.keytab"</span><span class="p">)</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">hadoop_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"spark.yarn.principal"</span><span class="p">)</span>
+
+    <span class="n">ugi_class</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">hadoop</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">UserGroupInformation</span>
+    <span class="n">ugi_class</span><span class="o">.</span><span class="n">loginUserFromKeytab</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span> <span class="n">keytab</span><span class="p">)</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"FixedKeyMapping"</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">enableHiveSupport</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="n">loginUserFromKeytab</span><span class="p">()</span>
+
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SHOW DATABASES"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The script creates a Spark session with Hive support enabled, and then
+retrieves the keytab file path and principal name from the Spark configuration
+and uses them to complete Kerberos authentication. Once authenticated, the
+script runs the <code class="docutils literal notranslate"><span class="pre">spark.sql("SHOW</span> <span class="pre">DATABASES").show()</span></code> command as an example to
+list available databases.</p>
+<ol class="arabic simple" start="3">
+<li><p>Run the following example <code class="docutils literal notranslate"><span class="pre">submit</span></code> command, replacing the keytab file name,
+principal, and the Thrift URL in the command to match your environment:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./cli/target/dell-data-processing-engine/bin/dell-data-processing-engine submit <span class="se">\</span>
+--uploaded-files m-109b31726b2640fd897051507903d4ba:/kerberos/config <span class="se">\</span>
+--uploaded-files m-f4e021419cf44990bda2cfc3d039f0ae:/kerberos/keytab <span class="se">\</span>
+--conf spark.sql.catalogImplementation<span class="o">=</span>hive <span class="se">\</span>
+--conf spark.security.credentials.hive.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.use.SSL<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.uris<span class="o">=</span>thrift://10.0.0.92:9083 <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.sasl.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.authentication<span class="o">=</span>KERBEROS <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.kerberos.keytab.file<span class="o">=</span>/opt/spark/uploads/kerberos/keytab/hive.keytab <span class="se">\</span>
+--conf spark.hadoop.hive.metastore.kerberos.principal<span class="o">=</span>hive/hadoop-master@LABS.TERADATA.COM <span class="se">\</span>
+--conf spark.hadoop.spark.yarn.keytab<span class="o">=</span>/opt/spark/uploads/kerberos/keytab/hive.keytab <span class="se">\</span>
+--conf spark.hadoop.spark.yarn.principal<span class="o">=</span>hive/hadoop-master@LABS.TERADATA.COM <span class="se">\</span>
+--conf spark.hadoop.hadoop.security.authentication<span class="o">=</span>kerberos <span class="se">\</span>
+--conf spark.hadoop.hadoop.security.authorization<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+--conf spark.driver.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
+--conf spark.executor.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
+  path-to-the-python-file
+</pre></div>
+</div>
+</section>
 </section>
 <section id="admin">
 <span id="ddpe-cli-admin"></span><h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permalink to this heading">#</a></h3>
