@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -320,10 +320,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -445,8 +448,6 @@ support</span></a> with
 Storage</span></a>, <a class="reference internal" href="../object-storage/file-system-gcs.html#fs-legacy-gcs-migration"><span class="std std-ref">Google Cloud
 Storage</span></a>, and <a class="reference internal" href="../object-storage/file-system-s3.html#fs-legacy-s3-migration"><span class="std std-ref">S3</span></a> to assist
 if you have not switched from legacy support.</p></li>
-<li><p>Starburst Helm charts are no longer accessible through the ChartMuseum API.
-Instead, use the <a class="reference internal" href="../k8s/requirements.html#oci"><span class="std std-ref">OCI API</span></a>.</p></li>
 <li><p>Secrets configuration provider setup has been updated to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code>
 files. The <code class="docutils literal notranslate"><span class="pre">configuration-provider.config-files</span></code> property is no longer
 supported. You must update your configuration to use <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> files.</p></li>
@@ -543,8 +544,6 @@ checks.</p></li>
 <section id="e-3-changes-15-jan-2025">
 <span id="release-462-e-3"></span><h2 id="e-3-changes-15-jan-2025">462-e.3 changes (15 Jan 2025)<a class="headerlink" href="#e-3-changes-15-jan-2025" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Starburst Helm charts are no longer accessible through the ChartMuseum API.
-Instead, use the <a class="reference internal" href="../k8s/requirements.html#oci"><span class="std std-ref">OCI API</span></a>.</p></li>
 <li><p>Updated OpenSSL and libcurl native dependencies in Teradata Direct table
 operator.</p></li>
 <li><p>Restored missing Kerberos support to Cassandra connector.</p></li>

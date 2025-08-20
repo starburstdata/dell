@@ -118,7 +118,7 @@
           
           <img
             src="../../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -295,10 +295,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -389,7 +392,8 @@ this property is set, automatic authentication is disabled.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">results-cache.s3.endpoint</span></code></p></td>
 <td><p>The S3 storage endpoint server, which can be used to connect to an
-S3-compatible storage system instead of AWS.</p></td>
+S3-compatible storage system instead of AWS. Must be a valid URI,
+including a prefix like <code class="docutils literal notranslate"><span class="pre">https://</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">results-cache.s3.region</span></code></p></td>
 <td><p>The AWS region where the S3 bucket is located.</p></td>
@@ -441,7 +445,7 @@ inclusive. Defaults to <code class="docutils literal notranslate"><span class="p
 </table>
 <p>The following is an example configuration for query result caching:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">results-cache.enabled</span><span class="o">=</span><span class="s">true</span>
-<span class="na">results-cache.s3.endpoint</span><span class="o">=</span><span class="s">s3.us-east-2.amazonaws.com</span>
+<span class="na">results-cache.s3.endpoint</span><span class="o">=</span><span class="s">https://s3.us-east-2.amazonaws.com</span>
 <span class="na">results-cache.s3.aws-access-key</span><span class="o">=</span><span class="s">${ENV:AWS_ACCESS_KEY_ID}</span>
 <span class="na">results-cache.s3.aws-secret-key</span><span class="o">=</span><span class="s">${ENV:AWS_SECRET_ACCESS_KEY}</span>
 <span class="na">results-cache.s3.bucket</span><span class="o">=</span><span class="s">sep-result-cache</span>

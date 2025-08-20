@@ -118,7 +118,7 @@
           
           <img
             src="_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -287,10 +287,13 @@
 <li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -412,16 +415,7 @@ connector-specific configuration properties, start with the <a class="reference 
 </section>
 <section id="define-a-catalog">
 <h3 id="define-a-catalog">Define a catalog<a class="headerlink" href="#define-a-catalog" title="Permalink to this heading">#</a></h3>
-<p>Where a catalog is defined depends upon your deployment method:</p>
-<ul class="simple">
-<li><p>In Starburst Admin deployments - Create the catalog properties file in
-<code class="docutils literal notranslate"><span class="pre">etc/catalog/</span></code>, for example <code class="docutils literal notranslate"><span class="pre">etc/catalog/salesdatabase.properties</span></code>. The
-first part of the file name, in this example <code class="docutils literal notranslate"><span class="pre">salesdatabase</span></code>, becomes the
-name used to access the data in a query.</p></li>
-<li><p>In the SEP Helm chart - Create a child node under the <a class="reference internal" href="k8s/sep-configuration.html#helm-sep-catalogs"><span class="std std-ref">catalogs: top level node</span></a>, for example <code class="docutils literal notranslate"><span class="pre">salesdatabase:</span></code>. The child node
-name, in this example <code class="docutils literal notranslate"><span class="pre">salesdatabase</span></code>, becomes the name used to access the
-data in a query.</p></li>
-</ul>
+<p>Where a catalog is defined depends upon your deployment method.</p>
 <p>Configure access to a data source in your newly defined catalog with a few
 simple steps:</p>
 <ul class="simple">

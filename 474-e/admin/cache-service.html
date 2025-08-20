@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -338,10 +338,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -542,7 +545,6 @@ planned for when sizing your cluster.</p>
 <span id="cache-service-standalone"></span><h3 id="standalone-deployment">Standalone deployment<a class="headerlink" href="#standalone-deployment" title="Permalink to this heading">#</a></h3>
 <p>A standalone deployment ensures that the service is not affected by coordinator
 performance, or the deployment of a new release on the SEP cluster.</p>
-<p>Deployment of the cache service in Kubernetes can be <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">managed with the available Helm chart</span></a>.</p>
 <p>Manual deployment relies on using a tarball:</p>
 <ul class="simple">
 <li><p>To download the cache service binary file, contact Starburst Support</p></li>
@@ -555,9 +557,8 @@ the release number, is called the <em>installation</em> directory. It contains a
 necessary resources.</p>
 <p>Move the extracted directory into the desired location, such as <code class="docutils literal notranslate"><span class="pre">/opt/</span></code>, and
 you are ready to proceed with configuring the service.</p>
-<p>When configuring a <a class="reference internal" href="../security/secrets.html"><span class="doc std std-doc">secrets provider</span></a> , use the
-<code class="docutils literal notranslate"><span class="pre">secrets-plugins-dir</span></code> property in your <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> file to point to the
-directory with the tarball.</p>
+<p>When configuring a secrets provider, use the <code class="docutils literal notranslate"><span class="pre">secrets-plugins-dir</span></code> property in
+your <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> file to point to the directory with the tarball.</p>
 </section>
 </section>
 <section id="deploy-the-cache-service">
@@ -576,11 +577,10 @@ cache service running in embedded mode.</p>
 <section id="enable-the-cache-service">
 <h3 id="enable-the-cache-service">Enable the cache service<a class="headerlink" href="#enable-the-cache-service" title="Permalink to this heading">#</a></h3>
 <p>To use table scan redirections or Hive materialized views, the cache service
-must first <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">be installed and enabled</span></a>.
-Our reference documentation has <a class="reference internal" href="#cache-service-requirements"><span class="std std-ref">Requirements</span></a>
-and instructions for doing so. Take the time to read about the <a class="reference internal" href="#cache-service-deploy"><span class="std std-ref">two types of deployments</span></a>, standalone and embedded, to see which is
-better suited to your cluster. If your organization uses our Helm charts to
-deploy SEP, you can use the <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">Helm chart for the cache service</span></a> to deploy it as standalone service.</p>
+must first be installed and enabled. Our reference documentation has
+<a class="reference internal" href="#cache-service-requirements"><span class="std std-ref">Requirements</span></a> and instructions for doing so.
+Take the time to read about the <a class="reference internal" href="#cache-service-deploy"><span class="std std-ref">two types of deployments</span></a>, standalone and embedded, to see which is better suited
+to your cluster.</p>
 <p>Before you begin, ensure that you have an <a class="reference internal" href="#cache-service-external-rdbms"><span class="std std-ref">external database instance</span></a> available to store information about
 materialized views and table scan redirections.</p>
 <p>When you are ready, there are a number of <a class="reference internal" href="#cache-service-config-properties"><span class="std std-ref">configuration properties</span></a> that must be set, shown in the following
@@ -596,22 +596,16 @@ rules.file=etc/rules.json
 <p>Where these get set depends on whether or not you are using a standalone or
 embedded cache service, and whether you are using Helm charts or not:</p>
 <ul class="simple">
-<li><p>Embedded:</p>
-<ul>
-<li><p>via the SEP Helm-chart in the <code class="docutils literal notranslate"><span class="pre">cache.properties</span></code> node nested under the top
-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> node in the <code class="docutils literal notranslate"><span class="pre">config</span></code> section node.</p></li>
-<li><p>Other deployments in the <code class="docutils literal notranslate"><span class="pre">etc/cache.properties</span></code> file on the coordinator
+<li><p>Embedded -
+* via the SEP Helm-chart in the <code class="docutils literal notranslate"><span class="pre">cache.properties</span></code> node nested under the
+top level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> node in the <code class="docutils literal notranslate"><span class="pre">config</span></code> section node.
+* Other deployments in the <code class="docutils literal notranslate"><span class="pre">etc/cache.properties</span></code> file on the coordinator
 server.</p></li>
-</ul>
-</li>
-<li><p>Standalone:</p>
-<ul>
-<li><p>via the cache service Helm chart in the <code class="docutils literal notranslate"><span class="pre">config.properties</span></code> node nested
-under the top level <code class="docutils literal notranslate"><span class="pre">config</span></code> node.</p></li>
-<li><p>Other deployments in the <code class="docutils literal notranslate"><span class="pre">etc/config.properties</span></code> file on the cache service
+<li><p>Standalone -
+* via the cache service Helm chart in the <code class="docutils literal notranslate"><span class="pre">config.properties</span></code> node nested
+under the top level <code class="docutils literal notranslate"><span class="pre">config</span></code> node.
+* Other deployments in the <code class="docutils literal notranslate"><span class="pre">etc/config.properties</span></code> file on the cache service
 server.</p></li>
-</ul>
-</li>
 </ul>
 </section>
 <section id="enable-materialized-views">
@@ -787,21 +781,11 @@ skipped. Defaults to <code class="docutils literal notranslate"><span class="pre
 <td><p>Initial delay for startup of the refresh.
 Defaults to <code class="docutils literal notranslate"><span class="pre">0s</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">failed-refresh-limit</span></code></p></td>
-<td><p>Specifies the maximum number of consecutive refresh failures allowed before
-refresh operations are temporarily disabled. By default, there is no set
-limit for consecutive refresh failures. The counter resets after a
-successful refresh, a change to the refresh limit value, or when the refresh
-is re-enabled at the next scheduled refresh time. This property has a lower
-priority than the equivalent properties for <a class="reference internal" href="../data-engineering/materialized-views.html#mv-auto-refresh"><span class="std std-ref">materialized
-views</span></a> and <a class="reference internal" href="table-scan-redirection.html#table-scan-redirection-rule-specific-properties"><span class="std std-ref">table scan
-redirection</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-interval</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-interval</span></code></p></td>
 <td><p>Frequency at which cache service triggers cleanup of expired tables in the
 cache. Defaults to <code class="docutils literal notranslate"><span class="pre">5m</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-initial-delay</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cleanup-initial-delay</span></code></p></td>
 <td><p>Initial delay for startup of the cleanup. Defaults to <code class="docutils literal notranslate"><span class="pre">0s</span></code>.</p></td>
 </tr>
 </tbody>

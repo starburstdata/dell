@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -324,10 +324,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -456,8 +459,7 @@ start.</p></li>
 <li><p>The updated base Docker image for SEP no longer includes <code class="docutils literal notranslate"><span class="pre">curl</span></code>, <code class="docutils literal notranslate"><span class="pre">vi</span></code>,
 <code class="docutils literal notranslate"><span class="pre">nano</span></code>, <code class="docutils literal notranslate"><span class="pre">sed</span></code>, <code class="docutils literal notranslate"><span class="pre">awk</span></code>, <code class="docutils literal notranslate"><span class="pre">grep</span></code>, and other popular command line tools.
 Starburst recommends using an init container with a base image that includes your
-needed command line tools. Guidance on using init containers and selecting
-suitable base images can be found in our <a class="reference internal" href="../k8s/sep-configuration.html#helm-sep-initcontainers"><span class="std std-ref">init container documentation</span></a>.</p></li>
+needed command line tools.</p></li>
 <li><p>SEP 427-e uses a base system image that does not contain a system-wide trust
 store. Trusted, self-signed certificates must now be added to the Java
 distribution CA certificates located under
@@ -631,7 +633,6 @@ Snowflake connector.</p></li>
 <section id="e-4-changes-11-mar-2024">
 <span id="release-429-e-4"></span><h2 id="e-4-changes-11-mar-2024">429-e.4 changes (11 Mar 2024)<a class="headerlink" href="#e-4-changes-11-mar-2024" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Updated Kubernetes external secret operator.</p></li>
 <li><p>Fixed UI authentication for large authentication tokens.</p></li>
 <li><p>Fixed incorrect results for <code class="docutils literal notranslate"><span class="pre">DATETIMEOFFSET</span></code> values before the year 1400.</p></li>
 <li><p>Fixed query failure when using <code class="docutils literal notranslate"><span class="pre">char</span></code> types with the <a class="reference internal" href="../functions/string.html#reverse" title="reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a>

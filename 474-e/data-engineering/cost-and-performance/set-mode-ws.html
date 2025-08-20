@@ -118,7 +118,7 @@
           
           <img
             src="../../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -382,10 +382,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -611,9 +614,7 @@ implementation for any catalogs with Starburst Warp Speed.</p>
 </section>
 <section id="platform-specific-requirements">
 <h3 id="platform-specific-requirements">Platform-specific requirements<a class="headerlink" href="#platform-specific-requirements" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed requires your cluster to operate on a Kubernetes-based platform.
-Specifically the <a class="reference internal" href="../../k8s/requirements.html"><span class="doc">Plan your Kubernetes deployment</span></a> apply.</p>
-<p>In addition, Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
+<p>Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
 most important additional requirement is that sufficiently performant and sized
 Non-Volatile Memory Express (NVMe) solid-state drive (SSD) storage is available
 on all nodes, and exclusively used by SEP.</p>
@@ -696,8 +697,6 @@ maximum of seven Starburst Warp Speed catalogs.</p></li>
 <p>Starburst Warp Speed is not supported on a cluster running in
 <a class="reference internal" href="../../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> mode.</p>
 </div>
-<p>Deployment and management is performed with the SEP Helm charts detailed in
-<a class="reference internal" href="../../k8s.html"><span class="doc">Deploy with Kubernetes</span></a> and <a class="reference internal" href="../../k8s/sep-configuration.html"><span class="doc">Configuring Starburst Enterprise in Kubernetes</span></a>.</p>
 <p>Add the following section in your values file for the specific cluster to enable
 Starburst Warp Speed:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>

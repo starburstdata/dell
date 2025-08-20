@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -247,6 +247,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-3-changes-2-jul-2025">474-e.3 changes (2 Jul 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-4-changes-15-jul-2025">474-e.4 changes (15 Jul 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-5-changes-5-aug-2025">474-e.5 changes (5 Aug 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-6-changes-14-aug-2025">474-e.6 changes (14 Aug 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-468-e.html">Release 468-e LTS (28 February 2025)</a></li>
@@ -309,10 +310,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -365,6 +369,8 @@
         <li class="md-nav__item"><a href="#e-4-changes-15-jul-2025" class="md-nav__link">474-e.4 changes (15 Jul 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-5-changes-5-aug-2025" class="md-nav__link">474-e.5 changes (5 Aug 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-6-changes-14-aug-2025" class="md-nav__link">474-e.6 changes (14 Aug 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -600,6 +606,13 @@ clients contained capital letters.</p></li>
 partition.</p></li>
 <li><p>Fixed loading of deletion vectors (DVs) for partitions with special characters
 in Delta Lake.</p></li>
+</ul>
+</section>
+<section id="e-6-changes-14-aug-2025">
+<span id="release-474-e-6"></span><h2 id="e-6-changes-14-aug-2025">474-e.6 changes (14 Aug 2025)<a class="headerlink" href="#e-6-changes-14-aug-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed an issue that prevented querying Delta Lake tables with <code class="docutils literal notranslate"><span class="pre">timestamp_ntz</span></code>
+columns in Unity Catalog.</p></li>
 </ul>
 </section>
 </section>

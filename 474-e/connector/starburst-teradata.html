@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.6 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.6 LTS</a>
   </label>
   
   
@@ -360,7 +360,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#sep-controller-and-receiver-installation">SEP controller and receiver installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-teradata-configuration-properties">Additional Teradata configuration properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#encryption">Encryption</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#native-table-operator">Native table operator</a></li>
 </ul>
@@ -382,10 +381,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -522,8 +524,6 @@
         <li class="md-nav__item"><a href="#id4" class="md-nav__link">General configuration properties</a>
         </li>
         <li class="md-nav__item"><a href="#additional-teradata-configuration-properties" class="md-nav__link">Additional Teradata configuration properties</a>
-        </li>
-        <li class="md-nav__item"><a href="#configuring-in-kubernetes-deployments" class="md-nav__link">Configuring in Kubernetes deployments</a>
         </li>
         <li class="md-nav__item"><a href="#encryption" class="md-nav__link">Encryption</a>
         </li>
@@ -1754,17 +1754,6 @@ maximum concurrency level on SEP. Defaults to 16, identical to the
 <div><p>Set the path for log files of the <a class="reference internal" href="#native-table-operator"><span class="std std-ref">native table operator</span></a> on the Teradata nodes. Default behavior is to log
 to files in the the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> folder.</p>
 </div></blockquote>
-</section>
-<section id="configuring-in-kubernetes-deployments">
-<h3 id="configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments<a class="headerlink" href="#configuring-in-kubernetes-deployments" title="Permalink to this heading">#</a></h3>
-<p>The Starburst Teradata Direct connector is supported for Kubernetes deployments in
-AWS EKS and in Azure AKS meeting <a class="reference internal" href="../k8s/sep-config-teradata-direct.html"><span class="doc">certain requirements</span></a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The configuration to use the connector on Kubernetes is complex and requires
-significant networking and Kubernetes expertise. Contact Starburst Support for
-assistance and help.</p>
-</div>
 </section>
 <section id="encryption">
 <h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permalink to this heading">#</a></h3>
