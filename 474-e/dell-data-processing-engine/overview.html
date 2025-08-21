@@ -239,7 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user-interface">User interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#release-notes">Release notes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#included-libraries">Included libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-version-information">Software version information</a></li>
 </ul>
 </li>
 </ul>
@@ -323,7 +323,7 @@
         </li>
         <li class="md-nav__item"><a href="#release-notes" class="md-nav__link">Release notes</a>
         </li>
-        <li class="md-nav__item"><a href="#included-libraries" class="md-nav__link">Included libraries</a>
+        <li class="md-nav__item"><a href="#software-version-information" class="md-nav__link">Software version information</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -387,100 +387,161 @@ Engine:</p>
 <p>The <a class="reference internal" href="release-notes.html"><span class="doc std std-doc">release notes page</span></a> lists new features, upgraded
 functionality, bug fixes, and breaking changes.</p>
 </section>
-<section id="included-libraries">
-<h3 id="included-libraries">Included libraries<a class="headerlink" href="#included-libraries" title="Permalink to this heading">#</a></h3>
-<p>The following Python and Java libraries are included:</p>
+<section id="software-version-information">
+<h3 id="software-version-information">Software version information<a class="headerlink" href="#software-version-information" title="Permalink to this heading">#</a></h3>
+<p>The following software versions are included:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spark</td>
+<td>3.5.3</td>
+</tr>
+<tr>
+<td>Hive Metastore</td>
+<td>3.1.3</td>
+</tr>
+<tr>
+<td>Hudi</td>
+<td>1.0.1</td>
+</tr>
+<tr>
+<td>Iceberg</td>
+<td>1.8.0</td>
+</tr>
+<tr>
+<td>Delta Lake</td>
+<td>3.3.0</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>1.13.1</td>
+</tr>
+</tbody>
+</table>
+<p>Expand the following lists to view included Python and Java libraries:</p>
 <details>
-<summary>Python</summary>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">absl</span><span class="o">-</span><span class="n">py</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">aiobotocore</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">17</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">aiohappyeyeballs</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">4</span>
-<span class="n">aiohttp</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">11</span><span class="p">.</span><span class="mi">11</span>
-<span class="n">aioitertools</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">aiosignal</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">astunparse</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">async</span><span class="o">-</span><span class="n">timeout</span><span class="o">==</span><span class="mi">5</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">attrs</span><span class="o">==</span><span class="mi">24</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">blis</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">boto3</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">35</span><span class="p">.</span><span class="mi">93</span>
-<span class="n">botocore</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">35</span><span class="p">.</span><span class="mi">93</span>
-<span class="n">certifi</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">14</span>
-<span class="n">charset</span><span class="o">-</span><span class="n">normalizer</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">cramjam</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">et_xmlfile</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">fastparquet</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">11</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">flatbuffers</span><span class="o">==</span><span class="mi">24</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">23</span>
-<span class="n">frozenlist</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">fsspec</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">gast</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">google</span><span class="o">-</span><span class="n">pasta</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">greenlet</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">grpcio</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">69</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">h5py</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">idna</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">10</span>
-<span class="n">jmespath</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">joblib</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">keras</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">libclang</span><span class="o">==</span><span class="mi">18</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">Markdown</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">7</span>
-<span class="n">markdown</span><span class="o">-</span><span class="n">it</span><span class="o">-</span><span class="n">py</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">MarkupSafe</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">mdurl</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">ml</span><span class="o">-</span><span class="n">dtypes</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">multidict</span><span class="o">==</span><span class="mi">6</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">namex</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span>
-<span class="n">numpy</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">openpyxl</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span>
-<span class="n">opt_einsum</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">optree</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">13</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">packaging</span><span class="o">==</span><span class="mi">24</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">pandas</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">patsy</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">pip</span><span class="o">==</span><span class="mi">24</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">propcache</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">protobuf</span><span class="o">==</span><span class="mi">5</span><span class="p">.</span><span class="mi">29</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">pyarrow</span><span class="o">==</span><span class="mi">18</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">Pygments</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">19</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">python</span><span class="o">-</span><span class="n">dateutil</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="n">post0</span>
-<span class="n">pytz</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">PyYAML</span><span class="o">==</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">requests</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">32</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">rich</span><span class="o">==</span><span class="mi">13</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">4</span>
-<span class="n">s3fs</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">s3transfer</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">4</span>
-<span class="n">scipy</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">15</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">setuptools</span><span class="o">==</span><span class="mi">59</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">six</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">17</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">SQLAlchemy</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">37</span>
-<span class="n">statsmodels</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">14</span><span class="p">.</span><span class="mi">4</span>
-<span class="n">spacy</span><span class="o">==</span><span class="n">v3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">tensorboard</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">tensorboard</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">server</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">tensorflow</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">tensorflow</span><span class="o">-</span><span class="n">io</span><span class="o">-</span><span class="n">gcs</span><span class="o">-</span><span class="n">filesystem</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">37</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">termcolor</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">typing_extensions</span><span class="o">==</span><span class="mi">4</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">tzdata</span><span class="o">==</span><span class="mi">2024</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">urllib3</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">Werkzeug</span><span class="o">==</span><span class="mi">3</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">wheel</span><span class="o">==</span><span class="mi">0</span><span class="p">.</span><span class="mi">37</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">wrapt</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">17</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">xlrd</span><span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">yarl</span><span class="o">==</span><span class="mi">1</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">3</span>
-</pre></div>
-</div>
-</details>
+<summary>Python libraries</summary>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>absl-py</td><td>2.1.0</td></tr>
+<tr><td>aiobotocore</td><td>2.17.0</td></tr>
+<tr><td>aiohappyeyeballs</td><td>2.4.4</td></tr>
+<tr><td>aiohttp</td><td>3.11.11</td></tr>
+<tr><td>aioitertools</td><td>0.12.0</td></tr>
+<tr><td>aiosignal</td><td>1.3.2</td></tr>
+<tr><td>astunparse</td><td>1.6.3</td></tr>
+<tr><td>async-timeout</td><td>5.0.1</td></tr>
+<tr><td>attrs</td><td>24.3.0</td></tr>
+<tr><td>blis</td><td>1.2.0</td></tr>
+<tr><td>boto3</td><td>1.35.93</td></tr>
+<tr><td>botocore</td><td>1.35.93</td></tr>
+<tr><td>certifi</td><td>2024.12.14</td></tr>
+<tr><td>charset-normalizer</td><td>3.4.1</td></tr>
+<tr><td>cramjam</td><td>2.9.1</td></tr>
+<tr><td>et_xmlfile</td><td>2.0.0</td></tr>
+<tr><td>fastparquet</td><td>2024.11.0</td></tr>
+<tr><td>flatbuffers</td><td>24.12.23</td></tr>
+<tr><td>frozenlist</td><td>1.5.0</td></tr>
+<tr><td>fsspec</td><td>2024.12.0</td></tr>
+<tr><td>gast</td><td>0.6.0</td></tr>
+<tr><td>google-pasta</td><td>0.2.0</td></tr>
+<tr><td>greenlet</td><td>3.1.1</td></tr>
+<tr><td>grpcio</td><td>1.69.0</td></tr>
+<tr><td>h5py</td><td>3.12.1</td></tr>
+<tr><td>idna</td><td>3.10</td></tr>
+<tr><td>jmespath</td><td>1.0.1</td></tr>
+<tr><td>joblib</td><td>1.4.2</td></tr>
+<tr><td>keras</td><td>3.8.0</td></tr>
+<tr><td>libclang</td><td>18.1.1</td></tr>
+<tr><td>Markdown</td><td>3.7</td></tr>
+<tr><td>markdown-it-py</td><td>3.0.0</td></tr>
+<tr><td>MarkupSafe</td><td>3.0.2</td></tr>
+<tr><td>mdurl</td><td>0.1.2</td></tr>
+<tr><td>ml-dtypes</td><td>0.4.1</td></tr>
+<tr><td>multidict</td><td>6.1.0</td></tr>
+<tr><td>namex</td><td>0.0.8</td></tr>
+<tr><td>numpy</td><td>2.0.2</td></tr>
+<tr><td>openpyxl</td><td>3.1.5</td></tr>
+<tr><td>opt_einsum</td><td>3.4.0</td></tr>
+<tr><td>optree</td><td>0.13.1</td></tr>
+<tr><td>packaging</td><td>24.2</td></tr>
+<tr><td>pandas</td><td>2.2.3</td></tr>
+<tr><td>patsy</td><td>1.0.1</td></tr>
+<tr><td>pip</td><td>24.3.1</td></tr>
+<tr><td>propcache</td><td>0.2.1</td></tr>
+<tr><td>protobuf</td><td>5.29.3</td></tr>
+<tr><td>pyarrow</td><td>18.1.0</td></tr>
+<tr><td>Pygments</td><td>2.19.1</td></tr>
+<tr><td>python-dateutil</td><td>2.9.0.post0</td></tr>
+<tr><td>pytz</td><td>2024.2</td></tr>
+<tr><td>PyYAML</td><td>6.0.2</td></tr>
+<tr><td>requests</td><td>2.32.3</td></tr>
+<tr><td>rich</td><td>13.9.4</td></tr>
+<tr><td>s3fs</td><td>2024.12.0</td></tr>
+<tr><td>s3transfer</td><td>0.10.4</td></tr>
+<tr><td>scipy</td><td>1.15.1</td></tr>
+<tr><td>setuptools</td><td>59.6.0</td></tr>
+<tr><td>six</td><td>1.17.0</td></tr>
+<tr><td>SQLAlchemy</td><td>2.0.37</td></tr>
+<tr><td>statsmodels</td><td>0.14.4</td></tr>
+<tr><td>spacy</td><td>v3.8.3</td></tr>
+<tr><td>tensorboard</td><td>2.18.0</td></tr>
+<tr><td>tensorboard-data-server</td><td>0.7.2</td></tr>
+<tr><td>tensorflow</td><td>2.18.0</td></tr>
+<tr><td>tensorflow-io-gcs-filesystem</td><td>0.37.1</td></tr>
+<tr><td>termcolor</td><td>2.5.0</td></tr>
+<tr><td>typing_extensions</td><td>4.12.2</td></tr>
+<tr><td>tzdata</td><td>2024.2</td></tr>
+<tr><td>urllib3</td><td>2.3.0</td></tr>
+<tr><td>Werkzeug</td><td>3.1.3</td></tr>
+<tr><td>wheel</td><td>0.37.1</td></tr>
+<tr><td>wrapt</td><td>1.17.2</td></tr>
+<tr><td>xlrd</td><td>2.0.1</td></tr>
+<tr><td>yarl</td><td>1.18.3</td></tr>
+</tbody></table></details>
 <details>
-<summary>Java</summary>
-<ul class="simple">
-<li><p>Hudi: <code class="docutils literal notranslate"><span class="pre">org.apache.hudi:hudi-spark3.3.x_2_12:1.0.0</span></code></p></li>
-<li><p>Iceberg: <code class="docutils literal notranslate"><span class="pre">org.apache.iceberg:iceberg-spark-runtime:0.13.2</span></code></p></li>
-<li><p>Nessie <code class="docutils literal notranslate"><span class="pre">org.projectnessie:nessie-spark-extensions:0.45.0</span></code></p></li>
-<li><p>Delta: <code class="docutils literal notranslate"><span class="pre">io.delta:delta-spark_2_12:3.3.0</span></code></p></li>
-</ul>
+<summary>Java libraries</summary>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hudi</td>
+<td>org.apache.hudi:hudi-spark3.3.x_2_12:1.0.0</td>
+</tr>
+<tr>
+<td>Iceberg</td>
+<td>org.apache.iceberg:iceberg-spark-runtime:0.13.2</td>
+</tr>
+<tr>
+<td>Nessie</td>
+<td>org.projectnessie:nessie-spark-extensions:0.45.0</td>
+</tr>
+<tr>
+<td>Delta</td>
+<td>io.delta:delta-spark_2_12:3.3.0</td>
+</tr>
+</tbody>
+</table>
 </details>
-<p>The Java libraries are stored in the <code class="docutils literal notranslate"><span class="pre">/opt/spark/lib</span></code> directory and must be added to
-your jobs as needed.</p>
+<p>The Java libraries are stored in the <code class="docutils literal notranslate"><span class="pre">opt/spark/lib</span></code> directory and must be added
+to your jobs as needed.</p>
 </section>
 </section>
 </section>
