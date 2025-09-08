@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', 'UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Access control &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Object storage governance" href="object-storage-governance.html" />
+    <link rel="prev" title="Resource pools" href="resource-pools.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/access-control.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#dell-data-processing-engine/access-control" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
+          
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 476-e.1 LTS logo"
+          />
+          
+        </span>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Access control
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+       
+  
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (474-e)" href="/474-e/">Latest LTS (474-e)</a>
+      
+          <a title="476-e LTS" href="/476-e/">476-e LTS</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+    </div>
+  </div>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.1 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/starburst-enterprise.html">What is Starburst Enterprise?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learn/index.html">Learn Starburst Enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Access control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#view-roles">View roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-role">Create role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assign-entities-to-a-role">Assign entities to a role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grant-or-revoke-privileges">Grant or revoke privileges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-jobs">Spark jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-system">Spark system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-privileges">Other privileges</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-role">Delete role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-privilege-sets">Example privilege sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Trino developer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+  <div class="local-toc">
+    <strong>Contents</strong>
+    <ul>
+<li><a class="reference internal" href="#">Access control</a><ul>
+<li><a class="reference internal" href="#view-roles">View roles</a></li>
+<li><a class="reference internal" href="#create-role">Create role</a></li>
+<li><a class="reference internal" href="#assign-entities-to-a-role">Assign entities to a role</a></li>
+<li><a class="reference internal" href="#grant-or-revoke-privileges">Grant or revoke privileges</a><ul>
+<li><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a></li>
+<li><a class="reference internal" href="#spark-jobs">Spark jobs</a></li>
+<li><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
+<li><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
+<li><a class="reference internal" href="#spark-system">Spark system</a></li>
+<li><a class="reference internal" href="#other-privileges">Other privileges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delete-role">Delete role</a></li>
+<li><a class="reference internal" href="#example-privilege-sets">Example privilege sets</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="access-control">
+<h1 id="dell-data-processing-engine-access-control--page-root">Access control<a class="headerlink" href="#dell-data-processing-engine-access-control--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine lets platform administrators grant or revoke
+specific user privileges by integrating with Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP)’s <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access
+control</span></a> (BIAC).</p>
+<section id="view-roles">
+<h2 id="view-roles">View roles<a class="headerlink" href="#view-roles" title="Permalink to this heading">#</a></h2>
+<p>In the <strong>Access control</strong> section of the Starburst Enterprise web UI, select <strong>Roles and
+privileges</strong> from the sidebar to view a list of your roles and basic information
+for each one:</p>
+<figure class="align-default">
+<img alt="Roles and privileges" class="imgborder" src="../_images/ddpe-access-control-roles.png"/>
+</figure>
+<p>The following information is displayed:</p>
+<ul class="simple">
+<li><p><strong>Role name</strong>: The name given to the role. Click on the role name to view the
+<strong>Details</strong> dialogue for that role.</p></li>
+<li><p><strong>Role description</strong>: The description given to the role.</p></li>
+</ul>
+<p>Click the options menu for a role to view its <a class="reference internal" href="#ddpe-grant-privileges-ui"><span class="std std-ref">details
+dialog</span></a>, <a class="reference internal" href="#ddpe-assign-users-ui"><span class="std std-ref">assign new entities</span></a>
+to the role, or <a class="reference internal" href="#ddpe-delete-role"><span class="std std-ref">delete</span></a> the role.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only <a class="reference internal" href="#ddpe-assign-users-ui"><span class="std std-ref">roles assigned to the current role</span></a> are visible.</p>
+</div>
+</section>
+<section id="create-role">
+<h2 id="create-role">Create role<a class="headerlink" href="#create-role" title="Permalink to this heading">#</a></h2>
+<p>To create a new role:</p>
+<ol class="arabic simple">
+<li><p>Click <strong>Create role</strong>.</p></li>
+<li><p>In the <strong>Add a new role</strong> dialog, enter a name and description for the new role.</p></li>
+<li><p>Click <strong>Add role</strong>.</p></li>
+</ol>
+</section>
+<section id="assign-entities-to-a-role">
+<span id="ddpe-assign-users-ui"></span><h2 id="assign-entities-to-a-role">Assign entities to a role<a class="headerlink" href="#assign-entities-to-a-role" title="Permalink to this heading">#</a></h2>
+<p>To assign an entity to a role:</p>
+<figure class="align-default">
+<img alt="Assign user to role" class="imgborder" src="../_images/ddpe-access-control-assign-1.png"/>
+</figure>
+<ol class="arabic simple">
+<li><p>Click <strong>Assign</strong> in the options menu for the role you want to assign entities
+to.</p></li>
+<li><p>In the <strong>Entity category</strong> drop-down menu, select the type of entity to be
+assigned. You can choose user, group, or role.</p></li>
+<li><p>In the entity field, enter the user, group, or role that you would like to
+assign to the role.</p></li>
+<li><p>Optionally allow the assigned entity to delegate these privileges to other
+entities</p></li>
+<li><p>Click <strong>Assign</strong>.</p></li>
+</ol>
+<p>When the <strong>Allow [user/group/role] receiving privilege to grant to others</strong>
+toggle is clicked during role assignment, the entity being granted the role is
+given the ability to assign that same role to other entities. For example, if
+you assign the <code class="docutils literal notranslate"><span class="pre">data_analyst</span></code> role to user <code class="docutils literal notranslate"><span class="pre">alice</span></code> and click this toggle, <code class="docutils literal notranslate"><span class="pre">alice</span></code> is
+able to assign the <code class="docutils literal notranslate"><span class="pre">data_analyst</span></code> role to other users, groups, and roles.</p>
+</section>
+<section id="grant-or-revoke-privileges">
+<span id="ddpe-grant-privileges-ui"></span><h2 id="grant-or-revoke-privileges">Grant or revoke privileges<a class="headerlink" href="#grant-or-revoke-privileges" title="Permalink to this heading">#</a></h2>
+<p>You can grant or revoke Dell Data Processing Engine privileges to a role from
+the role’s details dialog. You can open the details dialog by either clicking
+the role name or by clicking <strong>Details</strong> in the role’s options menu:</p>
+<figure class="align-default">
+<img alt="Role details" class="imgborder" src="../_images/ddpe-access-control-details.png"/>
+</figure>
+<ol class="arabic simple">
+<li><p>Click <strong>Add privileges</strong>.</p></li>
+<li><p>For Dell Data Processing Engine privileges, select the <strong>Other</strong> radio
+button.</p></li>
+</ol>
+<p>Read the entity type sections to learn more about the Dell Data Processing
+Engine entities and the available privileges:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ddpe-spark-connect-priv"><span class="std std-ref">Spark Connect servers</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-spark-jobs-priv"><span class="std std-ref">Spark jobs</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-spark-resource-pool-priv"><span class="std std-ref">Spark resource pools</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-spark-uploads-priv"><span class="std std-ref">Spark uploads</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-spark-system-priv"><span class="std std-ref">Spark system</span></a></p></li>
+</ul>
+<section id="spark-connect-servers">
+<span id="ddpe-spark-connect-priv"></span><h3 id="spark-connect-servers">Spark Connect servers<a class="headerlink" href="#spark-connect-servers" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="job-submission.html#ddpe-spark-connect-server-ui"><span class="std std-ref">Spark Connect
+servers</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Choose whether to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select <strong>All privileges below</strong> or select specific privileges to grant or deny.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privileges are available:</p>
+<table id="id1">
+<caption><span class="caption-text">Spark Connect server privileges</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Access detailed statuses and logs for all existing Spark Connect servers.</p></li>
+<li><p>Delete existing Spark Connect servers.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create Spark Connect servers.</p></li>
+<li><p>Access detailed statuses and logs for Spark Connect servers created by this user.</p></li>
+<li><p>Delete Spark Connect servers created by this user.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spark-jobs">
+<span id="ddpe-spark-jobs-priv"></span><h3 id="spark-jobs">Spark jobs<a class="headerlink" href="#spark-jobs" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="job-submission.html#ddpe-spark-batch-job-ui"><span class="std std-ref">Spark batch
+jobs</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select <strong>All privileges below</strong> or select specific privileges to grant or deny.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privileges are available:</p>
+<table id="id2">
+<caption><span class="caption-text">Spark batch jobs privileges</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Access detailed statuses and logs for all existing Spark batch jobs.</p></li>
+<li><p>Delete all existing Spark batch jobs.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create Spark batch jobs.</p></li>
+<li><p>Access detailed statuses and logs for Spark batch jobs created by this user.</p></li>
+<li><p>Delete Spark batch jobs created by this user.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spark-resource-pools">
+<span id="ddpe-spark-resource-pool-priv"></span><h3 id="spark-resource-pools">Spark resource pools<a class="headerlink" href="#spark-resource-pools" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="resource-pools.html"><span class="doc std std-doc">resource pools</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Select <strong>All resource pools</strong> or use the <strong>Resource pools</strong> drop-down menu to
+select specific resource pools.</p></li>
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Use</span></code> privilege.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privilege is available:</p>
+<table id="id3">
+<caption><span class="caption-text">Resource pools privileges</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Use this resource pool when creating Spark batch jobs. Role must also
+have the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege for Spark batch jobs.</p></li>
+<li><p>Use this resource pool when creating Spark Connect servers. Role must
+also have the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege for Spark Connect servers.</p></li>
+<li><p>Create sessions for Spark Connect servers that use this resource pool.</p></li>
+<li><p>Generate S3 pre-signed URLs.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spark-uploads">
+<span id="ddpe-spark-uploads-priv"></span><h3 id="spark-uploads">Spark uploads<a class="headerlink" href="#spark-uploads" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="cli.html#ddpe-cli-uploads"><span class="std std-ref">Spark uploads</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select <strong>All privileges below</strong> or select specific privileges to grant or deny.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privileges are available:</p>
+<table id="id4">
+<caption><span class="caption-text">Spark Connect server privileges</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Access all existing uploads.</p></li>
+<li><p>Delete all existing uploads.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Upload new files or secrets.</p></li>
+<li><p>Access uploads that were created by this user.</p></li>
+<li><p>Delete uploads that were uploaded by this user.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spark-system">
+<span id="ddpe-spark-system-priv"></span><h3 id="spark-system">Spark system<a class="headerlink" href="#spark-system" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to the Spark system:</p>
+<ol class="arabic simple">
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Manage</span></code> privilege.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privilege is available:</p>
+<table id="id5">
+<caption><span class="caption-text">Spark system privileges</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Perform administrative tasks on the Spark system.</p></li>
+<li><p>Create, update, and delete resource pools.</p></li>
+<li><p>Access system logs and system events.</p></li>
+<li><p>Restart Spark History server.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-privileges">
+<h3 id="other-privileges">Other privileges<a class="headerlink" href="#other-privileges" title="Permalink to this heading">#</a></h3>
+<p>View the <a class="reference internal" href="../security/biac-privileges.html"><span class="doc std std-doc">general BIAC privileges documentation</span></a>
+for more information on other entities and related privileges, such as:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../security/biac-privileges.html#biac-entity-location"><span class="std std-ref">Location privileges</span></a></p></li>
+<li><p><a class="reference internal" href="../security/biac-privileges.html#biac-entity-tables"><span class="std std-ref">Table privileges</span></a></p></li>
+<li><p><a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">User interface privileges</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="delete-role">
+<span id="ddpe-delete-role"></span><h2 id="delete-role">Delete role<a class="headerlink" href="#delete-role" title="Permalink to this heading">#</a></h2>
+<p>To delete an existing role:</p>
+<ol class="arabic simple">
+<li><p>In the options menu, click <strong>Delete</strong>.</p></li>
+<li><p>In the confirmation dialog, type <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> and click <strong>Yes, delete</strong>.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting a role is permanent and cannot be undone.</p>
+</div>
+</section>
+<section id="example-privilege-sets">
+<h2 id="example-privilege-sets">Example privilege sets<a class="headerlink" href="#example-privilege-sets" title="Permalink to this heading">#</a></h2>
+<p>The following shows an example privilege set for a Dell Data Processing Engine
+admin:</p>
+<table id="id6">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity</p></th>
+<th class="head"><p>Privilege</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All roles</p></td>
+<td><p><strong>Allow</strong>: Create</p></td>
+</tr>
+<tr class="row-odd"><td><p>All Spark connect servers</p></td>
+<td><p><strong>Allow</strong>: Create</p></td>
+</tr>
+<tr class="row-even"><td><p>All Spark connect servers</p></td>
+<td><p><strong>Allow</strong>: Manage</p></td>
+</tr>
+<tr class="row-odd"><td><p>All Spark jobs</p></td>
+<td><p><strong>Allow</strong>: Create</p></td>
+</tr>
+<tr class="row-even"><td><p>All Spark jobs</p></td>
+<td><p><strong>Allow</strong>: Manage</p></td>
+</tr>
+<tr class="row-odd"><td><p>All Spark resource pools</p></td>
+<td><p><strong>Allow</strong>: Use</p></td>
+</tr>
+<tr class="row-even"><td><p>Spark system</p></td>
+<td><p><strong>Allow</strong>: Manage</p></td>
+</tr>
+<tr class="row-odd"><td><p>All Spark uploads</p></td>
+<td><p><strong>Allow</strong>: Create</p></td>
+</tr>
+<tr class="row-even"><td><p>All Spark uploads</p></td>
+<td><p><strong>Allow</strong>: Manage</p></td>
+</tr>
+<tr class="row-odd"><td><p>User interface</p></td>
+<td><p><strong>Allow</strong>: Show</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following shows an example privilege set for a Dell Data Processing Engine
+user:</p>
+<table id="id7">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity</p></th>
+<th class="head"><p>Privilege</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All Spark jobs</p></td>
+<td><p><strong>Allow</strong>: Create</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spark resource pool: <code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<td><p><strong>Allow</strong>: Use</p></td>
+</tr>
+<tr class="row-even"><td><p>User interface: <code class="docutils literal notranslate"><span class="pre">spark</span> <span class="pre">runtime</span></code></p></td>
+<td><p><strong>Allow</strong>: Show</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="limitations">
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<p>Switching roles to execute the API is not currently supported for calls from the
+<a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>. The user has all available roles applied when accessing BIAC, with
+the exception of the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role.</p>
+<ul class="simple">
+<li><p>When the operation is coming from the CLI, all roles for a user apply except <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code>.</p></li>
+<li><p>When the operation is coming from the Starburst Enterprise web UI, the active role
+applies.</p></li>
+<li><p>When the user views the Spark History server or uses Spark Connect, all
+roles apply except <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code>.</p></li>
+</ul>
+<p>When all roles apply, a <code class="docutils literal notranslate"><span class="pre">DENY</span></code> grant in any role may reduce a user’s access.</p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="resource-pools.html" title="Resource pools"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Resource pools </span>
+              </div>
+            </a>
+          
+          
+            <a href="object-storage-governance.html" title="Object storage governance"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Object storage governance </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
