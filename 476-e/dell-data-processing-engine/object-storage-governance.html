@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 476-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 476-e.2 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.2 LTS</a>
   </label>
   
   
@@ -365,6 +365,16 @@ your catalog configuration file to <code class="docutils literal notranslate"><s
 <span class="na">starburst.access-control.location.enabled</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
+<p>The accessing role must be granted privileges for the object storage location:</p>
+<ol class="arabic simple">
+<li><p>In the Starburst Enterprise web UI navigate to the <strong>Access control</strong> -&gt; <strong>Roles and
+privileges</strong> section.</p></li>
+<li><p>Click the role you want to grant permissions to and click <strong>Add privilege</strong>.</p></li>
+<li><p>Choose the <strong>Locations</strong> radio button and enter the prefix for the object
+storage location, such as <code class="docutils literal notranslate"><span class="pre">s3://internalspark/*</span></code> and click <strong>Save privilege</strong>.</p></li>
+</ol>
+<p>You can grant the location privilege to the <code class="docutils literal notranslate"><span class="pre">public</span></code> role to give access to all
+users.</p>
 </section>
 <section id="catalog-metadata-synchronization">
 <h2 id="catalog-metadata-synchronization">Catalog metadata synchronization<a class="headerlink" href="#catalog-metadata-synchronization" title="Permalink to this heading">#</a></h2>
