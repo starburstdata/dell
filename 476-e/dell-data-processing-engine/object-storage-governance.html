@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 476-e.2 LTS logo"
+            alt="Dell Data Analytics Engine 476-e.4 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.2 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.4 LTS</a>
   </label>
   
   
@@ -240,6 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Object storage governance</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#location-privileges">Location privileges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#catalog-metadata-synchronization">Catalog metadata synchronization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#config-object-storage-gov">Configuration</a></li>
 </ul>
@@ -317,6 +318,7 @@
     <ul>
 <li><a class="reference internal" href="#">Object storage governance</a><ul>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#location-privileges">Location privileges</a></li>
 <li><a class="reference internal" href="#catalog-metadata-synchronization">Catalog metadata synchronization</a><ul>
 <li><a class="reference internal" href="#config-object-storage-gov">Configuration</a></li>
 </ul>
@@ -366,7 +368,15 @@ your catalog configuration file to <code class="docutils literal notranslate"><s
 <span class="na">starburst.access-control.location.enabled</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
-<p>The accessing role must be granted privileges for the object storage location:</p>
+</section>
+<section id="location-privileges">
+<h2 id="location-privileges">Location privileges<a class="headerlink" href="#location-privileges" title="Permalink to this heading">#</a></h2>
+<p>The accessing role can be granted privileges for the object storage location,
+but this is not strictly required for all object store governance scenarios.
+Location privileges are part of access control management and should be set up
+according to your organization’s expected access patterns. They are not a strict
+prerequisite for object store governance, but may be necessary for direct access
+to unstructured data.</p>
 <ol class="arabic simple">
 <li><p>In the Starburst Enterprise web UI navigate to the <strong>Access control</strong> -&gt; <strong>Roles and
 privileges</strong> section.</p></li>
