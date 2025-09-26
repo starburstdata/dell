@@ -245,6 +245,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-servers">Jupyter Notebook servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-notebook-server">Start Notebook server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notebook-example">Notebook example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-additional-python-packages">Install additional Python packages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
@@ -323,6 +330,13 @@
 <li><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#jupyter-notebook-servers">Jupyter Notebook servers</a><ul>
+<li><a class="reference internal" href="#start-notebook-server">Start Notebook server</a></li>
+<li><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
+<li><a class="reference internal" href="#notebook-example">Notebook example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-additional-python-packages">Install additional Python packages</a></li>
 </ul>
 </li>
 </ul>
@@ -338,9 +352,10 @@
             
   <section id="job-submission">
 <h1 id="dell-data-processing-engine-job-submission--page-root">Job submission<a class="headerlink" href="#dell-data-processing-engine-job-submission--page-root" title="Permalink to this heading">#</a></h1>
-<p>You can submit Dell Data Processing Engine batch jobs and launch Spark Connect
-servers from the <a class="reference internal" href="../overview/sep-ui.html"><span class="doc std std-doc">Starburst Enterprise web UI</span></a>. Batch and Spark Connect
-jobs can also be managed programmatically with the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>.</p>
+<p>You can submit Dell Data Processing Engine batch jobs, Spark Connect servers,
+and Jupyter Notebooks from the <a class="reference internal" href="../overview/sep-ui.html"><span class="doc std std-doc">Starburst Enterprise web UI</span></a>. Batch jobs,
+Spark Connect servers, and Jupyter Notebooks can also be managed
+programmatically with the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>.</p>
 <section id="batch-jobs-ui">
 <span id="ddpe-spark-batch-job-ui"></span><h2 id="batch-jobs-ui">Batch jobs UI<a class="headerlink" href="#batch-jobs-ui" title="Permalink to this heading">#</a></h2>
 <p>Click <strong>Spark jobs</strong> in the Dell Data Processing Engine section of the
@@ -454,6 +469,115 @@ the same file type. Files are displayed on the right side of the pane.</p></li>
 <p>To delete a server, click the options menu for the server and select <strong>Delete
 server</strong>.</p>
 </section>
+</section>
+<section id="jupyter-notebook-servers">
+<span id="ddpe-jupyter-notebook-ui"></span><h2 id="jupyter-notebook-servers">Jupyter Notebook servers<a class="headerlink" href="#jupyter-notebook-servers" title="Permalink to this heading">#</a></h2>
+<p>Dell Data Processing Engine supports <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>
+servers, offering fast and interactive ways to explore your data. Users can view
+the Notebook interface from the <strong>Notebook servers</strong> tab. Access to the Notebook
+servers depend on the <a class="reference internal" href="access-control.html#ddpe-jupyter-priv"><span class="std std-ref">Jupyter Notebook privileges</span></a> a user’s
+role has.</p>
+<figure class="align-default">
+<img alt="Jupyter Notebook tab view" class="imgborder" src="../_images/spark-jupyter-view.png"/>
+</figure>
+<p>The following information is displayed about your Notebook servers:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name given to the server.</p></li>
+<li><p><strong>Created by</strong>: The user who created the server.</p></li>
+<li><p><strong>URL</strong>: The web address to access the server.</p></li>
+<li><p><strong>Resource pool</strong>: The resource pool allocated to the server.</p></li>
+<li><p><strong>Description</strong>: Additional information or notes about the server.</p></li>
+<li><p><strong>Status</strong>: The current state of the server, such as <code class="docutils literal notranslate"><span class="pre">Started</span></code> or <code class="docutils literal notranslate"><span class="pre">Shutdown</span></code>.</p></li>
+<li><p><strong>Date created</strong>: The timestamp for when the server was created.</p></li>
+</ul>
+<p>Click the options menu for a server to perform additional actions such as
+starting a shutdown server, shutting down a running server, downloading logs, or
+<a class="reference internal" href="#ddpe-jupyter-delete"><span class="std std-ref">deleting the server</span></a>.</p>
+<section id="start-notebook-server">
+<h3 id="start-notebook-server">Start Notebook server<a class="headerlink" href="#start-notebook-server" title="Permalink to this heading">#</a></h3>
+<p>Click <strong>+ Start Notebook server</strong> to open a dialog to launch a new server:</p>
+<figure class="align-default">
+<img alt="Jupyter Notebook create" src="../_images/spark-jupyter-create.png"/>
+</figure>
+<p>Give the server a name, assign a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a>, and
+optionally provide a description. Click <strong>Start</strong>.</p>
+<p>The new server displays in the server list with a <code class="docutils literal notranslate"><span class="pre">Pending</span></code> status for a few
+moments before the <strong>URL</strong> column populates and the server is moved to the
+<code class="docutils literal notranslate"><span class="pre">Started</span></code> status. Click the URL to open the server:</p>
+<figure class="align-default">
+<img alt="Jupyter Notebook UI" src="../_images/spark-jupyter-ui.png"/>
+</figure>
+</section>
+<section id="delete-notebook-server">
+<span id="ddpe-jupyter-delete"></span><h3 id="delete-notebook-server">Delete Notebook server<a class="headerlink" href="#delete-notebook-server" title="Permalink to this heading">#</a></h3>
+<p>To delete an existing Jupyter Notebook server, open the options menu for a
+server, choose whether to keep the files associate with this server or not, and
+click <strong>Delete</strong>:</p>
+<figure class="align-default">
+<img alt="Jupyter Notebook delete server" src="../_images/spark-jupyter-delete.png"/>
+</figure>
+</section>
+<section id="notebook-example">
+<h3 id="notebook-example">Notebook example<a class="headerlink" href="#notebook-example" title="Permalink to this heading">#</a></h3>
+<p>The following shows a basic workflow for using Spark in a Jupyter Notebook:</p>
+<ol class="arabic">
+<li><p>Initiate your notebook with <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
+   <span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="s2">"sc://sj-iceberg-cpu-grpc.rke2-dev-test-01.eco-tests.eng.starburstdata.net:8787/token=eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ..."</span><span class="p">)</span> \
+   <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>After you have created your <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code>, you can initialize and work with
+Spark DataFrames, such as the following:</p>
+<p>Create a DataFrame:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"Alice"</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Bob"</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Cathy"</span><span class="p">,</span> <span class="mi">29</span><span class="p">)]</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Age"</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Show the DataFrame contents:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>+-----+---+
+<span class="p">|</span> Name<span class="p">|</span>Age<span class="p">|</span>
++-----+---+
+<span class="p">|</span>Alice<span class="p">|</span> <span class="m">34</span><span class="p">|</span>
+<span class="p">|</span>  Bob<span class="p">|</span> <span class="m">45</span><span class="p">|</span>
+<span class="p">|</span>Cathy<span class="p">|</span> <span class="m">29</span><span class="p">|</span>
++-----+---+
+</pre></div>
+</div>
+<p>Perform a basic transformation:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>+-----+---+
+<span class="p">|</span> Name<span class="p">|</span>Age<span class="p">|</span>
++-----+---+
+<span class="p">|</span>Alice<span class="p">|</span> <span class="m">34</span><span class="p">|</span>
+<span class="p">|</span>  Bob<span class="p">|</span> <span class="m">45</span><span class="p">|</span>
++-----+---+
+</pre></div>
+</div>
+</li>
+</ol>
+<p>View the official <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebook
+documentation</a> for more
+details.</p>
+</section>
+</section>
+<section id="install-additional-python-packages">
+<h2 id="install-additional-python-packages">Install additional Python packages<a class="headerlink" href="#install-additional-python-packages" title="Permalink to this heading">#</a></h2>
+<p>You can install additional Python packages in your Spark environment using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">package_name</span></code>.</p>
+<p>For example, to install <code class="docutils literal notranslate"><span class="pre">Theano</span></code>, add the following command to your job:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">theano</span>
+</pre></div>
+</div>
 </section>
 </section>
 

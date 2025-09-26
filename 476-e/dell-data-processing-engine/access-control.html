@@ -247,6 +247,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-system">Spark system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#other-privileges">Other privileges</a></li>
 </ul>
 </li>
@@ -329,6 +330,7 @@
 <li><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
 <li><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li><a class="reference internal" href="#spark-system">Spark system</a></li>
+<li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
 <li><a class="reference internal" href="#other-privileges">Other privileges</a></li>
 </ul>
 </li>
@@ -628,6 +630,48 @@ to grant the privileges to other entities.</p></li>
 </tbody>
 </table>
 </section>
+<section id="jupyter-notebooks">
+<span id="ddpe-jupyter-priv"></span><h3 id="jupyter-notebooks">Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="job-submission.html#ddpe-jupyter-notebook-ui"><span class="std std-ref">Jupyter Notebook servers</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select <strong>All privileges below</strong> or select specific privileges to grant or deny.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privileges are available:</p>
+<table id="id6">
+<caption><span class="caption-text">Jupyter Notebook server privileges</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Access detailed statuses and logs for all existing Jupyter Notebook  servers.</p></li>
+<li><p>Stop and start existing Jupyter Notebook servers.</p></li>
+<li><p>Delete all existing Jupyter Notebook servers.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create new Jupyter Notebook servers.</p></li>
+<li><p>Access detailed statuses and logs for Jupyter Notebook servers created by this user.</p></li>
+<li><p>Stop and start Jupyter Notebook servers created by this user.</p></li>
+<li><p>Delete Jupyter Notebook servers created by this user.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="other-privileges">
 <h3 id="other-privileges">Other privileges<a class="headerlink" href="#other-privileges" title="Permalink to this heading">#</a></h3>
 <p>View the <a class="reference internal" href="../security/biac-privileges.html"><span class="doc std std-doc">general BIAC privileges documentation</span></a>
@@ -655,8 +699,8 @@ for more information on other entities and related privileges, such as:</p>
 <h2 id="example-privilege-sets">Example privilege sets<a class="headerlink" href="#example-privilege-sets" title="Permalink to this heading">#</a></h2>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 admin:</p>
-<table id="id6">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -701,8 +745,8 @@ admin:</p>
 </table>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 user:</p>
-<table id="id7">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>

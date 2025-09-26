@@ -348,6 +348,24 @@ UI</span></a> or programmatically with the <a class="reference internal" href="c
 Dell Data Processing engine resource pools. You must have the <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">Spark
 management</span></a> UI privilege to access the <strong>Resource pools
 management</strong> pane.</p>
+<p>The following global metrics for your resource pools are displayed:</p>
+<figure class="align-default">
+<img alt="Resource pool view" class="imgborder" src="../_images/spark-resource-pool-metrics.png"/>
+</figure>
+<ul class="simple">
+<li><p><strong>Total CPU cores available</strong>: The total number of CPU cores available for use
+across all resource pools.</p></li>
+<li><p><strong>CPU cores remaining</strong>: The number of CPU cores that are not assigned to
+any resource pool.</p></li>
+<li><p><strong>Total memory available</strong>: The total amount of memory (RAM) allocated for use
+across all resource pools.</p></li>
+<li><p><strong>Memory remaining</strong>: The amount of memory that is not assigned to any
+resource pool.</p></li>
+<li><p><strong>Total GPU cores available</strong>: The total number of GPU cores available for use
+across all resource pools.</p></li>
+<li><p><strong>GPU cores remaining</strong>: The number of GPU cores that are not assigned to
+any resource pool.</p></li>
+</ul>
 <section id="view-resource-pools">
 <h3 id="view-resource-pools">View resource pools<a class="headerlink" href="#view-resource-pools" title="Permalink to this heading">#</a></h3>
 <p>The <strong>Resource pools management</strong> UI pane lists relevant information about your
@@ -362,6 +380,9 @@ resource pools:</p>
 <li><p><strong>Max CPU cores</strong>: The maximum number of CPU cores used by the resource pool.</p></li>
 <li><p><strong>Min memory</strong>: The minimum amount of memory used by the resource pool.</p></li>
 <li><p><strong>Max memory</strong>: The maximum amount of memory used by the resource pool.</p></li>
+<li><p><strong>Max GPU cores</strong>: The maximum number of GPU cores used by the resource pool.</p></li>
+<li><p><strong>Max GPU cores per application</strong>: The maximum number of GPU cores used by any
+individual application.</p></li>
 </ul>
 </section>
 <section id="create-resource-pool">
@@ -379,6 +400,8 @@ and the <strong>Max CPU cores</strong> fields.</p></li>
 <li><p>Configure the range of the allocated memory using the <strong>Min memory</strong> and
 <strong>Max memory</strong> fields. Use the <strong>Unit</strong> menu to select a unit, either <code class="docutils literal notranslate"><span class="pre">MiB</span></code>
 or <code class="docutils literal notranslate"><span class="pre">GiB</span></code>.</p></li>
+<li><p>Optionally enable GPU support. The <strong>Max GPU cores</strong> and <strong>Max GPU cores per
+application</strong> fields are required if using GPU support.</p></li>
 <li><p>Click <strong>Create</strong>.</p></li>
 </ol>
 <div class="admonition note">
