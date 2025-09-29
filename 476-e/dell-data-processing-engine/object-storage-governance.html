@@ -370,7 +370,7 @@ your catalog configuration file to <code class="docutils literal notranslate"><s
 </div>
 </section>
 <section id="location-privileges">
-<h2 id="location-privileges">Location privileges<a class="headerlink" href="#location-privileges" title="Permalink to this heading">#</a></h2>
+<span id="location-object-storage-gov"></span><h2 id="location-privileges">Location privileges<a class="headerlink" href="#location-privileges" title="Permalink to this heading">#</a></h2>
 <p>The accessing role can be granted privileges for the object storage location,
 but this is not strictly required for all object store governance scenarios.
 Location privileges are part of access control management and should be set up
@@ -608,8 +608,10 @@ attributes:</p>
 <li><p>Object store: <code class="docutils literal notranslate"><span class="pre">Engineering</span></code></p></li>
 </ul>
 </li>
-<li><p>Ensure the querying role has the necessary <a class="reference internal" href="access-control.html"><span class="doc std std-doc">privilege grants</span></a>
-to access the object store location.</p></li>
+<li><p>Add a location privilege for the object store path to the role that is
+accessing the data. For example, grant a <a class="reference internal" href="#location-object-storage-gov"><span class="std std-ref">location
+privilege</span></a> for <code class="docutils literal notranslate"><span class="pre">s3://dell-spark-demo/*</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">demo_spark_user</span></code> role.</p></li>
 <li><p>Submit a job from the <a class="reference internal" href="job-submission.html"><span class="doc std std-doc">job submission pane</span></a> with the
 following example attributes:</p>
 <ul class="simple">
