@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 476-e.4 LTS logo"
+            alt="Dell Data Analytics Engine 476-e.5 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.4 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.5 LTS</a>
   </label>
   
   
@@ -1057,7 +1057,7 @@ the same Starburst data catalog instance.</p>
 <h4 id="hive-connector">Hive connector<a class="headerlink" href="#hive-connector" title="Permalink to this heading">#</a></h4>
 <p>The following example configures the Hive connector to use Starburst data catalog:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">hive</span>
-<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue_v2</span>
+<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue</span>
 <span class="na">hive.metastore.glue.endpoint-url</span><span class="o">=</span><span class="s">http://starburst-portal:8080/api/v1/glue</span>
 <span class="na">hive.metastore.glue.region</span><span class="o">=</span><span class="s">us-east-1</span>
 <span class="na">hive.metastore.glue.catalogid</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
@@ -1087,7 +1087,7 @@ catalog:</p>
 <p>The following example configures the Delta Lake connector to use Starburst data
 catalog:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">delta_lake</span>
-<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue_v2</span>
+<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue</span>
 <span class="na">hive.metastore.glue.endpoint-url</span><span class="o">=</span><span class="s">http://starburst-portal:8080/api/v1/glue</span>
 <span class="na">hive.metastore.glue.region</span><span class="o">=</span><span class="s">us-east-1</span>
 <span class="na">hive.metastore.glue.catalogid</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
