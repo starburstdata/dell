@@ -323,10 +323,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -527,7 +530,6 @@ planned for when sizing your cluster.</p>
 <span id="cache-service-standalone"></span><h3 id="standalone-deployment">Standalone deployment<a class="headerlink" href="#standalone-deployment" title="Permalink to this heading">#</a></h3>
 <p>A standalone deployment ensures that the service is not affected by coordinator
 performance, or the deployment of a new release on the SEP cluster.</p>
-<p>Deployment of the cache service in Kubernetes can be <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">managed with the available Helm chart</span></a>.</p>
 <p>Manual deployment relies on using a tarball:</p>
 <ul class="simple">
 <li><p>To download the cache service binary file, contact Starburst Support</p></li>
@@ -540,6 +542,8 @@ the release number, is called the <em>installation</em> directory. It contains a
 necessary resources.</p>
 <p>Move the extracted directory into the desired location, such as <code class="docutils literal notranslate"><span class="pre">/opt/</span></code>, and
 you are ready to proceed with configuring the service.</p>
+<p>When configuring a secrets provider, use the <code class="docutils literal notranslate"><span class="pre">secrets-plugins-dir</span></code> property in
+your <code class="docutils literal notranslate"><span class="pre">secrets.toml</span></code> file to point to the directory with the tarball.</p>
 </section>
 </section>
 <section id="deploy-the-cache-service">
@@ -558,11 +562,10 @@ cache service running in embedded mode.</p>
 <section id="enable-the-cache-service">
 <h3 id="enable-the-cache-service">Enable the cache service<a class="headerlink" href="#enable-the-cache-service" title="Permalink to this heading">#</a></h3>
 <p>To use table scan redirections or Hive materialized views, the cache service
-must first <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">be installed and enabled</span></a>.
-Our reference documentation has <a class="reference internal" href="#cache-service-requirements"><span class="std std-ref">Requirements</span></a>
-and instructions for doing so. Take the time to read about the <a class="reference internal" href="#cache-service-deploy"><span class="std std-ref">two types of deployments</span></a>, standalone and embedded, to see which is
-better suited to your cluster. If your organization uses our Helm charts to
-deploy SEP, you can use the <a class="reference internal" href="../k8s/cache-service-configuration.html"><span class="doc">Helm chart for the cache service</span></a> to deploy it as standalone service.</p>
+must first be installed and enabled. Our reference documentation has
+<a class="reference internal" href="#cache-service-requirements"><span class="std std-ref">Requirements</span></a> and instructions for doing so.
+Take the time to read about the <a class="reference internal" href="#cache-service-deploy"><span class="std std-ref">two types of deployments</span></a>, standalone and embedded, to see which is better suited
+to your cluster.</p>
 <p>Before you begin, ensure that you have an <a class="reference internal" href="#cache-service-external-rdbms"><span class="std std-ref">external database instance</span></a> available to store information about
 materialized views and table scan redirections.</p>
 <p>When you are ready, there are a number of <a class="reference internal" href="#cache-service-config-properties"><span class="std std-ref">configuration properties</span></a> that must be set, shown in the following

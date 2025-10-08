@@ -295,10 +295,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -486,9 +489,6 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">true</s
 </tr>
 </tbody>
 </table>
-<p>Instructions for configuring the service in Kubernetes deployments are
-available in the <a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-insights"><span class="std std-ref">Kubernetes documentation</span></a>. For
-Starburst Admin deployments, read about the <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">config.properties file</span></a>.</p>
 <p>The following examples show the service configuration in the coordinator’s
 <code class="docutils literal notranslate"><span class="pre">config.properties</span></code> for the <code class="docutils literal notranslate"><span class="pre">starburstenterprise</span></code> database in PostgreSQL,
 Oracle, and MySQL:</p>
@@ -815,7 +815,6 @@ dashboards, perform ad hoc analysis and more.</p>
         SELECT n.name nation_name, r.name region_name
         FROM delta.sf1.nation n JOIN delta.sf1.region r ON n.regionkey = r.regionkey;
 CREATE TABLE: 25 rows
-
 Query 20201209_021306_00003_qsyab, FINISHED, 1 node
 Splits: 68 total, 68 done (100.00%)
 3.34 [35 rows, 5.35KB] [10 rows/s, 1.6KB/s]

@@ -265,10 +265,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -415,7 +418,7 @@ HTTP and 443 for HTTPS. (<a class="reference external" href="https://github.com/
 <ul class="simple">
 <li><p>Add support for reading partition columns whose type changed via <a class="reference external" href="https://docs.delta.io/latest/delta-type-widening.html">type
 widening</a>. (<a class="reference external" href="https://github.com/trinodb/trino/issues/22433">#22433</a>)</p></li>
-<li><p>Add support for authenticating with Glue with a Kubernetes service account.
+<li><p>Add support for authenticating with Glue with a  service account.
 This can be enabled via the
 <code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.use-web-identity-token-credentials-provider</span></code>
 configuration property. (<a class="reference external" href="https://github.com/trinodb/trino/issues/15267">#15267</a>)</p></li>
@@ -438,7 +441,7 @@ without old transaction logs. (<a class="reference external" href="https://githu
 <section id="hive-connector">
 <h2 id="hive-connector">Hive connector<a class="headerlink" href="#hive-connector" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Add support for authenticating with Glue with a Kubernetes service account.
+<li><p>Add support for authenticating with Glue with a  service account.
 This can be enabled via the
 <code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.use-web-identity-token-credentials-provider</span></code>
 configuration property. (<a class="reference external" href="https://github.com/trinodb/trino/issues/15267">#15267</a>)</p></li>
@@ -450,7 +453,7 @@ configuration property. (<a class="reference external" href="https://github.com/
 <section id="hudi-connector">
 <h2 id="hudi-connector">Hudi connector<a class="headerlink" href="#hudi-connector" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Add support for authenticating with Glue with a Kubernetes service account.
+<li><p>Add support for authenticating with Glue with a  service account.
 This can be enabled via the
 <code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.use-web-identity-token-credentials-provider</span></code>
 configuration property. (<a class="reference external" href="https://github.com/trinodb/trino/issues/15267">#15267</a>)</p></li>
@@ -467,7 +470,7 @@ of the schema for the JDBC catalog database to <code class="docutils literal not
 <li><p>Add support for specifying on which schemas to enforce the presence of a
 partition filter in queries. This can be configured
 <code class="docutils literal notranslate"><span class="pre">query-partition-filter-required-schemas</span></code> property. (<a class="reference external" href="https://github.com/trinodb/trino/issues/22540">#22540</a>)</p></li>
-<li><p>Add support for authenticating with Glue with a Kubernetes service account.
+<li><p>Add support for authenticating with Glue with a  service account.
 This can be enabled via the
 <code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.use-web-identity-token-credentials-provider</span></code>
 configuration property. (<a class="reference external" href="https://github.com/trinodb/trino/issues/15267">#15267</a>)</p></li>

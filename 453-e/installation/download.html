@@ -78,8 +78,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Starburst Enterprise deployment basics" href="deployment.html" />
-    <link rel="prev" title="Manual installation and license" href="../installation.html" />
+    <link rel="next" title="Developer guide" href="../develop.html" />
+    <link rel="prev" title="Starburst Enterprise deployment basics" href="deployment.html" />
 
   
    
@@ -265,18 +265,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Manual installation and license</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../installation.html#server-and-cluster-installation-and-deployment">Server and cluster installation and deployment</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="deployment.html">Starburst Enterprise deployment basics</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Download</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clients">Clients</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kubernetes-resources">Kubernetes resources</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="deployment.html">Starburst Enterprise deployment basics</a></li>
 </ul>
 </li>
 </ul>
@@ -304,8 +306,6 @@
         <li class="md-nav__item"><a href="#installation-download--page-root" class="md-nav__link">Download</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#clients" class="md-nav__link">Clients</a>
-        </li>
-        <li class="md-nav__item"><a href="#kubernetes-resources" class="md-nav__link">Kubernetes resources</a>
         </li></ul>
             </nav>
         </li>
@@ -328,12 +328,6 @@
 <li><p><a class="reference external" href="https://s3.us-east-2.amazonaws.com/software.starburstdata.net/453e/453-e.24/trino-jdbc-453-e.24.jar">JDBC driver</a></p></li>
 </ul>
 </section>
-<section id="kubernetes-resources">
-<h2 id="kubernetes-resources">Kubernetes resources<a class="headerlink" href="#kubernetes-resources" title="Permalink to this heading">#</a></h2>
-<p>Helm charts and Docker containers are available on the <a class="reference external" href="https://harbor.starburstdata.net/">Starburst Harbor
-instance</a> (credentials required).</p>
-<p>Find more details in the <a class="reference internal" href="../k8s.html"><span class="doc">Kubernetes with Helm documentation</span></a>.</p>
-</section>
 </section>
 
 
@@ -347,7 +341,7 @@ instance</a> (credentials required).</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../installation.html" title="Manual installation and license"
+            <a href="deployment.html" title="Starburst Enterprise deployment basics"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -356,17 +350,17 @@ instance</a> (credentials required).</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Manual installation and license </span>
+                      class="md-footer-nav__direction"> Previous </span> Starburst Enterprise deployment basics </span>
               </div>
             </a>
           
           
-            <a href="deployment.html" title="Starburst Enterprise deployment basics"
+            <a href="../develop.html" title="Developer guide"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Starburst Enterprise deployment basics </span>
+                class="md-footer-nav__direction"> Next </span> Developer guide </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

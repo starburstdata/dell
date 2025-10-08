@@ -343,7 +343,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#sep-controller-and-receiver-installation">SEP controller and receiver installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-teradata-configuration-properties">Additional Teradata configuration properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#encryption">Encryption</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#native-table-operator">Native table operator</a></li>
 </ul>
@@ -365,10 +364,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -506,8 +508,6 @@
         </li>
         <li class="md-nav__item"><a href="#additional-teradata-configuration-properties" class="md-nav__link">Additional Teradata configuration properties</a>
         </li>
-        <li class="md-nav__item"><a href="#configuring-in-kubernetes-deployments" class="md-nav__link">Configuring in Kubernetes deployments</a>
-        </li>
         <li class="md-nav__item"><a href="#encryption" class="md-nav__link">Encryption</a>
         </li>
         <li class="md-nav__item"><a href="#native-table-operator" class="md-nav__link">Native table operator</a>
@@ -639,7 +639,7 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">20s</sp
 <section id="transaction-mode">
 <span id="sb-teradata-tmode"></span><h4 id="transaction-mode">Transaction mode<a class="headerlink" href="#transaction-mode" title="Permalink to this heading">#</a></h4>
 <p>As a new user, consider setting the Teradata system default to the ANSI session
-mode. For more information, read <a class="reference external" href="https://docs.teradata.com/reader/Daz9Bt8GiwSdtthYFn~vdw/jDfW4crLGusqMwxGjie8Ww">Transaction Semantics Differences in ANSI and
+mode. For more information, read <a class="reference external" href="https://docs.teradata.com/r/Teradata-VantageCloud-Lake/SQL-Reference/SQL-Request-and-Transaction-Processing/Transaction-Processing/Comparison-of-Transactions-in-ANSI-and-Teradata-Session-Modes">Transaction Semantics Differences in ANSI and
 Teradata Session
 Modes</a>.</p>
 <p>Unless the Teradata system default is changed, the connector defaults to the
@@ -737,7 +737,7 @@ following table:</p>
 <td><p>REAL</p></td>
 </tr>
 <tr class="row-odd"><td><p>FLOAT</p></td>
-<td><p>REAL</p></td>
+<td><p>DOUBLE</p></td>
 </tr>
 <tr class="row-even"><td><p>DOUBLE</p></td>
 <td><p>DOUBLE</p></td>
@@ -929,8 +929,8 @@ property:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">teradata.type.not-case-specific.to-lower-case</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
-<p>Alternatively you can use a catalog session property:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="k">SESSION</span> <span class="n">teradata</span><span class="p">.</span><span class="n">not_casespecific_to_lower_case</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<p>Alternatively, you can use a catalog session property:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="k">SESSION</span> <span class="n">example</span><span class="p">.</span><span class="n">not_casespecific_to_lower_case</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -1032,6 +1032,7 @@ keystore configuration.</p>
 <li><p><a class="reference internal" href="../optimizer/pushdown.html#join-pushdown"><span class="std std-ref">Join pushdown</span></a></p></li>
 <li><p><a class="reference internal" href="../optimizer/pushdown.html#limit-pushdown"><span class="std std-ref">Limit pushdown</span></a></p></li>
 <li><p><a class="reference internal" href="../optimizer/pushdown.html#topn-pushdown"><span class="std std-ref">Top-N pushdown</span></a></p></li>
+<li><p><a class="reference internal" href="../optimizer/pushdown.html#projection-pushdown"><span class="std std-ref">Projection pushdown</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="../optimizer/pushdown.html#aggregation-pushdown"><span class="std std-ref">Aggregate pushdown</span></a> for the following
 functions:</p>
@@ -1055,6 +1056,14 @@ with the following functions:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../functions/aggregate.html#covar_samp" title="covar_samp"><code class="xref py py-func docutils literal notranslate"><span class="pre">covar_samp()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../functions/aggregate.html#covar_pop" title="covar_pop"><code class="xref py py-func docutils literal notranslate"><span class="pre">covar_pop()</span></code></a></p></li>
+</ul>
+<p><a class="reference internal" href="../optimizer/pushdown.html#projection-pushdown"><span class="std std-ref">Projection pushdown</span></a> for the following
+functions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../functions/conversion.html#cast" title="cast"><code class="xref py py-func docutils literal notranslate"><span class="pre">cast()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/string.html#upper" title="upper"><code class="xref py py-func docutils literal notranslate"><span class="pre">upper()</span></code></a> and <code class="docutils literal notranslate"><span class="pre">lower()</span></code></p></li>
+<li><p><a class="reference internal" href="../functions/string.html#trim" title="trim"><code class="xref py py-func docutils literal notranslate"><span class="pre">trim()</span></code></a>, <code class="docutils literal notranslate"><span class="pre">ltrim()</span></code> and <code class="docutils literal notranslate"><span class="pre">rtrim()</span></code></p></li>
+<li><p><a class="reference internal" href="../functions/string.html#substring" title="substring"><code class="xref py py-func docutils literal notranslate"><span class="pre">substring()</span></code></a></p></li>
 </ul>
 </section>
 <section id="cost-based-join-pushdown">
@@ -1100,8 +1109,8 @@ testing and troubleshooting purposes.</p></td>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The Teradata connector does not push down join operations where the join
-condition uses columns of type <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> or <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>.</p>
+<p>The Teradata connector only pushes down join operations where the join
+condition uses columns of type <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> or <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> with <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> operators.</p>
 </div>
 </section>
 <section id="predicate-pushdown-support">
@@ -1549,23 +1558,23 @@ status information to the transmitters.</p>
 </dd>
 <dt>Receivers</dt><dd><p>The receivers connect to the transmitters and receive data from Teradata
 from the transmitters. They run on the SEP workers and are managed by
-the controller.</p>
+the controller.
+Teradata</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>Teradata</p>
 <blockquote>
 <div><dl class="simple myst">
 <dt>Table operator and JDBC driver</dt><dd><p>The table operator and JDBC driver read the data from the Teradata
 storage.</p>
 </dd>
 <dt>Transmitters</dt><dd><p>The transmitters send the data for each table operator invocation on
-Teradata to the receivers on SEP.</p>
+Teradata to the receivers on SEP.
+The following features from the Teradata connector are also supported by the
+Teradata Direct connector:</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>The following features from the Teradata connector are also supported by the
-Teradata Direct connector:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#teradata-kerberos-authentication"><span class="std std-ref">Kerberos authentication</span></a></p></li>
 <li><p><a class="reference internal" href="#teradata-kerberos-passthrough"><span class="std std-ref">Kerberos credential pass-through</span></a></p></li>
@@ -1701,48 +1710,33 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">20s</sp
 <section id="additional-teradata-configuration-properties">
 <h3 id="additional-teradata-configuration-properties">Additional Teradata configuration properties<a class="headerlink" href="#additional-teradata-configuration-properties" title="Permalink to this heading">#</a></h3>
 <p>Further configuration can be done with the following parameters:</p>
-<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.receiver.buffer.size</span></code> in the catalog properties
-file, or <code class="docutils literal notranslate"><span class="pre">receiver_buffer_size</span></code> in catalog session properties:</p>
+<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.receiver.buffer.size</span></code> in the catalog properties file:</p>
 <blockquote>
 <div><p>Determines the buffer size per each SEP worker. This buffer is available
 per table scan, so a single query joining three tables uses three buffers.
-Default value is 32MB.</p>
+Default value is 32MB.
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.parcel.size</span></code> the catalog properties file:</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.parcel.size</span></code> in <code class="docutils literal notranslate"><span class="pre">example.properties</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">parcel_size</span></code> in catalog session properties:</p>
 <blockquote>
 <div><p>The size of the data packets sent to the SEP receivers. The last packet
 may be smaller. Defaults to 2MB. Parcel size should not be higher than the
-buffer size.</p>
+buffer size.
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.compression.enabled</span></code> in the catalog properties file:</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.compression.enabled</span></code> in <code class="docutils literal notranslate"><span class="pre">example.propertes</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">compression_enabled</span></code> in catalog session properties:</p>
 <blockquote>
-<div><p>Determines if transmission data is compressed. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<div><p>Determines if transmission data is compressed. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.splits-per-worker</span></code> in the catalog properties file:</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.splits-per-worker</span></code> in <code class="docutils literal notranslate"><span class="pre">example.propertes</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">splits_per_worker</span></code> in catalog session properties:</p>
 <blockquote>
 <div><p>Determines how many splits each SEP worker receives. This determines the
 maximum concurrency level on SEP. Defaults to 16, identical to the
-<code class="docutils literal notranslate"><span class="pre">task.concurrency</span></code> of the SEP server.</p>
+<code class="docutils literal notranslate"><span class="pre">task.concurrency</span></code> of the SEP server.
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.table-operator.logging-path</span></code> in the catalog properties file:</p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">teradata-direct.table-operator.logging-path</span></code> in the catalog properties file:</p>
 <blockquote>
 <div><p>Set the path for log files of the <a class="reference internal" href="#native-table-operator"><span class="std std-ref">native table operator</span></a> on the Teradata nodes. Default behavior is to log
 to files in the the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> folder.</p>
 </div></blockquote>
-</section>
-<section id="configuring-in-kubernetes-deployments">
-<h3 id="configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments<a class="headerlink" href="#configuring-in-kubernetes-deployments" title="Permalink to this heading">#</a></h3>
-<p>The Starburst Teradata Direct connector is supported for Kubernetes deployments in
-AWS EKS and in Azure AKS meeting <a class="reference internal" href="../k8s/sep-config-teradata-direct.html"><span class="doc">certain requirements</span></a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The configuration to use the connector on Kubernetes is complex and requires
-significant networking and Kubernetes expertise. Contact Starburst Support for
-assistance and help.</p>
-</div>
 </section>
 <section id="encryption">
 <h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permalink to this heading">#</a></h3>
@@ -1784,12 +1778,12 @@ dedicated database for the current operator version.</p>
 <p class="admonition-title">Warning</p>
 <p>Do not install the native table operator in the <code class="docutils literal notranslate"><span class="pre">syslib</span></code> database.</p>
 </div>
-<p>No Teradata restart is needed for the changes to take effect.</p>
-<p>By default the UDF is created to run in protected mode. It allocates memory and
-opens socket and can therefore not be used in unprotected mode.</p>
-<p>The path and access for the <code class="docutils literal notranslate"><span class="pre">.so</span></code> file, for example <code class="docutils literal notranslate"><span class="pre">/opt/starburst</span></code>, has to
-be adjusted to a suitable location on your Teradata servers.</p>
-<p>Each user that connects to Teradata from SEP needs to be granted sufficient
+<p>No Teradata restart is needed for the changes to take effect.
+By default the UDF is created to run in protected mode. It allocates memory and
+opens socket and can therefore not be used in unprotected mode.
+The path and access for the <code class="docutils literal notranslate"><span class="pre">.so</span></code> file, for example <code class="docutils literal notranslate"><span class="pre">/opt/starburst</span></code>, has to
+be adjusted to a suitable location on your Teradata servers.
+Each user that connects to Teradata from SEP needs to be granted sufficient
 access:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="k">EXECUTE</span> <span class="k">ON</span> <span class="k">SPECIFIC</span> <span class="k">FUNCTION</span> <span class="n">some_database</span><span class="p">.</span><span class="n">table_operator</span> <span class="k">TO</span> <span class="n">your_user</span><span class="p">;</span>
 </pre></div>

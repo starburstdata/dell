@@ -260,6 +260,57 @@
 <li class="toctree-l2"><a class="reference internal" href="execution-mode-options.html">Execution mode options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="set-mode-fte.html">Configure fault tolerance for your cluster</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Enable Starburst Warp Speed for your cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-object-storage">Supported object storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#platform-specific-requirements">Platform-specific requirements</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#eks">EKS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#aks">AKS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gke">GKE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#all-platforms">All platforms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-configuration">Cluster configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aws-deployment-scenarios">AWS deployment scenarios</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#scenario-1-full-privileges-deployment">Scenario 1: Full privileges deployment</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pre-deployment-configuration">Pre-deployment configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#helm-configuration">Helm configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#scenario-2-limited-privileges-deployment">Scenario 2: Limited privileges deployment</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">Helm configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id2">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#scenario-3-bottlerocket-os-deployment">Scenario 3: Bottlerocket OS deployment</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#ec2-user-data-configuration">EC2 user data configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">Helm configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#verification">Verification</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#nvme-drives">NVMe drives</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#storage-mount">Storage mount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#starburst-warp-speed-status">Starburst Warp Speed status</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#common-warnings">Common warnings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#catalog-configuration">Catalog configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#catalog-configuration-properties">Catalog configuration properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hive-considerations">Hive considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iceberg-considerations">Iceberg considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delta-lake-considerations">Delta Lake considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s3-considerations">S3 considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gcs-considerations">GCS considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adls-considerations">ADLS considerations</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#cluster-management">Cluster management</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#default-acceleration">Default acceleration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#acceleration-types">Acceleration types</a><ul>
@@ -271,23 +322,14 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#index-and-cache-usage">Index and cache usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#index-and-cache-resiliency">Index and cache resiliency <a name="resiliency"></a></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fast-warmup">Fast warmup</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#enable-the-feature">Enable the feature</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-up-a-backup-location">Set up a backup location</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#edit-aws-privileges">Edit AWS privileges</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#lifecycle-policies">Lifecycle Policies</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#automated-clean-up">Automated clean up</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#supported-object-storage">Supported object storage</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#cluster-configuration">Cluster configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#catalog-configuration">Catalog configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#catalog-configuration-properties">Catalog configuration properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hive-considerations">Hive considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#iceberg-considerations">Iceberg considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#delta-lake-considerations">Delta Lake considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#s3-considerations">S3 considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gcs-considerations">GCS considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adls-considerations">ADLS considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#warmup-rule-persistency">Warmup rule persistency</a></li>
@@ -325,10 +367,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -352,6 +397,90 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#data-engineering-cost-and-performance-set-mode-ws--page-root" class="md-nav__link">Enable Starburst Warp Speed for your cluster</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#supported-object-storage" class="md-nav__link">Supported object storage</a>
+        </li>
+        <li class="md-nav__item"><a href="#platform-specific-requirements" class="md-nav__link">Platform-specific requirements</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#eks" class="md-nav__link">EKS</a>
+        </li>
+        <li class="md-nav__item"><a href="#aks" class="md-nav__link">AKS</a>
+        </li>
+        <li class="md-nav__item"><a href="#gke" class="md-nav__link">GKE</a>
+        </li>
+        <li class="md-nav__item"><a href="#all-platforms" class="md-nav__link">All platforms</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#cluster-configuration" class="md-nav__link">Cluster configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#aws-deployment-scenarios" class="md-nav__link">AWS deployment scenarios</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#scenario-1-full-privileges-deployment" class="md-nav__link">Scenario 1: Full privileges deployment</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#pre-deployment-configuration" class="md-nav__link">Pre-deployment configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#helm-configuration" class="md-nav__link">Helm configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#deployment" class="md-nav__link">Deployment</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#scenario-2-limited-privileges-deployment" class="md-nav__link">Scenario 2: Limited privileges deployment</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Helm configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">Deployment</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#scenario-3-bottlerocket-os-deployment" class="md-nav__link">Scenario 3: Bottlerocket OS deployment</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#ec2-user-data-configuration" class="md-nav__link">EC2 user data configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Helm configuration</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">Deployment</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#verification" class="md-nav__link">Verification</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#nvme-drives" class="md-nav__link">NVMe drives</a>
+        </li>
+        <li class="md-nav__item"><a href="#storage-mount" class="md-nav__link">Storage mount</a>
+        </li>
+        <li class="md-nav__item"><a href="#starburst-warp-speed-status" class="md-nav__link">Starburst Warp Speed status</a>
+        </li>
+        <li class="md-nav__item"><a href="#common-warnings" class="md-nav__link">Common warnings</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#catalog-configuration" class="md-nav__link">Catalog configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#catalog-configuration-properties" class="md-nav__link">Catalog configuration properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#hive-considerations" class="md-nav__link">Hive considerations</a>
+        </li>
+        <li class="md-nav__item"><a href="#iceberg-considerations" class="md-nav__link">Iceberg considerations</a>
+        </li>
+        <li class="md-nav__item"><a href="#delta-lake-considerations" class="md-nav__link">Delta Lake considerations</a>
+        </li>
+        <li class="md-nav__item"><a href="#s3-considerations" class="md-nav__link">S3 considerations</a>
+        </li>
+        <li class="md-nav__item"><a href="#gcs-considerations" class="md-nav__link">GCS considerations</a>
+        </li>
+        <li class="md-nav__item"><a href="#adls-considerations" class="md-nav__link">ADLS considerations</a>
+        </li></ul>
+            </nav>
+        </li>
         <li class="md-nav__item"><a href="#cluster-management" class="md-nav__link">Cluster management</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#default-acceleration" class="md-nav__link">Default acceleration</a>
@@ -370,35 +499,19 @@
         </li>
         <li class="md-nav__item"><a href="#index-and-cache-usage" class="md-nav__link">Index and cache usage</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#index-and-cache-resiliency" class="md-nav__link">Index and cache resiliency <a name="resiliency"></a></a>
+        <li class="md-nav__item"><a href="#fast-warmup" class="md-nav__link">Fast warmup</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#enable-the-feature" class="md-nav__link">Enable the feature</a>
+        </li>
+        <li class="md-nav__item"><a href="#set-up-a-backup-location" class="md-nav__link">Set up a backup location</a>
+        </li>
+        <li class="md-nav__item"><a href="#edit-aws-privileges" class="md-nav__link">Edit AWS privileges</a>
+        </li>
+        <li class="md-nav__item"><a href="#lifecycle-policies" class="md-nav__link">Lifecycle Policies</a>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#automated-clean-up" class="md-nav__link">Automated clean up</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#requirements" class="md-nav__link">Requirements</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#supported-object-storage" class="md-nav__link">Supported object storage</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#cluster-configuration" class="md-nav__link">Cluster configuration</a>
-        </li>
-        <li class="md-nav__item"><a href="#catalog-configuration" class="md-nav__link">Catalog configuration</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#catalog-configuration-properties" class="md-nav__link">Catalog configuration properties</a>
-        </li>
-        <li class="md-nav__item"><a href="#hive-considerations" class="md-nav__link">Hive considerations</a>
-        </li>
-        <li class="md-nav__item"><a href="#iceberg-considerations" class="md-nav__link">Iceberg considerations</a>
-        </li>
-        <li class="md-nav__item"><a href="#delta-lake-considerations" class="md-nav__link">Delta Lake considerations</a>
-        </li>
-        <li class="md-nav__item"><a href="#s3-considerations" class="md-nav__link">S3 considerations</a>
-        </li>
-        <li class="md-nav__item"><a href="#gcs-considerations" class="md-nav__link">GCS considerations</a>
-        </li>
-        <li class="md-nav__item"><a href="#adls-considerations" class="md-nav__link">ADLS considerations</a>
         </li></ul>
             </nav>
         </li>
@@ -456,6 +569,631 @@ for any catalog accessing object storage with the Hive, Iceberg, or Delta Lake
 connector. A cluster deployment on Amazon Elastic Kubernetes Service (EKS),
 Microsoft Azure Kubernetes Service (AKS), or Google Kubernetes Engine (GKE) is
 required.</p>
+<section id="requirements">
+<span id="warp-speed-requirements"></span><h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
+<p>To use Starburst Warp Speed, you need:</p>
+<ul class="simple">
+<li><p>One or more catalogs that use the <a class="reference internal" href="../../connector/starburst-hive.html"><span class="doc">Hive</span></a>,
+<a class="reference internal" href="../../connector/iceberg.html"><span class="doc">Iceberg</span></a>, or <a class="reference internal" href="../../connector/delta-lake.html"><span class="doc">Delta Lake</span></a> connectors.</p></li>
+<li><p>A cluster deployment on Amazon Elastic Kubernetes Service (EKS), Microsoft
+Azure Kubernetes Service (AKS), or Google Kubernetes Engine (GKE) as detailed
+in <a class="reference internal" href="#warp-speed-cluster-configuration"><span class="std std-ref">Cluster configuration</span></a>.</p></li>
+<li><p>A valid <a class="reference internal" href="../../license-requirements.html"><span class="doc">Starburst Enterprise license</span></a>.</p></li>
+</ul>
+<section id="supported-object-storage">
+<span id="warp-speed-object-storage-support"></span><h3 id="supported-object-storage">Supported object storage<a class="headerlink" href="#supported-object-storage" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed only supports the following object storage:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#warp-speed-s3-considerations"><span class="std std-ref">Amazon S3</span></a></p></li>
+<li><p><a class="reference internal" href="#warp-speed-gcs-considerations"><span class="std std-ref">Google Cloud Storage (GCS)</span></a></p></li>
+<li><p><a class="reference internal" href="#warp-speed-adls-considerations"><span class="std std-ref">Microsoft ADLS Gen 2</span></a></p></li>
+</ul>
+<p>No other other object storage systems, including on-premises storage,
+S3-compatible storage such as MinIO, and any others are supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starburst strongly recommends using a <a class="reference internal" href="../../object-storage.html#file-system-native"><span class="std std-ref">native file system
+implementation</span></a> rather than the default Hadoop file system
+implementation for any catalogs with Starburst Warp Speed.</p>
+</div>
+</section>
+<section id="platform-specific-requirements">
+<h3 id="platform-specific-requirements">Platform-specific requirements<a class="headerlink" href="#platform-specific-requirements" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
+most important additional requirement is that sufficiently performant and sized
+Non-Volatile Memory Express (NVMe) solid-state drive (SSD) storage is available
+on all nodes, and exclusively used by SEP.</p>
+<p>The following specific details apply for the supported platforms:</p>
+<section id="eks">
+<h4 id="eks">EKS<a class="headerlink" href="#eks" title="Permalink to this heading">#</a></h4>
+<p>Required node sizes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m7gd.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r7gd.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m6id.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m6idn.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m6gd.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r5d.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r5dn.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r6gd.4xlarge</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i3.4xlarge</span></code> or larger</p></li>
+</ul>
+<p>Create an EKS Managed Node Group with the desired size. Use this node group for
+all nodes in the cluster. For Kubernetes version 1.30, use the latest release of
+<code class="docutils literal notranslate"><span class="pre">eksctl</span></code>.</p>
+<p>For information on specific deployment scenarios based on your privileges and
+node types, see the <a class="reference internal" href="#warp-speed-cluster-configuration"><span class="std std-ref">Cluster configuration</span></a> section.</p>
+</section>
+<section id="aks">
+<h4 id="aks">AKS<a class="headerlink" href="#aks" title="Permalink to this heading">#</a></h4>
+<p>Required node sizes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Standard_L16s_v2</span></code> or larger <code class="docutils literal notranslate"><span class="pre">Lsv2</span></code> series Azure VMs like <code class="docutils literal notranslate"><span class="pre">Standard_L32s_v2</span></code>
+with SSDs attached. Lsv2-series VM SSDs are not encrypted by <a class="reference external" href="https://learn.microsoft.com/azure/virtual-machines/disk-encryption">Azure Storage
+encryption</a>.
+We strongly recommend <code class="docutils literal notranslate"><span class="pre">Standard_L16s_v3</span></code> or larger <code class="docutils literal notranslate"><span class="pre">Lsv3</span></code> series VMs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Standard_Dpdsv6</span></code> (ARM-based) with premium SSD v2. Starburst recommends these
+ARM-based VMs for the best price-performance ratio for running Starburst Warp Speed in Azure
+environments. Premium SSD v2 is the only storage type that supports both
+encryption at rest and ephemeral storage.</p></li>
+<li><p>In the Starburst Warp Speed section of <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>, set the following configuration:</p></li>
+</ul>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">warpSpeed</span><span class="o">:</span>
+<span class="na">  image</span><span class="o">:</span>
+<span class="na">    tag</span><span class="o">:</span> <span class="s">"a.b.c-azure"</span>
+</pre></div>
+</div>
+</section>
+<section id="gke">
+<h4 id="gke">GKE<a class="headerlink" href="#gke" title="Permalink to this heading">#</a></h4>
+<p>Required node sizes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n2-highmem-16</span></code> or larger with a <a class="reference external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#raw-block">minimum of two local
+NVME SSDs</a>
+attached</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n2d-standard-16</span></code> or larger</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C4A</span> <span class="pre">Axion</span></code> (ARM-based) with Titanium SSD. Starburst recommends these ARM-based
+VMs for the best price-performance ratio for running Starburst Warp Speed in GCP
+environments.</p></li>
+<li><p>GKE version <code class="docutils literal notranslate"><span class="pre">1.25.3-gke.1800</span></code> or higher</p></li>
+</ul>
+<p>Attach the SSDs during node pool creation, and use the pool for the cluster
+creation.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Use the gcloud CLI, not Google Cloud console, for node pool creation. Using the
+Google console UI creates incompatible disk types.</p>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">ephemeral-storage-local-ssd</span></code> gcloud CLI command to provision local
+SSDs on the cluster. Select an even number of workers.</p>
+</section>
+<section id="all-platforms">
+<h4 id="all-platforms">All platforms<a class="headerlink" href="#all-platforms" title="Permalink to this heading">#</a></h4>
+<p>Configuration considerations:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">task.max-worker-threads</span></code> <a class="reference internal" href="../../admin/properties-task.html"><span class="doc">task property</span></a>
+can not be changed with Starburst Warp Speed so it must be left at the default value.</p></li>
+<li><p>SEP clusters with a vCPU count of 16 or fewer per worker node support a
+maximum of four Starburst Warp Speed catalogs. Clusters with larger worker nodes support a
+maximum of seven Starburst Warp Speed catalogs.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Starburst Warp Speed is not supported on a cluster running in
+<a class="reference internal" href="../../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> mode.</p>
+</div>
+<p>Add the following section in your values file for the specific cluster to enable
+Starburst Warp Speed:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Starburst Warp Speed uses a filesystem on top of the underlying storage in order to not
+require privileged mode. Add the following filesystem and image configuration to
+your values file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain"># Physical drive configuration requires the Warp Speed init container within</span>
+    <span class="l l-Scalar l-Scalar-Plain"># a worker pod to be privileged.</span>
+    <span class="l l-Scalar l-Scalar-Plain"># When configuration is done, the container's lifecycle ends.</span>
+    <span class="l l-Scalar l-Scalar-Plain"># If autoConfigure is not enabled, devices must be manually configured</span>
+    <span class="l l-Scalar l-Scalar-Plain"># before SEP pods are started. For example, during the node machine</span>
+    <span class="l l-Scalar l-Scalar-Plain"># bootstrap process (preBootstrapCommands script in EKS deployments).</span>
+    <span class="l l-Scalar l-Scalar-Plain"># This functionality is available for AKS, EKS, and GKE only.</span>
+    <span class="l l-Scalar l-Scalar-Plain"># For AWS, use default setting.</span>
+    <span class="l l-Scalar l-Scalar-Plain"># For Azure and GKE deployments, or S3 deployments using the native</span>
+    <span class="l l-Scalar l-Scalar-Plain"># filesystem implementation, set autoConfigure to true.</span>
+  <span class="nt">autoConfigure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain"># Additional percentage of container memory reduced from heap size assigned to Java, must be less than 100</span>
+  <span class="nt">additionalHeapSizePercentage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
+  <span class="nt">fileSystem</span><span class="p">:</span>
+    <span class="c1"># The path for the mount point used to mount the local SSDs. Value differs</span>
+    <span class="c1"># between clouds:</span>
+    <span class="c1"># AWS, Azure - Defined by the user</span>
+    <span class="c1"># GCP - Must be set to /mnt/stateful_partition/kube-ephemeral-ssd/data</span>
+    <span class="nt">localStorageMountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/data/&lt;subdirectory&gt;</span>
+  <span class="nt">image</span><span class="p">:</span>
+    <span class="c1"># Image that prepares the filesystem for Starburst Warp Speed.</span>
+    <span class="c1"># Due to system limitations, this must be done by an init container running</span>
+    <span class="c1"># in privileged mode.</span>
+    <span class="nt">repository</span><span class="p">:</span> <span class="s">"harbor.starburstdata.net/starburstdata/starburst-warpspeed-init"</span>
+    <span class="c1"># Tag value differs between clouds:</span>
+    <span class="c1"># AWS, GCP - Use default tag</span>
+    <span class="c1"># Azure - Append the "azure" suffix, for example "1.0.0-azure"</span>
+    <span class="c1"># Update this tag to the latest available version of the Starburst Warp</span>
+    <span class="c1"># Speed init container</span>
+    <span class="nt">tag</span><span class="p">:</span> <span class="s">"1.0.16"</span>
+    <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
+</pre></div>
+</div>
+<p>You need to ensure that you use a dedicated coordinator that is
+not scheduled for query processing, and adjust the query processing
+configuration to allow for more splits:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">coordinator</span><span class="p">:</span>
+  <span class="nt">additionalProperties</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">...</span>
+    <span class="no">node-scheduler.include-coordinator=false</span>
+    <span class="no">node-scheduler.max-splits-per-node=4096</span>
+</pre></div>
+</div>
+<p>Use Helm to update the values and restart the cluster nodes. Confirm the cluster
+is operating correctly with the new configuration, but without any adjusted
+catalogs, and then proceed to configure catalogs.
+Related to the catalog usage, the cluster needs to allow internal communication
+between all workers, as well as with the coordinator on all the HTTP ports
+configured by the different values for <code class="docutils literal notranslate"><span class="pre">http-rest-port</span></code> in all catalogs.</p>
+<p>When starting the cluster, Starburst Warp Speed parses all configuration parameters and can send
+invalid warnings such as <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">property</span> <span class="pre">'cache-service.password'</span> <span class="pre">was</span> <span class="pre">not</span> <span class="pre">used</span></code>. You can safely ignore these warnings.</p>
+</section>
+</section>
+</section>
+<section id="cluster-configuration">
+<span id="warp-speed-cluster-configuration"></span><h2 id="cluster-configuration">Cluster configuration<a class="headerlink" href="#cluster-configuration" title="Permalink to this heading">#</a></h2>
+<p>The following sections outline the step-by-step process for configuring and
+deploying Starburst Warp Speed on your Kubernetes cluster.</p>
+<section id="aws-deployment-scenarios">
+<h3 id="aws-deployment-scenarios">AWS deployment scenarios<a class="headerlink" href="#aws-deployment-scenarios" title="Permalink to this heading">#</a></h3>
+<p>You can deploy Starburst Warp Speed on AWS using three different approaches, depending on your
+privileges and node configuration.</p>
+<section id="scenario-1-full-privileges-deployment">
+<h4 id="scenario-1-full-privileges-deployment">Scenario 1: Full privileges deployment<a class="headerlink" href="#scenario-1-full-privileges-deployment" title="Permalink to this heading">#</a></h4>
+<p>If your privileges let you execute pre-boot scripts, configure the NVMe SSDs
+before you start the cluster. This allows optimal performance and control over
+your storage configuration.</p>
+<section id="pre-deployment-configuration">
+<h5 id="pre-deployment-configuration">Pre-deployment configuration<a class="headerlink" href="#pre-deployment-configuration" title="Permalink to this heading">#</a></h5>
+<p>Add the following <code class="docutils literal notranslate"><span class="pre">preBootstrapCommands</span></code> section to your EKS managed node group
+configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">preBootstrapCommands</span><span class="p">:</span>
+  <span class="s">"yum</span><span class="nv"> </span><span class="s">install</span><span class="nv"> </span><span class="s">-y</span><span class="nv"> </span><span class="s">mdadm"</span>
+  <span class="s">"sysctl</span><span class="nv"> </span><span class="s">-w</span><span class="nv"> </span><span class="s">fs.aio-max-nr=8388608</span><span class="nv"> </span><span class="s">&gt;&gt;</span><span class="nv"> </span><span class="s">/etc/sysctl.conf"</span>
+  <span class="s">'devices="";</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">device</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">$(ls</span><span class="nv"> </span><span class="s">/sys/block/);</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">[[</span><span class="nv"> </span><span class="s">$(grep</span><span class="nv"> </span><span class="s">-e</span><span class="nv"> </span><span class="s">"Amazon</span><span class="nv"> </span><span class="s">EC2</span><span class="nv"> </span><span class="s">NVMe</span><span class="nv"> </span><span class="s">Instance</span><span class="nv"> </span><span class="s">Storage"</span><span class="nv"> </span><span class="s">-e</span><span class="nv"> </span><span class="s">"ec2-nvme-instance"</span><span class="nv"> </span><span class="s">/sys/block/${device}/device/subsysnqn</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">2&gt;</span><span class="nv"> </span><span class="s">/dev/null)</span><span class="nv"> </span><span class="s">-gt</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">]];</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">devices="${devices}</span><span class="nv"> </span><span class="s">/dev/${device}";</span><span class="nv"> </span><span class="s">fi;</span><span class="nv"> </span><span class="s">done;</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">${devices}</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">/tmp/devices'</span>
+  <span class="s">"mdadm</span><span class="nv"> </span><span class="s">--create</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">$(cat</span><span class="nv"> </span><span class="s">/tmp/devices)</span><span class="nv"> </span><span class="s">--level=0</span><span class="nv"> </span><span class="s">--force</span><span class="nv"> </span><span class="s">--raid-devices=$(cat</span><span class="nv"> </span><span class="s">/tmp/devices</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">wc</span><span class="nv"> </span><span class="s">-w)"</span>
+  <span class="s">"mkfs.ext4</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">-O</span><span class="nv"> </span><span class="s">^has_journal"</span>
+  <span class="s">"mkdir</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">/opt/data"</span>
+  <span class="s">"mount</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">/opt/data"</span>
+  <span class="s">"chmod</span><span class="nv"> </span><span class="s">777</span><span class="nv"> </span><span class="s">-R</span><span class="nv"> </span><span class="s">/opt/data"</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">aio-max-nr</span></code> parameter specifies the maximum number of asynchronous I/O
+(AIO) events the system allows. Set this value to <code class="docutils literal notranslate"><span class="pre">8388608</span></code> to support
+high-performance workloads.</p>
+</div>
+</section>
+<section id="helm-configuration">
+<h5 id="helm-configuration">Helm configuration<a class="headerlink" href="#helm-configuration" title="Permalink to this heading">#</a></h5>
+<p>In your <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file, set the following values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">autoConfigure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>  <span class="c1"># Pre-boot script handles configuration</span>
+  <span class="nt">fileSystem</span><span class="p">:</span>
+    <span class="nt">localStorageMountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/data</span>
+  <span class="nt">image</span><span class="p">:</span>
+    <span class="nt">repository</span><span class="p">:</span> <span class="s">"harbor.starburstdata.net/starburstdata/starburst-warpspeed-init"</span>
+    <span class="nt">tag</span><span class="p">:</span> <span class="s">"1.0.17"</span>
+    <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
+</pre></div>
+</div>
+</section>
+<section id="deployment">
+<h5 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permalink to this heading">#</a></h5>
+<p>Use the following command to deploy Starburst Warp Speed using Helm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm upgrade --install sep ./helm/sep --values values.yaml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="scenario-2-limited-privileges-deployment">
+<h4 id="scenario-2-limited-privileges-deployment">Scenario 2: Limited privileges deployment<a class="headerlink" href="#scenario-2-limited-privileges-deployment" title="Permalink to this heading">#</a></h4>
+<p>If your privileges do not let you execute pre-boot scripts, configure NVMe
+storage for Starburst Warp Speed using a specialized container image. This lets you manage
+storage configuration from within the Kubernetes environment.</p>
+<p>This deployment scenario uses a container image with the <code class="docutils literal notranslate"><span class="pre">-awsprivileged</span></code> suffix
+that has the permissions to automatically configure the NVMe drives.</p>
+<section id="id1">
+<h5 id="id1">Helm configuration<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h5>
+<p>In your <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file, set the following values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span>
+    <span class="nt">tag</span><span class="p">:</span> <span class="s">"1.0.17-awsprivileged"</span>
+  <span class="nt">autoConfigure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h5 id="id2">Deployment<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<p>Use the following command to deploy Starburst Warp Speed using Helm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm upgrade --install sep ./helm/sep --values values.yaml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="scenario-3-bottlerocket-os-deployment">
+<h4 id="scenario-3-bottlerocket-os-deployment">Scenario 3: Bottlerocket OS deployment<a class="headerlink" href="#scenario-3-bottlerocket-os-deployment" title="Permalink to this heading">#</a></h4>
+<p>If you are using <a class="reference external" href="https://aws.amazon.com/bottlerocket/">AWS Bottlerocket</a> nodes,
+configure the disk setup through the Bottlerocket bootstrap container system.
+This lets you prepare NVMe storage for Starburst Warp Speed in Bottlerocket’s
+container-optimized environment.</p>
+<section id="ec2-user-data-configuration">
+<h5 id="ec2-user-data-configuration">EC2 user data configuration<a class="headerlink" href="#ec2-user-data-configuration" title="Permalink to this heading">#</a></h5>
+<p>Add the following to your <a class="reference external" href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data">Amazon EC2 user
+data</a>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">settings.bootstrap-containers.disk-setup</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">essential = true</span>
+<span class="l l-Scalar l-Scalar-Plain">mode = "once"</span>
+<span class="l l-Scalar l-Scalar-Plain">source = "http://harbor.starburstdata.net/starburstdata/starburst-warpspeed-init:1.0.17-bottlerocket"</span>
+</pre></div>
+</div>
+<p>If necessary, include your Harbor credentials:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[[</span><span class="nv">settings.container-registry.credentials</span><span class="p p-Indicator">]]</span>
+<span class="l l-Scalar l-Scalar-Plain">registry = "harbor.starburstdata.net"</span>
+<span class="l l-Scalar l-Scalar-Plain">username = "some_user"</span>
+<span class="l l-Scalar l-Scalar-Plain">password = "a_password"</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have Harbor registry credentials to access the Starburst Warp Speed init container
+images.</p>
+</div>
+</section>
+<section id="id3">
+<h5 id="id3">Helm configuration<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<p>In your <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file, set the following values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">autoConfigure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">fileSystem</span><span class="p">:</span>
+    <span class="nt">localStorageMountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/mnt/opt/data</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h5 id="id4">Deployment<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
+<p>Use the following command to deploy Starburst Warp Speed using Helm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm upgrade --install sep ./helm/sep --values values.yaml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verification">
+<h4 id="verification">Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h4>
+<p>Verify your configuration with the following steps.</p>
+<section id="nvme-drives">
+<h5 id="nvme-drives">NVMe drives<a class="headerlink" href="#nvme-drives" title="Permalink to this heading">#</a></h5>
+<p>Verify that Starburst Warp Speed properly detects your NVMe drives:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /sys/block/
+cat /sys/block/&lt;device&gt;/device/subsysnqn
+</pre></div>
+</div>
+<p>If the output does not contain “Amazon EC2 NVMe Instance Storage” or
+“ec2-nvme-instance”, update the disk filter list in your Helm
+configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
+  <span class="nt">fileSystem</span><span class="p">:</span>
+    <span class="nt">diskFilterStringList</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">"custom-nvme-identifier"</span>
+</pre></div>
+</div>
+</section>
+<section id="storage-mount">
+<h5 id="storage-mount">Storage mount<a class="headerlink" href="#storage-mount" title="Permalink to this heading">#</a></h5>
+<p>Check the storage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl <span class="nb">exec</span> -it &lt;worker-pod-name&gt; -- df -ah
+</pre></div>
+</div>
+<p>Look for a mount at <code class="docutils literal notranslate"><span class="pre">/opt/data</span></code> (or <code class="docutils literal notranslate"><span class="pre">/mnt/opt/data</span></code> for Bottlerocket) with
+significant storage space available.</p>
+</section>
+<section id="starburst-warp-speed-status">
+<h5 id="starburst-warp-speed-status">Starburst Warp Speed status<a class="headerlink" href="#starburst-warp-speed-status" title="Permalink to this heading">#</a></h5>
+<p>Query the Starburst Warp Speed warming status:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X GET <span class="s1">'https://sep.example.com/ext/&lt;catalog-name&gt;/warming/status'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span>
+</pre></div>
+</div>
+<p>A successful response shows warming status across nodes.</p>
+</section>
+<section id="common-warnings">
+<h5 id="common-warnings">Common warnings<a class="headerlink" href="#common-warnings" title="Permalink to this heading">#</a></h5>
+<p>Safely ignore warnings like <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">property</span> <span class="pre">'cache-service.password'</span> <span class="pre">was</span> <span class="pre">not</span> <span class="pre">used</span></code> during startup.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="catalog-configuration">
+<span id="warp-speed-catalog-configuration"></span><h2 id="catalog-configuration">Catalog configuration<a class="headerlink" href="#catalog-configuration" title="Permalink to this heading">#</a></h2>
+<p>After a successful <a class="reference internal" href="#warp-speed-cluster-configuration"><span class="std std-ref">Cluster configuration</span></a>, you can configure
+the desired catalogs to use Starburst Warp Speed.</p>
+<p>Only catalogs using the Hive, Iceberg, or Delta Lake connectors can be
+accelerated:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=hive</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=iceberg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=delta_lake</span></code></p></li>
+</ul>
+<p>For more details, see <a class="reference internal" href="#warp-speed-delta-lake-considerations"><span class="std std-ref">Delta Lake considerations</span></a>,
+<a class="reference internal" href="#warp-speed-iceberg-considerations"><span class="std std-ref">Iceberg considerations</span></a>, and
+<a class="reference internal" href="#warp-speed-hive-considerations"><span class="std std-ref">Hive considerations</span></a>.</p>
+<p>Only catalogs backed by S3, GCS, and ADLS object storage are supported. For more
+details, see <a class="reference internal" href="#warp-speed-s3-considerations"><span class="std std-ref">S3 considerations</span></a>,
+<a class="reference internal" href="#warp-speed-gcs-considerations"><span class="std std-ref">GCS considerations</span></a>, and <a class="reference internal" href="#warp-speed-adls-considerations"><span class="std std-ref">ADLS considerations</span></a>.</p>
+<p>Update the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog that uses the Hive connector with AWS Glue in the
+values file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">connector.name=hive</span>
+    <span class="no">hive.metastore=glue</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+<p>Enable Starburst Warp Speed on the catalog by updating the connector name to <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code> and
+adding the required configuration properties:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">connector.name=warp_speed</span>
+    <span class="no">warp-speed.proxied-connector=hive</span>
+    <span class="no">warp-speed.cluster-uuid=example-cluster-567891234567</span>
+    <span class="no"># Do not configure the following property if you are using a native</span>
+    <span class="no"># filesystem implementation.</span>
+    <span class="no">warp-speed.config.internal-communication.shared-secret=aLongSecretString</span>
+    <span class="no">hive.metastore=glue</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+<p>The properties setting the connector name, the proxied connector and the cluster
+identifier are required.</p>
+<p>The shared secret must be set to the same value as the secret for the cluster
+itself set in <code class="docutils literal notranslate"><span class="pre">sharedSecret:</span></code>. This is required unless the REST API is
+disabled.</p>
+<p>For testing purposes, or alternatively for permanent usage of a new catalog
+name, such as <code class="docutils literal notranslate"><span class="pre">faster</span></code>, in parallel to the existing catalog, you can copy the
+configuration of a catalog and update it:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">connector.name=hive</span>
+    <span class="no">hive.metastore=glue</span>
+    <span class="no">...</span>
+  <span class="nt">faster</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">connector.name=warp_speed</span>
+    <span class="no">warp-speed.proxied-connector=hive</span>
+    <span class="no">warp-speed.cluster-uuid=example-cluster-567891234567</span>
+    <span class="no"># Do not configure the following property if you are using a native</span>
+    <span class="no"># filesystem implementation.</span>
+    <span class="no">warp-speed.config.internal-communication.shared-secret=aLongSecretString</span>
+    <span class="no">hive.metastore=glue</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+<p>This allows you to query the same data with or without Starburst Warp Speed using different
+catalog names. However, existing scripts and statements that include the old
+catalog name <code class="docutils literal notranslate"><span class="pre">example</span></code> are not accelerated.</p>
+<section id="catalog-configuration-properties">
+<span id="id5"></span><h3 id="catalog-configuration-properties">Catalog configuration properties<a class="headerlink" href="#catalog-configuration-properties" title="Permalink to this heading">#</a></h3>
+<p>The following table provides more information about the available catalog
+configuration properties:</p>
+<table id="id10">
+<caption><span class="caption-text">Catalog configuration properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 35%"/>
+<col style="width: 65%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connector.name</span></code></p></td>
+<td><p><strong>Required.</strong> Must be set to <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.proxied-connector</span></code></p></td>
+<td><p><strong>Required.</strong> The type of embedded connector that is used for accessing cold
+data through Starburst Warp Speed. Defaults to <code class="docutils literal notranslate"><span class="pre">hive</span></code>. Valid values are <code class="docutils literal notranslate"><span class="pre">hive</span></code>,
+<code class="docutils literal notranslate"><span class="pre">iceberg</span></code>, or <code class="docutils literal notranslate"><span class="pre">delta-lake</span></code>. All properties supported by these
+connectors, including metastore, file format, and connector properties, can
+be used to configure the catalog.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.cluster-uuid</span></code></p></td>
+<td><p><strong>Required.</strong> Unique identifier of the cluster. Used as the folder name
+in the store path. Use the same value for all catalogs. When creating a
+new cluster and the same <code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code> and
+<code class="docutils literal notranslate"><span class="pre">warp-speed.cluster-uuid</span></code> are used, then the <a class="reference internal" href="#warp-speed-management"><span class="std std-ref">cluster warmup rules</span></a> for index and cache creation are imported
+into the newly created cluster.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code></p></td>
+<td><p><strong>Required, unless REST API is disabled or you are using a native filesystem
+implementation</strong>  The shared secret value of the cluster. It is configured
+for <a class="reference internal" href="../../security/internal-communication.html"><span class="doc">secure internal communication</span></a>
+in <code class="docutils literal notranslate"><span class="pre">sharedSecret:</span></code> for the Kubernetes deployment. The identical value used
+for the property <code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code>
+for each catalog. Do not configure if you are using a <a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code></p></td>
+<td><p>The path to a bucket in object storage where SSD data is backed up for fast
+cache rehydration. Requires <code class="docutils literal notranslate"><span class="pre">warp-speed.enable.import-export</span></code> be set to
+true.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.objectstore.store.path</span></code></p></td>
+<td><p>The path to a bucket in object storage that stores custom warmup rules. See
+also, <a class="reference internal" href="#warp-speed-persistency"><span class="std std-ref">Warmup rule persistency</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.enable.import-export</span></code></p></td>
+<td><p>Enable or disable <a class="reference internal" href="#warp-speed-index-cache"><span class="std std-ref">index and cache resiliency</span></a>. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Requires an object storage
+configured with <code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.use-http-server-port</span></code></p></td>
+<td><p>Specifies to run the REST API on the coordinator in the same server as
+SEP. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Do not configure if you are using a
+<a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>. For details, see
+<a class="reference internal" href="#rest-api-access"><span class="std std-ref">REST API access</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.config.http-rest-port-enabled</span></code></p></td>
+<td><p>Optional parameter to enable the REST API server on the coordinator and
+each worker for each catalog. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. This REST API is
+only suitable for testing and debugging purposes, since it is not
+secured. For production, use the default configuration.</p>
+<p>Set the property to <code class="docutils literal notranslate"><span class="pre">true</span></code> and add a unique <code class="docutils literal notranslate"><span class="pre">http-rest-port</span></code> value
+for each catalog. Endpoints use the specified port for a catalog, such
+as <code class="docutils literal notranslate"><span class="pre">8088</span></code>, instead of  the <code class="docutils literal notranslate"><span class="pre">/ext/{catalogName}</span></code> section of the
+context, and are otherwise identical to the <a class="reference internal" href="#warp-speed-management"><span class="std std-ref">secured REST API</span></a>. Typically the port is not exposed outside the
+cluster, so users need to forward the port or call the API from inside
+the cluster.</p>
+<p>Do not configure if you are using a
+<a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hive-considerations">
+<span id="warp-speed-hive-considerations"></span><h3 id="hive-considerations">Hive considerations<a class="headerlink" href="#hive-considerations" title="Permalink to this heading">#</a></h3>
+<p>Most configurations of the <a class="reference internal" href="../../connector/starburst-hive.html"><span class="doc">Hive connector</span></a> are
+supported. Additionally, the following considerations apply when using the Hive
+connector as the proxied connector for Starburst Warp Speed:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../connector/starburst-hive.html#sb-hive-materialized-views"><span class="std std-ref">Materialized views</span></a> are supported.</p></li>
+<li><p>S3 proxy is not supported.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
+encryption</a>
+with S3 managed keys and KMS managed keys is supported. S3 client-side
+encryption is not supported.</p></li>
+<li><p><a class="reference internal" href="../../connector/hive.html#hive-data-management"><span class="std std-ref">ORC ACID transactional tables</span></a> are not supported.</p></li>
+</ul>
+<p>For optimal performance, add the following properties to your catalog
+configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">...</span>
+    <span class="no">hive.max-outstanding-splits-size=512MB</span>
+    <span class="no">hive.max-initial-splits=0</span>
+    <span class="no">hive.max-outstanding-splits=3000</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+</section>
+<section id="iceberg-considerations">
+<span id="warp-speed-iceberg-considerations"></span><h3 id="iceberg-considerations">Iceberg considerations<a class="headerlink" href="#iceberg-considerations" title="Permalink to this heading">#</a></h3>
+<p>All configurations of the <a class="reference internal" href="../../connector/iceberg.html"><span class="doc">Iceberg connector</span></a> are supported. Additionally, the following
+considerations apply when using the Iceberg connector as the proxied connector
+for Starburst Warp Speed:</p>
+<ul class="simple">
+<li><p>Materialized views are supported.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
+encryption</a>
+with S3 managed keys is supported. S3 client-side encryption is not supported.</p></li>
+<li><p>An associated split is served from object storage and no acceleration occurs
+when:</p>
+<ul>
+<li><p>A row-level <a class="reference internal" href="../../connector/iceberg.html#iceberg-data-management"><span class="std std-ref">update or delete operation</span></a>.</p></li>
+<li><p>A merge operation that causes a record update.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="delta-lake-considerations">
+<span id="warp-speed-delta-lake-considerations"></span><h3 id="delta-lake-considerations">Delta Lake considerations<a class="headerlink" href="#delta-lake-considerations" title="Permalink to this heading">#</a></h3>
+<p>All configurations of the <a class="reference internal" href="../../connector/starburst-delta-lake.html"><span class="doc">Delta Lake connector</span></a> are supported. Additionally, the following
+considerations apply when using the Delta Lake connector as the proxied
+connector for Starburst Warp Speed:</p>
+<ul class="simple">
+<li><p>Materialized views are not supported.</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
+encryption</a>
+with S3 managed keys is supported. S3 client-side encryption is not supported.</p></li>
+<li><p>An associated split is served from object storage and no acceleration occurs
+when:</p>
+<ul>
+<li><p>A row-level <a class="reference internal" href="../../connector/delta-lake.html#delta-lake-data-management"><span class="std std-ref">update or delete operation</span></a>.</p></li>
+<li><p>A merge operation that causes a record update.</p></li>
+</ul>
+</li>
+</ul>
+<p>For optimal performance, add the following properties to your catalog
+configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">...</span>
+    <span class="no">delta.max-outstanding-splits=3000</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+</section>
+<section id="s3-considerations">
+<span id="warp-speed-s3-considerations"></span><h3 id="s3-considerations">S3 considerations<a class="headerlink" href="#s3-considerations" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed supports <a class="reference external" href="https://aws.amazon.com/s3/">Amazon S3</a> with
+catalogs using the Hive, Iceberg, and Delta Lake connectors.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">s3://</span></code> protocol is required.</p>
+</section>
+<section id="gcs-considerations">
+<span id="warp-speed-gcs-considerations"></span><h3 id="gcs-considerations">GCS considerations<a class="headerlink" href="#gcs-considerations" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed supports Google Cloud Storage (GCS).</p>
+<p>Authentication to GCS can use a JSON key file or an OAuth 2.0 access token
+configured identically for the Hive, Delta Lake, or Iceberg connector in the
+catalog properties:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.gcs.json-key-file-path</span><span class="o">=</span><span class="s">/path/to/gcs_keyfile.json</span>
+<span class="na">hive.gcs.use-access-token</span><span class="o">=</span><span class="s">false</span>
+</pre></div>
+</div>
+<p>The following <a class="reference external" href="https://developers.google.com/identity/protocols/oauth2/scopes">OAuth 2.0 access scopes for Google
+APIs</a>
+must be attached during GKE node creation to enable the <a class="reference internal" href="#warp-speed-index-cache"><span class="std std-ref">index and cache resiliency</span></a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/devstorage.full_control">devstorage.full_control</a></p></li>
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/logging.write">logging.write</a></p></li>
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/monitoring">monitoring</a></p></li>
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/servicecontrol">service control</a></p></li>
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/service.management.readonly">service.management.readonly</a></p></li>
+<li><p><a class="reference external" href="https://www.googleapis.com/auth/trace.append">trace.append</a></p></li>
+</ul>
+<p>For more information about authorization, refer to <a class="reference external" href="https://cloud.google.com/compute/docs/access/service-accounts">Google Cloud Service
+accounts</a>
+documentation.</p>
+</section>
+<section id="adls-considerations">
+<span id="warp-speed-adls-considerations"></span><h3 id="adls-considerations">ADLS considerations<a class="headerlink" href="#adls-considerations" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed supports
+<a class="reference external" href="https://azure.microsoft.com/products/storage/data-lake-storage/">Microsoft ADLS Gen 2</a>.
+<a class="reference external" href="https://learn.microsoft.com/azure/data-lake-store/data-lake-store-overview">ADLS Gen1</a>
+is not supported.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">abfs://</span></code> or <code class="docutils literal notranslate"><span class="pre">abfss://</span></code> protocol is required.</p>
+<p>ADLS can be used with catalogs using the Hive and Delta Lake connectors with the
+following configuration properties to connect to Azure storage:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
+  <span class="nt">faster</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">...</span>
+    <span class="no">warp-speed.store.path=abfs://&lt;container_name@account_name&gt;.dfs.core.windows.net/folder</span>
+    <span class="no">hive.azure.abfs-storage-account=&lt;storage_account_name&gt;</span>
+    <span class="no">hive.azure.abfs-access-key=xxx</span>
+    <span class="no">...</span>
+</pre></div>
+</div>
+<p>It is possible to secure the connection with TLS and use the <code class="docutils literal notranslate"><span class="pre">abfss</span></code> protocol
+with the <a class="reference external" href="https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction-abfs-uri#uri-syntax">URI
+syntax</a>.</p>
+</section>
+</section>
 <section id="cluster-management">
 <span id="warp-speed-cluster-management"></span><h2 id="cluster-management">Cluster management<a class="headerlink" href="#cluster-management" title="Permalink to this heading">#</a></h2>
 <p>Starburst Warp Speed accommodates cluster expansion and contraction. Be aware of the following
@@ -596,25 +1334,19 @@ configure text search acceleration for a specific column with the REST API.</p>
 details and other summary statistics on the <strong>Index and cache usage</strong> tab in the
 Starburst Enterprise web UI.</p>
 <p>For more information, see the <a class="reference internal" href="../../insights/query-details.html#insights-query-details-warp-speed"><span class="std std-ref">reference documentation</span></a>.</p>
-<section id="index-and-cache-resiliency">
-<h3 id="index-and-cache-resiliency">Index and cache resiliency <a name="resiliency"></a><a class="headerlink" href="#index-and-cache-resiliency" title="Permalink to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Index and cache resiliency is a <a class="reference internal" href="../../versions.html#feature-release-status"><span class="std std-ref">public preview</span></a> feature. Contact
-<a class="external reference" href="../../support.html">Starburst support</a> with questions or feedback.</p>
-</div>
-<p>Starburst Warp Speed optionally provides index and cache resiliency. When a new
-index is created or data is cached, it is stored on the SSD NVMe (nonvolatile
-memory express) drives attached to each worker by default, and in addition on a
-dedicated, shared bucket in your object storage. When you scale the cluster,
-the indexes and data cache remain available in the shared storage.</p>
-<p>The resiliency feature enables fast warmup when scaling up by adding worker
-nodes to a cluster. This also eliminates the need for keeping instances idling
-when a cluster is not in use. Instead, when a cluster needs to warm an index or
-data cache, it first accesses the designated bucket on the object storage to
-check if the indexes or cache are ready and loads them accordingly. If the
-indexes or cache are not available in the shared object storage or cannot be
-loaded for any reason, the data is warmed as usual.</p>
+<section id="fast-warmup">
+<span id="id6"></span><h3 id="fast-warmup">Fast warmup<a class="headerlink" href="#fast-warmup" title="Permalink to this heading">#</a></h3>
+<p>Starburst Warp Speed includes a “fast warmup” feature, formerly known as index and cache
+resiliency. Fast warmup is optional but highly recommended. When a new index is
+created or data is cached, it is stored on the SSD NVMe (nonvolatile memory
+express) drives attached to each worker by default, and in addition on a
+dedicated, shared bucket in your object storage. When you scale the cluster, the
+indexes and data cache remain available in the shared storage.</p>
+<p>The fast warmup feature eliminates the need for keeping instances idling when a
+cluster is not in use, by selectively warming the designated bucket on the
+object storage to check if the indexes or cache are ready and loads them
+accordingly. If the indexes or cache are not available in the shared object
+storage or cannot be loaded for any reason, the data is warmed as usual.</p>
 <p>There are three storage tiers accessed for queries:</p>
 <ul class="simple">
 <li><p><strong>Hot data and index:</strong> Uses SSD NVMe attached to the workers in a cluster to
@@ -630,10 +1362,33 @@ warmup of indexes and caches.</p></li>
 <li><p><strong>Cold data:</strong> Direct access of your object storage.</p></li>
 </ul>
 <p>With this tiered approach, you can continue using your existing scaling and
-auto-scaling policies.</p>
-<p>To use Starburst Warp Speed index and cache resiliency, you must include read/write
-permissions to a backup location in object storage. The following shows a
-privilege example for read/write access to S3:</p>
+auto scaling policies.</p>
+<p>As a best practice, allocate at least the average available SSD storage of your
+cluster.</p>
+<section id="enable-the-feature">
+<h4 id="enable-the-feature">Enable the feature<a class="headerlink" href="#enable-the-feature" title="Permalink to this heading">#</a></h4>
+<p>To enable fast warmup, use the following property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">warp-speed.enable.import-export=true</span>
+</pre></div>
+</div>
+<p>For a complete list of properties, see <a class="reference internal" href="#catalog-configuration-properties"><span class="std std-ref">Catalog configuration properties</span></a>.</p>
+</section>
+<section id="set-up-a-backup-location">
+<h4 id="set-up-a-backup-location">Set up a backup location<a class="headerlink" href="#set-up-a-backup-location" title="Permalink to this heading">#</a></h4>
+<p>To set a backup location in your object storage for index or data caches,
+use the following property:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">warp-speed.store.path=&lt;backup-location-bucket&gt;</span>
+</pre></div>
+</div>
+<p>In most use cases, this location can reside in the catalog’s bucket. For more
+complex, cross-region deployments this bucket should be located in the same
+region as the compute account.</p>
+</section>
+<section id="edit-aws-privileges">
+<h4 id="edit-aws-privileges">Edit AWS privileges<a class="headerlink" href="#edit-aws-privileges" title="Permalink to this heading">#</a></h4>
+<p>To use fast warmup, you must include read/write permissions to a backup location
+in object storage. The following shows a privilege example for read/write access
+to S3:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">"Version"</span><span class="p">:</span> <span class="s2">"2012-10-17"</span><span class="p">,</span>
     <span class="nt">"Statement"</span><span class="p">:</span> <span class="p">[</span>
@@ -669,16 +1424,19 @@ privilege example for read/write access to S3:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="lifecycle-policies">
+<h4 id="lifecycle-policies">Lifecycle Policies<a class="headerlink" href="#lifecycle-policies" title="Permalink to this heading">#</a></h4>
 <p>Storing the indexes and data caches can fill up your object storage. Setting a
-lifecycle policy to control the associated cost is highly recommended. Refer to
-the following lifecycle documentation for your cloud provider:</p>
+lifecycle policy to control the associated cost is highly recommended when using
+fast warmup. Refer to the following lifecycle documentation for your cloud
+provider:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html">AWS S3</a></p></li>
-<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-policy-configure?tabs=azure-portal">Azure Storage</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-policy-configure?tabs=azure-portal">Azure Storage</a></p></li>
 <li><p><a class="reference external" href="https://cloud.google.com/storage/docs/lifecycle">Google Cloud Storage</a></p></li>
 </ul>
-<p>As a best practice, allocate at least the average available SSD storage of your
-cluster.</p>
+</section>
 </section>
 <section id="automated-clean-up">
 <h3 id="automated-clean-up">Automated clean up<a class="headerlink" href="#automated-clean-up" title="Permalink to this heading">#</a></h3>
@@ -695,489 +1453,6 @@ result of the default acceleration.</p></li>
 </ul>
 <p>After a clean up, new data is indexed and cached as needed based on the data
 access by the processed queries.</p>
-</section>
-</section>
-<section id="requirements">
-<span id="warp-speed-requirements"></span><h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
-<p>To use Starburst Warp Speed, you need:</p>
-<ul class="simple">
-<li><p>One or more catalogs that use the <a class="reference internal" href="../../connector/starburst-hive.html"><span class="doc">Hive</span></a>,
-<a class="reference internal" href="../../connector/starburst-iceberg.html"><span class="doc">Iceberg</span></a>, or <a class="reference internal" href="../../connector/starburst-delta-lake.html"><span class="doc">Delta Lake</span></a> connectors.</p></li>
-<li><p>A cluster deployment on Amazon Elastic Kubernetes Service (EKS), Microsoft
-Azure Kubernetes Service (AKS), or Google Kubernetes Engine (GKE) as detailed
-in <a class="reference internal" href="#warp-speed-cluster-configuration"><span class="std std-ref">Cluster configuration</span></a>.</p></li>
-<li><p>A valid <a class="reference internal" href="../../license-requirements.html"><span class="doc">Starburst Enterprise license</span></a>.</p></li>
-</ul>
-<section id="supported-object-storage">
-<span id="warp-speed-object-storage-support"></span><h3 id="supported-object-storage">Supported object storage<a class="headerlink" href="#supported-object-storage" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed only supports the following object storage:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#warp-speed-s3-considerations"><span class="std std-ref">Amazon S3</span></a></p></li>
-<li><p><a class="reference internal" href="#warp-speed-gcs-considerations"><span class="std std-ref">Google Cloud Storage (GCS)</span></a></p></li>
-<li><p><a class="reference internal" href="#warp-speed-adls-considerations"><span class="std std-ref">Microsoft ADLS Gen 2</span></a></p></li>
-</ul>
-<p>No other other object storage systems, including on-premises storage,
-S3-compatible storage such as MinIO, and any others are supported.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Starburst strongly recommends using a <a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a> rather than the default Hadoop filesystem implementation for
-any catalogs with Starburst Warp Speed.</p>
-</div>
-</section>
-</section>
-<section id="cluster-configuration">
-<span id="warp-speed-cluster-configuration"></span><h2 id="cluster-configuration">Cluster configuration<a class="headerlink" href="#cluster-configuration" title="Permalink to this heading">#</a></h2>
-<p>Starburst Warp Speed requires your cluster to operate on a Kubernetes-based platform.
-Specifically the <a class="reference internal" href="../../k8s/requirements.html"><span class="doc">Plan your Kubernetes deployment</span></a> apply.</p>
-<p>In addition, Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
-most important additional requirement is that sufficiently performant and sized
-Non-Volatile Memory Express (NVMe) solid-state drive (SSD) storage is available
-on all nodes, and exclusively used by SEP.</p>
-<p>The following specific details apply for the supported platforms:</p>
-<p><strong>EKS</strong></p>
-<p>Required node sizes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">m7gd.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r7gd.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">m6id.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">m6idn.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">m6gd.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r5d.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r5dn.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r6gd.4xlarge</span></code> or larger</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">i3.4xlarge</span></code> or larger</p></li>
-</ul>
-<p>Create an EKS Managed Node Group with a specific size, and use it for
-all nodes in the cluster.</p>
-<p>Include a bootstrap script when creating the node groups for creating an
-<code class="docutils literal notranslate"><span class="pre">/opt/data</span></code> directory to serve as a mount point for the SSD disks where the
-index and cache elements are stored. The value of <code class="docutils literal notranslate"><span class="pre">localStorageMountPath</span></code> in the
-<code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file is a subdirectory of the <code class="docutils literal notranslate"><span class="pre">/opt/data</span></code> mount point directory,
-as described in the <strong>All platforms</strong> section.</p>
-<p>If you are using <code class="docutils literal notranslate"><span class="pre">eksctl</span></code> to create the cluster, you must embed the following
-script in the <code class="docutils literal notranslate"><span class="pre">managedNodeGroups.preBootstrapCommands</span></code> section:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">preBootstrapCommands</span><span class="p">:</span>
-  <span class="s">"yum</span><span class="nv"> </span><span class="s">install</span><span class="nv"> </span><span class="s">-y</span><span class="nv"> </span><span class="s">mdadm"</span>
-  <span class="s">"sysctl</span><span class="nv"> </span><span class="s">-w</span><span class="nv"> </span><span class="s">fs.aio-max-nr=8388608</span><span class="nv"> </span><span class="s">&gt;&gt;</span><span class="nv"> </span><span class="s">/etc/sysctl.conf"</span>
-  <span class="s">'devices="";</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">device</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">$(ls</span><span class="nv"> </span><span class="s">/sys/block/);</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">[[</span><span class="nv"> </span><span class="s">$(grep</span><span class="nv"> </span><span class="s">-e</span><span class="nv"> </span><span class="s">"Amazon</span><span class="nv"> </span><span class="s">EC2</span><span class="nv"> </span><span class="s">NVMe</span><span class="nv"> </span><span class="s">Instance</span><span class="nv"> </span><span class="s">Storage"</span><span class="nv"> </span><span class="s">-e</span><span class="nv"> </span><span class="s">"ec2-nvme-instance"</span><span class="nv"> </span><span class="s">/sys/block/${device}/device/subsysnqn</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">2&gt;</span><span class="nv"> </span><span class="s">/dev/null)</span><span class="nv"> </span><span class="s">-gt</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">]];</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">devices="${devices}</span><span class="nv"> </span><span class="s">/dev/${device}";</span><span class="nv"> </span><span class="s">fi;</span><span class="nv"> </span><span class="s">done;</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">${devices}</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">/tmp/devices'</span>
-  <span class="s">"mdadm</span><span class="nv"> </span><span class="s">--create</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">$(cat</span><span class="nv"> </span><span class="s">/tmp/devices)</span><span class="nv"> </span><span class="s">--level=0</span><span class="nv"> </span><span class="s">--force</span><span class="nv"> </span><span class="s">--raid-devices=$(cat</span><span class="nv"> </span><span class="s">/tmp/devices</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">wc</span><span class="nv"> </span><span class="s">-w)"</span>
-  <span class="s">"mkfs.ext4</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">-O</span><span class="nv"> </span><span class="s">^has_journal"</span>
-  <span class="s">"mkdir</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">/opt/data"</span>
-  <span class="s">"mount</span><span class="nv"> </span><span class="s">/dev/md0</span><span class="nv"> </span><span class="s">/opt/data"</span>
-  <span class="s">"chmod</span><span class="nv"> </span><span class="s">777</span><span class="nv"> </span><span class="s">-R</span><span class="nv"> </span><span class="s">/opt/data"</span>
-</pre></div>
-</div>
-<p>If you do not have adequate privileges and are unable to use the bootstrap
-script, set the following configuration:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">warpSpeed</span><span class="o">:</span>
-<span class="na">  image</span><span class="o">:</span>
-<span class="na">    tag</span><span class="o">:</span> <span class="s">"a.b.c-awsprivileged"</span>
-</pre></div>
-</div>
-<p>SEP supports <a class="reference external" href="https://aws.amazon.com/bottlerocket/">AWS Bottlerocket</a> nodes
-for EKS workloads. This includes support for Starburst Warp Speed configurations. To deploy
-SEP using Bottlerocket nodes, add the following to your <a class="reference external" href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data">Amazon EC2 user
-data</a>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">settings.bootstrap-containers.disk-setup</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">essential = true</span>
-<span class="l l-Scalar l-Scalar-Plain">mode = "once"</span>
-<span class="l l-Scalar l-Scalar-Plain">source = "http://harbor.starburstdata.net/starburstdata/starburst-warpspeed-init:1.0.17-bottlerocket"</span>
-</pre></div>
-</div>
-<p><strong>AKS</strong></p>
-<p>Required node sizes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Standard_L16s_v2</span></code> or larger <code class="docutils literal notranslate"><span class="pre">Lsv2</span></code> series Azure VMs like <code class="docutils literal notranslate"><span class="pre">Standard_L32s_v2</span></code>
-with SSDs attached. Lsv2-series VM SSDs are not encrypted by <a class="reference external" href="https://learn.microsoft.com/azure/virtual-machines/disk-encryption">Azure Storage
-encryption</a>.
-We strongly recommend <code class="docutils literal notranslate"><span class="pre">Standard_L16s_v3</span></code> or larger <code class="docutils literal notranslate"><span class="pre">Lsv3</span></code> series VMs.</p></li>
-<li><p>In the Starburst Warp Speed section of <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>, set the following configuration:</p></li>
-</ul>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">warpSpeed</span><span class="o">:</span>
-<span class="na">  image</span><span class="o">:</span>
-<span class="na">    tag</span><span class="o">:</span> <span class="s">"a.b.c-azure"</span>
-</pre></div>
-</div>
-<p><strong>GKE</strong></p>
-<p>Required node sizes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">n2-highmem-16</span></code> or larger with a <a class="reference external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#raw-block">minimum of two local
-NVME SSDs</a>
-attached</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">n2d-standard-16</span></code> or larger</p></li>
-<li><p>GKE version <code class="docutils literal notranslate"><span class="pre">1.25.3-gke.1800</span></code> or higher</p></li>
-</ul>
-<p>Attach the SSDs during node pool creation, and use the pool for the cluster
-creation.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Use the gcloud CLI, not Google Cloud console, for node pool creation. Using the
-Google console UI creates incompatible disk types.</p>
-</div>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">ephemeral-storage-local-ssd</span></code> gcloud CLI command to provision local
-SSDs on the cluster. Select an even number of workers.</p>
-<p><strong>All platforms</strong></p>
-<p>Configuration considerations:</p>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">task.max-worker-threads</span></code> <a class="reference internal" href="../../admin/properties-task.html"><span class="doc">task property</span></a>
-can not be changed with Starburst Warp Speed so it must be left at the default value.</p></li>
-<li><p>SEP clusters with a vCPU count of 16 or fewer per worker node support a
-maximum of four Starburst Warp Speed catalogs. Clusters with larger worker nodes support a
-maximum of seven Starburst Warp Speed catalogs.</p></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Starburst Warp Speed is not supported on a cluster running in
-<a class="reference internal" href="../../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> mode.</p>
-</div>
-<p>Deployment and management is performed with the SEP Helm charts detailed in
-<a class="reference internal" href="../../k8s.html"><span class="doc">Deploy with Kubernetes</span></a> and <a class="reference internal" href="../../k8s/sep-configuration.html"><span class="doc">Configuring Starburst Enterprise in Kubernetes</span></a>.</p>
-<p>Add the following section in your values file for the specific cluster to enable
-Starburst Warp Speed:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
-  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-</pre></div>
-</div>
-<p>Starburst Warp Speed uses a filesystem on top of the underlying storage in order to not
-require privileged mode. Add the following filesystem and image configuration to
-your values file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
-  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain"># Physical drive configuration requires the Warp Speed init container within</span>
-    <span class="l l-Scalar l-Scalar-Plain"># a worker pod to be privileged.</span>
-    <span class="l l-Scalar l-Scalar-Plain"># When configuration is done, the container's lifecycle ends.</span>
-    <span class="l l-Scalar l-Scalar-Plain"># If autoConfigure is not enabled, devices must be manually configured</span>
-    <span class="l l-Scalar l-Scalar-Plain"># before SEP pods are started. For example, during the node machine</span>
-    <span class="l l-Scalar l-Scalar-Plain"># bootstrap process (preBootstrapCommands script in EKS deployments).</span>
-    <span class="l l-Scalar l-Scalar-Plain"># This functionality is available for AKS, EKS, and GKE only.</span>
-    <span class="l l-Scalar l-Scalar-Plain"># For AWS, use default setting.</span>
-    <span class="l l-Scalar l-Scalar-Plain"># For Azure and GKE deployments, or S3 deployments using the native</span>
-    <span class="l l-Scalar l-Scalar-Plain"># filesystem implementation, set autoConfigure to true.</span>
-  <span class="nt">autoConfigure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain"># Additional percentage of container memory reduced from heap size assigned to Java, must be less than 100</span>
-  <span class="nt">additionalHeapSizePercentage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
-  <span class="nt">fileSystem</span><span class="p">:</span>
-    <span class="c1"># The path for the mount point used to mount the local SSDs. Value differs</span>
-    <span class="c1"># between clouds:</span>
-    <span class="c1"># AWS, Azure - Defined by the user</span>
-    <span class="c1"># GCP - Must be set to /mnt/stateful_partition/kube-ephemeral-ssd/data</span>
-    <span class="nt">localStorageMountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/data/&lt;subdirectory&gt;</span>
-  <span class="nt">image</span><span class="p">:</span>
-    <span class="c1"># Image that prepares the filesystem for Starburst Warp Speed.</span>
-    <span class="c1"># Due to system limitations, this must be done by an init container running</span>
-    <span class="c1"># in privileged mode.</span>
-    <span class="nt">repository</span><span class="p">:</span> <span class="s">"harbor.starburstdata.net/starburstdata/starburst-warpspeed-init"</span>
-    <span class="c1"># Tag value differs between clouds:</span>
-    <span class="c1"># AWS, GCP - Use default tag</span>
-    <span class="c1"># Azure - Append the "azure" suffix, for example "1.0.0-azure"</span>
-    <span class="c1"># Update this tag to the latest available version of the Starburst Warp</span>
-    <span class="c1"># Speed init container</span>
-    <span class="nt">tag</span><span class="p">:</span> <span class="s">"1.0.16"</span>
-    <span class="nt">pullPolicy</span><span class="p">:</span> <span class="s">"IfNotPresent"</span>
-</pre></div>
-</div>
-<p>You need to ensure that you use a dedicated coordinator that is
-not scheduled for query processing, and adjust the query processing
-configuration to allow for more splits:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">coordinator</span><span class="p">:</span>
-  <span class="nt">additionalProperties</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">...</span>
-    <span class="no">node-scheduler.include-coordinator=false</span>
-    <span class="no">node-scheduler.max-splits-per-node=4096</span>
-    <span class="no">node-scheduler.max-unacknowledged-splits-per-task=2048</span>
-    <span class="no">node-scheduler.max-adjusted-pending-splits-per-task=2048</span>
-</pre></div>
-</div>
-<p>Use Helm to update the values and restart the cluster nodes. Confirm the cluster
-is operating correctly with the new configuration, but without any adjusted
-catalogs, and then proceed to configure catalogs.</p>
-<p>Related to the catalog usage, the cluster needs to allow internal communication
-between all workers, as well as with the coordinator on all the HTTP ports
-configured by the different values for <code class="docutils literal notranslate"><span class="pre">http-rest-port</span></code> in all catalogs.</p>
-<p>When starting the cluster, Starburst Warp Speed parses all configuration parameters and can send
-invalid warnings such as <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">property</span> <span class="pre">'cache-service.password'</span> <span class="pre">was</span> <span class="pre">not</span> <span class="pre">used</span></code>. You can safely ignore these warnings.</p>
-</section>
-<section id="catalog-configuration">
-<span id="warp-speed-catalog-configuration"></span><h2 id="catalog-configuration">Catalog configuration<a class="headerlink" href="#catalog-configuration" title="Permalink to this heading">#</a></h2>
-<p>After a successful <a class="reference internal" href="#warp-speed-cluster-configuration"><span class="std std-ref">Cluster configuration</span></a>, you can configure
-the desired catalogs to use Starburst Warp Speed.</p>
-<p>Only catalogs using the Hive, Iceberg, or Delta Lake connectors can be
-accelerated:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=hive</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=iceberg</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">connector.name=delta_lake</span></code></p></li>
-</ul>
-<p>For more details, see <a class="reference internal" href="#warp-speed-delta-lake-considerations"><span class="std std-ref">Delta Lake considerations</span></a>,
-<a class="reference internal" href="#warp-speed-iceberg-considerations"><span class="std std-ref">Iceberg considerations</span></a>, and
-<a class="reference internal" href="#warp-speed-hive-considerations"><span class="std std-ref">Hive considerations</span></a>.</p>
-<p>Only catalogs backed by S3, GCS, and ADLS object storage are supported. For more
-details, see <a class="reference internal" href="#warp-speed-s3-considerations"><span class="std std-ref">S3 considerations</span></a>,
-<a class="reference internal" href="#warp-speed-gcs-considerations"><span class="std std-ref">GCS considerations</span></a>, and <a class="reference internal" href="#warp-speed-adls-considerations"><span class="std std-ref">ADLS considerations</span></a>.</p>
-<p>Update the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog that uses the Hive connector with AWS Glue in the
-values file.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">connector.name=hive</span>
-    <span class="no">hive.metastore=glue</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-<p>Enable Starburst Warp Speed on the catalog by updating the connector name to <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code> and
-adding the required configuration properties:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">connector.name=warp_speed</span>
-    <span class="no">warp-speed.proxied-connector=hive</span>
-    <span class="no">warp-speed.cluster-uuid=example-cluster-567891234567</span>
-    <span class="no"># Do not configure the following property if you are using a native</span>
-    <span class="no"># filesystem implementation.</span>
-    <span class="no">warp-speed.config.internal-communication.shared-secret=aLongSecretString</span>
-    <span class="no">hive.metastore=glue</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-<p>The properties setting the connector name, the proxied connector and the cluster
-identifier are required.</p>
-<p>The shared secret must be set to the same value as the secret for the cluster
-itself set in <code class="docutils literal notranslate"><span class="pre">sharedSecret:</span></code>. This is required unless the REST API is
-disabled.</p>
-<p>For testing purposes, or alternatively for permanent usage of a new catalog
-name, such as <code class="docutils literal notranslate"><span class="pre">faster</span></code>, in parallel to the existing catalog, you can copy the
-configuration of a catalog and update it:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">connector.name=hive</span>
-    <span class="no">hive.metastore=glue</span>
-    <span class="no">...</span>
-  <span class="nt">faster</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">connector.name=warp_speed</span>
-    <span class="no">warp-speed.proxied-connector=hive</span>
-    <span class="no">warp-speed.cluster-uuid=example-cluster-567891234567</span>
-    <span class="no"># Do not configure the following property if you are using a native</span>
-    <span class="no"># filesystem implementation.</span>
-    <span class="no">warp-speed.config.internal-communication.shared-secret=aLongSecretString</span>
-    <span class="no">hive.metastore=glue</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-<p>This allows you to query the same data with or without Starburst Warp Speed using different
-catalog names. However, existing scripts and statements that include the old
-catalog name <code class="docutils literal notranslate"><span class="pre">example</span></code> are not accelerated.</p>
-<section id="catalog-configuration-properties">
-<h3 id="catalog-configuration-properties">Catalog configuration properties<a class="headerlink" href="#catalog-configuration-properties" title="Permalink to this heading">#</a></h3>
-<p>The following table provides more information about the available catalog
-configuration properties:</p>
-<table id="id4">
-<caption><span class="caption-text">Catalog configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 35%"/>
-<col style="width: 65%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Property name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connector.name</span></code></p></td>
-<td><p><strong>Required.</strong> Must be set to <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.proxied-connector</span></code></p></td>
-<td><p><strong>Required.</strong> The type of embedded connector that is used for accessing cold
-data through Starburst Warp Speed. Defaults to <code class="docutils literal notranslate"><span class="pre">hive</span></code>. Valid values are <code class="docutils literal notranslate"><span class="pre">hive</span></code>,
-<code class="docutils literal notranslate"><span class="pre">iceberg</span></code>, or <code class="docutils literal notranslate"><span class="pre">delta-lake</span></code>. All properties supported by these
-connectors, including metastore, file format, and connector properties, can
-be used to configure the catalog.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.cluster-uuid</span></code></p></td>
-<td><p><strong>Required.</strong> Unique identifier of the cluster. Used as the folder name
-in the store path. Use the same value for all catalogs. When creating a
-new cluster and the same <code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code> and
-<code class="docutils literal notranslate"><span class="pre">warp-speed.cluster-uuid</span></code> are used, then the <a class="reference internal" href="#warp-speed-management"><span class="std std-ref">cluster warmup rules</span></a> for index and cache creation are imported
-into the newly created cluster.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code></p></td>
-<td><p><strong>Required, unless REST API is disabled or you are using a native filesystem
-implementation</strong>  The shared secret value of the cluster. It is configured
-for <a class="reference internal" href="../../security/internal-communication.html"><span class="doc">secure internal communication</span></a>
-in <code class="docutils literal notranslate"><span class="pre">sharedSecret:</span></code> for the Kubernetes deployment. The identical value used
-for the property <code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code>
-for each catalog. Do not configure if you are using a <a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code></p></td>
-<td><p>The path to a bucket in object storage where SSD data is backed up for fast
-cache rehydration. Requires <code class="docutils literal notranslate"><span class="pre">warp-speed.enable.import-export</span></code> be set to
-true.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.enable.import-export</span></code></p></td>
-<td><p>Enable or disable <a class="reference internal" href="#warp-speed-index-cache"><span class="std std-ref">index and cache resiliency</span></a>. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Requires an object storage
-configured with <code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.use-http-server-port</span></code></p></td>
-<td><p>Specifies to run the REST API on the coordinator in the same server as
-SEP. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Do not configure if you are using a
-<a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>. For details, see
-<a class="reference internal" href="#rest-api-access"><span class="std std-ref">REST API access</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warp-speed.config.http-rest-port-enabled</span></code></p></td>
-<td><p>Optional parameter to enable the REST API server on the coordinator and
-each worker for each catalog. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. This REST API is
-only suitable for testing and debugging purposes, since it is not
-secured. For production, use the default configuration.</p>
-<p>Set the property to <code class="docutils literal notranslate"><span class="pre">true</span></code> and add a unique <code class="docutils literal notranslate"><span class="pre">http-rest-port</span></code> value
-for each catalog. Endpoints use the specified port for a catalog, such
-as <code class="docutils literal notranslate"><span class="pre">8088</span></code>, instead of  the <code class="docutils literal notranslate"><span class="pre">/ext/{catalogName}</span></code> section of the
-context, and are otherwise identical to the <a class="reference internal" href="#warp-speed-management"><span class="std std-ref">secured REST API</span></a>. Typically the port is not exposed outside the
-cluster, so users need to forward the port or call the API from inside
-the cluster.</p>
-<p>Do not configure if you are using a
-<a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="hive-considerations">
-<span id="warp-speed-hive-considerations"></span><h3 id="hive-considerations">Hive considerations<a class="headerlink" href="#hive-considerations" title="Permalink to this heading">#</a></h3>
-<p>Most configurations of the <a class="reference internal" href="../../connector/starburst-hive.html"><span class="doc">Hive connector</span></a> are
-supported. Additionally, the following considerations apply when using the Hive
-connector as the proxied connector for Starburst Warp Speed:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../../connector/hive.html#hive-table-redirection"><span class="std std-ref">Table redirection from a catalog using the Hive connector</span></a> to Delta Lake or Iceberg is not supported.</p></li>
-<li><p><a class="reference internal" href="../../connector/starburst-hive.html#sb-hive-materialized-views"><span class="std std-ref">Materialized views</span></a> are supported.</p></li>
-<li><p><a class="reference internal" href="../../object-storage/legacy-s3.html#hive-s3-configuration"><span class="std std-ref">S3 proxy</span></a> is not supported.</p></li>
-<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
-encryption</a>
-with S3 managed keys is supported. S3 client-side encryption is not supported.</p></li>
-<li><p><a class="reference internal" href="../../connector/hive.html#hive-data-management"><span class="std std-ref">ORC ACID transactional tables</span></a> are not supported.</p></li>
-</ul>
-<p>For optimal performance, add the following properties to your catalog
-configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">...</span>
-    <span class="no">hive.max-outstanding-splits-size=512MB</span>
-    <span class="no">hive.max-initial-splits=0</span>
-    <span class="no">hive.max-outstanding-splits=3000</span>
-    <span class="no">parquet.max-read-block-row-count=1024</span>
-    <span class="no">hive.dynamic-filtering.wait-timeout=1s</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-</section>
-<section id="iceberg-considerations">
-<span id="warp-speed-iceberg-considerations"></span><h3 id="iceberg-considerations">Iceberg considerations<a class="headerlink" href="#iceberg-considerations" title="Permalink to this heading">#</a></h3>
-<p>All configurations of the <a class="reference internal" href="../../connector/starburst-iceberg.html"><span class="doc">Iceberg connector</span></a> are supported. Additionally, the following
-considerations apply when using the Iceberg connector as the proxied connector
-for Starburst Warp Speed:</p>
-<ul class="simple">
-<li><p>Materialized views are supported.</p></li>
-<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
-encryption</a>
-with S3 managed keys is supported. S3 client-side encryption is not supported.</p></li>
-<li><p>An associated split is served from object storage and no acceleration occurs
-when:</p>
-<ul>
-<li><p>A row-level <a class="reference internal" href="../../connector/iceberg.html#iceberg-data-management"><span class="std std-ref">update or delete operation</span></a>.</p></li>
-<li><p>A merge operation that causes a record update.</p></li>
-</ul>
-</li>
-</ul>
-<p>For optimal performance, add the following properties to your catalog
-configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">...</span>
-    <span class="no">parquet.max-read-block-row-count=1024</span>
-    <span class="no">iceberg.dynamic-filtering.wait-timeout=1s</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-</section>
-<section id="delta-lake-considerations">
-<span id="warp-speed-delta-lake-considerations"></span><h3 id="delta-lake-considerations">Delta Lake considerations<a class="headerlink" href="#delta-lake-considerations" title="Permalink to this heading">#</a></h3>
-<p>All configurations of the <a class="reference internal" href="../../connector/starburst-delta-lake.html"><span class="doc">Delta Lake connector</span></a> are supported. Additionally, the following
-considerations apply when using the Delta Lake connector as the proxied
-connector for Starburst Warp Speed:</p>
-<ul class="simple">
-<li><p>Materialized views are not supported.</p></li>
-<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html">Server-side
-encryption</a>
-with S3 managed keys is supported. S3 client-side encryption is not supported.</p></li>
-<li><p>An associated split is served from object storage and no acceleration occurs
-when:</p>
-<ul>
-<li><p>A row-level <a class="reference internal" href="../../connector/delta-lake.html#delta-lake-data-management"><span class="std std-ref">update or delete operation</span></a>.</p></li>
-<li><p>A merge operation that causes a record update.</p></li>
-</ul>
-</li>
-</ul>
-<p>For optimal performance, add the following properties to your catalog
-configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">example</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">...</span>
-    <span class="no">delta.max-outstanding-splits=3000</span>
-    <span class="no">parquet.max-read-block-row-count=1024</span>
-    <span class="no">delta.dynamic-filtering.wait-timeout=1s</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-</section>
-<section id="s3-considerations">
-<span id="warp-speed-s3-considerations"></span><h3 id="s3-considerations">S3 considerations<a class="headerlink" href="#s3-considerations" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed supports <a class="reference external" href="https://aws.amazon.com/s3/">Amazon S3</a> with
-catalogs using the Hive, Iceberg, and Delta Lake connectors.</p>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">s3://</span></code> protocol is required.</p>
-</section>
-<section id="gcs-considerations">
-<span id="warp-speed-gcs-considerations"></span><h3 id="gcs-considerations">GCS considerations<a class="headerlink" href="#gcs-considerations" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed supports Google Cloud Storage (GCS).</p>
-<p>Authentication to GCS can use a JSON key file or an OAuth 2.0 access token
-configured identically for the Hive, Delta Lake, or Iceberg connector in the
-catalog properties:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.gcs.json-key-file-path</span><span class="o">=</span><span class="s">/path/to/gcs_keyfile.json</span>
-<span class="na">hive.gcs.use-access-token</span><span class="o">=</span><span class="s">false</span>
-</pre></div>
-</div>
-<p>View the <a class="reference internal" href="../../object-storage/legacy-gcs.html"><span class="doc">Legacy Google Cloud Storage support</span></a> to learn more.</p>
-<p>The following <a class="reference external" href="https://developers.google.com/identity/protocols/oauth2/scopes">OAuth 2.0 access scopes for Google
-APIs</a>
-must be attached during GKE node creation to enable the <a class="reference internal" href="#warp-speed-index-cache"><span class="std std-ref">index and cache resiliency</span></a>:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/devstorage.full_control">devstorage.full_control</a></p></li>
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/logging.write">logging.write</a></p></li>
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/monitoring">monitoring</a></p></li>
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/servicecontrol">service control</a></p></li>
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/service.management.readonly">service.management.readonly</a></p></li>
-<li><p><a class="reference external" href="https://www.googleapis.com/auth/trace.append">trace.append</a></p></li>
-</ul>
-<p>For more information about authorization, refer to <a class="reference external" href="https://cloud.google.com/compute/docs/access/service-accounts">Google Cloud Service
-accounts</a>
-documentation.</p>
-</section>
-<section id="adls-considerations">
-<span id="warp-speed-adls-considerations"></span><h3 id="adls-considerations">ADLS considerations<a class="headerlink" href="#adls-considerations" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed supports
-<a class="reference external" href="https://azure.microsoft.com/products/storage/data-lake-storage/">Microsoft ADLS Gen 2</a>.
-<a class="reference external" href="https://learn.microsoft.com/azure/data-lake-store/data-lake-store-overview">ADLS Gen1</a>
-is not supported.</p>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">abfs://</span></code> or <code class="docutils literal notranslate"><span class="pre">abfss://</span></code> protocol is required.</p>
-<p>ADLS can be used with catalogs using the Hive and Delta Lake connectors with the
-following configuration properties to connect to Azure storage:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">catalogs</span><span class="p">:</span>
-  <span class="nt">faster</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="no">...</span>
-    <span class="no">warp-speed.store.path=abfs://&lt;container_name@account_name&gt;.dfs.core.windows.net/folder</span>
-    <span class="no">hive.azure.abfs-storage-account=&lt;storage_account_name&gt;</span>
-    <span class="no">hive.azure.abfs-access-key=xxx</span>
-    <span class="no">...</span>
-</pre></div>
-</div>
-<p>It is possible to secure the connection with TLS and use the <code class="docutils literal notranslate"><span class="pre">abfss</span></code> protocol
-with the <a class="reference external" href="https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction-abfs-uri#uri-syntax">URI
-syntax</a>.</p>
 </section>
 </section>
 <section id="warmup-rule-persistency">
@@ -1210,7 +1485,7 @@ also called the <a class="reference internal" href="#warp-speed-default-accelera
 <p>The <a class="reference internal" href="../../insights/query-details.html#insights-query-details-warp-speed"><span class="std std-ref">Index and cache usage</span></a> tab
 provides summary statistics that indicate performance gains from using Starburst Warp Speed.</p>
 <section id="rest-api-access">
-<span id="id1"></span><h3 id="rest-api-access">REST API access<a class="headerlink" href="#rest-api-access" title="Permalink to this heading">#</a></h3>
+<span id="id7"></span><h3 id="rest-api-access">REST API access<a class="headerlink" href="#rest-api-access" title="Permalink to this heading">#</a></h3>
 <p>The Starburst Warp Speed REST API is available on the coordinator with a separate context for
 each catalog on the same port and domain as the SEP web UI, the Starburst Enterprise
 REST API and the Trino REST API.</p>
@@ -1223,7 +1498,7 @@ communication</span></a>, must be set in
 <code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code> for each catalog.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are using a <a class="reference internal" href="../../object-storage.html"><span class="doc">native filesystem implementation</span></a>
+<p>If you are using a <a class="reference internal" href="../../object-storage.html#file-system-native"><span class="std std-ref">native file system implementation</span></a>
 rather than the default Hadoop implementation, do not add
 <code class="docutils literal notranslate"><span class="pre">warp-speed.config.internal-communication.shared-secret</span></code> to your configuration,
 and set <code class="docutils literal notranslate"><span class="pre">warp-speed.use-http-server-port=false</span></code>.</p>
@@ -1250,7 +1525,7 @@ calls use plain curl calls to the endpoints for the <code class="docutils litera
 cluster at <code class="docutils literal notranslate"><span class="pre">sep.example.com</span></code> using HTTPS and omitting any authentication.</p>
 </section>
 <section id="warming-status">
-<span id="id2"></span><h3 id="warming-status">Warming status<a class="headerlink" href="#warming-status" title="Permalink to this heading">#</a></h3>
+<span id="id8"></span><h3 id="warming-status">Warming status<a class="headerlink" href="#warming-status" title="Permalink to this heading">#</a></h3>
 <p>You can determine the status of the warmup for Starburst Warp Speed with a GET operation of the
 <code class="docutils literal notranslate"><span class="pre">/warming/status</span></code> endpoint. It measures the warmup progress for splits across
 workers and if warming is currently taking place.</p>
@@ -1364,9 +1639,9 @@ the <code class="docutils literal notranslate"><span class="pre">tmp</span></cod
 <a class="reference internal" href="#warmup-rule-properties"><span class="std std-ref">Warmup rule properties</span></a>.</p>
 </section>
 <section id="warmup-rule-properties">
-<span id="id3"></span><h4 id="warmup-rule-properties">Warmup rule properties<a class="headerlink" href="#warmup-rule-properties" title="Permalink to this heading">#</a></h4>
-<table id="id5">
-<caption><span class="caption-text">Warmup rule properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<span id="id9"></span><h4 id="warmup-rule-properties">Warmup rule properties<a class="headerlink" href="#warmup-rule-properties" title="Permalink to this heading">#</a></h4>
+<table id="id11">
+<caption><span class="caption-text">Warmup rule properties</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 65%"/>
@@ -1465,8 +1740,8 @@ deletion.</p>
 accelerated catalog are supported by Starburst Warp Speed:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../connector/starburst-hive.html#sb-hive-sql-support"><span class="std std-ref">Starburst Hive connector</span></a></p></li>
-<li><p><a class="reference internal" href="../../connector/starburst-iceberg.html#sb-iceberg-sql-support"><span class="std std-ref">Starburst Iceberg connector</span></a></p></li>
-<li><p><a class="reference internal" href="../../connector/starburst-delta-lake.html#sb-delta-lake-sql-support"><span class="std std-ref">Starburst Delta Lake connector</span></a></p></li>
+<li><p><a class="reference internal" href="../../connector/iceberg.html#iceberg-sql-support"><span class="std std-ref">Starburst Iceberg connector</span></a></p></li>
+<li><p><a class="reference internal" href="../../connector/delta-lake.html#delta-lake-sql-support"><span class="std std-ref">Starburst Delta Lake connector</span></a></p></li>
 </ul>
 <p>Starburst Warp Speed supports all <a class="reference internal" href="../../language/types.html"><span class="doc">data types</span></a>, including structural data
 types. All structural data types are accessible, but indexing is only applicable
