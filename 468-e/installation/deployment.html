@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Developer guide" href="../develop.html" />
-    <link rel="prev" title="Download Starburst Enterprise" href="download.html" />
+    <link rel="prev" title="Manual installation and license" href="../installation.html" />
 
   
    
@@ -270,13 +270,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Manual installation and license</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../installation.html#server-and-cluster-installation-and-deployment">Server and cluster installation and deployment</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="download.html">Download Starburst Enterprise</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Starburst Enterprise deployment basics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#network-bandwidth">Network bandwidth</a></li>
@@ -286,9 +288,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#backend-service-database">Backend service database</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#deploy-sep">Deploy SEP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configure-sep">Configure SEP</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#managing-configuration-in-kubernetes-deployments">Managing configuration in Kubernetes deployments</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#managing-the-default-values-in-the-vars-yml-file">Managing the default values in the <code class="docutils literal notranslate"><span class="pre">vars.yml</span></code> file</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#node-properties">Node properties</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#jvm-config">JVM config</a><ul>
@@ -300,10 +300,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#catalog-properties">Catalog properties</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#run-sep">Run SEP</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#next-steps">Next steps</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="#run-sep">Run SEP</a></li>
 </ul>
 </li>
 </ul>
@@ -346,12 +343,8 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#deploy-sep" class="md-nav__link">Deploy SEP</a>
-        </li>
         <li class="md-nav__item"><a href="#configure-sep" class="md-nav__link">Configure SEP</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#managing-configuration-in-kubernetes-deployments" class="md-nav__link">Managing configuration in Kubernetes deployments</a>
-        </li>
         <li class="md-nav__item"><a href="#managing-the-default-values-in-the-vars-yml-file" class="md-nav__link">Managing the default values in the <code class="docutils literal notranslate"><span class="pre">vars.yml</span></code> file</a>
         </li>
         <li class="md-nav__item"><a href="#node-properties" class="md-nav__link">Node properties</a>
@@ -370,11 +363,7 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#run-sep" class="md-nav__link">Run SEP</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#next-steps" class="md-nav__link">Next steps</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#run-sep" class="md-nav__link">Run SEP</a>
         </li></ul>
             </nav>
         </li>
@@ -463,17 +452,8 @@ backend service requires an existing, external database, and must be configured
 and running before many other features can be configured.</p>
 </section>
 </section>
-<section id="deploy-sep">
-<h2 id="deploy-sep">Deploy SEP<a class="headerlink" href="#deploy-sep" title="Permalink to this heading">#</a></h2>
-<p>To deploy SEP, you must use the Starburst Kubernetes <a class="reference internal" href="../k8s/requirements.html"><span class="doc">Helm charts</span></a>.</p>
-</section>
 <section id="configure-sep">
 <h2 id="configure-sep">Configure SEP<a class="headerlink" href="#configure-sep" title="Permalink to this heading">#</a></h2>
-<p>Starburst provides the following deployment option for SEP:</p>
-<ul class="simple">
-<li><p><strong>Kubernetes-based deployments</strong> - All properties are defined <a class="reference internal" href="../k8s/sep-config-examples.html"><span class="doc">in YAML files</span></a> which are used to create the
-configuration files that SEP expects.</p></li>
-</ul>
 <p>There are four main categories of configuration properties that SEP requires
 in specifically named locations. These categories describe the
 top-level YAML nodes for Helm-based deployments.</p>
@@ -496,16 +476,6 @@ cluster security require additional customization in specific sections of the
 <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file for Kubernetes deployments.</p>
 <p>In most cases, the cluster must be restarted for configuration changes to take
 effect.</p>
-<section id="managing-configuration-in-kubernetes-deployments">
-<h3 id="managing-configuration-in-kubernetes-deployments">Managing configuration in Kubernetes deployments<a class="headerlink" href="#managing-configuration-in-kubernetes-deployments" title="Permalink to this heading">#</a></h3>
-<p>In Kubernetes-based deployments, we strongly suggest that you leave the
-contents of the <code class="docutils literal notranslate"><span class="pre">etcFiles.properties</span></code> sections in the top level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code>
-and <code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes with their default values untouched, and make any
-customizations using the <code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> nodes instead.</p>
-<p>Additionally, we suggest following the recommended guidelines for creating a
-customization file set as described in the Kubernetes deployment link in the
-<a class="reference internal" href="#deployment-next-steps"><span class="std std-ref">next steps section</span></a> of this topic.</p>
-</section>
 <section id="managing-the-default-values-in-the-vars-yml-file">
 <h3 id="managing-the-default-values-in-the-vars-yml-file">Managing the default values in the <code class="docutils literal notranslate"><span class="pre">vars.yml</span></code> file<a class="headerlink" href="#managing-the-default-values-in-the-vars-yml-file" title="Permalink to this heading">#</a></h3>
 <p>Some configuration properties, if customized in Jinja2 files, may conflict with
@@ -514,13 +484,6 @@ files.</p>
 </section>
 <section id="node-properties">
 <span id="id2"></span><h3 id="node-properties">Node properties<a class="headerlink" href="#node-properties" title="Permalink to this heading">#</a></h3>
-<p>All properties described in this section are defined as follows, depending on
-the deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <p>These configuration properties are applied to each specific node in the cluster.
 A <em>node</em> is a single installed instance of SEP. This file is typically created
 by the deployment system when SEP is first installed. The following is a
@@ -551,13 +514,6 @@ logs and other data here.</p></li>
 </section>
 <section id="jvm-config">
 <span id="id3"></span><h3 id="jvm-config">JVM config<a class="headerlink" href="#jvm-config" title="Permalink to this heading">#</a></h3>
-<p>All properties described in this section are defined as follows, depending on
-the deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <p>These configuration properties comprise a list of command line options used for
 launching the Java Virtual Machine. The list of options must be written one
 per line. These options are not interpreted by the shell, so options containing
@@ -628,13 +584,6 @@ provides a comprehensive list of the supported properties for topics such as
 <a class="reference internal" href="../admin/properties-query-management.html"><span class="doc">Query management properties</span></a>,
 <a class="reference internal" href="../admin/properties-web-interface.html"><span class="doc">Web UI properties</span></a>, and others. The examples in the section
 show how a small number of the available configuration properties are used.</p>
-<p>General configuration properties are defined as follows, depending on the
-deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <p>A cluster is required to include one coordinator, as dedicating a machine to
 only perform coordination work provides the best performance on larger clusters.
 Scaling and parallelization is achieved by using many workers.</p>
@@ -692,13 +641,7 @@ cluster and supported use cases.</p>
 <p>All properties described in this section are optional, and allow setting the
 minimum log level for named logger hierarchies. Every logger has a name, which
 is typically the fully qualified name of the class that uses the logger. Loggers
-have a hierarchy based on the dots in the name, like Java packages. Logging
-properties are defined as follows, depending on the deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
+have a hierarchy based on the dots in the name, like Java packages.</p>
 <p>For example, consider the following log levels setting:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>io.trino=INFO
 </pre></div>
@@ -717,30 +660,11 @@ example, the Hive connector maps each Hive database to a schema. If the Hive
 connector is mounted as the <code class="docutils literal notranslate"><span class="pre">hivewebevents</span></code> catalog, and the data source
 contains a table <code class="docutils literal notranslate"><span class="pre">clicks</span></code> in database <code class="docutils literal notranslate"><span class="pre">web</span></code>, that table can be accessed in
 SEP as <code class="docutils literal notranslate"><span class="pre">hivewebevents.web.clicks</span></code>.</p>
-<p>Catalogs are defined as follows, depending on the deployment type. Each catalog
-has a separate named entry:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-defaults-catalogs"><span class="std std-ref">Kubernetes</span></a>: In the top-level
-<code class="docutils literal notranslate"><span class="pre">catalogs</span></code> node in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
-<p>For example, to create the <code class="docutils literal notranslate"><span class="pre">hivewebevents</span></code> catalog in Kubernetes deployments,
-add the following map to the top-level <code class="docutils literal notranslate"><span class="pre">catalogs</span></code> node:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hivewebevents: |-
-  connector.name=hive
-</pre></div>
-</div>
-<p>See <a class="reference internal" href="../connector.html"><span class="doc">Connector overview</span></a> for more information about configuring connectors.</p>
 </section>
 </section>
 <section id="run-sep">
 <span id="running-trino"></span><h2 id="run-sep">Run SEP<a class="headerlink" href="#run-sep" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">launcher</span></code> script can be used manually or as a daemon startup script.</p>
-<p>The location of the script is defined as follows, depending on the deployment
-type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-startup-script"><span class="std std-ref">Kubernetes</span></a>: In the top-level
-<code class="docutils literal notranslate"><span class="pre">initFile</span></code> node in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <p>The default script accepts the following commands:</p>
 <table id="id7">
 <caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">launcher</span></code> commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
@@ -823,16 +747,6 @@ It is automatically rotated and compressed.</p></li>
 This is the HTTP request log which contains every HTTP request
 received by the server. It is automatically rotated and compressed.</p></li>
 </ul>
-<section id="next-steps">
-<span id="deployment-next-steps"></span><h3 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h3>
-<p>You next steps depend on your selected deployment option:</p>
-<ul class="simple">
-<li><p>If you have selected the Kubernetes deployment option, start with the
-<a class="reference internal" href="../k8s.html"><span class="doc std std-doc">Kubernetes installation guide</span></a>
-It explains best practices for customization, and directs you to instructions
-for your specific cloud provider.</p></li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -847,7 +761,7 @@ for your specific cloud provider.</p></li>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="download.html" title="Download Starburst Enterprise"
+            <a href="../installation.html" title="Manual installation and license"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -856,7 +770,7 @@ for your specific cloud provider.</p></li>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Download Starburst Enterprise </span>
+                      class="md-footer-nav__direction"> Previous </span> Manual installation and license </span>
               </div>
             </a>
           

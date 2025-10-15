@@ -271,10 +271,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -329,13 +332,6 @@
             
   <section id="spilling-properties">
 <h1 id="admin-properties-spilling--page-root">Spilling properties<a class="headerlink" href="#admin-properties-spilling--page-root" title="Permalink to this heading">#</a></h1>
-<p>All properties described in this page are defined as follows, depending on the
-deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">spilling</span></code> node
-in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <p>These properties control <a class="reference internal" href="spill.html"><span class="doc">Spill to disk</span></a>.</p>
 <section id="spill-enabled">
 <h2 id="spill-enabled"><code class="docutils literal notranslate"><span class="pre">spill-enabled</span></code><a class="headerlink" href="#spill-enabled" title="Permalink to this heading">#</a></h2>

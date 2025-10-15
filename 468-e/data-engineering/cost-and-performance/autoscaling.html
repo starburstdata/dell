@@ -253,7 +253,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../connector.html">Connector overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../object-storage-connectors.html">Object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../non-object-storage-connectors.html">Non-object storage connectors</a></li>
@@ -261,20 +261,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../community-connectors.html">Community-supported connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../connector/starburst-connectors.html#id1">Starburst connectors feature matrix</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Monitor and manage cost and performance</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="execution-mode-options.html">Execution mode options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-mode-fte.html">Configure fault tolerance for your cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-mode-ws.html">Enable Starburst Warp Speed for your cluster</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Enable autoscaling in SEP clusters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configure-the-cluster-for-autoscaling">Configure the cluster for autoscaling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deploy-the-metrics-server">Deploy the metrics server</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="cluster-utilization.html">Monitor cluster utilization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="query-result-caching.html">Query result caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage-billing.html">Usage and billing</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Monitor and manage cost and performance</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
 <ul>
@@ -283,10 +270,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enable autoscaling in SEP clusters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-cluster-for-autoscaling">Configure the cluster for autoscaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-the-metrics-server">Deploy the metrics server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -365,7 +362,6 @@ following example, the version is set to <code class="docutils literal notransla
        <span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler=us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v1.18.3</span>
 </pre></div>
 </div>
-<p>See more node configurations for SEP in the <a class="reference internal" href="../../k8s/sep-configuration.html#helm-sep-workers"><span class="std std-ref">worker properties</span></a> section.</p>
 </section>
 <section id="deploy-the-metrics-server">
 <h2 id="deploy-the-metrics-server">Deploy the metrics server<a class="headerlink" href="#deploy-the-metrics-server" title="Permalink to this heading">#</a></h2>

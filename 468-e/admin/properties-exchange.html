@@ -271,10 +271,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -332,13 +335,6 @@ a query. Adjusting these properties may help to resolve inter-node
 communication issues or improve network utilization.</p>
 <p>Additionally, you can configure the exchange <a class="reference internal" href="properties-http-client.html"><span class="doc std std-doc">HTTP client
 usage</span></a>.</p>
-<p>All properties described in this page are defined as follows, depending on the
-deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <section id="exchange-client-threads">
 <h2 id="exchange-client-threads"><code class="docutils literal notranslate"><span class="pre">exchange.client-threads</span></code><a class="headerlink" href="#exchange-client-threads" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
