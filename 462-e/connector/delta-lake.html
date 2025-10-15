@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hive connector" href="hive.html" />
-    <link rel="prev" title="Ozone storage support" href="starburst-ozone.html" />
+    <link rel="next" title="Starburst Hive connector" href="starburst-hive.html" />
+    <link rel="prev" title="Object storage connectors" href="../object-storage-connectors.html" />
 
   
    
@@ -246,9 +246,88 @@
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../object-storage-connectors.html#id1">Object storage connectors</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Delta Lake connector</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-configuration">General configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-system-access-configuration">File system access configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#delta-lake-general-configuration-properties">Delta Lake general configuration properties</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#catalog-session-properties">Catalog session properties</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#type-mapping">Type mapping</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#delta-lake-to-trino-type-mapping">Delta Lake to Trino type mapping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#trino-to-delta-lake-type-mapping">Trino to Delta Lake type mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#delta-lake-table-features">Delta Lake table features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#security">Security</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#authorization-checks">Authorization checks</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#sql-support">SQL support</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#time-travel-queries">Time travel queries</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#procedures">Procedures</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#register-table">Register table</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#unregister-table">Unregister table</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#flush-metadata-cache">Flush metadata cache</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#vacuum"><code class="docutils literal notranslate"><span class="pre">VACUUM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#data-management">Data management</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#schema-and-table-management">Schema and table management</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#replace-tables">Replace tables</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#alter-table-execute">ALTER TABLE EXECUTE</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#optimize">optimize</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#alter-table-rename-to">ALTER TABLE RENAME TO</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#table-properties">Table properties</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#shallow-cloned-tables">Shallow cloned tables</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#metadata-tables">Metadata tables</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#history-table"><code class="docutils literal notranslate"><span class="pre">$history</span></code> table</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#partitions-table"><code class="docutils literal notranslate"><span class="pre">$partitions</span></code> table</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#properties-table"><code class="docutils literal notranslate"><span class="pre">$properties</span></code> table</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#metadata-columns">Metadata columns</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#table-functions">Table functions</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#table-changes">table_changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#table-statistics">Table statistics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#fine-tuning">Fine-tuning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#disable-and-drop-extended-statistics">Disable and drop extended statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#memory-usage">Memory usage</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#memory-monitoring">Memory monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#table-redirection">Table redirection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#performance-tuning-configuration-properties">Performance tuning configuration properties</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#file-system-cache">File system cache</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="starburst-hive.html">Hive connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hudi.html">Hudi connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iceberg.html">Iceberg connector</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../object-storage-connectors.html#object-storage-extensions">Object storage extensions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
@@ -262,10 +341,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -1833,7 +1915,7 @@ only when <code class="docutils literal notranslate"><span class="pre">fs.cache.
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="starburst-ozone.html" title="Ozone storage support"
+            <a href="../object-storage-connectors.html" title="Object storage connectors"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1842,17 +1924,17 @@ only when <code class="docutils literal notranslate"><span class="pre">fs.cache.
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Ozone storage support </span>
+                      class="md-footer-nav__direction"> Previous </span> Object storage connectors </span>
               </div>
             </a>
           
           
-            <a href="hive.html" title="Hive connector"
+            <a href="starburst-hive.html" title="Starburst Hive connector"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Hive connector </span>
+                class="md-footer-nav__direction"> Next </span> Starburst Hive connector </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

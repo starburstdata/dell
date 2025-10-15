@@ -304,10 +304,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -358,13 +361,6 @@
 <h1 id="admin-properties-sql-environment--page-root">SQL environment properties<a class="headerlink" href="#admin-properties-sql-environment--page-root" title="Permalink to this heading">#</a></h1>
 <p>SQL environment properties allow you to globally configure parameters relevant
 to all SQL queries and the context they are processed in.</p>
-<p>All properties described in this page are defined as follows, depending on the
-deployment type:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../k8s/sep-config-examples.html#k8s-ex-additional-properties"><span class="std std-ref">Kubernetes</span></a>: In the
-<code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> section of the the top-level <code class="docutils literal notranslate"><span class="pre">coordinator</span></code> and
-<code class="docutils literal notranslate"><span class="pre">worker</span></code> nodes in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
-</ul>
 <section id="sql-forced-session-time-zone">
 <h2 id="sql-forced-session-time-zone"><code class="docutils literal notranslate"><span class="pre">sql.forced-session-time-zone</span></code><a class="headerlink" href="#sql-forced-session-time-zone" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
