@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 476-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 476-e.6 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.6 LTS</a>
   </label>
   
   
@@ -376,8 +376,15 @@ assigned to the job.</p></li>
 </ul>
 <p>Click the <strong>Name</strong>, <strong>Job submitted</strong>, or <strong>Job created by</strong> columns to
 reorganize the data in ascending or descending order.</p>
-<p>The options menu for a Spark job lets you delete the job, download logs, or
-view the <a class="reference external" href="https://spark.apache.org/docs/3.5.3/web-ui.html">Spark Web UI</a>.</p>
+<p>The options menu for a Spark job lets you delete the job, download logs, and
+view the <a class="reference external" href="https://spark.apache.org/docs/3.5.3/web-ui.html">Spark Web UI or Spark History Server
+UI</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Spark History Server UI can take up to 10 seconds to initialize after
+you submit a job. If you see an <code class="docutils literal notranslate"><span class="pre">Application</span> <span class="pre">not</span> <span class="pre">found</span></code> error message, wait a
+few seconds and try again.</p>
+</div>
 <section id="create-batch-jobs">
 <h3 id="create-batch-jobs">Create batch jobs<a class="headerlink" href="#create-batch-jobs" title="Permalink to this heading">#</a></h3>
 <p>To create a Spark batch job:</p>
