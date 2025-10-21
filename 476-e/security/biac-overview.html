@@ -580,13 +580,14 @@ was set you must drop and recreate them:</p>
 </pre></div>
 </div>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code> the materialized view with the same definition:</p></li>
-</ol>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">example</span><span class="p">.</span><span class="k">schema</span><span class="p">.</span><span class="n">view_name</span>
- <span class="k">WITH</span> <span class="n">properties</span>
- <span class="k">AS</span> <span class="n">query</span>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code> the materialized view with the same definition:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">example</span><span class="p">.</span><span class="k">schema</span><span class="p">.</span><span class="n">view_name</span>
+<span class="k">WITH</span> <span class="n">properties</span>
+<span class="k">AS</span> <span class="n">query</span>
 </pre></div>
 </div>
+</li>
+</ol>
 <section id="migrate-missing-ownership">
 <h3 id="migrate-missing-ownership">Migrate missing ownership<a class="headerlink" href="#migrate-missing-ownership" title="Permalink to this heading">#</a></h3>
 <p>When you configure BIAC ownership, any new view, table, or schema created stores
