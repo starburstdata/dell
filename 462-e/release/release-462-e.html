@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 462-e.20 LTS logo"
+            alt="Dell Data Analytics Engine 462-e.21 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.20 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 462-e.21 LTS</a>
   </label>
   
   
@@ -253,6 +253,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-17-changes-14-aug-2025">462-e.17 changes (14 Aug 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-18-changes-2-sep-2025">462-e.18 changes (2 Sep 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-20-changes-29-sep-2025">462-e.20 changes (29 Sep 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-21-changes-10-oct-2025">462-e.21 changes (10 Oct 2025)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-453-e.html">Release 453-e LTS (30 Aug 2024)</a></li>
@@ -387,6 +388,8 @@
         <li class="md-nav__item"><a href="#e-18-changes-2-sep-2025" class="md-nav__link">462-e.18 changes (2 Sep 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-20-changes-29-sep-2025" class="md-nav__link">462-e.20 changes (29 Sep 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-21-changes-10-oct-2025" class="md-nav__link">462-e.21 changes (10 Oct 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -727,6 +730,16 @@ the About dialog.</p></li>
 <span id="release-462-e-20"></span><h2 id="e-20-changes-29-sep-2025">462-e.20 changes (29 Sep 2025)<a class="headerlink" href="#e-20-changes-29-sep-2025" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Updated <code class="docutils literal notranslate"><span class="pre">jinjava</span></code> to <code class="docutils literal notranslate"><span class="pre">2.8.1</span></code> to mitigate <code class="docutils literal notranslate"><span class="pre">CVE-2025-59340</span></code>.</p></li>
+</ul>
+</section>
+<section id="e-21-changes-10-oct-2025">
+<span id="release-462-e-21"></span><h2 id="e-21-changes-10-oct-2025">462-e.21 changes (10 Oct 2025)<a class="headerlink" href="#e-21-changes-10-oct-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed failure due to column count mismatch when executing the
+<code class="docutils literal notranslate"><span class="pre">add_files_from_table</span></code> procedure in Iceberg.</p></li>
+<li><p>Fixed an issue where missing <code class="docutils literal notranslate"><span class="pre">securityContext</span></code> caused pod creation to fail.
+You can now set <code class="docutils literal notranslate"><span class="pre">worker.kedaScaler.securityContext</span></code>, and it is applied to the
+<code class="docutils literal notranslate"><span class="pre">keda-trino-scaler</span></code> container in the coordinator pod.</p></li>
 </ul>
 </section>
 </section>
