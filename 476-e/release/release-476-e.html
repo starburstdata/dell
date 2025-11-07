@@ -573,8 +573,7 @@ Registry</span></a> in the Kafka connector.</p></li>
 Expressions are now validated as SQL syntax.</p></li>
 <li><p>Fixed authentication issues that prevented access to Iceberg Glue v1 catalogs.</p></li>
 <li><p>Fixed an issue with the refresh interval default value in Data Product
-materialized views. <code class="docutils literal notranslate"><span class="pre">refresh_interval</span></code> must be greater than 120 minutes.</p></li>
-<li><p>Fixed an issue with Starburst Data Catalog <code class="docutils literal notranslate"><span class="pre">registryCredentials</span></code>
+materialized views. <code class="docutils literal notranslate"><span class="pre">refresh_interval</span></code> must be greater than 120 minutes.
 authentication. You can now use <code class="docutils literal notranslate"><span class="pre">registryCredentials</span></code> to authenticate with
 private container registries.</p></li>
 <li><p>Fixed an issue where selecting a catalog with a large number of schemas caused
@@ -619,8 +618,7 @@ connector.</p></li>
 <li><p>Fixed an issue where grants provided through groups were incorrectly ignored
 when using <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">SESSION</span> <span class="pre">AUTHORIZATION</span></code>.</p></li>
 <li><p>Fixed incorrect results from <code class="docutils literal notranslate"><span class="pre">geometry_to_bing_tiles()</span></code> where generated tiles
-did not fully cover the geometry area.</p></li>
-<li><p>Fixed schema location handling in Starburst data catalog. When using a default
+did not fully cover the geometry area.
 location (<code class="docutils literal notranslate"><span class="pre">catalog.default.location.uri</span></code>), the catalog now creates a subfolder
 for each schema (e.g., <code class="docutils literal notranslate"><span class="pre">XXX/YYY</span></code>) instead of placing all schemas directly
 under the default location.</p></li>
