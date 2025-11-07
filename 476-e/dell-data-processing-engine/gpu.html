@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>CREATE BRANCH &#8212; Dell Data Analytics Engine</title>
+    <title>GPU acceleration with Spark RAPIDS &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CREATE FUNCTION" href="create-function.html" />
-    <link rel="prev" title="CREATE CATALOG" href="create-catalog.html" />
+    <link rel="next" title="Command line interface" href="cli.html" />
+    <link rel="prev" title="Object storage governance" href="object-storage-governance.html" />
 
   
    
@@ -88,7 +88,7 @@
 
 
 <!-- Always link to the latest version, as canonical -->
-<link rel="canonical" href="https://docs.starburst.io/latest/sql/create-branch.html">
+<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/gpu.html">
 
   </head>
   <body dir=ltr
@@ -105,7 +105,7 @@
   <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
   <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
   <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#sql/create-branch" tabindex="1" class="md-skip"> Skip to content </a>
+  <a href="#dell-data-processing-engine/gpu" tabindex="1" class="md-skip"> Skip to content </a>
   <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
@@ -135,7 +135,7 @@
           class="md-flex__ellipsis md-header-nav__title"
           data-md-component="title"
         >
-          CREATE BRANCH
+          GPU acceleration with Spark RAPIDS
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -197,13 +197,6 @@
     
     
     
-  <nav class="md-tabs" data-md-component="tabs">
-    <div class="md-tabs__inner md-grid">
-      <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../sql.html" class="md-tabs__link">SQL statement syntax</a></li>
-      </ul>
-    </div>
-  </nav>
     <main class="md-main">
       <div class="md-main__inner md-grid" data-md-component="container">
         
@@ -239,105 +232,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/gpu.html">GPU acceleration with Spark RAPIDS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GPU acceleration with Spark RAPIDS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software-requirements">Software requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-tuning">Performance tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-configuration">Example configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../sql.html">SQL statement syntax</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="alter-catalog.html">ALTER CATALOG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-branch.html">ALTER BRANCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-materialized-view.html">ALTER MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-schema.html">ALTER SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-table.html">ALTER TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alter-view.html">ALTER VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analyze.html">ANALYZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="call.html">CALL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comment.html">COMMENT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commit.html">COMMIT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-catalog.html">CREATE CATALOG</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CREATE BRANCH</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="create-function.html">CREATE FUNCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-materialized-view.html">CREATE MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-role.html">CREATE ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-schema.html">CREATE SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-table.html">CREATE TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-table-as.html">CREATE TABLE AS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create-view.html">CREATE VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deallocate-prepare.html">DEALLOCATE PREPARE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="delete.html">DELETE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deny.html">DENY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe.html">DESCRIBE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe-input.html">DESCRIBE INPUT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="describe-output.html">DESCRIBE OUTPUT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-catalog.html">DROP CATALOG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-branch.html">DROP BRANCH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-function.html">DROP FUNCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-materialized-view.html">DROP MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-role.html">DROP ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-schema.html">DROP SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-table.html">DROP TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="drop-view.html">DROP VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="execute.html">EXECUTE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="execute-immediate.html">EXECUTE IMMEDIATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="explain.html">EXPLAIN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="explain-analyze.html">EXPLAIN ANALYZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grant.html">GRANT privilege</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grant-roles.html">GRANT role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="insert.html">INSERT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="match-recognize.html">MATCH_RECOGNIZE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="merge.html">MERGE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare.html">PREPARE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refresh-materialized-view.html">REFRESH MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset-session.html">RESET SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset-session-authorization.html">RESET SESSION AUTHORIZATION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revoke.html">REVOKE privilege</a></li>
-<li class="toctree-l2"><a class="reference internal" href="revoke-roles.html">REVOKE role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rollback.html">ROLLBACK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="select.html">SELECT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-path.html">SET PATH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-role.html">SET ROLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-session.html">SET SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-session-authorization.html">SET SESSION AUTHORIZATION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set-time-zone.html">SET TIME ZONE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-catalogs.html">SHOW CATALOGS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-branch.html">SHOW BRANCHES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-columns.html">SHOW COLUMNS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-function.html">SHOW CREATE FUNCTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-materialized-view.html">SHOW CREATE MATERIALIZED VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-schema.html">SHOW CREATE SCHEMA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-table.html">SHOW CREATE TABLE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-create-view.html">SHOW CREATE VIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-functions.html">SHOW FUNCTIONS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-grants.html">SHOW GRANTS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-role-grants.html">SHOW ROLE GRANTS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-roles.html">SHOW ROLES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-schemas.html">SHOW SCHEMAS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-session.html">SHOW SESSION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-stats.html">SHOW STATS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="show-tables.html">SHOW TABLES</a></li>
-<li class="toctree-l2"><a class="reference internal" href="start-transaction.html">START TRANSACTION</a></li>
-<li class="toctree-l2"><a class="reference internal" href="truncate.html">TRUNCATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="update.html">UPDATE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use.html">USE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="values.html">VALUES</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
 </ul>
@@ -394,11 +316,18 @@
   <div class="local-toc">
     <strong>Contents</strong>
     <ul>
-<li><a class="reference internal" href="#">CREATE BRANCH</a><ul>
-<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
-<li><a class="reference internal" href="#see-also">See also</a></li>
+<li><a class="reference internal" href="#">GPU acceleration with Spark RAPIDS</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#software-requirements">Software requirements</a></li>
+<li><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#performance-tuning">Performance tuning</a><ul>
+<li><a class="reference internal" href="#example-configuration">Example configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -412,48 +341,151 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="create-branch">
-<h1 id="sql-create-branch--page-root">CREATE BRANCH<a class="headerlink" href="#sql-create-branch--page-root" title="Permalink to this heading">#</a></h1>
-<section id="synopsis">
-<h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">#</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CREATE BRANCH [ OR REPLACE ] [ IF NOT EXISTS ] branch_name
-[ WITH ( property_name = expression [, ...] ) ]
-IN TABLE table_name
-[ FROM source_branch ]
-</pre></div>
-</div>
-</section>
-<section id="description">
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
-<p>Create a branch.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">REPLACE</span></code> clause causes an existing branch with the specified
-name to be replaced with the new branch definition. Support for branch
-replacement varies across connectors. Refer to the connector documentation for
-details.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXISTS</span></code> clause causes the error to be suppressed if the
-branch already exists.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clause can be used to set properties on the newly created
-branch.</p>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">FROM</span></code> clause can be used to set the source branch from which the
-new branch is created.</p>
-</section>
-<section id="examples">
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<p>Create a new branch <code class="docutils literal notranslate"><span class="pre">audit</span></code> in the table <code class="docutils literal notranslate"><span class="pre">orders</span></code>:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">BRANCH</span> <span class="n">audit</span> <span class="k">IN</span> <span class="k">TABLE</span> <span class="n">orders</span>
-</pre></div>
-</div>
-<p>Create a new branch <code class="docutils literal notranslate"><span class="pre">audit</span></code> in the table <code class="docutils literal notranslate"><span class="pre">orders</span></code> from the branch <code class="docutils literal notranslate"><span class="pre">dev</span></code>:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">BRANCH</span> <span class="n">audit</span> <span class="k">IN</span> <span class="k">TABLE</span> <span class="n">orders</span> <span class="k">FROM</span> <span class="n">dev</span>
-</pre></div>
-</div>
-</section>
-<section id="see-also">
-<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permalink to this heading">#</a></h2>
+  <section id="gpu-acceleration-with-spark-rapids">
+<h1 id="dell-data-processing-engine-gpu--page-root">GPU acceleration with Spark RAPIDS<a class="headerlink" href="#dell-data-processing-engine-gpu--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine includes support for GPU acceleration using the
+<a class="reference external" href="https://nvidia.github.io/spark-rapids/">NVIDIA Spark RAPIDS plugin</a>. This
+enables Spark applications to leverage NVIDIA GPUs for faster data processing
+and improved performance on supported workloads.</p>
+<section id="requirements">
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
+<section id="software-requirements">
+<h3 id="software-requirements">Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="alter-branch.html"><span class="doc std std-doc">ALTER BRANCH</span></a></p></li>
-<li><p><a class="reference internal" href="drop-branch.html"><span class="doc std std-doc">DROP BRANCH</span></a></p></li>
-<li><p><a class="reference internal" href="show-branch.html"><span class="doc std std-doc">SHOW BRANCHES</span></a></p></li>
+<li><p><a class="reference external" href="https://nvidia.github.io/spark-rapids/docs/download.html">Spark RAPIDS 25.08</a>.</p></li>
+<li><p><a class="reference external" href="https://www.nvidia.com/en-us/drivers/details/196881/">NVIDIA drivers 525.60.13+</a>.</p></li>
+<li><p><a class="reference external" href="https://developer.nvidia.com/cuda-12-0-0-download-archive">CUDA 12</a> installed in the <code class="docutils literal notranslate"><span class="pre">/usr/local/cuda</span></code> path.</p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html">NVIDIA GPU operator
+25.3.2+</a>
+with the <code class="docutils literal notranslate"><span class="pre">driver.enabled</span></code> and the <code class="docutils literal notranslate"><span class="pre">toolkit.enabled</span></code> configuration properties
+set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
+</section>
+<section id="hardware-requirements">
+<h3 id="hardware-requirements">Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A supported GPU. The RAPIDS plugin is designed to run on NVIDIA Volta, Turing,
+Ampere, Ada Lovelace, Hopper, and Blackwell generation datacenter GPUs.</p></li>
+</ul>
+</section>
+</section>
+<section id="configuration">
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<p>Spark RAPIDS GPU support can be enabled when configuring a <a class="reference internal" href="resource-pools.html#ddpe-resource-pool-create-ui"><span class="std std-ref">resource
+pool</span></a>. You can adjust the maximum number of GPU
+cores in total and the maximum number of GPU cores per application.</p>
+<p>Configuration properties can be added to your GPU-enabled jobs via the <a class="reference internal" href="job-submission.html#ddpe-spark-batch-job-ui"><span class="std std-ref">job
+submission UI</span></a> or the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>.</p>
+<p>The following is an example of a basic configuration:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.driver.memory</span><span class="o">=</span><span class="s">4g</span>
+<span class="na">spark.driver.cores</span><span class="o">=</span><span class="s">4</span>
+<span class="na">spark.driver.resource.gpu.amount</span><span class="o">=</span><span class="s">0</span>
+<span class="na">spark.executor.resource.gpu.amount</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spark.driver.memory</code></td>
+<td>Amount of memory to use for the driver process.</td>
+</tr>
+<tr>
+<td><code>spark.driver.cores</code></td>
+<td>Number of cores to use for the driver process.</td>
+</tr>
+<tr>
+<td><code>spark.driver.resource.gpu.amount</code></td>
+<td>Amount of the GPU resource to use on the driver.</td>
+</tr>
+<tr>
+<td><code>spark.executor.resource.gpu.amount</code></td>
+<td>Amount of the GPU resource to use per executor process.</td>
+</tr>
+</tbody>
+</table>
+<p>You can view all available properties in the official Spark RAPIDS documentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nvidia.github.io/spark-rapids/docs/configs.html">General configuration properties</a></p></li>
+<li><p><a class="reference external" href="https://nvidia.github.io/spark-rapids/docs/additional-functionality/advanced_configs.html">Advance configuration properties</a></p></li>
+</ul>
+</section>
+<section id="performance-tuning">
+<h2 id="performance-tuning">Performance tuning<a class="headerlink" href="#performance-tuning" title="Permalink to this heading">#</a></h2>
+<p>You can use the following practices to optimize GPU performance:</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>GPU performance tuning is highly environment-specific. The properties
+and values shown here are examples, not recommended defaults. Apply changes
+incrementally, measure impact, and revert if stability or performance degrades.</p>
+</div>
+<ul>
+<li><p><strong>Ensure the GPU is being used</strong>. It is essential to eliminate GPU execution
+warnings that show a query cannot fully run on the GPU. Iteratively review logs
+and adjust configurations, data layout, or query logic to address them.</p></li>
+<li><p><strong>Avoid Out of Memory (OOM) conditions</strong>. OOM events can cause repeated
+executions resulting in longer query times. Review logs or the Spark History
+server for memory errors. The configuration properties below can help reduce the
+likelihood of OOM situations in some GPU workloads, but they are not guaranteed to
+prevent them and must be tuned for your environment.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na"> spark.executor.memoryFraction</span><span class="o">=</span><span class="s">0.25, // Sets the fraction of heap space allocated to Spark</span>
+<span class="na"> spark.executor.memoryOverhead</span><span class="o">=</span><span class="s">4g // Reserves memory for executer overhead</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Avoid GPU to CPU fallbacks caused by padding</strong>. Your job may fall back to
+the CPU if it processes padded strings. To avoid this behavior, add the
+following properties to your configuration:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.sql.legacy.charVarcharAsString</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spark.sql.readSideCharPadding</span><span class="o">=</span><span class="s">false</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases this may lead to compatibility issues, such as strict
+<code class="docutils literal notranslate"><span class="pre">CHAR</span></code> semantics when writing data.</p>
+</div>
+</li>
+</ul>
+<section id="example-configuration">
+<h3 id="example-configuration">Example configuration<a class="headerlink" href="#example-configuration" title="Permalink to this heading">#</a></h3>
+<p>The following is an example configuration that includes the tuning properties
+detailed above:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.driver.memory</span><span class="o">=</span><span class="s">4g</span>
+<span class="na">spark.driver.cores</span><span class="o">=</span><span class="s">4</span>
+
+<span class="na">spark.driver.resource.gpu.amount</span><span class="o">=</span><span class="s">0</span>
+<span class="na">spark.executor.resource.gpu.amount</span><span class="o">=</span><span class="s">1</span>
+
+<span class="na">spark.rapids.sql.incompatibleOps.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spark.rapids.sql.concurrentGpuTasks</span><span class="o">=</span><span class="s">2,</span>
+<span class="na">spark.rapids.memory.pinnedPool.size</span><span class="o">=</span><span class="s">1g</span>
+
+<span class="c"># may prevent OOM kill on Spark executors:</span>
+<span class="na">spark.executor.memory</span><span class="o">=</span><span class="s">8g</span>
+<span class="na">spark.executor.cores</span><span class="o">=</span><span class="s">4</span>
+<span class="na">spark.executor.memoryFraction</span><span class="o">=</span><span class="s">0.25</span>
+<span class="na">spark.executor.memoryOverhead</span><span class="o">=</span><span class="s">4g</span>
+
+<span class="c"># to prevent GPU to CPU fallback (optional)</span>
+<span class="na">spark.sql.readSideCharPadding</span><span class="o">=</span><span class="s">false</span>
+<span class="na">spark.sql.legacy.charVarcharAsString</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="resources">
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/index.html">Spark RAPIDS User Guide</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/faq.html">Spark RAPIDS FAQs</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/best-practices.html">Spark RAPIDS Tuning - Best Practices</a></p></li>
+<li><p><a class="reference external" href="https://github.com/NVIDIA/spark-rapids-examples">Spark RAPIDS examples</a></p></li>
 </ul>
 </section>
 </section>
@@ -469,7 +501,7 @@ new branch is created.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="create-catalog.html" title="CREATE CATALOG"
+            <a href="object-storage-governance.html" title="Object storage governance"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -478,17 +510,17 @@ new branch is created.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> CREATE CATALOG </span>
+                      class="md-footer-nav__direction"> Previous </span> Object storage governance </span>
               </div>
             </a>
           
           
-            <a href="create-function.html" title="CREATE FUNCTION"
+            <a href="cli.html" title="Command line interface"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> CREATE FUNCTION </span>
+                class="md-footer-nav__direction"> Next </span> Command line interface </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
