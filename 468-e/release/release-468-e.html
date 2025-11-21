@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 468-e.17 LTS logo"
+            alt="Dell Data Analytics Engine 468-e.18 LTS logo"
           />
           
         </span>
@@ -212,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.17 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 468-e.18 LTS</a>
   </label>
   
   
@@ -251,6 +251,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-15-changes-29-sep-2025">468-e.15 changes (29 Sep 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-16-changes-10-oct-2025">468-e.16 changes (10 Oct 2025)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-17-changes-31-oct-2025">468-e.17 changes (31 Oct 2025)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-18-changes-17-nov-2025">468-e.18 changes (17 Nov 2025)</a></li>
 </ul>
 </li>
 </ul>
@@ -387,6 +388,8 @@
         <li class="md-nav__item"><a href="#e-16-changes-10-oct-2025" class="md-nav__link">468-e.16 changes (10 Oct 2025)</a>
         </li>
         <li class="md-nav__item"><a href="#e-17-changes-31-oct-2025" class="md-nav__link">468-e.17 changes (31 Oct 2025)</a>
+        </li>
+        <li class="md-nav__item"><a href="#e-18-changes-17-nov-2025" class="md-nav__link">468-e.18 changes (17 Nov 2025)</a>
         </li></ul>
             </nav>
         </li>
@@ -738,6 +741,14 @@ connector.</p></li>
 <code class="docutils literal notranslate"><span class="pre">ST_Intersects()</span></code>, or <code class="docutils literal notranslate"><span class="pre">ST_Distance()</span></code> functions.</p></li>
 <li><p>Fixed incorrect results from <code class="docutils literal notranslate"><span class="pre">geometry_to_bing_tiles()</span></code> where generated tiles
 did not fully cover the geometry area.</p></li>
+</ul>
+</section>
+<section id="e-18-changes-17-nov-2025">
+<span id="release-468-e-18"></span><h2 id="e-18-changes-17-nov-2025">468-e.18 changes (17 Nov 2025)<a class="headerlink" href="#e-18-changes-17-nov-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed an issue in the Elasticsearch connector where wildcard queries failed
+when targeting indices with inconsistent field mappings.</p></li>
+<li><p>Fixed planning failure of certain queries involving empty <code class="docutils literal notranslate"><span class="pre">VALUES</span></code>.</p></li>
 </ul>
 </section>
 </section>
