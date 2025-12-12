@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', 'UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Release 477-e LTS (25 Nov 2025) &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release 476-e LTS (2 Sep 2025)" href="release-476-e.html" />
+    <link rel="prev" title="Release notes" href="../release.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/release/release-477-e.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#release/release-477-e" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
+          
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 477-e.1 LTS logo"
+          />
+          
+        </span>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Release 477-e LTS (25 Nov 2025)
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+       
+  
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
+      
+          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+    </div>
+  </div>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../release.html" class="md-tabs__link">Release notes</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.1 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../get-started/starburst-enterprise.html">What is Starburst Enterprise?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/aidp.html">What is Dell AI Data Platform?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learn/index.html">Learn Starburst Enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">Versions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../release.html">Release notes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../release.html#starburst-enterprise-releases">Starburst Enterprise releases</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../release.html#id1">2025</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Release 477-e LTS (25 Nov 2025)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#highlights-since-476-e">Highlights since 476-e</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#breaking-changes">Breaking changes</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#starburst-ai">Starburst AI</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#alteryx-connector">Alteryx connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#bigquery-connector">BigQuery connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#clickhouse-connector">ClickHouse connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#delta-lake-connector">Delta Lake connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#elasticsearch-connector">Elasticsearch connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hive-connector">Hive connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#iceberg-connector">Iceberg connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#kafka-connector">Kafka connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mongodb-connector">MongoDB connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mysql-connector">MySQL connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#oracle-connector">Oracle connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#postgresql-connector">PostgreSQL connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#singlestore-connector">Singlestore connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sqlserver-connector">SQLServer connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#starburst-stargate-connector">Starburst Stargate connector</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#teradata-connector">Teradata connector</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#e-1-changes-25-nov-2025">477-e.1 changes (25 Nov 2025)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="release-476-e.html">Release 476-e LTS (2 Sep 2025)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release-474-e.html">Release 474-e LTS (2 Jun 2025)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="release-468-e.html">Release 468-e LTS (28 February 2025)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../release.html#id2">2024</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data engineering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Trino developer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+  <div class="local-toc">
+    <strong>Contents</strong>
+    <ul>
+<li><a class="reference internal" href="#">Release 477-e LTS (25 Nov 2025)</a><ul>
+<li><a class="reference internal" href="#highlights-since-476-e">Highlights since 476-e</a></li>
+<li><a class="reference internal" href="#breaking-changes">Breaking changes</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
+<li><a class="reference internal" href="#security">Security</a></li>
+<li><a class="reference internal" href="#starburst-ai">Starburst AI</a></li>
+<li><a class="reference internal" href="#alteryx-connector">Alteryx connector</a></li>
+<li><a class="reference internal" href="#bigquery-connector">BigQuery connector</a></li>
+<li><a class="reference internal" href="#clickhouse-connector">ClickHouse connector</a></li>
+<li><a class="reference internal" href="#delta-lake-connector">Delta Lake connector</a></li>
+<li><a class="reference internal" href="#elasticsearch-connector">Elasticsearch connector</a></li>
+<li><a class="reference internal" href="#hive-connector">Hive connector</a></li>
+<li><a class="reference internal" href="#iceberg-connector">Iceberg connector</a></li>
+<li><a class="reference internal" href="#kafka-connector">Kafka connector</a></li>
+<li><a class="reference internal" href="#mongodb-connector">MongoDB connector</a></li>
+<li><a class="reference internal" href="#mysql-connector">MySQL connector</a></li>
+<li><a class="reference internal" href="#oracle-connector">Oracle connector</a></li>
+<li><a class="reference internal" href="#postgresql-connector">PostgreSQL connector</a></li>
+<li><a class="reference internal" href="#singlestore-connector">Singlestore connector</a></li>
+<li><a class="reference internal" href="#sqlserver-connector">SQLServer connector</a></li>
+<li><a class="reference internal" href="#starburst-stargate-connector">Starburst Stargate connector</a></li>
+<li><a class="reference internal" href="#teradata-connector">Teradata connector</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-1-changes-25-nov-2025">477-e.1 changes (25 Nov 2025)</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="release-477-e-lts-25-nov-2025">
+<h1 id="release-release-477-e--page-root">Release 477-e LTS (25 Nov 2025)<a class="headerlink" href="#release-release-477-e--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) 477-e LTS is the follow up SEP release to
+<a class="reference internal" href="release-476-e.html"><span class="doc std std-doc">476-e</span></a> LTS release.</p>
+<p>It contains all improvements from Starburst Enterprise releases since the <a class="reference internal" href="release-476-e.html"><span class="doc std std-doc">476-e
+LTS</span></a> release.</p>
+<p>It includes all improvements from the following Trino release:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://trino.io/docs/current/release/release-477">Trino 477</a></p></li>
+</ul>
+<section id="highlights-since-476-e">
+<span id="release-477-highlights"></span><h2 id="highlights-since-476-e">Highlights since 476-e<a class="headerlink" href="#highlights-since-476-e" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../starburst-ai/starburst-agent-ai.html"><span class="doc std std-doc">AI Agent</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p><a class="reference internal" href="../starburst-ai/functions-ai.html"><span class="doc std std-doc">AI functions</span></a> are now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Agent-based <a class="reference internal" href="../starburst-ai/data-product-enrichment-ai.html"><span class="doc std std-doc">data product
+enrichment</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Starburst <a class="reference internal" href="../starburst-ai/mcp-server.html"><span class="doc std std-doc">MCP server</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>SEP <a class="reference internal" href="../data-engineering/data-maintenance.html"><span class="doc std std-doc">data maintenance</span></a> is now
+<a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally available</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="../connector/starburst-alteryx.html"><span class="doc std std-doc">Alteryx connector</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="../connector/starburst-stargate.html#stargate-parallel"><span class="std std-ref">Stargate parallel</span></a> connector is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Starburst data catalog is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally available</span></a>.</p></li>
+<li><p>All SEP versions now run on Java 25.0.1.</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h2 id="breaking-changes">Breaking changes<a class="headerlink" href="#breaking-changes" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>As of release 477-e.1, a number of AI features are generally available (GA).
+This release introduces restructured licensing requirements for AI-related
+features. AI SQL functions continue to work with the AI workflows license. The
+AI Agent requires a new agentic-layer license and the MCP server requires a new
+MCP license. Before upgrading to 477-e.1, you must ensure your Starburst license
+file includes the new licenses. Deployments missing these licenses will see the
+affected features disabled after upgrade.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">starburst</span></code> catalog is no longer supported for static
+configuration of Starburst AI. From version 476-e.4, a catalog named
+<code class="docutils literal notranslate"><span class="pre">starburst</span></code> hosting functionality such as Starburst AI and S3 storage
+functions is automatically created on each cluster. Any previously created
+static catalog named <code class="docutils literal notranslate"><span class="pre">starburst</span></code> must be removed before upgrading to 477-e. If
+you previously created a catalog named <code class="docutils literal notranslate"><span class="pre">starburst</span></code> to work with AI functions,
+you must now place its configuration properties in <code class="docutils literal notranslate"><span class="pre">config.properties</span></code>.  If
+you had previously created a <code class="docutils literal notranslate"><span class="pre">starburst</span></code> catalog unrelated to AI, you must
+rename it to prevent cluster startup failure. This change is not backward
+compatible.</p></li>
+<li><p>As of release 477-e, some metric and JMX bean names have changed:</p>
+<ul class="simple">
+<li><p>Metric names previously under <code class="docutils literal notranslate"><span class="pre">trino_metadata_name_DiscoveryNodeManager_*</span></code>
+are now <code class="docutils literal notranslate"><span class="pre">trino_node_name_CoordinatorNodeManager_*</span></code>.</p></li>
+<li><p>JMX bean names previously under
+<code class="docutils literal notranslate"><span class="pre">trino.metadata:name=DiscoveryNodeManager/*</span></code> are now
+<code class="docutils literal notranslate"><span class="pre">trino.node:name=CoordinatorNodeManager/*</span></code>.</p></li>
+</ul>
+<p>You must update monitoring and alerting configurations that reference the old
+names, or related metrics will no longer be reported.</p>
+</li>
+<li><p>Updated authenticator validation to disallow configuring <code class="docutils literal notranslate"><span class="pre">delegated-*</span></code> and
+non-delegated authenticators together. The <code class="docutils literal notranslate"><span class="pre">delegated-</span></code> variants override their
+non-delegated equivalents, include all their features, and use the same
+configuration properties. This change requires updates to authentication
+configuration to remove unsupported authenticator combinations. This change
+affects <code class="docutils literal notranslate"><span class="pre">delegated-oauth2</span></code>, <code class="docutils literal notranslate"><span class="pre">delegated-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">delegated-password</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">delegated-kerberos</span></code>.</p></li>
+<li><p>Teradata Direct connector HTTPS configuration has changed. The
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.https.keystore.path</span></code> and <code class="docutils literal notranslate"><span class="pre">teradata-direct.keystore.password</span></code>
+properties have been removed. A new mandatory property,
+<code class="docutils literal notranslate"><span class="pre">teradata-direct.root-certificate.path</span></code>, has been added to specify the
+PEM-format root certificate for TLS validation between Teradata and SEP
+nodes. HTTPS configuration now inherits settings from the global coordinator and
+worker properties. You must update your configuration to remove the old keystore
+properties and provide the root certificate path. The only available option for
+encryption is via the SEP keystore. Automatic TLS configuration is not
+supported.</p></li>
+<li><p>The following Starburst Warp Speed properties are deprecated and will be removed
+in a future release:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.config.store.type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.store.path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.objectstore.*</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.local-store.path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.enable.import-export</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.use-http-server-port</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warp-speed.call-home.*</span></code></p></li>
+</ul>
+</li>
+</ul>
+<section id="general">
+<h3 id="general">General<a class="headerlink" href="#general" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>SEP <a class="reference internal" href="../data-engineering/data-maintenance.html"><span class="doc std std-doc">data maintenance</span></a> is now
+<a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally available</span></a>.</p></li>
+<li><p>Starburst data catalog is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally available</span></a>.</p></li>
+<li><p>SEP 477-e is the final release that supports the default implementation of
+the <code class="docutils literal notranslate"><span class="pre">ConnectorFactory#getSecuritySensitivePropertyName</span></code> method. This method
+identifies configuration properties that may contain security-sensitive
+information so the engine can mask their values. In a future release, the
+method will become abstract, and custom connectors will need to provide their
+own implementation. This change affects only customers who maintain custom
+plugins.</p></li>
+<li><p>Managed statistics are now automatically dropped or updated when certain DDL
+operations are executed within the SEP cluster. This ensures statistics
+remain consistent with the underlying table schema. Supported operations
+include:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">...</span> <span class="pre">RENAME</span> <span class="pre">TO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">...</span> <span class="pre">DROP</span> <span class="pre">COLUMN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">...</span> <span class="pre">RENAME</span> <span class="pre">COLUMN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">SCHEMA</span> <span class="pre">...</span> <span class="pre">CASCADE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">SCHEMA</span> <span class="pre">...</span> <span class="pre">RENAME</span> <span class="pre">TO</span></code></p></li>
+</ul>
+</li>
+<li><p>Managed statistics are now automatically dropped or updated when the following
+catalog modification statements are executed within the SEP cluster:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">CATALOG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">CATALOG</span> <span class="pre">...</span> <span class="pre">RENAME</span> <span class="pre">TO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">CATALOG</span> <span class="pre">...</span> <span class="pre">SET</span> <span class="pre">PROPERTIES</span></code></p></li>
+</ul>
+</li>
+<li><p>Added support for large filter and project expressions that use <code class="docutils literal notranslate"><span class="pre">CASE</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">OR</span></code> operators to resolve failures on large queries with complex filters.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">LOAD</span></code> and <code class="docutils literal notranslate"><span class="pre">UNLOAD</span></code> table functions to the built-in
+<code class="docutils literal notranslate"><span class="pre">starburst</span></code> catalog for reading from and writing to external object storage
+locations within SQL queries.</p></li>
+<li><p>Added a refresh button to refresh the catalog tree in the catalog explorer in
+the SEP query editor.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">starburst.csv-with-bom.enabled</span></code> configuration property to enable
+UTF-8 byte order mark (BOM) encoding for CSV file downloads when using the
+<a class="reference internal" href="../client/query-editor.html#queryed-run-options"><span class="std std-ref">Run and the Run and download options</span></a> in the query
+editor.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">-XX:-RewriteBytecodes</span></code> JVM flag to the default configuration. This
+change disables JVM bytecode rewriting by default to prevent potential heap
+corruption issues on ARM64 systems.</p></li>
+<li><p>Added support for Starburst Warp Speed-enabled Hive and Iceberg catalogs in <a class="reference internal" href="../data-products/manage-data-products.html"><span class="doc std std-doc">data
+products</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="../data-products/configuration.html"><span class="doc std std-doc">Data Products</span></a> menu entry is now visible by
+default. To hide it, set <code class="docutils literal notranslate"><span class="pre">starburst.data-product.enabled=false</span></code>.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code> catalogs in Data Products. Users can now create
+data products from Iceberg and Hive catalogs with <code class="docutils literal notranslate"><span class="pre">warp_speed</span></code>.</p></li>
+<li><p>Improved execution speed for queries using outer joins, aggregations, metadata
+operations, and the <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> command.</p></li>
+<li><p>Improved performance of aggregations on single <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code> columns with high
+cardinality.</p></li>
+<li><p>Improved performance of <a class="reference internal" href="../data-products/dashboard.html"><span class="doc std std-doc">data product search</span></a>,
+significantly speeding up text-based filtering.</p></li>
+<li><p>Improved the cluster explorer user interface by ensuring it refreshes
+automatically when a catalog-level role is updated.</p></li>
+<li><p><a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html#warmup-rule"><span class="std std-ref">Warmup rules</span></a> are deprecated and will be removed in a future
+release.</p></li>
+<li><p>Upgraded Apache Ozone to 2.0.0.</p></li>
+<li><p>Fixed an issue where data product deletion failures could occur without a
+visible error. Failures when deleting a data product now return a clear error
+message.</p></li>
+<li><p>Fixed an issue where navigating to query overview from a workload management
+table caused filter controls to become unresponsive.</p></li>
+<li><p>Fixed an issue that prevented the SEP product version from rendering in
+the About dialog.</p></li>
+<li><p>Fixed an issue that caused failures when running more complex Python-based
+UDFs.</p></li>
+<li><p>Limited access to the following table branch operations to <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> users
+with BIAC enabled:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">BRANCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">BRANCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">BRANCH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRANT</span></code>, <code class="docutils literal notranslate"><span class="pre">DENY</span></code>, <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code> privileges on branches like <code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">SELECT</span> <span class="pre">ON</span> <span class="pre">BRANCH</span> <span class="pre">branch</span> <span class="pre">IN</span> <span class="pre">TABLE</span> <span class="pre">catalog.schema.table</span> <span class="pre">TO</span> <span class="pre">ROLE</span> <span class="pre">role</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRANT</span> <span class="pre">CREATE</span> <span class="pre">BRANCH</span> <span class="pre">ON</span> <span class="pre">table</span> <span class="pre">TO</span> <span class="pre">ROLE</span> <span class="pre">role</span></code></p></li>
+</ul>
+</li>
+<li><p>Fixed an issue where the cache service could consume excessive memory,
+potentially leading to out-of-memory errors.</p></li>
+<li><p>Fixed an issue where viewing the list of roles in the BIAC UI as a sysadmin
+incorrectly generated a <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code> audit log event. The audit log now
+records only actual create operations.</p></li>
+<li><p>Restored JMX metrics for the embedded cache service when running in an
+embedded node.</p></li>
+<li><p>Fixed an issue that prevented configuring <code class="docutils literal notranslate"><span class="pre">delegated-oauth2</span></code> and
+<code class="docutils literal notranslate"><span class="pre">delegated-jwt</span></code> authenticators at the same time.</p></li>
+<li><p>Fixed view analysis error affecting views that use <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span></code> SQL syntax and
+session property <code class="docutils literal notranslate"><span class="pre">hide_inaccessible_columns=true</span></code>.</p></li>
+</ul>
+</section>
+<section id="security">
+<h3 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Updated <code class="docutils literal notranslate"><span class="pre">jinjava</span></code> to <code class="docutils literal notranslate"><span class="pre">2.8.1</span></code> to mitigate <code class="docutils literal notranslate"><span class="pre">CVE-2025-59340</span></code>.</p></li>
+<li><p>Updated <code class="docutils literal notranslate"><span class="pre">starburst-schema-registry</span></code> to version <code class="docutils literal notranslate"><span class="pre">0.9.1-e.8</span></code> to mitigate the
+following CVEs:</p>
+<ul>
+<li><p>CVE-2024-22257</p></li>
+<li><p>CVE-2024-22259</p></li>
+<li><p>CVE-2025-22228</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="starburst-ai">
+<h3 id="starburst-ai">Starburst AI<a class="headerlink" href="#starburst-ai" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../starburst-ai/starburst-agent-ai.html"><span class="doc std std-doc">AI Agent</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p><a class="reference internal" href="../starburst-ai/functions-ai.html"><span class="doc std std-doc">AI functions</span></a> are now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Agent-based <a class="reference internal" href="../starburst-ai/data-product-enrichment-ai.html"><span class="doc std std-doc">data product
+enrichment</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Starburst <a class="reference internal" href="../starburst-ai/mcp-server.html"><span class="doc std std-doc">MCP server</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Added support for <a class="reference internal" href="../starburst-ai/functions-ai.html#sb-ai-batch-calling"><span class="std std-ref">batch processing</span></a> of AI task
+functions.</p></li>
+<li><p>Added support for storing <a class="reference internal" href="../starburst-ai/starburst-agent-ai.html#sb-agent-session-storage"><span class="std std-ref">AI Agent sessions</span></a> in
+Insights database.</p></li>
+<li><p>Added support for <a class="reference internal" href="../starburst-ai/configuration-ai.html#sb-ai-model-connection-amazon"><span class="std std-ref">AWS anonymous credentials
+authentication</span></a> when connecting to an external
+AI model.</p></li>
+</ul>
+</section>
+<section id="alteryx-connector">
+<h3 id="alteryx-connector">Alteryx connector<a class="headerlink" href="#alteryx-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../connector/starburst-alteryx.html"><span class="doc std std-doc">Alteryx connector</span></a> is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a>.</p></li>
+<li><p>Added support for the <code class="docutils literal notranslate"><span class="pre">TIME</span></code> datatype.</p></li>
+</ul>
+</section>
+<section id="bigquery-connector">
+<h3 id="bigquery-connector">BigQuery connector<a class="headerlink" href="#bigquery-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for clearing all metadata caches with the
+<code class="docutils literal notranslate"><span class="pre">system.flush_metadata_cache()</span></code> procedure.</p></li>
+</ul>
+</section>
+<section id="clickhouse-connector">
+<h3 id="clickhouse-connector">ClickHouse connector<a class="headerlink" href="#clickhouse-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/clickhouse.html#clickhouse-pushdown"><span class="std std-ref">CAST pushdowns</span></a> of <code class="docutils literal notranslate"><span class="pre">Date</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> types.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> function <a class="reference internal" href="../connector/clickhouse.html#clickhouse-pushdown"><span class="std std-ref">projection
+pushdown</span></a>.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">DateTime64</span></code>.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">Date32</span></code>.</p></li>
+</ul>
+</section>
+<section id="delta-lake-connector">
+<h3 id="delta-lake-connector">Delta Lake connector<a class="headerlink" href="#delta-lake-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for writing to <code class="docutils literal notranslate"><span class="pre">variant</span></code> columns.</p></li>
+<li><p>Added support for <a class="reference internal" href="../connector/starburst-delta-lake-unity.html#unity-credential-vending"><span class="std std-ref">credential vending with Unity
+Catalog</span></a>.</p></li>
+</ul>
+</section>
+<section id="elasticsearch-connector">
+<h3 id="elasticsearch-connector">Elasticsearch connector<a class="headerlink" href="#elasticsearch-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/elasticsearch.html#elasticsearch-oauth2"><span class="std std-ref">OAuth 2.0 token pass-through
+authentication</span></a>.</p></li>
+</ul>
+</section>
+<section id="hive-connector">
+<h3 id="hive-connector">Hive connector<a class="headerlink" href="#hive-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for automatic type coercion to unbounded <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> when length
+exceeds 65535.</p></li>
+<li><p>Added support for reading legacy dates and timestamps written by Hive in Orc
+and Parquet.</p></li>
+</ul>
+</section>
+<section id="iceberg-connector">
+<h3 id="iceberg-connector">Iceberg connector<a class="headerlink" href="#iceberg-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Updated to use v2 of the AWS Glue SDK by default when
+<code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=glue</span></code> is set.</p></li>
+<li><p>Updated to use the <code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.default-warehouse-dir</span></code> configuration
+property when creating a new schema in Glue catalog.</p></li>
+<li><p>Improved handling of materialized view drops by canceling any associated
+refresh jobs, reducing unnecessary resource usage.</p></li>
+<li><p>Added support for OAuth2 token passthrough authentication when using the
+Iceberg REST catalog.</p></li>
+<li><p>Fixed failure when reading deletion vectors generated by Databricks.</p></li>
+<li><p>Fixed failure due to column count mismatch when executing the
+<code class="docutils literal notranslate"><span class="pre">add_files_from_table</span></code> procedure.</p></li>
+</ul>
+</section>
+<section id="kafka-connector">
+<h3 id="kafka-connector">Kafka connector<a class="headerlink" href="#kafka-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for Confluent’s <a class="reference internal" href="../connector/kafka.html#confluent-table-description-supplier"><span class="std std-ref">JSON Schema
+Registry</span></a>.</p></li>
+</ul>
+</section>
+<section id="mongodb-connector">
+<h3 id="mongodb-connector">MongoDB connector<a class="headerlink" href="#mongodb-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fixed query failures on nested fields in mixed-type arrays.</p></li>
+</ul>
+</section>
+<section id="mysql-connector">
+<h3 id="mysql-connector">MySQL connector<a class="headerlink" href="#mysql-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/mysql.html#mysql-managed-identity"><span class="std std-ref">Azure Managed Identity
+authentication</span></a>.</p></li>
+</ul>
+</section>
+<section id="oracle-connector">
+<h3 id="oracle-connector">Oracle connector<a class="headerlink" href="#oracle-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for predicate pushdown on <code class="docutils literal notranslate"><span class="pre">RAW(n)</span></code> type.</p></li>
+<li><p>Fixed an issue that prevented reading certain <code class="docutils literal notranslate"><span class="pre">DATE</span></code> and <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> values
+when the internal byte representation was invalid.</p></li>
+</ul>
+</section>
+<section id="postgresql-connector">
+<h3 id="postgresql-connector">PostgreSQL connector<a class="headerlink" href="#postgresql-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/postgresql.html#postgresql-managed-identity"><span class="std std-ref">Azure Managed Identity
+authentication</span></a>.</p></li>
+</ul>
+</section>
+<section id="singlestore-connector">
+<h3 id="singlestore-connector">Singlestore connector<a class="headerlink" href="#singlestore-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Add support for predicate pushdown on <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> and <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> types when the
+<code class="docutils literal notranslate"><span class="pre">singlestore.experimental.enable-string-pushdown-with-binary</span></code> configuration
+property is enabled.</p></li>
+</ul>
+</section>
+<section id="sqlserver-connector">
+<h3 id="sqlserver-connector">SQLServer connector<a class="headerlink" href="#sqlserver-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added support for <a class="reference internal" href="../connector/sqlserver.html#sqlserver-managed-identity"><span class="std std-ref">Azure Managed Identity
+authentication</span></a>.</p></li>
+</ul>
+</section>
+<section id="starburst-stargate-connector">
+<h3 id="starburst-stargate-connector">Starburst Stargate connector<a class="headerlink" href="#starburst-stargate-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../connector/starburst-stargate.html#stargate-parallel"><span class="std std-ref">Stargate parallel</span></a> connector is now <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">generally
+available</span></a> and added support for the following
+features:</p>
+<ul>
+<li><p>Password passthrough</p></li>
+<li><p>OAuth2 passthrough</p></li>
+<li><p>User impersonation</p></li>
+<li><p>Managed statistics</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="teradata-connector">
+<h3 id="teradata-connector">Teradata connector<a class="headerlink" href="#teradata-connector" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">teradata.sql-based-metadata.enabled</span></code> configuration property to
+control how the connector retrieves table metadata. When enabled, the
+connector uses faster <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span></code> queries to get metadata. When set to <code class="docutils literal notranslate"><span class="pre">false</span></code>,
+it uses the standard JDBC metadata calls, which are slower but may avoid
+excessive <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span></code> queries in logs.</p></li>
+</ul>
+</section>
+</section>
+<section id="e-1-changes-25-nov-2025">
+<span id="release-477-e-1"></span><h2 id="e-1-changes-25-nov-2025">477-e.1 changes (25 Nov 2025)<a class="headerlink" href="#e-1-changes-25-nov-2025" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Upgraded all SEP versions to run on Java 25.0.1.</p></li>
+<li><p>Improved handling of inline tool calls for AI Agent. It now detects cases
+where OpenAI or Bedrock SDKs return tool calls inline within the text response
+and automatically prompts the model to correct the response format and retries
+the request.</p></li>
+<li><p>Improved handling of long-running Agent sessions by introducing automated
+session compaction.</p></li>
+<li><p>Fixed an issue in the Elasticsearch connector where wildcard queries failed
+when targeting indices with inconsistent field mappings.</p></li>
+<li><p>Fixed planning failure of certain queries involving empty <code class="docutils literal notranslate"><span class="pre">VALUES</span></code>.</p></li>
+<li><p>Fixed an issue where the Azure file system required broader roles than
+necessary to check whether a storage account had a hierarchical namespace.</p></li>
+<li><p>Fixed data inconsistency and silent data loss issues under heavy write load
+when using the Iceberg connector with Starburst Data Catalog.</p></li>
+<li><p>Removed active catalog properties from query.json in troubleshooting output.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../release.html" title="Release notes"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Release notes </span>
+              </div>
+            </a>
+          
+          
+            <a href="release-476-e.html" title="Release 476-e LTS (2 Sep 2025)"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Release 476-e LTS (2 Sep 2025) </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
