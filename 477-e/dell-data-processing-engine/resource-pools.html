@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.2 LTS logo"
+            alt="Dell Data Analytics Engine 477-e.3 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.2 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.3 LTS</a>
   </label>
   
   
@@ -238,6 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Resource pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#default-resource-pool">Default resource pool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#resource-pools-ui">Resource pools UI</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#view-resource-pools">View resource pools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-resource-pool">Create resource pool</a></li>
@@ -315,6 +316,7 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Resource pools</a><ul>
+<li><a class="reference internal" href="#default-resource-pool">Default resource pool</a></li>
 <li><a class="reference internal" href="#resource-pools-ui">Resource pools UI</a><ul>
 <li><a class="reference internal" href="#view-resource-pools">View resource pools</a></li>
 <li><a class="reference internal" href="#create-resource-pool">Create resource pool</a></li>
@@ -340,11 +342,17 @@
 <p>A Dell Data Processing Engine resource pool provides a mechanism for the
 platform administrator to partition the total allocated resource capacity into
 smaller parts. A resource pool has characteristics such as a name, the minimum
-and maximum number of CPU cores, and the minimum and maximum amount of memory.
-When the total resource allocation quota is first created, Dell Data Processing
-Engine assigns all of your resources to the <code class="docutils literal notranslate"><span class="pre">default</span></code> resource pool.</p>
+and maximum number of CPU cores, and the minimum and maximum amount of memory.</p>
 <p>Resource pools can be managed using the <a class="reference internal" href="#resource-pool-ui"><span class="std std-ref">resource pools management
 UI</span></a> or programmatically with the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>.</p>
+<section id="default-resource-pool">
+<h2 id="default-resource-pool">Default resource pool<a class="headerlink" href="#default-resource-pool" title="Permalink to this heading">#</a></h2>
+<p>When the total resource allocation quota is first created, Dell Data Processing
+Engine assigns all of your resources to the <code class="docutils literal notranslate"><span class="pre">default</span></code> resource pool.</p>
+<p>For example, if your environment has a total of 24 CPU cores and 64 GB of
+memory, the <code class="docutils literal notranslate"><span class="pre">default</span></code> resource pool equals that amount until resources are
+allocated to different pools.</p>
+</section>
 <section id="resource-pools-ui">
 <span id="resource-pool-ui"></span><h2 id="resource-pools-ui">Resource pools UI<a class="headerlink" href="#resource-pools-ui" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Resource pools management</strong> UI pane lets you configure and manage your
