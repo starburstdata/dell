@@ -258,6 +258,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#profile">Profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#token-management">Token management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#uploads">Uploads</a></li>
 </ul>
 </li>
@@ -347,6 +348,7 @@
 <li><a class="reference internal" href="#instance">Instance</a></li>
 <li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
 <li><a class="reference internal" href="#profile">Profile</a></li>
+<li><a class="reference internal" href="#token-management">Token management</a></li>
 <li><a class="reference internal" href="#uploads">Uploads</a></li>
 </ul>
 </li>
@@ -945,12 +947,52 @@ instance. A new instance is created based on the saved instance.</p></td>
 </tbody>
 </table>
 </section>
+<section id="token-management">
+<span id="ddpe-cli-token"></span><h3 id="token-management">Token management<a class="headerlink" href="#token-management" title="Permalink to this heading">#</a></h3>
+<p>The following CLI commands can be used for managing authentication tokens:</p>
+<table id="id9">
+<caption><span class="caption-text">Dell Data Processing Engine token CLI commands</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 30%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">token</span></code></p></td>
+<td><p>Commands to manage authentication tokens.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<td><p>Show your current OAuth access token.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">keep-alive</span></code></p></td>
+<td><p>Keeps your access token active by continually refreshing it. This command
+runs in a loop, refreshing your token to prevent authentication failures in
+long-running processes or interactive sessions. The command continues
+running until manually stopped with <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--interval</span></code>. Interval in seconds between token refresh attempts.
+Defaults to <code class="docutils literal notranslate"><span class="pre">60s</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max</span></code>. Maximum number of times to refresh. Default is infinite.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="uploads">
 <span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for tasks related to file uploads and
 secrets:</p>
-<table id="id9">
-<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
