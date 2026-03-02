@@ -325,6 +325,31 @@
 <li><a class="reference internal" href="#iceberg-specific-glue-catalog-configuration-properties">Iceberg-specific Glue catalog configuration properties</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#starburst-data-catalog">Starburst data catalog</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#secrets">Secrets</a></li>
+<li><a class="reference internal" href="#logging-configuration">Logging configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-properties">Configuration properties</a></li>
+<li><a class="reference internal" href="#configuration-examples">Configuration examples</a><ul>
+<li><a class="reference internal" href="#hive-connector">Hive connector</a></li>
+<li><a class="reference internal" href="#iceberg-connector">Iceberg connector</a></li>
+<li><a class="reference internal" href="#delta-lake-connector">Delta Lake connector</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#known-behavioral-differences-with-aws-glue">Known behavioral differences with AWS Glue</a></li>
+<li><a class="reference internal" href="#iceberg-rest-api">Iceberg REST API</a><ul>
+<li><a class="reference internal" href="#authentication">Authentication</a></li>
+<li><a class="reference internal" href="#id2">Configuration properties</a></li>
+<li><a class="reference internal" href="#file-system-support">File system support</a></li>
+<li><a class="reference internal" href="#id3">Configuration examples</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#unity-catalog">Unity catalog</a></li>
 <li><a class="reference internal" href="#iceberg-specific-metastores">Iceberg-specific metastores</a><ul>
 <li><a class="reference internal" href="#rest-catalogs">REST catalogs</a></li>
@@ -383,8 +408,8 @@ other lake connectors, <code class="docutils literal notranslate"><span class="p
 <p>To explicitly opt into Glue v2 for Iceberg:</p>
 <p><code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=glue_v2</span></code></p>
 </div>
-<table id="id1">
-<caption><span class="caption-text">General metastore configuration properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">General metastore configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -491,8 +516,8 @@ applies only when using the AWS Glue metastore.</p></td>
 <p>In order to use a Hive Thrift metastore, you must configure the metastore with
 <code class="docutils literal notranslate"><span class="pre">hive.metastore=thrift</span></code> and provide further details with the following
 properties:</p>
-<table id="id2">
-<caption><span class="caption-text">Thrift metastore configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Thrift metastore configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -637,8 +662,8 @@ the default catalog of the Hive metastore will be accessed.</p></td>
 <p>When using the Hive catalog, the Iceberg connector supports the same
 <a class="reference internal" href="#hive-thrift-metastore"><span class="std std-ref">general Thrift metastore configuration properties</span></a>
 as previously described with the following additional property:</p>
-<table id="id3">
-<caption><span class="caption-text">Iceberg Hive catalog configuration property</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Iceberg Hive catalog configuration property</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -680,8 +705,8 @@ service using <abbr title="Simple Authentication and Security Layer">SASL</abbr>
 authenticates using Kerberos. Kerberos authentication for the metastore is
 configured in the connector’s properties file using the following optional
 properties:</p>
-<table id="id4">
-<caption><span class="caption-text">Hive metastore Thrift service authentication properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Hive metastore Thrift service authentication properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 55%"/>
@@ -789,8 +814,8 @@ allowed to impersonate the current Trino user, as discussed in the section
 follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">hive.metastore=glue</span></code> and provide further details with the following
 properties:</p>
-<table id="id5">
-<caption><span class="caption-text">AWS Glue catalog configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">AWS Glue catalog configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -891,8 +916,8 @@ versions.</p></td>
 <p>When using the Glue catalog, the Iceberg connector supports the same
 <a class="reference internal" href="#hive-glue-metastore"><span class="std std-ref">general Glue configuration properties</span></a> as previously
 described with the following additional property:</p>
-<table id="id6">
-<caption><span class="caption-text">Iceberg Glue catalog configuration property</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Iceberg Glue catalog configuration property</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -913,6 +938,487 @@ purpose of accelerating <code class="docutils literal notranslate"><span class="
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="starburst-data-catalog">
+<span id="id1"></span><h2 id="starburst-data-catalog">Starburst data catalog<a class="headerlink" href="#starburst-data-catalog" title="Permalink to this heading">#</a></h2>
+<p>Starburst offers a self-hosted metastore called Starburst data catalog. Starburst data
+catalog provides a Glue-compatible API and an Iceberg REST API, and is
+deployable in Kubernetes environments using Helm. It lets you run self-managed
+SEP clusters with metadata management without requiring access to AWS
+infrastructure.</p>
+<section id="installation">
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<p>Deploy Starburst data catalog with Helm. As of version 476-e, Starburst data catalog
+and Starburst Gateway are deployed together using a unified Helm chart called
+<code class="docutils literal notranslate"><span class="pre">starburst-portal</span></code>. This new deployment artifact simplifies installation and
+ensures compatibility with the latest features and fixes. Standalone
+installation of Starburst data catalog using the old <code class="docutils literal notranslate"><span class="pre">starburst-catalog</span></code> chart is
+no longer supported.</p>
+<p>You can install from the OCI registry with
+the following command, replacing <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> with the appropriate Helm chart
+version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm install starburst-portal oci://harbor.starburstdata.net/starburstdata/charts/starburst-portal --version &lt;version&gt; --values registry-access.yaml --values &lt;your-values-file&gt;.yaml --namespace &lt;namespace&gt;
+</pre></div>
+</div>
+<p>Alternatively, you can install from a local chart file using the following
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm install starburst-portal starburst-portal-&lt;version&gt;.tgz
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file defines how Starburst data catalog is configured during Helm
+deployment. You must specify settings such as the metadata backend, service
+ports, and credentials. The following example shows a basic configuration that
+sets the service environment and HTTP port, points to a PostgreSQL database used
+for metadata storage, and specifies credentials for SEP to authenticate with
+the Glue-compatible API:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">etcFiles</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">node.environment=starburst_portal</span>
+    <span class="no">http-server.http.port=8080</span>
+    <span class="no">http-server.http.enabled=true</span>
+    <span class="no">http-server.https.port: 8443</span>
+    <span class="no">http-server.https.enabled: false</span>
+    <span class="no">credentials-provider.type=file</span>
+    <span class="no">credentials-provider.credentials-file-path=/etc/starburst/catalog-credentials.json</span>
+    <span class="no">persistence.jdbc.url=jdbc:postgresql://postgresql:5432/&lt;db/schema-name&gt;</span>
+    <span class="no">persistence.jdbc.user=&lt;db-username&gt;</span>
+    <span class="no">persistence.jdbc.password=&lt;db-password&gt;</span>
+
+  <span class="nt">catalogCredentials</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">[</span>
+      <span class="no">{</span>
+        <span class="no">"emulated": {</span>
+          <span class="no">"accessKey": "&lt;sep access-key&gt;",</span>
+          <span class="no">"secretKey": "&lt;sep secret&gt;"</span>
+        <span class="no">}</span>
+      <span class="no">}</span>
+    <span class="no">]</span>
+</pre></div>
+</div>
+<section id="secrets">
+<h4 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h4>
+<p>Starburst data catalog supports using secrets for sensitive configuration values
+such as passwords, keys, and credentials.</p>
+<p>For more information on configuring secrets, see <a class="reference internal" href="../security/secrets.html"><span class="doc std std-doc">Secrets</span></a>.</p>
+</section>
+<section id="logging-configuration">
+<h4 id="logging-configuration">Logging configuration<a class="headerlink" href="#logging-configuration" title="Permalink to this heading">#</a></h4>
+<p>To set <a class="reference internal" href="../installation/deployment.html#log-levels"><span class="std std-ref">log levels</span></a>, add the <code class="docutils literal notranslate"><span class="pre">logProperties</span></code> field within the
+<code class="docutils literal notranslate"><span class="pre">etcFiles</span></code> section of your Helm values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">etcFiles</span><span class="p">:</span>
+  <span class="nt">logProperties</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">io.starburst=INFO</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration-properties">
+<h3 id="configuration-properties">Configuration properties<a class="headerlink" href="#configuration-properties" title="Permalink to this heading">#</a></h3>
+<p>Starburst data catalog includes the following optional configuration properties.</p>
+<table id="id10">
+<caption><span class="caption-text">Starburst data catalog configuration properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node.environment</span></code></p></td>
+<td><p>Sets the environment name for the Starburst Data Catalog service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log.path</span></code></p></td>
+<td><p>Specifies the file path for Starburst Data Catalog server logs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.http.port</span></code></p></td>
+<td><p>Sets the HTTP port where Starburst Data Catalog listens.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http-server.log.path</span></code></p></td>
+<td><p>Specifies the file path for HTTP server logs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">credentials-provider.type</span></code></p></td>
+<td><p>Defines the type of credentials provider to use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">credentials-provider.credentials-file-path</span></code></p></td>
+<td><p>Specifies the path to the credentials file when using file-based credentials
+provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">persistence.jdbc.url</span></code></p></td>
+<td><p>Specifies the JDBC URL for the metadata database connection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">persistence.jdbc.user</span></code></p></td>
+<td><p>Sets the username for authenticating to the metadata database.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">persistence.jdbc.password</span></code></p></td>
+<td><p>Sets the password for authenticating to the metadata database.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.default.catalog.id</span></code></p></td>
+<td><p>Sets the default namespace to use for SEP catalogs that do not specify a
+<code class="docutils literal notranslate"><span class="pre">catalogid</span></code>. Starburst data catalog uses namespaces to separate metadata from
+different SEP catalogs. The default value is <code class="docutils literal notranslate"><span class="pre">starburst-catalog</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.default.location.uri</span></code></p></td>
+<td><p>Specifies a default storage location URI for schemas in SEP catalogs
+that do not specify a <code class="docutils literal notranslate"><span class="pre">location</span></code> property. Use as a fallback location prefix
+for storage-backed metadata. When you set this property, database names are
+automatically sanitized before being appended to the S3 location URI to
+ensure compliance with AWS Glue requirements. The generated S3 path may not
+exactly match the database name.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starburst data catalog only applies this URI as the database location when the
+database’s <code class="docutils literal notranslate"><span class="pre">catalogid</span></code> matches the value you configure in
+<code class="docutils literal notranslate"><span class="pre">catalog.default.catalog.id</span></code>. If the <code class="docutils literal notranslate"><span class="pre">catalogid</span></code> does not match, Starburst data
+catalog creates the database without a location, and you must specify a
+location for each table explicitly.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configuration-examples">
+<h3 id="configuration-examples">Configuration examples<a class="headerlink" href="#configuration-examples" title="Permalink to this heading">#</a></h3>
+<p>After you deploy and configure Starburst data catalog, point SEP to it using a
+connector that supports AWS Glue as a metastore. Use the
+<code class="docutils literal notranslate"><span class="pre">hive.metastore.glue.catalogid</span></code> property to specify different namespaces within
+the same Starburst data catalog instance.</p>
+<section id="hive-connector">
+<h4 id="hive-connector">Hive connector<a class="headerlink" href="#hive-connector" title="Permalink to this heading">#</a></h4>
+<p>The following example configures the Hive connector to use Starburst data catalog:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">hive</span>
+<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue</span>
+<span class="na">hive.metastore.glue.endpoint-url</span><span class="o">=</span><span class="s">http://starburst-portal:8080/api/v1/glue</span>
+<span class="na">hive.metastore.glue.region</span><span class="o">=</span><span class="s">us-east-1</span>
+<span class="na">hive.metastore.glue.catalogid</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">hive.metastore.glue.aws-access-key</span><span class="o">=</span><span class="s">&lt;sep-access-key&gt;</span>
+<span class="na">hive.metastore.glue.aws-secret-key</span><span class="o">=</span><span class="s">&lt;sep-secret-key&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iceberg-connector">
+<h4 id="iceberg-connector">Iceberg connector<a class="headerlink" href="#iceberg-connector" title="Permalink to this heading">#</a></h4>
+<p>The following example configures the Iceberg connector to use Starburst data
+catalog:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">iceberg</span>
+<span class="na">iceberg.catalog.type</span><span class="o">=</span><span class="s">glue_v2</span>
+<span class="na">hive.metastore.glue.endpoint-url</span><span class="o">=</span><span class="s">http://starburst-portal:8080/api/v1/glue</span>
+<span class="na">hive.metastore.glue.region</span><span class="o">=</span><span class="s">us-east-1</span>
+<span class="na">hive.metastore.glue.catalogid</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">hive.metastore.glue.aws-access-key</span><span class="o">=</span><span class="s">&lt;sep-access-key&gt;</span>
+<span class="na">hive.metastore.glue.aws-secret-key</span><span class="o">=</span><span class="s">&lt;sep-secret-key&gt;</span>
+<span class="na">iceberg.security</span><span class="o">=</span><span class="s">system</span>
+<span class="na">iceberg.register-table-procedure.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+<section id="delta-lake-connector">
+<h4 id="delta-lake-connector">Delta Lake connector<a class="headerlink" href="#delta-lake-connector" title="Permalink to this heading">#</a></h4>
+<p>The following example configures the Delta Lake connector to use Starburst data
+catalog:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">delta_lake</span>
+<span class="na">hive.metastore</span><span class="o">=</span><span class="s">glue</span>
+<span class="na">hive.metastore.glue.endpoint-url</span><span class="o">=</span><span class="s">http://starburst-portal:8080/api/v1/glue</span>
+<span class="na">hive.metastore.glue.region</span><span class="o">=</span><span class="s">us-east-1</span>
+<span class="na">hive.metastore.glue.catalogid</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">hive.metastore.glue.aws-access-key</span><span class="o">=</span><span class="s">&lt;sep-access-key&gt;</span>
+<span class="na">hive.metastore.glue.aws-secret-key</span><span class="o">=</span><span class="s">&lt;sep-secret-key&gt;</span>
+<span class="na">delta.security</span><span class="o">=</span><span class="s">starburst</span>
+<span class="na">delta.register-table-procedure.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">delta.enable-non-concurrent-writes</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="known-behavioral-differences-with-aws-glue">
+<h3 id="known-behavioral-differences-with-aws-glue">Known behavioral differences with AWS Glue<a class="headerlink" href="#known-behavioral-differences-with-aws-glue" title="Permalink to this heading">#</a></h3>
+<p>The following describes behavior differences between the Starburst data catalog and
+AWS Glue APIs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">LastAccessTime</span></code> - set when the table is created. It is not
+automatically updated on subsequent access.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Partition</span> <span class="pre">LastAccessTime</span></code> - set when the partition is created. It is
+not automatically updated on subsequent access.</p></li>
+</ul>
+</section>
+<section id="iceberg-rest-api">
+<h3 id="iceberg-rest-api">Iceberg REST API<a class="headerlink" href="#iceberg-rest-api" title="Permalink to this heading">#</a></h3>
+<p>Starburst data catalog supports the <a class="reference external" href="https://iceberg.apache.org/rest-catalog-spec/">Iceberg REST API
+specification</a>, allowing you to
+use Starburst data catalog as an Iceberg REST catalog backend for Trino and
+Spark workloads. This functionality is disabled by default.</p>
+<p>To enable Iceberg REST API in Starburst data catalog, set the
+<code class="docutils literal notranslate"><span class="pre">catalog.iceberg.enabled</span></code> configuration property to <code class="docutils literal notranslate"><span class="pre">true</span></code> in your [Starburst
+Portal] configuration.</p>
+<section id="authentication">
+<h4 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h4>
+<p>OAuth2 is the only supported authentication mechanism for Iceberg REST API with
+Starburst data catalog.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Authentication mechanisms are specific to the API in use. OAuth2
+authentication is supported only for the Iceberg REST API, while AWS
+authentication (SigV4) is supported only for the Glue API. The Glue API does not
+support OAuth2, and the Iceberg REST API does not support SigV4.</p>
+</div>
+<p><strong>OAuth2 authentication</strong></p>
+<p>The Iceberg library allows configuring either a bearer token or client
+credentials to authenticate with the OAuth2-secured server. When a bearer token
+is used, token refresh functionality can be enabled to let the Iceberg client
+automatically refresh the token when necessary. When the client credentials flow
+is used, the <code class="docutils literal notranslate"><span class="pre">scope</span></code> that Iceberg includes in generated tokens must be
+configured. Optionally, the <code class="docutils literal notranslate"><span class="pre">audience</span></code> can also be configured. See the <a class="reference external" href="https://iceberg.apache.org/docs/nightly/configuration/#oauth2-auth-properties">official
+Iceberg
+documentation</a>
+or SEP <a class="reference internal" href="../connector/iceberg.html"><span class="doc std std-doc">Iceberg connector documentation</span></a> for more
+information on configuring the client.</p>
+</section>
+<section id="id2">
+<h4 id="id2">Configuration properties<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>The following configuration properties are available:</p>
+<table id="id11">
+<caption><span class="caption-text">Starburst data catalog Iceberg REST API configuration properties</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 40%"/>
+<col style="width: 20%"/>
+<col style="width: 40%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.catalog-name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
+<td><p>Defines the name for an Iceberg catalog that exists by default. <strong>Required</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.location</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
+<td><p>Defines the default location for schemas (Iceberg namespaces) created in the
+default catalog. <strong>Required</strong>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enables Iceberg catalog support and Iceberg REST API server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.authentication.type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p></td>
+<td><p>Authentication mechanism to use for the Iceberg REST API. Allowed values:
+<code class="docutils literal notranslate"><span class="pre">none</span></code>, <code class="docutils literal notranslate"><span class="pre">oauth2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.oauth2.issuer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
+<td><p>The required issuer of a token. <strong>Required</strong> when OAuth2 authentication is
+enabled for the Iceberg REST API.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.oauth2.audience</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
+<td><p>Additional audiences to validate in the token. Accepts comma-separated list
+of strings. All provided audiences must be present for a token to be
+accepted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">catalog.iceberg.oauth2.jwk-url</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
+<td><p>The URI of the JSON Web Key Set (JWKS) endpoint. <strong>Required</strong> when OAuth2
+authentication is enabled for the Iceberg REST API.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fs.native-s3.enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enables native S3 file system for file access in Starburst data catalog.
+Refer to <a class="reference internal" href="file-system-s3.html"><span class="doc std std-doc">S3 file system support</span></a> for a
+detailed list of configuration options and more information.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fs.native-gcs.enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enables native Google Cloud Storage file system for file access in Starburst
+data catalog. Refer to <a class="reference internal" href="file-system-gcs.html"><span class="doc std std-doc">Google Cloud Storage file system
+support</span></a> for a detailed list of
+configuration options and more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fs.native-azure.enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enables native Azure Storage file system for file access in Starburst data
+catalog. Refer to <a class="reference internal" href="file-system-azure.html"><span class="doc std std-doc">Azure Storage file system
+support</span></a> for a detailed list of
+configuration options and more information.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fs.native-local.enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Enables native local file system for file access in Starburst data catalog.
+Refer to <a class="reference internal" href="file-system-local.html"><span class="doc std std-doc">local file system support</span></a>
+for a detailed list of configuration options and more information.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="file-system-support">
+<h4 id="file-system-support">File system support<a class="headerlink" href="#file-system-support" title="Permalink to this heading">#</a></h4>
+<p>Starburst data catalog uses the same file system functionality as SEP
+<a class="reference internal" href="../object-storage.html"><span class="doc std std-doc">object storage connectors</span></a>. Only native
+file system implementations are supported. The following file systems are
+available:</p>
+<ul class="simple">
+<li><p>Native S3 (<code class="docutils literal notranslate"><span class="pre">fs.native-s3.enabled</span></code>)</p></li>
+<li><p>Native Google Cloud Storage (<code class="docutils literal notranslate"><span class="pre">fs.native-gcs.enabled</span></code>)</p></li>
+<li><p>Native Azure Storage (<code class="docutils literal notranslate"><span class="pre">fs.native-azure.enabled</span></code>)</p></li>
+<li><p>Native local file system (<code class="docutils literal notranslate"><span class="pre">fs.native-local.enabled</span></code>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="file-system-alluxio.html"><span class="doc std std-doc">Alluxio file system</span></a> and OAuth2
+pass-through for ABFS are not supported with Starburst data catalog.</p>
+</div>
+<p>See the <a class="reference internal" href="../object-storage.html#file-system-native"><span class="std std-ref">native file system documentation</span></a> for detailed
+configuration options for each file system type.</p>
+</section>
+<section id="id3">
+<h4 id="id3">Configuration examples<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>View the following sections for example configurations for using Starburst
+Portal, Trino Iceberg connector, and Spark with the Iceberg REST API.</p>
+<p><strong>Starburst Portal</strong></p>
+<p>The following example shows a configuration of Starburst Portal with Iceberg
+REST API, file system enabled:</p>
+<p>With OAuth2 authentication:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">etcFiles</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">node.environment=starburst_portal</span>
+    <span class="no">http-server.http.port=8080</span>
+    <span class="no">http-server.http.enabled=true</span>
+    <span class="no">http-server.https.port: 8443</span>
+    <span class="no">http-server.https.enabled: false</span>
+    <span class="no">persistence.jdbc.url=jdbc:postgresql://postgresql:5432/&lt;db/schema-name&gt;</span>
+    <span class="no">persistence.jdbc.user=&lt;db-username&gt;</span>
+    <span class="no">persistence.jdbc.password=&lt;db-password&gt;</span>
+    <span class="no">catalog.iceberg.catalog-name=starburst-catalog</span>
+    <span class="no">catalog.iceberg.location=s3://catalog-data/starburst-catalog</span>
+    <span class="no">catalog.iceberg.enabled=true</span>
+    <span class="no">catalog.iceberg.authentication.type=oauth2</span>
+    <span class="no">catalog.iceberg.oauth2.issuer=https://keycloak-idp/realms/&lt;realm&gt;</span>
+    <span class="no">catalog.iceberg.oauth2.jwk-url=https://keycloak-idp/realms/&lt;realm&gt;/protocol/openid-connect/certs</span>
+    <span class="no">fs.native-s3.enabled=true</span>
+    <span class="no">s3.aws-access-key=&lt;aws_access_key_id&gt;</span>
+    <span class="no">s3.aws-secret-key=&lt;aws_secret_access_key&gt;</span>
+</pre></div>
+</div>
+<p>Without authentication:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">etcFiles</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">node.environment=starburst_portal</span>
+    <span class="no">http-server.http.port=8080</span>
+    <span class="no">http-server.http.enabled=true</span>
+    <span class="no">http-server.https.port: 8443</span>
+    <span class="no">http-server.https.enabled: false</span>
+    <span class="no">persistence.jdbc.url=jdbc:postgresql://postgresql:5432/&lt;db/schema-name&gt;</span>
+    <span class="no">persistence.jdbc.user=&lt;db-username&gt;</span>
+    <span class="no">persistence.jdbc.password=&lt;db-password&gt;</span>
+    <span class="no">catalog.iceberg.catalog-name=starburst-catalog</span>
+    <span class="no">catalog.iceberg.location=s3://catalog-data/starburst-catalog</span>
+    <span class="no">catalog.iceberg.enabled=true</span>
+    <span class="no">fs.native-s3.enabled=true</span>
+    <span class="no">s3.aws-access-key=&lt;aws_access_key_id&gt;</span>
+    <span class="no">s3.aws-secret-key=&lt;aws_secret_access_key&gt;</span>
+</pre></div>
+</div>
+<p><strong>Trino Iceberg connector</strong></p>
+<p>The following example shows a configuration for using the <a class="reference internal" href="../connector/iceberg.html"><span class="doc std std-doc">Iceberg
+connector</span></a> with Starburst data catalog and the Iceberg
+REST API:</p>
+<p>With OAuth2 authentication:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">iceberg</span>
+<span class="na">iceberg.catalog.type</span><span class="o">=</span><span class="s">rest</span>
+<span class="na">iceberg.rest-catalog.uri</span><span class="o">=</span><span class="s">http://starburst-portal:8080/iceberg</span>
+<span class="na">iceberg.rest-catalog.warehouse</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">iceberg.rest-catalog.security</span><span class="o">=</span><span class="s">oauth2</span>
+<span class="na">iceberg.rest-catalog.oauth2.server-uri</span><span class="o">=</span><span class="s">https://keycloak-idp/realms/&lt;realm&gt;/protocol/openid-connect/token</span>
+<span class="na">iceberg.rest-catalog.oauth2.credential</span><span class="o">=</span><span class="s">&lt;oauth2_client_id&gt;:&lt;oauth2_client_secret&gt;</span>
+<span class="na">iceberg.rest-catalog.oauth2.scope</span><span class="o">=</span><span class="s">&lt;scope_for_the_token&gt;</span>
+<span class="na">iceberg.security</span><span class="o">=</span><span class="s">system</span>
+<span class="na">iceberg.register-table-procedure.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<p>Without authentication:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">iceberg</span>
+<span class="na">iceberg.catalog.type</span><span class="o">=</span><span class="s">rest</span>
+<span class="na">iceberg.rest-catalog.uri</span><span class="o">=</span><span class="s">http://starburst-portal:8080/iceberg</span>
+<span class="na">iceberg.rest-catalog.warehouse</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">iceberg.security</span><span class="o">=</span><span class="s">system</span>
+<span class="na">iceberg.register-table-procedure.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<p><strong>Spark</strong></p>
+<p>The following example shows a configuration for <a class="reference internal" href="../dell-data-processing-engine/job-submission.html"><span class="doc std std-doc">submitting Spark
+jobs</span></a> with Starburst data catalog
+and the Iceberg REST API:</p>
+<p>With OAuth2 authentication:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.sql.extensions</span><span class="o">=</span><span class="s">org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions</span>
+<span class="na">spark.sql.defaultCatalog</span><span class="o">=</span><span class="s">iceberg</span>
+<span class="na">spark.sql.catalog.iceberg</span><span class="o">=</span><span class="s">org.apache.iceberg.spark.SparkCatalog</span>
+<span class="na">spark.sql.catalog.iceberg.catalog-impl</span><span class="o">=</span><span class="s">org.apache.iceberg.rest.RESTCatalog</span>
+<span class="na">spark.sql.catalog.iceberg.uri</span><span class="o">=</span><span class="s">http://starburst-portal:8080/iceberg</span>
+<span class="na">spark.sql.catalog.iceberg.warehouse</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">spark.sql.catalog.iceberg.rest.auth.type</span><span class="o">=</span><span class="s">oauth2</span>
+<span class="na">spark.sql.catalog.iceberg.oauth2-server-uri</span><span class="o">=</span><span class="s">https://keycloak-idp/realms/&lt;realm&gt;/protocol/openid-connect/token</span>
+<span class="na">spark.sql.catalog.iceberg.scope</span><span class="o">=</span><span class="s">&lt;scope_for_the_token&gt;</span>
+<span class="na">spark.sql.catalog.iceberg.credential</span><span class="o">=</span><span class="s">&lt;oauth2_client_id&gt;:&lt;oauth2_client_secret&gt;</span>
+<span class="na">spark.sql.catalog.iceberg.audience</span><span class="o">=</span><span class="s">&lt;token_audience&gt;</span>
+<span class="na">spark.sql.catalog.iceberg.io-impl</span><span class="o">=</span><span class="s">org.apache.iceberg.hadoop.HadoopFileIO</span>
+
+<span class="na">spark.hadoop.fs.s3a.access.key</span><span class="o">=</span><span class="s">&lt;s3_governance_access_key&gt;</span>
+<span class="na">spark.hadoop.fs.s3a.secret.key</span><span class="o">=</span><span class="s">&lt;s3_governance_secret_key&gt;</span>
+</pre></div>
+</div>
+<p>Without OAuth2 authentication:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.sql.extensions</span><span class="o">=</span><span class="s">org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions</span>
+<span class="na">spark.sql.defaultCatalog</span><span class="o">=</span><span class="s">iceberg</span>
+<span class="na">spark.sql.catalog.iceberg</span><span class="o">=</span><span class="s">org.apache.iceberg.spark.SparkCatalog</span>
+<span class="na">spark.sql.catalog.iceberg.catalog-impl</span><span class="o">=</span><span class="s">org.apache.iceberg.rest.RESTCatalog</span>
+<span class="na">spark.sql.catalog.iceberg.uri</span><span class="o">=</span><span class="s">http://starburst-portal:8080/iceberg</span>
+<span class="na">spark.sql.catalog.iceberg.warehouse</span><span class="o">=</span><span class="s">&lt;catalog-namespace&gt;</span>
+<span class="na">spark.sql.catalog.iceberg.io-impl</span><span class="o">=</span><span class="s">org.apache.iceberg.hadoop.HadoopFileIO</span>
+
+<span class="na">spark.hadoop.fs.s3a.access.key</span><span class="o">=</span><span class="s">&lt;s3_governance_access_key&gt;</span>
+<span class="na">spark.hadoop.fs.s3a.secret.key</span><span class="o">=</span><span class="s">&lt;s3_governance_secret_key&gt;</span>
+</pre></div>
+</div>
+<p>The above example shows authentication for the file system assuming the job is
+submitted using <a class="reference internal" href="../dell-data-processing-engine/overview.html"><span class="doc std std-doc">Dell Data Processing
+Engine</span></a> with <a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">object storage
+governance</span></a> enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">spark.sql.catalog.iceberg.audience</span></code> property should only be set
+if <code class="docutils literal notranslate"><span class="pre">catalog.iceberg.oauth2.audience</span></code> is configured in Starburst data catalog
+with a matching value. This configuration allows the Iceberg library to request
+tokens with the specified audience, while Starburst data catalog only accepts
+tokens that include that audience.</p>
+<p>Setting the audience property in Starburst data catalog currently prevents usage
+with SEP, as the Iceberg connector does not support configuring the audience
+for tokens.</p>
+</div>
+</section>
+<section id="limitations">
+<h4 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Starburst data catalog configures file system access globally at the
+deployment level, using a single endpoint and authentication configuration.
+This means all Iceberg catalogs managed by the same Starburst data catalog
+instance must store their table data on the same object storage system that is
+accessible through that single configuration. For example, when using Dell ECS
+for on-premises storage, all catalogs must use the same ECS instance and
+endpoint.</p></li>
+<li><p>For Trino Iceberg connections, <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">SCHEMA</span></code> must include the <code class="docutils literal notranslate"><span class="pre">location</span></code>
+parameter.</p></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="unity-catalog">
@@ -958,8 +1464,8 @@ catalog as discussed in this section.</p>
 <a class="reference external" href="https://github.com/polaris-catalog/polaris">Polaris</a>, configure the catalog
 type with <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=rest</span></code>, and provide further details with the
 following properties:</p>
-<table id="id7">
-<caption><span class="caption-text">Iceberg REST catalog configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id12">
+<caption><span class="caption-text">Iceberg REST catalog configuration properties</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1051,8 +1557,8 @@ management</span></a>.</p>
 <code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.catalog-name</span></code> must be configured. When using any
 database besides PostgreSQL, a JDBC driver jar file must be placed in the plugin
 directory.</p>
-<table id="id8">
-<caption><span class="caption-text">JDBC catalog configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id13">
+<caption><span class="caption-text">JDBC catalog configuration properties</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1123,8 +1629,8 @@ iceberg.jdbc-catalog.default-warehouse-dir=s3://bucket
 <p>In order to use a Nessie catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=nessie</span></code> and provide further details with the following
 properties:</p>
-<table id="id9">
-<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id14">
+<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1186,8 +1692,8 @@ iceberg.nessie-catalog.default-warehouse-dir=/tmp
 <p>In order to use a Snowflake catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=snowflake</span></code> and provide further details with the following
 properties:</p>
-<table id="id10">
-<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id15">
+<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1244,8 +1750,8 @@ Tables</a> in
 an S3 table bucket, configure the catalog type with <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=rest</span></code>.
 In addition to the <a class="reference internal" href="#iceberg-rest-catalog"><span class="std std-ref">REST catalogs</span></a> properties include the following
 configuration properties:</p>
-<table id="id11">
-<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<table id="id16">
+<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
