@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="System information" href="system.html" />
-    <link rel="prev" title="Set Digest functions" href="setdigest.html" />
+    <link rel="prev" title="Storage functions" href="../starburst-catalog/storage-functions.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -283,6 +283,7 @@
 <li class="toctree-l3"><a class="reference internal" href="regexp.html">Regular expression</a></li>
 <li class="toctree-l3"><a class="reference internal" href="session.html">Session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setdigest.html">Set Digest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../starburst-catalog/storage-functions.html">Storage</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">String</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#string-operators">String operators</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#string-functions">String functions</a></li>
@@ -308,6 +309,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -317,6 +319,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -413,10 +416,10 @@ SQL-standard concatenation operator (<code class="docutils literal notranslate">
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="concat_ws">
-<span class="sig-name descname"><span class="pre">concat_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stringN</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span><a class="headerlink" href="#concat_ws" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">concat_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">separator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stringN</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span><a class="headerlink" href="#concat_ws" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the concatenation of <code class="docutils literal notranslate"><span class="pre">string1</span></code>, <code class="docutils literal notranslate"><span class="pre">string2</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>, <code class="docutils literal notranslate"><span class="pre">stringN</span></code>
-using <code class="docutils literal notranslate"><span class="pre">string0</span></code> as a separator. If <code class="docutils literal notranslate"><span class="pre">string0</span></code> is null, then the return
-value is null. Any null values provided in the arguments after the
+using <code class="docutils literal notranslate"><span class="pre">separator</span></code> to join the values. If <code class="docutils literal notranslate"><span class="pre">separator</span></code> is null, then the
+return value is null. Any null values provided in the arguments after the
 separator are skipped.</p>
 </dd></dl>
 <dl class="py function">
@@ -749,7 +752,7 @@ removed).</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="setdigest.html" title="Set Digest functions"
+            <a href="../starburst-catalog/storage-functions.html" title="Storage functions"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -758,7 +761,7 @@ removed).</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Set Digest functions </span>
+                      class="md-footer-nav__direction"> Previous </span> Storage functions </span>
               </div>
             </a>
           

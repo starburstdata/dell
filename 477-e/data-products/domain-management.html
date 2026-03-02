@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -281,6 +281,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -290,6 +291,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -369,7 +371,7 @@ also displayed.</p>
 <p>If <a class="reference internal" href="../security/biac-overview.html"><span class="doc">built-in access control</span></a> is enabled, you
 can only create a domain if you have been granted <a class="reference internal" href="../security/biac-privileges.html#biac-entity-data-products"><span class="std std-ref">create privileges</span></a>.</p>
 </div>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Click <strong>Create new domain</strong>.</p></li>
 <li><p>Enter a <strong>Domain name</strong>.</p></li>
 <li><p>(Optional) Enter a <strong>Domain description</strong>.</p></li>
@@ -381,13 +383,6 @@ default, this value is not set and all domains share the default location
 from the catalog. Views, materialized views, and storage tables for the
 materialized views are created in the specific schema for the data product,
 and can be accessed in that schema.</p></li>
-<li><p>Optionally, select the <strong>Is shared domain</strong> checkbox.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You must create a shared domain in order to share data products between
-clusters.</p>
-</div>
-</li>
 <li><p>Click <strong>Create domain</strong>.</p></li>
 </ol>
 </section>

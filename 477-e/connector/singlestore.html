@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -368,6 +369,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -500,13 +502,13 @@ feature differences between Trino and SEP, see the <a class="reference internal"
 <p>To configure the Singlestore connector, create a catalog properties file that
 specifies the Singlestore connector by setting the <code class="docutils literal notranslate"><span class="pre">connector.name</span></code> to
 <code class="docutils literal notranslate"><span class="pre">Singlestore</span></code>.</p>
-<p>For example, to access a database as the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog, create the file
+<p>For example, to access a database as the <code class="docutils literal notranslate"><span class="pre">EXAMPLE</span></code> catalog, create the file
 <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code>. Replace the connection properties as
 appropriate for your setup:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">singlestore</span>
-<span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:singlestore://example.net:3306</span>
-<span class="na">connection-user</span><span class="o">=</span><span class="s">root</span>
-<span class="na">connection-password</span><span class="o">=</span><span class="s">secret</span>
+<span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:singlestore://&lt;EXAMPLE.NET&gt;:3306</span>
+<span class="na">connection-user</span><span class="o">=</span><span class="s">&lt;USERNAME&gt;</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">&lt;PASSWORD&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> defines the connection information and parameters to pass
@@ -525,7 +527,7 @@ source by appending a parameter to the JDBC connection string set in the
 <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> catalog configuration property.</p>
 <p>To enable TLS append <code class="docutils literal notranslate"><span class="pre">useSsl=true</span></code> to the <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> configuration
 property:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:singlestore://example.net:3306/?useSsl=true</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:singlestore://&lt;EXAMPLE.NET&gt;:3306/?useSsl=true</span>
 </pre></div>
 </div>
 <p>For more information on TLS configuration options, see the <a class="reference external" href="https://docs.singlestore.com/db/latest/developer-resources/connect-with-application-development-tools/connect-with-java-jdbc/the-singlestore-jdbc-driver/#tls-parameters">JDBC driver
@@ -1342,18 +1344,27 @@ testing and troubleshooting purposes.</p></td>
 with <a class="reference internal" href="../language/types.html#string-data-types"><span class="std std-ref">character string types</span></a> like <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> or <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>. This
 ensures correctness of results since the data source may compare strings
 case-insensitively.</p>
-<p>In the following example, the predicate is not pushed down for either query
-since <code class="docutils literal notranslate"><span class="pre">name</span></code> is a column of type <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>:</p>
+<p>In the following example, the predicates are not pushed down since <code class="docutils literal notranslate"><span class="pre">name</span></code> is a
+column of type <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">nation</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">&gt;</span> <span class="s1">'CANADA'</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">nation</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'CANADA'</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">nation</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'CAN%'</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Enable experimental support to push down string predicates with binary
-comparison on columns that use character string types by setting the
+<p>Enable experimental support to push down string predicates and certain aggregate
+functions with binary comparison on <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> and <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> columns by setting the
 <code class="docutils literal notranslate"><span class="pre">singlestore.experimental.enable-string-pushdown-with-binary</span></code> catalog
 configuration property or the corresponding <code class="docutils literal notranslate"><span class="pre">enable_string_pushdown_with_binary</span></code>
-session property to <code class="docutils literal notranslate"><span class="pre">true</span></code>. When enabled, predicates in the queries, like the
-example above, get pushed down using binary evaluation.</p>
+session property to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>When enabled, predicates like those in the examples above, as well as the
+aggregate functions <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">count(distinct</span> <span class="pre">x)</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, and <code class="docutils literal notranslate"><span class="pre">max</span></code> are pushed
+down using binary evaluation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">LIKE</span></code> predicates on <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> columns are not pushed down to SingleStore,
+even with binary comparison enabled, to avoid potential correctness issues
+caused by differences in how <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> column padding is handled.</p>
+</div>
 </section>
 </section>
 <section id="dynamic-filtering">
@@ -1427,14 +1438,13 @@ following sections.</p>
 authentication, add the following catalog configuration properties to the
 catalog properties file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">singlestore.authentication.type</span><span class="o">=</span><span class="s">KERBEROS</span>
-<span class="na">kerberos.client.principal</span><span class="o">=</span><span class="s">example@example.com</span>
-<span class="na">kerberos.client.keytab</span><span class="o">=</span><span class="s">etc/kerberos/example.keytab</span>
+<span class="na">kerberos.client.principal</span><span class="o">=</span><span class="s">&lt;PRINCIPAL_DOMAIN&gt;</span>
+<span class="na">kerberos.client.keytab</span><span class="o">=</span><span class="s">&lt;PATH_TO_KEYTAB_FILE&gt;</span>
 <span class="na">kerberos.config</span><span class="o">=</span><span class="s">etc/kerberos/krb5.conf</span>
 </pre></div>
 </div>
-<p>In this configuration, the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code> connects to the database.
-The related Kerberos service ticket is located in the
-<code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.keytab</span></code> file.</p>
+<p>In this configuration, the user <code class="docutils literal notranslate"><span class="pre">PRINCIPAL_DOMAIN</span></code> connects to the database.
+The related Kerberos service ticket is located in the keytab file.</p>
 <p>The SingleStore connector authenticates to Kerberos using the Java
 Authentication and Authorization Service (JAAS). The file is set with the
 <code class="docutils literal notranslate"><span class="pre">java.security.auth.login.config</span></code> JVM system property.</p>

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -578,7 +580,10 @@ and <a class="reference internal" href="../sql/refresh-materialized-view.html"><
 <li><p><code class="docutils literal notranslate"><span class="pre">DATA_DEFINITION</span></code>: Queries that affect the data definition. These include
 <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>, and <code class="docutils literal notranslate"><span class="pre">DROP</span></code> statements for schemas, tables, views, and
 materialized views, as well as statements that manage prepared statements,
-privileges, sessions, and transactions.</p></li>
+privileges, sessions, and transactions. When external clients need access to
+the <code class="docutils literal notranslate"><span class="pre">system.runtime.kill_query()</span></code> procedure to stop running or queued
+queries, this <code class="docutils literal notranslate"><span class="pre">queryType</span></code> must be used to make sure the <code class="docutils literal notranslate"><span class="pre">kill_query()</span></code> is
+executed directly and isn’t queued to wait for the initial query to finish.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALTER_TABLE_EXECUTE</span></code>: Queries that execute table procedures with <a class="reference internal" href="../sql/alter-table.html#alter-table-execute"><span class="std std-ref">ALTER
 TABLE EXECUTE</span></a>.</p></li>
 </ul>
@@ -653,11 +658,13 @@ uses the JDBC Driver.</p></li>
 </section>
 <section id="example">
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
-<p>In the example configuration below, there are several resource groups, some of which are templates.
-Templates allow administrators to construct resource group trees dynamically. For example, in
-the <code class="docutils literal notranslate"><span class="pre">pipeline_${USER}</span></code> group, <code class="docutils literal notranslate"><span class="pre">${USER}</span></code> is expanded to the name of the user that submitted
-the query. <code class="docutils literal notranslate"><span class="pre">${SOURCE}</span></code> is also supported, which is expanded to the source that submitted the
-query. You may also use custom named variables in the <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">user</span></code> regular expressions.</p>
+<p>In the example configuration below, there are several resource groups, some of
+which are templates. Templates allow administrators to construct resource group
+trees dynamically. For example, in the <code class="docutils literal notranslate"><span class="pre">pipeline_${USER}</span></code> group, <code class="docutils literal notranslate"><span class="pre">${USER}</span></code> is
+expanded to the name of the user that submitted the query. <code class="docutils literal notranslate"><span class="pre">${SOURCE}</span></code> is also
+supported, which is expanded to the source that submitted the query. You may
+also use custom named variables in the regular expressions for <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>,
+last week <code class="docutils literal notranslate"><span class="pre">originalUser</span></code>, <code class="docutils literal notranslate"><span class="pre">authenticatedUser</span></code> and <code class="docutils literal notranslate"><span class="pre">queryText</span></code>.</p>
 <p>There are four selectors, that define which queries run in which resource group:</p>
 <ul class="simple">
 <li><p>The first selector matches queries from <code class="docutils literal notranslate"><span class="pre">bob</span></code> and places them in the admin group.</p></li>

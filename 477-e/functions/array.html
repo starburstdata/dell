@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -288,6 +288,7 @@
 <li class="toctree-l3"><a class="reference internal" href="regexp.html">Regular expression</a></li>
 <li class="toctree-l3"><a class="reference internal" href="session.html">Session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setdigest.html">Set Digest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../starburst-catalog/storage-functions.html">Storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string.html">String</a></li>
 <li class="toctree-l3"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="table.html">Table</a></li>
@@ -308,6 +309,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -317,6 +319,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -460,6 +463,13 @@ for all other elements.</p>
 <dd><p>Returns an array of elements in <code class="docutils literal notranslate"><span class="pre">x</span></code> but not in <code class="docutils literal notranslate"><span class="pre">y</span></code>, without duplicates.</p>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="array_first">
+<span class="sig-name descname"><span class="pre">array_first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array(E)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#array_first" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the first element of an <code class="docutils literal notranslate"><span class="pre">array</span></code>.
+If the array is empty, the function returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, whereas
+the subscript operator would fail in such a case.</p>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="array_histogram">
 <span class="sig-name descname"><span class="pre">array_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">map&lt;K,</span> <span class="pre">bigint&gt;</span></span></span><a class="headerlink" href="#array_histogram" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns a map where the keys are the unique elements in the input array
@@ -485,6 +495,13 @@ Null elements are omitted in the result.</p>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">array_join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">null_replacement</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">varchar</span></span></span></dt>
 <dd><p>Concatenates the elements of the given array using the delimiter and an optional string to replace nulls.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="array_last">
+<span class="sig-name descname"><span class="pre">array_last</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array(E)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#array_last" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the last element of an <code class="docutils literal notranslate"><span class="pre">array</span></code>.
+If the array is empty, the function returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, whereas
+the subscript operator would fail in such a case.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="array_max">

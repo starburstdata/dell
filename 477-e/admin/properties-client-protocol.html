@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -219,7 +219,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -266,6 +266,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -275,6 +276,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -439,8 +441,8 @@ segments.</p>
 <h3 id="protocol-spooling-encoding-compression-threshold"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.encoding.compression.threshold</span></code><a class="headerlink" href="#protocol-spooling-encoding-compression-threshold" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">8KB</span></code></p></li>
-<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">8kB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1kB</span></code></p></li>
 <li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">4MB</span></code></p></li>
 </ul>
 <p>Threshold for enabling compression with larger segments.</p>
@@ -450,7 +452,7 @@ segments.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">8MB</span></code></p></li>
-<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1kB</span></code></p></li>
 <li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">128MB</span></code></p></li>
 <li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_initial_segment_size</span></code></p></li>
 </ul>
@@ -461,7 +463,7 @@ segments.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
 <li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">16MB</span></code></p></li>
-<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1kB</span></code></p></li>
 <li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">128MB</span></code></p></li>
 <li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_max_segment_size</span></code></p></li>
 </ul>
@@ -492,9 +494,9 @@ first row.</p>
 <h3 id="protocol-spooling-inlining-max-size"><code class="docutils literal notranslate"><span class="pre">protocol.spooling.inlining.max-size</span></code><a class="headerlink" href="#protocol-spooling-inlining-max-size" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Type:</strong> <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a></p></li>
-<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">128kB</span></code></p></li>
-<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1KB</span></code></p></li>
-<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">1MB</span></code></p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">3MB</span></code></p></li>
+<li><p><strong>Minimum value:</strong> <code class="docutils literal notranslate"><span class="pre">1kB</span></code></p></li>
+<li><p><strong>Maximum value:</strong> <code class="docutils literal notranslate"><span class="pre">3MB</span></code></p></li>
 <li><p><strong>Session property:</strong> <code class="docutils literal notranslate"><span class="pre">spooling_inlining_max_size</span></code></p></li>
 </ul>
 <p>Maximum size of rows to inline per worker.</p>

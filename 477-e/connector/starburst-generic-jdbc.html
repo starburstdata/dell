@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -340,6 +341,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -464,24 +466,16 @@ catalogs. When SEP is installed from RPM, this is
 directory (replace <code class="docutils literal notranslate"><span class="pre">example</span></code> with your database name or some other
 descriptive name of the catalog) with the following contents:</p></li>
 </ol>
-<blockquote>
-<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>connector.name=generic-jdbc
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">generic-jdbc</span>
 
-# the name of the Driver class. E.g. for Postgres this would be org.postgresql.Driver
-generic-jdbc.driver-class=FULLY_QUALIFIED_NAME_OF_THE_DRIVER_CLASS
-
-# JDBC connection URL. E.g. for Postgres this could be jdbc:postgresql://example.net:5432/database?defaultRowFetchSize=10000
-connection-url=JDBC_CONNECTION_URL_AS_APPROPRIATE_FOR_THE_EXTERNAL_DATABASE_DRIVER
-
-# connection credentials
-connection-user=USERNAME
-connection-password=PASSWORD
-
-# additional configuration
-case-insensitive-name-matching=true
+<span class="c"># the name of the Driver class. E.g. for Postgres this would be org.postgresql.Driver</span>
+<span class="na">generic-jdbc.driver-class</span><span class="o">=</span><span class="s">&lt;FULLY_QUALIFIED_NAME_OF_THE_DRIVER_CLASS&gt;</span>
+<span class="na">connection-url</span><span class="o">=</span><span class="s">&lt;jdbc:postgresql://&lt;EXAMPLE.NET&gt;:5432/&lt;DATABASE_NAME&gt;?&gt;defaultRowFetchSize=10000</span>
+<span class="na">connection-user</span><span class="o">=</span><span class="s">&lt;USERNAME&gt;</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">&lt;PASSWORD&gt;</span>
+<span class="na">case-insensitive-name-matching</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
-</div></blockquote>
 <ol class="arabic simple" start="5">
 <li><p>Perform the above steps on every SEP cluster node.</p></li>
 <li><p>Restart SEP on every node.</p></li>
@@ -585,13 +579,13 @@ creating <code class="docutils literal notranslate"><span class="pre">additional
 drivers, including drivers implementing version 3 of the JDBC specification
 (JDBC 3).</p>
 <p>The best-effort compatibility can be turned on with:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>generic-jdbc.experimental.jdbc-version-compatibility.enabled=true
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">generic-jdbc.experimental.jdbc-version-compatibility.enabled</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
 <p>In rare cases, JDBC drivers fail to implement search string escaping as documented
 in the JDBC specification. In those cases, you can force the driver to ignore escaping
 by setting the following property:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>generic-jdbc.ignore-search-string-escape=true
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">generic-jdbc.ignore-search-string-escape</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
 </section>
@@ -749,7 +743,7 @@ following sections.</p>
 </div>
 <p>Generic JDBC connector supports <a class="reference internal" href="../security/impersonation.html"><span class="doc">user impersonation</span></a>.</p>
 <p>User impersonation can be enabled in the catalog file:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>generic-jdbc.impersonation.enabled=true
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">generic-jdbc.impersonation.enabled</span><span class="o">=</span><span class="s">true</span>
 </pre></div>
 </div>
 <p>User impersonation in Generic JDBC connector is based on <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">ROLE</span></code>.</p>

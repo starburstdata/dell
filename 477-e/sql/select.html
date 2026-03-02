@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -318,6 +318,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#group-by-clause">GROUP BY clause</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#complex-grouping-operations">Complex grouping operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auto">AUTO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#grouping-sets">GROUPING SETS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cube">CUBE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rollup">ROLLUP</a></li>
@@ -390,6 +391,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -399,6 +401,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -446,6 +449,7 @@
 </li>
 <li><a class="reference internal" href="#group-by-clause">GROUP BY clause</a><ul>
 <li><a class="reference internal" href="#complex-grouping-operations">Complex grouping operations</a></li>
+<li><a class="reference internal" href="#auto">AUTO</a></li>
 <li><a class="reference internal" href="#grouping-sets">GROUPING SETS</a></li>
 <li><a class="reference internal" href="#cube">CUBE</a></li>
 <li><a class="reference internal" href="#rollup">ROLLUP</a></li>
@@ -813,6 +817,29 @@ Only column names are allowed.</p>
 <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> expressions, as shown in the following examples. This equivalence
 does not apply, however, when the source of data for the aggregation
 is non-deterministic.</p>
+</section>
+<section id="auto">
+<h3 id="auto">AUTO<a class="headerlink" href="#auto" title="Permalink to this heading">#</a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> is specified, the Trino engine automatically determines the grouping
+columns instead of requiring them to be listed explicitly. In this mode, any
+column in the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> list that is not part of an aggregate function is
+implicitly treated as a grouping column.</p>
+<p>This example query calculates the total account balance per market segment.
+The <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> clause derives <code class="docutils literal notranslate"><span class="pre">mktsegment</span></code> as the grouping key, since it is not used
+in any aggregate function (i.e., <code class="docutils literal notranslate"><span class="pre">sum</span></code>).</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">mktsegment</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">acctbal</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">shipping</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">AUTO</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> mktsegment |       _col1
+------------+--------------------
+ BUILDING   |          1444587.8
+ MACHINERY  |         1296958.61
+ HOUSEHOLD  |         1279340.66
+ FURNITURE  |          1265282.8
+ AUTOMOBILE | 1395695.7200000004
+(5 rows)
+</pre></div>
+</div>
 </section>
 <section id="grouping-sets">
 <h3 id="grouping-sets">GROUPING SETS<a class="headerlink" href="#grouping-sets" title="Permalink to this heading">#</a></h3>

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -845,6 +847,10 @@ that stores spooled data in a specified location, such as <a class="reference in
 all worker nodes. In this file, set the <code class="docutils literal notranslate"><span class="pre">exchange-manager.name</span></code> configuration
 property to <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> or <code class="docutils literal notranslate"><span class="pre">hdfs</span></code>, and set additional configuration properties as needed
 for your storage solution.</p>
+<p>You can also specify the location of the exchange manager configuration file in
+<code class="docutils literal notranslate"><span class="pre">config.properties</span></code> with the <code class="docutils literal notranslate"><span class="pre">exchange-manager.config-file</span></code> property. When this
+property is set, Trino loads the exchange manager configuration from the
+specified path instead of the default <code class="docutils literal notranslate"><span class="pre">etc/exchange-manager.properties</span></code>.</p>
 <p>The following table lists the available configuration properties for
 <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code>, their default values, and which file systems
 the property may be configured for:</p>
@@ -870,58 +876,64 @@ store spooling data.</p></td>
 <td></td>
 <td><p>Any</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-buffer-pool-min-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.max-page-storage-size</span></code></p></td>
+<td><p>Max storage size of a page written to a sink, including the page itself and
+its size.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16MB</span></code></p></td>
+<td><p>Any</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-buffer-pool-min-size</span></code></p></td>
 <td><p>The minimum buffer pool size for an exchange sink. The larger the buffer
 pool size, the larger the write parallelism and memory usage.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
 <td><p>Any</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-buffers-per-partition</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-buffers-per-partition</span></code></p></td>
 <td><p>The number of buffers per partition in the buffer pool. The larger the
 buffer pool size, the larger the write parallelism and memory usage.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
 <td><p>Any</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-max-file-size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.sink-max-file-size</span></code></p></td>
 <td><p>Max <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> of files written by exchange sinks.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1GB</span></code></p></td>
 <td><p>Any</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.source-concurrent-readers</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.source-concurrent-readers</span></code></p></td>
 <td><p>Number of concurrent readers to read from spooling storage. The larger the
 number of concurrent readers, the larger the read parallelism and memory
 usage.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
 <td><p>Any</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.aws-access-key</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.aws-access-key</span></code></p></td>
 <td><p>AWS access key to use. Required for a connection to AWS S3 and GCS, can be
 ignored for other S3 storage systems.</p></td>
 <td></td>
 <td><p>AWS S3, GCS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.aws-secret-key</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.aws-secret-key</span></code></p></td>
 <td><p>AWS secret key to use. Required for a connection to AWS S3 and GCS, can be
 ignored for other S3 storage systems.</p></td>
 <td></td>
 <td><p>AWS S3, GCS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.iam-role</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.iam-role</span></code></p></td>
 <td><p>IAM role to assume.</p></td>
 <td></td>
 <td><p>AWS S3, GCS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.external-id</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.external-id</span></code></p></td>
 <td><p>External ID for the IAM role trust policy.</p></td>
 <td></td>
 <td><p>AWS S3, GCS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.region</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.region</span></code></p></td>
 <td><p>Region of the S3 bucket.</p></td>
 <td></td>
 <td><p>AWS S3, GCS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.endpoint</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.endpoint</span></code></p></td>
 <td><p>S3 storage endpoint server if using an S3-compatible storage system that
 is not AWS. If using AWS S3, this can be ignored unless HTTPS is required
 by an AWS bucket policy. If TLS is required, then this property can be
@@ -931,64 +943,64 @@ If using GCS, set it to <code class="docutils literal notranslate"><span class="
 <td></td>
 <td><p>Any S3-compatible storage</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.max-error-retries</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.max-error-retries</span></code></p></td>
 <td><p>Maximum number of times the exchange manager’s S3 client should retry
 a request.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
 <td><p>Any S3-compatible storage</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.path-style-access</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.path-style-access</span></code></p></td>
 <td><p>Enables using <a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html#path-style-access">path-style access</a>
 for all requests to S3.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>Any S3-compatible storage</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.upload.part-size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.s3.upload.part-size</span></code></p></td>
 <td><p>Part <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for S3 multi-part upload.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">5MB</span></code></p></td>
 <td><p>Any S3-compatible storage</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key-file-path</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key-file-path</span></code></p></td>
 <td><p>Path to the JSON file that contains your Google Cloud Platform service
 account key. Not to be set together with <code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key</span></code></p></td>
 <td></td>
 <td><p>GCS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key</span></code></p></td>
 <td><p>Your Google Cloud Platform service account key in JSON format. Not to be set
 together with <code class="docutils literal notranslate"><span class="pre">exchange.gcs.json-key-file-path</span></code></p></td>
 <td></td>
 <td><p>GCS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.endpoint</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.endpoint</span></code></p></td>
 <td><p>Azure blob endpoint used to access the spooling container. Not to be set
 together with <code class="docutils literal notranslate"><span class="pre">exchange.azure.connection-string</span></code></p></td>
 <td></td>
 <td><p>Azure Blob Storage</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.connection-string</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.connection-string</span></code></p></td>
 <td><p>Connection string used to access the spooling container. Not to be set
 together with <code class="docutils literal notranslate"><span class="pre">exchange.azure.endpoint</span></code></p></td>
 <td></td>
 <td><p>Azure Blob Storage</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.block-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.block-size</span></code></p></td>
 <td><p>Block <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for Azure block blob parallel upload.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4MB</span></code></p></td>
 <td><p>Azure Blob Storage</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.max-error-retries</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.azure.max-error-retries</span></code></p></td>
 <td><p>Maximum number of times the exchange manager’s Azure client should
 retry a request.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
 <td><p>Azure Blob Storage</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.alluxio.block-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.alluxio.block-size</span></code></p></td>
 <td><p>Block <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for Alluxio storage.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4MB</span></code></p></td>
 <td><p>Alluxio</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.alluxio.site-file-path</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.alluxio.site-file-path</span></code></p></td>
 <td><p>Path to the alluxio site file that contains your custom configuration,
 for example <code class="docutils literal notranslate"><span class="pre">/etc/alluxio-site.properties</span></code>. The file must exist on all
 nodes in the Trino cluster. Follow the <a class="reference external" href="https://docs.alluxio.io/os/user/stable/en/operation/Configuration.html">Alluxio client configuration
@@ -997,17 +1009,17 @@ for more details.</p></td>
 <td></td>
 <td><p>Alluxio</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.hdfs.block-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.hdfs.block-size</span></code></p></td>
 <td><p>Block <a class="reference internal" href="properties.html#prop-type-data-size"><span class="std std-ref">data size</span></a> for HDFS storage.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">4MB</span></code></p></td>
 <td><p>HDFS</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.hdfs.skip-directory-scheme-validation</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exchange.hdfs.skip-directory-scheme-validation</span></code></p></td>
 <td><p>Skip directory scheme validation to support Hadoop-compatible file system.</p></td>
 <td><p>false</p></td>
 <td><p>HDFS</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hdfs.config.resources</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hdfs.config.resources</span></code></p></td>
 <td><p>Comma-separated list of paths to HDFS configuration files, for example
 <code class="docutils literal notranslate"><span class="pre">/etc/hdfs-site.xml</span></code>. The files must exist on all nodes in the Trino
 cluster.</p></td>
@@ -1085,7 +1097,7 @@ GCS bucket as the spooling storage destination.</p>
 <span id="fte-exchange-alluxio"></span><h4 id="alluxio">Alluxio<a class="headerlink" href="#alluxio" title="Permalink to this heading">#</a></h4>
 <p>The following <code class="docutils literal notranslate"><span class="pre">exchange-manager.properties</span></code> configuration example specifies
 Alluxio as the spooling storage destination.</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">exchange-manager.name</span><span class="o">=</span><span class="s">alluxio</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">exchange-manager.name</span><span class="o">=</span><span class="s">filesystem</span>
 <span class="na">exchange.base-directories</span><span class="o">=</span><span class="s">alluxio://alluxio-master:19998/exchange-spooling-directory</span>
 <span class="na">exchange.alluxio.site-file-path</span><span class="o">=</span><span class="s">/path/to/alluxio-site.properties</span>
 </pre></div>

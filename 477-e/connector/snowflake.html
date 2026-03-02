@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -365,6 +366,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -499,6 +501,12 @@ you must add the following line to the <code class="docutils literal notranslate
 </section>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">snowflake_jdbc</span></code> connector will be removed after the May 2026 LTS release.
+<a class="reference internal" href="#snowflake-parallel-migration"><span class="std std-ref">Migrate to the <code class="docutils literal notranslate"><span class="pre">snowflake_parallel</span></code> connector</span></a>
+before May to avoid disruption.</p>
+</div>
 <p>To configure the Snowflake connector, create a catalog properties file in
 <code class="docutils literal notranslate"><span class="pre">etc/catalog</span></code> named <code class="docutils literal notranslate"><span class="pre">example.properties</span></code>, to mount the Snowflake connector
 as the <code class="docutils literal notranslate"><span class="pre">example</span></code> catalog (replace <code class="docutils literal notranslate"><span class="pre">example</span></code> with your database name or some
@@ -1268,11 +1276,16 @@ connection pooling:</p>
 lifetime it is removed, regardless of how recently it has been active.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30m</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-max-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.connection-timeout</span></code></p></td>
+<td><p>The maximum amount of time to wait for a connection from the JDBC
+connection pool before the request times out.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">30s</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-max-size</span></code></p></td>
 <td><p>The maximum size of the JDBC data source cache.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-ttl</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-ttl</span></code></p></td>
 <td><p>The expiration time of a cached data source when it is no longer accessed.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30m</span></code></p></td>
 </tr>
@@ -1424,7 +1437,7 @@ settings described in this section.</p>
 <p>Set the authentication type and OAuth 2.0 scope in the coordinator’s
 <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">config properties file</span></a>:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.type</span><span class="o">=</span><span class="s">DELEGATED-OAUTH2</span>
-<span class="na">http-server.authentication.oauth2.scopes</span><span class="o">=</span><span class="s">&lt;EXISTING_SCOPES&gt;,session:role:TEST_ROLE</span>
+<span class="na">http-server.authentication.oauth2.scopes</span><span class="o">=</span><span class="s">&lt;EXISTING_SCOPES&gt;,session:role:&lt;SESSION_ROLE&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">session:role</span></code> prefix determines the role assigned to the user after
@@ -1468,10 +1481,10 @@ query as that Snowflake user in a specific Snowflake account.</p>
 <li><p>Set the following catalog configuration properties:</p></li>
 </ol>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">snowflake.impersonation-type</span><span class="o">=</span><span class="s">dynamic_connection</span>
-<span class="na">snowflake-account-credential-name</span><span class="o">=</span><span class="s">connection_url</span>
-<span class="na">user-credential-name</span><span class="o">=</span><span class="s">user</span>
-<span class="na">private-key-credential-name</span><span class="o">=</span><span class="s">private_key</span>
-<span class="na">private-key-passphrase-credential-name</span><span class="o">=</span><span class="s">private_key_passphrase</span>
+<span class="na">snowflake-account-credential-name</span><span class="o">=</span><span class="s">&lt;CONNECTION_URL&gt;</span>
+<span class="na">user-credential-name</span><span class="o">=</span><span class="s">&lt;USERNAME&gt;</span>
+<span class="na">private-key-credential-name</span><span class="o">=</span><span class="s">&lt;PRIVATE_KEY&gt;</span>
+<span class="na">private-key-passphrase-credential-name</span><span class="o">=</span><span class="s">&lt;PRIVATE_KEY_PASSPHRASE&gt;</span>
 <span class="na">connection-pool.enabled</span><span class="o">=</span><span class="s">false</span>
 </pre></div>
 </div>
@@ -1479,7 +1492,7 @@ query as that Snowflake user in a specific Snowflake account.</p>
 <li><p>Set up all client connections that use this catalog to append credentials
 using the <code class="docutils literal notranslate"><span class="pre">extraCredentials</span></code> attribute. For example, in the JDBC driver:</p></li>
 </ol>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">jdbc</span><span class="o">:</span><span class="s">trino://example.net:8443/snowflake/example?extraCredentials=connection_url:&lt;snowflake account name&gt;;user:&lt;snowflake user name&gt;;private_key:&lt;base64 encoded snowflake private key&gt;;private_key_passphrase:&lt;optional snowflake private key passphrase&gt;</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">jdbc</span><span class="o">:</span><span class="s">trino://&lt;EXAMPLE.NET&gt;:8443/snowflake/example?extraCredentials=connection_url:&lt;SNOWFLAKE_ACCOUNT_NAME&gt;;user:&lt;SNOWFLAKE_USERNAME&gt;;private_key:&lt;BASE64_ENCODED_PRIVATE_KEY&gt;;private_key_passphrase:&lt;OPTIONAL_SNOWFLAKE_PRIVATE_KEY_PASSPHRASE&gt;</span>
 </pre></div>
 </div>
 </section>

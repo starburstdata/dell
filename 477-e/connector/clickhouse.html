@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -352,6 +353,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -468,10 +470,10 @@ that specifies the ClickHouse connector by setting the <code class="docutils lit
 <code class="docutils literal notranslate"><span class="pre">clickhouse</span></code>.</p>
 <p>For example, create the file <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code>. Replace the
 connection properties as appropriate for your setup:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>connector.name=clickhouse
-connection-url=jdbc:clickhouse://host1:8123/
-connection-user=exampleuser
-connection-password=examplepassword
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">clickhouse</span>
+<span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:clickhouse://&lt;HOST&gt;:8123/</span>
+<span class="na">connection-user</span><span class="o">=</span><span class="s">&lt;USERNAME&gt;</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">&lt;PASSWORD&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> defines the connection information and parameters to pass
@@ -491,7 +493,7 @@ catalog configuration property.</p>
 <p>For example, with version 2.6.4 of the ClickHouse JDBC driver, enable TLS by
 appending the <code class="docutils literal notranslate"><span class="pre">ssl=true</span></code> parameter to the <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> configuration
 property:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:clickhouse://host1:8443/?ssl=true</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:clickhouse://&lt;HOST_1&gt;:8443/?ssl=true</span>
 </pre></div>
 </div>
 <p>For more information on TLS configuration options, see the <a class="reference external" href="https://clickhouse.com/docs/en/interfaces/jdbc/">Clickhouse JDBC
@@ -1214,6 +1216,38 @@ following sections.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../functions/datetime.html#date_trunc" title="date_trunc"><code class="xref py py-func docutils literal notranslate"><span class="pre">date_trunc()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../functions/conversion.html#cast" title="cast"><code class="xref py py-func docutils literal notranslate"><span class="pre">cast()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#day" title="day"><code class="xref py py-func docutils literal notranslate"><span class="pre">day()</span></code></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">day_of_the_month()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">day_of_the_week()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">day_of_the_year()</span></code></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#dow" title="dow"><code class="xref py py-func docutils literal notranslate"><span class="pre">dow()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#doy" title="doy"><code class="xref py py-func docutils literal notranslate"><span class="pre">doy()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#hour" title="hour"><code class="xref py py-func docutils literal notranslate"><span class="pre">hour()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#millisecond" title="millisecond"><code class="xref py py-func docutils literal notranslate"><span class="pre">millisecond()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#minute" title="minute"><code class="xref py py-func docutils literal notranslate"><span class="pre">minute()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#month" title="month"><code class="xref py py-func docutils literal notranslate"><span class="pre">month()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#quarter" title="quarter"><code class="xref py py-func docutils literal notranslate"><span class="pre">quarter()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#second" title="second"><code class="xref py py-func docutils literal notranslate"><span class="pre">second()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#week" title="week"><code class="xref py py-func docutils literal notranslate"><span class="pre">week()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#week_of_year" title="week_of_year"><code class="xref py py-func docutils literal notranslate"><span class="pre">week_of_year()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#year" title="year"><code class="xref py py-func docutils literal notranslate"><span class="pre">year()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../functions/datetime.html#extract" title="extract"><code class="xref py py-func docutils literal notranslate"><span class="pre">extract()</span></code></a> function with the following fields:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DAY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DAY_OF_MONTH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DAY_OF_WEEK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DAY_OF_YEAR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOW</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HOUR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MINUTE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MONTH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUARTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SECOND</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WEEK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YEAR</span></code></p></li>
+</ul>
+</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1285,6 +1319,10 @@ enabled, timestamps are truncated or rounded during cast pushdown. If rounding
 exceeds the maximum representable timestamp value, the value is truncated. For
 example, casting 2299-12-31 23:59:59.500000 to a precision of seconds results
 in 2299-12-31 23:59:59.</p></li>
+<li><p>The projection pushdown <code class="docutils literal notranslate"><span class="pre">extract</span></code> function does not support the following
+fields: <code class="docutils literal notranslate"><span class="pre">YEAR_OF_WEEK</span></code> and <code class="docutils literal notranslate"><span class="pre">YOW</span></code>.</p></li>
+<li><p>The following timestamp extraction functions are not pushed down:
+<code class="docutils literal notranslate"><span class="pre">timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">timezone_hour</span></code>, and <code class="docutils literal notranslate"><span class="pre">timezone_minute</span></code>.</p></li>
 </ul>
 </section>
 </section>

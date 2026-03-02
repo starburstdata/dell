@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -357,6 +357,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -366,6 +367,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -466,6 +468,11 @@ broadcasted to all nodes.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <section id="explain-type-logical">
 <h3 id="explain-type-logical">EXPLAIN (TYPE LOGICAL)<a class="headerlink" href="#explain-type-logical" title="Permalink to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>EXPLAIN (TYPE LOGICAL) is deprecated and will be removed in a future release.
+Use EXPLAIN (TYPE DISTRIBUTED) instead.</p>
+</div>
 <p>Process the supplied query statement and create a logical plan in text format:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="p">(</span><span class="k">TYPE</span> <span class="n">LOGICAL</span><span class="p">)</span> <span class="k">SELECT</span> <span class="n">regionkey</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">nation</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -509,6 +516,11 @@ broadcasted to all nodes.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The output format is not guaranteed to be backward compatible across Trino versions.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>EXPLAIN (TYPE LOGICAL) is deprecated and will be removed in a future release.
+Use EXPLAIN (TYPE DISTRIBUTED) instead.</p>
 </div>
 <p>Process the supplied query statement and create a logical plan in JSON format:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="p">(</span><span class="k">TYPE</span> <span class="n">LOGICAL</span><span class="p">,</span> <span class="n">FORMAT</span> <span class="n">JSON</span><span class="p">)</span> <span class="k">SELECT</span> <span class="n">regionkey</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">nation</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="mi">1</span><span class="p">;</span>

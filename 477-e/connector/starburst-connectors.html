@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview" href="../data-engineering/cost-and-performance/index.html" />
-    <link rel="prev" title="404 - Connector removed" href="removed.html" />
+    <link rel="prev" title="Starburst catalog" href="../starburst-catalog/index.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -258,6 +258,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -267,6 +268,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Starburst connectors feature matrix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#connector-functionality">Connector functionality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#distributed-object-storage-connectors">Distributed object storage connectors</a></li>
@@ -338,6 +340,7 @@ separated into three categories:</p>
 <p><strong>Exclusive connectors</strong> enable access to more data sources, and are only
 available with SEP:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="starburst-alteryx.html"><span class="doc">Starburst Alteryx connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-cosmosdb.html"><span class="doc">Starburst Cosmos DB connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-db2.html"><span class="doc">Starburst IBM Db2 connector</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-dynamodb.html"><span class="doc">Starburst DynamoDB connector</span></a></p></li>
@@ -396,6 +399,7 @@ Trino community for all others.</p>
 <li><p><a class="reference internal" href="googlesheets.html"><span class="doc">Google Sheets connector</span></a></p></li>
 <li><p><a class="reference internal" href="ignite.html"><span class="doc">Ignite connector</span></a></p></li>
 <li><p><a class="reference internal" href="jmx.html"><span class="doc">JMX connector</span></a></p></li>
+<li><p><a class="reference internal" href="lakehouse.html"><span class="doc">Lakehouse connector</span></a></p></li>
 <li><p><a class="reference internal" href="loki.html"><span class="doc">Loki connector</span></a></p></li>
 <li><p><a class="reference internal" href="mariadb.html"><span class="doc">MariaDB connector</span></a></p></li>
 <li><p><a class="reference internal" href="memory.html"><span class="doc">Memory connector</span></a></p></li>
@@ -541,7 +545,7 @@ table content.</p>
 <li></li>
 <li><p>Support for <a class="reference internal" href="../data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Starburst Warp Speed</span></a></p></li>
 <li><p>dynamic row filtering</p></li>
-<li><p>OAuth 2.0 token pass-through (for the Unity Catalog)</p></li>
+<li><p>OAuth 2.0 token pass-through (for Iceberg REST catalog)</p></li>
 </ul>
 </td>
 </tr>
@@ -642,6 +646,7 @@ table content.</p>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>password credential passthrough</p></li>
+<li><p>pushdown</p></li>
 </ul>
 </td>
 </tr>
@@ -1112,6 +1117,8 @@ table content.</p>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>Kerberos authentication</p></li>
+<li><p>OAuth 2.0 token pass-through</p></li>
+<li><p>pushdown</p></li>
 </ul>
 </td>
 </tr>
@@ -1186,10 +1193,21 @@ table content.</p>
 <li><p>pushdown</p></li>
 <li><p>password credential pass-through</p></li>
 <li><p>OAuth 2.0 token pass-through</p></li>
+<li><p>user impersonation</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="druid.html"><span class="doc">Druid connector</span></a></p>
+<tr class="row-odd"><td><p><a class="reference internal" href="starburst-alteryx.html"><span class="doc">Starburst Alteryx connector</span></a></p>
+<img alt="../_images/alteryx.png" src="../_images/alteryx.png"/>
+</td>
+<td><p><span class="md-icon" style="font-size: 1.5rem;" title="notavailable">not_interested</span></p></td>
+<td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
+<ul class="simple">
+<li><p>license required</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="druid.html"><span class="doc">Druid connector</span></a></p>
 <img alt="../_images/druid.png" src="../_images/druid.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
@@ -1199,7 +1217,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="faker.html"><span class="doc">Faker connector</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="faker.html"><span class="doc">Faker connector</span></a></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
@@ -1207,7 +1225,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="jmx.html"><span class="doc">JMX connector</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="jmx.html"><span class="doc">JMX connector</span></a></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
@@ -1215,7 +1233,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="memory.html"><span class="doc">Memory connector</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="memory.html"><span class="doc">Memory connector</span></a></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>parallelism</p></li>
@@ -1227,7 +1245,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pinot.html"><span class="doc">Pinot connector</span></a></p>
+<tr class="row-even"><td><p><a class="reference internal" href="pinot.html"><span class="doc">Pinot connector</span></a></p>
 <img alt="../_images/pinot.png" src="../_images/pinot.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
@@ -1241,7 +1259,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="prometheus.html"><span class="doc">Prometheus connector</span></a></p>
+<tr class="row-odd"><td><p><a class="reference internal" href="prometheus.html"><span class="doc">Prometheus connector</span></a></p>
 <img alt="../_images/prometheus.png" src="../_images/prometheus.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
@@ -1255,7 +1273,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="starburst-salesforce.html"><span class="doc">Starburst Salesforce connector</span></a></p>
+<tr class="row-even"><td><p><a class="reference internal" href="starburst-salesforce.html"><span class="doc">Starburst Salesforce connector</span></a></p>
 <img alt="../_images/salesforce.png" src="../_images/salesforce.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="notavailable">not_interested</span></p></td>
@@ -1266,7 +1284,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="starburst-splunk.html"><span class="doc">Starburst Splunk connector</span></a></p>
+<tr class="row-odd"><td><p><a class="reference internal" href="starburst-splunk.html"><span class="doc">Starburst Splunk connector</span></a></p>
 <img alt="../_images/splunk.png" src="../_images/splunk.png"/>
 </td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="notavailable">not_interested</span></p></td>
@@ -1277,7 +1295,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="tpch.html"><span class="doc">TPC-H connector</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="tpch.html"><span class="doc">TPC-H connector</span></a></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>parallelism</p></li>
@@ -1289,7 +1307,7 @@ table content.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="tpcds.html"><span class="doc">TPC-DS connector</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="tpcds.html"><span class="doc">TPC-DS connector</span></a></p></td>
 <td><p><span class="md-icon" style="font-size: 1.5rem;" title="available">check_circle_outline</span></p>
 <ul class="simple">
 <li><p>parallelism</p></li>
@@ -1317,7 +1335,7 @@ table content.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="removed.html" title="404 - Connector removed"
+            <a href="../starburst-catalog/index.html" title="Starburst catalog"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1326,7 +1344,7 @@ table content.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> 404 - Connector removed </span>
+                      class="md-footer-nav__direction"> Previous </span> Starburst catalog </span>
               </div>
             </a>
           

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -298,6 +300,11 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="#apply-masks-and-filters-to-user-queries">Apply masks and filters to user queries</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#api-endpoints">API endpoints</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#grant-mask-and-filter-expression-management-to-other-roles">Grant mask and filter expression management to other roles</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#grant-permission-to-apply-expressions-to-tables">Grant permission to apply expressions to tables</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="biac-audit-log.html">Built-in access control audit log</a></li>
@@ -345,6 +352,11 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#apply-masks-and-filters-to-user-queries">Apply masks and filters to user queries</a></li>
+<li><a class="reference internal" href="#api-endpoints">API endpoints</a><ul>
+<li><a class="reference internal" href="#grant-mask-and-filter-expression-management-to-other-roles">Grant mask and filter expression management to other roles</a></li>
+<li><a class="reference internal" href="#grant-permission-to-apply-expressions-to-tables">Grant permission to apply expressions to tables</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -478,9 +490,11 @@ except those that match the expression.</p>
 <p>Column masks and row filters are applied to user queries based on the privileges
 granted to them. Masks and filters are an optional privilege that can be added
 to <a class="reference internal" href="biac-privileges.html#biac-entity-tables"><span class="std std-ref">table entities</span></a> that grant access to the
-<strong>Select</strong> action on one or more columns. To review what roles have been
-assigned any given mask or filter, select the <strong>Options</strong> menu for that mask
-or filter and then <strong>Show assigned roles</strong>.</p>
+<strong>Select</strong> action on one or more columns. You can add a mask or filter to a
+table entity through the Starburst Enterprise web UI only if your role has the appropriate <a class="reference internal" href="#biac-api-apply"><span class="std std-ref">apply
+permission</span></a>.</p>
+<p>To review what roles have been assigned any given mask or filter, select the
+<strong>Options</strong> menu for that mask or filter and then <strong>Show assigned roles</strong>.</p>
 <p>Built-in access control applies filters and masks at different steps in the
 query processing sequence. Once SEP determines what privileges apply to the
 user executing the query, filters and masks are applied as follows:</p>
@@ -495,6 +509,68 @@ view.</p></li>
 </ul>
 <p>For more information on creating privileges in built-in access control, read
 <a class="reference internal" href="biac-privileges.html"><span class="doc">Built-in access control privileges</span></a>.</p>
+</section>
+<section id="api-endpoints">
+<h2 id="api-endpoints">API endpoints<a class="headerlink" href="#api-endpoints" title="Permalink to this heading">#</a></h2>
+<p>You can manage column masks and row filters using the SEP REST API. The API
+provides endpoints for creating, modifying, and deleting mask and filter
+expressions.</p>
+<p>View the API reference documentation for <a class="external reference" href="./api/index.html#api-ColumnMasks">column
+masks</a> and <a class="external reference" href="./api/index.html#api-RowFilters">row
+filters</a>.</p>
+<section id="grant-mask-and-filter-expression-management-to-other-roles">
+<h3 id="grant-mask-and-filter-expression-management-to-other-roles">Grant mask and filter expression management to other roles<a class="headerlink" href="#grant-mask-and-filter-expression-management-to-other-roles" title="Permalink to this heading">#</a></h3>
+<p>System administrators can grant management of column mask and row filter
+expressions to other roles using the SEP REST API. The following two entity
+categories are available for permission management:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COLUMN_MASK_EXPRESSIONS</span></code> - Controls permissions for column mask expressions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROW_FILTER_EXPRESSIONS</span></code> - Controls permissions for row filter expressions</p></li>
+</ul>
+<p>The following permissions can be granted on these entity categories:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Delegated mask and filter management is currently only available through the
+REST API and is not yet supported in the Starburst Enterprise web UI.</p>
+</div>
+</section>
+<section id="grant-permission-to-apply-expressions-to-tables">
+<span id="biac-api-apply"></span><h3 id="grant-permission-to-apply-expressions-to-tables">Grant permission to apply expressions to tables<a class="headerlink" href="#grant-permission-to-apply-expressions-to-tables" title="Permalink to this heading">#</a></h3>
+<p>System administrators can grant other roles permission to apply mask and filter
+expressions to table entities using the SEP REST API. Apply grants are
+separate from regular access grants and control whether a role can apply a
+a specific mask or filter expression to table entities.</p>
+<p>Apply grants allow the receiving role to pass the apply permission to other
+roles. For example, if Role A has apply permission for a mask expression with
+grant option enabled, Role A can grant apply permission for that same expression
+to Role B.</p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">effect</span></code> payload values are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APPLY_COLUMN_MASK</span></code> - Allows applying a column mask expression to table
+entities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPLY_COLUMN_MASK_WITH_GRANT_OPTION</span></code> - Allows applying a column mask and
+granting this apply permission to other roles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPLY_ROW_FILTER</span></code> - Allows applying a row filter expression to table
+entities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPLY_ROW_FILTER_WITH_GRANT_OPTION</span></code> - Allows applying a row filter and
+granting this apply permission to other roles.</p></li>
+</ul>
+<p>The following API fields are available:</p>
+<ul class="simple">
+<li><p>columnMaskExpressionId: for <code class="docutils literal notranslate"><span class="pre">APPLY_COLUMN_MASK</span></code> and <code class="docutils literal notranslate"><span class="pre">APPLY_COLUMN_MASK_WITH_GRANT_OPTION</span></code>.</p></li>
+<li><p>rowFilterExpressionId: for <code class="docutils literal notranslate"><span class="pre">APPLY_ROW_FILTER</span></code> and <code class="docutils literal notranslate"><span class="pre">APPLY_ROW_FILTER_WITH_GRANT_OPTION</span></code>.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">columnMaskExpressionId</span></code> or <code class="docutils literal notranslate"><span class="pre">rowFilterExpressionId</span></code> is not specified, the grant applies to all expressions in the relevant category.</p>
+</div>
+</section>
 </section>
 </section>
 

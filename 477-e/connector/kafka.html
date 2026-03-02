@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -397,6 +398,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -2635,7 +2637,7 @@ kafka.authentication.type=KERBEROS
 kafka.security-protocol=SASL_SSL
 kafka.authentication.type=KERBEROS
 kafka.authentication.client.principal=kafka/broker1.your.org@YOUR.ORG
-kafka.authentication.client.keytab=/etc/secrets/kafka_client.keytab
+kafka.authentication.client.keytab=&lt;PATH_TO_KEYTAB_FILE&gt;
 kafka.authentication.config=/etc/krb5.conf
 kafka.authentication.service-name=kafka
 </pre></div>
@@ -2842,8 +2844,8 @@ kafka.confluent-schema-registry.authentication.password=examplepassword
 <code class="docutils literal notranslate"><span class="pre">GSSAPI</span></code> authentication type.  Add the following configuration to your catalog
 properties file to use the Kerberos authentication type for the schema registry:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>kafka.confluent-schema-registry.authentication.type=KERBEROS
-kafka.confluent-schema-registry.authentication.client.principal=kafka/host.your.org@YOUR.ORG
-kafka.confluent-schema-registry.authentication.client.keytab=/etc/secrets/kafka_client.keytab
+kafka.confluent-schema-registry.authentication.client.principal=&lt;PRINCIPAL_HOST&gt;
+kafka.confluent-schema-registry.authentication.client.keytab=&lt;PATH_TO_KEYTAB_FILE&gt;
 kafka.confluent-schema-registry.authentication.config=/etc/krb5.conf
 kafka.confluent-schema-registry.authentication.service-name=kafka
 </pre></div>
@@ -2854,14 +2856,14 @@ kafka.confluent-schema-registry.authentication.service-name=kafka
 <h2 id="cloudera-schema-registry">Cloudera schema registry<a class="headerlink" href="#cloudera-schema-registry" title="Permalink to this heading">#</a></h2>
 <p>To use the Cloudera (CDP) schema registry, the following properties must be set:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">kafka.table-description-supplier</span><span class="o">=</span><span class="s">cloudera</span>
-<span class="na">kafka.cloudera-schema-registry-url</span><span class="o">=</span><span class="s">http://schema-registry.example.com:8081/api/v1</span>
+<span class="na">kafka.cloudera-schema-registry-url</span><span class="o">=</span><span class="s">http://&lt;SCHEMA_REGISTRY.DOMAIN.COM&gt;:8081/api/v1</span>
 </pre></div>
 </div>
 <p>To configure Kerberos authentication with a CDP schema registry, you must
 include the following additional properties:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">kafka.cloudera-schema-registry.authentication.type</span><span class="o">=</span><span class="s">KERBEROS</span>
 <span class="na">kafka.cloudera-schema-registry.authentication.client.principal</span><span class="o">=</span><span class="s">kafka/broker1.example.com@EXAMPLE.COM</span>
-<span class="na">kafka.cloudera-schema-registry.authentication.client.keytab</span><span class="o">=</span><span class="s">/etc/kafka/kerberos/broker1.keytab</span>
+<span class="na">kafka.cloudera-schema-registry.authentication.client.keytab</span><span class="o">=</span><span class="s">&lt;PATH_TO_KEYTAB_FILE&gt;</span>
 <span class="na">kafka.cloudera-schema-registry.authentication.config</span><span class="o">=</span><span class="s">/etc/krb5.conf</span>
 <span class="na">kafka.cloudera-schema-registry.authentication.service-name</span><span class="o">=</span><span class="s">kafka</span>
 </pre></div>

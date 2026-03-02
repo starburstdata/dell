@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -352,12 +354,17 @@
             
   <section id="graceful-shutdown">
 <h1 id="admin-graceful-shutdown--page-root">Graceful shutdown<a class="headerlink" href="#admin-graceful-shutdown--page-root" title="Permalink to this heading">#</a></h1>
-<p>Trino has a graceful shutdown API that can be used exclusively on workers in
+<p>SEP has a graceful shutdown API that can be used exclusively on workers in
 order to ensure that they terminate without affecting running queries, given a
 sufficient grace period.</p>
 <p>You can invoke the API with a HTTP PUT request:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v -X PUT -d <span class="s1">'"SHUTTING_DOWN"'</span> -H <span class="s2">"Content-type: application/json"</span> -H <span class="s2">"X-Trino-User: authorizeduser"</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># When using no authorization:</span>
+curl -v -X PUT -d <span class="s1">'"SHUTTING_DOWN"'</span> -H <span class="s1">'Content-type: application/json'</span> -H <span class="s1">'X-Trino-User: authorizeduser'</span> <span class="se">\</span>
     http://worker:8081/v1/info/state
+
+<span class="c1"># Or when using basic auth:</span>
+curl -v -X PUT -d <span class="s1">'"SHUTTING_DOWN"'</span> -H <span class="s1">'Content-type: application/json'</span> -u <span class="s1">'authorizeduser:password'</span> <span class="se">\</span>
+    https://worker/v1/info/state
 </pre></div>
 </div>
 <p>A successful invocation is logged with a <code class="docutils literal notranslate"><span class="pre">Shutdown</span> <span class="pre">requested</span></code> message at
@@ -366,14 +373,16 @@ sufficient grace period.</p>
 <ul class="simple">
 <li><p>If your cluster is secure, you need to provide a basic-authorization header,
 or satisfy whatever other security you have enabled.</p></li>
-<li><p>If you have TLS/HTTPS enabled, you have to ensure the worker certificate is
-CA signed, or trusted by the server calling the shut down endpoint.
-Otherwise, you can make the call <code class="docutils literal notranslate"><span class="pre">--insecure</span></code>, but that isn’t recommended.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">default</span></code> <a class="reference internal" href="../security/built-in-system-access-control.html"><span class="doc">System access control</span></a> does not allow
-graceful shutdowns. You can use the <code class="docutils literal notranslate"><span class="pre">allow-all</span></code> system access control, or
-configure <a class="reference internal" href="../security/file-system-access-control.html#system-file-auth-system-information"><span class="std std-ref">system information rules</span></a> with the <code class="docutils literal notranslate"><span class="pre">file</span></code> system access
-control. These configuration must be present on all workers.</p></li>
-<li><p>The user supplied in the <code class="docutils literal notranslate"><span class="pre">X-Trino-User</span></code> header must have permissions to write “system information”</p></li>
+<li><p>If you have TLS/HTTPS enabled, you have to ensure the worker certificate is CA
+signed, or trusted by the server calling the shut down endpoint. Otherwise,
+you can make the call <code class="docutils literal notranslate"><span class="pre">--insecure</span></code>, but that isn’t recommended.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">default</span></code> <a class="reference internal" href="../security/built-in-system-access-control.html"><span class="doc std std-doc">System access control</span></a> does not allow
+graceful shutdowns. You can use the <code class="docutils literal notranslate"><span class="pre">allow-all</span></code> system access control,
+configure <a class="reference internal" href="../security/file-system-access-control.html#system-file-auth-system-information"><span class="std std-ref">system information rules</span></a> with
+the <code class="docutils literal notranslate"><span class="pre">file</span></code> system access control.</p></li>
+<li><p>The user must have permissions to write <em>“system information”</em>. In Apache
+Ranger this permission can be found under <em>“System Information - Write System
+Information”</em>.</p></li>
 </ul>
 <section id="shutdown-behavior">
 <h2 id="shutdown-behavior">Shutdown behavior<a class="headerlink" href="#shutdown-behavior" title="Permalink to this heading">#</a></h2>

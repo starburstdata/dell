@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -249,6 +249,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#publish-a-data-product">Publish a data product</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#edit-or-remove-a-published-data-product">Edit or remove a published data product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#republish-a-data-product">Republish a data product</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-product-security">Data product security</a></li>
 </ul>
 </li>
@@ -284,6 +285,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -293,6 +295,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -336,6 +339,7 @@
 </li>
 <li><a class="reference internal" href="#publish-a-data-product">Publish a data product</a></li>
 <li><a class="reference internal" href="#edit-or-remove-a-published-data-product">Edit or remove a published data product</a></li>
+<li><a class="reference internal" href="#republish-a-data-product">Republish a data product</a></li>
 <li><a class="reference internal" href="#data-product-security">Data product security</a></li>
 </ul>
 </li>
@@ -378,13 +382,13 @@ information:</p>
 <li><p>Data product details</p></li>
 </ul>
 <section id="define-data-product">
-<h3 id="define-data-product">Define data product<a class="headerlink" href="#define-data-product" title="Permalink to this heading">#</a></h3>
+<span id="dp-define"></span><h3 id="define-data-product">Define data product<a class="headerlink" href="#define-data-product" title="Permalink to this heading">#</a></h3>
 <p>Enter or edit the following information:</p>
 <ul>
 <li><p><strong>Data product title</strong> (<em>required</em>) - Enter a descriptive title. This is used
 for display purposes and to generate the schema name used to query the data.
 Make sure this name does not correspond to any existing schema in the data
-product’s catalog. This field is limited to 40 alphanumeric characters plus
+product’s catalog. This field is limited to 100 alphanumeric characters plus
 underline. This field cannot be changed once the data product is published.</p></li>
 <li><p><strong>Catalog</strong> (<em>required</em>) - Use the drop-down list to select the catalog in
 which to store the schema. Catalogs using the Hive or Iceberg connectors
@@ -397,8 +401,9 @@ cannot be changed once the data product is created.</p>
 </li>
 <li><p><strong>Schema name</strong> (<em>required</em>) - The value of this field is automatically
 generated based on the data product title, but you can set a custom name. Only
-lowercase alphanumeric characters and underscores are valid characters. You
-cannot use a schema name that is already in use.</p></li>
+lowercase alphanumeric characters and underscores are valid characters. This
+field is limited to 100 alphanumeric characters plus underline. You cannot use
+a schema name that is already in use.</p></li>
 <li><p><strong>Domain</strong> (<em>required</em>) - Use the drop-down list to assign a product to a
 <a class="reference internal" href="domain-management.html"><span class="doc">domain</span></a>.</p></li>
 <li><p><strong>Data product summary</strong> (<em>required</em>) - Enter a brief summary of 150
@@ -422,7 +427,7 @@ to the data products dashboard.</p></li>
 the screen. Enter or edit the following information for your datasets:</p>
 <ul class="simple">
 <li><p><strong>Published dataset name</strong> (<em>required</em>) - Enter a descriptive name. This field
-is limited to 50 alphanumeric characters plus underline.</p></li>
+is limited to 128 alphanumeric characters plus underline.</p></li>
 <li><p><strong>Dataset description</strong> - This text field allows you to provide a detailed
 description. Include pertinent information such as grain, intended use,
 and how it relates to other datasets in the data product.
@@ -434,13 +439,16 @@ either <strong>View</strong> or <strong>Materialized view</strong>.</p>
 the SQL definition and executes the query whenever the data product is
 accessed.</p></li>
 <li><p>Selecting <strong>Materialized view</strong> creates a <a class="reference internal" href="../connector/hive.html#sb-hive-materialized-views"><span class="std std-ref">materialized view</span></a> of the data. This creates an actual storage
-table with the data, and provides better query performance. You must provide
-a refresh interval in minutes.</p>
+table with the data, and provides better query performance. You must specify
+a refresh schedule using one of the following options:</p>
 <ul>
-<li><p>Optionally, select <strong>Override default storage schema</strong> to choose a
-predefined custom storage schema for the materialized view.</p></li>
+<li><p><strong>Refresh interval:</strong> Enter the number of minutes between refreshes.</p></li>
+<li><p><strong>Enter cron expression:</strong> Enter a cron expression for more precise
+scheduling.</p></li>
 </ul>
 </li>
+<li><p>Optionally, select <strong>Override default storage schema</strong> to choose a
+predefined custom storage schema for the materialized view.</p></li>
 </ul>
 </li>
 <li><p><strong>Query</strong> (<em>required</em>) - Enter the query that defines your dataset.</p></li>
@@ -535,6 +543,14 @@ until then the existing dataset is marked for the deletion and the dataset with
 the new type is a draft.</p>
 <p>If you delete a published data product, this also deletes its schema and views
 or materialized views from the catalog.</p>
+</section>
+<section id="republish-a-data-product">
+<h2 id="republish-a-data-product">Republish a data product<a class="headerlink" href="#republish-a-data-product" title="Permalink to this heading">#</a></h2>
+<p>Click the <strong>Republish</strong> button to recreate all views or materialized views in a
+data product. Use this option when source table schemas change but the data
+product definition does not change.</p>
+<p>Select the <strong>Force republish data product</strong> checkbox to confirm, then click
+<strong>Republish</strong>.</p>
 </section>
 <section id="data-product-security">
 <h2 id="data-product-security">Data product security<a class="headerlink" href="#data-product-security" title="Permalink to this heading">#</a></h2>

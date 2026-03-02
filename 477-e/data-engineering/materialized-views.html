@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -264,6 +264,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -273,6 +274,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -369,6 +371,12 @@ example, the <code class="docutils literal notranslate"><span class="pre">mysale
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">mycatalog</span><span class="p">.</span><span class="n">mysalesschema</span><span class="p">.</span><span class="n">mv_cust_tot_return</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>When querying fresh materialized views within their grace period, access control
+checks on source tables are skipped by default. However, if the materialized
+view is configured with <code class="docutils literal notranslate"><span class="pre">run_as_invoker=true</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">materialized-views.allow-run-as-invoker</span></code> property is enabled, queries execute
+as the invoking user and perform standard access control checks on source
+tables.</p>
 </section>
 <section id="automatically-refresh-materialized-views-in-hive">
 <span id="mv-auto-refresh"></span><h2 id="automatically-refresh-materialized-views-in-hive">Automatically refresh materialized views in Hive<a class="headerlink" href="#automatically-refresh-materialized-views-in-hive" title="Permalink to this heading">#</a></h2>

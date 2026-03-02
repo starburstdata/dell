@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -353,6 +354,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -471,9 +473,9 @@ the <code class="docutils literal notranslate"><span class="pre">connector.name<
 <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code>. Replace the connection properties as
 appropriate for your setup:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">synapse</span>
-<span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:sqlserver://&lt;serverName&gt;:&lt;portNumber&gt;;database=&lt;SQLpoolName&gt;</span>
-<span class="na">connection-user</span><span class="o">=</span><span class="s">sepuser</span>
-<span class="na">connection-password</span><span class="o">=</span><span class="s">secret1v3</span>
+<span class="na">connection-url</span><span class="o">=</span><span class="s">jdbc:sqlserver://&lt;SERVER_NAME&gt;:&lt;PORT&gt;;database=&lt;DATABASE_NAME&gt;</span>
+<span class="na">connection-user</span><span class="o">=</span><span class="s">&lt;USERNAME&gt;</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">&lt;PASSWORD&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">connection-url</span></code> parameter uses the SQL Server JDBC driver connection
@@ -489,7 +491,7 @@ configuration can be used for both dedicated and serverless pools, as follows.</
 create with DML such as <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">SCHEMA</span> <span class="pre">synapse_pool.pool1</span></code>.</p></li>
 </ul>
 <p>Using the default port 1433, this results in a JDBC string like the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=pool1
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>jdbc:sqlserver://&lt;SERVER_NAME&gt;.sql.azuresynapse.net:1433;database=&lt;DATABASE_NAME&gt;
 </pre></div>
 </div>
 </section>
@@ -503,7 +505,7 @@ create with DML such as <code class="docutils literal notranslate"><span class="
 <li><p>For the <code class="docutils literal notranslate"><span class="pre">database</span></code> parameter, specify the fixed term <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p></li>
 </ul>
 <p>This results in a JDBC string like the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>jdbc:sqlserver://yourserver-ondemand.sql.azuresynapse.net:1433;database=master
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>jdbc:sqlserver://&lt;SERVER_NAME&gt;.sql.azuresynapse.net:1433;database=&lt;DATABASE_NAME&gt;
 </pre></div>
 </div>
 </section>
@@ -1035,9 +1037,9 @@ following sections.</p>
 <p>The connector supports Active Directory password authentication. To enable it,
 edit the catalog properties file to include the authentication type and specify
 user and password added to AD service associated with Synapse instance:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-user</span><span class="o">=</span><span class="s">active-directory-user</span>
-<span class="na">connection-password</span><span class="o">=</span><span class="s">active-directory-user-password</span>
-<span class="na">synapse.authentication.type</span><span class="o">=</span><span class="s">ACTIVE_DIRECTORY_PASSWORD</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connection-user</span><span class="o">=</span><span class="s">&lt;ACTIVE_DIRECTORY_USER&gt;</span>
+<span class="na">connection-password</span><span class="o">=</span><span class="s">&lt;ACTIVE_DIRECTORY_USER_PASSWORD&gt;</span>
+<span class="na">synapse.authentication.type</span><span class="o">=</span><span class="s">&lt;ACTIVE_DIRECTORY_PASSWORD&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -1075,7 +1077,7 @@ password pass-through for Active Directory password authentication:</p>
 <p>Set the authentication type and OAuth 2.0 scope in the coordinator’s
 <a class="reference internal" href="../installation/deployment.html#config-properties"><span class="std std-ref">config properties file</span></a>:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.type</span><span class="o">=</span><span class="s">DELEGATED-OAUTH2</span>
-<span class="na">http-server.authentication.oauth2.scopes</span><span class="o">=</span><span class="s">&lt;EXISTING_SCOPES&gt;,session:role:TEST_ROLE</span>
+<span class="na">http-server.authentication.oauth2.scopes</span><span class="o">=</span><span class="s">&lt;EXISTING_SCOPES&gt;,session:role:&lt;SESSION_ROLE&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">session:role</span></code> prefix determines the role assigned to the user after

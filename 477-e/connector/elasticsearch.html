@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -311,6 +312,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parallelism">Parallelism</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#predicate-pushdown">Predicate pushdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-field-pushdown">Multi-field pushdown</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security</a><ul>
@@ -344,6 +346,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -411,6 +414,7 @@
 <li><a class="reference internal" href="#performance">Performance</a><ul>
 <li><a class="reference internal" href="#parallelism">Parallelism</a></li>
 <li><a class="reference internal" href="#predicate-pushdown">Predicate pushdown</a></li>
+<li><a class="reference internal" href="#multi-field-pushdown">Multi-field pushdown</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#security">Security</a><ul>
@@ -457,7 +461,7 @@ specifies the Elasticsearch connector by setting the <code class="docutils liter
 <code class="docutils literal notranslate"><span class="pre">etc/catalog/example.properties</span></code>. Replace the connection properties as
 appropriate for your setup:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">connector.name</span><span class="o">=</span><span class="s">elasticsearch</span>
-<span class="na">elasticsearch.host</span><span class="o">=</span><span class="s">localhost</span>
+<span class="na">elasticsearch.host</span><span class="o">=</span><span class="s">&lt;LOCAL_HOST&gt;</span>
 <span class="na">elasticsearch.port</span><span class="o">=</span><span class="s">9200</span>
 <span class="na">elasticsearch.default-schema-name</span><span class="o">=</span><span class="s">default</span>
 </pre></div>
@@ -768,7 +772,7 @@ the following structure:</p>
     <span class="nt">"array_string_field"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"trino"</span><span class="p">,</span><span class="s2">"the"</span><span class="p">,</span><span class="s2">"lean"</span><span class="p">,</span><span class="s2">"machine-ohs"</span><span class="p">],</span>
     <span class="nt">"long_field"</span><span class="p">:</span> <span class="mi">314159265359</span><span class="p">,</span>
     <span class="nt">"id_field"</span><span class="p">:</span> <span class="s2">"564e6982-88ee-4498-aa98-df9e3f6b6109"</span><span class="p">,</span>
-    <span class="nt">"timestamp_field"</span><span class="p">:</span> <span class="s2">"1987-09-17T06:22:48.000Z"</span><span class="p">,</span>
+    <span class="nt">"timestamp_field"</span><span class="p">:</span> <span class="s2">"2025-09-17T06:22:48.000Z"</span><span class="p">,</span>
     <span class="nt">"object_field"</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">"array_int_field"</span><span class="p">:</span> <span class="p">[</span><span class="mi">86</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">309</span><span class="p">],</span>
         <span class="nt">"int_field"</span><span class="p">:</span> <span class="mi">2</span>
@@ -1053,6 +1057,28 @@ following data types:</p>
 </table>
 <p>No other data types are supported for predicate push down.</p>
 </section>
+<section id="multi-field-pushdown">
+<span id="sb-elasticsearch-mf-pushdown-support"></span><h3 id="multi-field-pushdown">Multi-field pushdown<a class="headerlink" href="#multi-field-pushdown" title="Permalink to this heading">#</a></h3>
+<p>The connector supports predicate pushdown for <code class="docutils literal notranslate"><span class="pre">text</span></code> fields that include
+<code class="docutils literal notranslate"><span class="pre">keyword</span></code> multi-fields defined in their mapping. This facilitates more efficient
+filtering on text fields by using their associated keyword subfields for
+predicate operations.</p>
+<p>For example, the following mapping defines a multi-field where <code class="docutils literal notranslate"><span class="pre">product</span></code> is a
+<code class="docutils literal notranslate"><span class="pre">text</span></code> field used for full-text search, and <code class="docutils literal notranslate"><span class="pre">product_code</span></code> is a keyword subfield
+used for exact matching, filtering, sorting, and aggregations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>"product" : {
+    "type" : "text",
+    "fields": {
+      "product_code": { "type": "keyword" }  
+    }
+  }
+</pre></div>
+</div>
+<p>This enables both relevance-based search and structured filtering on the same
+data, so you can perform natural language queries on <code class="docutils literal notranslate"><span class="pre">product</span></code> while
+simultaneously using the <code class="docutils literal notranslate"><span class="pre">product_code</span></code> keyword field for exact filtering,
+sorting, and grouping operations.</p>
+</section>
 </section>
 <section id="security">
 <h2 id="security">Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
@@ -1064,27 +1090,27 @@ credential cache.</p>
 <p>To configure Kerberos authentication with a keytab, add the following catalog
 configuration properties to the catalog properties file:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">elasticsearch.security</span><span class="o">=</span><span class="s">KERBEROS</span>
-<span class="na">kerberos.client.principal</span><span class="o">=</span><span class="s">example@example.com</span>
-<span class="na">kerberos.client.keytab</span><span class="o">=</span><span class="s">etc/kerberos/example.keytab</span>
+<span class="na">kerberos.client.principal</span><span class="o">=</span><span class="s">&lt;PRINCIPAL_USERNAME@DOMAIN.COM&gt;</span>
+<span class="na">kerberos.client.keytab</span><span class="o">=</span><span class="s">&lt;PATH_TO_KEYTAB_FILE&gt;</span>
 <span class="na">kerberos.config</span><span class="o">=</span><span class="s">etc/kerberos/krb5.conf</span>
 </pre></div>
 </div>
-<p>In this configuration, the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code> connects to the database.
-The related Kerberos service ticket is located in the
-<code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.keytab</span></code> file defined in the <code class="docutils literal notranslate"><span class="pre">kerberos.client.principal</span></code>
-property.</p>
+<p>In this configuration, the user <code class="docutils literal notranslate"><span class="pre">PRINCIPAL_USERNAME@DOMAIN.COM</span></code> connects to the
+database. The related Kerberos service ticket is located in the
+<code class="docutils literal notranslate"><span class="pre">etc/kerberos/CLIENT_FILE.keytab</span></code> file defined in the
+<code class="docutils literal notranslate"><span class="pre">kerberos.client.principal</span></code> property.</p>
 <p>To configure Kerberos authentication with a credential cache, add the following
 catalog configuration properties to the catalog properties file:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>elasticsearch.authentication.type=KERBEROS
 kerberos.client.principal=example@example.com
-kerberos.client.credential-cache.location=etc/kerberos/example.cache
+kerberos.client.credential-cache.location=etc/kerberos/&lt;CACHE_FILE&gt;.cache
 kerberos.config=etc/kerberos/krb5.conf
 </pre></div>
 </div>
-<p>In these configurations the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code>, as defined in the
-principal property, connects to the database. The related Kerberos service
-ticket is located in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.keytab</span></code> file, or cache
-credentials in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/example.cache</span></code> file.</p>
+<p>In these configurations the user <code class="docutils literal notranslate"><span class="pre">PRINCIPAL_USERNAME@DOMAIN.COM</span></code>, as defined in
+the principal property, connects to the database. The related Kerberos service
+ticket is located in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/CLIENT_FILE.keytab</span></code> file, or cache
+credentials in the <code class="docutils literal notranslate"><span class="pre">etc/kerberos/CACHE_FILE.cache</span></code> file.</p>
 </section>
 </section>
 </section>

@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -487,10 +489,10 @@ all requests fail</p></li>
 <p>And then the module needs to be initialized in the connector factory, when
 creating a new instance of the connector:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="n">Connector</span> <span class="nf">create</span><span class="p">(</span><span class="n">String</span> <span class="n">connectorName</span><span class="p">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">config</span><span class="p">,</span> <span class="n">ConnectorContext</span> <span class="n">context</span><span class="p">)</span>
+<span class="kd">public</span> <span class="n">Connector</span> <span class="nf">create</span><span class="p">(</span><span class="n">String</span> <span class="n">catalogName</span><span class="p">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">config</span><span class="p">,</span> <span class="n">ConnectorContext</span> <span class="n">context</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">requireNonNull</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s">"config is null"</span><span class="p">);</span>
-    <span class="n">Bootstrap</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bootstrap</span><span class="p">(</span><span class="k">new</span> <span class="n">ExampleModule</span><span class="p">());</span>
+    <span class="n">Bootstrap</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bootstrap</span><span class="p">(</span><span class="s">"io.trino.bootstrap.catalog."</span> <span class="o">+</span> <span class="n">catalogName</span><span class="p">,</span> <span class="k">new</span> <span class="n">ExampleModule</span><span class="p">());</span>
     <span class="n">Injector</span> <span class="n">injector</span> <span class="o">=</span> <span class="n">app</span>
             <span class="p">.</span><span class="na">doNotInitializeLogging</span><span class="p">()</span>
             <span class="p">.</span><span class="na">setRequiredConfigurationProperties</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>

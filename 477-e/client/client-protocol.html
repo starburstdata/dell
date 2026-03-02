@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Command line interface" href="cli.html" />
-    <link rel="prev" title="Clients" href="../client.html" />
+    <link rel="next" title="JDBC driver" href="jdbc.html" />
+    <link rel="prev" title="Command line interface" href="cli.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -236,23 +236,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../client.html">Clients</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Client protocol</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#spooling-protocol">Spooling protocol</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#client-drivers">Client drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#community-supported-drivers">Community-supported drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#client-applications">Client applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../client.html#client-protocol">Client protocol</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Client protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spooling-protocol">Spooling protocol</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#direct-protocol">Direct protocol</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#direct-protocol">Direct protocol</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id1">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#development-and-reference-information">Development and reference information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-and-reference-information">Development and reference information</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html">Command line interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jdbc.html">JDBC driver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="query-editor.html">Query editor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../learn/thoughtspot.html">Thoughtspot</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
@@ -284,6 +285,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -293,6 +295,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -507,7 +510,7 @@ API developer reference</span></a>.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../client.html" title="Clients"
+            <a href="cli.html" title="Command line interface"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -516,17 +519,17 @@ API developer reference</span></a>.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Clients </span>
+                      class="md-footer-nav__direction"> Previous </span> Command line interface </span>
               </div>
             </a>
           
           
-            <a href="cli.html" title="Command line interface"
+            <a href="jdbc.html" title="JDBC driver"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Command line interface </span>
+                class="md-footer-nav__direction"> Next </span> JDBC driver </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

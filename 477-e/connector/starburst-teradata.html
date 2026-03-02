@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -375,6 +376,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -1235,11 +1237,16 @@ connection pooling:</p>
 lifetime it is removed, regardless of how recently it has been active.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30m</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-max-size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.connection-timeout</span></code></p></td>
+<td><p>The maximum amount of time to wait for a connection from the JDBC
+connection pool before the request times out.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">30s</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-max-size</span></code></p></td>
 <td><p>The maximum size of the JDBC data source cache.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-ttl</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connection-pool.pool-cache-ttl</span></code></p></td>
 <td><p>The expiration time of a cached data source when it is no longer accessed.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30m</span></code></p></td>
 </tr>
@@ -1322,10 +1329,10 @@ in the catalog properties file to configure it.</p>
 <span class="na">kerberos.config</span><span class="o">=</span><span class="s">etc/kerberos/krb5.conf</span>
 </pre></div>
 </div>
-<p>With this configuration the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code>, defined in the
-principal property, is used to connect to the database, and the related Kerberos
-service ticket is located in the <code class="docutils literal notranslate"><span class="pre">example.keytab</span></code> file. The Kerberos
-configuration specified with <code class="docutils literal notranslate"><span class="pre">kerberos.config</span></code> is used.</p>
+<p>With this configuration the user <code class="docutils literal notranslate"><span class="pre">example@example.com</span></code>, defined in the principal
+property, is used to connect to the database, and the related Kerberos service
+ticket is located in the keytab file. The Kerberos configuration specified with
+<code class="docutils literal notranslate"><span class="pre">kerberos.config</span></code> is used.</p>
 </section>
 <section id="kerberos-credential-pass-through">
 <span id="teradata-kerberos-passthrough"></span><h4 id="kerberos-credential-pass-through">Kerberos credential pass-through<a class="headerlink" href="#kerberos-credential-pass-through" title="Permalink to this heading">#</a></h4>
@@ -1336,7 +1343,7 @@ by SEP, to the Teradata database.</p>
 <p>Then configure the connector to pass through the credentials from the server to
 the database in your catalog properties file and ensure the Kerberos client
 configuration properties are in place:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">teradata.authentication.type</span><span class="o">=</span><span class="s">KERBEROS_PASS_THROUGH</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http-server.authentication.krb5.keytab</span><span class="o">=</span><span class="s">&lt;PATH_TO_KEYTAB_FILE&gt;</span>
 <span class="na">http.authentication.krb5.config</span><span class="o">=</span><span class="s">/etc/krb5.conf</span>
 <span class="na">http-server.authentication.krb5.service-name</span><span class="o">=</span><span class="s">exampleServiceName</span>
 <span class="na">http-server.authentication.krb5.keytab</span><span class="o">=</span><span class="s">/path/to/Keytab/File</span>

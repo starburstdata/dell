@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 477-e.5 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 477-e.5 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
   </label>
   
   
@@ -265,6 +265,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
@@ -274,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
 </ul>
@@ -417,13 +419,29 @@ Cloud Storage:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.use-access-token</span></code></p></td>
 <td><p>Flag to set usage of a client-provided OAuth 2.0 token to access Google
-Cloud Storage. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
+Cloud Storage. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>, deprecated to use <code class="docutils literal notranslate"><span class="pre">gcs.auth-type</span></code> instead.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.auth-type</span></code></p></td>
+<td><p>Authentication type to use for Google Cloud Storage access. Default to <code class="docutils literal notranslate"><span class="pre">SERVICE_ACCOUNT</span></code>.
+Supported values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SERVICE_ACCOUNT</span></code>: loads credentials from the environment. Either <code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code> or
+<code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code> can be set in addition to override the default
+credentials provider.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACCESS_TOKEN</span></code>: usage of client-provided OAuth 2.0 token to access Google
+Cloud Storage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPLICATION_DEFAULT</span></code>: Attempts to obtain Google Application Default
+Credentials (ADC) from the environment. If no ADC is available, the
+filesystem falls back to <code class="docutils literal notranslate"><span class="pre">NoCredentials.getInstance()</span></code> to explicitly
+indicate unauthenticated GCS access.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code></p></td>
 <td><p>Your Google Cloud service account key in JSON format. Not to be set together
 with <code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcs.json-key-file-path</span></code></p></td>
 <td><p>Path to the JSON file on each node that contains your Google Cloud Platform
 service account key. Not to be set together with <code class="docutils literal notranslate"><span class="pre">gcs.json-key</span></code>.</p></td>
 </tr>
@@ -459,7 +477,7 @@ noted.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.gcs.use-access-token</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gcs.use-access-token</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcs.auth-type</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.gcs.json-key-file-path</span></code></p></td>
