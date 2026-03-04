@@ -253,6 +253,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#notebook-example">Notebook example</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#system-maintenance-mode">System maintenance mode</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
@@ -338,6 +339,7 @@
 <li><a class="reference internal" href="#notebook-example">Notebook example</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#system-maintenance-mode">System maintenance mode</a></li>
 </ul>
 </li>
 </ul>
@@ -623,6 +625,22 @@ Spark DataFrames, such as the following:</p>
 documentation</a> for more
 details.</p>
 </section>
+</section>
+<section id="system-maintenance-mode">
+<h2 id="system-maintenance-mode">System maintenance mode<a class="headerlink" href="#system-maintenance-mode" title="Permalink to this heading">#</a></h2>
+<p>DDPE supports system maintenance mode. System maintenance mode allows
+administrators to safely upgrade Spark by preventing new job submissions.</p>
+<p>System maintenance mode can be activated by opening the options menu in the job
+submission UI and selecting <strong>Activate maintenance mode</strong>:</p>
+<figure class="align-default">
+<img alt="Jupyter Notebook UI" class="imgborder" src="../_images/ddpe-maint-mode.png"/>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can not submit new jobs while maintenance mode is active.</p>
+</div>
+<p>Click <strong>Deactivate maintenance mode</strong> to exit system maintenance mode and resume
+your jobs.</p>
 </section>
 </section>
 
