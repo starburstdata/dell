@@ -227,6 +227,7 @@
 <p class="caption" role="heading"><span class="caption-text">For all users</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/starburst-portal/index.html">Starburst Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
@@ -267,6 +268,7 @@
 <li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html#api-documentation">API documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-images.html">Custom Spark images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
 </ul>
@@ -415,6 +417,8 @@ blank if using Python or R. Additionally, arguments can be supplied using the
 <li><p>The <strong>Configuration</strong> section includes fields to enter properties and their
 values. Click <strong>+</strong> to add additional configuration properties.</p></li>
 <li><p>Select a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a> to assign to the job.</p></li>
+<li><p>Select an image for the job. See <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for
+details.</p></li>
 <li><p>In the <strong>Application</strong> section, enter your application’s file path URL.</p></li>
 <li><p>Choose whether to enable encryption.</p></li>
 <li><p>Click <strong>Next</strong>.</p></li>
@@ -478,6 +482,8 @@ URL, or delete the server.</p>
 <li><p>The <strong>Configuration</strong> section includes fields to enter properties and their
 values. Click <strong>+</strong> to add additional configuration properties.</p></li>
 <li><p>Select a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a> to assign to the server.</p></li>
+<li><p>Select an image for the server. See <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for
+details.</p></li>
 <li><p>Choose whether to enable encryption.</p></li>
 <li><p>Click <strong>Next</strong>.</p></li>
 </ol>
@@ -566,8 +572,9 @@ Notebook-related tasks:</p>
 <figure class="align-default">
 <img alt="Jupyter Notebook create" class="imgborder" src="../_images/spark-jupyter-create.png"/>
 </figure>
-<p>Give the server a name, assign a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a>, and
-optionally provide a description. Click <strong>Start</strong>.</p>
+<p>Give the server a name, assign a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a>, select a
+<a class="reference internal" href="custom-images.html"><span class="doc std std-doc">Spark image</span></a>, and optionally provide a description. Click
+<strong>Start</strong>.</p>
 <p>The new server displays in the server list with a <code class="docutils literal notranslate"><span class="pre">Pending</span></code> status for a few
 moments before the <strong>URL</strong> column populates and the server is moved to the
 <code class="docutils literal notranslate"><span class="pre">Started</span></code> status. Click the URL to open the server:</p>

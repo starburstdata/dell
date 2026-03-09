@@ -227,6 +227,7 @@
 <p class="caption" role="heading"><span class="caption-text">For all users</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/starburst-portal/index.html">Starburst Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
@@ -246,6 +247,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-jobs">Spark jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-instance-images">Spark instance images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-system">Spark system</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
@@ -260,6 +262,7 @@
 <li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html#api-documentation">API documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-images.html">Custom Spark images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
 </ul>
@@ -329,6 +332,7 @@
 <li><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a></li>
 <li><a class="reference internal" href="#spark-jobs">Spark jobs</a></li>
 <li><a class="reference internal" href="#spark-resource-pools">Spark resource pools</a></li>
+<li><a class="reference internal" href="#spark-instance-images">Spark instance images</a></li>
 <li><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li><a class="reference internal" href="#spark-system">Spark system</a></li>
 <li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
@@ -555,6 +559,44 @@ also have the <code class="docutils literal notranslate"><span class="pre">CREAT
 </tbody>
 </table>
 </section>
+<section id="spark-instance-images">
+<span id="ddpe-spark-images-priv"></span><h3 id="spark-instance-images">Spark instance images<a class="headerlink" href="#spark-instance-images" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">Spark instance images</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Select <strong>All available images</strong> or use the <strong>Images</strong> drop-down menu to
+select specific images.</p></li>
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Use</span></code> privilege.</p></li>
+<li><p>Click <strong>Save privilege</strong>.</p></li>
+</ol>
+<p>The following privilege is available:</p>
+<table id="id4">
+<caption><span class="caption-text">Resource pools privileges</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Use this image when creating Spark batch jobs. Role must also
+have the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege for Spark batch jobs.</p></li>
+<li><p>Use this image when creating Spark Connect servers. Role must
+also have the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege for Spark Connect servers.</p></li>
+<li><p>Create sessions for Spark Connect servers that use this image.</p></li>
+<li><p>Start Jupyter Notebook servers that use this image. Role must
+also have the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege for Jupyter Notebook servers.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="spark-uploads">
 <span id="ddpe-spark-uploads-priv"></span><h3 id="spark-uploads">Spark uploads<a class="headerlink" href="#spark-uploads" title="Permalink to this heading">#</a></h3>
 <p>To grant or revoke privileges related to <a class="reference internal" href="cli.html#ddpe-cli-uploads"><span class="std std-ref">Spark uploads</span></a>:</p>
@@ -566,8 +608,8 @@ to grant the privileges to other entities.</p></li>
 <li><p>Click <strong>Save privileges</strong>.</p></li>
 </ol>
 <p>The following privileges are available:</p>
-<table id="id4">
-<caption><span class="caption-text">Spark Connect server privileges</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Spark Connect server privileges</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -607,8 +649,8 @@ to grant the privileges to other entities.</p></li>
 <li><p>Click <strong>Save privileges</strong>.</p></li>
 </ol>
 <p>The following privilege is available:</p>
-<table id="id5">
-<caption><span class="caption-text">Spark system privileges</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Spark system privileges</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -641,8 +683,8 @@ to grant the privileges to other entities.</p></li>
 <li><p>Click <strong>Save privileges</strong>.</p></li>
 </ol>
 <p>The following privileges are available:</p>
-<table id="id6">
-<caption><span class="caption-text">Jupyter Notebook server privileges</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Jupyter Notebook server privileges</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -700,8 +742,8 @@ for more information on other entities and related privileges, such as:</p>
 <h2 id="example-privilege-sets">Example privilege sets<a class="headerlink" href="#example-privilege-sets" title="Permalink to this heading">#</a></h2>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 admin:</p>
-<table id="id7">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -746,8 +788,8 @@ admin:</p>
 </table>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 user:</p>
-<table id="id8">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>

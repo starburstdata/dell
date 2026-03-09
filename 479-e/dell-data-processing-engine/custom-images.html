@@ -1,0 +1,1179 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#0672CB">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  <script>
+      window.ga = window.ga || function () {
+          (ga.q = ga.q || []).push(arguments)
+      };
+      ga.l = +new Date;
+      ga('create', 'UA-114610397-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+  
+    <title>Custom Spark images &#8212; Dell Data Analytics Engine</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dell.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/search.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/main.js"></script>
+    <script src="../_static/algolia.js"></script>
+    <script src="../_static/searchbox.js"></script>
+    <script src="../_static/searchresults.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command line interface" href="cli.html" />
+    <link rel="prev" title="GPU acceleration with Spark RAPIDS" href="gpu.html" />
+
+  
+   
+
+<meta name="robots" content="none">
+<meta name="googlebot" content="none">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<!-- Always link to the latest version, as canonical -->
+<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/custom-images.html">
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary= data-md-color-accent=>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#dell-data-processing-engine/custom-images" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <span
+          title="Dell Data Analytics Engine"
+          class="md-header-nav__button md-logo"
+          style="cursor: default"
+        >
+          
+          <img
+            src="../_static/dell.png"
+            alt="Dell Data Analytics Engine 479-e.1 LTS logo"
+          />
+          
+        </span>
+      </div>
+      <span class="header-divider"></span>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          Custom Spark images
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="GET" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+       
+  
+  <div class="md-flex__cell md-flex__cell--shrink dropdown">
+    <button class="dropdownbutton">Choose version</button>
+    <div class="dropdown-content md-hero">
+          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
+      
+          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
+      
+          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
+      
+          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
+      
+    </div>
+  </div>
+  
+
+    </div>
+  </nav>
+</header>
+
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+      
+        <img src="../_static/dell.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.1 LTS</a>
+  </label>
+  
+  
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/starburst-enterprise.html">What is Starburst Enterprise?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-started/aidp.html">What is Dell AI Data Platform?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learn/index.html">Learn Starburst Enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versions.html">Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For all users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/starburst-portal/index.html">Starburst Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html#api-documentation">API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Spark images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starburst-spark-base-image">Starburst Spark base image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#included-tools-and-utilities">Included tools and utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-installed-libraries-jars">Pre-installed libraries (JARs)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rapids-accelerator-jars">Rapids Accelerator JARs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-dependency-jars">Core dependency JARs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-installed-python-libraries">Pre-installed Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-custom-images">Building custom images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-dockerfile">Create a Dockerfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#push-images-to-a-registry">Push images to a registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-custom-images">Using custom images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-image-details">View image details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-images-with-ddpe-ui">Import images with DDPE UI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submission">Submission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing">Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verification">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#image-deletion-considerations">Image deletion considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-custom-images-in-spark-jobs">Using custom images in Spark jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../language.html">SQL language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql.html">SQL statement syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Functions and operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../udf.html">User-defined functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For data engineers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalogs.html">Define catalogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage.html">Object storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/materialized-views.html">Materialized views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/data-maintenance.html">Data maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/sql-jobs.html">SQL jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimizer.html">Query optimizer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connect to data sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connector.html">Connector overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-storage-connectors.html">Object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../non-object-storage-connectors.html">Non-object storage connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community-connectors.html">Community-supported connectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-catalog/index.html">Starburst catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connector/starburst-connectors.html">Starburst connectors feature matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-engineering/cost-and-performance/index.html">Monitor and manage cost and performance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For platform administrators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-topics.html">Administration topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Performance, logging, and governance features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starburst-rest-api.html">Starburst Enterprise REST API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop.html">Trino developer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Version-specific notices and information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html#topic-areas">Topic areas</a></li>
+</ul>
+  
+  
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+  <div class="local-toc">
+    <strong>Contents</strong>
+    <ul>
+<li><a class="reference internal" href="#">Custom Spark images</a><ul>
+<li><a class="reference internal" href="#starburst-spark-base-image">Starburst Spark base image</a><ul>
+<li><a class="reference internal" href="#included-tools-and-utilities">Included tools and utilities</a></li>
+<li><a class="reference internal" href="#pre-installed-libraries-jars">Pre-installed libraries (JARs)</a><ul>
+<li><a class="reference internal" href="#rapids-accelerator-jars">Rapids Accelerator JARs</a></li>
+<li><a class="reference internal" href="#core-dependency-jars">Core dependency JARs</a></li>
+<li><a class="reference internal" href="#pre-installed-python-libraries">Pre-installed Python libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-custom-images">Building custom images</a><ul>
+<li><a class="reference internal" href="#create-a-dockerfile">Create a Dockerfile</a></li>
+<li><a class="reference internal" href="#push-images-to-a-registry">Push images to a registry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-custom-images">Using custom images</a><ul>
+<li><a class="reference internal" href="#view-image-details">View image details</a></li>
+<li><a class="reference internal" href="#import-images-with-ddpe-ui">Import images with DDPE UI</a><ul>
+<li><a class="reference internal" href="#submission">Submission</a></li>
+<li><a class="reference internal" href="#processing">Processing</a></li>
+<li><a class="reference internal" href="#verification">Verification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-deletion-considerations">Image deletion considerations</a></li>
+<li><a class="reference internal" href="#using-custom-images-in-spark-jobs">Using custom images in Spark jobs</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="custom-spark-images">
+<h1 id="dell-data-processing-engine-custom-images--page-root">Custom Spark images<a class="headerlink" href="#dell-data-processing-engine-custom-images--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine (DDPE) supports custom Spark images. Custom images
+let you package job requirements and run jobs consistently across environments.
+You can add custom or third‑party libraries and system packages, define Python
+environments, pin package versions, use supported open‑source Spark
+variants, and inject environment variables and default Spark configurations,
+such as <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code>.</p>
+<section id="starburst-spark-base-image">
+<h2 id="starburst-spark-base-image">Starburst Spark base image<a class="headerlink" href="#starburst-spark-base-image" title="Permalink to this heading">#</a></h2>
+<p>DDPE provides a pre-configured Starburst Spark base image that you can use as
+the foundation for your custom images. The base image is available at:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="p">.</span><span class="n">ecr</span><span class="p">.</span><span class="n">aws</span><span class="o">/</span><span class="n">starburstdata</span><span class="o">/</span><span class="n">dell</span><span class="o">-</span><span class="n">aidp</span><span class="o">/</span><span class="n">starburst</span><span class="o">-</span><span class="n">spark</span><span class="p">:</span><span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The image is based on
+<a class="reference external" href="https://hub.docker.com/layers/apache/spark/3.5.7-scala2.12-java17-python3-r-ubuntu/images/sha256-96d4508680e09543ee1c6b2705c67176d4e0e1023b21c198a43a8c846eb264b7">spark:3.5.6-scala2.12-java17-python3-ubuntu</a>
+and includes essential tools and utilities for advanced Spark and data ecosystem
+integrations.</p>
+<section id="included-tools-and-utilities">
+<h3 id="included-tools-and-utilities">Included tools and utilities<a class="headerlink" href="#included-tools-and-utilities" title="Permalink to this heading">#</a></h3>
+<p>The base image includes the following tools to enhance monitoring and logging
+capabilities:</p>
+<ul class="simple">
+<li><p><strong>Lumberjack</strong>: A utility configured to stream container logs to a central logging
+system, ensuring traceability and easy debugging within the DDPE environment.</p></li>
+<li><p><strong>getGpuResources</strong>: A script used to detect Nvidia graphics cards.</p></li>
+</ul>
+</section>
+<section id="pre-installed-libraries-jars">
+<h3 id="pre-installed-libraries-jars">Pre-installed libraries (JARs)<a class="headerlink" href="#pre-installed-libraries-jars" title="Permalink to this heading">#</a></h3>
+<p>The image contains a comprehensive set of libraries, including support for
+GPU-accelerated computing and various data connectors and frameworks.</p>
+<section id="rapids-accelerator-jars">
+<h4 id="rapids-accelerator-jars">Rapids Accelerator JARs<a class="headerlink" href="#rapids-accelerator-jars" title="Permalink to this heading">#</a></h4>
+<p>The image includes libraries for the <a class="reference internal" href="gpu.html"><span class="doc std std-doc">NVIDIA RAPIDS Accelerator for Apache
+Spark</span></a>, supporting both ARM64 and AMD64 architectures based on the <code class="docutils literal notranslate"><span class="pre">25.12</span></code>
+RAPIDS version. These libraries enable Spark to leverage GPUs for significant
+performance gains in data processing tasks.</p>
+</section>
+<section id="core-dependency-jars">
+<h4 id="core-dependency-jars">Core dependency JARs<a class="headerlink" href="#core-dependency-jars" title="Permalink to this heading">#</a></h4>
+<p>The following is a list of key JAR files included in the Starburst Spark base
+image, covering components like Hadoop, Hive, various data formats, and
+foundational utilities. Expand <strong>Core dependencies</strong> to view included libraries
+grouped by type:</p>
+<details>
+<summary>Core dependencies</summary>
+<details>
+<summary>Apache Calcite libraries</summary>
+<ul class="simple">
+<li><p>calcite-core-1.16.0.jar</p></li>
+<li><p>calcite-druid-1.16.0.jar</p></li>
+<li><p>calcite-linq4j-1.16.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Apache Commons libraries</summary>
+<ul class="simple">
+<li><p>commons-beanutils-1.9.3.jar</p></li>
+<li><p>commons-cli-1.2.jar</p></li>
+<li><p>commons-codec-1.15.jar</p></li>
+<li><p>commons-collections-3.2.2.jar</p></li>
+<li><p>commons-collections4-4.1.jar</p></li>
+<li><p>commons-compiler-2.7.6.jar</p></li>
+<li><p>commons-compress-1.19.jar</p></li>
+<li><p>commons-configuration2-2.1.1.jar</p></li>
+<li><p>commons-crypto-1.0.0.jar</p></li>
+<li><p>commons-daemon-1.0.13.jar</p></li>
+<li><p>commons-dbcp-1.4.jar</p></li>
+<li><p>commons-io-2.6.jar</p></li>
+<li><p>commons-lang-2.6.jar</p></li>
+<li><p>commons-lang3-3.19.0.jar</p></li>
+<li><p>commons-logging-1.2.jar</p></li>
+<li><p>commons-math3-3.1.1.jar</p></li>
+<li><p>commons-net-3.6.jar</p></li>
+<li><p>commons-pool-1.5.4.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Apache Curator libraries</summary>
+<ul class="simple">
+<li><p>curator-client-2.12.0.jar</p></li>
+<li><p>curator-framework-2.12.0.jar</p></li>
+<li><p>curator-recipes-2.12.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Apache Hadoop libraries</summary>
+<ul class="simple">
+<li><p>hadoop-annotations-3.1.0.jar</p></li>
+<li><p>hadoop-auth-3.1.0.jar</p></li>
+<li><p>hadoop-common-3.1.0.jar</p></li>
+<li><p>hadoop-hdfs-2.2.0.jar</p></li>
+<li><p>hadoop-yarn-api-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-common-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-registry-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-server-applicationhistoryservice-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-server-common-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-server-resourcemanager-3.1.0.jar</p></li>
+<li><p>hadoop-yarn-server-web-proxy-3.1.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Apache Hive libraries</summary>
+<ul class="simple">
+<li><p>hive-classification-3.1.3.jar</p></li>
+<li><p>hive-common-3.1.3.jar</p></li>
+<li><p>hive-exec-3.1.3.jar</p></li>
+<li><p>hive-llap-client-3.1.3.jar</p></li>
+<li><p>hive-llap-common-3.1.3.jar</p></li>
+<li><p>hive-llap-tez-3.1.3.jar</p></li>
+<li><p>hive-metastore-3.1.3.jar</p></li>
+<li><p>hive-serde-3.1.3.jar</p></li>
+<li><p>hive-service-rpc-3.1.3.jar</p></li>
+<li><p>hive-shims-0.23-3.1.3.jar</p></li>
+<li><p>hive-shims-3.1.3.jar</p></li>
+<li><p>hive-shims-common-3.1.3.jar</p></li>
+<li><p>hive-shims-scheduler-3.1.3.jar</p></li>
+<li><p>hive-standalone-metastore-3.1.3.jar</p></li>
+<li><p>hive-storage-api-2.7.0.jar</p></li>
+<li><p>hive-upgrade-acid-3.1.3.jar</p></li>
+<li><p>hive-vector-code-gen-3.1.3.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>AWS libraries</summary>
+<ul class="simple">
+<li><p>aws-java-sdk-bundle-1.12.793.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Custom images libraries</summary>
+<ul class="simple">
+<li><p>image-additions-294-479-e.1.jar</p></li>
+<li><p>image-modifications-294-479-e.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Data format libraries</summary>
+<ul class="simple">
+<li><p>opencsv-2.3.jar</p></li>
+<li><p>orc-core-1.5.1.jar</p></li>
+<li><p>orc-shims-1.5.1.jar</p></li>
+<li><p>paranamer-2.7.jar</p></li>
+<li><p>parquet-hadoop-bundle-1.10.0.jar</p></li>
+<li><p>protobuf-java-2.5.0.jar</p></li>
+<li><p>re2j-1.1.jar</p></li>
+<li><p>sketches-core-0.9.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Database connection libraries</summary>
+<ul class="simple">
+<li><p>HikariCP-6.3.0.jar</p></li>
+<li><p>HikariCP-java7-2.4.12.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Database driver libraries</summary>
+<ul class="simple">
+<li><p>mssql-jdbc-6.2.1.jre7.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>DataNucleus libraries</summary>
+<ul class="simple">
+<li><p>datanucleus-api-jdo-4.2.4.jar</p></li>
+<li><p>datanucleus-core-4.1.17.jar</p></li>
+<li><p>datanucleus-rdbms-4.1.19.jar</p></li>
+<li><p>derby-10.14.1.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Delta Lake libraries</summary>
+<ul class="simple">
+<li><p>delta-spark_2.12-3.3.0.jar</p></li>
+<li><p>delta-storage-3.3.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Development and testing libraries</summary>
+<ul class="simple">
+<li><p>jline-0.9.94.jar</p></li>
+<li><p>joda-time-2.14.0.jar</p></li>
+<li><p>joni-2.1.11.jar</p></li>
+<li><p>jpam-1.1.jar</p></li>
+<li><p>jsch-0.1.54.jar</p></li>
+<li><p>json-1.8.jar</p></li>
+<li><p>json-io-2.5.1.jar</p></li>
+<li><p>json-smart-2.3.jar</p></li>
+<li><p>jsp-api-2.1.jar</p></li>
+<li><p>jspecify-1.0.0.jar</p></li>
+<li><p>jsr305-3.0.2.jar</p></li>
+<li><p>jsr311-api-1.1.1.jar</p></li>
+<li><p>jta-1.1.jar</p></li>
+<li><p>junit-3.8.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Google libraries</summary>
+<ul class="simple">
+<li><p>guava-33.5.0-jre.jar</p></li>
+<li><p>guice-3.0.jar</p></li>
+<li><p>guice-assistedinject-7.0.0.jar</p></li>
+<li><p>guice-servlet-7.0.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Hadoop AWS libraries</summary>
+<ul class="simple">
+<li><p>hadoop-aws-3.3.4.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>HBase libraries</summary>
+<ul class="simple">
+<li><p>hbase-client-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-common-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-hadoop-compat-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-hadoop2-compat-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-metrics-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-metrics-api-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-protocol-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-protocol-shaded-2.0.0-alpha4.jar</p></li>
+<li><p>hbase-shaded-miscellaneous-1.0.1.jar</p></li>
+<li><p>hbase-shaded-netty-1.0.1.jar</p></li>
+<li><p>hbase-shaded-protobuf-1.0.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Hudi libraries</summary>
+<ul class="simple">
+<li><p>hudi-spark3.5-bundle_2.12-1.0.2.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Iceberg libraries</summary>
+<ul class="simple">
+<li><p>iceberg-aws-bundle.jar</p></li>
+<li><p>iceberg-aws-bundle-nvidia(1.6.1).jar</p></li>
+<li><p>iceberg-spark-runtime(1.8.0).jar</p></li>
+<li><p>iceberg-spark-runtime-nvidia.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Jackson (JSON) libraries</summary>
+<ul class="simple">
+<li><p>jackson-annotations-2.20.jar</p></li>
+<li><p>jackson-core-2.20.1.jar</p></li>
+<li><p>jackson-core-asl-1.9.13.jar</p></li>
+<li><p>jackson-databind-2.20.1.jar</p></li>
+<li><p>jackson-jaxrs-1.9.2.jar</p></li>
+<li><p>jackson-jaxrs-base-2.20.1.jar</p></li>
+<li><p>jackson-jaxrs-json-provider-2.20.1.jar</p></li>
+<li><p>jackson-mapper-asl-1.9.13.jar</p></li>
+<li><p>jackson-module-jaxb-annotations-2.20.1.jar</p></li>
+<li><p>jackson-xc-1.9.2.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Java EE/Jakarta libraries</summary>
+<ul class="simple">
+<li><p>j2objc-annotations-3.1.jar</p></li>
+<li><p>jakarta.activation-api-1.2.2.jar</p></li>
+<li><p>janino-2.7.6.jar</p></li>
+<li><p>java-util-1.9.0.jar</p></li>
+<li><p>javax.inject-1.jar</p></li>
+<li><p>javax.jdo-3.2.0-m3.jar</p></li>
+<li><p>javax.servlet-api-3.1.0.jar</p></li>
+<li><p>javolution-5.5.1.jar</p></li>
+<li><p>jaxb-api-2.2.11.jar</p></li>
+<li><p>jaxb-impl-2.2.3-1.jar</p></li>
+<li><p>jcodings-1.0.18.jar</p></li>
+<li><p>jdo-api-3.0.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Jersey libraries</summary>
+<ul class="simple">
+<li><p>jersey-client-1.19.jar</p></li>
+<li><p>jersey-core-1.19.jar</p></li>
+<li><p>jersey-guice-1.19.jar</p></li>
+<li><p>jersey-json-1.19.jar</p></li>
+<li><p>jersey-server-1.19.jar</p></li>
+<li><p>jersey-servlet-1.19.jar</p></li>
+<li><p>jettison-1.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Jetty libraries</summary>
+<ul class="simple">
+<li><p>jetty-http-12.1.4.jar</p></li>
+<li><p>jetty-io-12.1.4.jar</p></li>
+<li><p>jetty-rewrite-12.1.4.jar</p></li>
+<li><p>jetty-security-12.1.4.jar</p></li>
+<li><p>jetty-server-12.1.4.jar</p></li>
+<li><p>jetty-servlet-9.3.20.v20170531.jar</p></li>
+<li><p>jetty-util-12.1.4.jar</p></li>
+<li><p>jetty-util-ajax-12.1.4.jar</p></li>
+<li><p>jetty-webapp-9.3.20.v20170531.jar</p></li>
+<li><p>jetty-xml-12.1.4.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Kerberos libraries</summary>
+<ul class="simple">
+<li><p>kerb-admin-1.0.1.jar</p></li>
+<li><p>kerb-client-1.0.1.jar</p></li>
+<li><p>kerb-common-1.0.1.jar</p></li>
+<li><p>kerb-core-1.0.1.jar</p></li>
+<li><p>kerb-crypto-1.0.1.jar</p></li>
+<li><p>kerb-identity-1.0.1.jar</p></li>
+<li><p>kerb-server-1.0.1.jar</p></li>
+<li><p>kerb-simplekdc-1.0.1.jar</p></li>
+<li><p>kerb-util-1.0.1.jar</p></li>
+<li><p>kerby-asn1-1.0.1.jar</p></li>
+<li><p>kerby-config-1.0.1.jar</p></li>
+<li><p>kerby-pkix-1.0.1.jar</p></li>
+<li><p>kerby-util-1.0.1.jar</p></li>
+<li><p>kerby-xdr-1.0.1.jar</p></li>
+<li><p>leveldbjni-all-1.8.jar</p></li>
+<li><p>libfb303-0.9.3.jar</p></li>
+<li><p>libthrift-0.9.3.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Logging libraries</summary>
+<ul class="simple">
+<li><p>log4j-1.2.16.jar</p></li>
+<li><p>log4j-1.2-api-2.25.2.jar</p></li>
+<li><p>log4j-api-2.25.2.jar</p></li>
+<li><p>log4j-core-2.25.2.jar</p></li>
+<li><p>log4j-slf4j-impl-2.25.2.jar</p></li>
+<li><p>log4j-web-2.25.2.jar</p></li>
+<li><p>memory-0.9.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Metrics libraries</summary>
+<ul class="simple">
+<li><p>metrics-core-3.1.0.jar</p></li>
+<li><p>metrics-json-3.1.0.jar</p></li>
+<li><p>metrics-jvm-3.1.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Misc. and format libraries</summary>
+<ul class="simple">
+<li><p>dnsjava-2.1.7.jar</p></li>
+<li><p>dropwizard-metrics-hadoop-metrics2-reporter-0.1.2.jar</p></li>
+<li><p>ehcache-3.3.1.jar</p></li>
+<li><p>error_prone_annotations-2.44.0.jar</p></li>
+<li><p>esri-geometry-api-2.0.0.jar</p></li>
+<li><p>failureaccess-1.0.3.jar</p></li>
+<li><p>fastutil-6.5.6.jar</p></li>
+<li><p>findbugs-annotations-1.3.9-1.jar</p></li>
+<li><p>flatbuffers-1.2.0-3f79e055.jar</p></li>
+<li><p>fst-2.50.jar</p></li>
+<li><p>geronimo-jcache_1.0_spec-1.0-alpha-1.jar</p></li>
+<li><p>groovy-all-2.4.11.jar</p></li>
+<li><p>gson-2.2.4.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Nessie libraries</summary>
+<ul class="simple">
+<li><p>nessie-spark-extensions-3.5_2.12-0.102.5.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Networking and HTTP libraries</summary>
+<ul class="simple">
+<li><p>hppc-0.7.2.jar</p></li>
+<li><p>htrace-core-3.2.0-incubating.jar</p></li>
+<li><p>htrace-core4-4.1.0-incubating.jar</p></li>
+<li><p>httpclient-4.5.14.jar</p></li>
+<li><p>httpcore-4.4.1.jar</p></li>
+<li><p>ivy-2.4.0.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Netty libraries</summary>
+<ul class="simple">
+<li><p>netty-3.7.0.Final.jar</p></li>
+<li><p>netty-buffer-4.1.17.Final.jar</p></li>
+<li><p>netty-common-4.1.17.Final.jar</p></li>
+<li><p>nimbus-jose-jwt-10.2.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Security and utilities libraries</summary>
+<ul class="simple">
+<li><p>accessors-smart-1.2.jar</p></li>
+<li><p>aircompressor-0.10.jar</p></li>
+<li><p>ant-1.9.1.jar</p></li>
+<li><p>ant-launcher-1.9.1.jar</p></li>
+<li><p>antlr-runtime-3.5.2.jar</p></li>
+<li><p>aopalliance-1.0.jar</p></li>
+<li><p>arrow-format-0.8.0.jar</p></li>
+<li><p>arrow-memory-0.8.0.jar</p></li>
+<li><p>arrow-vector-0.8.0.jar</p></li>
+<li><p>asm-9.9.jar</p></li>
+<li><p>audience-annotations-0.5.0.jar</p></li>
+<li><p>avatica-1.11.0.jar</p></li>
+<li><p>avro-1.8.2.jar</p></li>
+<li><p>bonecp-0.8.0.RELEASE.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>SLF4J logging libraries</summary>
+<ul class="simple">
+<li><p>slf4j-api-2.0.17.jar</p></li>
+<li><p>slf4j-log4j12-1.7.25.jar</p></li>
+<li><p>snappy-java-1.1.1.3.jar</p></li>
+<li><p>sqlline-1.3.0.jar</p></li>
+<li><p>ST4-4.0.4.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Spark Connect libraries</summary>
+<ul class="simple">
+<li><p>spark-connect_2.12-3.5.7.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Transaction management libraries</summary>
+<ul class="simple">
+<li><p>tephra-api-0.6.0.jar</p></li>
+<li><p>tephra-core-0.6.0.jar</p></li>
+<li><p>tephra-hbase-compat-1.0-0.6.0.jar</p></li>
+<li><p>token-provider-1.0.1.jar</p></li>
+<li><p>transaction-api-1.1.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Trino libraries</summary>
+<ul class="simple">
+<li><p>trino-aws-proxy-spark3-20251205-6b1db67.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>Twill libraries</summary>
+<ul class="simple">
+<li><p>twill-api-0.6.0-incubating.jar</p></li>
+<li><p>twill-common-0.6.0-incubating.jar</p></li>
+<li><p>twill-core-0.6.0-incubating.jar</p></li>
+<li><p>twill-discovery-api-0.6.0-incubating.jar</p></li>
+<li><p>twill-discovery-core-0.6.0-incubating.jar</p></li>
+<li><p>twill-zookeeper-0.6.0-incubating.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>XML/Stax libraries</summary>
+<ul class="simple">
+<li><p>stax-api-1.0.1.jar</p></li>
+<li><p>stax2-api-3.1.4.jar</p></li>
+<li><p>woodstox-core-5.0.3.jar</p></li>
+<li><p>xmlenc-0.52.jar</p></li>
+<li><p>xz-1.5.jar</p></li>
+</ul>
+</details>
+<details>
+<summary>ZooKeeper libraries</summary>
+<ul class="simple">
+<li><p>zookeeper-3.4.6.jar</p></li>
+</ul>
+</details>
+</details>
+</section>
+<section id="pre-installed-python-libraries">
+<h4 id="pre-installed-python-libraries">Pre-installed Python libraries<a class="headerlink" href="#pre-installed-python-libraries" title="Permalink to this heading">#</a></h4>
+<p>The following is a list of key Python libraries included in the Starburst Spark
+base image. Expand <strong>Pre-installed Python libraries</strong> to view included libraries
+grouped by type:</p>
+<details>
+<summary>Pre-installed Python libraries</summary>
+<details>
+<summary>Cloud/Storage access</summary>
+<ul class="simple">
+<li><p>boto3-1.36.25</p></li>
+<li><p>six-1.17.0</p></li>
+<li><p>statsmodels-0.14.4</p></li>
+<li><p>tzdata-2024.2</p></li>
+<li><p>xlrd-2.0.1</p></li>
+</ul>
+</details>
+<details>
+<summary>Machine learning and AI</summary>
+<ul class="simple">
+<li><p>absl-py-2.3.0</p></li>
+<li><p>asttokens-1.6.3</p></li>
+<li><p>flatbuffers-24.12.23</p></li>
+<li><p>gast-0.6.0</p></li>
+<li><p>google-pasta-0.2.0</p></li>
+<li><p>grpcio-1.70.0</p></li>
+<li><p>h5py-3.12.1</p></li>
+<li><p>keras-3.11.3</p></li>
+<li><p>libclang-18.1.1</p></li>
+<li><p>ml-dtypes-0.4.1</p></li>
+<li><p>namex-0.0.8</p></li>
+<li><p>opt_einsum-3.4.0</p></li>
+<li><p>optree-0.13.1</p></li>
+<li><p>protobuf-5.29.5</p></li>
+<li><p>tensorflow-2.18.0</p></li>
+<li><p>tensorflow-io-gcs-filesystem-0.37.1</p></li>
+<li><p>termcolor-2.5.0</p></li>
+<li><p>wrapt-1.17.2</p></li>
+</ul>
+</details>
+<details>
+<summary>RAPIDS (GPU acceleration)</summary>
+<ul class="simple">
+<li><p>cudf-cu12-25.12.0</p></li>
+<li><p>dask-cudf-cu12-25.12.0</p></li>
+<li><p>pylibcudf-cu12-25.12.0</p></li>
+<li><p>cuml-cu12-25.12.0</p></li>
+<li><p>cugraph-cu12-25.12.0</p></li>
+<li><p>nx-cugraph-cu12-25.12.0</p></li>
+<li><p>cufilter-cu12-25.12.0</p></li>
+<li><p>cucim-cu12-25.12.0</p></li>
+<li><p>cuvs-cu12-25.12.0</p></li>
+<li><p>raft-dask-cu12-25.12.0</p></li>
+<li><p>pylibraft-cu12-25.12.0</p></li>
+</ul>
+</details>
+<details>
+<summary>Utilities and networking</summary>
+<ul class="simple">
+<li><p>aiohttp-3.13.1</p></li>
+<li><p>aioitertools-0.12.0</p></li>
+<li><p>aiosignal-1.4.0</p></li>
+<li><p>async-timeout-5.0.1</p></li>
+<li><p>attrs-24.3.0</p></li>
+<li><p>certifi-2024.12.14</p></li>
+<li><p>cramjam-2.9.1</p></li>
+<li><p>charset-normalizer-3.4.1</p></li>
+<li><p>frozenlist-1.5.0</p></li>
+<li><p>fsspec-2024.12.0</p></li>
+<li><p>greenlet-3.1.1</p></li>
+<li><p>idna-3.10</p></li>
+<li><p>joblib-1.4.2</p></li>
+<li><p>multidict-6.1.0</p></li>
+<li><p>packaging-24.2</p></li>
+<li><p>requests-2.32.5</p></li>
+<li><p>typing_extensions-4.12.2</p></li>
+<li><p>urllib3-2.5.0</p></li>
+<li><p>yarl-1.18.3</p></li>
+</ul>
+</details>
+<details>
+<summary>Documentation and logging</summary>
+<ul class="simple">
+<li><p>Markdown-3.7</p></li>
+<li><p>markdown-it-py-3.0.0</p></li>
+<li><p>MarkupSafe-3.0.2</p></li>
+<li><p>mdurl-0.1.2</p></li>
+<li><p>Pygments-2.19.1</p></li>
+<li><p>rich-13.9.4</p></li>
+<li><p>tensorboard-2.18.0</p></li>
+<li><p>tensorboard-data-server-0.7.2</p></li>
+<li><p>Werkzeug-3.1.3</p></li>
+</ul>
+</details>
+<details>
+<summary>Other</summary>
+<ul class="simple">
+<li><p>aiohappyeyeballs-2.6.1</p></li>
+<li><p>patsy-1.0.1</p></li>
+<li><p>propcache-0.2.1</p></li>
+<li><p>PyYAML-6.0.2</p></li>
+<li><p>SQLAlchemy-2.0.37</p></li>
+<li><p>xgboost-3.0.4</p></li>
+</ul>
+</details>
+</details>
+</section>
+</section>
+</section>
+<section id="building-custom-images">
+<h2 id="building-custom-images">Building custom images<a class="headerlink" href="#building-custom-images" title="Permalink to this heading">#</a></h2>
+<p>This section provides instructions on how to build a custom image from the
+Starburst Spark base image.</p>
+<section id="create-a-dockerfile">
+<h3 id="create-a-dockerfile">Create a Dockerfile<a class="headerlink" href="#create-a-dockerfile" title="Permalink to this heading">#</a></h3>
+<p>Create a Dockerfile using the official Starburst Spark image as the base:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">public.ecr.aws/starburstdata/dell-aidp/starburst-spark:4.0-22</span>
+<span class="k">RUN</span> pip install <span class="nv">pandas</span><span class="o">==</span><span class="m">2</span>.1.0 <span class="nv">requests</span><span class="o">==</span><span class="m">2</span>.31.0
+<span class="k">COPY</span> custom-config.xml /opt/starburst/conf/
+<span class="k">ENV</span> <span class="nv">CUSTOM_VAR</span><span class="o">=</span><span class="s2">"enabled"</span>
+</pre></div>
+</div>
+<p>The above example uses <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> to install additional Python libraries,
+copies a custom configuration called <code class="docutils literal notranslate"><span class="pre">custom-config.xml</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">/opt/starburst/conf/</span></code> path, and sets the environment variable to <code class="docutils literal notranslate"><span class="pre">enabled</span></code>.</p>
+<p>See the <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">Dockerfile
+documentation</a> for more details
+on building Dockerfiles.</p>
+</section>
+<section id="push-images-to-a-registry">
+<h3 id="push-images-to-a-registry">Push images to a registry<a class="headerlink" href="#push-images-to-a-registry" title="Permalink to this heading">#</a></h3>
+<p>Before importing a custom image into DDPE, you need to push it to a container
+registry.</p>
+<p>On the Docker CLI, build your image and tag it for an external repository such
+as Docker Hub, AWS ECR, or GitHub Packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t your-org/custom-spark:v1.0
+docker push your-org/custom-spark:v1.0
+</pre></div>
+</div>
+<p>Use the tag, <code class="docutils literal notranslate"><span class="pre">your-org/custom-spark:v1.0</span></code> in the above example, to reference
+your custom image when <a class="reference internal" href="#ddpe-image-import-ui"><span class="std std-ref">importing the image into DDPE</span></a>.</p>
+</section>
+</section>
+<section id="using-custom-images">
+<h2 id="using-custom-images">Using custom images<a class="headerlink" href="#using-custom-images" title="Permalink to this heading">#</a></h2>
+<p>The following sections describe how to use Spark custom images:</p>
+<section id="view-image-details">
+<h3 id="view-image-details">View image details<a class="headerlink" href="#view-image-details" title="Permalink to this heading">#</a></h3>
+<p>In the <strong>Dell Data Processing Engine</strong> section of the UI, select
+<strong>Instance images</strong>.</p>
+<p>The Instance images pane has two tabs:</p>
+<ul class="simple">
+<li><p><strong>Images</strong>: Displays all images in DDPE. Each entry shows the image name,
+Docker tag, type (<code class="docutils literal notranslate"><span class="pre">SPARK</span></code> or <code class="docutils literal notranslate"><span class="pre">NOTEBOOK</span></code>), version, status, and creation date.
+Use the options menu to manage individual images.</p></li>
+<li><p><strong>Imports</strong>: Displays the history of image imports. Each entry
+shows the image name, Docker tag, Docker repository, status, and creation
+date.</p></li>
+</ul>
+<p>Click <strong>View details</strong> in the options menu to see important details about an
+image including the image layers and origin information:</p>
+<figure class="align-default">
+<img alt="View image layers" class="imgborder" src="../_images/ddpe-image-layers.png"/>
+</figure>
+<p>The following is displayed:</p>
+<ul class="simple">
+<li><p><strong>ID</strong>: A unique identifier assigned to the image within DDPE.</p></li>
+<li><p><strong>Digest</strong>: The SHA-256 hash of the Docker image.</p></li>
+<li><p><strong>Origin</strong>: The full URI of the source registry where the image was imported from.</p></li>
+</ul>
+<p>The <strong>Image layers</strong> section includes an ordered list of image layers. Each layer in an
+image contains a set of filesystem changes such as additions or modifications.</p>
+<p>Click any image layer to see the entire command.</p>
+<p>See the <a class="reference external" href="https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/">official Docker
+documentation</a>
+for more information about image layers.</p>
+</section>
+<section id="import-images-with-ddpe-ui">
+<span id="ddpe-image-import-ui"></span><h3 id="import-images-with-ddpe-ui">Import images with DDPE UI<a class="headerlink" href="#import-images-with-ddpe-ui" title="Permalink to this heading">#</a></h3>
+<p>To make a custom or third-party image available for use in your instances, it
+must first be imported into the internal registry using the image import
+process.</p>
+<p>The import process has three steps: submitting the image details, waiting for
+processing to complete, and verifying the image is ready.</p>
+<section id="submission">
+<h4 id="submission">Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>In the <strong>Dell Data Processing Engine</strong> section of the UI, select <strong>Instance
+images</strong>. Click <strong>+ Create new image</strong>.</p></li>
+<li><p>Enter the information for the image:</p>
+<figure class="align-default">
+<img alt="Create new image form" class="imgborder" src="../_images/ddpe-create-image.png"/>
+</figure>
+<ul>
+<li><p><strong>Name</strong>: A unique identifier for the image. This name is used to reference
+the image when submitting jobs.</p></li>
+<li><p><strong>Repository</strong>: The full path to the container image repository, including
+the registry hostname.</p></li>
+<li><p><strong>Docker tag</strong>: The specific version tag of the image to import.</p></li>
+<li><p><strong>Description</strong>: Optional text description to help identify the purpose or
+contents of the custom image.</p></li>
+<li><p><strong>Private repository</strong>: Enable this toggle if the image is hosted in a
+private registry that requires authentication credentials.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Credentials are removed once the import finishes.</p>
+</div>
+</li>
+<li><p><strong>Allow insecure connections</strong>: Enable this toggle to allow connections to
+registries without valid SSL/TLS certificates.</p></li>
+</ul>
+</li>
+<li><p>Click <strong>Create image</strong>.</p></li>
+</ol>
+</section>
+<section id="processing">
+<h4 id="processing">Processing<a class="headerlink" href="#processing" title="Permalink to this heading">#</a></h4>
+<p>In the processing stage, Dell Data Processing Engine fetches the image from the
+given repository, verifies its signature (if applicable), pushes it to the
+internal registry with a unique tag, and creates a new image record in the
+<code class="docutils literal notranslate"><span class="pre">Awaiting</span> <span class="pre">verification</span></code> state.</p>
+</section>
+<section id="verification">
+<h4 id="verification">Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h4>
+<p>A platform administrator can open the details menu for an image with the
+<code class="docutils literal notranslate"><span class="pre">Awaiting</span> <span class="pre">verification</span></code> status and determine whether it should be accepted or
+rejected. Rejecting an image marks it for deletion and makes the <strong>Delete</strong>
+option available:</p>
+<figure class="align-default">
+<img alt="Create new image form" class="imgborder" src="../_images/ddpe-custom-image-details.png"/>
+</figure>
+<p>Once verified, the image status changes to <code class="docutils literal notranslate"><span class="pre">Accepted</span></code> and it becomes available
+for use in your Spark jobs.</p>
+</section>
+</section>
+</section>
+<section id="image-deletion-considerations">
+<span id="ddpe-image-deletion-considerations"></span><h2 id="image-deletion-considerations">Image deletion considerations<a class="headerlink" href="#image-deletion-considerations" title="Permalink to this heading">#</a></h2>
+<p>Consider the following before you delete an image:</p>
+<ol class="arabic simple">
+<li><p>All working instances using a deleted image fail upon restart or scaling
+actions such as changing the number of Spark executor pods.</p></li>
+<li><p>Users and administrators must manually recreate all affected instances using
+a different, available image.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before deleting a verified image, verify that no active workloads
+depend on it.</p>
+</div>
+</section>
+<section id="using-custom-images-in-spark-jobs">
+<h2 id="using-custom-images-in-spark-jobs">Using custom images in Spark jobs<a class="headerlink" href="#using-custom-images-in-spark-jobs" title="Permalink to this heading">#</a></h2>
+<p>After your custom image has been <a class="reference internal" href="#ddpe-image-import-ui"><span class="std std-ref">imported and
+verified</span></a>, you can use it when configuring Spark jobs in
+DDPE:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <strong>Spark Jobs</strong> page in the DDPE UI.</p></li>
+<li><p>Select <strong>Create job</strong> or edit an existing job configuration.</p></li>
+<li><p>In the <strong>Image</strong> dropdown, select your verified custom image.</p></li>
+<li><p>Configure the remaining job parameters as needed.</p></li>
+<li><p>Select <strong>Submit</strong> to launch the job with your custom image.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only images with a status of <code class="docutils literal notranslate"><span class="pre">Accepted</span></code> in the DDPE image registry are
+available for use in Spark jobs. If your image does not appear in the dropdown,
+confirm that the <a class="reference internal" href="#ddpe-image-import-ui"><span class="std std-ref">import and verification process</span></a> has
+completed successfully.</p>
+<p>Access to unsigned and non-base images requires either the manage role or
+explicit permissions granted through BIAC.</p>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="gpu.html" title="GPU acceleration with Spark RAPIDS"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> GPU acceleration with Spark RAPIDS </span>
+              </div>
+            </a>
+          
+          
+            <a href="cli.html" title="Command line interface"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Command line interface </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+<!-- custom footer should go here in time -->
+<div class="page-footer">
+</div>
+<script src="../_static/algolia.js"></script>
+<script src="../_static/searchbox.js"></script>
+<script src="../_static/searchresults.js"></script>
+  </body>
+</html>
