@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', 'UA-114610397-1', 'auto');
+      ga('create', ' UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.16 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.19 LTS logo"
           />
           
         </span>
@@ -172,19 +172,13 @@
       </div>
        
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
-      
-          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
-      
-          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
-      
-          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
-      
-    </div>
-  </div>
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -218,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.16 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.19 LTS</a>
   </label>
   
   
@@ -256,14 +250,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -300,6 +290,7 @@
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -360,7 +351,7 @@ communicate with the coordinator on the cluster.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h2>
 <p>The Trino JDBC driver has the following requirements:</p>
 <ul class="simple">
-<li><p>Java version 8 or higher. Java 22 or higher is recommended for improved
+<li><p>Java version 11 or higher. Java 22 or higher is recommended for improved
 decompression performance.</p></li>
 <li><p>All users that connect to Trino with the JDBC driver must be granted access to
 query tables in the <code class="docutils literal notranslate"><span class="pre">system.jdbc</span></code> schema.</p></li>
@@ -374,12 +365,12 @@ Versions before 350 are not supported.</p>
 </section>
 <section id="installation">
 <span id="jdbc-installation"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/474-e.16/trino-jdbc-474-e.16.jar">trino-jdbc-474-e.16.jar</a> and add it to the classpath of your Java application.</p>
+<p>Download <a class="reference external" href="https://repo.maven.apache.org/maven2/io/trino/trino-jdbc/474-e.19/trino-jdbc-474-e.19.jar">trino-jdbc-474-e.19.jar</a> and add it to the classpath of your Java application.</p>
 <p>The driver is also available from Maven Central:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>io.trino<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>trino-jdbc<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>474-e.16<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>474-e.19<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 </div>

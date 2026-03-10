@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', 'UA-114610397-1', 'auto');
+      ga('create', ' UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -75,7 +75,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Monitor cluster utilization" href="cluster-utilization.html" />
+    <link rel="next" title="Enable autoscaling in SEP clusters" href="autoscaling.html" />
     <link rel="prev" title="Configure fault tolerance for your cluster" href="set-mode-fte.html" />
 
   
@@ -118,7 +118,7 @@
           
           <img
             src="../../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.16 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.19 LTS logo"
           />
           
         </span>
@@ -172,19 +172,13 @@
       </div>
        
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
-      
-          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
-      
-          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
-      
-          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
-      
-    </div>
-  </div>
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -218,7 +212,7 @@
       
     </a>
     <a href="../../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.16 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.19 LTS</a>
   </label>
   
   
@@ -239,14 +233,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -368,6 +358,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="autoscaling.html">Enable autoscaling in SEP clusters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cluster-utilization.html">Monitor cluster utilization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="query-result-caching.html">Query result caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage-billing.html">Usage and billing</a></li>
@@ -384,6 +375,7 @@
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -609,7 +601,9 @@ implementation for any catalogs with Starburst Warp Speed.</p>
 </section>
 <section id="platform-specific-requirements">
 <h3 id="platform-specific-requirements">Platform-specific requirements<a class="headerlink" href="#platform-specific-requirements" title="Permalink to this heading">#</a></h3>
-<p>Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
+<p>Starburst Warp Speed requires your cluster to operate on a Kubernetes-based platform.
+Specifically the <a class="reference internal" href="../../k8s/requirements.html"><span class="doc">Plan your Kubernetes deployment</span></a> apply.</p>
+<p>In addition, Starburst Warp Speed requires specific nodes in terms of CPU and memory. The
 most important additional requirement is that sufficiently performant and sized
 Non-Volatile Memory Express (NVMe) solid-state drive (SSD) storage is available
 on all nodes, and exclusively used by SEP.</p>
@@ -692,6 +686,11 @@ maximum of seven Starburst Warp Speed catalogs.</p></li>
 <p>Starburst Warp Speed is not supported on a cluster running in
 <a class="reference internal" href="../../admin/fault-tolerant-execution.html"><span class="doc">Fault-tolerant execution</span></a> mode.</p>
 </div>
+<p>Starburst Warp Speed uses local storage as an ephemeral cache. Replicating storage volumes for
+Starburst Warp Speed is unnecessary for ephemeral cache data and reduces the total storage
+capacity available for caching and indexing.</p>
+<p>Deployment and management is performed with the SEP Helm charts detailed in
+<a class="reference internal" href="../../k8s.html"><span class="doc">Deploy with Kubernetes</span></a> and <a class="reference internal" href="../../k8s/sep-configuration.html"><span class="doc">Configuring Starburst Enterprise in Kubernetes</span></a>.</p>
 <p>Add the following section in your values file for the specific cluster to enable
 Starburst Warp Speed:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">warpSpeed</span><span class="p">:</span>
@@ -1832,12 +1831,12 @@ workers with the machine size <code class="docutils literal notranslate"><span c
             </a>
           
           
-            <a href="cluster-utilization.html" title="Monitor cluster utilization"
+            <a href="autoscaling.html" title="Enable autoscaling in SEP clusters"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Monitor cluster utilization </span>
+                class="md-footer-nav__direction"> Next </span> Enable autoscaling in SEP clusters </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

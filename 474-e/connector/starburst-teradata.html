@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', 'UA-114610397-1', 'auto');
+      ga('create', ' UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.16 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.19 LTS logo"
           />
           
         </span>
@@ -172,19 +172,13 @@
       </div>
        
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
-      
-          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
-      
-          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
-      
-          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
-      
-    </div>
-  </div>
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -218,7 +212,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.16 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.19 LTS</a>
   </label>
   
   
@@ -239,14 +233,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -360,6 +350,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#sep-controller-and-receiver-installation">SEP controller and receiver installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-teradata-configuration-properties">Additional Teradata configuration properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#encryption">Encryption</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#native-table-operator">Native table operator</a></li>
 </ul>
@@ -384,6 +375,7 @@
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -520,6 +512,8 @@
         <li class="md-nav__item"><a href="#id4" class="md-nav__link">General configuration properties</a>
         </li>
         <li class="md-nav__item"><a href="#additional-teradata-configuration-properties" class="md-nav__link">Additional Teradata configuration properties</a>
+        </li>
+        <li class="md-nav__item"><a href="#configuring-in-kubernetes-deployments" class="md-nav__link">Configuring in Kubernetes deployments</a>
         </li>
         <li class="md-nav__item"><a href="#encryption" class="md-nav__link">Encryption</a>
         </li>
@@ -1750,6 +1744,17 @@ maximum concurrency level on SEP. Defaults to 16, identical to the
 <div><p>Set the path for log files of the <a class="reference internal" href="#native-table-operator"><span class="std std-ref">native table operator</span></a> on the Teradata nodes. Default behavior is to log
 to files in the the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> folder.</p>
 </div></blockquote>
+</section>
+<section id="configuring-in-kubernetes-deployments">
+<h3 id="configuring-in-kubernetes-deployments">Configuring in Kubernetes deployments<a class="headerlink" href="#configuring-in-kubernetes-deployments" title="Permalink to this heading">#</a></h3>
+<p>The Starburst Teradata Direct connector is supported for Kubernetes deployments in
+AWS EKS and in Azure AKS meeting <a class="reference internal" href="../k8s/sep-config-teradata-direct.html"><span class="doc">certain requirements</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The configuration to use the connector on Kubernetes is complex and requires
+significant networking and Kubernetes expertise. Contact Starburst Support for
+assistance and help.</p>
+</div>
 </section>
 <section id="encryption">
 <h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permalink to this heading">#</a></h3>

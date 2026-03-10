@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', 'UA-114610397-1', 'auto');
+      ga('create', ' UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -75,7 +75,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Manual installation and license" href="installation.html" />
+    <link rel="next" title="Deploy with Kubernetes" href="k8s.html" />
     <link rel="prev" title="Starburst Enterprise REST API" href="starburst-rest-api.html" />
 
   
@@ -118,7 +118,7 @@
           
           <img
             src="_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.16 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.19 LTS logo"
           />
           
         </span>
@@ -172,19 +172,13 @@
       </div>
        
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
-      
-          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
-      
-          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
-      
-          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
-      
-    </div>
-  </div>
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -211,7 +205,7 @@
       
     </a>
     <a href="index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.16 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.19 LTS</a>
   </label>
   
   
@@ -232,14 +226,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/cli.html">Command line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dell-data-processing-engine/release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -279,6 +269,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#license-usage">License usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -328,6 +319,7 @@ on all SEP nodes in your clusters.</p>
 <p>The license file needs to be named <code class="docutils literal notranslate"><span class="pre">starburstdata.license</span></code> and located within
 the SEP installation directory as <code class="docutils literal notranslate"><span class="pre">etc/starburstdata.license</span></code>, or whatever
 directory is configured as the etc directory with the launcher script.</p>
+<p>Kubernetes users need to follow the <a class="reference internal" href="k8s/sep-config-examples.html#helm-sep-license"><span class="std std-ref">available instructions</span></a>, which are included in the <a class="reference internal" href="k8s.html"><span class="doc">complete documentation for Kubernetes usage with Helm</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using <a class="reference internal" href="data-engineering/cost-and-performance/set-mode-ws.html"><span class="doc">Enable Starburst Warp Speed for your cluster</span></a> requires a
@@ -361,12 +353,12 @@ configured SEP license file regardless of the SEP deployment method.</p>
             </a>
           
           
-            <a href="installation.html" title="Manual installation and license"
+            <a href="k8s.html" title="Deploy with Kubernetes"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Manual installation and license </span>
+                class="md-footer-nav__direction"> Next </span> Deploy with Kubernetes </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

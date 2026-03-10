@@ -51,7 +51,7 @@
           (ga.q = ga.q || []).push(arguments)
       };
       ga.l = +new Date;
-      ga('create', 'UA-114610397-1', 'auto');
+      ga('create', ' UA-114610397-1', 'auto');
       ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Dell Data Processing Engine API" href="api.html" />
-    <link rel="prev" title="Object storage governance" href="object-storage-governance.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.16 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.19 LTS logo"
           />
           
         </span>
@@ -172,19 +172,13 @@
       </div>
        
   
-  <div class="md-flex__cell md-flex__cell--shrink dropdown">
-    <button class="dropdownbutton">Choose version</button>
-    <div class="dropdown-content md-hero">
-          <a title="Latest LTS (476-e)" href="/476-e/">Latest LTS (476-e)</a>
-      
-          <a title="474-e LTS" href="/474-e/">474-e LTS</a>
-      
-          <a title="468-e LTS" href="/468-e/">468-e LTS</a>
-      
-          <a title="462-e LTS" href="/462-e/">462-e LTS</a>
-      
-    </div>
-  </div>
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
   
 
     </div>
@@ -211,7 +205,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.16 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.19 LTS</a>
   </label>
   
   
@@ -232,22 +226,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command line interface</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-cli">Running the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#global-arguments">Global arguments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general">General</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#connecting-to-hms-with-kerberos-authentication">Connecting to HMS with Kerberos authentication</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#admin">Admin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
@@ -261,11 +247,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#submit-a-batch-job-on-a-schedule">Submit a batch job on a schedule</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#submit-a-spark-connect-job">Submit a Spark Connect job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-resource-pools">Configure resource pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assign-roles-to-users">Assign roles to users</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -302,6 +290,7 @@
 <p class="caption" role="heading"><span class="caption-text">SEP deployment mechanisms</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../license-requirements.html">Starburst Enterprise license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s.html">Deploy with Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Manual installation and license</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -335,11 +324,7 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#global-arguments" class="md-nav__link">Global arguments</a>
         </li>
-        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#connecting-to-hms-with-kerberos-authentication" class="md-nav__link">Connecting to HMS with Kerberos authentication</a>
-        </li></ul>
-            </nav>
+        <li class="md-nav__item"><a href="#general" class="md-nav__link">General</a>
         </li>
         <li class="md-nav__item"><a href="#admin" class="md-nav__link">Admin</a>
         </li>
@@ -364,6 +349,8 @@
         <li class="md-nav__item"><a href="#submit-a-spark-connect-job" class="md-nav__link">Submit a Spark Connect job</a>
         </li>
         <li class="md-nav__item"><a href="#configure-resource-pools" class="md-nav__link">Configure resource pools</a>
+        </li>
+        <li class="md-nav__item"><a href="#assign-roles-to-users" class="md-nav__link">Assign roles to users</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -392,8 +379,8 @@ Processing Engine queries.</p>
 </section>
 <section id="installation">
 <span id="ddpe-cli-install"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="http://software.starburstdata.net/#dell-data-processing-engine/237.1-474-e.2/">Download and extract the .tar.gz file from the downloads
-archive</a>.
+<p>Download and extract the <a class="reference external" href="http://software.starburstdata.net/#dell-data-processing-engine/0.1.170-1/">.tar.gz
+file</a>.
 In the terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and execute the
 <code class="docutils literal notranslate"><span class="pre">dell-data-processing-engine.sh</span></code> script with the <code class="docutils literal notranslate"><span class="pre">version</span></code> command to see the
 version of the CLI:</p>
@@ -464,7 +451,7 @@ use. If no profile is specified, then the default profile is used.</p></td>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--log-level=&lt;messagingMode&gt;</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logLevel=&lt;messagingMode&gt;</span></code></p></td>
 <td><p>Changes the output/logging level: <code class="docutils literal notranslate"><span class="pre">standard</span></code> or <code class="docutils literal notranslate"><span class="pre">debug</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">standard</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--keystore</span></code></p></td>
@@ -495,23 +482,10 @@ use. If no profile is specified, then the default profile is used.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">login</span></code></p></td>
 <td><p>Login, start a new session, and set or change the default profile.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Request that your IdP always presents a login screen
-even if you are already logged in.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--no-browser</span></code>. Disables automatically opening the verification URL in the default browser.</p></li>
-</ul>
-</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Request that your IdP always presents a login screen
+even if you are already logged in.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">login-with-credentials</span></code></p></td>
-<td><p>Login, start a new session, and set or change the default profile using your
-username and password</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code>, <code class="docutils literal notranslate"><span class="pre">--username</span></code>. Username to use for login. <strong>Required</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>, <code class="docutils literal notranslate"><span class="pre">--password</span></code>. Password to use for login. <strong>Required</strong>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
 <td><p>Emulation of Spark’s <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>
 script. Not all options and combinations are supported.</p></td>
 <td><ul>
@@ -549,12 +523,12 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 <li><p><code class="docutils literal notranslate"><span class="pre">--spark-connect</span></code>. Start a Spark Connect instance instead of a batch job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>. CRON timezone. Defaults to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron</span></code>. Set a CRON schedule.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--class</span></code>. Your Java or Scala application’s main class.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
 <td><p>List URIs for a batch or connect job. Spark Connect URIs contain your current access and refresh tokens.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -563,83 +537,15 @@ if upload <code class="docutils literal notranslate"><span class="pre">m-1234567
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p>Show the current version.</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<section id="connecting-to-hms-with-kerberos-authentication">
-<h4 id="connecting-to-hms-with-kerberos-authentication">Connecting to HMS with Kerberos authentication<a class="headerlink" href="#connecting-to-hms-with-kerberos-authentication" title="Permalink to this heading">#</a></h4>
-<p>When submitting a Spark job while using <a class="reference internal" href="../security/kerberos.html"><span class="doc std std-doc">Kerberos
-authentication</span></a> with Hive Metastore, there are some
-additional configuration steps required:</p>
-<ol class="arabic simple">
-<li><p>Upload a keytab and Kerberos config file using the CLI, such as:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos config"</span> /path/to/krb5.conf
-  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos keytab"</span> /path/to/hive.keytab
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Run the following Python script to authenticate a PySpark application using Kerberos credentials from a keytab file:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-
-<span class="k">def</span> <span class="nf">loginUserFromKeytab</span><span class="p">():</span>
-    <span class="n">sc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
-    <span class="n">hadoop_conf</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span>
-
-    <span class="n">keytab</span> <span class="o">=</span> <span class="n">hadoop_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"spark.yarn.keytab"</span><span class="p">)</span>
-    <span class="n">principal</span> <span class="o">=</span> <span class="n">hadoop_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"spark.yarn.principal"</span><span class="p">)</span>
-
-    <span class="n">ugi_class</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">hadoop</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">UserGroupInformation</span>
-    <span class="n">ugi_class</span><span class="o">.</span><span class="n">loginUserFromKeytab</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span> <span class="n">keytab</span><span class="p">)</span>
-
-<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
-    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"FixedKeyMapping"</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">enableHiveSupport</span><span class="p">()</span> \
-    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-
-<span class="n">loginUserFromKeytab</span><span class="p">()</span>
-
-<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SHOW DATABASES"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The script creates a Spark session with Hive support enabled, and then
-retrieves the keytab file path and principal name from the Spark configuration
-and uses them to complete Kerberos authentication. Once authenticated, the
-script runs the <code class="docutils literal notranslate"><span class="pre">spark.sql("SHOW</span> <span class="pre">DATABASES").show()</span></code> command as an example to
-list available databases.</p>
-<ol class="arabic simple" start="3">
-<li><p>Run the following example <code class="docutils literal notranslate"><span class="pre">submit</span></code> command, replacing the keytab file name,
-principal, and the Thrift URL in the command to match your environment:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./cli/target/dell-data-processing-engine/bin/dell-data-processing-engine submit <span class="se">\</span>
---uploaded-files m-109b31726b2640fd897051507903d4ba:/kerberos/config <span class="se">\</span>
---uploaded-files m-f4e021419cf44990bda2cfc3d039f0ae:/kerberos/keytab <span class="se">\</span>
---conf spark.sql.catalogImplementation<span class="o">=</span>hive <span class="se">\</span>
---conf spark.security.credentials.hive.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
---conf spark.hadoop.hive.metastore.use.SSL<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
---conf spark.hadoop.hive.metastore.uris<span class="o">=</span>thrift://10.0.0.92:9083 <span class="se">\</span>
---conf spark.hadoop.hive.metastore.sasl.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
---conf spark.hadoop.hive.metastore.authentication<span class="o">=</span>KERBEROS <span class="se">\</span>
---conf spark.hadoop.hive.metastore.kerberos.keytab.file<span class="o">=</span>/opt/spark/uploads/kerberos/keytab/hive.keytab <span class="se">\</span>
---conf spark.hadoop.hive.metastore.kerberos.principal<span class="o">=</span>hive/hadoop-master@LABS.TERADATA.COM <span class="se">\</span>
---conf spark.hadoop.spark.yarn.keytab<span class="o">=</span>/opt/spark/uploads/kerberos/keytab/hive.keytab <span class="se">\</span>
---conf spark.hadoop.spark.yarn.principal<span class="o">=</span>hive/hadoop-master@LABS.TERADATA.COM <span class="se">\</span>
---conf spark.hadoop.hadoop.security.authentication<span class="o">=</span>kerberos <span class="se">\</span>
---conf spark.hadoop.hadoop.security.authorization<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
---conf spark.driver.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
---conf spark.executor.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
-  path-to-the-python-file
-</pre></div>
-</div>
-</section>
 </section>
 <section id="admin">
-<span id="ddpe-cli-admin"></span><h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permalink to this heading">#</a></h3>
+<h3 id="admin">Admin<a class="headerlink" href="#admin" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Admin commands are available for admin users only.</p>
@@ -660,7 +566,7 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">api-logs</span></code></p></td>
 <td><p>List API server logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-instances</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-all-instances</span></code></p></td>
 <td><p>List all instances.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-file-upload</span></code></p></td>
@@ -674,9 +580,6 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
 <td><p>List system events.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
-<td><p>List the Spark History Server logs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -731,12 +634,52 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 </tr>
 </tbody>
 </table>
+<table id="id5">
+<caption><span class="caption-text">Dell Data Processing Engine user and role management CLI commands</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 30%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">assign-roles</span></code></p></td>
+<td><p>Assign a user to a role.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code>, <code class="docutils literal notranslate"><span class="pre">--user</span></code>. User name that is being assigned the role. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">--role</span></code>. The role that the user is assigned to. <strong>Required</strong>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-roles</span></code></p></td>
+<td><p>Show the current user’s role assignments.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unassign-roles</span></code></p></td>
+<td><p>Unassign a user from a role.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-u</span></code>, <code class="docutils literal notranslate"><span class="pre">--user</span></code>. User name that is being unassigned from the role. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">--role</span></code>. The role that the user is unassigned from. <strong>Required</strong>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">update-role-assignments</span></code></p></td>
+<td><p>Replace all user role assignments.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="configuration">
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for configuration tasks:</p>
-<table id="id5">
-<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -758,9 +701,7 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
-<td><p>Set configuration. Any values set for <code class="docutils literal notranslate"><span class="pre">--cert</span></code> and <code class="docutils literal notranslate"><span class="pre">--keystore</span></code> are saved in
-your configuration file. Any previously stored certificates or keystores are
-cleared by this command.</p></td>
+<td><p>Set configuration.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-a</span></code>, <code class="docutils literal notranslate"><span class="pre">--api-endpoint</span></code>. The URI of your API server. <strong>Required</strong>.</p></td>
 </tr>
 </tbody>
@@ -769,8 +710,8 @@ cleared by this command.</p></td>
 <section id="instance">
 <h3 id="instance">Instance<a class="headerlink" href="#instance" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for instance-related tasks:</p>
-<table id="id6">
-<caption><span class="caption-text">Dell Data Processing Engine instance CLI commands</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Dell Data Processing Engine instance CLI commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -796,26 +737,22 @@ cleared by this command.</p></td>
 current access and refresh tokens.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
-<td><p>List instances available to you.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
 <td><p>Delete a batch job or Spark Connect instance.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for deletion confirmation.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
 <td><p>Get logs of a batch or Spark Connect job.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--index</span></code>. For logs that use 0 as the index.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--zip-file</span></code>. Download logs for the driver and executors as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. <strong>Optional</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--zipfile</span></code>. Download logs for the driver and executors as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. <strong>Optional</strong>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>List the status of a batch or Spark Connect job.</p></td>
 <td></td>
 </tr>
@@ -825,8 +762,8 @@ current access and refresh tokens.</p></td>
 <section id="profile">
 <h3 id="profile">Profile<a class="headerlink" href="#profile" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for profile-related tasks:</p>
-<table id="id7">
-<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -866,11 +803,11 @@ current access and refresh tokens.</p></td>
 </table>
 </section>
 <section id="uploads">
-<span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
+<h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for tasks related to file uploads and
 secrets:</p>
-<table id="id8">
-<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1102,6 +1039,25 @@ configuration:</p>
 </pre></div>
 </div>
 </section>
+<section id="assign-roles-to-users">
+<span id="ddpe-cli-assign-roles"></span><h3 id="assign-roles-to-users">Assign roles to users<a class="headerlink" href="#assign-roles-to-users" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">assign-roles</span></code> command can be used to assign the role <code class="docutils literal notranslate"><span class="pre">role</span></code> to the user
+<code class="docutils literal notranslate"><span class="pre">user</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine admin users assign-roles -r role -u user
+</pre></div>
+</div>
+<p>To assign the <code class="docutils literal notranslate"><span class="pre">admin</span></code> role to <code class="docutils literal notranslate"><span class="pre">user</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine admin users assign-roles -r admin -u user
+</pre></div>
+</div>
+<p>Similarly, you can unassign roles from users with the <code class="docutils literal notranslate"><span class="pre">unassign-roles</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine admin users unassign-roles -r role -u user
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine admin users unassign-roles -r admin -u user
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1116,7 +1072,7 @@ configuration:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="object-storage-governance.html" title="Object storage governance"
+            <a href="overview.html" title="Overview"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1125,7 +1081,7 @@ configuration:</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Object storage governance </span>
+                      class="md-footer-nav__direction"> Previous </span> Overview </span>
               </div>
             </a>
           
