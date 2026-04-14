@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 476-e.17 LTS logo"
+            alt="Dell Data Analytics Engine 476-e.18 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.17 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 476-e.18 LTS</a>
   </label>
   
   
@@ -260,6 +260,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-15-changes-9-mar-2026">476-e.15 changes (9 Mar 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-16-changes-11-mar-2026">476-e.16 changes (11 Mar 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-17-changes-17-mar-2026">476-e.17 changes (17 Mar 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-18-changes-2-apr-2026">476-e.18 changes (2 Apr 2026)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-474-e.html">Release 474-e LTS (2 Jun 2025)</a></li>
@@ -379,6 +380,7 @@
 <li><a class="reference internal" href="#e-15-changes-9-mar-2026">476-e.15 changes (9 Mar 2026)</a></li>
 <li><a class="reference internal" href="#e-16-changes-11-mar-2026">476-e.16 changes (11 Mar 2026)</a></li>
 <li><a class="reference internal" href="#e-17-changes-17-mar-2026">476-e.17 changes (17 Mar 2026)</a></li>
+<li><a class="reference internal" href="#e-18-changes-2-apr-2026">476-e.18 changes (2 Apr 2026)</a></li>
 </ul>
 </li>
 </ul>
@@ -736,7 +738,23 @@ Troubleshoot output.</p>
 <span id="release-476-e-17"></span><h2 id="e-17-changes-17-mar-2026">476-e.17 changes (17 Mar 2026)<a class="headerlink" href="#e-17-changes-17-mar-2026" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>SEP and related Docker images are now signed with cosign, allowing you to
-verify image authenticity and integrity.</p></li>
+verify image authenticity and integrity.</p>
+</li>
+</ul>
+</section>
+<section id="e-18-changes-2-apr-2026">
+<span id="release-476-e-18"></span><h2 id="e-18-changes-2-apr-2026">476-e.18 changes (2 Apr 2026)<a class="headerlink" href="#e-18-changes-2-apr-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added support for CData OEM authentication for the generic JDBC connector.</p></li>
+<li><p>Iceberg materialized views that use non-deterministic scalar functions such as
+<code class="docutils literal notranslate"><span class="pre">current_timestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">current_date</span></code>, <code class="docutils literal notranslate"><span class="pre">localtimestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">localtime</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">random()</span></code> are now correctly identified as potentially stale.</p></li>
+<li><p>Refreshing a materialized view that uses non-deterministic functions now
+always performs a full refresh instead of an incremental refresh. Forcing full
+refresh ensures the materialized view accurately reflects the current state of
+the base query.</p></li>
+<li><p>Fixed a bug where <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> and <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> statements could remove the wrong rows
+from Delta Lake tables stored in Parquet files with column index metadata.</p></li>
 </ul>
 </section>
 </section>
