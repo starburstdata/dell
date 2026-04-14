@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 479-e.4 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.5 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.4 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.5 LTS</a>
   </label>
   
   
@@ -256,6 +256,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#admin">Admin</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#resource-pools">Resource pools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instance-images">Instance images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log-retention">Log retention</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#instance-logs-cleaner">Instance logs cleaner</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#system-maintenance">System maintenance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#global-storage">Global storage</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
@@ -348,6 +355,13 @@
 </li>
 <li><a class="reference internal" href="#admin">Admin</a><ul>
 <li><a class="reference internal" href="#resource-pools">Resource pools</a></li>
+<li><a class="reference internal" href="#instance-images">Instance images</a></li>
+<li><a class="reference internal" href="#log-retention">Log retention</a><ul>
+<li><a class="reference internal" href="#instance-logs-cleaner">Instance logs cleaner</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#system-maintenance">System maintenance</a></li>
+<li><a class="reference internal" href="#global-storage">Global storage</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
@@ -393,7 +407,7 @@ Processing Engine queries.</p>
 </section>
 <section id="installation">
 <span id="ddpe-cli-install"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/250-476-e-RC2/">Download and extract the .tar.gz
+<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/286-479-e.4/">Download and extract the .tar.gz
 file from the downloads archive</a>.
 In the terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and execute the
 <code class="docutils literal notranslate"><span class="pre">dell-data-processing-engine.sh</span></code> script with the <code class="docutils literal notranslate"><span class="pre">version</span></code> command to see the
@@ -410,22 +424,33 @@ Engine API</span></a> endpoints, such as managing your profiles, submitting batc
 jobs, and configuring resource pools. You can view <a class="reference internal" href="#ddpe-cli-commands"><span class="std std-ref">supported
 commands</span></a>, or run the CLI with <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> to see all
 available options:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>❯ ./dell-data-processing-engine <span class="nb">help</span>
-Usage: dell-data-processing-engine <span class="o">[</span>-hV<span class="o">]</span> <span class="o">[</span>-p<span class="o">=</span>&lt;profile&gt;<span class="o">]</span> <span class="o">[</span>COMMAND<span class="o">]</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>❯ ./dell-data-processing-engine --help
 Use this application to manage Dell Data Processing Engine
-  -h, --help                Show this <span class="nb">help</span> message and exit.
-  -p, --profile<span class="o">=</span>&lt;profile&gt;   Configuration profile to use <span class="o">(</span>default profile is used <span class="k">if</span> not specified<span class="o">)</span>
-  -V, --version             Print version information and exit.
+  -h, --help                Show usage help and exit. Note: must be the last argument.
+
+Global Options:
+  -p, --profile=&lt;profile&gt;   Configuration profile to use (default profile is used if not specified)
+      --insecure            Skip SSL certificate validation. WARNING! This should only be used for testing.
+      --log-level=&lt;logLevel&gt;
+                            Change the output/logging level: quiet, standard, debug
+      --format=&lt;displayMode&gt;
+                            For commands that produce a result, changes how the result is formatted: table, simple, json, prettyJson, raw
+      --keystore=&lt;path:password&gt;
+                            Path to a KeyStore containing client certificates and the KeyStore password
+      --cert=&lt;path&gt;         Path to an X509 client certificate (PEM format) or a directory of X509 client certificates
+
 Commands:
-  <span class="nb">help</span>     Display <span class="nb">help</span> information about the specified command.
-  config   Commands to configure this application
-  login    Login, start a new session, and set/change the default profile
-  submit   Emulation of the spark-submit script
-  uploads  Commands to manage file uploads and secrets
-  status   List status of a batch or connect job
-  logs     Get logs of a batch or connect job
-  delete   Delete a batch job or Spark Connect instance
-  profile  Commands to get or <span class="nb">set</span> the default profile
+  config                    Commands to configure this application
+  login                     Login, start a new session, and set/change the default profile
+  login-with-credentials    Login, start a new session, and set/change the default profile using your username and password
+  token                     Authentication/token management
+  submit                    Emulation of Spark's spark-submit script
+  notebook                  Notebook management
+  instance                  Instance management
+  uploads                   Commands to manage file uploads and secrets
+  profile                   Commands to get or set the default profile
+  version                   Show the current version
+  instance-image            Instance images
 </pre></div>
 </div>
 </section>
@@ -680,6 +705,21 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
 <td><p>List the Spark History Server logs.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
+<td><p>Resource pool management</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
+<td><p>System maintenance management</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
+<td><p>Log retention commands.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
+<td><p>Global storage management.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
+<td><p>Instance images management.</p></td>
+</tr>
 </tbody>
 </table>
 <section id="resource-pools">
@@ -698,16 +738,16 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get-assignments</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
+<td><p>Resource pool management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-assignments</span></code></p></td>
 <td><p>Get the current resource pool user assignments.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
 <td><p>Get the current state of the resource pools.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
-<td><p>Resource pool management.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
@@ -758,6 +798,247 @@ overriding unspecified fields with default values.</p></td>
 </ul>
 </td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update</span></code></p></td>
+<td><p>Update an existing resource pool. Only specified fields are updated.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. The name for this resource pool.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--min-memory</span></code>. The minimum amount of memory in gigabytes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--min-cores</span></code>. The minimum number of cores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--priority</span></code>. Resource pool priority.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-memory</span></code>. The maximum amount of memory in gigabytes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-cores</span></code>. The maximum number of cores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-gpus</span></code>. The maximum number of GPU cores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--application-max-gpus</span></code>. The maximum number of GPU cores per application.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="instance-images">
+<h4 id="instance-images">Instance images<a class="headerlink" href="#instance-images" title="Permalink to this heading">#</a></h4>
+<table id="id5">
+<caption><span class="caption-text">Instance image management commands</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 30%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
+<td><p>Instance image management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create-instance-image-import</span></code></p></td>
+<td><p>Import a container image to use as an instance image.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for your image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>. An optional description of the image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--repository</span></code>. The container image repository URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--tag</span></code>. The image tag to import.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--allowInsecure</span></code>. Allow insecure connections to the image repository.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--username</span></code>. Username for repository authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--password</span></code>. Password for repository authentication.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get-instance-image</span></code></p></td>
+<td><p>Get instance image details.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-instance-image-import-status</span></code></p></td>
+<td><p>Get instance image import status.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-instance-image-imports</span></code></p></td>
+<td><p>List instance imports.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-instance-images</span></code></p></td>
+<td><p>List instance images.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update-instance-image-status</span></code></p></td>
+<td><p>Update the status of an instance image.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code>. The new status to set for the image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>. An optional status description.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="log-retention">
+<h4 id="log-retention">Log retention<a class="headerlink" href="#log-retention" title="Permalink to this heading">#</a></h4>
+<table id="id6">
+<caption><span class="caption-text">Log retention commands</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
+<td><p>Log retention commands.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<td><p>Show current log retention settings.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update</span></code></p></td>
+<td><p>Update the log retention settings.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-compaction-enabled</span></code>. Enable or disable Spark event logs compaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-compaction-max-files-to-retain</span></code>. Maximum number of
+Spark event logs files to retain after compaction. Defaults to <code class="docutils literal notranslate"><span class="pre">16</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-cleaner-enabled</span></code>. Enable or disable Spark event logs cleaner.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-cleaner-max-age</span></code>. Max age of Spark event logs to keep,
+such as <code class="docutils literal notranslate"><span class="pre">30d</span></code> or <code class="docutils literal notranslate"><span class="pre">36h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">30d</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-cleaner-interval</span></code>. Interval for running Spark event
+logs cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d</span></code> or <code class="docutils literal notranslate"><span class="pre">12h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">1d</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-logs-cleaner-enabled</span></code>. Enable or disable instance logs cleaner.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-logs-cleaner-max-age</span></code>. Max age of instance logs to keep, such
+as <code class="docutils literal notranslate"><span class="pre">30d</span></code> or <code class="docutils literal notranslate"><span class="pre">36h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">30d</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-logs-cleaner-interval</span></code>. Interval for running instance logs
+cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d</span></code> or <code class="docutils literal notranslate"><span class="pre">12h</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">1d</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reset</span></code></p></td>
+<td><p>Reset the log retention settings to their default values.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="instance-logs-cleaner">
+<h5 id="instance-logs-cleaner">Instance logs cleaner<a class="headerlink" href="#instance-logs-cleaner" title="Permalink to this heading">#</a></h5>
+<table id="id7">
+<caption><span class="caption-text">Instance logs cleaner commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 50%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance-logs-cleaner</span></code></p></td>
+<td><p>Commands to clean instance logs.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">run</span></code></p></td>
+<td><p>Run the instance logs cleaner.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<td><p>Show the instance logs cleaner status.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop</span></code></p></td>
+<td><p>Stop the instance logs cleaner.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="system-maintenance">
+<h4 id="system-maintenance">System maintenance<a class="headerlink" href="#system-maintenance" title="Permalink to this heading">#</a></h4>
+<table id="id8">
+<caption><span class="caption-text">System maintenance commands</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 30%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
+<td><p>System maintenance management</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<td><p>Get the current system maintenance mode status.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable</span></code></p></td>
+<td><p>Activate system maintenance mode.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">disable</span></code></p></td>
+<td><p>Deactivate system maintenance mode.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history</span></code></p></td>
+<td><p>Get the history of system maintenance.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="global-storage">
+<h4 id="global-storage">Global storage<a class="headerlink" href="#global-storage" title="Permalink to this heading">#</a></h4>
+<table id="id9">
+<caption><span class="caption-text">Global storage commands</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 30%"/>
+<col style="width: 60%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
+<td><p>Global storage management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<td><p>Get global storage usage.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--more-instances</span></code>. Get usage for top instances. Defaults to top <code class="docutils literal notranslate"><span class="pre">20</span></code>
+instances.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-resource-pools</span></code>. Get usage for all resource pools.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">refresh</span></code></p></td>
+<td><p>Refresh global storage usage.</p></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -765,8 +1046,8 @@ overriding unspecified fields with default values.</p></td>
 <section id="configuration">
 <span id="ddpe-cli-config"></span><h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for configuration tasks:</p>
-<table id="id5">
-<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -799,8 +1080,8 @@ cleared by this command.</p></td>
 <section id="instance">
 <span id="ddpe-cli-instance"></span><h3 id="instance">Instance<a class="headerlink" href="#instance" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for instance-related tasks:</p>
-<table id="id6">
-<caption><span class="caption-text">Dell Data Processing Engine instance CLI commands</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Dell Data Processing Engine instance CLI commands</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -886,8 +1167,8 @@ instance. A new instance is created based on the saved instance.</p></td>
 <section id="jupyter-notebooks">
 <span id="ddpe-cli-notebook"></span><h3 id="jupyter-notebooks">Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h3>
 <p>The following CLI command can be used for Jupyter Notebook-related tasks:</p>
-<table id="id7">
-<caption><span class="caption-text">Dell Data Processing Engine Jupyter Notebook CLI commands</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id12">
+<caption><span class="caption-text">Dell Data Processing Engine Jupyter Notebook CLI commands</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 15%"/>
 <col style="width: 45%"/>
@@ -917,8 +1198,8 @@ instance. A new instance is created based on the saved instance.</p></td>
 <p>A profile is a named set of configuration and access settings that defines how a
 user interacts with Dell Data Processing Engine. The following CLI commands can
 be used for profile-related tasks:</p>
-<table id="id8">
-<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id13">
+<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -960,8 +1241,8 @@ be used for profile-related tasks:</p>
 <section id="token-management">
 <span id="ddpe-cli-token"></span><h3 id="token-management">Token management<a class="headerlink" href="#token-management" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for managing authentication tokens:</p>
-<table id="id9">
-<caption><span class="caption-text">Dell Data Processing Engine token CLI commands</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id14">
+<caption><span class="caption-text">Dell Data Processing Engine token CLI commands</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1001,8 +1282,8 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">60s</sp
 <span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for tasks related to file uploads and
 secrets:</p>
-<table id="id10">
-<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id15">
+<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1083,6 +1364,84 @@ Used only for your own reference purposes. <strong>Required</strong>.</p></li>
 </tr>
 </tbody>
 </table>
+<!--
+### Storage
+
+:::{list-table} Storage commands
+:widths: 10, 30, 60
+:header-rows: 1
+
+* - Command
+  - Description
+  - Options
+* - `activate`
+  - Activate this storage. Once activation has completed, the storage is
+    available for use.
+  -
+* - `deactivate`
+  - Deactivate this storage. Once no workloads are using the storage, it is
+    deactivated.
+  -
+* - `delete`
+  - Schedule a storage and its files to be deleted.
+  -
+* - `delete-item`
+  - Delete a single item from a storage. The storage must be new or inactive.
+  - * `-n`, `--name`. Item name or path. **Required**.
+* - `get-item`
+  - Get a specific item from storage.
+  - * `-k`, `--key`. The full path that was used to upload the item. **Required**.
+    * `-f`, `--output`. The destination file to write the item to. **Required**.
+    * `--overwrite`. Whether to overwrite the destination file if it already exists.
+* - `list`
+  - List all storages.
+  -
+* - `update`
+  - Change an existing storage's name and description.
+  - * `-n`, `--name`. New name for the storage. Names must be unique.
+    * `-d`, `--description`. New description for the storage.
+* - `rename-item`
+  - Rename an item from a storage. The storage must be new or inactive.
+  - * `-n`, `--name`. Item name or path. **Required**.
+    * `-r`, `--new-name`. New item name or path. **Required**.
+* - `seal`
+  - Seal a storage. No further items can be added or removed.
+  -
+* - `info`
+  - Get the details of a storage set.
+  -
+* - `upload`
+  - Upload a set of files to storage.
+  - * `-n`, `--name`. The name of this storage. If a storage with the same name
+    already exists and has not yet completed, this appends to the existing
+    storage. **Required**.
+    * `-d`, `--description`. The description of this storage.
+    * `-m`, `--mapping`. Maps source file names to destination paths using
+      patter
+
+      Wildcards:
+
+       `*` - Any characters (except path separators) <br>
+       `**` - Any characters (including path separators) <br>
+       `?` - Single character <br>
+       `{name}` - Named capture group
+
+      Without wildcards, the mapping is treated as a literal match.
+
+      Examples:
+
+       `a=b` - Literal: `a` -> `b` <br>
+       `*.txt=backup/*.txt` - `foo.txt` -> `backup/foo.txt` <br>
+       `{name}-{ver}.jar=lib/{name}/{ver}.jar` - `app-1.0.jar` -> `lib/app/1.0.jar`
+
+    * `--show-mappings-only`. Does not perform the upload, only shows the file
+      mappings that would be applied.
+    * `--retain-paths`. Retain relative paths of uploaded files. For example, if
+      uploading files from `/mycomputer/users/work/data/local` and the working
+      directory is `/mycomputer/users/work/`, the uploaded files retain the
+      `data/local/` path. Use `--mappings` to override this behavior.
+:::
+-->
 </section>
 </section>
 <section id="examples">
@@ -1179,7 +1538,7 @@ sparkId <span class="p">|</span> c-eed1bf18f8526486c9ecddf9819a273db
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Spark Web UI: https://c-eed1bf18f8526486c9ecddf9819a273db-ui.local.net:8787
-Spark Connect: sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/token<span class="o">=</span>eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ...
+Spark Connect: sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/token<span class="o">=</span>eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ...<span class="s2">"</span>
 </pre></div>
 </div>
 <p>Copy the token and use the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option to run on PySpark:</p>
