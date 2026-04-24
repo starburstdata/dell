@@ -75,7 +75,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="System maintenance mode" href="maintenance-mode.html" />
+    <link rel="next" title="Log retention settings" href="log-retention.html" />
     <link rel="prev" title="Overview" href="overview.html" />
 
   
@@ -254,14 +254,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#notebook-example">Notebook example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#log-retention-settings">Log retention settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#event-logs-compaction">Event logs compaction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-logs-cleaner">Event logs cleaner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#instance-logs-cleaner">Instance logs cleaner</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention.html">Log retention settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maintenance-mode.html">System maintenance mode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
@@ -345,12 +340,6 @@
 <li><a class="reference internal" href="#start-notebook-server">Start Notebook server</a></li>
 <li><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
 <li><a class="reference internal" href="#notebook-example">Notebook example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#log-retention-settings">Log retention settings</a><ul>
-<li><a class="reference internal" href="#event-logs-compaction">Event logs compaction</a></li>
-<li><a class="reference internal" href="#event-logs-cleaner">Event logs cleaner</a></li>
-<li><a class="reference internal" href="#instance-logs-cleaner">Instance logs cleaner</a></li>
 </ul>
 </li>
 </ul>
@@ -644,78 +633,6 @@ documentation</a> for more
 details.</p>
 </section>
 </section>
-<section id="log-retention-settings">
-<h2 id="log-retention-settings">Log retention settings<a class="headerlink" href="#log-retention-settings" title="Permalink to this heading">#</a></h2>
-<p>DDPE retains logs for completed and failed Spark jobs, Spark Connect servers,
-and Jupyter Notebooks for troubleshooting and auditing purposes. You can
-configure how long these logs are kept before they are automatically deleted.</p>
-<p>See the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/monitoring.html#applying-compaction-on-rolling-event-log-files">official Spark
-documentation</a>
-for more details.</p>
-<p>Click <strong>Log retention settings</strong> in the top-right options menu of the <strong>Spark
-jobs</strong> pane to configure log retention:</p>
-<figure class="align-default">
-<img alt="Log retention settings" class="imgborder" src="../_images/ddpe-log-retention.png"/>
-</figure>
-<p>The following settings are available:</p>
-<section id="event-logs-compaction">
-<h3 id="event-logs-compaction">Event logs compaction<a class="headerlink" href="#event-logs-compaction" title="Permalink to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Applies to Spark batch jobs and Spark Connect servers.</p>
-</div>
-<p>Use the toggle to enable or disable event log compaction. When enabled, Spark
-saves storage space by automatically limiting and merging old logs.</p>
-<p>In the <strong>Max files to retain</strong> field, enter the maximum number of event log
-files to retain. Files beyond this limit are compacted.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Compaction is a lossy operation. Some events are discarded during
-compaction and are no longer visible in the Spark History Server UI. Review the
-<a class="reference external" href="https://spark.apache.org/docs/3.5.7/monitoring.html#applying-compaction-on-rolling-event-log-files">official Spark
-documentation</a>
-for more details.</p>
-</div>
-</section>
-<section id="event-logs-cleaner">
-<h3 id="event-logs-cleaner">Event logs cleaner<a class="headerlink" href="#event-logs-cleaner" title="Permalink to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Applies to Spark batch jobs and Spark Connect servers.</p>
-</div>
-<p>Use the toggle to enable or disable the event logs cleaner. When enabled, old
-event logs for completed jobs are automatically deleted based on the configured
-age and interval settings.</p>
-<p>Configure the <strong>Event logs max age</strong> to set the maximum age of event log files
-before they are eligible for deletion. Select a preset or select <strong>Custom</strong> to specify
-a custom value and unit of time.</p>
-<p>Configure the <strong>Event logs cleaner interval</strong> to set how frequently the cleaner
-runs to check for and delete old event logs. Select a preset or select <strong>Custom</strong> to
-specify a custom value and unit of time.</p>
-</section>
-<section id="instance-logs-cleaner">
-<h3 id="instance-logs-cleaner">Instance logs cleaner<a class="headerlink" href="#instance-logs-cleaner" title="Permalink to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Applies to all instance types, including Spark batch jobs, Spark Connect
-servers, and Jupyter Notebooks.</p>
-</div>
-<p>Use the toggle to enable or disable the instance logs cleaner. When enabled, old
-application log files are automatically deleted based on their age to save
-storage space.</p>
-<p>Configure the <strong>Instance logs max age</strong> to set the maximum age of instance log
-files before they are eligible for deletion. Select a preset or select <strong>Custom</strong> to
-specify a custom value and unit of time.</p>
-<p>Configure the <strong>Instance logs cleaner interval</strong> to set how frequently the cleaner
-runs to check for and delete old instance logs. Select a preset or select <strong>Custom</strong> to
-specify a custom value and unit of time.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Changing event log compaction or event log cleaner settings restarts the Spark
-History Server.</p>
-</div>
-</section>
-</section>
 </section>
 
 
@@ -743,12 +660,12 @@ History Server.</p>
             </a>
           
           
-            <a href="maintenance-mode.html" title="System maintenance mode"
+            <a href="log-retention.html" title="Log retention settings"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> System maintenance mode </span>
+                class="md-footer-nav__direction"> Next </span> Log retention settings </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
