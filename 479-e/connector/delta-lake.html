@@ -280,6 +280,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Delta Lake connector</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#catalog-session-properties">Catalog session properties</a></li>
@@ -404,6 +408,10 @@
 <li><a class="reference internal" href="#">Delta Lake connector</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#extensions">Extensions</a></li>
+<li><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li><a class="reference internal" href="#catalog-session-properties">Catalog session properties</a></li>
@@ -529,6 +537,54 @@ following section:</p>
 <li><p><a class="reference internal" href="starburst-minio.html"><span class="doc std std-doc">MinIO storage support</span></a></p></li>
 <li><p><a class="reference internal" href="starburst-delta-lake-unity.html"><span class="doc std std-doc">Unity catalog with Delta Lake</span></a></p></li>
 </ul>
+</section>
+<section id="dell-data-processing-engine">
+<span id="delta-lake-ddpe-integration"></span><h2 id="dell-data-processing-engine">Dell Data Processing Engine<a class="headerlink" href="#dell-data-processing-engine" title="Permalink to this heading">#</a></h2>
+<p>The Delta Lake connector integrates with <a class="reference internal" href="../dell-data-processing-engine/overview.html"><span class="doc std std-doc">Dell Data Processing Engine
+(DDPE)</span></a> through catalog metadata
+synchronization. When enabled, SEP synchronizes table metadata from the
+Delta Lake metastore to its embedded metastore, which allows DDPE’s <a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">object
+storage governance</span></a> to
+enforce <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access control</span></a> at the table level
+for Spark jobs.</p>
+<section id="metastore-synchronization-configuration">
+<span id="delta-lake-ddpe-metastore-sync"></span><h3 id="metastore-synchronization-configuration">Metastore synchronization configuration<a class="headerlink" href="#metastore-synchronization-configuration" title="Permalink to this heading">#</a></h3>
+<p>Set the following properties in your catalog configuration file to enable
+metastore synchronization:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">delta.metastore.sync.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<table id="id1">
+<caption><span class="caption-text">Delta Lake metastore synchronization properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Required for DDPE object storage governance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name used to identify this catalog’s metadata in the centralized
+metastore during synchronization. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user impersonated in the Delta Lake metastore connection for
+synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delta.metastore.sync.frequency</span></code></p></td>
+<td><p>How often the metastore synchronization job runs. Accepts values from
+<code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>, inclusive. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="configuration">
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
@@ -755,8 +811,8 @@ with the <code class="docutils literal notranslate"><span class="pre">delta.enab
 <p>The following table describes <a class="reference internal" href="../sql/set-session.html#session-properties-definition"><span class="std std-ref">catalog session
 properties</span></a> supported by the Delta Lake
 connector:</p>
-<table id="id1">
-<caption><span class="caption-text">Catalog session properties</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<table id="id2">
+<caption><span class="caption-text">Catalog session properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 50%"/>
@@ -830,8 +886,8 @@ specification.</p>
 <h3 id="delta-lake-to-trino-type-mapping">Delta Lake to Trino type mapping<a class="headerlink" href="#delta-lake-to-trino-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Delta Lake types to the corresponding Trino types following
 this table:</p>
-<table id="id2">
-<caption><span class="caption-text">Delta Lake to Trino type mapping</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Delta Lake to Trino type mapping</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -901,8 +957,8 @@ this table:</p>
 <h3 id="trino-to-delta-lake-type-mapping">Trino to Delta Lake type mapping<a class="headerlink" href="#trino-to-delta-lake-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Trino types to the corresponding Delta Lake types following
 this table:</p>
-<table id="id3">
-<caption><span class="caption-text">Trino to Delta Lake type mapping</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">Trino to Delta Lake type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 60%"/>
 <col style="width: 40%"/>
@@ -1339,8 +1395,8 @@ operations, for example, AWS Glue.</p></li>
 <section id="table-properties">
 <span id="delta-lake-table-properties"></span><h4 id="table-properties">Table properties<a class="headerlink" href="#table-properties" title="Permalink to this heading">#</a></h4>
 <p>The following table properties are available for use:</p>
-<table id="id4">
-<caption><span class="caption-text">Delta Lake table properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Delta Lake table properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1430,8 +1486,8 @@ by using the following query:</p>
 </pre></div>
 </div>
 <p>The output of the query has the following history columns:</p>
-<table id="id5">
-<caption><span class="caption-text">History columns</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">History columns</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -1511,8 +1567,8 @@ Delta Lake table.</p>
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id6">
-<caption><span class="caption-text">Partitions columns</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Partitions columns</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 30%"/>
@@ -1923,8 +1979,8 @@ instability and performance degradation. It is strongly suggested that you use
 them only to address non-trivial performance issues, and that you keep a backup
 of the original values if you change them.</p>
 </div>
-<table id="id7">
-<caption><span class="caption-text">Delta Lake performance tuning configuration properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Delta Lake performance tuning configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -1991,8 +2047,8 @@ catalog specific use.</p></td>
 caching</span></a>.</p>
 <p>The following table describes file system cache properties specific to the Delta
 Lake connector.</p>
-<table id="id8">
-<caption><span class="caption-text">Delta Lake file system cache configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Delta Lake file system cache configuration properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 50%"/>
@@ -2028,8 +2084,8 @@ when the values do not appear in any clustered order naturally.</p>
 network is further reduced. You get access to higher query performance and a
 reduced cost.</p>
 <p>You can use the following properties to configure dynamic row filtering:</p>
-<table id="id9">
-<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 45%"/>
 <col style="width: 55%"/>
@@ -2079,8 +2135,8 @@ catalog files.</p>
 <p>Enable authorization checks for the connector by configuring the
 <code class="docutils literal notranslate"><span class="pre">delta.security</span></code> property in the catalog properties file. This property must
 include one of the following security values:</p>
-<table id="id10">
-<caption><span class="caption-text">Delta Lake security values</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Delta Lake security values</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 67%"/>
