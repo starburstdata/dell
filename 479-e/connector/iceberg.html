@@ -283,6 +283,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Iceberg connector</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration">General configuration</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 </ul>
@@ -452,6 +456,10 @@
 <li><a class="reference internal" href="#">Iceberg connector</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#extensions">Extensions</a></li>
+<li><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#general-configuration">General configuration</a><ul>
 <li><a class="reference internal" href="#fault-tolerant-execution-support">Fault-tolerant execution support</a></li>
 </ul>
@@ -640,6 +648,54 @@ following section:</p>
 <li><p><a class="reference internal" href="starburst-iceberg-unity.html"><span class="doc std std-doc">Unity Catalog using an Iceberg REST catalog</span></a></p></li>
 </ul>
 </section>
+<section id="dell-data-processing-engine">
+<span id="iceberg-ddpe-integration"></span><h2 id="dell-data-processing-engine">Dell Data Processing Engine<a class="headerlink" href="#dell-data-processing-engine" title="Permalink to this heading">#</a></h2>
+<p>The Iceberg connector integrates with <a class="reference internal" href="../dell-data-processing-engine/overview.html"><span class="doc std std-doc">Dell Data Processing Engine
+(DDPE)</span></a> through catalog metadata
+synchronization. When enabled, SEP synchronizes table metadata from the
+Iceberg metastore to its embedded metastore, which allows DDPE’s <a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">object
+storage governance</span></a> to
+enforce <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access control</span></a> at the table level
+for Spark jobs.</p>
+<section id="metastore-synchronization-configuration">
+<span id="iceberg-ddpe-metastore-sync"></span><h3 id="metastore-synchronization-configuration">Metastore synchronization configuration<a class="headerlink" href="#metastore-synchronization-configuration" title="Permalink to this heading">#</a></h3>
+<p>Set the following properties in your catalog configuration file to enable
+metastore synchronization:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">iceberg.metastore.sync.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<table id="id2">
+<caption><span class="caption-text">Iceberg metastore synchronization properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Required for DDPE object storage governance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name used to identify this catalog’s metadata in the centralized
+metastore during synchronization. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user impersonated in the Iceberg metastore connection for
+synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iceberg.metastore.sync.frequency</span></code></p></td>
+<td><p>How often the metastore synchronization job runs. Accepts values from
+<code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>, inclusive. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="general-configuration">
 <h2 id="general-configuration">General configuration<a class="headerlink" href="#general-configuration" title="Permalink to this heading">#</a></h2>
 <p>To configure the Iceberg connector, create a catalog properties file that
@@ -660,8 +716,8 @@ are available. Each metastore type has specific configuration properties along
 with <a class="reference internal" href="../object-storage/metastores.html#general-metastore-properties"><span class="std std-ref">general metastore configuration properties</span></a>.</p>
 <p>The following configuration properties are independent of which catalog
 implementation is used:</p>
-<table id="id2">
-<caption><span class="caption-text">Iceberg general configuration properties</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Iceberg general configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 58%"/>
@@ -962,8 +1018,8 @@ endpoint</a>:</p>
 <span class="na">s3.aws-secret-key</span><span class="o">=</span><span class="s">&lt;SECRET_KEY&gt;</span>
 </pre></div>
 </div>
-<table id="id3">
-<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<table id="id4">
+<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1066,8 +1122,8 @@ formating in the Avro, ORC, or Parquet files:</p>
 <h3 id="iceberg-to-trino-type-mapping">Iceberg to Trino type mapping<a class="headerlink" href="#iceberg-to-trino-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Iceberg types to the corresponding Trino types according to
 the following table:</p>
-<table id="id4">
-<caption><span class="caption-text">Iceberg to Trino type mapping</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">Iceberg to Trino type mapping</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1146,8 +1202,8 @@ the following table:</p>
 <h3 id="trino-to-iceberg-type-mapping">Trino to Iceberg type mapping<a class="headerlink" href="#trino-to-iceberg-type-mapping" title="Permalink to this heading">#</a></h3>
 <p>The connector maps Trino types to the corresponding Iceberg types according to
 the following table:</p>
-<table id="id5">
-<caption><span class="caption-text">Trino to Iceberg type mapping</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Trino to Iceberg type mapping</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1845,8 +1901,8 @@ time is recommended to keep size of a table’s data directory under control.</p
 procedure fails with a similar message: <code class="docutils literal notranslate"><span class="pre">Retention</span> <span class="pre">specified</span> <span class="pre">(1.00d)</span> <span class="pre">is</span> <span class="pre">shorter</span> <span class="pre">than</span> <span class="pre">the</span> <span class="pre">minimum</span> <span class="pre">retention</span> <span class="pre">configured</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">system</span> <span class="pre">(7.00d)</span></code>. The default value
 for this property is <code class="docutils literal notranslate"><span class="pre">7d</span></code>.</p>
 <p>The output of the query has the following metrics:</p>
-<table id="id6">
-<caption><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Output</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1914,8 +1970,8 @@ TABLE</span></a>.</p>
 <p>Table properties supply or set metadata for the underlying tables. This is key
 for <a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">CREATE TABLE AS</span></a> statements. Table properties are passed to the
 connector using a <a class="reference internal" href="../sql/create-table-as.html"><span class="doc std std-doc">WITH</span></a> clause.</p>
-<table id="id7">
-<caption><span class="caption-text">Iceberg table properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Iceberg table properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -2069,8 +2125,8 @@ following query:</p>
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id8">
-<caption><span class="caption-text">History columns</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">History columns</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -2118,8 +2174,8 @@ table <code class="docutils literal notranslate"><span class="pre">test_table</s
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id9">
-<caption><span class="caption-text">Metadata log entries columns</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Metadata log entries columns</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -2172,8 +2228,8 @@ contents are represented by the union of all the data files in those manifests.<
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id10">
-<caption><span class="caption-text">Snapshots columns</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Snapshots columns</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 30%"/>
@@ -2239,8 +2295,8 @@ corresponding to the snapshots performed in the log of the Iceberg table.</p>
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id11">
-<caption><span class="caption-text">Manifests columns</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<table id="id12">
+<caption><span class="caption-text">Manifests columns</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -2321,8 +2377,8 @@ Iceberg table.</p>
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id12">
-<caption><span class="caption-text">Partitions columns</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
+<table id="id13">
+<caption><span class="caption-text">Partitions columns</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 30%"/>
@@ -2374,8 +2430,8 @@ snapshot of the  Iceberg table.</p>
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id13">
-<caption><span class="caption-text">Files columns</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
+<table id="id14">
+<caption><span class="caption-text">Files columns</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 30%"/>
@@ -2494,8 +2550,8 @@ current snapshot. The <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <p>The metadata tables include the following columns:</p>
-<table id="id14">
-<caption><span class="caption-text">Files columns</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
+<table id="id15">
+<caption><span class="caption-text">Files columns</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 30%"/>
@@ -2559,8 +2615,8 @@ example_branch  | BRANCH | 20000000000 | 20000                   | 2            
 </pre></div>
 </div>
 <p>The output of the query has the following columns:</p>
-<table id="id15">
-<caption><span class="caption-text">Refs columns</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
+<table id="id16">
+<caption><span class="caption-text">Refs columns</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 30%"/>
@@ -2668,8 +2724,8 @@ even if the table cannot be handled in any way by the iceberg connector. This
 can happen if other connectors like Hive or Delta Lake, use the same metastore,
 catalog, and schema to store its tables.</p>
 <p>The table includes following columns:</p>
-<table id="id16">
-<caption><span class="caption-text">iceberg_tables columns</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
+<table id="id17">
+<caption><span class="caption-text">iceberg_tables columns</span><a class="headerlink" href="#id17" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 30%"/>
@@ -2737,8 +2793,8 @@ on existing entities.</p>
 <p>Iceberg supports partitioning by specifying transforms over the table columns. A
 partition is created for each unique tuple value produced by the transforms.
 Identity transforms are simply the column name. Other transforms are:</p>
-<table id="id17">
-<caption><span class="caption-text">Iceberg column transforms</span><a class="headerlink" href="#id17" title="Permalink to this table">#</a></caption>
+<table id="id18">
+<caption><span class="caption-text">Iceberg column transforms</span><a class="headerlink" href="#id18" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -3381,8 +3437,8 @@ when the values do not appear in any clustered order naturally.</p>
 network is further reduced. You get access to higher query performance and a
 reduced cost.</p>
 <p>You can use the following properties to configure dynamic row filtering:</p>
-<table id="id18">
-<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id18" title="Permalink to this table">#</a></caption>
+<table id="id19">
+<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id19" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 45%"/>
 <col style="width: 55%"/>
@@ -3423,8 +3479,8 @@ using the <a class="reference internal" href="../object-storage/file-system-cach
 implementation</span></a>. If <code class="docutils literal notranslate"><span class="pre">fs.cache.enabled</span></code> is
 enabled, metadata caching in coordinator memory is deactivated.</p>
 <p>Additionally, you can use the following catalog configuration properties:</p>
-<table id="id19">
-<caption><span class="caption-text">Memory metadata caching configuration properties</span><a class="headerlink" href="#id19" title="Permalink to this table">#</a></caption>
+<table id="id20">
+<caption><span class="caption-text">Memory metadata caching configuration properties</span><a class="headerlink" href="#id20" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -3471,8 +3527,8 @@ authorization at the catalog level.</p>
 <p>You can enable authorization checks for the connector by setting the
 <code class="docutils literal notranslate"><span class="pre">iceberg.security</span></code> property in the catalog properties file. This property must
 be one of the following values:</p>
-<table id="id20">
-<caption><span class="caption-text">Iceberg security values</span><a class="headerlink" href="#id20" title="Permalink to this table">#</a></caption>
+<table id="id21">
+<caption><span class="caption-text">Iceberg security values</span><a class="headerlink" href="#id21" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 67%"/>
