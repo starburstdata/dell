@@ -281,6 +281,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Hive connector</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration">General configuration</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#multiple-hive-clusters">Multiple Hive clusters</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
@@ -421,6 +425,10 @@
 <li><a class="reference internal" href="#">Hive connector</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#extensions">Extensions</a></li>
+<li><a class="reference internal" href="#dell-data-processing-engine">Dell Data Processing Engine</a><ul>
+<li><a class="reference internal" href="#metastore-synchronization-configuration">Metastore synchronization configuration</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#general-configuration">General configuration</a><ul>
 <li><a class="reference internal" href="#multiple-hive-clusters">Multiple Hive clusters</a></li>
 <li><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
@@ -593,6 +601,53 @@ following section:</p>
 <li><p><a class="reference internal" href="starburst-hive-unity.html"><span class="doc std std-doc">Unity catalog with Hive</span></a></p></li>
 </ul>
 </section>
+<section id="dell-data-processing-engine">
+<span id="hive-ddpe-integration"></span><h2 id="dell-data-processing-engine">Dell Data Processing Engine<a class="headerlink" href="#dell-data-processing-engine" title="Permalink to this heading">#</a></h2>
+<p>The Hive connector integrates with <a class="reference internal" href="../dell-data-processing-engine/overview.html"><span class="doc std std-doc">Dell Data Processing Engine
+(DDPE)</span></a> through catalog metadata
+synchronization. When enabled, SEP synchronizes table metadata from the Hive
+metastore to its embedded metastore, which allows DDPE’s object storage
+governance to enforce <a class="reference internal" href="../security/biac-overview.html"><span class="doc std std-doc">built-in access control</span></a>
+at the table level for Spark jobs.</p>
+<section id="metastore-synchronization-configuration">
+<span id="hive-ddpe-metastore-sync"></span><h3 id="metastore-synchronization-configuration">Metastore synchronization configuration<a class="headerlink" href="#metastore-synchronization-configuration" title="Permalink to this heading">#</a></h3>
+<p>Set the following properties in your catalog configuration file to enable
+metastore synchronization:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">hive.metastore.sync.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<table id="id5">
+<caption><span class="caption-text">Hive metastore synchronization properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.enabled</span></code></p></td>
+<td><p>Enable synchronization of the catalog metastore to SEP’s embedded
+metastore. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>. Required for DDPE object storage governance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.cluster-name</span></code></p></td>
+<td><p>The name used to identify this catalog’s metadata in the centralized
+metastore during synchronization. Defaults to <code class="docutils literal notranslate"><span class="pre">starburst-cluster</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.identity.user</span></code></p></td>
+<td><p>The user impersonated in the Hive metastore connection for
+synchronization. Defaults to an empty string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hive.metastore.sync.frequency</span></code></p></td>
+<td><p>How often the metastore synchronization job runs. Accepts values from
+<code class="docutils literal notranslate"><span class="pre">1m</span></code> to <code class="docutils literal notranslate"><span class="pre">1h</span></code>, inclusive. Defaults to <code class="docutils literal notranslate"><span class="pre">30m</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="general-configuration">
 <span id="hive-configuration"></span><h2 id="general-configuration">General configuration<a class="headerlink" href="#general-configuration" title="Permalink to this heading">#</a></h2>
 <p>To configure the Hive connector, create a catalog properties file that
@@ -628,8 +683,8 @@ named <code class="docutils literal notranslate"><span class="pre">sales</span><
 <p>The following table lists general configuration properties for the Hive
 connector. There are additional sets of configuration properties throughout the
 Hive connector documentation.</p>
-<table id="id5">
-<caption><span class="caption-text">Hive general configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Hive general configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -1206,8 +1261,8 @@ the data types of columns of a table are changed from the data types of columns
 of preexisting partitions. The Hive connector supports this schema evolution by
 allowing the same conversions as Hive. The following table lists possible data
 type conversions.</p>
-<table id="id6">
-<caption><span class="caption-text">Hive schema evolution type conversion</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Hive schema evolution type conversion</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -1395,8 +1450,8 @@ connector using a <a class="reference internal" href="../sql/create-table-as.htm
       <span class="n">csv_escape</span> <span class="o">=</span> <span class="s1">'"'</span><span class="p">)</span>
 </pre></div>
 </div>
-<table id="id7">
-<caption><span class="caption-text">Hive connector table properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Hive connector table properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 60%"/>
@@ -1583,8 +1638,8 @@ of a partitioned table.</p>
 </section>
 <section id="column-properties">
 <span id="hive-column-properties"></span><h4 id="column-properties">Column properties<a class="headerlink" href="#column-properties" title="Permalink to this heading">#</a></h4>
-<table id="id8">
-<caption><span class="caption-text">Hive connector column properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">Hive connector column properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 60%"/>
@@ -1865,8 +1920,8 @@ default port:</p>
 <p>The following table lists all available catalog configuration properties related
 to materialized views. Instructions for creating the required storage schema
 follow this table.</p>
-<table id="id9">
-<caption><span class="caption-text">Catalog configuration properties for materialized views</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Catalog configuration properties for materialized views</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 55%"/>
@@ -2033,8 +2088,8 @@ processing time depends on the complexity of the query, the cluster performance,
 and the performance of the storage.</p>
 <p>Configuration properties are specified in the <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clause when creating a
 materialized view:</p>
-<table id="id10">
-<caption><span class="caption-text">Properties for materialized view refresh automation</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Properties for materialized view refresh automation</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%"/>
 <col style="width: 60%"/>
@@ -2329,8 +2384,8 @@ statistics</span></a> to improve query processing performance.</p>
 <p>When writing data, the Hive connector always collects basic statistics
 (<code class="docutils literal notranslate"><span class="pre">numFiles</span></code>, <code class="docutils literal notranslate"><span class="pre">numRows</span></code>, <code class="docutils literal notranslate"><span class="pre">rawDataSize</span></code>, <code class="docutils literal notranslate"><span class="pre">totalSize</span></code>) and by default will also
 collect column level statistics:</p>
-<table id="id11">
-<caption><span class="caption-text">Available table statistics</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<table id="id12">
+<caption><span class="caption-text">Available table statistics</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 65%"/>
@@ -2549,8 +2604,8 @@ when the values do not appear in any clustered order naturally.</p>
 network is further reduced. You get access to higher query performance and a
 reduced cost.</p>
 <p>You can use the following properties to configure dynamic row filtering:</p>
-<table id="id12">
-<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
+<table id="id13">
+<caption><span class="caption-text">Dynamic row filtering properties</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 45%"/>
 <col style="width: 55%"/>
@@ -2702,8 +2757,8 @@ connector that provide global, system-level security:</p>
 <span id="hive-authorization"></span><h3 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permalink to this heading">#</a></h3>
 <p>You can enable authorization checks by setting the <code class="docutils literal notranslate"><span class="pre">hive.security</span></code> property in
 the catalog properties file. This property must be one of the following values:</p>
-<table id="id13">
-<caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">hive.security</span></code> property values</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
+<table id="id14">
+<caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">hive.security</span></code> property values</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 67%"/>
@@ -2745,8 +2800,8 @@ metastore. To alter these privileges, use the <a class="reference internal" href
 <p>The Hive connector supports reading Parquet files encrypted with Parquet
 Modular Encryption (PME). Decryption keys can be provided via environment
 variables. Writing encrypted Parquet files is not supported.</p>
-<table id="id14">
-<caption><span class="caption-text">Parquet encryption properties</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
+<table id="id15">
+<caption><span class="caption-text">Parquet encryption properties</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
