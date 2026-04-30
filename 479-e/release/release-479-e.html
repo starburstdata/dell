@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 479-e.7 LTS logo"
+            alt="Dell Data Analytics Engine 479-e.8 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.7 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 479-e.8 LTS</a>
   </label>
   
   
@@ -254,6 +254,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-5-changes-2-apr-2026">479-e.5 changes (2 Apr 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-6-changes-17-apr-2026">479-e.6 changes (17 Apr 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-7-changes-29-apr-2026">479-e.7 changes (29 Apr 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-8-changes-30-apr-2026">479-e.8 changes (30 Apr 2026)</a></li>
 </ul>
 </li>
 </ul>
@@ -372,6 +373,7 @@
 <li><a class="reference internal" href="#e-5-changes-2-apr-2026">479-e.5 changes (2 Apr 2026)</a></li>
 <li><a class="reference internal" href="#e-6-changes-17-apr-2026">479-e.6 changes (17 Apr 2026)</a></li>
 <li><a class="reference internal" href="#e-7-changes-29-apr-2026">479-e.7 changes (29 Apr 2026)</a></li>
+<li><a class="reference internal" href="#e-8-changes-30-apr-2026">479-e.8 changes (30 Apr 2026)</a></li>
 </ul>
 </li>
 </ul>
@@ -787,7 +789,18 @@ tables with large numbers of partitions.</p></li>
 <li><p>Fixed an issue where <code class="docutils literal notranslate"><span class="pre">#</span></code> comments and blank lines in data product YAML files
 caused errors.</p></li>
 <li><p>Fixed queries failing when CTE reuse is enabled for queries executed via MCP
-server or AI Agent.</p></li>
+server or AI Agent.</p>
+</li>
+</ul>
+</section>
+<section id="e-8-changes-30-apr-2026">
+<span id="release-479-e-8"></span><h2 id="e-8-changes-30-apr-2026">479-e.8 changes (30 Apr 2026)<a class="headerlink" href="#e-8-changes-30-apr-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed an issue where some Hive queries on Apache Ozone File System (OFS)
+failed with a <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> when zero-byte files were present in the
+table directory.</p></li>
+<li><p>Fixed an issue where Data Maintenance jobs failed when the fault-tolerant
+execution retry policy was set to <code class="docutils literal notranslate"><span class="pre">TASK</span></code>.</p></li>
 </ul>
 </section>
 </section>
