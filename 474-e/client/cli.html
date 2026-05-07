@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="JDBC driver" href="jdbc.html" />
-    <link rel="prev" title="Client protocol" href="client-protocol.html" />
+    <link rel="next" title="Client protocol" href="client-protocol.html" />
+    <link rel="prev" title="Starburst Enterprise query editor overview" href="query-editor.html" />
 
   
    
@@ -228,42 +228,45 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../client.html">Clients</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="client-protocol.html">Client protocol</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Command line interface</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-the-cli">Running the CLI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tls-https">TLS/HTTPS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#username-and-password-authentication">Username and password authentication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#external-authentication-sso">External authentication - SSO</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#certificate-authentication">Certificate authentication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#jwt-authentication">JWT authentication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kerberos-authentication">Kerberos authentication</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#additional-kerberos-debugging-information">Additional Kerberos debugging information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#client-drivers">Client drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#community-supported-drivers">Community-supported drivers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../client.html#client-applications">Client applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="query-editor.html">SEP query editor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Command line interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-cli">Running the CLI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tls-https">TLS/HTTPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication">Authentication</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#username-and-password-authentication">Username and password authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#external-authentication-sso">External authentication - SSO</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#certificate-authentication">Certificate authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#jwt-authentication">JWT authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#kerberos-authentication">Kerberos authentication</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#additional-kerberos-debugging-information">Additional Kerberos debugging information</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pagination">Pagination</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#history">History</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#auto-suggestion">Auto suggestion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pagination">Pagination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#history">History</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#auto-suggestion">Auto suggestion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#batch-mode">Batch mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-file">Configuration file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#batch-mode">Batch mode</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#spooling-protocol">Spooling protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#output-formats">Output formats</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spooling-protocol">Spooling protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-formats">Output formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="jdbc.html">JDBC driver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="query-editor.html">Query editor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../learn/thoughtspot.html">Thoughtspot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#client-protocol">Client protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client.html#odbc-v2">ODBC v2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
@@ -1131,7 +1134,7 @@ select count(*) from tpch.tiny.nations
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="client-protocol.html" title="Client protocol"
+            <a href="query-editor.html" title="Starburst Enterprise query editor overview"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1140,17 +1143,17 @@ select count(*) from tpch.tiny.nations
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Client protocol </span>
+                      class="md-footer-nav__direction"> Previous </span> Starburst Enterprise query editor overview </span>
               </div>
             </a>
           
           
-            <a href="jdbc.html" title="JDBC driver"
+            <a href="client-protocol.html" title="Client protocol"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> JDBC driver </span>
+                class="md-footer-nav__direction"> Next </span> Client protocol </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
