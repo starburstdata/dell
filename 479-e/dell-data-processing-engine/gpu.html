@@ -356,14 +356,20 @@ and improved performance on supported workloads.</p>
 <section id="software-requirements">
 <h3 id="software-requirements">Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://nvidia.github.io/spark-rapids/docs/download.html">Spark RAPIDS 25.08</a>.</p></li>
+<li><p><a class="reference external" href="https://nvidia.github.io/spark-rapids/docs/download.html">Spark RAPIDS 25.12.0</a>.</p></li>
 <li><p><a class="reference external" href="https://www.nvidia.com/en-us/drivers/details/196881/">NVIDIA drivers 525.60.13+</a>.</p></li>
-<li><p><a class="reference external" href="https://developer.nvidia.com/cuda-12-0-0-download-archive">CUDA 12</a> installed in the <code class="docutils literal notranslate"><span class="pre">/usr/local/cuda</span></code> path.</p></li>
+<li><p><a class="reference external" href="https://developer.nvidia.com/cuda-13-0-0-download-archive">CUDA 13</a> installed in the <code class="docutils literal notranslate"><span class="pre">/usr/local/cuda</span></code> path.</p></li>
 <li><p><a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html">NVIDIA GPU operator
-25.3.2+</a>
+25.10.2+</a>
 with the <code class="docutils literal notranslate"><span class="pre">driver.enabled</span></code> and the <code class="docutils literal notranslate"><span class="pre">toolkit.enabled</span></code> configuration properties
 set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPU-enabled workloads use Iceberg 1.6.1 instead of the default
+Iceberg 1.8.1 used by standard Spark workloads. Ensure your tables and jobs
+are compatible with this version before enabling GPU acceleration.</p>
+</div>
 </section>
 <section id="hardware-requirements">
 <h3 id="hardware-requirements">Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">#</a></h3>
@@ -486,9 +492,9 @@ detailed above:</p>
 <section id="resources">
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/index.html">Spark RAPIDS User Guide</a></p></li>
-<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/faq.html">Spark RAPIDS FAQs</a></p></li>
-<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.08/best-practices.html">Spark RAPIDS Tuning - Best Practices</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.12/index.html">Spark RAPIDS User Guide</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.12/faq.html">Spark RAPIDS FAQs</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/spark-rapids/user-guide/25.12/best-practices.html">Spark RAPIDS Tuning - Best Practices</a></p></li>
 <li><p><a class="reference external" href="https://github.com/NVIDIA/spark-rapids-examples">Spark RAPIDS examples</a></p></li>
 </ul>
 </section>
