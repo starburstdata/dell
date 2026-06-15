@@ -237,6 +237,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job-submission.html">Job submission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention.html">Log retention settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maintenance-mode.html">System maintenance mode</a></li>
@@ -253,6 +254,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spark-system">Spark system</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secrets">Secrets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secret-providers">Secret providers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#other-privileges">Other privileges</a></li>
 </ul>
 </li>
@@ -338,6 +341,8 @@
 <li><a class="reference internal" href="#spark-uploads">Spark uploads</a></li>
 <li><a class="reference internal" href="#spark-system">Spark system</a></li>
 <li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li><a class="reference internal" href="#secrets">Secrets</a></li>
+<li><a class="reference internal" href="#secret-providers">Secret providers</a></li>
 <li><a class="reference internal" href="#other-privileges">Other privileges</a></li>
 </ul>
 </li>
@@ -437,6 +442,8 @@ Engine entities and the available privileges:</p>
 <li><p><a class="reference internal" href="#ddpe-spark-resource-pool-priv"><span class="std std-ref">Spark resource pools</span></a></p></li>
 <li><p><a class="reference internal" href="#ddpe-spark-uploads-priv"><span class="std std-ref">Spark uploads</span></a></p></li>
 <li><p><a class="reference internal" href="#ddpe-spark-system-priv"><span class="std std-ref">Spark system</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-secrets-priv"><span class="std std-ref">Secrets</span></a></p></li>
+<li><p><a class="reference internal" href="#ddpe-secret-providers-priv"><span class="std std-ref">Secret providers</span></a></p></li>
 </ul>
 <section id="spark-connect-servers">
 <span id="ddpe-spark-connect-priv"></span><h3 id="spark-connect-servers">Spark Connect servers<a class="headerlink" href="#spark-connect-servers" title="Permalink to this heading">#</a></h3>
@@ -717,6 +724,81 @@ to grant the privileges to other entities.</p></li>
 </tbody>
 </table>
 </section>
+<section id="secrets">
+<span id="ddpe-secrets-priv"></span><h3 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to <a class="reference internal" href="secrets.html#ddpe-secrets-ui"><span class="std std-ref">secrets</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Select <strong>All secrets</strong> or use the <strong>Secrets</strong> drop-down menu to select
+specific secrets.</p></li>
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select <strong>All privileges below</strong> or select specific privileges to grant or deny.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privileges are available:</p>
+<table id="id8">
+<caption><span class="caption-text">Secrets privileges</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Reference a secret by name in Spark job and Spark Connect server
+configurations using the <code class="docutils literal notranslate"><span class="pre">${secret-name:key}</span></code> syntax.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create, update, and delete the secret.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>You must have the <strong>Spark runtime</strong> <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">user interface entity</span></a>
+enabled on your role to access the <strong>Secrets</strong> tab.</p>
+</section>
+<section id="secret-providers">
+<span id="ddpe-secret-providers-priv"></span><h3 id="secret-providers">Secret providers<a class="headerlink" href="#secret-providers" title="Permalink to this heading">#</a></h3>
+<p>To grant or revoke privileges related to secret providers:</p>
+<ol class="arabic simple">
+<li><p>Choose to <code class="docutils literal notranslate"><span class="pre">Allow</span></code> or <code class="docutils literal notranslate"><span class="pre">Deny</span></code> a privilege.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Manage</span></code> privilege.</p></li>
+<li><p>If you are granting a privilege, choose whether to give the role the ability
+to grant the privileges to other entities.</p></li>
+<li><p>Click <strong>Save privileges</strong>.</p></li>
+</ol>
+<p>The following privilege is available:</p>
+<table id="id9">
+<caption><span class="caption-text">Secret providers privileges</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create secrets that reference values in an external provider.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="other-privileges">
 <h3 id="other-privileges">Other privileges<a class="headerlink" href="#other-privileges" title="Permalink to this heading">#</a></h3>
 <p>View the <a class="reference internal" href="../security/biac-privileges.html"><span class="doc std std-doc">general BIAC privileges documentation</span></a>
@@ -744,8 +826,8 @@ for more information on other entities and related privileges, such as:</p>
 <h2 id="example-privilege-sets">Example privilege sets<a class="headerlink" href="#example-privilege-sets" title="Permalink to this heading">#</a></h2>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 admin:</p>
-<table id="id8">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine admin</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -790,8 +872,8 @@ admin:</p>
 </table>
 <p>The following shows an example privilege set for a Dell Data Processing Engine
 user:</p>
-<table id="id9">
-<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Example privilege set for a Dell Data Processing Engine user</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>

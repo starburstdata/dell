@@ -244,6 +244,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/secrets.html">Secrets management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/job-submission.html">Job submission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/log-retention.html">Log retention settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/maintenance-mode.html">System maintenance mode</a></li>
@@ -349,7 +350,7 @@
 <li><a class="reference internal" href="#id2">Configuration properties</a></li>
 <li><a class="reference internal" href="#file-system-support">File system support</a></li>
 <li><a class="reference internal" href="#data-source-management-api">Data source management API</a></li>
-<li><a class="reference internal" href="#id3">Configuration examples</a></li>
+<li><a class="reference internal" href="#id4">Configuration examples</a></li>
 <li><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
 </li>
@@ -430,8 +431,8 @@ other lake connectors, <code class="docutils literal notranslate"><span class="p
 <p>To explicitly opt into Glue v2 for Iceberg:</p>
 <p><code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=glue_v2</span></code></p>
 </div>
-<table id="id4">
-<caption><span class="caption-text">General metastore configuration properties</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<table id="id5">
+<caption><span class="caption-text">General metastore configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -540,8 +541,8 @@ applies only when using the AWS Glue metastore.</p></td>
 <p>In order to use a Hive Thrift metastore, you must configure the metastore with
 <code class="docutils literal notranslate"><span class="pre">hive.metastore=thrift</span></code> and provide further details with the following
 properties:</p>
-<table id="id5">
-<caption><span class="caption-text">Thrift metastore configuration properties</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<table id="id6">
+<caption><span class="caption-text">Thrift metastore configuration properties</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -686,8 +687,8 @@ the default catalog of the Hive metastore will be accessed.</p></td>
 <p>When using the Hive catalog, the Iceberg connector supports the same
 <a class="reference internal" href="#hive-thrift-metastore"><span class="std std-ref">general Thrift metastore configuration properties</span></a>
 as previously described with the following additional property:</p>
-<table id="id6">
-<caption><span class="caption-text">Iceberg Hive catalog configuration property</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
+<table id="id7">
+<caption><span class="caption-text">Iceberg Hive catalog configuration property</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -729,8 +730,8 @@ service using <abbr title="Simple Authentication and Security Layer">SASL</abbr>
 authenticates using Kerberos. Kerberos authentication for the metastore is
 configured in the connector’s properties file using the following optional
 properties:</p>
-<table id="id7">
-<caption><span class="caption-text">Hive metastore Thrift service authentication properties</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
+<table id="id8">
+<caption><span class="caption-text">Hive metastore Thrift service authentication properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 55%"/>
@@ -838,8 +839,8 @@ allowed to impersonate the current Trino user, as discussed in the section
 follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">hive.metastore=glue</span></code> and provide further details with the following
 properties:</p>
-<table id="id8">
-<caption><span class="caption-text">AWS Glue catalog configuration properties</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
+<table id="id9">
+<caption><span class="caption-text">AWS Glue catalog configuration properties</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -947,8 +948,8 @@ versions.</p></td>
 <p>When using the Glue catalog, the Iceberg connector supports the same
 <a class="reference internal" href="#hive-glue-metastore"><span class="std std-ref">general Glue configuration properties</span></a> as previously
 described with the following additional property:</p>
-<table id="id9">
-<caption><span class="caption-text">Iceberg Glue catalog configuration property</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
+<table id="id10">
+<caption><span class="caption-text">Iceberg Glue catalog configuration property</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 35%"/>
 <col style="width: 50%"/>
@@ -1055,8 +1056,8 @@ such as passwords, keys, and credentials.</p>
 <section id="configuration-properties">
 <h3 id="configuration-properties">Configuration properties<a class="headerlink" href="#configuration-properties" title="Permalink to this heading">#</a></h3>
 <p>Starburst data catalog includes the following optional configuration properties.</p>
-<table id="id10">
-<caption><span class="caption-text">Starburst data catalog configuration properties</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Starburst data catalog configuration properties</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1220,8 +1221,8 @@ information on configuring the client.</p>
 <section id="id2">
 <h4 id="id2">Configuration properties<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>The following configuration properties are available:</p>
-<table id="id11">
-<caption><span class="caption-text">Starburst data catalog Iceberg REST API configuration properties</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<table id="id12">
+<caption><span class="caption-text">Starburst data catalog Iceberg REST API configuration properties</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 20%"/>
@@ -1328,7 +1329,7 @@ pass-through for ABFS are not supported with Starburst data catalog.</p>
 configuration options for each file system type.</p>
 </section>
 <section id="data-source-management-api">
-<h4 id="data-source-management-api">Data source management API<a class="headerlink" href="#data-source-management-api" title="Permalink to this heading">#</a></h4>
+<span id="id3"></span><h4 id="data-source-management-api">Data source management API<a class="headerlink" href="#data-source-management-api" title="Permalink to this heading">#</a></h4>
 <p>Starburst Portal includes an API for managing data sources in Starburst data catalog.
 To create a data source, specify a name and a base location URI that defines
 where table data for that data source is stored. Once created, the data source
@@ -1434,8 +1435,8 @@ qualifying them with the catalog name:</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h4 id="id3">Configuration examples<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<section id="id4">
+<h4 id="id4">Configuration examples<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <p>View the following sections for example configurations for using Starburst
 Portal, Trino Iceberg connector, and Spark with the Iceberg REST API.</p>
 <p><strong>Starburst Portal</strong></p>
@@ -1589,8 +1590,8 @@ CLI. There is no backward compatibility between versions.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>./starburst-catalog-cli-&lt;version&gt;-executable.jar
 </pre></div>
 </div>
-<table id="id12">
-<caption><span class="caption-text">HMS to Starburst data catalog migration tool arguments</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
+<table id="id13">
+<caption><span class="caption-text">HMS to Starburst data catalog migration tool arguments</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -1756,8 +1757,8 @@ catalog as discussed in this section.</p>
 <a class="reference external" href="https://github.com/polaris-catalog/polaris">Polaris</a>, configure the catalog
 type with <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=rest</span></code>, and provide further details with the
 following properties:</p>
-<table id="id13">
-<caption><span class="caption-text">Iceberg REST catalog configuration properties</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
+<table id="id14">
+<caption><span class="caption-text">Iceberg REST catalog configuration properties</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -1937,8 +1938,8 @@ AWS using OAuth2 passthrough:</p>
 <code class="docutils literal notranslate"><span class="pre">iceberg.jdbc-catalog.catalog-name</span></code> must be configured. When using any
 database besides PostgreSQL, a JDBC driver jar file must be placed in the plugin
 directory.</p>
-<table id="id14">
-<caption><span class="caption-text">JDBC catalog configuration properties</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
+<table id="id15">
+<caption><span class="caption-text">JDBC catalog configuration properties</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -2009,8 +2010,8 @@ iceberg.jdbc-catalog.default-warehouse-dir=s3://bucket
 <p>In order to use a Nessie catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=nessie</span></code> and provide further details with the following
 properties:</p>
-<table id="id15">
-<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
+<table id="id16">
+<caption><span class="caption-text">Nessie catalog configuration properties</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -2072,8 +2073,8 @@ iceberg.nessie-catalog.default-warehouse-dir=/tmp
 <p>In order to use a Snowflake catalog, configure the catalog type with
 <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=snowflake</span></code> and provide further details with the following
 properties:</p>
-<table id="id16">
-<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
+<table id="id17">
+<caption><span class="caption-text">Snowflake catalog configuration properties</span><a class="headerlink" href="#id17" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
@@ -2130,8 +2131,8 @@ Tables</a> in
 an S3 table bucket, configure the catalog type with <code class="docutils literal notranslate"><span class="pre">iceberg.catalog.type=rest</span></code>.
 In addition to the <a class="reference internal" href="#iceberg-rest-catalog"><span class="std std-ref">REST catalogs</span></a> properties include the following
 configuration properties:</p>
-<table id="id17">
-<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id17" title="Permalink to this table">#</a></caption>
+<table id="id18">
+<caption><span class="caption-text">AWS S3 Tables configuration properties</span><a class="headerlink" href="#id18" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 40%"/>
 <col style="width: 60%"/>
