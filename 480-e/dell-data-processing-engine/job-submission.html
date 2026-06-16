@@ -241,10 +241,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Job submission</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#batch-jobs-ui">Batch jobs UI</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-batch-jobs">Create batch jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-spark-connect-url">Generate Spark Connect URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminate-server">Terminate server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
 </ul>
 </li>
@@ -329,10 +332,13 @@
 <li><a class="reference internal" href="#">Job submission</a><ul>
 <li><a class="reference internal" href="#batch-jobs-ui">Batch jobs UI</a><ul>
 <li><a class="reference internal" href="#create-batch-jobs">Create batch jobs</a></li>
+<li><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a><ul>
 <li><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
+<li><a class="reference internal" href="#generate-spark-connect-url">Generate Spark Connect URL</a></li>
+<li><a class="reference internal" href="#terminate-server">Terminate server</a></li>
 <li><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
 </ul>
 </li>
@@ -398,46 +404,28 @@ few seconds and try again.</p>
 <img alt="Batch job create" class="imgborder" src="../_images/spark-job-batch-create.png"/>
 </figure>
 <ol class="arabic simple">
-<li><p>Click <strong>Create job</strong>.</p></li>
-<li><p>In the <strong>Create job</strong> dialog, enter a job name and a class name. The <strong>Class
-name</strong> field only applies to Java and Scala configurations and can be left
-blank if using Python or R. Additionally, arguments can be supplied using the
-<strong>Arguments</strong> field.</p></li>
-<li><p>The <strong>Configuration</strong> section includes fields to enter properties and their
-values. Click <strong>+</strong> to add additional configuration properties.</p></li>
-<li><p>Select a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a> to assign to the job.</p></li>
-<li><p>Select an image for the job. See <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for
-details.</p></li>
-<li><p>In the <strong>Application</strong> section, enter your application’s file path URL.</p></li>
-<li><p>Choose whether to enable encryption.</p></li>
-<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>Click <strong>Create Spark job</strong>.</p></li>
+<li><p>Enter a <strong>Job name</strong>, select a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a>, and select
+an <strong>Image</strong>. See <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for details.</p></li>
+<li><p>In the <strong>Application</strong> section, enter the file path URL for your application.
+Optionally enter a <strong>Class name</strong> (Java and Scala only) and choose whether to
+<strong>Enable encryption</strong>.</p></li>
+<li><p>In the <strong>Job schedule</strong> section, select a <strong>Time zone</strong>, then choose
+<strong>Run now</strong>, <strong>Select frequency</strong>, or <strong>Enter cron expression</strong>.</p></li>
+<li><p>Optionally configure <strong>Arguments</strong>, <strong>Configuration</strong>, <strong>Environment
+variables</strong>, <strong>Dependencies</strong> (JARs, PY files, Archives, Files, Uploads), or
+<strong>Retry on failure</strong>.</p></li>
+<li><p>Click <strong>Create Spark job</strong>.</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Batch jobs running on a node may fail if the node is rebooted.
 Automatic failover to another node is not guaranteed.</p>
 </div>
-<p>In the next dialog pane:</p>
-<figure class="align-default">
-<img alt="Batch job create 2" class="imgborder" src="../_images/spark-job-batch-create-2.png"/>
-</figure>
-<ol class="arabic simple">
-<li><p>Add the path for your job’s dependencies. Dependencies can be <code class="docutils literal notranslate"><span class="pre">JAR</span></code>, <code class="docutils literal notranslate"><span class="pre">FILES</span></code>,
-<code class="docutils literal notranslate"><span class="pre">PYFILES</span></code>, or <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code> files. Click <strong>+</strong> to add more dependencies of the same
-file type. The <strong>Repository</strong> section displays a read-only summary of the files
-you’ve added as dependencies, grouped by file type.</p></li>
-<li><p>Click <strong>Next</strong>.</p></li>
-</ol>
-<p>In the next dialog pane:</p>
-<figure class="align-default">
-<img alt="Batch job create 3" class="imgborder" src="../_images/spark-job-batch-create-3.png"/>
-</figure>
-<ol class="arabic simple">
-<li><p>Choose to run the job now or on a recurring schedule. Select a timezone from
-the drop-down menu, then select a frequency or enter a cron expression to set a
-schedule for the job to run.</p></li>
-<li><p>Click <strong>Create</strong>.</p></li>
-</ol>
+</section>
+<section id="delete-batch-job">
+<h3 id="delete-batch-job">Delete batch job<a class="headerlink" href="#delete-batch-job" title="Permalink to this heading">#</a></h3>
+<p>To delete a job, click the options menu for the job and select <strong>Delete job</strong>.</p>
 </section>
 </section>
 <section id="spark-connect-servers">
@@ -456,9 +444,9 @@ assigned to the server.</p></li>
 <li><p><strong>Status</strong>: The current status of the server, such as completed or running.</p></li>
 <li><p><strong>Date created</strong>: The timestamp for when the server was created.</p></li>
 </ul>
-<p>Click the options menu for a server to download logs, view the <a class="reference external" href="https://spark.apache.org/docs/3.5.3/web-ui.html">Spark web
+<p>Click the options menu for a server to download logs, view the <a class="reference external" href="https://spark.apache.org/docs/3.5.3/web-ui.html">Spark
 UI</a>, generate a Spark Connect
-URL, or delete the server.</p>
+URL, terminate a running server, or delete the server.</p>
 <section id="create-spark-connect-server">
 <h3 id="create-spark-connect-server">Create Spark Connect server<a class="headerlink" href="#create-spark-connect-server" title="Permalink to this heading">#</a></h3>
 <p>To create a Spark Connect server:</p>
@@ -466,26 +454,26 @@ URL, or delete the server.</p>
 <img alt="Connect server create" class="imgborder" src="../_images/spark-job-connect-create.png"/>
 </figure>
 <ol class="arabic simple">
-<li><p>Click <strong>Create server</strong>.</p></li>
-<li><p>In the <strong>Create server</strong> dialog, enter a server name.</p></li>
-<li><p>The <strong>Configuration</strong> section includes fields to enter properties and their
-values. Click <strong>+</strong> to add additional configuration properties.</p></li>
-<li><p>Select a <a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a> to assign to the server.</p></li>
-<li><p>Select an image for the server. See <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for
-details.</p></li>
-<li><p>Choose whether to enable encryption.</p></li>
-<li><p>Click <strong>Next</strong>.</p></li>
+<li><p>Click <strong>Create Spark server</strong>.</p></li>
+<li><p>In the <strong>Spark server</strong> dialog, enter a <strong>Server name</strong>, select a
+<a class="reference internal" href="resource-pools.html"><span class="std std-doc">resource pool</span></a>, and select an <strong>Image</strong>. See
+<a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a> for details.</p></li>
+<li><p>Choose whether to <strong>Enable encryption</strong>.</p></li>
+<li><p>Optionally configure <strong>Configuration</strong>, <strong>Environment variables</strong>, or
+<strong>Dependencies</strong> (JARs, PY files, Archives, Files, Uploads).</p></li>
+<li><p>Click <strong>Create Spark server</strong>.</p></li>
 </ol>
-<p>In the next dialog pane:</p>
-<figure class="align-default">
-<img alt="Connect server create 2" class="imgborder" src="../_images/spark-job-connect-create-2.png"/>
-</figure>
-<ol class="arabic simple">
-<li><p>Add the path for your server’s dependencies. Dependencies can be <code class="docutils literal notranslate"><span class="pre">JAR</span></code>,
-<code class="docutils literal notranslate"><span class="pre">FILES</span></code>, <code class="docutils literal notranslate"><span class="pre">PYFILES</span></code>, or <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code> files. Click <strong>+</strong> to add more dependencies of
-the same file type.</p></li>
-<li><p>Click <strong>Create</strong>.</p></li>
-</ol>
+</section>
+<section id="generate-spark-connect-url">
+<h3 id="generate-spark-connect-url">Generate Spark Connect URL<a class="headerlink" href="#generate-spark-connect-url" title="Permalink to this heading">#</a></h3>
+<p>To generate a connection URL for your server, click the options menu and select
+<strong>Generate Spark Connect URL</strong>. Use this URL to connect to the server from your
+Spark application.</p>
+</section>
+<section id="terminate-server">
+<h3 id="terminate-server">Terminate server<a class="headerlink" href="#terminate-server" title="Permalink to this heading">#</a></h3>
+<p>To stop a running server, click the options menu and select <strong>Terminate
+server</strong>. This option is only available for servers with a running status.</p>
 </section>
 <section id="delete-spark-connect-server">
 <h3 id="delete-spark-connect-server">Delete Spark Connect server<a class="headerlink" href="#delete-spark-connect-server" title="Permalink to this heading">#</a></h3>
@@ -515,10 +503,7 @@ role has.</p>
 </ul>
 <p>Click the options menu for a server to perform additional actions such as
 starting a shutdown server, shutting down a running server, downloading logs, or
-<a class="reference internal" href="#ddpe-jupyter-delete"><span class="std std-ref">deleting the server</span></a>:</p>
-<figure class="align-default">
-<img alt="Jupyter Notebook create" class="imgborder" src="../_images/notebook-options-menu.png"/>
-</figure>
+<a class="reference internal" href="#ddpe-jupyter-delete"><span class="std std-ref">deleting the server</span></a>.</p>
 </section>
 <section id="jupyter-notebook-privileges">
 <h2 id="jupyter-notebook-privileges">Jupyter Notebook privileges<a class="headerlink" href="#jupyter-notebook-privileges" title="Permalink to this heading">#</a></h2>
