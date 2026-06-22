@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 480-e.1 LTS logo"
+            alt="Dell Data Analytics Engine 480-e.2 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.1 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.2 LTS</a>
   </label>
   
   
@@ -511,6 +511,11 @@ minutes.</p></td>
 <td><p>Maximum timeout <a class="reference internal" href="../admin/properties.html#prop-type-duration"><span class="std std-ref">duration</span></a> to read data from a
 MaxCompute connection. Must be greater than or equal to 1 millisecond and
 less than 5 minutes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">maxcompute.external-table-fallback-byte-array-decoding</span></code></p></td>
+<td><p>Byte array decoding strategy for external tables when the SerDe class cannot
+be determined from table metadata. Set to <code class="docutils literal notranslate"><span class="pre">BINARY</span></code> for Parquet and Avro
+tables, or <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> for CSV and LazySimpleSerDe tables. Defaults to <code class="docutils literal notranslate"><span class="pre">BINARY</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
