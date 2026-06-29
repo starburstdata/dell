@@ -1435,6 +1435,21 @@ qualifying them with the catalog name:</p>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">silver</span><span class="p">.</span><span class="n">curated</span><span class="p">.</span><span class="n">clicks</span> <span class="k">SELECT</span> <span class="p">...</span> <span class="k">FROM</span> <span class="n">bronze</span><span class="p">.</span><span class="n">raw_events</span><span class="p">.</span><span class="n">clicks</span><span class="p">;</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Two distinct credential types are used when configuring BIAC with the Iceberg
+REST catalog:</p>
+<ul class="simple">
+<li><p>When creating the warehouse via the <a class="reference internal" href="#create-data-sources-api"><span class="std std-ref">Starburst Portal Datasource Management
+API</span></a>, use native storage credentials <code class="docutils literal notranslate"><span class="pre">s3_access_key</span></code>
+and <code class="docutils literal notranslate"><span class="pre">s3_secret_key</span></code>.</p></li>
+<li><p>In Spark jobs, reference the warehouse name and use proxy credentials
+<code class="docutils literal notranslate"><span class="pre">s3_governance_access_key</span></code> and <code class="docutils literal notranslate"><span class="pre">s3_governance_secret_key</span></code>, generated through
+<a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">DDPE object storage governance</span></a>. BIAC is only enforced when proxy
+credentials are present. In SEP, BIAC enforcement is native at the engine
+level.</p></li>
+</ul>
+</div>
 </section>
 <section id="id4">
 <h4 id="id4">Configuration examples<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
