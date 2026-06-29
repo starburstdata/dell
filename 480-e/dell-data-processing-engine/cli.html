@@ -239,6 +239,7 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job-submission.html">Jobs and Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uploads.html">Uploads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention.html">Log retention settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maintenance-mode.html">System maintenance mode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
@@ -1382,10 +1383,8 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">60s</sp
 </section>
 <section id="uploads">
 <span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
-<p>The following CLI commands can be used for tasks related to file uploads and
-secrets:</p>
 <table id="id16">
-<caption><span class="caption-text">Dell Data Processing Engine uploads CLI commands</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Uploads commands</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1398,152 +1397,94 @@ secrets:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uploads</span></code></p></td>
-<td><p>Commands to manage file uploads and secrets.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activate</span></code></p></td>
+<td><p>Activate this upload. Once activation has completed, the upload is available
+for use.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create-file</span></code></p></td>
-<td><p>Create a file upload set.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deactivate</span></code></p></td>
+<td><p>Once no workloads are using this upload, it is deactivated.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
+<td><p>Schedule an upload and its files to be deleted.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delete-item</span></code></p></td>
+<td><p>Delete a single item from an upload. The upload must be new or inactive.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--comment</span></code>. Comment or description.
-Used only for your own reference purposes. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. Item name or path. <strong>Required</strong>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">create-secret</span></code></p></td>
-<td><p>Create a new secret set.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get-item</span></code></p></td>
+<td><p>Get a specific item from an upload.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--comment</span></code>. Comment or description.
-Used only for your own reference purposes. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-k</span></code>, <code class="docutils literal notranslate"><span class="pre">--key</span></code>. The full path that was used to upload the item. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code>, <code class="docutils literal notranslate"><span class="pre">--output</span></code>. The destination file to write the item to. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code>. Whether to overwrite the destination file if it already exists.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delete-file</span></code></p></td>
-<td><p>Delete a file set.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>List all of your uploads.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update</span></code></p></td>
+<td><p>Change an existing upload’s name and description.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the file. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. New name for the upload. Names must be unique.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">--description</span></code>. New description for the upload.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">delete-secret</span></code></p></td>
-<td><p>Delete a secret set.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rename-item</span></code></p></td>
+<td><p>Rename an item from an upload. The upload must be new or inactive.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the secret. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. Item name or path. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">--new-name</span></code>. New item name or path. <strong>Required</strong>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-file</span></code></p></td>
-<td><p>Get details of an uploaded file.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the file. <strong>Required</strong>.</p></li>
-</ul>
-</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seal</span></code></p></td>
+<td><p>Seal an upload. No further items can be added or removed.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get-secret</span></code></p></td>
-<td><p>Get details of an uploaded secret.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the secret. <strong>Required</strong>.</p></li>
-</ul>
-</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">info</span></code></p></td>
+<td><p>Get the details of an upload.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">update-file</span></code></p></td>
-<td><p>Update a file upload set.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the file. <strong>Required</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--comment</span></code>. Comment or description.
-Used only for your own reference purposes. <strong>Required</strong>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update-secret</span></code></p></td>
-<td><p>Update a secret set.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--id</span></code>. The uploadID of the secret. <strong>Required</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--comment</span></code>. Comment or description.
-Used only for your own reference purposes. <strong>Required</strong>.</p></li>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">add</span></code></p></td>
+<td><p>Upload a set of files.</p></td>
+<td><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. The name of this upload. If an upload with the same name
+already exists and has not yet completed, this appends to the existing
+upload. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">--description</span></code>. The description of this upload.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">--mapping</span></code>. Maps source file names to destination paths using
+patter</p>
+<p>Wildcards:</p>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> - Any characters (except path separators) <br/>
+<code class="docutils literal notranslate"><span class="pre">**</span></code> - Any characters (including path separators) <br/>
+<code class="docutils literal notranslate"><span class="pre">?</span></code> - Single character <br/>
+<code class="docutils literal notranslate"><span class="pre">{name}</span></code> - Named capture group</p>
+<p>Without wildcards, the mapping is treated as a literal match.</p>
+<p>Examples:</p>
+<p><code class="docutils literal notranslate"><span class="pre">a=b</span></code> - Literal: <code class="docutils literal notranslate"><span class="pre">a</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">b</span></code> <br/>
+<code class="docutils literal notranslate"><span class="pre">*.txt=backup/*.txt</span></code> - <code class="docutils literal notranslate"><span class="pre">foo.txt</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">backup/foo.txt</span></code> <br/>
+<code class="docutils literal notranslate"><span class="pre">{name}-{ver}.jar=lib/{name}/{ver}.jar</span></code> - <code class="docutils literal notranslate"><span class="pre">app-1.0.jar</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">lib/app/1.0.jar</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-mappings-only</span></code>. Does not perform the upload, only shows the file
+mappings that would be applied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--retain-paths</span></code>. Retain relative paths of uploaded files. For example, if
+uploading files from <code class="docutils literal notranslate"><span class="pre">/mycomputer/users/work/data/local</span></code> and the working
+directory is <code class="docutils literal notranslate"><span class="pre">/mycomputer/users/work/</span></code>, the uploaded files retain the
+<code class="docutils literal notranslate"><span class="pre">data/local/</span></code> path. Use <code class="docutils literal notranslate"><span class="pre">--mappings</span></code> to override this behavior.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<!--
-### Storage
-
-:::{list-table} Storage commands
-:widths: 10, 30, 60
-:header-rows: 1
-
-* - Command
-  - Description
-  - Options
-* - `activate`
-  - Activate this storage. Once activation has completed, the storage is
-    available for use.
-  -
-* - `deactivate`
-  - Deactivate this storage. Once no workloads are using the storage, it is
-    deactivated.
-  -
-* - `delete`
-  - Schedule a storage and its files to be deleted.
-  -
-* - `delete-item`
-  - Delete a single item from a storage. The storage must be new or inactive.
-  - * `-n`, `--name`. Item name or path. **Required**.
-* - `get-item`
-  - Get a specific item from storage.
-  - * `-k`, `--key`. The full path that was used to upload the item. **Required**.
-    * `-f`, `--output`. The destination file to write the item to. **Required**.
-    * `--overwrite`. Whether to overwrite the destination file if it already exists.
-* - `list`
-  - List all storages.
-  -
-* - `update`
-  - Change an existing storage's name and description.
-  - * `-n`, `--name`. New name for the storage. Names must be unique.
-    * `-d`, `--description`. New description for the storage.
-* - `rename-item`
-  - Rename an item from a storage. The storage must be new or inactive.
-  - * `-n`, `--name`. Item name or path. **Required**.
-    * `-r`, `--new-name`. New item name or path. **Required**.
-* - `seal`
-  - Seal a storage. No further items can be added or removed.
-  -
-* - `info`
-  - Get the details of a storage set.
-  -
-* - `upload`
-  - Upload a set of files to storage.
-  - * `-n`, `--name`. The name of this storage. If a storage with the same name
-    already exists and has not yet completed, this appends to the existing
-    storage. **Required**.
-    * `-d`, `--description`. The description of this storage.
-    * `-m`, `--mapping`. Maps source file names to destination paths using
-      patter
-
-      Wildcards:
-
-       `*` - Any characters (except path separators) <br>
-       `**` - Any characters (including path separators) <br>
-       `?` - Single character <br>
-       `{name}` - Named capture group
-
-      Without wildcards, the mapping is treated as a literal match.
-
-      Examples:
-
-       `a=b` - Literal: `a` -> `b` <br>
-       `*.txt=backup/*.txt` - `foo.txt` -> `backup/foo.txt` <br>
-       `{name}-{ver}.jar=lib/{name}/{ver}.jar` - `app-1.0.jar` -> `lib/app/1.0.jar`
-
-    * `--show-mappings-only`. Does not perform the upload, only shows the file
-      mappings that would be applied.
-    * `--retain-paths`. Retain relative paths of uploaded files. For example, if
-      uploading files from `/mycomputer/users/work/data/local` and the working
-      directory is `/mycomputer/users/work/`, the uploaded files retain the
-      `data/local/` path. Use `--mappings` to override this behavior.
-:::
--->
 </section>
 </section>
 <section id="examples">
