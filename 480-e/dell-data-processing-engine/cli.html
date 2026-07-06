@@ -413,7 +413,7 @@ Processing Engine queries.</p>
 </section>
 <section id="installation">
 <span id="ddpe-cli-install"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/286-479-e.4/">Download and extract the .tar.gz
+<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/311-480-e.1/">Download and extract the .tar.gz
 file from the downloads archive</a>.
 In the terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and execute the
 <code class="docutils literal notranslate"><span class="pre">dell-data-processing-engine.sh</span></code> script with the <code class="docutils literal notranslate"><span class="pre">version</span></code> command to see the
@@ -453,10 +453,12 @@ Commands:
   submit                    Emulation of Spark's spark-submit script
   notebook                  Notebook management
   instance                  Instance management
-  uploads                   Commands to manage file uploads and secrets
+  upload                    Commands to manage file uploads
+  secret                    Commands to manage secrets
   profile                   Commands to get or set the default profile
   version                   Show the current version
   instance-image            Instance images
+  admin                     Commands that require an admin role
 </pre></div>
 </div>
 </section>
@@ -547,7 +549,7 @@ username and password</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
 <td><p>Emulation of Spark’s <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>
 script. Not all options and combinations are supported.</p></td>
-<td><ul>
+<td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name of your application. If a name is not provided, one is generated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--jars</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.jar</span></code> files to include on the driver and executor classpaths.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--py-files</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.zip</span></code>, <code class="docutils literal notranslate"><span class="pre">.egg</span></code>, or <code class="docutils literal notranslate"><span class="pre">.py</span></code> files to place on the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>
@@ -558,33 +560,21 @@ for Python apps.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--conf</span></code>. Arbitrary Spark configuration property.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--env</span></code>. Add environment variables to the submission. Each entry must be
 in the form <code class="docutils literal notranslate"><span class="pre">key=value</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--executer-memory</span></code>. The total memory per executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1G</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executor-memory</span></code>. The total memory per executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1G</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--num-executors</span></code>. The number of executors to launch. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--executor-cores</span></code>. The number of cores used by each executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--pool</span></code>. Resource pool to use.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>. Enable encryption for communication between the driver and
 executors. Defaults   to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--file-upload</span></code>. Upload files with this submission.
-Each file must be  <code class="docutils literal notranslate"><span class="pre">1MB</span></code> or less and the total size of all uploads cannot be more than
-<code class="docutils literal notranslate"><span class="pre">10MB</span></code>. The form for each file is <code class="docutils literal notranslate"><span class="pre">LOCAL_PATH:DESTINATION_DIRECTORY.</span>   <span class="pre">DESTINATION_DIRECTORY</span></code>. The path is relative to the uploads directory which
-is always prefixed onto the <code class="docutils literal notranslate"><span class="pre">DESTINATION_DIRECTORY</span></code> you provide.</p>
-<p>For example, <code class="docutils literal notranslate"><span class="pre">--file-upload</span> <span class="pre">/usr/local/myfile.txt:/my/mount</span></code>
-would upload a local file from <code class="docutils literal notranslate"><span class="pre">/usr/local/myfile.txt</span></code> and mount it
-in Spark executors at <code class="docutils literal notranslate"><span class="pre">\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""</span> <span class="pre">my/mount/myfile.txt</span></code>.</p>
-<p>The uploaded files can be referenced using the standard Spark prefix:</p>
-<p><code class="docutils literal notranslate"><span class="pre">local://\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""...</span></code></p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--uploaded-secrets</span></code>. Attach uploaded secrets to Spark executors as environment variables.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--uploaded-files</span></code>. Attach uploaded files to Spark executors.
-The form for each file is <code class="docutils literal notranslate"><span class="pre">UPLOAD_ID:DESTINATION_DIRECTORY</span></code>. <code class="docutils literal notranslate"><span class="pre">DESTINATION_DIRECTORY</span></code>. The path is relative to the uploads directory which is always prefixed onto the <code class="docutils literal notranslate"><span class="pre">DESTINATION_DIRECTORY</span></code> you provide. All files in the upload are mounted into the destination directory. For example,
-if upload <code class="docutils literal notranslate"><span class="pre">m-12345678</span></code> had 2 text files, <code class="docutils literal notranslate"><span class="pre">one.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">two.txt</span></code>, and 1 binary file, <code class="docutils literal notranslate"><span class="pre">three.dat</span></code>,<code class="docutils literal notranslate"><span class="pre">--uploaded-files</span> <span class="pre">m-12345678:/my/mount</span></code> would mount in Spark executors at <code class="docutils literal notranslate"><span class="pre">\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""my/mount/one.txt",</span> <span class="pre">"\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""</span>   <span class="pre">my/mount/two.txt",</span> <span class="pre">and</span> <span class="pre">"\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""my/mount/three.dat</span></code></p>
-<p>The uploaded files can be referenced using the standard Spark prefix:</p>
-<p><code class="docutils literal notranslate"><span class="pre">local://\"""</span> <span class="pre">+</span> <span class="pre">UPLOAD_DIRECTORY</span> <span class="pre">+</span> <span class="pre">"""...</span></code></p>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the job. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
+The mount path is optional; if omitted, the upload’s default mount path is used.
+Can be specified multiple times. Examples:
+<code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">name=my-upload:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--spark-connect</span></code>. Start a Spark Connect instance instead of a batch job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>. CRON timezone. Defaults to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--cron</span></code>. Set a CRON schedule.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-retries</span></code>. Maximum number of retries on failure. Must be <code class="docutils literal notranslate"><span class="pre">1</span></code> or greater. Only valid for batch jobs, not Spark Connect.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--class</span></code>. Your Java or Scala application’s main class.</p></li>
 </ul>
 </td>
@@ -701,31 +691,28 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-file-upload</span></code></p></td>
 <td><p>Get details of all uploaded files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-secret-uploads</span></code></p></td>
-<td><p>Get details of all uploaded secrets.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scheduler-logs</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scheduler-logs</span></code></p></td>
 <td><p>List scheduler logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
 <td><p>List system events.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
 <td><p>List the Spark History Server logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
 <td><p>Resource pool management</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
 <td><p>System maintenance management</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
 <td><p>Log retention commands.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
 <td><p>Global storage management.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
 <td><p>Instance images management.</p></td>
 </tr>
 </tbody>
@@ -750,15 +737,11 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <td><p>Resource pool management.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-assignments</span></code></p></td>
-<td><p>Get the current resource pool user assignments.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
 <td><p>Get the current state of the resource pools.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
 <td><p>Set the resource pools. Specify a set of arguments for each resource pool.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code>. The name for this resource pool.</p></li>
@@ -778,10 +761,6 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--application-max-gpus</span></code>. The maximum number of GPU cores per application. <code class="docutils literal notranslate"><span class="pre">Defaults</span> <span class="pre">to</span> <span class="pre">0</span></code>.</p></li>
 </ul>
 </td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update-assignments</span></code></p></td>
-<td><p>Replace the current resource pool user assignments.</p></td>
-<td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">add</span></code></p></td>
 <td><p>Add a new resource pool.</p></td>
@@ -843,7 +822,7 @@ overriding unspecified fields with default values.</p></td>
 <td><p>Instance image management.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create-instance-image-import</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import</span></code></p></td>
 <td><p>Import a container image to use as an instance image.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for your image.</p></li>
@@ -856,29 +835,29 @@ overriding unspecified fields with default values.</p></td>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get-instance-image</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image</span></code></p></td>
 <td><p>Get instance image details.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get-instance-image-import-status</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import-status</span></code></p></td>
 <td><p>Get instance image import status.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-instance-image-imports</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-imports</span></code></p></td>
 <td><p>List instance imports.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-instance-images</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-images</span></code></p></td>
 <td><p>List instance images.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update-instance-image-status</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update-image-status</span></code></p></td>
 <td><p>Update the status of an instance image.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. The instance image ID.</p></li>
@@ -910,11 +889,15 @@ overriding unspecified fields with default values.</p></td>
 <td><p>Log retention commands.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span> <span class="pre">settings</span></code></p></td>
+<td><p>Log retention settings commands.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span> <span class="pre">settings</span> <span class="pre">get</span></code></p></td>
 <td><p>Show current log retention settings.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span> <span class="pre">settings</span> <span class="pre">update</span></code></p></td>
 <td><p>Update the log retention settings.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--spark-eventlogs-compaction-enabled</span></code>. Enable or disable Spark event logs compaction.</p></li>
@@ -933,7 +916,7 @@ cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reset</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span> <span class="pre">settings</span> <span class="pre">reset</span></code></p></td>
 <td><p>Reset the log retention settings to their default values.</p></td>
 <td></td>
 </tr>
@@ -963,7 +946,7 @@ cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d
 <td><p>Run the instance logs cleaner.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">show</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>Show the instance logs cleaner status.</p></td>
 <td></td>
 </tr>
@@ -995,7 +978,7 @@ cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d
 <td><p>System maintenance management</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>Get the current system maintenance mode status.</p></td>
 <td></td>
 </tr>
@@ -1034,7 +1017,11 @@ cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d
 <td><p>Global storage management.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span> <span class="pre">usage</span></code></p></td>
+<td><p>Global storage usage management.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span> <span class="pre">usage</span> <span class="pre">get</span></code></p></td>
 <td><p>Get global storage usage.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--more-instances</span></code>. Get usage for top instances. Defaults to top <code class="docutils literal notranslate"><span class="pre">20</span></code>
@@ -1043,7 +1030,7 @@ instances.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">refresh</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span> <span class="pre">usage</span> <span class="pre">refresh</span></code></p></td>
 <td><p>Refresh global storage usage.</p></td>
 <td></td>
 </tr>
@@ -1130,34 +1117,48 @@ shutdown.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">duplicate</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminate</span></code></p></td>
+<td><p>Terminate an instance (stop if running and clean up resources).</p></td>
+<td><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for termination confirmation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--preserve-user-data</span></code>. Preserve user data when terminating the Notebook server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminates the instance without waiting for normal shutdown.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option can result in loss of final logs and events.</p>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">duplicate</span></code></p></td>
 <td><p>Duplicate an instance. Requires a saved configuration from the original
 instance. A new instance is created based on the saved instance.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">restart</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">restart</span></code></p></td>
 <td><p>Restart a previously shutdown Notebook server.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">suspend</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">suspend</span></code></p></td>
 <td><p>Suspend an instance. Only scheduled batch jobs are supported.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for suspend confirmation.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resume</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resume</span></code></p></td>
 <td><p>Resume a suspended instance. Only scheduled batch jobs are supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shutdown</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shutdown</span></code></p></td>
 <td><p>Shutdown a Notebook server.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for shutdown confirmation.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
 <td><p>Get logs of a batch or Spark Connect job.</p></td>
 <td><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--index</span></code>. For logs that use 0 as the index.</p></li>
@@ -1165,7 +1166,7 @@ instance. A new instance is created based on the saved instance.</p></td>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>List the status of a batch or Spark Connect job.</p></td>
 <td></td>
 </tr>
@@ -1195,6 +1196,10 @@ instance. A new instance is created based on the saved instance.</p></td>
 <li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>: A name of your application. If a name is not provided, one is generated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--pool</span></code>: The name of the resource pool to use.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>: A description of the Notebook instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the job. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
+The mount path is optional; if omitted, the upload’s default mount path is used.
+Can be specified multiple times. Examples:
+<code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">name=my-upload:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678</span></code>.</p></li>
 </ul>
 </td>
 </tr>
