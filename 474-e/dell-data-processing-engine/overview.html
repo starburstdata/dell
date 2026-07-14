@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 474-e.25 LTS logo"
+            alt="Dell Data Analytics Engine 474-e.26 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.25 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 474-e.26 LTS</a>
   </label>
   
   
@@ -235,6 +235,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#about-dell-data-processing-engine">About Dell Data Processing Engine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user-personas">User personas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#object-storage">Object storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#release-notes">Release notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#included-libraries">Included libraries</a></li>
@@ -309,6 +310,8 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#user-personas" class="md-nav__link">User personas</a>
         </li>
+        <li class="md-nav__item"><a href="#object-storage" class="md-nav__link">Object storage</a>
+        </li>
         <li class="md-nav__item"><a href="#command-line-interface" class="md-nav__link">Command line interface</a>
         </li>
         <li class="md-nav__item"><a href="#release-notes" class="md-nav__link">Release notes</a>
@@ -353,6 +356,18 @@ persona to learn more:</p>
 <li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-batch"><span class="std std-ref">Submit a batch job</span></a></p></li>
 <li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-cron"><span class="std std-ref">Submit a batch job to run on a CRON schedule</span></a></p></li>
 <li><p><a class="reference internal" href="cli.html#ddpe-cli-submit-connect"><span class="std std-ref">Start an interactive job using a Spark Connect server</span></a></p></li>
+</ul>
+</section>
+<section id="object-storage">
+<h3 id="object-storage">Object storage<a class="headerlink" href="#object-storage" title="Permalink to this heading">#</a></h3>
+<p>Dell Data Processing Engine supports S3-compatible object storage for reading
+and writing data in Spark jobs. The following object storage systems have been
+tested:</p>
+<ul class="simple">
+<li><p>AWS S3</p></li>
+<li><p>MinIO</p></li>
+<li><p>Dell PowerScale S3</p></li>
+<li><p>Dell ObjectScale S3</p></li>
 </ul>
 </section>
 <section id="command-line-interface">
