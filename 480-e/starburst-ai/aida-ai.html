@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Starburst AI agent-based data product enrichment" href="data-product-enrichment-ai.html" />
-    <link rel="prev" title="Configure Starburst AI" href="configuration-ai.html" />
+    <link rel="prev" title="Trusted connections" href="trusted-connections.html" />
 
   
    
@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 480-e.3 LTS logo"
+            alt="Dell Data Analytics Engine 480-e.4 LTS logo"
           />
           
         </span>
@@ -218,7 +218,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.3 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.4 LTS</a>
   </label>
   
   
@@ -237,6 +237,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../admin/control-plane/index.html">Starburst Control Plane</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Starburst AI</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="configuration-ai.html">Configure Starburst AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trusted-connections.html">Trusted connections</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AI Data Assistant (AIDA)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-aida-works">How AIDA works</a></li>
@@ -259,6 +260,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#download-tables">Download tables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#custom-personas">Custom personas</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#create-a-custom-persona">Create a custom persona</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#manage-personas">Manage personas</a></li>
@@ -269,6 +271,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#guardrails">Guardrails</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#customize-appearance-and-theme">Customize appearance and theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audit-agent-interactions">Audit agent interactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-starburst-s-ai-agent">Configure Starburst’s AI agent</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#model-validation">Model Validation</a></li>
@@ -390,6 +393,7 @@
 <li><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#download-tables">Download tables</a></li>
 <li><a class="reference internal" href="#custom-personas">Custom personas</a><ul>
 <li><a class="reference internal" href="#create-a-custom-persona">Create a custom persona</a></li>
 <li><a class="reference internal" href="#manage-personas">Manage personas</a></li>
@@ -400,6 +404,7 @@
 </li>
 <li><a class="reference internal" href="#guardrails">Guardrails</a></li>
 <li><a class="reference internal" href="#customize-appearance-and-theme">Customize appearance and theme</a></li>
+<li><a class="reference internal" href="#audit-agent-interactions">Audit agent interactions</a></li>
 <li><a class="reference internal" href="#configure-starburst-s-ai-agent">Configure Starburst’s AI agent</a><ul>
 <li><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li><a class="reference internal" href="#model-validation">Model Validation</a></li>
@@ -732,6 +737,35 @@ refresh chart data automatically.</p></li>
 </ul>
 </section>
 </section>
+<section id="download-tables">
+<span id="aida-download-tables"></span><h3 id="download-tables">Download tables<a class="headerlink" href="#download-tables" title="Permalink to this heading">#</a></h3>
+<p>When AIDA answers a question by running one or more queries that return rows
+from your data, you can download the results as CSV files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is available as a <a class="reference internal" href="../versions.html#feature-release-status"><span class="std std-ref">public preview</span></a>. Contact
+your Starburst account team for more information.</p>
+</div>
+<p>Click <strong>Download table</strong> beneath the response to open the <strong>Download tables</strong>
+dialog. On the left side of the dialog, select a table produced by AIDA. You can
+then:</p>
+<ul class="simple">
+<li><p>Click <strong>Download as .CSV</strong> to export the selected table as a single
+CSV file.</p></li>
+<li><p>Click <strong>Download all tables</strong>, to export every table in the response as a
+single ZIP archive of CSV files.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="Starburst AIDA chat interface" class="imgborder" src="../_images/starburst-ai-aida-download-tables.png">
+</img></figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AIDA does not produce a downloadable table for answers it composes as text, for
+queries that return no rows, or for results that are not drawn from actual
+tables in your data product. Exports include protection against CSV formula
+injection.</p>
+</div>
+</section>
 <section id="custom-personas">
 <span id="sb-agent-custom-persona-prompts"></span><h3 id="custom-personas">Custom personas<a class="headerlink" href="#custom-personas" title="Permalink to this heading">#</a></h3>
 <p>In addition to the three built-in personas, you can create custom personas that
@@ -798,8 +832,8 @@ be viewed in the <strong>Manage personas</strong> dialog.</p></li>
 </li>
 </ul>
 <figure class="align-default">
-<img alt="Starburst AIDA create custom persona dialog" class="imgborder" src="../_images/ai-aida-create-persona-dialog.png">
-</img></figure>
+<img alt="Starburst AIDA create custom persona dialog" class="imgborder" src="../_images/ai-aida-create-persona-dialog.png"/>
+</figure>
 </section>
 <section id="manage-personas">
 <h4 id="manage-personas">Manage personas<a class="headerlink" href="#manage-personas" title="Permalink to this heading">#</a></h4>
@@ -883,6 +917,15 @@ Appearance and theme</strong> in the Starburst Enterprise web UI to customize yo
 screens.</p>
 <p>For more information about customizing AIDA’s appearance, see
 <a class="reference internal" href="../overview/sep-ui.html#ui-appearance-theme"><span class="std std-ref">Appearance and theme</span></a>.</p>
+</section>
+<section id="audit-agent-interactions">
+<span id="aida-agent-audit-log"></span><h2 id="audit-agent-interactions">Audit agent interactions<a class="headerlink" href="#audit-agent-interactions" title="Permalink to this heading">#</a></h2>
+<p>Interactions with AIDA are recorded in an immutable agent interaction audit log
+for governance and compliance. Agent logs are available to administrators and
+capture every interaction, including the user, the question, the response, tools
+used, and the data sources referenced.</p>
+<p>Administrators with the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role can review and export these records from
+the <strong>Agent logs</strong> tab of the <a class="reference internal" href="../security/biac-audit-log.html#audit-log-agent-logs"><span class="std std-ref">Audit log</span></a> page.</p>
 </section>
 <section id="configure-starburst-s-ai-agent">
 <span id="sb-ai-agent"></span><h2 id="configure-starburst-s-ai-agent">Configure Starburst’s AI agent<a class="headerlink" href="#configure-starburst-s-ai-agent" title="Permalink to this heading">#</a></h2>
@@ -1016,7 +1059,14 @@ chat session’s history are summarized to control LLM context size while
 preserving key information needed for context.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ai.agent.use-extracted-tool-call</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ai.agent.trusted-connections.oauth.enabled</span></code></p></td>
+<td><p>Enables OAuth 2.0 authentication for OpenAI-compatible <a class="reference internal" href="trusted-connections.html#trusted-connections-configuration-openai"><span class="std std-ref">trusted
+connections</span></a>. When set to <code class="docutils literal notranslate"><span class="pre">false</span></code>,
+the <strong>OAuth 2.0</strong> authentication option is hidden in the UI and rejected by
+the API.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ai.agent.use-extracted-tool-call</span></code></p></td>
 <td><p>Some LLMs do not format tool calls properly and return them inline as part
 of the assistant response. When this property is enabled, if the model
 returns inline tool calls in its response, the agent attempts to extract the
@@ -1025,7 +1075,7 @@ tool calls from the response and to execute it. When this property is set to
 response from the model.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">starburst.agent.enabled</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">starburst.agent.enabled</span></code></p></td>
 <td><p>Enables or disables the Starburst AI agent. When disabled, it also disables
 AI features that rely on the AI agent.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
@@ -1153,7 +1203,7 @@ dedicated resource group:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="configuration-ai.html" title="Configure Starburst AI"
+            <a href="trusted-connections.html" title="Trusted connections"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1162,7 +1212,7 @@ dedicated resource group:</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Configure Starburst AI </span>
+                      class="md-footer-nav__direction"> Previous </span> Trusted connections </span>
               </div>
             </a>
           
