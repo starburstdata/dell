@@ -1519,7 +1519,7 @@ and written to your local configuration file for later use.</p>
 <span id="ddpe-cli-submit-batch"></span><h3 id="submit-a-batch-job">Submit a batch job<a class="headerlink" href="#submit-a-batch-job" title="Permalink to this heading">#</a></h3>
 <p>An example Dell Data Processing Engine batch job submission that uses the
 <code class="docutils literal notranslate"><span class="pre">org.apache.spark.examples.SparkPi</span></code> class to calculate pi:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.3.jar"</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-------------------------------------------
@@ -1554,18 +1554,18 @@ Delete request sent
 <p>Using the same class and <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file as the previous example, you can run the
 job on a CRON schedule by using the <code class="docutils literal notranslate"><span class="pre">--cron</span></code> option. The following example runs
 the job every hour at minute 0:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.3.jar --cron "</span><span class="m">0</span> * * * *<span class="s2">""</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar --cron "</span><span class="m">0</span> * * * *<span class="s2">""</span>
 </pre></div>
 </div>
 <p>To run the job every day at 12:00 PM:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.3.jar --cron 0 "</span><span class="m">12</span> * * *<span class="s2">""</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar --cron 0 "</span><span class="m">12</span> * * *<span class="s2">""</span>
 </pre></div>
 </div>
 <p>The timezone is <code class="docutils literal notranslate"><span class="pre">UTC</span></code> by default. You can change <a class="reference external" href="https://wikipedia.org/wiki/List_of_tz_database_time_zones">the
 timezone</a> with the
 <code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code> option. The following example runs the batch job at 12:00 PM
 EST:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.3.jar  --cron-timezone="</span>EST<span class="s2">" --cron "</span><span class="m">0</span> <span class="m">12</span> * * *<span class="s2">""</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar  --cron-timezone="</span>EST<span class="s2">" --cron "</span><span class="m">0</span> <span class="m">12</span> * * *<span class="s2">""</span>
 </pre></div>
 </div>
 </section>
@@ -1597,7 +1597,7 @@ Spark Connect: sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/
       ____             __
     / __/__  ___ _____/ /__
     _\ \/ _ \/ _ `/ __/  '_/
-  /__ / .__/\_,_/_/ /_/\_\   version 3.5.3
+  /__ / .__/\_,_/_/ /_/\_\   version 3.5.7
       /_/
 
 Using Python version 3.10.14 (main. Mar 19 2024 21:46:16)
@@ -1627,7 +1627,7 @@ SparkSession available as `spark`.
 </pre></div>
 </div>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">https://c-eed1bf18f8526486c9ecddf9819a273db-ui.local.net:8787</span></code> URL to
-view the <a class="reference external" href="https://spark.apache.org/docs/3.5.3/web-ui.html">Spark Web UI</a>. Dell
+view the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/web-ui.html">Spark Web UI</a>. Dell
 Data Processing Engine requires authentication through your IdP before accessing
 the Spark Web UI. If you have not already logged in, you are taken to your IdP’s
 login screen to enter your credentials.</p>
