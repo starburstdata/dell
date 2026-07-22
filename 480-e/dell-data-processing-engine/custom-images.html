@@ -275,6 +275,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#image-deletion-considerations">Image deletion considerations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-custom-images-in-spark-jobs">Using custom images in Spark jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verify-image-signatures-manually">Verify image signatures manually</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
@@ -366,6 +370,10 @@
 </li>
 <li><a class="reference internal" href="#image-deletion-considerations">Image deletion considerations</a></li>
 <li><a class="reference internal" href="#using-custom-images-in-spark-jobs">Using custom images in Spark jobs</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#verify-image-signatures-manually">Verify image signatures manually</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1121,6 +1129,105 @@ completed successfully.</p>
 <p>Access to unsigned and non-base images requires either the manage role or
 explicit permissions granted through BIAC.</p>
 </div>
+</section>
+<section id="troubleshooting">
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="verify-image-signatures-manually">
+<h3 id="verify-image-signatures-manually">Verify image signatures manually<a class="headerlink" href="#verify-image-signatures-manually" title="Permalink to this heading">#</a></h3>
+<p>During <a class="reference internal" href="#ddpe-image-import-ui"><span class="std std-ref">image import</span></a>, DDPE automatically verifies the
+cosign signature of Starburst base images. If an import fails at the signature
+verification step, you can replicate the check manually using the
+<a class="reference external" href="https://docs.sigstore.dev/cosign/signing/overview">Cosign</a> CLI to identify the root cause. This
+is especially useful in air-gapped environments where the importer cannot reach
+the public Sigstore transparency log.</p>
+<ol class="arabic">
+<li><p>Install the required tools and the latest <a class="reference external" href="https://docs.sigstore.dev/cosign/system_config/installation/"><code class="docutils literal notranslate"><span class="pre">cosign</span></code></a> binary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get install -y curl jq ca-certificates
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o cosign
+chmod +x cosign
+sudo mv cosign /usr/local/bin/cosign
+</pre></div>
+</div>
+<p>Confirm the installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cosign version
+</pre></div>
+</div>
+</li>
+<li><p>Create a local file containing the Starburst public signing key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; starburst-public-key.pub <span class="s">&lt;&lt;'EOF'</span>
+<span class="s">-----BEGIN PUBLIC KEY-----</span>
+<span class="s">MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUWU5ZNaoI28LbViIPnvkT8oUYE+w</span>
+<span class="s">+h3wLoZMA2Ukx5EFFIzwMAaVX/cSy37nihAKVATaZ6xAN2QWnKEmXaeioA==</span>
+<span class="s">-----END PUBLIC KEY-----</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a trusted root file. By default, <code class="docutils literal notranslate"><span class="pre">cosign</span></code> fetches the Sigstore
+trusted root via <a class="reference external" href="https://theupdateframework.io/docs/overview/">TUF</a>, which requires outbound internet access. In air-gapped environments, supply an
+empty trusted root to pin verification to the local public key only:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat &gt; trusted_root.json <span class="s">&lt;&lt;'EOF'</span>
+<span class="s">{</span>
+<span class="s">  "mediaType": "application/vnd.dev.sigstore.trustedroot+json;version=0.1",</span>
+<span class="s">  "tlogs": [],</span>
+<span class="s">  "certificateAuthorities": [],</span>
+<span class="s">  "ctlogs": [],</span>
+<span class="s">  "timestampAuthorities": []</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set environment variables for the images you want to verify. Replace the
+values with the full registry path of the image you are trying to import:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ECR_DDPE_SPARK_BASE_IMAGE</span><span class="o">=</span><span class="s2">"&lt;registry&gt;/&lt;repository&gt;/starburst-spark:&lt;tag&gt;"</span>
+<span class="nb">export</span> <span class="nv">ECR_DDPE_JUPYTER_BASE_IMAGE</span><span class="o">=</span><span class="s2">"&lt;registry&gt;/&lt;repository&gt;/starburst-jupyter:&lt;tag&gt;"</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify the image signatures.</p>
+<p>Verify the Spark base image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cosign verify <span class="se">\</span>
+  --key starburst-public-key.pub <span class="se">\</span>
+  --trusted-root trusted_root.json <span class="se">\</span>
+  --insecure-ignore-tlog<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="s2">"</span><span class="nv">$ECR_DDPE_SPARK_BASE_IMAGE</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>Verify the Jupyter base image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cosign verify <span class="se">\</span>
+  --key starburst-public-key.pub <span class="se">\</span>
+  --trusted-root trusted_root.json <span class="se">\</span>
+  --insecure-ignore-tlog<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="s2">"</span><span class="nv">$ECR_DDPE_JUPYTER_BASE_IMAGE</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>A successful verification produces output similar to the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the signature.
+Verification for &lt;your-registry&gt;/&lt;image&gt;:&lt;tag&gt; --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+[{"critical":{"identity":{"docker-reference":"&lt;your-registry&gt;/&lt;image&gt;"},"image":{"docker-manifest-digest":"sha256:&lt;digest&gt;"},"type":"cosign container image signature"},"optional":{"io.starburst/type":"SPARK","io.starburst/version":"&lt;version&gt;"}}]
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">--insecure-ignore-tlog=true</span></code> is used because these images are hosted in a
+private registry and <a class="reference external" href="https://docs.sigstore.dev/logging/overview/">Rekor</a>
+transparency log verification may not be available. Signature verification
+still validates image integrity and publisher identity.</p>
+</div>
+<p>If verification fails for either image, do not proceed with the import. A
+failure indicates an incorrect image tag, an unsigned or tampered image, or a
+mismatch between the image and the Starburst signing key. Contact support before
+continuing.</p>
+</section>
 </section>
 </section>
 
