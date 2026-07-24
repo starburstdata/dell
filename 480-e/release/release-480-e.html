@@ -562,7 +562,7 @@ columns within the <a class="reference internal" href="../overview/sep-ui.html">
 provider</span></a>.</p></li>
 <li><p>The Starburst Portal was renamed to Starburst Control Plane.</p></li>
 <li><p>Added support for <a class="reference internal" href="../object-storage/metastores.html#data-source-management-api"><span class="std std-ref">creating and managing data
-sources</span></a> in Starburst data catalog via the Starburst
+sources</span></a> in Starburst Metastore via the Starburst
 Control Plane API.</p></li>
 <li><p>Added support for <a class="reference internal" href="../admin/control-plane/workload-isolation.html#control-plane-auto-tag-based-routing"><span class="std std-ref">auto tag-based
 routing</span></a>, a new routing method in the
@@ -571,25 +571,24 @@ Starburst Control Plane.</p></li>
 Queries are no longer lost when the page is refreshed.</p></li>
 <li><p>The Starburst-packaged Hive Metastore Service (HMS) image has reached end of
 support as of 480-e. Starting with the August 2026 LTS release, SEP will no
-longer include a packaged HMS image. <a class="reference internal" href="../object-storage/metastores.html#hms-to-sdc-migration-tool"><span class="std std-ref">Migrate to Starburst data
-catalog</span></a> before upgrading beyond 480-e.</p></li>
+longer include a packaged HMS image. <a class="reference internal" href="../object-storage/metastores.html#hms-to-starburst-metastore-migration-tool"><span class="std std-ref">Migrate to Starburst Metastore</span></a> before upgrading beyond 480-e.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">persistence.query-history.retention-time</span></code> configuration property is
 deprecated and replaced by <code class="docutils literal notranslate"><span class="pre">persistence.retention.max-age</span></code>. Existing
 configurations continue to work but should be updated to use the new property
 name.</p></li>
-<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-sdc-migration-tool"><span class="std std-ref">HMS to Starburst Data Catalog migration tool</span></a>
+<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-starburst-metastore-migration-tool"><span class="std std-ref">HMS to Starburst Metastore migration tool</span></a>
 now automatically detects and processes all catalogs found in the source
 environment, rather than being restricted to the <code class="docutils literal notranslate"><span class="pre">default</span></code> catalog.</p></li>
-<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-sdc-migration-tool"><span class="std std-ref">HMS to Starburst Data Catalog migration
+<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-starburst-metastore-migration-tool"><span class="std std-ref">HMS to Starburst Metastore migration
 tool</span></a> now processes schemas in
 parallel rather than sequentially, improving migration speed for environments
 with many schemas.</p></li>
-<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-sdc-migration-tool"><span class="std std-ref">HMS to Starburst Data Catalog migration tool</span></a>
+<li><p>The <a class="reference internal" href="../object-storage/metastores.html#hms-to-starburst-metastore-migration-tool"><span class="std std-ref">HMS to Starburst Metastore migration tool</span></a>
 now supports Kerberos-secured HMS instances. A new <code class="docutils literal notranslate"><span class="pre">-c</span></code>/<code class="docutils literal notranslate"><span class="pre">--properties-file</span></code>
 argument accepts a Java <code class="docutils literal notranslate"><span class="pre">.properties</span></code> file containing Thrift metastore client
 configuration. This lets you manage complex configurations in a single file
 rather than passed as individual command-line arguments.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">export</span></code> command of the HMS to Starburst Data Catalog migration tool now
+<li><p>The <code class="docutils literal notranslate"><span class="pre">export</span></code> command of the HMS to Starburst Metastore migration tool now
 generates a JSON summary report at <code class="docutils literal notranslate"><span class="pre">exportStats/export.json</span></code> within the
 user-supplied folder, including the number of schemas and tables processed and
 any failures that occurred.</p></li>
@@ -610,10 +609,10 @@ to the proleptic Gregorian calendar for correct display.</p></li>
 issues with automatically generated certificates used for secure internal
 communication.</p></li>
 <li><p>Fixed an issue where creating a view based on a partitioned table would fail
-when Starburst Data Catalog was configured as the metastore with Oracle as the
+when Starburst Metastore was configured as the metastore with Oracle as the
 persistence backend due to an empty string being bound as the partition
 location.</p></li>
-<li><p>Fixed an issue in Starburst Data Catalog with MySQL, where column statistics for
+<li><p>Fixed an issue in Starburst Metastore with MySQL, where column statistics for
 high-precision <code class="docutils literal notranslate"><span class="pre">DECIMAL</span></code> column types failed due to insufficient precision in
 internal table definitions.</p></li>
 <li><p>Fixed an issue where any user with privileges to add grants on a table,
