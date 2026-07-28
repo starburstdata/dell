@@ -118,7 +118,7 @@
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 480-e.4 LTS logo"
+            alt="Dell Data Analytics Engine 480-e.5 LTS logo"
           />
           
         </span>
@@ -211,7 +211,7 @@
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.4 LTS</a>
+       title="Dell Data Analytics Engine">Dell Data Analytics Engine 480-e.5 LTS</a>
   </label>
   
   
@@ -600,10 +600,13 @@ Can be specified multiple times. Examples:
 authentication</span></a> with Hive Metastore, there are some
 additional configuration steps required:</p>
 <ol class="arabic simple">
-<li><p>Upload a keytab and Kerberos config file using the CLI, such as:</p></li>
+<li><p>Upload a keytab and Kerberos config file using the CLI, then activate each
+upload:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos config"</span> /path/to/krb5.conf
-  ./dell-data-processing-engine uploads create-file --comment <span class="s2">"Kerberos keytab"</span> /path/to/hive.keytab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine uploads add -n kerberos-config /path/to/krb5.conf
+  ./dell-data-processing-engine uploads activate <span class="nv">name</span><span class="o">=</span>kerberos-config
+  ./dell-data-processing-engine uploads add -n kerberos-keytab /path/to/hive.keytab
+  ./dell-data-processing-engine uploads activate <span class="nv">name</span><span class="o">=</span>kerberos-keytab
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -641,9 +644,9 @@ list available databases.</p>
 <li><p>Run the following example <code class="docutils literal notranslate"><span class="pre">submit</span></code> command, replacing the keytab file name,
 principal, and the Thrift URL in the command to match your environment:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./cli/target/dell-data-processing-engine/bin/dell-data-processing-engine submit <span class="se">\</span>
---uploaded-files m-109b31726b2640fd897051507903d4ba:/kerberos/config <span class="se">\</span>
---uploaded-files m-f4e021419cf44990bda2cfc3d039f0ae:/kerberos/keytab <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit <span class="se">\</span>
+--mount <span class="nv">name</span><span class="o">=</span>kerberos-config:/kerberos/config <span class="se">\</span>
+--mount <span class="nv">name</span><span class="o">=</span>kerberos-keytab:/kerberos/keytab <span class="se">\</span>
 --conf spark.sql.catalogImplementation<span class="o">=</span>hive <span class="se">\</span>
 --conf spark.security.credentials.hive.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
 --conf spark.hadoop.hive.metastore.use.SSL<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
