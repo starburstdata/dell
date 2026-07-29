@@ -244,6 +244,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#spark-history-server">Spark History Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-history-server-logs">View History Server logs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-spark-connect-url">Generate Spark Connect URL</a></li>
@@ -336,6 +340,10 @@
 <li><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#spark-history-server">Spark History Server</a><ul>
+<li><a class="reference internal" href="#view-history-server-logs">View History Server logs</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#spark-connect-servers">Spark Connect servers</a><ul>
 <li><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
 <li><a class="reference internal" href="#generate-spark-connect-url">Generate Spark Connect URL</a></li>
@@ -390,14 +398,8 @@ assigned to the job.</p></li>
 <p>Click the <strong>Name</strong>, <strong>Job submitted</strong>, or <strong>Job created by</strong> columns to
 reorganize the data in ascending or descending order.</p>
 <p>The options menu for a Spark job lets you delete the job, download logs, and
-view the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/web-ui.html">Spark Web UI or Spark History Server
-UI</a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The Spark History Server UI can take up to 10 seconds to initialize after
-you submit a job. If you see an <code class="docutils literal notranslate"><span class="pre">Application</span> <span class="pre">not</span> <span class="pre">found</span></code> error message, wait a
-few seconds and try again.</p>
-</div>
+view the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/web-ui.html">Spark Web UI</a> or
+<a class="reference internal" href="#ddpe-spark-history-server-ui"><span class="std std-ref">Spark History Server UI</span></a>.</p>
 <section id="create-batch-jobs">
 <h3 id="create-batch-jobs">Create batch jobs<a class="headerlink" href="#create-batch-jobs" title="Permalink to this heading">#</a></h3>
 <p>To create a Spark batch job:</p>
@@ -429,11 +431,32 @@ Automatic failover to another node is not guaranteed.</p>
 <p>To delete a job, click the options menu for the job and select <strong>Delete job</strong>.</p>
 </section>
 </section>
+<section id="spark-history-server">
+<span id="ddpe-spark-history-server-ui"></span><h2 id="spark-history-server">Spark History Server<a class="headerlink" href="#spark-history-server" title="Permalink to this heading">#</a></h2>
+<p>The Spark History Server is a web UI for monitoring running and completed Spark
+jobs. Click the options menu for a batch job and select <strong>Spark History Server
+UI</strong> to open it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Spark History Server UI can take up to 10 seconds to initialize after
+you submit a job. If you see an <code class="docutils literal notranslate"><span class="pre">Application</span> <span class="pre">not</span> <span class="pre">found</span></code> error message, wait a
+few seconds and try again.</p>
+</div>
+<p>See the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/monitoring.html">Spark monitoring documentation</a>
+for details on the available UI tabs and metrics.</p>
+<section id="view-history-server-logs">
+<h3 id="view-history-server-logs">View History Server logs<a class="headerlink" href="#view-history-server-logs" title="Permalink to this heading">#</a></h3>
+<p>To view the Spark History Server logs from the CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine admin history-server-logs
+</pre></div>
+</div>
+</section>
+</section>
 <section id="spark-connect-servers">
 <span id="ddpe-spark-connect-server-ui"></span><h2 id="spark-connect-servers">Spark Connect servers<a class="headerlink" href="#spark-connect-servers" title="Permalink to this heading">#</a></h2>
 <p>In the <strong>Jobs and Applications</strong> pane, click the <strong>Spark Connect servers</strong> tab to view a
 list of your existing servers. You must have the <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">Spark runtime</span></a>
-UI privilege to access the <strong>Jobs and Applications</strong> pane</p>
+UI privilege to access the <strong>Jobs and Applications</strong> pane.</p>
 <figure class="align-default">
 <img alt="Connect server view" class="imgborder" src="../_images/spark-job-connect-view.png"/>
 </figure>
@@ -487,7 +510,7 @@ server</strong>.</p>
 <p>Dell Data Processing Engine supports <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>
 servers, offering fast and interactive ways to explore your data. Users can view
 the Notebook interface from the <strong>Notebook servers</strong> tab. Access to the Notebook
-servers depend on the <a class="reference internal" href="access-control.html#ddpe-jupyter-priv"><span class="std std-ref">Jupyter Notebook privileges</span></a> a user’s
+servers depends on the <a class="reference internal" href="access-control.html#ddpe-jupyter-priv"><span class="std std-ref">Jupyter Notebook privileges</span></a> a user’s
 role has.</p>
 <figure class="align-default">
 <img alt="Jupyter Notebook tab view" class="imgborder" src="../_images/spark-jupyter-view.png"/>
@@ -560,7 +583,7 @@ moments before the <strong>URL</strong> column populates and the server is moved
 <section id="delete-notebook-server">
 <span id="ddpe-jupyter-delete"></span><h3 id="delete-notebook-server">Delete Notebook server<a class="headerlink" href="#delete-notebook-server" title="Permalink to this heading">#</a></h3>
 <p>To delete an existing Jupyter Notebook server, open the options menu for a
-server, choose whether to keep the files associate with this server or not, and
+server, choose whether to keep the files associated with this server or not, and
 click <strong>Delete</strong>:</p>
 <figure class="align-default">
 <img alt="Jupyter Notebook delete server" class="imgborder" src="../_images/spark-jupyter-delete.png"/>
@@ -574,7 +597,7 @@ click <strong>Delete</strong>:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
-   <span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="s2">"sc://sj-iceberg-cpu-grpc.rke2-dev-test-01.eco-tests.eng.starburstdata.net:8787/token=eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ..."</span><span class="p">)</span> \
+   <span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="s2">"sc://&lt;spark-connect-host&gt;:&lt;port&gt;/token=&lt;your-token&gt;"</span><span class="p">)</span> \
    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 </pre></div>
 </div>
