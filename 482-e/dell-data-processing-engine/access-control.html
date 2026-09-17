@@ -620,9 +620,11 @@ also have the <code class="docutils literal notranslate"><span class="pre">CREAT
 to grant the privileges to other entities.</p></li>
 <li><p>Click <strong>Save privileges</strong>.</p></li>
 </ol>
+<p>You can grant <code class="docutils literal notranslate"><span class="pre">USE</span></code> and <code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> on all uploads or on a specific upload.
+<code class="docutils literal notranslate"><span class="pre">CREATE</span></code> applies to all uploads.</p>
 <p>The following privileges are available:</p>
 <table id="id5">
-<caption><span class="caption-text">Spark Connect server privileges</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Spark uploads privileges</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%"/>
 <col style="width: 75%"/>
@@ -633,23 +635,36 @@ to grant the privileges to other entities.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USE</span></code></p></td>
 <td><ul class="simple">
-<li><p>Access all existing uploads.</p></li>
-<li><p>Delete all existing uploads.</p></li>
+<li><p>View an upload and its files.</p></li>
+<li><p>Download an upload.</p></li>
+<li><p>Reference an upload in a job, Spark Connect server, or Notebook server.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
 <td><ul class="simple">
-<li><p>Upload new files or secrets.</p></li>
-<li><p>Access uploads that were created by this user.</p></li>
-<li><p>Delete uploads that were uploaded by this user.</p></li>
+<li><p>Edit the name and description of an upload.</p></li>
+<li><p>Activate, deactivate, and seal an upload.</p></li>
+<li><p>Delete an upload, or rename and delete its individual files.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create new uploads.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> does not include <code class="docutils literal notranslate"><span class="pre">USE</span></code>. A role needs both privileges to manage an
+upload and reference it in a job or server.</p>
+</div>
+<p>The role that creates an upload owns it and retains full access to it.</p>
 </section>
 <section id="spark-system">
 <span id="ddpe-spark-system-priv"></span><h3 id="spark-system">Spark system<a class="headerlink" href="#spark-system" title="Permalink to this heading">#</a></h3>

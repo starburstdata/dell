@@ -375,15 +375,29 @@ files, as well as distributing <a class="reference internal" href="custom-images
 identified by a name, owner, creation date, and status. Uploads can be managed
 from the <a class="reference internal" href="#ddpe-uploads-ui"><span class="std std-ref">Uploads UI</span></a> or programmatically with the
 <a class="reference internal" href="#ddpe-uploads-cli"><span class="std std-ref">CLI</span></a>.</p>
+<p>A job or server reads its upload references from its current definition at the
+start of every run. For a recurring job, each run picks up changes to those
+references without recreating the job.</p>
 <section id="privileges">
 <h2 id="privileges">Privileges<a class="headerlink" href="#privileges" title="Permalink to this heading">#</a></h2>
-<p>The following privileges control access to uploads. See
-<a class="reference internal" href="access-control.html#ddpe-grant-privileges-ui"><span class="std std-ref">access control</span></a> for instructions on granting and
+<p>The following privileges control access to uploads. You can grant <code class="docutils literal notranslate"><span class="pre">USE</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> on all uploads or on a specific upload. See
+<a class="reference internal" href="access-control.html#ddpe-spark-uploads-priv"><span class="std std-ref">access control</span></a> for instructions on granting and
 revoking these privileges.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>: Upload new files. Access and delete uploads created by this user.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code>: Access and delete all existing uploads.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USE</span></code>: View and download an upload, and reference it in a job, Spark Connect
+server, or Notebook server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code>: Edit, activate, deactivate, and seal an upload, and delete the
+upload or its individual files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>: Create new uploads. Applies to all uploads and cannot be granted on
+a specific upload.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> does not include <code class="docutils literal notranslate"><span class="pre">USE</span></code>. A role needs both privileges to manage an
+upload and reference it in a job or server.</p>
+</div>
+<p>The role that creates an upload owns it and retains full access to it.</p>
 </section>
 <section id="uploads-ui">
 <span id="ddpe-uploads-ui"></span><h2 id="uploads-ui">Uploads UI<a class="headerlink" href="#uploads-ui" title="Permalink to this heading">#</a></h2>
