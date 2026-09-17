@@ -238,6 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#about-dell-data-processing-engine">About Dell Data Processing Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definitions-and-runs">Definitions and runs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user-personas">User personas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#object-storage">Object storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
@@ -325,6 +326,7 @@
     <ul>
 <li><a class="reference internal" href="#">Overview</a><ul>
 <li><a class="reference internal" href="#about-dell-data-processing-engine">About Dell Data Processing Engine</a><ul>
+<li><a class="reference internal" href="#definitions-and-runs">Definitions and runs</a></li>
 <li><a class="reference internal" href="#user-personas">User personas</a></li>
 <li><a class="reference internal" href="#object-storage">Object storage</a></li>
 <li><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
@@ -353,6 +355,28 @@ Spark</a>, the open-source distributed processing engine
 designed for large-scale data analytics.</p>
 <section id="about-dell-data-processing-engine">
 <h2 id="about-dell-data-processing-engine">About Dell Data Processing Engine<a class="headerlink" href="#about-dell-data-processing-engine" title="Permalink to this heading">#</a></h2>
+<section id="definitions-and-runs">
+<span id="ddpe-definitions-runs"></span><h3 id="definitions-and-runs">Definitions and runs<a class="headerlink" href="#definitions-and-runs" title="Permalink to this heading">#</a></h3>
+<p>Dell Data Processing Engine separates the configuration of a workload from its
+executions:</p>
+<ul class="simple">
+<li><p>A <strong>definition</strong> is the stored configuration of a <a class="reference internal" href="jobs.html"><span class="doc std std-doc">job</span></a>, a <a class="reference internal" href="connect-servers.html"><span class="doc std std-doc">Connect
+server</span></a>, or a <a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">Notebook server</span></a>. A
+definition persists whether or not it is running, and can be viewed and
+listed at any time.</p></li>
+<li><p>A <strong>run</strong> is a single execution of a definition. Each run has its own
+identifier, status, and logs.</p></li>
+</ul>
+<p>A definition is <strong>Active</strong> or <strong>Inactive</strong>. Each run reports its own
+<a class="reference internal" href="run-history.html#ddpe-run-statuses"><span class="std std-ref">status</span></a>, independently of the definition’s status.</p>
+<p>Definitions and runs are managed separately. The <a class="reference internal" href="jobs.html"><span class="doc std std-doc">Jobs</span></a>, <a class="reference internal" href="connect-servers.html"><span class="doc std std-doc">Connect
+servers</span></a>, and <a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">Notebook servers</span></a> panes each
+list definitions of that type, and the <a class="reference internal" href="run-history.html"><span class="doc std std-doc">Run history</span></a> pane lists
+runs across all three. A definition’s summary page also includes a <strong>Recent
+runs</strong> table for that definition.</p>
+<p>The <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a> makes the same distinction, with command groups for jobs,
+Connect servers, Notebook servers, and runs.</p>
+</section>
 <section id="user-personas">
 <h3 id="user-personas">User personas<a class="headerlink" href="#user-personas" title="Permalink to this heading">#</a></h3>
 <p>Dell Data Processing Engine is used primarily by platform administrators who
@@ -404,6 +428,7 @@ Engine:</p>
 <li><p><a class="reference internal" href="jobs.html"><span class="doc std std-doc">Jobs</span></a></p></li>
 <li><p><a class="reference internal" href="connect-servers.html"><span class="doc std std-doc">Connect servers</span></a></p></li>
 <li><p><a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">Notebook servers</span></a></p></li>
+<li><p><a class="reference internal" href="run-history.html"><span class="doc std std-doc">Run history</span></a></p></li>
 <li><p><a class="reference internal" href="resource-pools.html"><span class="doc std std-doc">Resource pools</span></a></p></li>
 <li><p><a class="reference internal" href="access-control.html"><span class="doc std std-doc">Access control</span></a></p></li>
 <li><p><a class="reference internal" href="object-storage-governance.html"><span class="doc std std-doc">Object storage governance</span></a></p></li>

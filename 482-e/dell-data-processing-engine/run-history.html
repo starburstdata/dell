@@ -242,6 +242,7 @@
 <li class="toctree-l1"><a class="reference internal" href="connect-servers.html">Connect servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook-servers.html">Notebook servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Run history</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-statuses">Run statuses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#view-run-details">View run details</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-run-logs">Download run logs</a></li>
@@ -319,6 +320,7 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Run history</a><ul>
+<li><a class="reference internal" href="#run-statuses">Run statuses</a></li>
 <li><a class="reference internal" href="#view-run-details">View run details</a></li>
 <li><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
 <li><a class="reference internal" href="#download-run-logs">Download run logs</a></li>
@@ -361,7 +363,7 @@ Starburst Enterprise web UI to view the runs of all jobs and servers.</p>
 <li><p><strong>Run ID</strong>: The unique identifier for the run.</p></li>
 <li><p><strong>Application name</strong>: The name of the job or server that produced the run.</p></li>
 <li><p><strong>Kind</strong>: The run type, such as <strong>Adhoc</strong> or <strong>Connect server</strong>.</p></li>
-<li><p><strong>Status</strong>: The result of the run, such as <strong>Completed</strong> or <strong>Terminated</strong>.</p></li>
+<li><p><strong>Status</strong>: The <a class="reference internal" href="#ddpe-run-statuses"><span class="std std-ref">status</span></a> of the run.</p></li>
 <li><p><strong>Resource pool</strong>: The name of the <a class="reference internal" href="resource-pools.html"><span class="doc std std-doc">resource pool</span></a>
 assigned to the run.</p></li>
 <li><p><strong>Created</strong>: The timestamp for when the run was created.</p></li>
@@ -379,6 +381,58 @@ not required. The list loads more entries as you scroll.</p>
 <li><p><strong>Spark History server</strong>: Open the Spark History Server for the run.</p></li>
 <li><p><strong>Download logs</strong>: Download the logs for the run.</p></li>
 </ul>
+<section id="run-statuses">
+<span id="ddpe-run-statuses"></span><h2 id="run-statuses">Run statuses<a class="headerlink" href="#run-statuses" title="Permalink to this heading">#</a></h2>
+<p>A run reports one of the following statuses:</p>
+<table id="id1">
+<caption><span class="caption-text">Run statuses</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 30%"/>
+<col style="width: 70%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Scheduling</strong></p></td>
+<td><p>The run has been created, but its resources have not been requested yet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pending</strong></p></td>
+<td><p>The run’s resources have been created and are starting up.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Awaiting resources</strong></p></td>
+<td><p>The run cannot start yet because the cluster does not have capacity for it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Running</strong></p></td>
+<td><p>The run is in progress.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Completed</strong></p></td>
+<td><p>The run finished successfully. Only job runs complete; servers run until
+they are terminated.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Failed</strong></p></td>
+<td><p>The run failed.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Terminated</strong></p></td>
+<td><p>The run stopped before finishing, either because it was terminated or
+because its underlying resources were removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Skipped</strong></p></td>
+<td><p>The run was not started. A run is skipped when another run of the same
+job or server is still active, when its scheduled window has passed, or
+when the system is in <a class="reference internal" href="maintenance-mode.html"><span class="doc std std-doc">maintenance mode</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unknown</strong></p></td>
+<td><p>The state of the run could not be determined. This can happen when the
+run’s underlying resources are no longer present.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For some statuses, the run summary shows additional detail, such as the reason
+a run failed or was skipped.</p>
+</section>
 <section id="view-run-details">
 <h2 id="view-run-details">View run details<a class="headerlink" href="#view-run-details" title="Permalink to this heading">#</a></h2>
 <p>Click <strong>View details</strong> from the options menu to open the run summary page. The
