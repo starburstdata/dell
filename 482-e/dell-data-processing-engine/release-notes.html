@@ -236,6 +236,7 @@
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#e-august-2026">2.0 (482-e) (August 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-september-2026">1.9 (480-e) (September 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-may-2026">1.8 (479-e) (May 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-november-2025">1.6 (476-e) (November 2025)</a></li>
@@ -323,6 +324,7 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Release notes</a><ul>
+<li><a class="reference internal" href="#e-august-2026">2.0 (482-e) (August 2026)</a></li>
 <li><a class="reference internal" href="#e-september-2026">1.9 (480-e) (September 2026)</a></li>
 <li><a class="reference internal" href="#e-may-2026">1.8 (479-e) (May 2026)</a></li>
 <li><a class="reference internal" href="#e-november-2025">1.6 (476-e) (November 2025)</a></li>
@@ -349,6 +351,60 @@
 <p>New releases of the Dell Data Processing Engine are created whenever significant
 new features or bug fixes are available. Each DDPE release is based on a
 corresponding SEP release, indicated in parentheses.</p>
+<section id="e-august-2026">
+<h2 id="e-august-2026">2.0 (482-e) (August 2026)<a class="headerlink" href="#e-august-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Definitions and runs are now distinct entities across <a class="reference internal" href="jobs.html"><span class="doc std std-doc">jobs</span></a>,
+<a class="reference internal" href="connect-servers.html"><span class="doc std std-doc">Connect servers</span></a>, and <a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">notebook
+servers</span></a>, in both the UI and the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a>.</p></li>
+<li><p>Definition and run detail views now show full configuration, including
+Spark properties, jars, and upload mounts.</p></li>
+<li><p>Logs are now attached to individual runs instead of the definition.</p></li>
+<li><p>Each run is now a separate application in the Spark History Server, with
+event logs only from that run.</p></li>
+<li><p>Added UI and CLI support for <a class="reference internal" href="run-history.html"><span class="doc std std-doc">Run history</span></a>, a unified view
+of runs across all workload types.</p></li>
+<li><p>Added a one-time schedule type to run a job once, on a specific date.</p></li>
+<li><p>Added support for terminating a run independently of its definition.</p></li>
+<li><p>Added support for re-running a job or Connect server from any past run.</p></li>
+<li><p>Recurring job schedules can now be edited without recreating the job.</p></li>
+<li><p>Added support for editing job and server definitions.</p></li>
+<li><p>Added support for cloning a job definition.</p></li>
+<li><p>Added the ability to activate and deactivate a job, pausing and resuming
+its schedule without deleting it.</p></li>
+<li><p>Updated the privilege model for <a class="reference internal" href="uploads.html"><span class="doc std std-doc">uploads</span></a>: <code class="docutils literal notranslate"><span class="pre">Use</span></code> access is now
+separate from <code class="docutils literal notranslate"><span class="pre">Manage</span></code> access.</p></li>
+<li><p>Upload references on a job or server are now re-read at the start of
+every run, so changes take effect without recreating the job.</p></li>
+<li><p><a class="reference internal" href="secrets.html"><span class="doc std std-doc">Secret</span></a> deletion is now blocked for secrets in use by an
+active job.</p></li>
+<li><p>Secret references on a job or server are now re-read at the start of
+every run, so changes take effect without recreating the job.</p></li>
+<li><p>Made the following enhancements to the user experience:</p>
+<ul>
+<li><p>Added the ability to filter listings by column.</p></li>
+<li><p>Added search by name using word similarity.</p></li>
+<li><p>Added the ability to customize and reorder which columns are shown.</p></li>
+<li><p>Replaced pagination with infinite scroll on new listings.</p></li>
+</ul>
+</li>
+<li><p>Updated the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a> with the following changes:</p>
+<ul>
+<li><p>Removed the <code class="docutils literal notranslate"><span class="pre">submit</span></code> and <code class="docutils literal notranslate"><span class="pre">instance</span></code> commands. Replaced them with the
+<a class="reference internal" href="cli.html#ddpe-cli-job"><span class="std std-ref">job</span></a>, <a class="reference internal" href="cli.html#ddpe-cli-connect"><span class="std std-ref">connect</span></a>,
+<a class="reference internal" href="cli.html#ddpe-cli-notebook"><span class="std std-ref">notebook</span></a>, and <a class="reference internal" href="cli.html#ddpe-cli-run"><span class="std std-ref">run</span></a> command groups.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">update</span></code>, <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">clone</span></code>, <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">activate</span></code>, and <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">deactivate</span></code>
+commands.</p></li>
+<li><p>Added filtering and column selection options to the <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">list</span></code>,
+<code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">list</span></code>, and <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">list</span></code> commands.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">tableNoWrap</span></code> output format.</p></li>
+<li><p>Added <a class="reference internal" href="cli.html#ddpe-cli-spark-history-server"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">spark-history-server</span></code></span></a>
+<code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">restart</span></code> commands.</p></li>
+<li><p>Removed the <code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">list-instances</span></code> command.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="e-september-2026">
 <h2 id="e-september-2026">1.9 (480-e) (September 2026)<a class="headerlink" href="#e-september-2026" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
