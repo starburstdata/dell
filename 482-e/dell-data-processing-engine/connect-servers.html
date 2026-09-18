@@ -240,12 +240,25 @@
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Connect servers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#view-server-details">View server details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-server">Run server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-spark-connect-url">Get Spark Connect URL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#terminate-server">Terminate server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-servers-ui">Connect servers UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-server-details">View server details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-server">Run server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-spark-connect-url">Get Spark Connect URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminate-server">Terminate server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-servers-cli">Connect servers CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-connect-servers">List connect servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-connect-server">Create a connect server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">View server details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-server">Run a server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-spark-connect-url">Get the Spark Connect URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminate-a-server">Terminate a server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-a-connect-server">Delete a connect server</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebook-servers.html">Notebook servers</a></li>
@@ -321,12 +334,25 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Connect servers</a><ul>
+<li><a class="reference internal" href="#connect-servers-ui">Connect servers UI</a><ul>
 <li><a class="reference internal" href="#view-server-details">View server details</a></li>
 <li><a class="reference internal" href="#create-spark-connect-server">Create Spark Connect server</a></li>
 <li><a class="reference internal" href="#run-server">Run server</a></li>
 <li><a class="reference internal" href="#get-spark-connect-url">Get Spark Connect URL</a></li>
 <li><a class="reference internal" href="#terminate-server">Terminate server</a></li>
 <li><a class="reference internal" href="#delete-spark-connect-server">Delete Spark Connect server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connect-servers-cli">Connect servers CLI</a><ul>
+<li><a class="reference internal" href="#list-connect-servers">List connect servers</a></li>
+<li><a class="reference internal" href="#create-a-connect-server">Create a connect server</a></li>
+<li><a class="reference internal" href="#id1">View server details</a></li>
+<li><a class="reference internal" href="#run-a-server">Run a server</a></li>
+<li><a class="reference internal" href="#get-the-spark-connect-url">Get the Spark Connect URL</a></li>
+<li><a class="reference internal" href="#terminate-a-server">Terminate a server</a></li>
+<li><a class="reference internal" href="#delete-a-connect-server">Delete a connect server</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -341,7 +367,12 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="connect-servers">
-<span id="ddpe-spark-connect-server-ui"></span><h1 id="dell-data-processing-engine-connect-servers--page-root">Connect servers<a class="headerlink" href="#dell-data-processing-engine-connect-servers--page-root" title="Permalink to this heading">#</a></h1>
+<h1 id="dell-data-processing-engine-connect-servers--page-root">Connect servers<a class="headerlink" href="#dell-data-processing-engine-connect-servers--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine lets you create, run, and manage Spark Connect
+servers. Connect servers can be managed in the
+<a class="reference internal" href="#ddpe-spark-connect-server-ui"><span class="std std-ref">UI</span></a> or with the <a class="reference internal" href="#ddpe-connect-servers-cli"><span class="std std-ref">CLI</span></a>.</p>
+<section id="connect-servers-ui">
+<span id="ddpe-spark-connect-server-ui"></span><h2 id="connect-servers-ui">Connect servers UI<a class="headerlink" href="#connect-servers-ui" title="Permalink to this heading">#</a></h2>
 <p>Click <strong>Connect servers</strong> in the Dell Data Processing Engine section of the
 Starburst Enterprise web UI to view and manage Spark Connect servers. You must have the
 <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">Spark runtime</span></a> UI privilege to access the <strong>Connect servers</strong>
@@ -376,7 +407,7 @@ not required. The list loads more entries as you scroll.</p>
 <li><p><strong>Delete server</strong>: Permanently delete the server.</p></li>
 </ul>
 <section id="view-server-details">
-<h2 id="view-server-details">View server details<a class="headerlink" href="#view-server-details" title="Permalink to this heading">#</a></h2>
+<h3 id="view-server-details">View server details<a class="headerlink" href="#view-server-details" title="Permalink to this heading">#</a></h3>
 <p>Click <strong>View details</strong> from the options menu to open the server summary page.
 The summary displays the full server definition, organized into the following
 sections:</p>
@@ -399,7 +430,7 @@ created, started, and finished. Click <strong>View all runs</strong> to see the 
 history.</p>
 </section>
 <section id="create-spark-connect-server">
-<h2 id="create-spark-connect-server">Create Spark Connect server<a class="headerlink" href="#create-spark-connect-server" title="Permalink to this heading">#</a></h2>
+<h3 id="create-spark-connect-server">Create Spark Connect server<a class="headerlink" href="#create-spark-connect-server" title="Permalink to this heading">#</a></h3>
 <p>To create a Spark Connect server:</p>
 <figure class="align-default">
 <img alt="Connect server create" class="imgborder" src="../_images/spark-job-connect-create.png"/>
@@ -415,25 +446,80 @@ history.</p>
 </ol>
 </section>
 <section id="run-server">
-<h2 id="run-server">Run server<a class="headerlink" href="#run-server" title="Permalink to this heading">#</a></h2>
+<h3 id="run-server">Run server<a class="headerlink" href="#run-server" title="Permalink to this heading">#</a></h3>
 <p>To start a server, click the options menu for the server and select
 <strong>Run server</strong>.</p>
 </section>
 <section id="get-spark-connect-url">
-<h2 id="get-spark-connect-url">Get Spark Connect URL<a class="headerlink" href="#get-spark-connect-url" title="Permalink to this heading">#</a></h2>
+<h3 id="get-spark-connect-url">Get Spark Connect URL<a class="headerlink" href="#get-spark-connect-url" title="Permalink to this heading">#</a></h3>
 <p>To retrieve the connection URL for a server, click the options menu and select
 <strong>Get Spark Connect URL</strong>. Use this URL to connect to the server from your
 Spark application. This option is only available for running servers.</p>
 </section>
 <section id="terminate-server">
-<h2 id="terminate-server">Terminate server<a class="headerlink" href="#terminate-server" title="Permalink to this heading">#</a></h2>
+<h3 id="terminate-server">Terminate server<a class="headerlink" href="#terminate-server" title="Permalink to this heading">#</a></h3>
 <p>To stop a running server, click the options menu and select <strong>Terminate
 server</strong>. This option is only available for running servers.</p>
 </section>
 <section id="delete-spark-connect-server">
-<h2 id="delete-spark-connect-server">Delete Spark Connect server<a class="headerlink" href="#delete-spark-connect-server" title="Permalink to this heading">#</a></h2>
+<h3 id="delete-spark-connect-server">Delete Spark Connect server<a class="headerlink" href="#delete-spark-connect-server" title="Permalink to this heading">#</a></h3>
 <p>To delete a server, click the options menu for the server and select <strong>Delete
 server</strong>.</p>
+</section>
+</section>
+<section id="connect-servers-cli">
+<span id="ddpe-connect-servers-cli"></span><h2 id="connect-servers-cli">Connect servers CLI<a class="headerlink" href="#connect-servers-cli" title="Permalink to this heading">#</a></h2>
+<p>Use the DDPE CLI to manage Spark Connect servers programmatically. See the
+<a class="reference internal" href="cli.html#ddpe-cli-connect"><span class="std std-ref">connect server CLI commands</span></a> for all available commands.</p>
+<section id="list-connect-servers">
+<h3 id="list-connect-servers">List connect servers<a class="headerlink" href="#list-connect-servers" title="Permalink to this heading">#</a></h3>
+<p>To list all connect servers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect list
+</pre></div>
+</div>
+</section>
+<section id="create-a-connect-server">
+<h3 id="create-a-connect-server">Create a connect server<a class="headerlink" href="#create-a-connect-server" title="Permalink to this heading">#</a></h3>
+<p>To create a new connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect create --resource-pool &lt;resource-pool&gt;
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3 id="id1">View server details<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To get the details of a connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect get &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="run-a-server">
+<h3 id="run-a-server">Run a server<a class="headerlink" href="#run-a-server" title="Permalink to this heading">#</a></h3>
+<p>To start a connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect run &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="get-the-spark-connect-url">
+<h3 id="get-the-spark-connect-url">Get the Spark Connect URL<a class="headerlink" href="#get-the-spark-connect-url" title="Permalink to this heading">#</a></h3>
+<p>To retrieve the Spark Connect URI for a running server, get its details:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect get &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="terminate-a-server">
+<h3 id="terminate-a-server">Terminate a server<a class="headerlink" href="#terminate-a-server" title="Permalink to this heading">#</a></h3>
+<p>To stop a running server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect terminate &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="delete-a-connect-server">
+<h3 id="delete-a-connect-server">Delete a connect server<a class="headerlink" href="#delete-a-connect-server" title="Permalink to this heading">#</a></h3>
+<p>To permanently delete a connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect delete &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 

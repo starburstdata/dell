@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Uploads &#8212; Dell Data Analytics Engine</title>
+    <title>Token usage &#8212; Dell Data Analytics Engine</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
@@ -75,8 +75,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Log retention settings" href="log-retention.html" />
-    <link rel="prev" title="Run history" href="run-history.html" />
+    <link rel="next" title="Parameterized query tools usage examples" href="mcp-parameterized-query-examples.html" />
+    <link rel="prev" title="Starburst AI Guardrails" href="guardrails.html" />
 
   
    
@@ -88,7 +88,7 @@
 
 
 <!-- Always link to the latest version, as canonical -->
-<link rel="canonical" href="https://docs.starburst.io/latest/dell-data-processing-engine/uploads.html">
+<link rel="canonical" href="https://docs.starburst.io/latest/starburst-ai/token-usage-ai.html">
 
   </head>
   <body dir=ltr
@@ -105,7 +105,7 @@
   <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
   <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
   <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#dell-data-processing-engine/uploads" tabindex="1" class="md-skip"> Skip to content </a>
+  <a href="#starburst-ai/token-usage-ai" tabindex="1" class="md-skip"> Skip to content </a>
   <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
@@ -135,7 +135,7 @@
           class="md-flex__ellipsis md-header-nav__title"
           data-md-component="title"
         >
-          Uploads
+          Token usage
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -197,6 +197,13 @@
     
     
     
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Starburst AI</a></li>
+      </ul>
+    </div>
+  </nav>
     <main class="md-main">
       <div class="md-main__inner md-grid" data-md-component="container">
         
@@ -225,55 +232,52 @@
 <li class="toctree-l1"><a class="reference external" href="https://docs.starburst.io/support.html">Get support</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For all users</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview/sep-ui.html">Starburst Enterprise web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../admin/control-plane/index.html">Starburst Control Plane</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../starburst-ai/index.html">Starburst AI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Starburst AI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="configuration-ai.html">Configure Starburst AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trusted-connections.html">Trusted connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aida-ai.html">AI Data Assistant (AIDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aida-ai.html#token-usage">Token usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-product-enrichment-ai.html">Data product AI agent-based enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions-ai.html">AI functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp-server.html">Starburst MCP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guardrails.html">Guardrails</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Token usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-details">Usage details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-summary-by-feature">Usage summary by feature</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-are-embeddings">What are embeddings?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-are-language-models">What are language models?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../client.html">Clients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="connect-servers.html">Connect servers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebook-servers.html">Notebook servers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-history.html">Run history</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Uploads</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#privileges">Privileges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uploads-ui">Uploads UI</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#upload-files">Upload files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#view-upload-details">View upload details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#activate-an-upload">Activate an upload</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deactivate-an-upload">Deactivate an upload</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#delete-an-upload">Delete an upload</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#in-the-cli">In the CLI</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#list-uploads">List uploads</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Upload files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-upload-details">Get upload details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Activate an upload</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Deactivate an upload</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Delete an upload</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#update-an-upload">Update an upload</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention.html">Log retention settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maintenance-mode.html">System maintenance mode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html">Object storage governance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object-storage-governance.html#api-documentation">API documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU acceleration with Spark RAPIDS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom-images.html">Custom Spark images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Dell Data Processing Engine API</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/secrets.html">Secrets management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/jobs.html">Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/connect-servers.html">Connect servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/notebook-servers.html">Notebook servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/run-history.html">Run history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/uploads.html">Uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/log-retention.html">Log retention settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/maintenance-mode.html">System maintenance mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html#api-documentation">API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/custom-images.html">Custom Spark images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -333,26 +337,10 @@
   <div class="local-toc">
     <strong>Contents</strong>
     <ul>
-<li><a class="reference internal" href="#">Uploads</a><ul>
-<li><a class="reference internal" href="#privileges">Privileges</a></li>
-<li><a class="reference internal" href="#uploads-ui">Uploads UI</a><ul>
-<li><a class="reference internal" href="#upload-files">Upload files</a></li>
-<li><a class="reference internal" href="#view-upload-details">View upload details</a></li>
-<li><a class="reference internal" href="#activate-an-upload">Activate an upload</a></li>
-<li><a class="reference internal" href="#deactivate-an-upload">Deactivate an upload</a></li>
-<li><a class="reference internal" href="#delete-an-upload">Delete an upload</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#in-the-cli">In the CLI</a><ul>
-<li><a class="reference internal" href="#list-uploads">List uploads</a></li>
-<li><a class="reference internal" href="#id1">Upload files</a></li>
-<li><a class="reference internal" href="#get-upload-details">Get upload details</a></li>
-<li><a class="reference internal" href="#id2">Activate an upload</a></li>
-<li><a class="reference internal" href="#id3">Deactivate an upload</a></li>
-<li><a class="reference internal" href="#id4">Delete an upload</a></li>
-<li><a class="reference internal" href="#update-an-upload">Update an upload</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Token usage</a><ul>
+<li><a class="reference internal" href="#filters">Filters</a></li>
+<li><a class="reference internal" href="#usage-details">Usage details</a></li>
+<li><a class="reference internal" href="#usage-summary-by-feature">Usage summary by feature</a></li>
 </ul>
 </li>
 </ul>
@@ -366,145 +354,63 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="uploads">
-<h1 id="dell-data-processing-engine-uploads--page-root">Uploads<a class="headerlink" href="#dell-data-processing-engine-uploads--page-root" title="Permalink to this heading">#</a></h1>
-<p>Uploads let you bundle and manage sets of files that can be attached to Spark
-jobs and Spark Connect servers at submission time. Common use cases include
-packaging job dependencies such as JAR files, Python libraries, and configuration
-files, as well as distributing <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom Spark images</span></a>. Uploads are
-identified by a name, owner, creation date, and status. Uploads can be managed
-from the <a class="reference internal" href="#ddpe-uploads-ui"><span class="std std-ref">Uploads UI</span></a> or programmatically with the
-<a class="reference internal" href="#ddpe-uploads-cli"><span class="std std-ref">CLI</span></a>.</p>
-<p>A job or server reads its upload references from its current definition at the
-start of every run. For a recurring job, each run picks up changes to those
-references without recreating the job.</p>
-<section id="privileges">
-<h2 id="privileges">Privileges<a class="headerlink" href="#privileges" title="Permalink to this heading">#</a></h2>
-<p>The following privileges control access to uploads. You can grant <code class="docutils literal notranslate"><span class="pre">USE</span></code> and
-<code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> on all uploads or on a specific upload. See
-<a class="reference internal" href="access-control.html#ddpe-spark-uploads-priv"><span class="std std-ref">access control</span></a> for instructions on granting and
-revoking these privileges.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">USE</span></code>: View and download an upload, and reference it in a job, Spark Connect
-server, or Notebook server.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code>: Edit, activate, deactivate, and seal an upload, and delete the
-upload or its individual files.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>: Create new uploads. Applies to all uploads and cannot be granted on
-a specific upload.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code> does not include <code class="docutils literal notranslate"><span class="pre">USE</span></code>. A role needs both privileges to manage an
-upload and reference it in a job or server.</p>
-</div>
-<p>The role that creates an upload owns it and retains full access to it.</p>
-</section>
-<section id="uploads-ui">
-<span id="ddpe-uploads-ui"></span><h2 id="uploads-ui">Uploads UI<a class="headerlink" href="#uploads-ui" title="Permalink to this heading">#</a></h2>
-<p>Click <strong>Uploads</strong> in the Dell Data Processing Engine section of the Starburst Enterprise web UI to view and manage your uploads.</p>
+  <section id="token-usage">
+<h1 id="starburst-ai-token-usage-ai--page-root">Token usage<a class="headerlink" href="#starburst-ai-token-usage-ai--page-root" title="Permalink to this heading">#</a></h1>
+<p>The <strong>Token usage</strong> pane lets administrators view AI model token consumption
+across SEP. Token usage is recorded for every AI model call SEP makes
+across all AI features including AIDA and data product enrichment.</p>
+<p>To view token usage, you must have the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role and navigate to <strong>Admin &gt;
+Token usage</strong>.</p>
 <figure class="align-default">
-<img alt="Uploads view" class="imgborder" src="../_images/ddpe-uploads-view.png"/>
+<img alt="Starburst AI Token usage pane" class="imgborder" src="../_images/starburst-ai-token-usage.png"/>
 </figure>
-<p>The following columns are displayed:</p>
+<p>Token usage is summarized above usage details with the following details:</p>
 <ul class="simple">
-<li><p><strong>Name</strong>: The name given to the upload.</p></li>
-<li><p><strong>Created by</strong>: The user who created the upload.</p></li>
-<li><p><strong>Created date</strong>: The timestamp for when the upload was created.</p></li>
-<li><p><strong>Status</strong>: The current state of the upload, either <strong>Active</strong> or <strong>Inactive</strong>.</p></li>
+<li><p><strong>Total tokens used</strong>: The sum of input, output, cache writes, and cache hit
+tokens.</p></li>
+<li><p><strong>Input tokens</strong>: Tokens sent to the AI model in prompts.</p></li>
+<li><p><strong>Output tokens</strong>: Tokens generated by the AI model in responses.</p></li>
 </ul>
-<p>Click the options menu for an upload to view its details, change its status, or
-delete it.</p>
-<section id="upload-files">
-<h3 id="upload-files">Upload files<a class="headerlink" href="#upload-files" title="Permalink to this heading">#</a></h3>
-<p>To upload new files:</p>
-<ol class="arabic simple">
-<li><p>Click <strong>+ Upload files</strong>.</p></li>
-<li><p>Enter a name for the upload in the <strong>New upload name</strong> field.</p></li>
-<li><p>Drag and drop files or folders into the upload area, or click <strong>file(s)</strong> or
-<strong>folder(s)</strong> to browse and select them.</p></li>
-<li><p>Click <strong>Create upload</strong>.</p></li>
-</ol>
+<section id="filters">
+<h2 id="filters">Filters<a class="headerlink" href="#filters" title="Permalink to this heading">#</a></h2>
+<p>Use the date range, agentic feature, and model menus to filter results across
+the usage summary and usage details tables.</p>
+<ul class="simple">
+<li><p><strong>Dates</strong>: Selects the date range to display. Defaults to <strong>This month</strong>.
+Select a preset <strong>This month</strong>, <strong>Today</strong>, <strong>Last 7 days</strong>, <strong>Last 30 days</strong>,
+or select <strong>Custom range</strong> to specify your own start and end dates.</p></li>
+<li><p><strong>Agentic feature</strong>: Limits results to a specific AI feature. <strong>All AI
+features</strong> shows all AI features.</p></li>
+<li><p><strong>Model</strong>: Limits results to a specific AI model. <strong>All models</strong> shows all AI
+models.</p></li>
+</ul>
+<p>The date range filter is always applied and cannot be removed. Click <strong>Apply
+filters</strong> to update the results, or <strong>Reset filters</strong> to return to the default
+view.</p>
 </section>
-<section id="view-upload-details">
-<h3 id="view-upload-details">View upload details<a class="headerlink" href="#view-upload-details" title="Permalink to this heading">#</a></h3>
-<p>To view details for an upload, open the options menu for the upload and click
-<strong>Details</strong>. The details view shows a list of all files in the upload, including
-each file’s name, size, and last modified timestamp. For example, a <a class="reference internal" href="custom-images.html"><span class="doc std std-doc">custom
-Spark image</span></a> upload may contain many individual layer files:</p>
-<figure class="align-default">
-<img alt="Upload details" class="imgborder" src="../_images/ddpe-uploads-details.png"/>
-</figure>
+<section id="usage-details">
+<h2 id="usage-details">Usage details<a class="headerlink" href="#usage-details" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Usage details</strong> chart displays token consumption for the selected
+date range, stacked by token type.</p>
+<ul class="simple">
+<li><p><strong>Input</strong>: Tokens sent to the AI model in prompts.</p></li>
+<li><p><strong>Cache writes</strong>: Tokens written to the AI model’s prompt cache.</p></li>
+<li><p><strong>Cache hits</strong>: Tokens read from the AI model’s prompt cache rather than
+reprocessed.</p></li>
+<li><p><strong>Output</strong>: Tokens generated by the AI model in responses.</p></li>
+</ul>
 </section>
-<section id="activate-an-upload">
-<h3 id="activate-an-upload">Activate an upload<a class="headerlink" href="#activate-an-upload" title="Permalink to this heading">#</a></h3>
-<p>To activate an inactive upload, open the options menu for the upload and click
-<strong>Activate</strong>. Active uploads can be attached to <a class="reference internal" href="jobs.html#ddpe-spark-batch-job-ui"><span class="std std-ref">batch
-jobs</span></a> and <a class="reference internal" href="connect-servers.html#ddpe-spark-connect-server-ui"><span class="std std-ref">Spark Connect
-servers</span></a>.</p>
-</section>
-<section id="deactivate-an-upload">
-<h3 id="deactivate-an-upload">Deactivate an upload<a class="headerlink" href="#deactivate-an-upload" title="Permalink to this heading">#</a></h3>
-<p>To deactivate an active upload, open the options menu for the upload and click
-<strong>Deactivate</strong>.</p>
-</section>
-<section id="delete-an-upload">
-<h3 id="delete-an-upload">Delete an upload<a class="headerlink" href="#delete-an-upload" title="Permalink to this heading">#</a></h3>
-<p>To delete an upload, open the options menu for the upload and click <strong>Delete</strong>.</p>
-</section>
-</section>
-<section id="in-the-cli">
-<span id="ddpe-uploads-cli"></span><h2 id="in-the-cli">In the CLI<a class="headerlink" href="#in-the-cli" title="Permalink to this heading">#</a></h2>
-<p>Use the DDPE CLI to manage uploads programmatically. See the
-<a class="reference internal" href="cli.html#ddpe-cli-uploads"><span class="std std-ref">uploads CLI commands</span></a> for all available commands.</p>
-<section id="list-uploads">
-<h3 id="list-uploads">List uploads<a class="headerlink" href="#list-uploads" title="Permalink to this heading">#</a></h3>
-<p>To list all of your uploads:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload list
-</pre></div>
-</div>
-</section>
-<section id="id1">
-<h3 id="id1">Upload files<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>To upload a set of files under a given name:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload add -n &lt;upload-name&gt; /path/to/files
-</pre></div>
-</div>
-</section>
-<section id="get-upload-details">
-<h3 id="get-upload-details">Get upload details<a class="headerlink" href="#get-upload-details" title="Permalink to this heading">#</a></h3>
-<p>To get the details of a specific upload:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload info &lt;upload-name&gt;
-</pre></div>
-</div>
-</section>
-<section id="id2">
-<h3 id="id2">Activate an upload<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<p>To activate an upload:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload activate &lt;upload-name&gt;
-</pre></div>
-</div>
-</section>
-<section id="id3">
-<h3 id="id3">Deactivate an upload<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<p>To deactivate an upload:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload deactivate &lt;upload-name&gt;
-</pre></div>
-</div>
-</section>
-<section id="id4">
-<h3 id="id4">Delete an upload<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>To schedule an upload and its files for deletion:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload delete &lt;upload-name&gt;
-</pre></div>
-</div>
-</section>
-<section id="update-an-upload">
-<h3 id="update-an-upload">Update an upload<a class="headerlink" href="#update-an-upload" title="Permalink to this heading">#</a></h3>
-<p>To change an upload’s name or description:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine upload update -n &lt;new-name&gt; -d &lt;description&gt; &lt;upload-name&gt;
-</pre></div>
-</div>
-</section>
+<section id="usage-summary-by-feature">
+<h2 id="usage-summary-by-feature">Usage summary by feature<a class="headerlink" href="#usage-summary-by-feature" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Usage summary by feature</strong> table displays token totals grouped by AI
+feature, with columns for <strong>Input</strong>, <strong>Cache writes</strong>, <strong>Cache hits</strong>,
+<strong>Output</strong>, and <strong>Total tokens</strong>. Click a feature row to expand it and view
+consumption broken down by user. Background AI work with no user context appears
+as <strong>Unattributed</strong>.</p>
+<p>To download the usage summary, click <strong>Download usage</strong>. The export contains one
+row per feature and user with totals for each token type.</p>
+<p>Token usage records are independent of chat session records. Deleting a chat
+session does not remove its token usage data.</p>
 </section>
 </section>
 
@@ -519,7 +425,7 @@ servers</span></a>.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="run-history.html" title="Run history"
+            <a href="guardrails.html" title="Starburst AI Guardrails"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -528,17 +434,17 @@ servers</span></a>.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Run history </span>
+                      class="md-footer-nav__direction"> Previous </span> Starburst AI Guardrails </span>
               </div>
             </a>
           
           
-            <a href="log-retention.html" title="Log retention settings"
+            <a href="mcp-parameterized-query-examples.html" title="Parameterized query tools usage examples"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Log retention settings </span>
+                class="md-footer-nav__direction"> Next </span> Parameterized query tools usage examples </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

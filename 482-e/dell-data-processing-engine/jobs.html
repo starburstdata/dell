@@ -239,12 +239,26 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets management</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Jobs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#view-job-details">View job details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-batch-jobs">Create batch jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#edit-batch-job">Edit batch job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-batch-job">Run batch job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#clone-batch-job">Clone batch job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jobs-ui">Jobs UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-job-details">View job details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-batch-jobs">Create batch jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-batch-job">Edit batch job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-batch-job">Run batch job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-batch-job">Clone batch job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jobs-cli">Jobs CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-jobs">List jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-job">Create a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">View job details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-a-job">Edit a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-job">Run a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminate-a-job-s-current-run">Terminate a job’s current run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-a-job">Clone a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-a-job">Delete a job</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="connect-servers.html">Connect servers</a></li>
@@ -321,12 +335,26 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Jobs</a><ul>
+<li><a class="reference internal" href="#jobs-ui">Jobs UI</a><ul>
 <li><a class="reference internal" href="#view-job-details">View job details</a></li>
 <li><a class="reference internal" href="#create-batch-jobs">Create batch jobs</a></li>
 <li><a class="reference internal" href="#edit-batch-job">Edit batch job</a></li>
 <li><a class="reference internal" href="#run-batch-job">Run batch job</a></li>
 <li><a class="reference internal" href="#clone-batch-job">Clone batch job</a></li>
 <li><a class="reference internal" href="#delete-batch-job">Delete batch job</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jobs-cli">Jobs CLI</a><ul>
+<li><a class="reference internal" href="#list-jobs">List jobs</a></li>
+<li><a class="reference internal" href="#create-a-job">Create a job</a></li>
+<li><a class="reference internal" href="#id1">View job details</a></li>
+<li><a class="reference internal" href="#edit-a-job">Edit a job</a></li>
+<li><a class="reference internal" href="#run-a-job">Run a job</a></li>
+<li><a class="reference internal" href="#terminate-a-job-s-current-run">Terminate a job’s current run</a></li>
+<li><a class="reference internal" href="#clone-a-job">Clone a job</a></li>
+<li><a class="reference internal" href="#delete-a-job">Delete a job</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -341,7 +369,12 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="jobs">
-<span id="ddpe-spark-batch-job-ui"></span><h1 id="dell-data-processing-engine-jobs--page-root">Jobs<a class="headerlink" href="#dell-data-processing-engine-jobs--page-root" title="Permalink to this heading">#</a></h1>
+<h1 id="dell-data-processing-engine-jobs--page-root">Jobs<a class="headerlink" href="#dell-data-processing-engine-jobs--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine lets you create, run, and manage Spark batch jobs.
+Jobs can be managed in the <a class="reference internal" href="#ddpe-spark-batch-job-ui"><span class="std std-ref">UI</span></a> or with the
+<a class="reference internal" href="#ddpe-jobs-cli"><span class="std std-ref">CLI</span></a>.</p>
+<section id="jobs-ui">
+<span id="ddpe-spark-batch-job-ui"></span><h2 id="jobs-ui">Jobs UI<a class="headerlink" href="#jobs-ui" title="Permalink to this heading">#</a></h2>
 <p>Click <strong>Jobs</strong> in the Dell Data Processing Engine section of the
 Starburst Enterprise web UI to view and manage batch jobs. You must
 have the <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ui"><span class="std std-ref">Spark runtime</span></a> UI privilege to access the <strong>Jobs</strong>
@@ -381,7 +414,7 @@ not required. The list loads more entries as you scroll.</p>
 <li><p><strong>Delete job</strong>: Permanently delete the job.</p></li>
 </ul>
 <section id="view-job-details">
-<h2 id="view-job-details">View job details<a class="headerlink" href="#view-job-details" title="Permalink to this heading">#</a></h2>
+<h3 id="view-job-details">View job details<a class="headerlink" href="#view-job-details" title="Permalink to this heading">#</a></h3>
 <p>Click <strong>View details</strong> from the options menu to open the job summary page. The
 summary displays the full job definition, organized into the following sections:</p>
 <figure class="align-default">
@@ -404,7 +437,7 @@ created, started, and finished. Click <strong>View all runs</strong> to see the 
 history.</p>
 </section>
 <section id="create-batch-jobs">
-<span id="ddpe-create-batch-job"></span><h2 id="create-batch-jobs">Create batch jobs<a class="headerlink" href="#create-batch-jobs" title="Permalink to this heading">#</a></h2>
+<span id="ddpe-create-batch-job"></span><h3 id="create-batch-jobs">Create batch jobs<a class="headerlink" href="#create-batch-jobs" title="Permalink to this heading">#</a></h3>
 <p>To create a Spark batch job:</p>
 <figure class="align-default">
 <img alt="Batch job create" class="imgborder" src="../_images/spark-job-batch-create.png"/>
@@ -439,26 +472,88 @@ Automatic failover to another node is not guaranteed.</p>
 </div>
 </section>
 <section id="edit-batch-job">
-<h2 id="edit-batch-job">Edit batch job<a class="headerlink" href="#edit-batch-job" title="Permalink to this heading">#</a></h2>
+<h3 id="edit-batch-job">Edit batch job<a class="headerlink" href="#edit-batch-job" title="Permalink to this heading">#</a></h3>
 <p>To modify a job, click the options menu for the job and select <strong>Edit job</strong>.
 The dialog opens with the job’s current configuration and uses the same fields
 as <a class="reference internal" href="#ddpe-create-batch-job"><span class="std std-ref">creating a job</span></a>. Click <strong>Save Spark job</strong> to save
 your changes, which apply to the next run of the job.</p>
 </section>
 <section id="run-batch-job">
-<h2 id="run-batch-job">Run batch job<a class="headerlink" href="#run-batch-job" title="Permalink to this heading">#</a></h2>
+<h3 id="run-batch-job">Run batch job<a class="headerlink" href="#run-batch-job" title="Permalink to this heading">#</a></h3>
 <p>To run a job manually, click the options menu for the job and select
 <strong>Run job</strong>. In the <strong>Run adhoc job</strong> confirmation dialog, click <strong>Run job</strong>.</p>
 </section>
 <section id="clone-batch-job">
-<h2 id="clone-batch-job">Clone batch job<a class="headerlink" href="#clone-batch-job" title="Permalink to this heading">#</a></h2>
+<h3 id="clone-batch-job">Clone batch job<a class="headerlink" href="#clone-batch-job" title="Permalink to this heading">#</a></h3>
 <p>Cloning a job creates a new job that reuses the configuration of an existing
 job.</p>
 <p>To clone a job, click the options menu for the job and select <strong>Clone job</strong>.</p>
 </section>
 <section id="delete-batch-job">
-<h2 id="delete-batch-job">Delete batch job<a class="headerlink" href="#delete-batch-job" title="Permalink to this heading">#</a></h2>
+<h3 id="delete-batch-job">Delete batch job<a class="headerlink" href="#delete-batch-job" title="Permalink to this heading">#</a></h3>
 <p>To delete a job, click the options menu for the job and select <strong>Delete job</strong>.</p>
+</section>
+</section>
+<section id="jobs-cli">
+<span id="ddpe-jobs-cli"></span><h2 id="jobs-cli">Jobs CLI<a class="headerlink" href="#jobs-cli" title="Permalink to this heading">#</a></h2>
+<p>Use the DDPE CLI to manage jobs programmatically. See the <a class="reference internal" href="cli.html#ddpe-cli-job"><span class="std std-ref">job CLI
+commands</span></a> for all available commands.</p>
+<section id="list-jobs">
+<h3 id="list-jobs">List jobs<a class="headerlink" href="#list-jobs" title="Permalink to this heading">#</a></h3>
+<p>To list all jobs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job list
+</pre></div>
+</div>
+</section>
+<section id="create-a-job">
+<h3 id="create-a-job">Create a job<a class="headerlink" href="#create-a-job" title="Permalink to this heading">#</a></h3>
+<p>To create a new job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create --resource-pool &lt;resource-pool&gt; &lt;application&gt;
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3 id="id1">View job details<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To get the details of a job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job get &lt;job-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="edit-a-job">
+<h3 id="edit-a-job">Edit a job<a class="headerlink" href="#edit-a-job" title="Permalink to this heading">#</a></h3>
+<p>To update an existing job’s configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job update &lt;job-id&gt; --description <span class="s2">"&lt;description&gt;"</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-job">
+<h3 id="run-a-job">Run a job<a class="headerlink" href="#run-a-job" title="Permalink to this heading">#</a></h3>
+<p>To manually trigger a job run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job run &lt;job-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="terminate-a-job-s-current-run">
+<h3 id="terminate-a-job-s-current-run">Terminate a job’s current run<a class="headerlink" href="#terminate-a-job-s-current-run" title="Permalink to this heading">#</a></h3>
+<p>To stop the currently running execution:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job terminate &lt;job-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="clone-a-job">
+<h3 id="clone-a-job">Clone a job<a class="headerlink" href="#clone-a-job" title="Permalink to this heading">#</a></h3>
+<p>To create a copy of a job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job clone &lt;job-id&gt; --name &lt;new-job-name&gt;
+</pre></div>
+</div>
+</section>
+<section id="delete-a-job">
+<h3 id="delete-a-job">Delete a job<a class="headerlink" href="#delete-a-job" title="Permalink to this heading">#</a></h3>
+<p>To permanently delete a job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job delete &lt;job-id&gt;
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 

@@ -242,9 +242,21 @@
 <li class="toctree-l1"><a class="reference internal" href="connect-servers.html">Connect servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Notebook servers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-privileges">Jupyter Notebook privileges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#view-server-details">View server details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-notebook-server">Create Notebook server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook-servers-ui">Notebook servers UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-server-details">View server details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-notebook-server">Create Notebook server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook-servers-cli">Notebook servers CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-notebook-servers">List Notebook servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-notebook-server">Create a Notebook server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">View server details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-server">Run a server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminate-a-server">Terminate a server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-a-notebook-server">Delete a Notebook server</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#notebook-example">Notebook example</a></li>
 </ul>
 </li>
@@ -321,9 +333,21 @@
     <ul>
 <li><a class="reference internal" href="#">Notebook servers</a><ul>
 <li><a class="reference internal" href="#jupyter-notebook-privileges">Jupyter Notebook privileges</a></li>
+<li><a class="reference internal" href="#notebook-servers-ui">Notebook servers UI</a><ul>
 <li><a class="reference internal" href="#view-server-details">View server details</a></li>
 <li><a class="reference internal" href="#create-notebook-server">Create Notebook server</a></li>
 <li><a class="reference internal" href="#delete-notebook-server">Delete Notebook server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notebook-servers-cli">Notebook servers CLI</a><ul>
+<li><a class="reference internal" href="#list-notebook-servers">List Notebook servers</a></li>
+<li><a class="reference internal" href="#create-a-notebook-server">Create a Notebook server</a></li>
+<li><a class="reference internal" href="#id1">View server details</a></li>
+<li><a class="reference internal" href="#run-a-server">Run a server</a></li>
+<li><a class="reference internal" href="#terminate-a-server">Terminate a server</a></li>
+<li><a class="reference internal" href="#delete-a-notebook-server">Delete a Notebook server</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#notebook-example">Notebook example</a></li>
 </ul>
 </li>
@@ -339,10 +363,50 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="notebook-servers">
-<span id="ddpe-jupyter-notebook-ui"></span><h1 id="dell-data-processing-engine-notebook-servers--page-root">Notebook servers<a class="headerlink" href="#dell-data-processing-engine-notebook-servers--page-root" title="Permalink to this heading">#</a></h1>
+<h1 id="dell-data-processing-engine-notebook-servers--page-root">Notebook servers<a class="headerlink" href="#dell-data-processing-engine-notebook-servers--page-root" title="Permalink to this heading">#</a></h1>
 <p>Dell Data Processing Engine supports <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>
-servers, offering fast and interactive ways to explore your data. Click
-<strong>Notebook servers</strong> in the Dell Data Processing Engine section of the
+servers, offering fast and interactive ways to explore your data. Notebook
+servers can be managed in the <a class="reference internal" href="#ddpe-jupyter-notebook-ui"><span class="std std-ref">UI</span></a> or with the
+<a class="reference internal" href="#ddpe-notebook-servers-cli"><span class="std std-ref">CLI</span></a>.</p>
+<section id="jupyter-notebook-privileges">
+<h2 id="jupyter-notebook-privileges">Jupyter Notebook privileges<a class="headerlink" href="#jupyter-notebook-privileges" title="Permalink to this heading">#</a></h2>
+<p>The following table lists privileges users must have to execute various Jupyter
+Notebook-related tasks:</p>
+<table id="id2">
+<caption><span class="caption-text">Jupyter Notebook server privileges</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Privilege</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Access detailed statuses and logs for all existing Jupyter Notebook servers.</p></li>
+<li><p>Stop and start existing Jupyter Notebook servers.</p></li>
+<li><p>Delete all existing Jupyter Notebook servers.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
+<td><ul class="simple">
+<li><p>Create new Jupyter Notebook servers.</p></li>
+<li><p>Access detailed statuses and logs for Jupyter Notebook servers created by this user.</p></li>
+<li><p>Stop and start Jupyter Notebook servers created by this user.</p></li>
+<li><p>Delete Jupyter Notebook servers created by this user.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notebook-servers-ui">
+<span id="ddpe-jupyter-notebook-ui"></span><h2 id="notebook-servers-ui">Notebook servers UI<a class="headerlink" href="#notebook-servers-ui" title="Permalink to this heading">#</a></h2>
+<p>Click <strong>Notebook servers</strong> in the Dell Data Processing Engine section of the
 Starburst Enterprise web UI to view and manage Notebook servers. Access to Notebook servers
 depends on the <a class="reference internal" href="access-control.html#ddpe-jupyter-priv"><span class="std std-ref">Jupyter Notebook privileges</span></a> a user’s role
 has.</p>
@@ -377,44 +441,8 @@ not required. The list loads more entries as you scroll.</p>
 </ul>
 <p><strong>Notebook server</strong> and <strong>Terminate server</strong> are only available for running
 servers.</p>
-<section id="jupyter-notebook-privileges">
-<h2 id="jupyter-notebook-privileges">Jupyter Notebook privileges<a class="headerlink" href="#jupyter-notebook-privileges" title="Permalink to this heading">#</a></h2>
-<p>The following table lists privileges users must have to execute various Jupyter
-Notebook-related tasks:</p>
-<table id="id1">
-<caption><span class="caption-text">Jupyter Notebook server privileges</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 25%"/>
-<col style="width: 75%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Privilege</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MANAGE</span></code></p></td>
-<td><ul class="simple">
-<li><p>Access detailed statuses and logs for all existing Jupyter Notebook servers.</p></li>
-<li><p>Stop and start existing Jupyter Notebook servers.</p></li>
-<li><p>Delete all existing Jupyter Notebook servers.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code></p></td>
-<td><ul class="simple">
-<li><p>Create new Jupyter Notebook servers.</p></li>
-<li><p>Access detailed statuses and logs for Jupyter Notebook servers created by this user.</p></li>
-<li><p>Stop and start Jupyter Notebook servers created by this user.</p></li>
-<li><p>Delete Jupyter Notebook servers created by this user.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="view-server-details">
-<h2 id="view-server-details">View server details<a class="headerlink" href="#view-server-details" title="Permalink to this heading">#</a></h2>
+<h3 id="view-server-details">View server details<a class="headerlink" href="#view-server-details" title="Permalink to this heading">#</a></h3>
 <p>Click <strong>View details</strong> from the options menu to open the server summary page.
 The summary displays the full server definition, organized into the following
 sections:</p>
@@ -433,7 +461,7 @@ created, started, and finished. Click <strong>View all runs</strong> to see the 
 history.</p>
 </section>
 <section id="create-notebook-server">
-<h2 id="create-notebook-server">Create Notebook server<a class="headerlink" href="#create-notebook-server" title="Permalink to this heading">#</a></h2>
+<h3 id="create-notebook-server">Create Notebook server<a class="headerlink" href="#create-notebook-server" title="Permalink to this heading">#</a></h3>
 <p>To create a Notebook server:</p>
 <figure class="align-default">
 <img alt="Notebook server create" class="imgborder" src="../_images/spark-jupyter-create.png"/>
@@ -452,11 +480,59 @@ select a <a class="reference internal" href="resource-pools.html"><span class="d
 </figure>
 </section>
 <section id="delete-notebook-server">
-<span id="ddpe-jupyter-delete"></span><h2 id="delete-notebook-server">Delete Notebook server<a class="headerlink" href="#delete-notebook-server" title="Permalink to this heading">#</a></h2>
+<span id="ddpe-jupyter-delete"></span><h3 id="delete-notebook-server">Delete Notebook server<a class="headerlink" href="#delete-notebook-server" title="Permalink to this heading">#</a></h3>
 <p>To delete a Notebook server, click the options menu for the server and select
 <strong>Delete server</strong>. In the <strong>Delete confirmation</strong> dialog, choose whether to
 keep the files associated with the server, then click <strong>Delete</strong>. The default
 is <strong>Yes, keep the files</strong>.</p>
+</section>
+</section>
+<section id="notebook-servers-cli">
+<span id="ddpe-notebook-servers-cli"></span><h2 id="notebook-servers-cli">Notebook servers CLI<a class="headerlink" href="#notebook-servers-cli" title="Permalink to this heading">#</a></h2>
+<p>Use the DDPE CLI to manage Notebook servers programmatically. See the
+<a class="reference internal" href="cli.html#ddpe-cli-notebook"><span class="std std-ref">notebook CLI commands</span></a> for all available commands.</p>
+<section id="list-notebook-servers">
+<h3 id="list-notebook-servers">List Notebook servers<a class="headerlink" href="#list-notebook-servers" title="Permalink to this heading">#</a></h3>
+<p>To list all Notebook servers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook list
+</pre></div>
+</div>
+</section>
+<section id="create-a-notebook-server">
+<h3 id="create-a-notebook-server">Create a Notebook server<a class="headerlink" href="#create-a-notebook-server" title="Permalink to this heading">#</a></h3>
+<p>To create a new Notebook server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook create --resource-pool &lt;resource-pool&gt;
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3 id="id1">View server details<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To get the details of a Notebook server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook get &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="run-a-server">
+<h3 id="run-a-server">Run a server<a class="headerlink" href="#run-a-server" title="Permalink to this heading">#</a></h3>
+<p>To start a Notebook server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook run &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="terminate-a-server">
+<h3 id="terminate-a-server">Terminate a server<a class="headerlink" href="#terminate-a-server" title="Permalink to this heading">#</a></h3>
+<p>To stop a running Notebook server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook terminate &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="delete-a-notebook-server">
+<h3 id="delete-a-notebook-server">Delete a Notebook server<a class="headerlink" href="#delete-a-notebook-server" title="Permalink to this heading">#</a></h3>
+<p>To permanently delete a Notebook server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine notebook delete &lt;server-id&gt;
+</pre></div>
+</div>
+</section>
 </section>
 <section id="notebook-example">
 <h2 id="notebook-example">Notebook example<a class="headerlink" href="#notebook-example" title="Permalink to this heading">#</a></h2>

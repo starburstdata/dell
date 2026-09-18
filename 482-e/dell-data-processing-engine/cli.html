@@ -270,11 +270,14 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#system-maintenance">System maintenance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#global-storage">Global storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jobs">Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-servers">Connect servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#runs">Runs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#profile">Profile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#secrets">Secrets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#token-management">Token management</a></li>
@@ -283,9 +286,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#login-to-cli">Login to CLI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submit-a-batch-job">Submit a batch job</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submit-a-batch-job-on-a-schedule">Submit a batch job on a schedule</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submit-a-spark-connect-job">Submit a Spark Connect job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-run-a-batch-job">Create and run a batch job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-recurring-batch-job-on-a-schedule">Create a recurring batch job on a schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-and-run-a-spark-connect-server">Create and run a Spark Connect server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-resource-pools">Configure resource pools</a></li>
 </ul>
 </li>
@@ -370,11 +373,14 @@
 </li>
 <li><a class="reference internal" href="#system-maintenance">System maintenance</a></li>
 <li><a class="reference internal" href="#global-storage">Global storage</a></li>
+<li><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
-<li><a class="reference internal" href="#instance">Instance</a></li>
+<li><a class="reference internal" href="#jobs">Jobs</a></li>
+<li><a class="reference internal" href="#connect-servers">Connect servers</a></li>
 <li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li><a class="reference internal" href="#runs">Runs</a></li>
 <li><a class="reference internal" href="#profile">Profile</a></li>
 <li><a class="reference internal" href="#secrets">Secrets</a></li>
 <li><a class="reference internal" href="#token-management">Token management</a></li>
@@ -383,9 +389,9 @@
 </li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
 <li><a class="reference internal" href="#login-to-cli">Login to CLI</a></li>
-<li><a class="reference internal" href="#submit-a-batch-job">Submit a batch job</a></li>
-<li><a class="reference internal" href="#submit-a-batch-job-on-a-schedule">Submit a batch job on a schedule</a></li>
-<li><a class="reference internal" href="#submit-a-spark-connect-job">Submit a Spark Connect job</a></li>
+<li><a class="reference internal" href="#create-and-run-a-batch-job">Create and run a batch job</a></li>
+<li><a class="reference internal" href="#create-a-recurring-batch-job-on-a-schedule">Create a recurring batch job on a schedule</a></li>
+<li><a class="reference internal" href="#create-and-run-a-spark-connect-server">Create and run a Spark Connect server</a></li>
 <li><a class="reference internal" href="#configure-resource-pools">Configure resource pools</a></li>
 </ul>
 </li>
@@ -416,7 +422,7 @@ Processing Engine queries.</p>
 </section>
 <section id="installation">
 <span id="ddpe-cli-install"></span><h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/311-480-e.1/">Download and extract the .tar.gz
+<p><a class="reference external" href="https://software.starburstdata.net/#dell-data-processing-engine/335-482-e.1/">Download and extract the .tar.gz
 file from the downloads archive</a>.
 In the terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory and execute the
 <code class="docutils literal notranslate"><span class="pre">dell-data-processing-engine.sh</span></code> script with the <code class="docutils literal notranslate"><span class="pre">version</span></code> command to see the
@@ -443,7 +449,7 @@ Global Options:
       --log-level=&lt;logLevel&gt;
                             Change the output/logging level: quiet, standard, debug
       --format=&lt;displayMode&gt;
-                            For commands that produce a result, changes how the result is formatted: table, simple, json, prettyJson, raw
+                            For commands that produce a result, changes how the result is formatted: table, tableNoWrap, simple, json, prettyJson, raw
       --keystore=&lt;path:password&gt;
                             Path to a KeyStore containing client certificates and the KeyStore password
       --cert=&lt;path&gt;         Path to an X509 client certificate (PEM format) or a directory of X509 client certificates
@@ -453,14 +459,15 @@ Commands:
   login                     Login, start a new session, and set/change the default profile
   login-with-credentials    Login, start a new session, and set/change the default profile using your username and password
   token                     Authentication/token management
-  submit                    Emulation of Spark's spark-submit script
   notebook                  Notebook management
-  instance                  Instance management
   upload                    Commands to manage file uploads
   secret                    Commands to manage secrets
   profile                   Commands to get or set the default profile
   version                   Show the current version
   instance-image            Instance images
+  job                       Job management
+  connect                   Connect server management
+  run                       Run management
   admin                     Commands that require an admin role
 </pre></div>
 </div>
@@ -487,7 +494,7 @@ Commands:
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--format=&lt;displayMode&gt;</span></code></p></td>
 <td><p>For commands that produce a result, changes how the result is formatted:
-<code class="docutils literal notranslate"><span class="pre">table</span></code>, <code class="docutils literal notranslate"><span class="pre">simple</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">prettyJson</span></code>, or <code class="docutils literal notranslate"><span class="pre">raw</span></code>.</p></td>
+<code class="docutils literal notranslate"><span class="pre">table</span></code>, <code class="docutils literal notranslate"><span class="pre">tableNoWrap</span></code>, <code class="docutils literal notranslate"><span class="pre">simple</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">prettyJson</span></code>, or <code class="docutils literal notranslate"><span class="pre">raw</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>, <code class="docutils literal notranslate"><span class="pre">--profile</span></code></p></td>
 <td><p>Show usage help for the help command and exit. Configuration profile to
@@ -549,48 +556,6 @@ username and password</p></td>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
-<td><p>Emulation of Spark’s <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a>
-script. Not all options and combinations are supported.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name of your application. If a name is not provided, one is generated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--jars</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.jar</span></code> files to include on the driver and executor classpaths.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--py-files</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.zip</span></code>, <code class="docutils literal notranslate"><span class="pre">.egg</span></code>, or <code class="docutils literal notranslate"><span class="pre">.py</span></code> files to place on the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>
-for Python apps.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--files</span></code>. Comma-separated list of files to be placed in the working directory of each executor. File paths of these files in executors can be accessed with
-<code class="docutils literal notranslate"><span class="pre">SparkFiles.get(fileName)</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--archives</span></code>. Comma-separated list of archives to be extracted into the working directory of each executor.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--conf</span></code>. Arbitrary Spark configuration property.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--env</span></code>. Add environment variables to the submission. Each entry must be
-in the form <code class="docutils literal notranslate"><span class="pre">key=value</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--executor-memory</span></code>. The total memory per executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1G</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--num-executors</span></code>. The number of executors to launch. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--executor-cores</span></code>. The number of cores used by each executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--pool</span></code>. Resource pool to use.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>. Enable encryption for communication between the driver and
-executors. Defaults   to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the job. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
-The mount path is optional; if omitted, the upload’s default mount path is used.
-Can be specified multiple times. Examples:
-<code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">name=my-upload:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--spark-connect</span></code>. Start a Spark Connect instance instead of a batch job.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>. CRON timezone. Defaults to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--cron</span></code>. Set a CRON schedule.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. Set TTL cleanup in seconds. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--max-retries</span></code>. Maximum number of retries on failure. Must be <code class="docutils literal notranslate"><span class="pre">1</span></code> or greater. Only valid for batch jobs, not Spark Connect.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--class</span></code>. Your Java or Scala application’s main class.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
-<td><p>List URIs for a batch or connect job. Spark Connect URIs contain your current access and refresh tokens.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It can take a few seconds for URIs to become available.</p>
-</div>
-</td>
-<td></td>
-</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p>Show the current version.</p></td>
 <td></td>
@@ -606,10 +571,10 @@ additional configuration steps required:</p>
 <li><p>Upload a keytab and Kerberos config file using the CLI, then activate each
 upload:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine uploads add -n kerberos-config /path/to/krb5.conf
-  ./dell-data-processing-engine uploads activate <span class="nv">name</span><span class="o">=</span>kerberos-config
-  ./dell-data-processing-engine uploads add -n kerberos-keytab /path/to/hive.keytab
-  ./dell-data-processing-engine uploads activate <span class="nv">name</span><span class="o">=</span>kerberos-keytab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  ./dell-data-processing-engine upload add -n kerberos-config /path/to/krb5.conf
+  ./dell-data-processing-engine upload activate <span class="nv">name</span><span class="o">=</span>kerberos-config
+  ./dell-data-processing-engine upload add -n kerberos-keytab /path/to/hive.keytab
+  ./dell-data-processing-engine upload activate <span class="nv">name</span><span class="o">=</span>kerberos-keytab
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -644,10 +609,12 @@ and uses them to complete Kerberos authentication. Once authenticated, the
 script runs the <code class="docutils literal notranslate"><span class="pre">spark.sql("SHOW</span> <span class="pre">DATABASES").show()</span></code> command as an example to
 list available databases.</p>
 <ol class="arabic simple" start="3">
-<li><p>Run the following example <code class="docutils literal notranslate"><span class="pre">submit</span></code> command, replacing the keytab file name,
-principal, and the Thrift URL in the command to match your environment:</p></li>
+<li><p>Run the following example <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">create</span></code> command, replacing the keytab file
+name, principal, resource pool, and the Thrift URL in the command to match
+your environment. This creates the job but does not start it:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create <span class="se">\</span>
+--resource-pool default <span class="se">\</span>
 --mount <span class="nv">name</span><span class="o">=</span>kerberos-config:/kerberos/config <span class="se">\</span>
 --mount <span class="nv">name</span><span class="o">=</span>kerberos-keytab:/kerberos/keytab <span class="se">\</span>
 --conf spark.sql.catalogImplementation<span class="o">=</span>hive <span class="se">\</span>
@@ -665,6 +632,12 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 --conf spark.driver.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
 --conf spark.executor.extraJavaOptions<span class="o">=</span><span class="s2">"-Djava.security.krb5.conf=/opt/spark/uploads/kerberos/config/krb5.conf"</span> <span class="se">\</span>
   path-to-the-python-file
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Start the job, using the job ID returned by the previous command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job run &lt;job-id&gt;
 </pre></div>
 </div>
 </section>
@@ -691,35 +664,35 @@ principal, and the Thrift URL in the command to match your environment:</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">api-logs</span></code></p></td>
 <td><p>List API server logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-instances</span></code></p></td>
-<td><p>List all instances.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list-file-upload</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-file-upload</span></code></p></td>
 <td><p>Get details of all uploaded files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scheduler-logs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scheduler-logs</span></code></p></td>
 <td><p>List scheduler logs.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-events</span></code></p></td>
 <td><p>List system events.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-server-logs</span></code></p></td>
 <td><p>List the Spark History Server logs.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resource-pools</span></code></p></td>
 <td><p>Resource pool management</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system-maintenance</span></code></p></td>
 <td><p>System maintenance management</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log-retention</span></code></p></td>
 <td><p>Log retention commands.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span></code></p></td>
 <td><p>Global storage management.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance-images</span></code></p></td>
 <td><p>Instance images management.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spark-history-server</span></code></p></td>
+<td><p>Spark History Server management.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1030,8 +1003,7 @@ cleaner, such as <code class="docutils literal notranslate"><span class="pre">7d
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">global-storage</span> <span class="pre">usage</span> <span class="pre">get</span></code></p></td>
 <td><p>Get global storage usage.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--more-instances</span></code>. Get usage for top instances. Defaults to top <code class="docutils literal notranslate"><span class="pre">20</span></code>
-instances.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--more-usages</span></code>. Get top usages. Defaults to top <code class="docutils literal notranslate"><span class="pre">20</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--all-resource-pools</span></code>. Get usage for all resource pools.</p></li>
 </ul>
 </td>
@@ -1043,12 +1015,43 @@ instances.</p></li>
 </tbody>
 </table>
 </section>
+<section id="spark-history-server">
+<span id="ddpe-cli-spark-history-server"></span><h4 id="spark-history-server">Spark History Server<a class="headerlink" href="#spark-history-server" title="Permalink to this heading">#</a></h4>
+<table id="id10">
+<caption><span class="caption-text">Spark History Server commands</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 50%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spark-history-server</span></code></p></td>
+<td><p>Spark History Server management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spark-history-server</span> <span class="pre">get</span></code></p></td>
+<td><p>Get the Spark History Server status.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spark-history-server</span> <span class="pre">restart</span></code></p></td>
+<td><p>Restart the Spark History Server.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="configuration">
 <span id="ddpe-cli-config"></span><h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for configuration tasks:</p>
-<table id="id10">
-<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
+<table id="id11">
+<caption><span class="caption-text">Dell Data Processing Engine configuration CLI commands</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1078,15 +1081,15 @@ cleared by this command.</p></td>
 </tbody>
 </table>
 </section>
-<section id="instance">
-<span id="ddpe-cli-instance"></span><h3 id="instance">Instance<a class="headerlink" href="#instance" title="Permalink to this heading">#</a></h3>
-<p>The following CLI commands can be used for instance-related tasks:</p>
-<table id="id11">
-<caption><span class="caption-text">Dell Data Processing Engine instance CLI commands</span><a class="headerlink" href="#id11" title="Permalink to this table">#</a></caption>
+<section id="jobs">
+<span id="ddpe-cli-job"></span><h3 id="jobs">Jobs<a class="headerlink" href="#jobs" title="Permalink to this heading">#</a></h3>
+<p>The following CLI commands manage Spark batch jobs:</p>
+<table id="id12">
+<caption><span class="caption-text">Job CLI commands</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
 <colgroup>
-<col style="width: 10%"/>
+<col style="width: 15%"/>
 <col style="width: 30%"/>
-<col style="width: 60%"/>
+<col style="width: 55%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
@@ -1095,26 +1098,107 @@ cleared by this command.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance</span></code></p></td>
-<td><p>Commands to manage instances.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span></code></p></td>
+<td><p>Job management.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
-<td><p>List instances available to you.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">create</span></code></p></td>
+<td><p>Create a new job. Accepts the application resource (jar, Python file, R
+file, etc.) as a positional argument, followed by any application
+arguments. Without a schedule option, the job is created as <code class="docutils literal notranslate"><span class="pre">adhoc</span></code>; use
+<code class="docutils literal notranslate"><span class="pre">--cron</span></code>/<code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">--fixed-rate</span></code>, or <code class="docutils literal notranslate"><span class="pre">--execute-at</span></code> to create a
+<code class="docutils literal notranslate"><span class="pre">recurring</span></code> or <code class="docutils literal notranslate"><span class="pre">scheduled</span></code> job instead. Creating a scheduled or recurring
+job does not enable it; use <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">activate</span></code> to enable its schedule.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for the job. If not provided, a name is generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool</span></code>. Resource pool ID or name to use. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-image-id</span></code>. Instance image ID to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--jars</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.jar</span></code> files to include on the driver and executor classpaths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--py-files</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.zip</span></code>, <code class="docutils literal notranslate"><span class="pre">.egg</span></code>, or <code class="docutils literal notranslate"><span class="pre">.py</span></code> files to place on the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> for Python apps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--files</span></code>. Comma-separated list of files to be placed in the working directory of each executor. File paths of these files in executors can be accessed with <code class="docutils literal notranslate"><span class="pre">SparkFiles.get(fileName)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--archives</span></code>. Comma-separated list of archives to be extracted into the working directory of each executor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--conf</span></code>. Arbitrary Spark configuration property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--env</span></code>. Add environment variables to the job. Each entry must be in the form <code class="docutils literal notranslate"><span class="pre">key=value</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executor-memory</span></code>. Memory per executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1G</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num-executors</span></code>. Number of executors to launch. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executor-cores</span></code>. Number of cores used by each executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>. Enable encryption for communication between the driver and executors. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>. Description of the job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--class</span></code>. Your Java or Scala application’s main class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>. TTL cleanup in seconds after the job finishes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-retries</span></code>. Maximum number of retries on failure. Must be <code class="docutils literal notranslate"><span class="pre">1</span></code> or greater.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the job. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
+The mount path is optional; if omitted, the upload’s default mount path is used. Can be specified multiple times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cron</span></code>. CRON expression. Creates a recurring job. Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">--fixed-rate</span></code> and <code class="docutils literal notranslate"><span class="pre">--execute-at</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>. CRON time zone. Only valid with <code class="docutils literal notranslate"><span class="pre">--cron</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--fixed-rate</span></code>. Period between executions of a recurring job, such as <code class="docutils literal notranslate"><span class="pre">90s</span></code>, <code class="docutils literal notranslate"><span class="pre">5m</span></code>, <code class="docutils literal notranslate"><span class="pre">2h</span></code>, or <code class="docutils literal notranslate"><span class="pre">3d</span></code>. Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">--cron</span></code> and <code class="docutils literal notranslate"><span class="pre">--execute-at</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--execute-at</span></code>. When to run a scheduled job, in ISO-8601 format (for example <code class="docutils literal notranslate"><span class="pre">2027-03-15T10:30:00</span></code>). Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">--cron</span></code> and <code class="docutils literal notranslate"><span class="pre">--fixed-rate</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">get</span></code></p></td>
+<td><p>Get details of a job.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uris</span></code></p></td>
-<td><p>List URIs for a batch or connect job. Spark Connect URIs contain your
-current access and refresh tokens.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">list</span></code></p></td>
+<td><p>List jobs.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. Filter by exact job ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. Filter by fuzzy word similarity of the name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--kind</span></code>. Filter by kind (<code class="docutils literal notranslate"><span class="pre">adhoc</span></code>, <code class="docutils literal notranslate"><span class="pre">scheduled</span></code>, <code class="docutils literal notranslate"><span class="pre">recurring</span></code>). Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code>. Filter by status. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--last-run-status</span></code>. Filter by the status of the last run. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-by</span></code>. Filter by submitter. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool-id</span></code>. Filter by resource pool ID. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--created-to</span></code>. Filter by creation time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--last-run-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--last-run-to</span></code>. Filter by last run time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--next-run-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--next-run-to</span></code>. Filter by next scheduled run time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sort</span></code>. Sort by <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span> <span class="pre">[asc|desc]</span></code>, where field is one of <code class="docutils literal notranslate"><span class="pre">createdAt</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>, or <code class="docutils literal notranslate"><span class="pre">nameSimilarity</span></code> (direction defaults to <code class="docutils literal notranslate"><span class="pre">asc</span></code>). Sorting by <code class="docutils literal notranslate"><span class="pre">nameSimilarity</span></code> requires <code class="docutils literal notranslate"><span class="pre">--name</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--columns</span></code>. Display only the specified columns, in the given order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-columns</span></code>. Display every available column.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">update</span></code></p></td>
+<td><p>Update an existing job. Every option is optional; an omitted option
+leaves the corresponding value unchanged. A job’s kind (<code class="docutils literal notranslate"><span class="pre">adhoc</span></code>,
+<code class="docutils literal notranslate"><span class="pre">scheduled</span></code>, <code class="docutils literal notranslate"><span class="pre">recurring</span></code>) cannot be changed by this command.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>, <code class="docutils literal notranslate"><span class="pre">--resource-pool</span></code>, <code class="docutils literal notranslate"><span class="pre">--instance-image-id</span></code>, <code class="docutils literal notranslate"><span class="pre">--description</span></code>, <code class="docutils literal notranslate"><span class="pre">--class</span></code>, <code class="docutils literal notranslate"><span class="pre">--application</span></code>, <code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code>, <code class="docutils literal notranslate"><span class="pre">--max-retries</span></code>, <code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code>/<code class="docutils literal notranslate"><span class="pre">--conf</span></code>, <code class="docutils literal notranslate"><span class="pre">--cron</span></code>, <code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">--fixed-rate</span></code>, <code class="docutils literal notranslate"><span class="pre">--execute-at</span></code>. Same meaning as on <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">create</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--jars</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-jars</span></code>, <code class="docutils literal notranslate"><span class="pre">--py-files</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-py-files</span></code>, <code class="docutils literal notranslate"><span class="pre">--files</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-files</span></code>, <code class="docutils literal notranslate"><span class="pre">--archives</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-archives</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-mounts</span></code>, <code class="docutils literal notranslate"><span class="pre">--args</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-args</span></code>, <code class="docutils literal notranslate"><span class="pre">--env</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-envs</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code>/<code class="docutils literal notranslate"><span class="pre">--conf</span></code>/<code class="docutils literal notranslate"><span class="pre">--no-conf</span></code>. Each <code class="docutils literal notranslate"><span class="pre">--no-*</span></code> flag clears the corresponding list, and is mutually exclusive with its paired option.</p></li>
+<li><p>Passing an empty string clears <code class="docutils literal notranslate"><span class="pre">--description</span></code> and <code class="docutils literal notranslate"><span class="pre">--class</span></code>; passing <code class="docutils literal notranslate"><span class="pre">0</span></code> clears <code class="docutils literal notranslate"><span class="pre">--ttl-seconds-after-finished</span></code> and <code class="docutils literal notranslate"><span class="pre">--max-retries</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">clone</span></code></p></td>
+<td><p>Create a new job from an existing one. Every option other than <code class="docutils literal notranslate"><span class="pre">--name</span></code>
+is optional and, when omitted, is inherited from the source job. The
+clone’s kind may differ from the source’s.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for the cloned job. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--adhoc</span></code>. Clone as an adhoc job, dropping the source job’s schedule.</p></li>
+<li><p>All other options from <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">create</span></code> and <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">update</span></code>, applied the same way, but inherited from the source job when omitted instead of left unchanged. When cloning to a <code class="docutils literal notranslate"><span class="pre">--cron</span></code> recurring job, <code class="docutils literal notranslate"><span class="pre">--cron</span></code> may itself be omitted to inherit the source’s cron expression (the source must already be a cron recurring job).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">run</span></code></p></td>
+<td><p>Start a job.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></td>
-<td><p>Delete an instance.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">activate</span></code></p></td>
+<td><p>Enable a scheduled or recurring job’s schedule.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">deactivate</span></code></p></td>
+<td><p>Disable a scheduled or recurring job’s schedule, without removing the job.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">terminate</span></code></p></td>
+<td><p>Stop a job’s current run. The job definition is not removed, and can be
+run again.</p></td>
 <td><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for deletion confirmation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--preserve-user-data</span></code>. Preserve user data when deleting the Notebook server.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately deletes the instance without waiting for normal
-shutdown.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminate the job’s run without waiting for
+normal shutdown.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option can result in loss of final logs and events.</p>
@@ -1123,12 +1207,84 @@ shutdown.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminate</span></code></p></td>
-<td><p>Terminate an instance (stop if running and clean up resources).</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">delete</span></code></p></td>
+<td><p>Delete a job definition.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="connect-servers">
+<span id="ddpe-cli-connect"></span><h3 id="connect-servers">Connect servers<a class="headerlink" href="#connect-servers" title="Permalink to this heading">#</a></h3>
+<p>The following CLI commands manage Spark Connect servers:</p>
+<table id="id13">
+<caption><span class="caption-text">Connect server CLI commands</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 30%"/>
+<col style="width: 55%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span></code></p></td>
+<td><p>Connect server management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">create</span></code></p></td>
+<td><p>Create a new Spark Connect server definition. Creating a connect server
+does not start it; use <code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">run</span></code> to start it.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for the connect server. If not provided, a name is generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool</span></code>. Resource pool ID or name to use. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-image-id</span></code>. Instance image ID to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--jars</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.jar</span></code> files to include on the driver and executor classpaths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--py-files</span></code>. Comma-separated list of <code class="docutils literal notranslate"><span class="pre">.zip</span></code>, <code class="docutils literal notranslate"><span class="pre">.egg</span></code>, or <code class="docutils literal notranslate"><span class="pre">.py</span></code> files to place on the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> for Python apps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--files</span></code>. Comma-separated list of files to be placed in the working directory of each executor. File paths of these files in executors can be accessed with <code class="docutils literal notranslate"><span class="pre">SparkFiles.get(fileName)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--archives</span></code>. Comma-separated list of archives to be extracted into the working directory of each executor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--conf</span></code>. Arbitrary Spark configuration property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executor-memory</span></code>. Memory per executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1G</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num-executors</span></code>. Number of executors to launch. Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executor-cores</span></code>. Number of cores used by each executor. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>. Enable encryption for communication between the driver and executors. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>. Description of the connect server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the connect server. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
+The mount path is optional; if omitted, the upload’s default mount path is used. Can be specified multiple times.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">get</span></code></p></td>
+<td><p>Get details of a connect server.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">list</span></code></p></td>
+<td><p>List connect servers.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. Filter by exact connect server ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. Filter by fuzzy word similarity of the name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code>. Filter by status. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-by</span></code>. Filter by submitter. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool-id</span></code>. Filter by resource pool ID. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--created-to</span></code>. Filter by creation time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--columns</span></code>. Display only the specified columns, in the given order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-columns</span></code>. Display every available column.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">run</span></code></p></td>
+<td><p>Start a connect server.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">terminate</span></code></p></td>
+<td><p>Stop a connect server’s current run. The connect server definition is not
+removed, and can be run again.</p></td>
 <td><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for termination confirmation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--preserve-user-data</span></code>. Preserve user data when terminating the Notebook server.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminates the instance without waiting for normal shutdown.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminate the connect server’s run without
+waiting for normal shutdown.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option can result in loss of final logs and events.</p>
@@ -1137,43 +1293,8 @@ shutdown.</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">duplicate</span></code></p></td>
-<td><p>Duplicate an instance. Requires a saved configuration from the original
-instance. A new instance is created based on the saved instance.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">restart</span></code></p></td>
-<td><p>Restart a previously shutdown Notebook server.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">suspend</span></code></p></td>
-<td><p>Suspend an instance. Only scheduled batch jobs are supported.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for suspend confirmation.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resume</span></code></p></td>
-<td><p>Resume a suspended instance. Only scheduled batch jobs are supported.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shutdown</span></code></p></td>
-<td><p>Shutdown a Notebook server.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--no-confirm</span></code>. Disable prompt for shutdown confirmation.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logs</span></code></p></td>
-<td><p>Get logs of a batch or Spark Connect job.</p></td>
-<td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code>, <code class="docutils literal notranslate"><span class="pre">--index</span></code>. For logs that use 0 as the index.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--zip-file</span></code>. Download logs for the driver and executors as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. <strong>Optional</strong>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
-<td><p>List the status of a batch or Spark Connect job.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">delete</span></code></p></td>
+<td><p>Delete a connect server definition.</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -1181,13 +1302,13 @@ instance. A new instance is created based on the saved instance.</p></td>
 </section>
 <section id="jupyter-notebooks">
 <span id="ddpe-cli-notebook"></span><h3 id="jupyter-notebooks">Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h3>
-<p>The following CLI command can be used for Jupyter Notebook-related tasks:</p>
-<table id="id12">
-<caption><span class="caption-text">Dell Data Processing Engine Jupyter Notebook CLI commands</span><a class="headerlink" href="#id12" title="Permalink to this table">#</a></caption>
+<p>The following CLI commands manage Jupyter Notebook servers:</p>
+<table id="id14">
+<caption><span class="caption-text">Jupyter Notebook CLI commands</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 15%"/>
-<col style="width: 45%"/>
-<col style="width: 40%"/>
+<col style="width: 30%"/>
+<col style="width: 55%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
@@ -1196,16 +1317,131 @@ instance. A new instance is created based on the saved instance.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
-<td><p>Start a new Notebook server.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span></code></p></td>
+<td><p>Notebook server management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">create</span></code></p></td>
+<td><p>Create a new notebook server definition. Creating a notebook server does
+not start it; use <code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">run</span></code> to start it.</p></td>
 <td><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>: A name of your application. If a name is not provided, one is generated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--pool</span></code>: The name of the resource pool to use.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>: A description of the Notebook instance.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the job. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
-The mount path is optional; if omitted, the upload’s default mount path is used.
-Can be specified multiple times. Examples:
-<code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">name=my-upload:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678:/data</span></code>, <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">u-12345678</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. A name for the notebook server. If not provided, a name is generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool</span></code>. Resource pool ID or name to use. <strong>Required</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-image-id</span></code>. Instance image ID to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--description</span></code>. Description of the notebook server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--env</span></code>. Add environment variables to the notebook server. Each entry must be in the form <code class="docutils literal notranslate"><span class="pre">key=value</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mount</span></code>. Attach an upload to the notebook server. Format: <code class="docutils literal notranslate"><span class="pre">[name=&lt;upload-name&gt;|&lt;upload-id&gt;]:&lt;mount-path&gt;</span></code>.
+The mount path is optional; if omitted, the upload’s default mount path is used. Can be specified multiple times.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">get</span></code></p></td>
+<td><p>Get details of a notebook server.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">list</span></code></p></td>
+<td><p>List notebook servers.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--id</span></code>. Filter by exact notebook server ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. Filter by fuzzy word similarity of the name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code>. Filter by status. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-by</span></code>. Filter by submitter. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool-id</span></code>. Filter by resource pool ID. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--created-to</span></code>. Filter by creation time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--columns</span></code>. Display only the specified columns, in the given order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-columns</span></code>. Display every available column.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">run</span></code></p></td>
+<td><p>Start a notebook server.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">terminate</span></code></p></td>
+<td><p>Stop a notebook server’s current run. The notebook server definition is
+not removed, and can be run again.</p></td>
+<td><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminate the notebook server’s run without
+waiting for normal shutdown.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option can result in loss of final logs and events.</p>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook</span> <span class="pre">delete</span></code></p></td>
+<td><p>Delete a notebook server definition.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="runs">
+<span id="ddpe-cli-run"></span><h3 id="runs">Runs<a class="headerlink" href="#runs" title="Permalink to this heading">#</a></h3>
+<p>The following CLI commands manage runs, the individual executions of a job, connect server, or notebook server:</p>
+<table id="id15">
+<caption><span class="caption-text">Run CLI commands</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 30%"/>
+<col style="width: 55%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">run</span></code></p></td>
+<td><p>Run management.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">get</span></code></p></td>
+<td><p>Get details of a run.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">list</span></code></p></td>
+<td><p>List runs.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--instance-id</span></code>. Filter by the owning job, connect server, or notebook server ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--kind</span></code>. Filter by kind. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code>. Filter by fuzzy word similarity of the name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--status</span></code>. Filter by status. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-by</span></code>. Filter by submitter. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--resource-pool-id</span></code>. Filter by resource pool ID. Can be repeated to match multiple values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--created-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--created-to</span></code>. Filter by creation time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--started-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--started-to</span></code>. Filter by start time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--finished-from</span></code>, <code class="docutils literal notranslate"><span class="pre">--finished-to</span></code>. Filter by finish time range (ISO-8601 instant).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sort</span></code>. Sort by <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span> <span class="pre">[asc|desc]</span></code>, where field is <code class="docutils literal notranslate"><span class="pre">createdAt</span></code> or <code class="docutils literal notranslate"><span class="pre">id</span></code> (direction defaults to <code class="docutils literal notranslate"><span class="pre">asc</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--columns</span></code>. Display only the specified columns, in the given order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-columns</span></code>. Display every available column.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">logs</span></code></p></td>
+<td><p>Get the logs of a run. Requires either <code class="docutils literal notranslate"><span class="pre">--zip-file</span></code> or <code class="docutils literal notranslate"><span class="pre">--follow</span></code>.</p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--zip-file</span></code>. Download all logs as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file to this location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code>, <code class="docutils literal notranslate"><span class="pre">--follow</span></code>. Stream the live log output of the run until it finishes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--driver</span></code>. With <code class="docutils literal notranslate"><span class="pre">--follow</span></code>, only stream logs from the driver pod.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--executors</span></code>. With <code class="docutils literal notranslate"><span class="pre">--follow</span></code>, only stream logs from the executor pods.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">terminate</span></code></p></td>
+<td><p>Terminate a run, or every run currently in progress.</p></td>
+<td><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all</span></code>. Terminate every run that is currently in progress. Requires
+system management privileges. Mutually exclusive with a run ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code>. Immediately terminate the run(s) without waiting for normal shutdown.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option can result in loss of final logs and events.</p>
+</div>
+</li>
 </ul>
 </td>
 </tr>
@@ -1217,8 +1453,8 @@ Can be specified multiple times. Examples:
 <p>A profile is a named set of configuration and access settings that defines how a
 user interacts with Dell Data Processing Engine. The following CLI commands can
 be used for profile-related tasks:</p>
-<table id="id13">
-<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id13" title="Permalink to this table">#</a></caption>
+<table id="id16">
+<caption><span class="caption-text">Dell Data Processing Engine profile CLI commands</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1260,8 +1496,8 @@ be used for profile-related tasks:</p>
 <section id="secrets">
 <span id="ddpe-cli-secrets"></span><h3 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for <a class="reference internal" href="secrets.html"><span class="doc std std-doc">secret management</span></a>:</p>
-<table id="id14">
-<caption><span class="caption-text">Dell Data Processing Engine secret CLI commands</span><a class="headerlink" href="#id14" title="Permalink to this table">#</a></caption>
+<table id="id17">
+<caption><span class="caption-text">Dell Data Processing Engine secret CLI commands</span><a class="headerlink" href="#id17" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1355,8 +1591,8 @@ removed.</p></td>
 <section id="token-management">
 <span id="ddpe-cli-token"></span><h3 id="token-management">Token management<a class="headerlink" href="#token-management" title="Permalink to this heading">#</a></h3>
 <p>The following CLI commands can be used for managing authentication tokens:</p>
-<table id="id15">
-<caption><span class="caption-text">Dell Data Processing Engine token CLI commands</span><a class="headerlink" href="#id15" title="Permalink to this table">#</a></caption>
+<table id="id18">
+<caption><span class="caption-text">Dell Data Processing Engine token CLI commands</span><a class="headerlink" href="#id18" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1394,8 +1630,8 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">60s</sp
 </section>
 <section id="uploads">
 <span id="ddpe-cli-uploads"></span><h3 id="uploads">Uploads<a class="headerlink" href="#uploads" title="Permalink to this heading">#</a></h3>
-<table id="id16">
-<caption><span class="caption-text">Uploads commands</span><a class="headerlink" href="#id16" title="Permalink to this table">#</a></caption>
+<table id="id19">
+<caption><span class="caption-text">Uploads commands</span><a class="headerlink" href="#id19" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 10%"/>
 <col style="width: 30%"/>
@@ -1521,82 +1757,127 @@ command to login with the default role:</p>
 credentials. Upon logging in, an access token and encrypted value is generated
 and written to your local configuration file for later use.</p>
 </section>
-<section id="submit-a-batch-job">
-<span id="ddpe-cli-submit-batch"></span><h3 id="submit-a-batch-job">Submit a batch job<a class="headerlink" href="#submit-a-batch-job" title="Permalink to this heading">#</a></h3>
-<p>An example Dell Data Processing Engine batch job submission that uses the
-<code class="docutils literal notranslate"><span class="pre">org.apache.spark.examples.SparkPi</span></code> class to calculate pi:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
+<section id="create-and-run-a-batch-job">
+<span id="ddpe-cli-submit-batch"></span><h3 id="create-and-run-a-batch-job">Create and run a batch job<a class="headerlink" href="#create-and-run-a-batch-job" title="Permalink to this heading">#</a></h3>
+<p>The following example creates a job using
+<code class="docutils literal notranslate"><span class="pre">org.apache.spark.examples.SparkPi</span></code> to calculate pi. Creating a job does not
+start it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create --class org.apache.spark.examples.SparkPi --resource-pool default <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-------------------------------------------
-sparkId <span class="p">|</span> b-7537272864c477686cd6bfc11f5ca66
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Adhoc Job created:
+-------------------------------------------
+id <span class="p">|</span> 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10
 -------------------------------------------
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Save the <code class="docutils literal notranslate"><span class="pre">sparkId</span></code> for subsequent use with the API.</p>
+<p>Save the job <code class="docutils literal notranslate"><span class="pre">id</span></code> for subsequent use with the API and CLI.</p>
 </div>
-<p>View the logs for the job using the <code class="docutils literal notranslate"><span class="pre">sparkId</span></code> generated with the previous
-command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine instance logs b-7537272864c477686cd6bfc11f5ca66
+<p>Start the job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job run 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">Job</span> <span class="o">=</span> finished: reduce at SparkPi.scala:38, took <span class="m">7</span>.584185 s
-Pi is roughly <span class="m">3</span>.1372556862784315
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Run 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10 job? <span class="o">[</span>y/N<span class="o">]</span>&gt; y
+Job 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10 run has been requested
 </pre></div>
 </div>
-<p>To delete an instance:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine instance delete b-7537272864c477686cd6bfc11f5ca66
+<p>Get the job’s most recent run <code class="docutils literal notranslate"><span class="pre">id</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job get 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Delete b-7537272864c477686cd6bfc11f5ca66? <span class="o">[</span>y/N<span class="o">]</span>&gt; y
-Delete request sent
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Job details:
+-------------------------------------------
+id <span class="p">|</span> 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10
+kind <span class="p">|</span> ADHOC
+status <span class="p">|</span> ACTIVE
+-------------------------------------------
+Job last run:
+-------------------------------------------
+id <span class="p">|</span> a83b0e26-6d3d-4a5e-9c7f-1b2e4d6a9f80
+status <span class="p">|</span> COMPLETED
+-------------------------------------------
+</pre></div>
+</div>
+<p>View the run’s logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine run logs a83b0e26-6d3d-4a5e-9c7f-1b2e4d6a9f80 --zip-file pi-run-logs.zip
+</pre></div>
+</div>
+<p>To delete the job definition:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job delete 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Delete 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10 job? <span class="o">[</span>y/N<span class="o">]</span>&gt; y
+Job 4f9c2e3a-8b71-4c2e-9a3d-6e1f2b8c9a10 has been deleted
 </pre></div>
 </div>
 </section>
-<section id="submit-a-batch-job-on-a-schedule">
-<span id="ddpe-cli-submit-cron"></span><h3 id="submit-a-batch-job-on-a-schedule">Submit a batch job on a schedule<a class="headerlink" href="#submit-a-batch-job-on-a-schedule" title="Permalink to this heading">#</a></h3>
-<p>Using the same class and <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file as the previous example, you can run the
-job on a CRON schedule by using the <code class="docutils literal notranslate"><span class="pre">--cron</span></code> option. The following example runs
-the job every hour at minute 0:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar --cron "</span><span class="m">0</span> * * * *<span class="s2">""</span>
+<section id="create-a-recurring-batch-job-on-a-schedule">
+<span id="ddpe-cli-submit-cron"></span><h3 id="create-a-recurring-batch-job-on-a-schedule">Create a recurring batch job on a schedule<a class="headerlink" href="#create-a-recurring-batch-job-on-a-schedule" title="Permalink to this heading">#</a></h3>
+<p>Add <code class="docutils literal notranslate"><span class="pre">--cron</span></code> to create a recurring job instead. The following runs every
+hour at minute 0:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create --class org.apache.spark.examples.SparkPi --resource-pool default --cron <span class="s2">"0 * * * *"</span> <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
 </pre></div>
 </div>
-<p>To run the job every day at 12:00 PM:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar --cron 0 "</span><span class="m">12</span> * * *<span class="s2">""</span>
+<p>To create a job that runs every day at 12:00 PM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create --class org.apache.spark.examples.SparkPi --resource-pool default --cron <span class="s2">"0 12 * * *"</span> <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
 </pre></div>
 </div>
-<p>The timezone is <code class="docutils literal notranslate"><span class="pre">UTC</span></code> by default. You can change <a class="reference external" href="https://wikipedia.org/wiki/List_of_tz_database_time_zones">the
-timezone</a> with the
-<code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code> option. The following example runs the batch job at 12:00 PM
-EST:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --class org.apache.spark.examples.SparkPi <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar  --cron-timezone="</span>EST<span class="s2">" --cron "</span><span class="m">0</span> <span class="m">12</span> * * *<span class="s2">""</span>
+<p>The timezone is <code class="docutils literal notranslate"><span class="pre">UTC</span></code> by default. Change it with <code class="docutils literal notranslate"><span class="pre">--cron-timezone</span></code>, using a
+<a class="reference external" href="https://wikipedia.org/wiki/List_of_tz_database_time_zones">valid timezone name</a>.
+The following runs at 12:00 PM EST:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job create --class org.apache.spark.examples.SparkPi --resource-pool default --cron-timezone <span class="s2">"EST"</span> --cron <span class="s2">"0 12 * * *"</span> <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.7.jar"</span>
 </pre></div>
 </div>
+<p>Creating a recurring job does not enable its schedule. Activate it to start
+running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine job activate &lt;job-id&gt;
+</pre></div>
+</div>
+<p>To pause the schedule without deleting the job, use <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">deactivate</span> <span class="pre">&lt;job-id&gt;</span></code>.</p>
 </section>
-<section id="submit-a-spark-connect-job">
-<span id="ddpe-cli-submit-connect"></span><h3 id="submit-a-spark-connect-job">Submit a Spark Connect job<a class="headerlink" href="#submit-a-spark-connect-job" title="Permalink to this heading">#</a></h3>
-<p>To submit a Spark Connect job:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine submit --spark-connect
+<section id="create-and-run-a-spark-connect-server">
+<span id="ddpe-cli-submit-connect"></span><h3 id="create-and-run-a-spark-connect-server">Create and run a Spark Connect server<a class="headerlink" href="#create-and-run-a-spark-connect-server" title="Permalink to this heading">#</a></h3>
+<p>To create a Spark Connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect create --resource-pool default
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Spark connect job started:
----------------------------------------------
-sparkId <span class="p">|</span> c-eed1bf18f8526486c9ecddf9819a273db
----------------------------------------------
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Connect Server created:
+-------------------------------------------
+id <span class="p">|</span> 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
+-------------------------------------------
 </pre></div>
 </div>
-<p>You can then use the provided URI to start the instance:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine instance uris c-eed1bf18f8526486c9ecddf9819a273db
+<p>Start the connect server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect run 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Spark Web UI: https://c-eed1bf18f8526486c9ecddf9819a273db-ui.local.net:8787
-Spark Connect: sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/token<span class="o">=</span>eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ...<span class="s2">"</span>
+<p>Get the server’s details, including its Spark Web UI URL and Spark Connect
+URI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect get 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
 </pre></div>
 </div>
-<p>Copy the token and use the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option to run on PySpark:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/pyspark --remote <span class="s2">"sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/token=eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN ..."</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Connect server details:
+-------------------------------------------
+id <span class="p">|</span> 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
+status <span class="p">|</span> ACTIVE
+-------------------------------------------
+Connect server last run:
+-------------------------------------------
+id <span class="p">|</span> 3a1b6c8e-4d5f-4a2b-9c3d-7e8f1a2b3c4d
+status <span class="p">|</span> RUNNING
+sparkUiUrl <span class="p">|</span> https://3a1b6c8e-ui.local.net:8787
+sparkConnectUri <span class="p">|</span> sc://3a1b6c8e-grpc.local.gate.net:8787/<span class="p">;</span><span class="nv">token</span><span class="o">=</span>eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN...
+-------------------------------------------
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It can take a few seconds after <code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">run</span></code> for the run’s URLs to become available.</p>
+</div>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">sparkConnectUri</span></code> and use the <code class="docutils literal notranslate"><span class="pre">--remote</span></code> option to run on PySpark:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/pyspark --remote <span class="s2">"sc://3a1b6c8e-grpc.local.gate.net:8787/;token=eyJraWQ101J0ZXN0aW5nIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyN..."</span>
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Welcome to
@@ -1607,7 +1888,7 @@ Spark Connect: sc://c-eed1bf1f8526486c9ecddf9819a273db-grpc.local.gate.net:8787/
       /_/
 
 Using Python version 3.10.14 (main. Mar 19 2024 21:46:16)
-Client connected to the Spark Connect server at https://c-eed1bf18f8526486c9ecddf9819a273db-ui.local.net:8787
+Client connected to the Spark Connect server at https://3a1b6c8e-ui.local.net:8787
 SparkSession available as `spark`.
 </pre></div>
 </div>
@@ -1632,11 +1913,15 @@ SparkSession available as `spark`.
 +---+---+-------+----------+-------------------+
 </pre></div>
 </div>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">https://c-eed1bf18f8526486c9ecddf9819a273db-ui.local.net:8787</span></code> URL to
-view the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/web-ui.html">Spark Web UI</a>. Dell
-Data Processing Engine requires authentication through your IdP before accessing
-the Spark Web UI. If you have not already logged in, you are taken to your IdP’s
-login screen to enter your credentials.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">sparkUiUrl</span></code> to view the <a class="reference external" href="https://spark.apache.org/docs/3.5.7/web-ui.html">Spark Web
+UI</a>. This requires IdP
+authentication; if you’re not already logged in, you’re redirected to your
+IdP’s login screen.</p>
+<p>To stop and remove the server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine connect terminate 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
+./dell-data-processing-engine connect delete 9e4d2c1a-7b3f-4a5e-8c9d-1f2e3a4b5c6d
+</pre></div>
+</div>
 </section>
 <section id="configure-resource-pools">
 <span id="ddpe-cli-resource-pools"></span><h3 id="configure-resource-pools">Configure resource pools<a class="headerlink" href="#configure-resource-pools" title="Permalink to this heading">#</a></h3>

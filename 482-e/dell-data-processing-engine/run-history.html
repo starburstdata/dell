@@ -242,11 +242,20 @@
 <li class="toctree-l1"><a class="reference internal" href="connect-servers.html">Connect servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook-servers.html">Notebook servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Run history</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#run-statuses">Run statuses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#view-run-details">View run details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#download-run-logs">Download run logs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-job-or-server">Create a job or server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-history-ui">Run history UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-statuses">Run statuses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-run-details">View run details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-run-logs">Download run logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-job-or-server">Create a job or server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#run-history-cli">Run history CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-runs">List runs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">View run details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Download run logs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="uploads.html">Uploads</a></li>
@@ -320,11 +329,20 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Run history</a><ul>
+<li><a class="reference internal" href="#run-history-ui">Run history UI</a><ul>
 <li><a class="reference internal" href="#run-statuses">Run statuses</a></li>
 <li><a class="reference internal" href="#view-run-details">View run details</a></li>
 <li><a class="reference internal" href="#spark-history-server">Spark History Server</a></li>
 <li><a class="reference internal" href="#download-run-logs">Download run logs</a></li>
 <li><a class="reference internal" href="#create-a-job-or-server">Create a job or server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-history-cli">Run history CLI</a><ul>
+<li><a class="reference internal" href="#list-runs">List runs</a></li>
+<li><a class="reference internal" href="#id1">View run details</a></li>
+<li><a class="reference internal" href="#id2">Download run logs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -339,7 +357,12 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="run-history">
-<span id="ddpe-run-history"></span><h1 id="dell-data-processing-engine-run-history--page-root">Run history<a class="headerlink" href="#dell-data-processing-engine-run-history--page-root" title="Permalink to this heading">#</a></h1>
+<h1 id="dell-data-processing-engine-run-history--page-root">Run history<a class="headerlink" href="#dell-data-processing-engine-run-history--page-root" title="Permalink to this heading">#</a></h1>
+<p>Dell Data Processing Engine lets you view the run history of all jobs and
+servers. Run history can be viewed in the <a class="reference internal" href="#ddpe-run-history-ui"><span class="std std-ref">UI</span></a> or with
+the <a class="reference internal" href="#ddpe-run-history-cli"><span class="std std-ref">CLI</span></a>.</p>
+<section id="run-history-ui">
+<span id="ddpe-run-history-ui"></span><span id="ddpe-run-history"></span><h2 id="run-history-ui">Run history UI<a class="headerlink" href="#run-history-ui" title="Permalink to this heading">#</a></h2>
 <p>Click <strong>Run history</strong> in the Dell Data Processing Engine section of the
 Starburst Enterprise web UI to view the runs of all jobs and servers.</p>
 <p>The <strong>Run history</strong> pane shows the following totals for the cluster:</p>
@@ -382,10 +405,10 @@ not required. The list loads more entries as you scroll.</p>
 <li><p><strong>Download logs</strong>: Download the logs for the run.</p></li>
 </ul>
 <section id="run-statuses">
-<span id="ddpe-run-statuses"></span><h2 id="run-statuses">Run statuses<a class="headerlink" href="#run-statuses" title="Permalink to this heading">#</a></h2>
+<span id="ddpe-run-statuses"></span><h3 id="run-statuses">Run statuses<a class="headerlink" href="#run-statuses" title="Permalink to this heading">#</a></h3>
 <p>A run reports one of the following statuses:</p>
-<table id="id1">
-<caption><span class="caption-text">Run statuses</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<table id="id3">
+<caption><span class="caption-text">Run statuses</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 30%"/>
 <col style="width: 70%"/>
@@ -434,7 +457,7 @@ run’s underlying resources are no longer present.</p></td>
 a run failed or was skipped.</p>
 </section>
 <section id="view-run-details">
-<h2 id="view-run-details">View run details<a class="headerlink" href="#view-run-details" title="Permalink to this heading">#</a></h2>
+<h3 id="view-run-details">View run details<a class="headerlink" href="#view-run-details" title="Permalink to this heading">#</a></h3>
 <p>Click <strong>View details</strong> from the options menu to open the run summary page. The
 summary displays the full run definition. The sections shown depend on the
 kind of run, and can include the following:</p>
@@ -451,7 +474,7 @@ to the run.</p></li>
 </ul>
 </section>
 <section id="spark-history-server">
-<h2 id="spark-history-server">Spark History Server<a class="headerlink" href="#spark-history-server" title="Permalink to this heading">#</a></h2>
+<h3 id="spark-history-server">Spark History Server<a class="headerlink" href="#spark-history-server" title="Permalink to this heading">#</a></h3>
 <p>The Spark History Server is a web UI for monitoring running and completed Spark
 jobs. To open it for a run, click the options menu for the run and select
 <strong>Spark History server</strong>.</p>
@@ -471,12 +494,12 @@ seconds and try again.</p>
 </div>
 </section>
 <section id="download-run-logs">
-<h2 id="download-run-logs">Download run logs<a class="headerlink" href="#download-run-logs" title="Permalink to this heading">#</a></h2>
+<h3 id="download-run-logs">Download run logs<a class="headerlink" href="#download-run-logs" title="Permalink to this heading">#</a></h3>
 <p>To download the logs for a run, click the options menu for the run and select
 <strong>Download logs</strong>.</p>
 </section>
 <section id="create-a-job-or-server">
-<h2 id="create-a-job-or-server">Create a job or server<a class="headerlink" href="#create-a-job-or-server" title="Permalink to this heading">#</a></h2>
+<h3 id="create-a-job-or-server">Create a job or server<a class="headerlink" href="#create-a-job-or-server" title="Permalink to this heading">#</a></h3>
 <p>Click <strong>Create new</strong> to choose what to create:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="jobs.html"><span class="doc std std-doc">Spark job</span></a>: Submit and track self-contained Spark jobs as one-time,
@@ -486,6 +509,33 @@ servers that power interactive, session-based Spark development.</p></li>
 <li><p><a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">Notebook server</span></a>: Manage Jupyter notebook servers with a
 pre-configured PySpark environment for interactive Spark development.</p></li>
 </ul>
+</section>
+</section>
+<section id="run-history-cli">
+<span id="ddpe-run-history-cli"></span><h2 id="run-history-cli">Run history CLI<a class="headerlink" href="#run-history-cli" title="Permalink to this heading">#</a></h2>
+<p>Use the DDPE CLI to view run history programmatically. See the <a class="reference internal" href="cli.html#ddpe-cli-run"><span class="std std-ref">run CLI
+commands</span></a> for all available commands.</p>
+<section id="list-runs">
+<h3 id="list-runs">List runs<a class="headerlink" href="#list-runs" title="Permalink to this heading">#</a></h3>
+<p>To list all runs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine run list
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3 id="id1">View run details<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To get the details of a run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine run get &lt;run-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3 id="id2">Download run logs<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>To download the logs for a run as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./dell-data-processing-engine run logs &lt;run-id&gt; --zip-file run-logs.zip
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
