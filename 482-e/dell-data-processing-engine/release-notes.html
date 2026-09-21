@@ -236,7 +236,7 @@
 <p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#e-august-2026">2.0 (482-e) (August 2026)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e-november-2026">2.0 (482-e) (November 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-september-2026">1.9 (480-e) (September 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-may-2026">1.8 (479-e) (May 2026)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e-november-2025">1.6 (476-e) (November 2025)</a></li>
@@ -324,7 +324,7 @@
     <strong>Contents</strong>
     <ul>
 <li><a class="reference internal" href="#">Release notes</a><ul>
-<li><a class="reference internal" href="#e-august-2026">2.0 (482-e) (August 2026)</a></li>
+<li><a class="reference internal" href="#e-november-2026">2.0 (482-e) (November 2026)</a></li>
 <li><a class="reference internal" href="#e-september-2026">1.9 (480-e) (September 2026)</a></li>
 <li><a class="reference internal" href="#e-may-2026">1.8 (479-e) (May 2026)</a></li>
 <li><a class="reference internal" href="#e-november-2025">1.6 (476-e) (November 2025)</a></li>
@@ -351,8 +351,15 @@
 <p>New releases of the Dell Data Processing Engine are created whenever significant
 new features or bug fixes are available. Each DDPE release is based on a
 corresponding SEP release, indicated in parentheses.</p>
-<section id="e-august-2026">
-<h2 id="e-august-2026">2.0 (482-e) (August 2026)<a class="headerlink" href="#e-august-2026" title="Permalink to this heading">#</a></h2>
+<section id="e-november-2026">
+<h2 id="e-november-2026">2.0 (482-e) (November 2026)<a class="headerlink" href="#e-november-2026" title="Permalink to this heading">#</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Existing scripts or API calls built against the 1.9 combined job/run model may
+need updates. See the <a class="reference internal" href="cli.html"><span class="doc std std-doc">CLI</span></a> and <a class="reference internal" href="api.html"><span class="doc std std-doc">API</span></a> references for the new
+<a class="reference internal" href="cli.html#ddpe-cli-job"><span class="std std-ref">job</span></a>, <a class="reference internal" href="cli.html#ddpe-cli-connect"><span class="std std-ref">connect</span></a>, <a class="reference internal" href="cli.html#ddpe-cli-notebook"><span class="std std-ref">notebook</span></a>,
+and <a class="reference internal" href="cli.html#ddpe-cli-run"><span class="std std-ref">run</span></a> command groups and endpoint structure.</p>
+</div>
 <ul class="simple">
 <li><p>Definitions and runs are now distinct entities across <a class="reference internal" href="jobs.html"><span class="doc std std-doc">jobs</span></a>,
 <a class="reference internal" href="connect-servers.html"><span class="doc std std-doc">Connect servers</span></a>, and <a class="reference internal" href="notebook-servers.html"><span class="doc std std-doc">notebook
