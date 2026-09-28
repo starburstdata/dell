@@ -240,26 +240,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../data-products.html">Data products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../insights.html">Insights</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">For Dell Data Processing Engine users</span></p>
+<p class="caption" role="heading"><span class="caption-text">For Data Processing users</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/release-notes.html">Release notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/secrets.html">Secrets management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/jobs.html">Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/connect-servers.html">Connect servers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/notebook-servers.html">Notebook servers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/run-history.html">Run history</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/uploads.html">Uploads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/log-retention.html">Log retention settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/maintenance-mode.html">System maintenance mode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/resource-pools.html">Resource pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/access-control.html">Access control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html">Object storage governance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html#api-documentation">API documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/gpu.html">GPU acceleration with Spark RAPIDS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/custom-images.html">Custom Spark images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/cli.html">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dell-data-processing-engine/api.html">Dell Data Processing Engine API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/secrets.html">Secrets management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/jobs.html">Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/connect-servers.html">Connect servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/notebook-servers.html">Notebook servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/run-history.html">Run history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/uploads.html">Uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/log-retention.html">Log retention settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/maintenance-mode.html">System maintenance mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/resource-pools.html">Resource pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/access-control.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/object-storage-governance.html">Object storage governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/object-storage-governance.html#api-documentation">API documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/gpu.html">GPU acceleration with Spark RAPIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/custom-images.html">Custom Spark images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/cli.html">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-processing/api.html">Data Processing API</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use SQL</span></p>
 <ul>
@@ -1802,7 +1802,7 @@ API</span></a>, use native storage credentials <code class="docutils literal not
 and <code class="docutils literal notranslate"><span class="pre">s3_secret_key</span></code>.</p></li>
 <li><p>In Spark jobs, reference the warehouse name and use proxy credentials
 <code class="docutils literal notranslate"><span class="pre">s3_governance_access_key</span></code> and <code class="docutils literal notranslate"><span class="pre">s3_governance_secret_key</span></code>, generated through
-<a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">DDPE object storage governance</span></a>. BIAC is only enforced when proxy
+<a class="reference internal" href="../data-processing/object-storage-governance.html"><span class="doc std std-doc">Data Processing object storage governance</span></a>. BIAC is only enforced when proxy
 credentials are present. In SEP, BIAC enforcement is native at the engine
 level.</p></li>
 </ul>
@@ -1883,7 +1883,7 @@ REST API:</p>
 </pre></div>
 </div>
 <p><strong>Spark</strong></p>
-<p>The following example shows a configuration for <a class="reference internal" href="../dell-data-processing-engine/jobs.html"><span class="doc std std-doc">submitting Spark
+<p>The following example shows a configuration for <a class="reference internal" href="../data-processing/jobs.html"><span class="doc std std-doc">submitting Spark
 jobs</span></a> with Starburst Metastore
 and the Iceberg REST API:</p>
 <p>With OAuth2 authentication:</p>
@@ -1918,8 +1918,8 @@ and the Iceberg REST API:</p>
 </pre></div>
 </div>
 <p>The above example shows authentication for the file system assuming the job is
-submitted using <a class="reference internal" href="../dell-data-processing-engine/overview.html"><span class="doc std std-doc">Dell Data Processing
-Engine</span></a> with <a class="reference internal" href="../dell-data-processing-engine/object-storage-governance.html"><span class="doc std std-doc">object storage
+submitted using <a class="reference internal" href="../data-processing/overview.html"><span class="doc std std-doc">Data
+Processing</span></a> with <a class="reference internal" href="../data-processing/object-storage-governance.html"><span class="doc std std-doc">object storage
 governance</span></a> enabled.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
