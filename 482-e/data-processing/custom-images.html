@@ -405,10 +405,9 @@ the foundation for your custom images. The base image is available at:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="p">.</span><span class="n">ecr</span><span class="p">.</span><span class="n">aws</span><span class="o">/</span><span class="n">starburstdata</span><span class="o">/</span><span class="n">dell</span><span class="o">-</span><span class="n">aidp</span><span class="o">/</span><span class="n">starburst</span><span class="o">-</span><span class="n">spark</span><span class="p">:</span><span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>The image is based on
-<a class="reference external" href="https://hub.docker.com/layers/apache/spark/3.5.7-scala2.12-java17-python3-r-ubuntu/images/sha256-96d4508680e09543ee1c6b2705c67176d4e0e1023b21c198a43a8c846eb264b7">spark:3.5.7-scala2.12-java17-python3-ubuntu</a>
-and includes essential tools and utilities for advanced Spark and data ecosystem
-integrations.</p>
+<p>The image is based on openSUSE Leap 16.0 with Apache Spark 3.5.9, Java 17,
+and Python 3, and includes essential tools and utilities for advanced Spark
+and data ecosystem integrations.</p>
 <section id="included-tools-and-utilities">
 <h3 id="included-tools-and-utilities">Included tools and utilities<a class="headerlink" href="#included-tools-and-utilities" title="Permalink to this heading">#</a></h3>
 <p>The base image includes the following tools to enhance monitoring and logging
@@ -426,7 +425,7 @@ GPU-accelerated computing and various data connectors and frameworks.</p>
 <section id="rapids-accelerator-jars">
 <h4 id="rapids-accelerator-jars">Rapids Accelerator JARs<a class="headerlink" href="#rapids-accelerator-jars" title="Permalink to this heading">#</a></h4>
 <p>The image includes libraries for the <a class="reference internal" href="gpu.html"><span class="doc std std-doc">NVIDIA RAPIDS Accelerator for Apache
-Spark</span></a>, supporting both ARM64 and AMD64 architectures based on the <code class="docutils literal notranslate"><span class="pre">25.12</span></code>
+Spark</span></a>, supporting both ARM64 and AMD64 architectures based on the <code class="docutils literal notranslate"><span class="pre">26.08</span></code>
 RAPIDS version. These libraries enable Spark to leverage GPUs for significant
 performance gains in data processing tasks.</p>
 </section>
@@ -630,8 +629,8 @@ grouped by type:</p>
 <summary>Iceberg libraries</summary>
 <ul class="simple">
 <li><p>iceberg-aws-bundle.jar</p></li>
-<li><p>iceberg-aws-bundle-nvidia(1.6.1).jar</p></li>
-<li><p>iceberg-spark-runtime(1.8.0).jar</p></li>
+<li><p>iceberg-aws-bundle-nvidia(1.9.2).jar</p></li>
+<li><p>iceberg-spark-runtime(1.11.0).jar</p></li>
 <li><p>iceberg-spark-runtime-nvidia.jar</p></li>
 </ul>
 </details>
@@ -870,7 +869,7 @@ grouped by type:</p>
 <details>
 <summary>Cloud/Storage access</summary>
 <ul class="simple">
-<li><p>boto3-1.36.25</p></li>
+<li><p>boto3-1.42.79</p></li>
 <li><p>six-1.17.0</p></li>
 <li><p>statsmodels-0.14.4</p></li>
 <li><p>tzdata-2024.2</p></li>
@@ -903,17 +902,16 @@ grouped by type:</p>
 <details>
 <summary>RAPIDS (GPU acceleration)</summary>
 <ul class="simple">
-<li><p>cudf-cu12-25.12.0</p></li>
-<li><p>dask-cudf-cu12-25.12.0</p></li>
-<li><p>pylibcudf-cu12-25.12.0</p></li>
-<li><p>cuml-cu12-25.12.0</p></li>
-<li><p>cugraph-cu12-25.12.0</p></li>
-<li><p>nx-cugraph-cu12-25.12.0</p></li>
-<li><p>cufilter-cu12-25.12.0</p></li>
-<li><p>cucim-cu12-25.12.0</p></li>
-<li><p>cuvs-cu12-25.12.0</p></li>
-<li><p>raft-dask-cu12-25.12.0</p></li>
-<li><p>pylibraft-cu12-25.12.0</p></li>
+<li><p>cudf-cu13-26.08.1</p></li>
+<li><p>dask-cudf-cu13-26.08.1</p></li>
+<li><p>pylibcudf-cu13-26.08.1</p></li>
+<li><p>cuml-cu13-26.08.0</p></li>
+<li><p>cugraph-cu13-26.08.0</p></li>
+<li><p>nx-cugraph-cu13-26.08.0</p></li>
+<li><p>cucim-cu13-26.08.0</p></li>
+<li><p>cuvs-cu13-26.08.1</p></li>
+<li><p>raft-dask-cu13-26.08.0</p></li>
+<li><p>pylibraft-cu13-26.08.0</p></li>
 </ul>
 </details>
 <details>
@@ -962,7 +960,7 @@ grouped by type:</p>
 <li><p>propcache-0.2.1</p></li>
 <li><p>PyYAML-6.0.2</p></li>
 <li><p>SQLAlchemy-2.0.37</p></li>
-<li><p>xgboost-3.0.4</p></li>
+<li><p>xgboost-3.4.0</p></li>
 </ul>
 </details>
 </details>
