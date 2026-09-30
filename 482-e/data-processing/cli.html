@@ -1843,12 +1843,16 @@ The following runs at 12:00 PM EST:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./data-processing job create --class org.apache.spark.examples.SparkPi --resource-pool default --cron-timezone <span class="s2">"EST"</span> --cron <span class="s2">"0 12 * * *"</span> <span class="s2">"local:///opt/spark/examples/jars/spark-examples_2.12-3.5.9.jar"</span>
 </pre></div>
 </div>
-<p>Creating a recurring job does not enable its schedule. Activate it to start
-running:</p>
+<p>A recurring job’s schedule is active by default as soon as the job is
+created. To pause the schedule without deleting the job, use
+<code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">deactivate</span> <span class="pre">&lt;job-id&gt;</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./data-processing job deactivate &lt;job-id&gt;
+</pre></div>
+</div>
+<p>Resume the schedule with <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">activate</span> <span class="pre">&lt;job-id&gt;</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./data-processing job activate &lt;job-id&gt;
 </pre></div>
 </div>
-<p>To pause the schedule without deleting the job, use <code class="docutils literal notranslate"><span class="pre">job</span> <span class="pre">deactivate</span> <span class="pre">&lt;job-id&gt;</span></code>.</p>
 </section>
 <section id="create-and-run-a-spark-connect-server">
 <span id="ddpe-cli-submit-connect"></span><h3 id="create-and-run-a-spark-connect-server">Create and run a Spark Connect server<a class="headerlink" href="#create-and-run-a-spark-connect-server" title="Permalink to this heading">#</a></h3>
