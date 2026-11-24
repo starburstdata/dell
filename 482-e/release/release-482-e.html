@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Release 482-e LTS (11 Sep 2026) &#8212; Dell Data Analytics Engine</title>
+    <title>Release 482-e LTS (11 Sep 2026) &#8212; Data Analytics</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
@@ -111,14 +111,14 @@
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
         <span
-          title="Dell Data Analytics Engine"
+          title="Data Analytics"
           class="md-header-nav__button md-logo"
           style="cursor: default"
         >
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 482-e.4 LTS logo"
+            alt="Data Analytics 482-e.8 LTS logo"
           />
           
         </span>
@@ -212,13 +212,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+    <a href="../index.html" title="Data Analytics" class="md-nav__button md-logo">
       
         <img src="../_static/dell.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 482-e.4 LTS</a>
+       title="Data Analytics">Data Analytics 482-e.8 LTS</a>
   </label>
   
   
@@ -252,6 +252,10 @@
 <li class="toctree-l5"><a class="reference internal" href="#e-2-changes-18-sep-2026">482-e.2 changes (18 Sep 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-3-changes-2-oct-2026">482-e.3 changes (2 Oct 2026)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#e-4-changes-13-oct-2026">482-e.4 changes (13 Oct 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-5-changes-16-oct-2026">482-e.5 changes (16 Oct 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-6-changes-28-oct-2026">482-e.6 changes (28 Oct 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-7-changes-4-nov-2026">482-e.7 changes (4 Nov 2026)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#e-8-changes-19-nov-2026">482-e.8 changes (19 Nov 2026)</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="release-480-e.html">Release 480-e LTS (29 May 2026)</a></li>
@@ -375,6 +379,10 @@
 <li><a class="reference internal" href="#e-2-changes-18-sep-2026">482-e.2 changes (18 Sep 2026)</a></li>
 <li><a class="reference internal" href="#e-3-changes-2-oct-2026">482-e.3 changes (2 Oct 2026)</a></li>
 <li><a class="reference internal" href="#e-4-changes-13-oct-2026">482-e.4 changes (13 Oct 2026)</a></li>
+<li><a class="reference internal" href="#e-5-changes-16-oct-2026">482-e.5 changes (16 Oct 2026)</a></li>
+<li><a class="reference internal" href="#e-6-changes-28-oct-2026">482-e.6 changes (28 Oct 2026)</a></li>
+<li><a class="reference internal" href="#e-7-changes-4-nov-2026">482-e.7 changes (4 Nov 2026)</a></li>
+<li><a class="reference internal" href="#e-8-changes-19-nov-2026">482-e.8 changes (19 Nov 2026)</a></li>
 </ul>
 </li>
 </ul>
@@ -390,7 +398,7 @@
             
   <section id="release-482-e-lts-11-sep-2026">
 <h1 id="release-release-482-e--page-root">Release 482-e LTS (11 Sep 2026)<a class="headerlink" href="#release-release-482-e--page-root" title="Permalink to this heading">#</a></h1>
-<p>Dell Data Analytics Engine, powered by Starburst Enterprise platform (SEP) 482-e LTS is the follow up SEP release to
+<p>Data Analytics, powered by Starburst Enterprise platform (SEP) 482-e LTS is the follow up SEP release to
 <a class="reference internal" href="release-480-e.html"><span class="doc std std-doc">480-e</span></a> LTS release.</p>
 <p>It contains all improvements from Starburst Enterprise releases since the <a class="reference internal" href="release-480-e.html"><span class="doc std std-doc">480-e
 LTS</span></a> release.</p>
@@ -866,6 +874,127 @@ such as <a class="reference internal" href="../connector/starburst-iceberg-unity
 <li><p>Fixed an issue where AIDA queries that exceeded the
 <code class="docutils literal notranslate"><span class="pre">ai.agent.max-result-set-size</span></code> limit kept running after the agent stopped
 reading results.</p></li>
+</ul>
+</section>
+<section id="e-5-changes-16-oct-2026">
+<span id="release-482-e-5"></span><h2 id="e-5-changes-16-oct-2026">482-e.5 changes (16 Oct 2026)<a class="headerlink" href="#e-5-changes-16-oct-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">source</span></code> column to the <a class="reference internal" href="../security/biac-audit-log.html#download-agent-logs"><span class="std std-ref">agent logs</span></a> CSV export
+and the AIDA session response that identifies whether an interaction was
+submitted through the Starburst Enterprise web UI, REST API, or MCP. Records created before the
+upgrade have an empty <code class="docutils literal notranslate"><span class="pre">source</span></code> value.</p></li>
+<li><p>Fixed an issue where AIDA trend charts displayed <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">data</span> <span class="pre">available</span></code> when
+query results returned the month as a number.</p></li>
+<li><p>Fixed a performance regression when reading Parquet and ORC files with dates
+and timestamps stored in the legacy hybrid Julian-Gregorian calendar, such as
+files written by Apache Spark or Apache Hive.</p></li>
+<li><p>Fixed an issue in the Iceberg connector where <code class="docutils literal notranslate"><span class="pre">MERGE</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>
+statements failed with a <code class="docutils literal notranslate"><span class="pre">NoClassDefFoundError</span></code> on tables with the
+<code class="docutils literal notranslate"><span class="pre">write.object-storage.enabled</span></code> table property set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, such as managed
+tables in <a class="reference internal" href="../connector/starburst-iceberg-unity.html"><span class="doc std std-doc">Databricks Unity Catalog</span></a>.</p></li>
+<li><p>Fixed an issue in the Iceberg connector where deleted rows could reappear in
+query results on tables with equality delete files when the query filtered
+on a column that is not an equality key.</p></li>
+</ul>
+</section>
+<section id="e-6-changes-28-oct-2026">
+<span id="release-482-e-6"></span><h2 id="e-6-changes-28-oct-2026">482-e.6 changes (28 Oct 2026)<a class="headerlink" href="#e-6-changes-28-oct-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added support for including supporting files besides <code class="docutils literal notranslate"><span class="pre">SKILL.md</span></code> in an AIDA
+skill. Use the <code class="docutils literal notranslate"><span class="pre">ai.agent.skills.max-additional-files</span></code> configuration property
+to set the maximum number of additional files per skill. Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
+<li><p>Added the <strong>Select by default in new chats</strong> option for AIDA skills. New
+chats preselect only the skills that have this option enabled.</p></li>
+<li><p>Added support for signing the payload of S3 requests by setting the
+<code class="docutils literal notranslate"><span class="pre">s3.signer-type</span></code> configuration property to <code class="docutils literal notranslate"><span class="pre">Aws4SignedPayloadSigner</span></code>.</p></li>
+<li><p>Updated the Delta Lake connector to use the Databricks Delta Tables API
+instead of the legacy staged commits endpoint when writing to tables in
+Databricks Unity Catalog. Databricks is retiring the legacy endpoint. Schema
+changes made in SEP are now reflected in Unity Catalog.</p></li>
+<li><p>Fixed an issue in the Hive connector where queries that read multiple nested
+fields from the same <code class="docutils literal notranslate"><span class="pre">row</span></code> column in a full ACID ORC table failed with
+<code class="docutils literal notranslate"><span class="pre">Multiple</span> <span class="pre">entries</span> <span class="pre">with</span> <span class="pre">same</span> <span class="pre">key</span></code>.</p></li>
+<li><p>Fixed an issue in the Iceberg connector where queries on tables with
+equality delete files returned incorrect results when a delete key included
+a field nested in a <code class="docutils literal notranslate"><span class="pre">row</span></code> column.</p></li>
+<li><p>Fixed an issue in the Iceberg connector where server-side scan planning
+with Databricks Unity Catalog on Azure failed because Azure credentials
+vended as storage credentials by the REST catalog were ignored.</p></li>
+</ul>
+</section>
+<section id="e-7-changes-4-nov-2026">
+<span id="release-482-e-7"></span><h2 id="e-7-changes-4-nov-2026">482-e.7 changes (4 Nov 2026)<a class="headerlink" href="#e-7-changes-4-nov-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updated the bundled JDK to Temurin 25.0.5+8 to mitigate the following CVEs:</p>
+<ul>
+<li><p>CVE-2026-91403</p></li>
+<li><p>CVE-2026-114820</p></li>
+</ul>
+</li>
+<li><p>Fixed an issue where queries failed during planning on catalogs that support
+projection pushdown when they used <code class="docutils literal notranslate"><span class="pre">BETWEEN</span> <span class="pre">SYMMETRIC</span></code> with nested <code class="docutils literal notranslate"><span class="pre">row</span></code>
+fields, or compared a computed expression to an <code class="docutils literal notranslate"><span class="pre">IN</span></code> list of consecutive
+integers.</p></li>
+<li><p>Fixed an issue in the Hive connector where the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">FUNCTION</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">OR</span> <span class="pre">REPLACE</span> <span class="pre">FUNCTION</span></code>, and <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">FUNCTION</span></code> statements reported success
+but had no effect when <code class="docutils literal notranslate"><span class="pre">hive.hdfs.authorization.enabled</span></code> or
+<code class="docutils literal notranslate"><span class="pre">hive.metastore.thrift.impersonation.enabled</span></code> was set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+</section>
+<section id="e-8-changes-19-nov-2026">
+<span id="release-482-e-8"></span><h2 id="e-8-changes-19-nov-2026">482-e.8 changes (19 Nov 2026)<a class="headerlink" href="#e-8-changes-19-nov-2026" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fixed a vulnerability where the cache service API did not require
+authentication by default, which could allow unauthorized changes to
+materialized views. The fix is opt-in, and the default authentication type
+is still <code class="docutils literal notranslate"><span class="pre">NONE</span></code>. To enable it, upgrade every cluster that uses the cache
+service and set <code class="docutils literal notranslate"><span class="pre">cache-service.shared-secret</span></code> in each catalog that sets
+<code class="docutils literal notranslate"><span class="pre">cache-service.uri</span></code>. Then, on the cache service, set
+<code class="docutils literal notranslate"><span class="pre">http-server.authentication.type</span></code> to <code class="docutils literal notranslate"><span class="pre">INTERNAL</span></code> and set
+<code class="docutils literal notranslate"><span class="pre">cache-service.shared-secret</span></code> to the same value. Catalogs then sign their
+requests to the cache service. You can combine <code class="docutils literal notranslate"><span class="pre">INTERNAL</span></code> with <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code> as
+<code class="docutils literal notranslate"><span class="pre">INTERNAL,PASSWORD</span></code>, but you cannot combine <code class="docutils literal notranslate"><span class="pre">NONE</span></code> with other types.</p></li>
+<li><p>Updated the cache service so that health checks on the <code class="docutils literal notranslate"><span class="pre">/v1/status</span></code> endpoint
+do not require credentials when password authentication is enabled. The
+endpoint returns no data.</p></li>
+<li><p>Improved query planning performance for large queries when
+CTE reuse is enabled.</p></li>
+<li><p>Fixed an issue where queries with CTE reuse enabled failed with a
+<code class="docutils literal notranslate"><span class="pre">circular</span> <span class="pre">dependency</span> <span class="pre">between</span> <span class="pre">stages</span></code> error.</p></li>
+<li><p>Fixed an issue where the <strong>Run and download</strong> option in the
+<a class="reference internal" href="../client/query-editor.html#queryed-run-options"><span class="std std-ref">query editor</span></a> was unavailable when you selected a
+single SQL statement.</p></li>
+<li><p>Fixed an issue where AI-generated data product descriptions, dataset
+descriptions, summaries, and suggested prompts showed corrupted characters
+when the generated text contained non-ASCII characters, such as accented
+letters.</p></li>
+<li><p>Fixed an issue in the Elasticsearch connector where queries with predicates
+on <code class="docutils literal notranslate"><span class="pre">keyword</span></code> fields that use <code class="docutils literal notranslate"><span class="pre">ignore_above</span></code> or a <code class="docutils literal notranslate"><span class="pre">normalizer</span></code>, including
+<code class="docutils literal notranslate"><span class="pre">keyword</span></code> multi-fields of <code class="docutils literal notranslate"><span class="pre">text</span></code> fields, returned incorrect results. SEP
+processes these predicates instead of pushing them down to Elasticsearch,
+which can slow down these queries. Elasticsearch gives dynamically mapped
+string fields a <code class="docutils literal notranslate"><span class="pre">keyword</span></code> multi-field with <code class="docutils literal notranslate"><span class="pre">ignore_above</span></code> set to <code class="docutils literal notranslate"><span class="pre">256</span></code> by
+default, so predicates on most string columns of a dynamically mapped index
+are no longer pushed down.</p></li>
+<li><p>Fixed an issue in the Hive connector where reading Parquet files written by
+Apache Spark failed with an <code class="docutils literal notranslate"><span class="pre">Unknown</span> <span class="pre">time-zone</span> <span class="pre">ID</span></code> error when the file
+metadata specified a short time zone ID, such as <code class="docutils literal notranslate"><span class="pre">EST</span></code>.</p></li>
+<li><p>Fixed an issue in the Iceberg connector where <code class="docutils literal notranslate"><span class="pre">expire_snapshots</span></code> deleted
+deletion vector files that were still referenced by a table snapshot. Queries
+on the affected format version 3 tables failed with an
+<code class="docutils literal notranslate"><span class="pre">ICEBERG_CANNOT_OPEN_SPLIT</span></code> error.</p></li>
+<li><p>Fixed an issue in the OpenSearch connector where queries with predicates or
+aggregations on <code class="docutils literal notranslate"><span class="pre">keyword</span></code> fields that use <code class="docutils literal notranslate"><span class="pre">ignore_above</span></code> or a <code class="docutils literal notranslate"><span class="pre">normalizer</span></code>,
+including <code class="docutils literal notranslate"><span class="pre">keyword</span></code> multi-fields of <code class="docutils literal notranslate"><span class="pre">text</span></code> fields, returned incorrect
+results. SEP processes these predicates and aggregations instead of
+pushing them down to OpenSearch, which can slow down these queries.
+OpenSearch gives dynamically mapped string fields a <code class="docutils literal notranslate"><span class="pre">keyword</span></code> multi-field
+with <code class="docutils literal notranslate"><span class="pre">ignore_above</span></code> set to <code class="docutils literal notranslate"><span class="pre">256</span></code> by default, so predicates on most string
+columns of a dynamically mapped index are no longer pushed down.</p></li>
+<li><p>Fixed an issue in the Snowflake connector where the <code class="docutils literal notranslate"><span class="pre">snowflake.proxy.*</span></code>
+configuration properties were not applied to JDBC connections. Catalogs with
+<code class="docutils literal notranslate"><span class="pre">snowflake.proxy.enabled</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> connect to Snowflake through the
+configured proxy after you upgrade.</p></li>
 </ul>
 </section>
 </section>

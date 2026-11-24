@@ -57,7 +57,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>AI Data Assistant (AIDA) &#8212; Dell Data Analytics Engine</title>
+    <title>AI Data Assistant (AIDA) &#8212; Data Analytics</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/algolia.css" />
@@ -111,14 +111,14 @@
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
         <span
-          title="Dell Data Analytics Engine"
+          title="Data Analytics"
           class="md-header-nav__button md-logo"
           style="cursor: default"
         >
           
           <img
             src="../_static/dell.png"
-            alt="Dell Data Analytics Engine 482-e.4 LTS logo"
+            alt="Data Analytics 482-e.8 LTS logo"
           />
           
         </span>
@@ -212,13 +212,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="Dell Data Analytics Engine" class="md-nav__button md-logo">
+    <a href="../index.html" title="Data Analytics" class="md-nav__button md-logo">
       
         <img src="../_static/dell.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="Dell Data Analytics Engine">Dell Data Analytics Engine 482-e.4 LTS</a>
+       title="Data Analytics">Data Analytics 482-e.8 LTS</a>
   </label>
   
   
@@ -244,7 +244,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#personas">Personas</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#executive">Executive</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#analyst">Analyst</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-engineer">Data engineer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-engineer">Data Engineer</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-aida">Accessing AIDA</a></li>
@@ -256,6 +256,7 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#pinned-chats">Pinned chats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visualizations">Visualizations</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#customize-a-chart">Customize a chart</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#best-practices">Best practices</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
@@ -291,9 +292,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#guardrails">Guardrails</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#customize-appearance-and-theme">Customize appearance and theme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#audit-agent-interactions">Audit agent interactions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#token-usage">Token usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#token-usage">Token usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-starburst-s-ai-agent">Configure Starburst’s AI agent</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#model-validation">Model Validation</a></li>
@@ -403,7 +402,7 @@
 <li><a class="reference internal" href="#personas">Personas</a><ul>
 <li><a class="reference internal" href="#executive">Executive</a></li>
 <li><a class="reference internal" href="#analyst">Analyst</a></li>
-<li><a class="reference internal" href="#data-engineer">Data engineer</a></li>
+<li><a class="reference internal" href="#data-engineer">Data Engineer</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#accessing-aida">Accessing AIDA</a></li>
@@ -415,6 +414,7 @@
 </li>
 <li><a class="reference internal" href="#pinned-chats">Pinned chats</a></li>
 <li><a class="reference internal" href="#visualizations">Visualizations</a><ul>
+<li><a class="reference internal" href="#customize-a-chart">Customize a chart</a></li>
 <li><a class="reference internal" href="#best-practices">Best practices</a></li>
 <li><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
@@ -450,9 +450,7 @@
 <li><a class="reference internal" href="#guardrails">Guardrails</a></li>
 <li><a class="reference internal" href="#customize-appearance-and-theme">Customize appearance and theme</a></li>
 <li><a class="reference internal" href="#audit-agent-interactions">Audit agent interactions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#token-usage">Token usage</a><ul>
+<li><a class="reference internal" href="#token-usage">Token usage</a></li>
 <li><a class="reference internal" href="#configure-starburst-s-ai-agent">Configure Starburst’s AI agent</a><ul>
 <li><a class="reference internal" href="#general-configuration-properties">General configuration properties</a></li>
 <li><a class="reference internal" href="#model-validation">Model Validation</a></li>
@@ -563,7 +561,7 @@ Starburst Enterprise web UI.</p>
 </ul>
 </section>
 <section id="data-engineer">
-<h3 id="data-engineer">Data engineer<a class="headerlink" href="#data-engineer" title="Permalink to this heading">#</a></h3>
+<h3 id="data-engineer">Data Engineer<a class="headerlink" href="#data-engineer" title="Permalink to this heading">#</a></h3>
 <p>Provides technical summaries tailored to engineers.</p>
 <ul class="simple">
 <li><p>Focuses on structure, data quality, and metadata.</p></li>
@@ -749,7 +747,8 @@ specific value.</p>
 <li><p>Dive deeper into a specific data point by clicking a chart element and asking
 a follow-up question.</p></li>
 <li><p>Iterate on a result without re-running the query, such as switching chart
-types or reframing the same data in a follow-up prompt.</p></li>
+types in a follow-up prompt or with the <a class="reference internal" href="#aida-customize-charts"><span class="std std-ref">Customize</span></a>
+option.</p></li>
 </ul>
 <p>AIDA determines when to render a chart based on the content of your query
 results. Aggregated data, time series, rankings, comparisons, and distributions
@@ -758,6 +757,39 @@ results do not. You can also explicitly request a chart in your prompt, for
 example by asking AIDA to <code class="docutils literal notranslate"><span class="pre">chart</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code>, or <code class="docutils literal notranslate"><span class="pre">show</span></code> the results.</p>
 <p>If AIDA cannot generate a chart for the requested data, it displays the results
 as a data table.</p>
+<section id="customize-a-chart">
+<span id="aida-customize-charts"></span><h4 id="customize-a-chart">Customize a chart<a class="headerlink" href="#customize-a-chart" title="Permalink to this heading">#</a></h4>
+<p>You can change the title, chart type, value axis, and series colors of a chart
+in your chat session without sending a follow-up prompt. The chart updates in
+place, and your changes persist in the chat session.</p>
+<ol class="arabic">
+<li><p>In the chart header, click the <i class="material-symbols-rounded">more_vert</i> options menu, and select <i class="material-symbols-rounded">edit</i> <strong>Customize</strong>.</p></li>
+<li><p>In the <strong>Customize chart</strong> dialog, change any of the following settings:</p>
+<ul>
+<li><p><strong>Title</strong>: The chart title. This field is required.</p></li>
+<li><p><strong>Chart type</strong>: Select <strong>Bar chart</strong>, <strong>Line chart</strong>, <strong>Pie chart</strong>,
+<strong>Side bar chart</strong>, or <strong>Histogram</strong>. Chart types that cannot represent
+the data are unavailable.</p></li>
+<li><p><strong>Value axis</strong>: Select how the value axis is scaled:</p>
+<ul class="simple">
+<li><p><strong>Automatic</strong>: Bar and side bar charts start at 0, or zoom in when the
+values are close together. Line charts fit the axis to the data.</p></li>
+<li><p><strong>Start at 0</strong>: The axis always starts at 0.</p></li>
+<li><p><strong>Fit to data</strong>: The axis range fits the data values.</p></li>
+</ul>
+<p>The value axis setting applies to bar, side bar, and line charts only.</p>
+</li>
+<li><p><strong>Colors</strong>: Click the <i class="material-symbols-rounded">edit</i> icon
+next to a series to change its color.</p></li>
+</ul>
+</li>
+<li><p>Review your changes in the <strong>Preview</strong> pane, then click <strong>Save</strong>.</p></li>
+</ol>
+<p>After you save, a version indicator, such as <strong>v2</strong>, appears in the chart
+header. AIDA uses the customized chart as context for follow-up prompts.</p>
+<p>You can also ask AIDA to adjust the value axis in a prompt, for example <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">the</span> <span class="pre">y-axis</span> <span class="pre">at</span> <span class="pre">zero</span></code> or <code class="docutils literal notranslate"><span class="pre">Fit</span> <span class="pre">the</span> <span class="pre">axis</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">data</span></code>. AIDA does not support a
+specific starting value or a logarithmic scale.</p>
+</section>
 <section id="best-practices">
 <h4 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -767,7 +799,8 @@ better charts than vague prompts.</p></li>
 <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">revenue</span> <span class="pre">by</span> <span class="pre">region</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">bar</span> <span class="pre">chart</span></code>. If the chart type is not a good fit
 for the data, AIDA explains why and recommends an alternative.</p></li>
 <li><p><strong>Refer to earlier results in follow-up prompts</strong> to iterate without
-re-running the query. For example, <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">that</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">pie</span> <span class="pre">chart</span></code> or <code class="docutils literal notranslate"><span class="pre">Plot</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">you</span> <span class="pre">retrieved</span> <span class="pre">earlier</span></code>.</p></li>
+re-running the query. For example, <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">that</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">pie</span> <span class="pre">chart</span></code> or <code class="docutils literal notranslate"><span class="pre">Plot</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">you</span> <span class="pre">retrieved</span> <span class="pre">earlier</span></code>. To change the title, chart type, value axis, or
+colors directly, <a class="reference internal" href="#aida-customize-charts"><span class="std std-ref">customize the chart</span></a>.</p></li>
 </ul>
 </section>
 <section id="limitations">
@@ -782,6 +815,13 @@ the results.</p></li>
 table containing the same results.</p></li>
 <li><p>Visualizations reflect the data returned at query time. AIDA does not cache or
 refresh chart data automatically.</p></li>
+<li><p>You can only customize the chart in the most recent response in a chat
+session. After you send another message, you cannot customize earlier charts.</p></li>
+<li><p>You cannot customize a chart while AIDA is still generating the response.</p></li>
+<li><p>You cannot customize data tables, KPI tiles, or responses that contain more
+than one chart or combine results from more than one query.</p></li>
+<li><p>If the data behind a chart is no longer available in the chat session, you
+can change the chart’s title and colors, but not its chart type.</p></li>
 </ul>
 </section>
 </section>
@@ -820,11 +860,16 @@ injection.</p>
 tailor how AIDA communicates with a specific audience. Each custom persona
 consists of a name, description, and a persona prompt that defines AIDA’s tone,
 terminology, detail level, and output structure for that audience.</p>
-<p>Custom personas appear in the <strong>Persona</strong> menu alongside the built-in personas
-and are available to all users that have access to your SEP cluster.</p>
+<p>Custom personas appear in the <strong>Persona</strong> menu alongside the built-in personas.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To create and manage personas, you must have the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role.</p>
+<p>By default, all AIDA users can chat with every persona, and only the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code>
+role can create, edit, or delete personas. With <a class="reference internal" href="../security/biac-privileges.html#biac-entity-ai-personas"><span class="std std-ref">AI personas
+privileges</span></a>, your role must have the <code class="docutils literal notranslate"><span class="pre">USE</span></code> privilege on
+a persona to select it and chat with it in the <strong>Persona</strong> menu, and the
+<code class="docutils literal notranslate"><span class="pre">CREATE</span></code> privilege to create or clone personas. The <strong>Persona</strong> menu and the
+<strong>Manage personas</strong> dialog show only the personas and actions that your role is
+allowed to use.</p>
 </div>
 <section id="create-a-custom-persona">
 <h4 id="create-a-custom-persona">Create a custom persona<a class="headerlink" href="#create-a-custom-persona" title="Permalink to this heading">#</a></h4>
@@ -896,7 +941,7 @@ persona prompt.</p></li>
 <li><p><strong>Edit</strong>: Click the <i class="material-symbols-rounded">more_vert</i> options
 menu of the desired persona to open the <strong>Edit persona</strong> dialog, where you can
 update the name, description, and persona prompt. Click <strong>Save</strong> to apply your
-changes. This is available for custom personas only. You cannot edit built-in personas.</p></li>
+changes. You can edit both built-in and custom personas.</p></li>
 <li><p><strong>Clone</strong>: Click the <i class="material-symbols-rounded">more_vert</i> options
 menu of the desired persona and select <strong>Clone</strong> to create a new custom
 persona prepopulated with the selected persona’s name, description, and
@@ -906,9 +951,11 @@ is available for all personas.</p></li>
 options menu of the desired persona to open the <strong>Delete persona?</strong> dialog.
 Type <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> to enable the <strong>Yes, delete</strong> button, then click <strong>Yes, delete</strong>
 to permanently remove the persona from your account. This action cannot be
-undone. Any active chat sessions that use the deleted persona will fail to
-generate new replies until a different persona is assigned. This is available
-for custom personas only. You cannot delete built-in personas.</p></li>
+undone. You can’t change the persona of an open chat, so open chats that use
+the deleted persona can’t continue. AIDA returns the error <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">persona</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">chat</span> <span class="pre">is</span> <span class="pre">no</span> <span class="pre">longer</span> <span class="pre">available.</span> <span class="pre">Start</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">chat</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">different</span> <span class="pre">persona.</span></code>
+Start a new chat to continue. You can delete custom personas and the built-in
+Executive and Data Engineer personas. You cannot delete the built-in Analyst
+persona.</p></li>
 <li><p><strong>Search</strong>: Use the <strong>Search personas</strong> field to filter the list by name.</p></li>
 <li><p><strong>Create custom persona</strong>: Click <strong>Create custom persona</strong> to open the
 <strong>Create custom persona</strong> dialog. See <a class="reference internal" href="#sb-agent-custom-persona-prompts"><span class="std std-ref">Create a custom
@@ -1344,19 +1391,20 @@ screens.</p>
 <span id="aida-agent-audit-log"></span><h2 id="audit-agent-interactions">Audit agent interactions<a class="headerlink" href="#audit-agent-interactions" title="Permalink to this heading">#</a></h2>
 <p>Interactions with AIDA are recorded in an immutable agent interaction audit log
 for governance and compliance. Agent logs are available to administrators and
-capture every interaction, including the user, the question, the response, tools
-used, and the data sources referenced.</p>
+capture every interaction, including the user, how the interaction was
+submitted, the question, the response, tools used, and the data sources
+referenced.</p>
 <p>Administrators with the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role can review and export these records from
 the <strong>Agent logs</strong> tab of the <a class="reference internal" href="../security/biac-audit-log.html#audit-log-agent-logs"><span class="std std-ref">Audit log</span></a> page.</p>
 </section>
-</section>
 <section id="token-usage">
-<span id="aida-token-usage"></span><h1 id="token-usage">Token usage<a class="headerlink" href="#token-usage" title="Permalink to this heading">#</a></h1>
+<span id="aida-token-usage"></span><h2 id="token-usage">Token usage<a class="headerlink" href="#token-usage" title="Permalink to this heading">#</a></h2>
 <p>Administrators can view AI model token consumption across all AI features on the
 <strong>Token usage</strong> tab.</p>
 <p>To view token usage, you must have the <code class="docutils literal notranslate"><span class="pre">sysadmin</span></code> role. Navigate to <strong>Admin &gt;
 Token usage</strong>. For more information, read the <a class="reference internal" href="token-usage-ai.html"><span class="doc std std-doc">Token usage</span></a>
 page.</p>
+</section>
 <section id="configure-starburst-s-ai-agent">
 <span id="sb-ai-agent"></span><h2 id="configure-starburst-s-ai-agent">Configure Starburst’s AI agent<a class="headerlink" href="#configure-starburst-s-ai-agent" title="Permalink to this heading">#</a></h2>
 <p>The Starburst AI agent is the engine that powers AIDA. You can configure the AI
